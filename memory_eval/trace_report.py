@@ -13,6 +13,9 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
 
+from memory_eval.dataset_integrity import freeze_dataset_integrity
+from scripts.llm_eval_common import resolve_model_pricing, summarize_token_usage
+
 
 NOT_RECORDED = "NOT_RECORDED"
 NOT_APPLICABLE = "NOT_APPLICABLE"
@@ -182,6 +185,10 @@ def _display(value: Any, digits: int = 4) -> str:
 
 def _pct(value: float | None) -> str:
     return NOT_RECORDED if value is None else f"{value * 100:.1f}%"
+
+
+def _pp(value: float | None) -> str:
+    return NOT_RECORDED if value is None else f"{value * 100:+.1f} pp"
 
 
 def _mean(values: Iterable[Any]) -> float | None:
@@ -602,6 +609,13 @@ def _case_analysis(
             "index_status": (add_trace or {}).get("index_status", NOT_RECORDED),
             "indexed_document_count": (add_trace or {}).get("indexed_document_count", NOT_RECORDED),
             "indexed_chunk_count": (add_trace or {}).get("indexed_chunk_count", NOT_RECORDED),
+            "chunks_with_embedding": (add_trace or {}).get("chunks_with_embedding", NOT_RECORDED),
+            "embedding_status": (add_trace or {}).get("embedding_status", NOT_RECORDED),
+            "embedding_call_count": (add_trace or {}).get("embedding_call_count", NOT_RECORDED),
+            "embedding_failure_count": (add_trace or {}).get("embedding_failure_count", NOT_RECORDED),
+            "extraction_status": (add_trace or {}).get("extraction_status", NOT_RECORDED),
+            "extraction_call_count": (add_trace or {}).get("extraction_call_count", NOT_RECORDED),
+            "extraction_failure_count": (add_trace or {}).get("extraction_failure_count", NOT_RECORDED),
             "errors": (add_trace or {}).get("add_error") or (add_trace or {}).get("index_error") or NOT_RECORDED,
         },
         "retrieval": {
@@ -757,6 +771,9 @@ def _render_case(case: dict[str, Any]) -> str:
         f"| Index Status | {add['index_status']} |",
         f"| Indexed documents | {_display(add['indexed_document_count'])} |",
         f"| Indexed chunks | {_display(add['indexed_chunk_count'])} |",
+        f"| Chunks with embedding | {_display(add['chunks_with_embedding'])} |",
+        f"| Embedding status / calls / failures | {_display(add['embedding_status'])} / {_display(add['embedding_call_count'])} / {_display(add['embedding_failure_count'])} |",
+        f"| Extraction status / calls / failures | {_display(add['extraction_status'])} / {_display(add['extraction_call_count'])} / {_display(add['extraction_failure_count'])} |",
         f"| Add latency | {_display(add['add_latency_ms'])} |",
         f"| Reindex latency | {_display(add['reindex_latency_ms'])} ms |",
         f"| Workspace | {_markdown(add['workspace'])} |",
@@ -972,7 +989,24 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
     run_config = _read_json(run_dir / "run_config.json") if (run_dir / "run_config.json").is_file() else {}
     run_metadata = _read_json(run_dir / "run_metadata.json") if (run_dir / "run_metadata.json").is_file() else {}
     manifest = _read_json(run_dir / "dataset_manifest.json") if (run_dir / "dataset_manifest.json").is_file() else {}
+    dataset_validation = _read_json(run_dir / "dataset_validation.json") if (run_dir / "dataset_validation.json").is_file() else {}
     api_errors = _read_jsonl(run_dir / "api_errors.jsonl")
+
+    answer_summary = dict(answer_summary)
+    judge_summary = dict(judge_summary)
+    for stage_summary, stage_name in ((answer_summary, "answer"), (judge_summary, "judge")):
+        stage_cases = [case for case in cases if isinstance(case[stage_name].get("usage"), dict)]
+        pricing = stage_summary.get("pricing")
+        if not isinstance(pricing, dict):
+            stage_model = stage_summary.get("model")
+            if not stage_model and stage_cases:
+                stage_model = stage_cases[0][stage_name].get("model")
+            pricing = resolve_model_pricing(str(stage_model or ""))
+        stage_summary["pricing"] = pricing or NOT_RECORDED
+        stage_summary["token_usage"] = summarize_token_usage(
+            [case[stage_name]["usage"] for case in stage_cases],
+            pricing,
+        )
 
     question_types: dict[str, Any] = {}
     for question_type in sorted({case["case"]["question_type"] for case in cases}):
@@ -999,6 +1033,35 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
             "accuracy": _mean(case["judge"]["is_correct"] for case in group),
         }
 
+    conditional_accuracy: dict[str, Any] = {}
+    recall_groups = {
+        "full_evidence_recall": lambda value: value == 1.0,
+        "partial_evidence_recall": lambda value: isinstance(value, (int, float)) and 0 < value < 1,
+        "zero_evidence_recall": lambda value: value == 0.0,
+        "evidence_found": lambda value: isinstance(value, (int, float)) and value > 0,
+    }
+    for label, predicate in recall_groups.items():
+        group = [case for case in cases if predicate(case["retrieval"]["recall_at_k"])]
+        judged = [case for case in group if isinstance(case["judge"]["is_correct"], bool)]
+        conditional_accuracy[label] = {
+            "case_count": len(group),
+            "judged_case_count": len(judged),
+            "correct_count": sum(case["judge"]["is_correct"] is True for case in judged),
+            "accuracy": _mean(case["judge"]["is_correct"] for case in judged),
+        }
+    for label, predicate in (
+        ("has_gold_evidence", lambda count: count > 0),
+        ("no_gold_evidence", lambda count: count == 0),
+    ):
+        group = [case for case in cases if predicate(case["retrieval"]["gold_evidence_count"])]
+        judged = [case for case in group if isinstance(case["judge"]["is_correct"], bool)]
+        conditional_accuracy[label] = {
+            "case_count": len(group),
+            "judged_case_count": len(judged),
+            "correct_count": sum(case["judge"]["is_correct"] is True for case in judged),
+            "accuracy": _mean(case["judge"]["is_correct"] for case in judged),
+        }
+
     latency_sources = {
         "Add": [case["add"]["add_latency_ms"] for case in cases],
         "Index": [case["add"]["reindex_latency_ms"] for case in cases],
@@ -1019,6 +1082,25 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
         latency_breakdown,
         key=lambda stage: latency_breakdown[stage]["avg"] if latency_breakdown[stage]["avg"] is not None else -1,
     )
+    end_to_end_latencies: list[float] = []
+    for case in cases:
+        values = (
+            case["add"]["add_latency_ms"],
+            case["add"]["reindex_latency_ms"],
+            case["retrieval"]["search_latency_ms"],
+            case["answer"]["latency_ms"],
+            case["judge"]["latency_ms"],
+        )
+        if all(isinstance(value, (int, float)) for value in values):
+            end_to_end_latencies.append(sum(float(value) for value in values))
+    latency_breakdown["End-to-End"] = {
+        "avg": _mean(end_to_end_latencies),
+        "p50": _percentile(end_to_end_latencies, 0.50),
+        "p95": _percentile(end_to_end_latencies, 0.95),
+        "p99": _percentile(end_to_end_latencies, 0.99),
+        "case_count": len(end_to_end_latencies),
+        "method": "Per-case sum of Add, Index, Search, Answer, and Judge; excludes service startup and orchestration overhead.",
+    }
     pipeline_success_rate = (
         sum(case["final"]["pipeline_complete"] for case in cases) / len(cases) if cases else None
     )
@@ -1031,6 +1113,52 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
         if cases
         else None
     )
+    overall_accuracy = _mean(case["judge"]["is_correct"] for case in scored)
+    single_accuracy = evidence_groups["single_evidence"]["accuracy"]
+    multiple_accuracy = evidence_groups["multiple_evidence"]["accuracy"]
+    temporal_accuracy = question_types.get("temporal-reasoning", {}).get("accuracy")
+    knowledge_update_accuracy = question_types.get("knowledge-update", {}).get("accuracy")
+
+    def accuracy_delta(value: Any) -> float | None:
+        if not isinstance(value, (int, float)) or not isinstance(overall_accuracy, (int, float)):
+            return None
+        return float(value) - float(overall_accuracy)
+
+    scenario_findings = {
+        "single_evidence_accuracy": single_accuracy,
+        "multiple_evidence_accuracy": multiple_accuracy,
+        "multiple_minus_single_accuracy": (
+            float(multiple_accuracy) - float(single_accuracy)
+            if isinstance(single_accuracy, (int, float)) and isinstance(multiple_accuracy, (int, float))
+            else None
+        ),
+        "temporal_accuracy": temporal_accuracy,
+        "temporal_minus_overall_accuracy": accuracy_delta(temporal_accuracy),
+        "knowledge_update_accuracy": knowledge_update_accuracy,
+        "knowledge_update_minus_overall_accuracy": accuracy_delta(knowledge_update_accuracy),
+        "evidence_found_answer_accuracy": conditional_accuracy["evidence_found"]["accuracy"],
+    }
+    answer_cost = answer_summary.get("token_usage", {}).get("cost_usd", NOT_RECORDED)
+    judge_cost = judge_summary.get("token_usage", {}).get("cost_usd", NOT_RECORDED)
+    llm_cost = {
+        "currency": "USD",
+        "answer_cost_usd": answer_cost,
+        "judge_cost_usd": judge_cost,
+        "total_cost_usd": (
+            float(answer_cost) + float(judge_cost)
+            if isinstance(answer_cost, (int, float)) and isinstance(judge_cost, (int, float))
+            else NOT_RECORDED
+        ),
+        "answer_pricing": answer_summary.get("pricing", NOT_RECORDED),
+        "judge_pricing": judge_summary.get("pricing", NOT_RECORDED),
+    }
+    code_snapshot = run_config.get("eval_code_snapshot")
+    if run_config.get("eval_code_dirty") is False:
+        reproducibility_status = "PASS_CLEAN_COMMIT"
+    elif isinstance(code_snapshot, dict) and code_snapshot.get("manifest_sha256"):
+        reproducibility_status = "PASS_DIRTY_WITH_SOURCE_SNAPSHOT"
+    else:
+        reproducibility_status = "PARTIAL_DIRTY_WITHOUT_SOURCE_SNAPSHOT"
     run_info = {
         "run_id": run_metadata.get("run_id", run_dir.name),
         "dataset_name": run_config.get("dataset_name", manifest.get("source_dataset", {}).get("name", NOT_RECORDED)),
@@ -1048,9 +1176,61 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
         "judge_prompt_version": judge_summary.get("prompt_version", NOT_RECORDED),
         "eval_code_commit": run_config.get("eval_code_commit", NOT_RECORDED),
         "eval_code_dirty": run_config.get("eval_code_dirty", NOT_RECORDED),
+        "eval_code_snapshot": code_snapshot or NOT_RECORDED,
+        "reproducibility_status": reproducibility_status,
         "start_time": run_config.get("start_time_utc", NOT_RECORDED),
         "end_time": run_metadata.get("end_time_utc", judge_summary.get("end_time_utc", NOT_RECORDED)),
     }
+    indexed_chunks = retrieval_summary.get("indexed_chunk_count")
+    added_sessions = retrieval_summary.get("added_sessions")
+    average_chunks_per_session = retrieval_summary.get("average_chunks_per_session")
+    if not isinstance(average_chunks_per_session, (int, float)):
+        average_chunks_per_session = (
+            float(indexed_chunks) / float(added_sessions)
+            if isinstance(indexed_chunks, (int, float)) and isinstance(added_sessions, (int, float)) and added_sessions
+            else NOT_RECORDED
+        )
+    embedding = retrieval_summary.get("embedding")
+    if not isinstance(embedding, dict):
+        embedding_enabled = bool(run_config.get("embedding_enabled"))
+        embedding = {
+            "enabled": embedding_enabled,
+            "status": NOT_RECORDED if embedding_enabled else NOT_APPLICABLE,
+            "call_count": NOT_RECORDED if embedding_enabled else 0,
+            "failure_count": NOT_RECORDED if embedding_enabled else 0,
+            "chunks_with_embedding": sum(
+                int(case["add"]["chunks_with_embedding"])
+                for case in cases
+                if isinstance(case["add"]["chunks_with_embedding"], (int, float))
+            ),
+        }
+    extraction = retrieval_summary.get("extraction")
+    if not isinstance(extraction, dict):
+        extraction = {
+            "enabled": False,
+            "status": NOT_APPLICABLE,
+            "call_count": 0,
+            "failure_count": 0,
+        }
+    processing_observability = {
+        "indexed_document_count": retrieval_summary.get("indexed_document_count", NOT_RECORDED),
+        "indexed_chunk_count": indexed_chunks if indexed_chunks is not None else NOT_RECORDED,
+        "average_chunks_per_session": average_chunks_per_session,
+        "embedding": embedding,
+        "extraction": extraction,
+    }
+    observability_gaps = [
+        "Provider-side prompt truncation is not exposed by the OpenAI-compatible endpoint; client-side truncation is recorded.",
+        "Human Judge review remains a manual field and is not auto-filled.",
+    ]
+    if not isinstance(llm_cost["total_cost_usd"], (int, float)):
+        observability_gaps.append(
+            "LLM cost is NOT_RECORDED because no price table was configured; token usage is recorded."
+        )
+    if reproducibility_status == "PARTIAL_DIRTY_WITHOUT_SOURCE_SNAPSHOT":
+        observability_gaps.append(
+            "The run used a dirty working tree without an eval source snapshot, so the exact code cannot be reconstructed from the commit alone."
+        )
     return {
         "run_dir": str(run_dir),
         "total_cases": len(cases),
@@ -1061,7 +1241,7 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
         "hit_at_k": _mean(row["hit_at_k"] for row in retrieval_rows),
         "recall_at_k": _mean(row["recall_at_k"] for row in retrieval_rows),
         "mrr": _mean(row["mrr"] for row in retrieval_rows),
-        "answer_accuracy": _mean(case["judge"]["is_correct"] for case in scored),
+        "answer_accuracy": overall_accuracy,
         "answer_scored_cases": len(scored),
         "pipeline_success_rate": pipeline_success_rate,
         "grounded_end_to_end_accuracy": grounded_success_rate,
@@ -1085,6 +1265,11 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
         "latency_breakdown": latency_breakdown,
         "question_type_breakdown": question_types,
         "evidence_count_breakdown": evidence_groups,
+        "conditional_answer_accuracy": conditional_accuracy,
+        "scenario_findings": scenario_findings,
+        "dataset_integrity": dataset_validation or {"status": NOT_RECORDED},
+        "processing_observability": processing_observability,
+        "llm_cost": llm_cost,
         "api_stability": {
             "memory": retrieval_summary.get("api_stability", {}),
             "answer_api_requests": answer_summary.get("api_request_count", 0),
@@ -1103,6 +1288,10 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
             "answer_prompt_version": run_info["answer_prompt_version"],
             "judge_prompt_version": run_info["judge_prompt_version"],
             "eval_code_commit": run_info["eval_code_commit"],
+            "eval_code_snapshot_manifest_sha256": (
+                code_snapshot.get("manifest_sha256") if isinstance(code_snapshot, dict) else NOT_RECORDED
+            ),
+            "reproducibility_status": reproducibility_status,
             "memory_config_sha256": run_config.get("reme_config_sha256", NOT_RECORDED),
             "memory_version": run_info["memory_version"],
         },
@@ -1111,7 +1300,9 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
             "all_evidence_written": all(case["add"]["evidence_add_status"] == "PASS" for case in cases),
             "search_stable": retrieval_summary.get("search_success_rate") == 1.0,
             "recall_failure_count": root_counts["RETRIEVAL_MISS"] + root_counts["RETRIEVAL_PARTIAL"],
+            "low_rank_failure_count": root_counts["RETRIEVAL_LOW_RANK"],
             "ranking_failure_count": root_counts["RETRIEVAL_LOW_RANK"],
+            "wrong_chunk_failure_count": root_counts["RETRIEVAL_WRONG_CHUNK"],
             "context_loss_count": root_counts["CONTEXT_LOSS"] + root_counts["CONTEXT_TRUNCATION"],
             "judge_suspect_count": root_counts["JUDGE_SUSPECT"],
             "max_latency_stage": max_latency_stage,
@@ -1119,12 +1310,9 @@ def _summary(cases: list[dict[str, Any]], run_dir: Path, top_k: int) -> dict[str
                 (key for key in ROOT_CAUSES if key != "PASS"),
                 key=lambda key: root_counts[key],
             ),
+            "reproducibility_status": reproducibility_status,
         },
-        "observability_gaps": [
-            "Provider-side prompt truncation is not exposed by the OpenAI-compatible endpoint; client-side truncation is recorded.",
-            "Human Judge review remains a manual field and is not auto-filled.",
-            "LLM cost is NOT_RECORDED because no price table was configured; token usage is recorded.",
-        ],
+        "observability_gaps": observability_gaps,
         "cases": [
             {
                 "case_id": case["case"]["case_id"],
@@ -1173,6 +1361,7 @@ def _build_comparison(current: dict[str, Any], baseline_run: Path) -> dict[str, 
         and current_cases[ident].get("answer_correct") is False
     ]
     baseline_retrieval = _read_jsonl(baseline_run / "retrieval.jsonl")
+    baseline_add = _read_jsonl(baseline_run / "add_trace.jsonl")
     baseline_answers = _read_jsonl(baseline_run / "answers.jsonl")
     baseline_scores = _read_jsonl(baseline_run / "scores.jsonl")
     baseline_failure_count = sum(
@@ -1180,6 +1369,7 @@ def _build_comparison(current: dict[str, Any], baseline_run: Path) -> dict[str, 
         for name in ("failures.jsonl", "answer_failures.jsonl", "judge_failures.jsonl", "api_errors.jsonl")
     )
     baseline_search_p95 = _percentile((row.get("search_latency_ms") for row in baseline_retrieval), 0.95)
+    baseline_add_p95 = _percentile((row.get("add_latency_ms") for row in baseline_add), 0.95)
     baseline_answer_p95 = _percentile((row.get("latency_ms") for row in baseline_answers), 0.95)
     baseline_judge_p95 = _percentile((row.get("latency_ms") for row in baseline_scores), 0.95)
     baseline_tokens = sum(
@@ -1189,6 +1379,31 @@ def _build_comparison(current: dict[str, Any], baseline_run: Path) -> dict[str, 
     current_tokens = int(current.get("answer_stage", {}).get("token_usage", {}).get("total_tokens", 0)) + int(
         current.get("judge_stage", {}).get("token_usage", {}).get("total_tokens", 0)
     )
+
+    def rows_cost(rows: list[dict[str, Any]], summary_name: str) -> float | None:
+        stage_summary = _read_json(baseline_run / summary_name) if (baseline_run / summary_name).is_file() else {}
+        pricing = stage_summary.get("pricing") if isinstance(stage_summary, dict) else None
+        if not isinstance(pricing, dict):
+            model = stage_summary.get("model") if isinstance(stage_summary, dict) else None
+            if not model and rows:
+                model = rows[0].get("model")
+            pricing = resolve_model_pricing(str(model or ""))
+        usage = summarize_token_usage(
+            [row.get("usage", {}) for row in rows if isinstance(row.get("usage"), dict)],
+            pricing,
+        )
+        cost = usage.get("cost_usd")
+        return float(cost) if isinstance(cost, (int, float)) else None
+
+    baseline_answer_cost = rows_cost(baseline_answers, "answer_summary.json")
+    baseline_judge_cost = rows_cost(baseline_scores, "judge_summary.json")
+    baseline_cost = (
+        baseline_answer_cost + baseline_judge_cost
+        if baseline_answer_cost is not None and baseline_judge_cost is not None
+        else None
+    )
+    current_cost_value = current.get("llm_cost", {}).get("total_cost_usd")
+    current_cost = float(current_cost_value) if isinstance(current_cost_value, (int, float)) else None
 
     def delta(current_value: Any, baseline_value: Any) -> float | None:
         if not isinstance(current_value, (int, float)) or not isinstance(baseline_value, (int, float)):
@@ -1204,7 +1419,7 @@ def _build_comparison(current: dict[str, Any], baseline_run: Path) -> dict[str, 
             f"recall_at_{current['top_k']}": delta(current.get("recall_at_k"), baseline.get("recall_at_k")),
             "mrr": delta(current.get("mrr"), baseline.get("mrr")),
             "accuracy": delta(current.get("answer_accuracy"), baseline.get("answer_accuracy")),
-            "add_p95_ms": None,
+            "add_p95_ms": delta(current["latency_breakdown"]["Add"]["p95"], baseline_add_p95),
             "search_p95_ms": delta(current["latency_breakdown"]["Search"]["p95"], baseline_search_p95),
             "answer_p95_ms": delta(current["latency_breakdown"]["Answer"]["p95"], baseline_answer_p95),
             "judge_p95_ms": delta(current["latency_breakdown"]["Judge"]["p95"], baseline_judge_p95),
@@ -1213,7 +1428,8 @@ def _build_comparison(current: dict[str, Any], baseline_run: Path) -> dict[str, 
                 baseline_failure_count / len(baseline_cases) if baseline_cases else None,
             ),
             "total_tokens": current_tokens - baseline_tokens,
-            "cost": None,
+            "cost": delta(current_cost, baseline_cost),
+            "cost_usd": delta(current_cost, baseline_cost),
         },
         "root_cause_deltas": {
             key: int(current["root_cause_distribution"].get(key, 0)) - int(baseline_roots.get(key, 0))
@@ -1222,9 +1438,7 @@ def _build_comparison(current: dict[str, Any], baseline_run: Path) -> dict[str, 
         "newly_fixed_cases": fixed,
         "newly_failed_cases": regressed,
         "comparison_notes": [
-            "Add P95 delta is unavailable because the baseline runner did not record Add-only latency.",
-            "Cost delta is unavailable because neither run configured a model price table; token delta is recorded.",
-            "Root-cause labels added in v2 have no exact v1 counterpart and should be read with the per-case list.",
+            "Root-cause labels added in v2 have no exact v1 counterpart and should be read with the per-case list."
         ],
     }
 
@@ -1256,6 +1470,8 @@ def _render_summary(summary: dict[str, Any]) -> str:
             "人工 Judge 复核仍需手工填写，框架不会自动伪造人工结论。",
         "LLM cost is NOT_RECORDED because no price table was configured; token usage is recorded.":
             "尚未配置模型价格表，因此 Cost 为 NOT_RECORDED；Token Usage 已完整记录。",
+        "The run used a dirty working tree without an eval source snapshot, so the exact code cannot be reconstructed from the commit alone.":
+            "本次运行使用了 dirty 工作区且没有源码快照；仅凭 Git commit 无法严格还原当时运行代码。",
     }
     non_pass = [(key, root[key]) for key in ROOT_CAUSES if key != "PASS" and root[key] > 0]
     interpretation = [
@@ -1279,6 +1495,18 @@ def _render_summary(summary: dict[str, Any]) -> str:
     latency = summary["latency_breakdown"]
     api = summary["api_stability"]
     conclusions = summary["conclusions"]
+    integrity = summary["dataset_integrity"]
+    integrity_counts = integrity.get("counts", {}) if isinstance(integrity, dict) else {}
+    processing = summary["processing_observability"]
+    llm_cost = summary["llm_cost"]
+    conditional = summary["conditional_answer_accuracy"]
+    scenarios = summary["scenario_findings"]
+    code_snapshot = run_info.get("eval_code_snapshot")
+    code_snapshot_hash = (
+        code_snapshot.get("manifest_sha256", NOT_RECORDED)
+        if isinstance(code_snapshot, dict)
+        else NOT_RECORDED
+    )
     type_hit_key = f"hit_at_{summary['top_k']}"
     type_recall_key = f"recall_at_{summary['top_k']}"
     lines = [
@@ -1299,7 +1527,20 @@ def _render_summary(summary: dict[str, Any]) -> str:
         f"| Answer / Judge Model | `{_markdown(run_info['answer_model'])}` / `{_markdown(run_info['judge_model'])}` |",
         f"| Prompt Version | `{_markdown(run_info['answer_prompt_version'])}` / `{_markdown(run_info['judge_prompt_version'])}` |",
         f"| Eval Commit | `{_markdown(run_info['eval_code_commit'])}`（dirty={_markdown(run_info['eval_code_dirty'])}） |",
+        f"| Eval Code Snapshot | `{_markdown(code_snapshot_hash)}` |",
+        f"| Reproducibility | `{_markdown(run_info['reproducibility_status'])}` |",
         f"| Start / End | {_markdown(run_info['start_time'])} / {_markdown(run_info['end_time'])} |",
+        "",
+        "## Dataset 完整性",
+        "",
+        f"- Run 选中数据验收状态：**{_markdown(integrity.get('status', NOT_RECORDED))}**；源数据验收状态：**{_markdown(integrity.get('source_integrity', {}).get('status', NOT_RECORDED))}**。",
+        "",
+        "| 指标 | 数量 |",
+        "| --- | ---: |",
+        f"| 实际加载 Case / Session / Turn / Evidence Session | {_display(integrity_counts.get('actual_loaded_case_count'))} / {_display(integrity_counts.get('actual_loaded_session_count'))} / {_display(integrity_counts.get('actual_loaded_turn_count'))} / {_display(integrity_counts.get('evidence_session_count'))} |",
+        f"| 缺失 Question / Gold Answer / Evidence ID | {_display(integrity_counts.get('missing_question_count'))} / {_display(integrity_counts.get('missing_gold_answer_count'))} / {_display(integrity_counts.get('missing_evidence_id_count'))} |",
+        f"| 重复 Session ID / Case ID | {_display(integrity_counts.get('duplicate_session_id_count'))} / {_display(integrity_counts.get('duplicate_case_id_count'))} |",
+        f"| 时间戳异常 / 解析失败 / 跳过 | {_display(integrity_counts.get('timestamp_anomaly_count'))} / {_display(integrity_counts.get('data_parse_failure_count'))} / {_display(integrity_counts.get('data_skipped_count'))} |",
         "",
         "## 本次结果解读",
         "",
@@ -1333,8 +1574,31 @@ def _render_summary(summary: dict[str, Any]) -> str:
             for stage, values in latency.items()
         ],
         "",
+        "- End-to-End 为每条 Case 的 Add + Index + Search + Answer + Judge 记录耗时之和，不包含服务启动、关闭和编排开销。",
         f"- Memory API：Index 请求 {api['memory'].get('memory_index_requests', NOT_RECORDED)}，Search 请求 {api['memory'].get('memory_search_requests', NOT_RECORDED)}，HTTP 2xx {api['memory'].get('http_2xx', NOT_RECORDED)}。",
         f"- LLM API：Answer 请求 {api['answer_api_requests']}，Judge 请求 {api['judge_api_requests']}，重试 {api['answer_retries'] + api['judge_retries']}，超时 {api['timeouts']}，错误 {api['api_error_count']}。",
+        "",
+        "## Index / Memory Processing",
+        "",
+        "| 指标 | 结果 |",
+        "| --- | --- |",
+        f"| Indexed Documents / Chunks | {_display(processing['indexed_document_count'])} / {_display(processing['indexed_chunk_count'])} |",
+        f"| Average Chunks / Session | {_display(processing['average_chunks_per_session'])} |",
+        f"| Embedding | enabled={_display(processing['embedding'].get('enabled'))}; status={_display(processing['embedding'].get('status'))}; calls={_display(processing['embedding'].get('call_count'))}; failures={_display(processing['embedding'].get('failure_count'))}; chunks={_display(processing['embedding'].get('chunks_with_embedding'))} |",
+        f"| Extraction | enabled={_display(processing['extraction'].get('enabled'))}; status={_display(processing['extraction'].get('status'))}; calls={_display(processing['extraction'].get('call_count'))}; failures={_display(processing['extraction'].get('failure_count'))} |",
+        "",
+        "## LLM Token 与 Cost",
+        "",
+        "| 阶段 | Input Tokens | Cache Hit | Cache Miss | Output Tokens | Cost USD |",
+        "| --- | ---: | ---: | ---: | ---: | ---: |",
+        f"| Answer | {_display(summary['answer_stage'].get('token_usage', {}).get('input_tokens'))} | {_display(summary['answer_stage'].get('token_usage', {}).get('cache_hit_input_tokens'))} | {_display(summary['answer_stage'].get('token_usage', {}).get('cache_miss_input_tokens'))} | {_display(summary['answer_stage'].get('token_usage', {}).get('output_tokens'))} | {_display(llm_cost['answer_cost_usd'], 8)} |",
+        f"| Judge | {_display(summary['judge_stage'].get('token_usage', {}).get('input_tokens'))} | {_display(summary['judge_stage'].get('token_usage', {}).get('cache_hit_input_tokens'))} | {_display(summary['judge_stage'].get('token_usage', {}).get('cache_miss_input_tokens'))} | {_display(summary['judge_stage'].get('token_usage', {}).get('output_tokens'))} | {_display(llm_cost['judge_cost_usd'], 8)} |",
+        f"| Total | - | - | - | - | {_display(llm_cost['total_cost_usd'], 8)} |",
+        "",
+        "- Cost 按 Runner 保存的价格表计算；旧产物没有价格表时按报告构建时匹配的内置价格表回算。缓存未分类的 Input Token 按 Cache Miss 计费。",
+        f"- Answer Pricing（USD / 1M tokens）：hit={_display(llm_cost['answer_pricing'].get('cache_hit_input') if isinstance(llm_cost['answer_pricing'], dict) else None)}，miss={_display(llm_cost['answer_pricing'].get('cache_miss_input') if isinstance(llm_cost['answer_pricing'], dict) else None)}，output={_display(llm_cost['answer_pricing'].get('output') if isinstance(llm_cost['answer_pricing'], dict) else None)}，multiplier={_display(llm_cost['answer_pricing'].get('multiplier') if isinstance(llm_cost['answer_pricing'], dict) else None)}。",
+        f"- Judge Pricing（USD / 1M tokens）：hit={_display(llm_cost['judge_pricing'].get('cache_hit_input') if isinstance(llm_cost['judge_pricing'], dict) else None)}，miss={_display(llm_cost['judge_pricing'].get('cache_miss_input') if isinstance(llm_cost['judge_pricing'], dict) else None)}，output={_display(llm_cost['judge_pricing'].get('output') if isinstance(llm_cost['judge_pricing'], dict) else None)}，multiplier={_display(llm_cost['judge_pricing'].get('multiplier') if isinstance(llm_cost['judge_pricing'], dict) else None)}。",
+        f"- Pricing Source：Answer={_markdown(llm_cost['answer_pricing'].get('source', NOT_RECORDED) if isinstance(llm_cost['answer_pricing'], dict) else NOT_RECORDED)}；Judge={_markdown(llm_cost['judge_pricing'].get('source', NOT_RECORDED) if isinstance(llm_cost['judge_pricing'], dict) else NOT_RECORDED)}。",
         "",
         "## 按 Question Type 拆分",
         "",
@@ -1344,6 +1608,23 @@ def _render_summary(summary: dict[str, Any]) -> str:
             f"| {_markdown(question_type)} | {values['case_count']} | {_pct(values[type_hit_key])} | {_pct(values[type_recall_key])} | {_display(values['mrr'])} | {_pct(values['accuracy'])} | {_display(values['avg_search_latency_ms'], 1)} |"
             for question_type, values in summary["question_type_breakdown"].items()
         ],
+        "",
+        "## Retrieval 条件下的 Answer Accuracy",
+        "",
+        "| 条件 | Cases | Correct | Accuracy |",
+        "| --- | ---: | ---: | ---: |",
+        *[
+            f"| {label} | {values['case_count']} | {values['correct_count']} | {NOT_APPLICABLE if values['case_count'] == 0 else _pct(values['accuracy'])} |"
+            for label, values in conditional.items()
+        ],
+        "",
+        "## 重点场景结论",
+        "",
+        f"- 单 Evidence Accuracy：**{_pct(scenarios['single_evidence_accuracy'])}**；多 Evidence Accuracy：**{_pct(scenarios['multiple_evidence_accuracy'])}**；差值（多 - 单）：**{_pp(scenarios['multiple_minus_single_accuracy'])}**。",
+        f"- Temporal Accuracy：**{_pct(scenarios['temporal_accuracy'])}**，相对总体差值：**{_pp(scenarios['temporal_minus_overall_accuracy'])}**。",
+        f"- Knowledge Update Accuracy：**{_pct(scenarios['knowledge_update_accuracy'])}**，相对总体差值：**{_pp(scenarios['knowledge_update_minus_overall_accuracy'])}**。",
+        f"- 至少找到部分 Evidence 后的 Answer Accuracy：**{_pct(scenarios['evidence_found_answer_accuracy'])}**。",
+        "- 样本量只有 20 条，各场景差值用于定位信号，不作为统计显著性结论。",
         "",
         "## Retrieval × Answer 四象限",
         "",
@@ -1376,11 +1657,14 @@ def _render_summary(summary: dict[str, Any]) -> str:
             f"- Memory 是否全部成功写入：**{'是' if conclusions['memory_all_written'] else '否'}**。",
             f"- Evidence 是否全部写入：**{'是' if conclusions['all_evidence_written'] else '否'}**。",
             f"- Search 是否稳定完成：**{'是' if conclusions['search_stable'] else '否'}**。",
-            f"- Recall 类失败 {conclusions['recall_failure_count']} 条，Ranking 类失败 {conclusions['ranking_failure_count']} 条。",
+            f"- Retrieval Miss/Partial {conclusions['recall_failure_count']} 条，Low-rank {conclusions['low_rank_failure_count']} 条，Wrong-chunk {conclusions['wrong_chunk_failure_count']} 条。",
             f"- Context Loss/Truncation 共 {conclusions['context_loss_count']} 条；Judge Suspect 共 {conclusions['judge_suspect_count']} 条。",
             f"- 平均耗时最大的阶段：**{conclusions['max_latency_stage']}**；数量最大的失败根因：**{conclusions['largest_error_source']}**。",
-            "- Temporal、Knowledge Update、多 Evidence 的差异请直接查看上方 Question Type 表和 `evidence_count_breakdown`（机器可读 JSON）。",
-            "- 本 run 已冻结 Dataset、Case Selection、TopK、模型、Prompt、Eval Commit、Memory Config Hash 与 Memory Version，可与后续 run 做同口径比较。",
+            f"- 多 Evidence 相比单 Evidence：**{_pp(scenarios['multiple_minus_single_accuracy'])}**；Temporal 相比总体：**{_pp(scenarios['temporal_minus_overall_accuracy'])}**；Knowledge Update 相比总体：**{_pp(scenarios['knowledge_update_minus_overall_accuracy'])}**。",
+            f"- Evidence 找到后的 Answer Accuracy：**{_pct(scenarios['evidence_found_answer_accuracy'])}**。",
+            "- 是否存在 Judge 误判：**尚不能确认**；自动可疑检测为 0，但没有人工复核标签，不能据此证明 Judge 无误判。",
+            f"- 代码可复现状态：**{_markdown(conclusions['reproducibility_status'])}**。",
+            "- 本 run 已冻结 Dataset、Case Selection、TopK、模型、Prompt、Memory Config Hash 与 Memory Version；Eval Code 是否可严格复现以上一条状态为准。",
         ]
     )
     comparison = summary.get("comparison")
@@ -1390,6 +1674,11 @@ def _render_summary(summary: dict[str, Any]) -> str:
         recall_delta_key = f"recall_at_{summary['top_k']}"
         accuracy_delta_text = (
             f"{deltas['accuracy'] * 100:+.1f} pp" if deltas["accuracy"] is not None else NOT_RECORDED
+        )
+        case_regression_text = (
+            "无 Case 级准确率退化"
+            if not comparison["newly_failed_cases"]
+            else f"{len(comparison['newly_failed_cases'])} 条 case 退化"
         )
         lines.extend(
             [
@@ -1404,13 +1693,17 @@ def _render_summary(summary: dict[str, Any]) -> str:
                 f"| Recall@{summary['top_k']} | {_display(deltas[recall_delta_key])} |",
                 f"| MRR | {_display(deltas['mrr'])} |",
                 f"| Accuracy | {accuracy_delta_text} |",
+                f"| Add P95 ms | {_display(deltas['add_p95_ms'], 1)} |",
                 f"| Search P95 ms | {_display(deltas['search_p95_ms'], 1)} |",
                 f"| Answer P95 ms | {_display(deltas['answer_p95_ms'], 1)} |",
                 f"| Judge P95 ms | {_display(deltas['judge_p95_ms'], 1)} |",
                 f"| Total Tokens | {deltas['total_tokens']:+d} |",
+                f"| LLM Cost USD | {_display(deltas['cost_usd'], 8)} |",
                 "",
                 f"- Newly Fixed Cases：{_markdown(', '.join(comparison['newly_fixed_cases']) or '无')}。",
                 f"- Newly Failed Cases：{_markdown(', '.join(comparison['newly_failed_cases']) or '无')}。",
+                f"- 相对上一版的主要改善：Accuracy {accuracy_delta_text}，修复 {len(comparison['newly_fixed_cases'])} 条 case。",
+                f"- 相对上一版的已知退化：{case_regression_text}；Judge P95 变化 {_display(deltas['judge_p95_ms'], 1)} ms。",
                 "- 注意：v2 新增了更细的 Root Cause 标签，Root Cause Delta 应结合 per-case Trace 解读。",
             ]
         )
@@ -1488,6 +1781,14 @@ def build_trace_report(
         path = case_dir / f"{_safe_name(case['case']['case_id'])}.md"
         path.write_text(_render_case(case), encoding="utf-8")
 
+    if dataset_path is not None and Path(dataset_path).is_file():
+        selected_dataset_cases = [dataset_cases[ident] for ident in ordered_ids if ident in dataset_cases]
+        freeze_dataset_integrity(
+            Path(dataset_path).resolve(),
+            run_dir,
+            selected_dataset_cases,
+            source_case_count=len(dataset_cases),
+        )
     summary = _summary(cases, run_dir, top_k)
     summary["dataset"] = str(dataset_path.resolve()) if dataset_path else NOT_RECORDED
     summary["dataset_id"] = dataset_metadata.get("dataset_id", NOT_RECORDED)

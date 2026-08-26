@@ -77,6 +77,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--answer-temperature", type=float, default=0.0)
     parser.add_argument("--answer-timeout", type=float, default=120.0)
     parser.add_argument("--answer-retries", type=int, default=3)
+    parser.add_argument("--answer-cache-hit-input-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--answer-cache-miss-input-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--answer-output-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--answer-price-multiplier", type=float, default=1.0)
 
     parser.add_argument("--judge-output", type=Path, default=None)
     parser.add_argument("--judge-api-key-env", default="DEEPSEEK_API_KEY")
@@ -88,6 +92,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--judge-temperature", type=float, default=0.0)
     parser.add_argument("--judge-timeout", type=float, default=120.0)
     parser.add_argument("--judge-retries", type=int, default=3)
+    parser.add_argument("--judge-cache-hit-input-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--judge-cache-miss-input-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--judge-output-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--judge-price-multiplier", type=float, default=1.0)
     return parser.parse_args()
 
 
@@ -167,6 +175,10 @@ def run(args: argparse.Namespace) -> int:
             "temperature": args.answer_temperature,
             "timeout": args.answer_timeout,
             "retries": args.answer_retries,
+            "cache_hit_input_price": args.answer_cache_hit_input_price,
+            "cache_miss_input_price": args.answer_cache_miss_input_price,
+            "output_price": args.answer_output_price,
+            "price_multiplier": args.answer_price_multiplier,
             "prompt_version": ANSWER_PROMPT_VERSION,
             "prompt_template_sha256": ANSWER_PROMPT_SHA256,
         },
@@ -181,6 +193,10 @@ def run(args: argparse.Namespace) -> int:
             "temperature": args.judge_temperature,
             "timeout": args.judge_timeout,
             "retries": args.judge_retries,
+            "cache_hit_input_price": args.judge_cache_hit_input_price,
+            "cache_miss_input_price": args.judge_cache_miss_input_price,
+            "output_price": args.judge_output_price,
+            "price_multiplier": args.judge_price_multiplier,
             "prompt_version": JUDGE_PROMPT_VERSION,
             "prompt_template_sha256": JUDGE_PROMPT_SHA256,
         },
@@ -256,7 +272,15 @@ def run(args: argparse.Namespace) -> int:
             str(args.answer_timeout),
             "--retries",
             str(args.answer_retries),
+            "--price-multiplier",
+            str(args.answer_price_multiplier),
         ]
+        if args.answer_cache_hit_input_price is not None:
+            answer_args.extend(["--cache-hit-input-price", str(args.answer_cache_hit_input_price)])
+        if args.answer_cache_miss_input_price is not None:
+            answer_args.extend(["--cache-miss-input-price", str(args.answer_cache_miss_input_price)])
+        if args.answer_output_price is not None:
+            answer_args.extend(["--output-price", str(args.answer_output_price)])
         if args.answer_base_url:
             answer_args.extend(["--base-url", args.answer_base_url])
         if args.answer_model:
@@ -287,7 +311,15 @@ def run(args: argparse.Namespace) -> int:
                 str(args.judge_timeout),
                 "--retries",
                 str(args.judge_retries),
+                "--price-multiplier",
+                str(args.judge_price_multiplier),
             ]
+            if args.judge_cache_hit_input_price is not None:
+                judge_args.extend(["--cache-hit-input-price", str(args.judge_cache_hit_input_price)])
+            if args.judge_cache_miss_input_price is not None:
+                judge_args.extend(["--cache-miss-input-price", str(args.judge_cache_miss_input_price)])
+            if args.judge_output_price is not None:
+                judge_args.extend(["--output-price", str(args.judge_output_price)])
             if args.judge_base_url:
                 judge_args.extend(["--base-url", args.judge_base_url])
             if args.judge_model:

@@ -19,13 +19,16 @@ try:  # works both as ``python scripts/run_judge_eval.py`` and as a package impo
         JUDGE_PROMPT_SHA256,
         JUDGE_PROMPT_VERSION,
         LLMRequestError,
+        calculate_usage_cost,
         complete,
         parse_judge_label,
         percentile,
         read_jsonl,
         render_accuracy_prompt,
+        resolve_model_pricing,
         resolve_endpoint,
         row_id,
+        summarize_token_usage,
         text_sha256,
         write_jsonl,
     )
@@ -34,13 +37,16 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution path
         JUDGE_PROMPT_SHA256,
         JUDGE_PROMPT_VERSION,
         LLMRequestError,
+        calculate_usage_cost,
         complete,
         parse_judge_label,
         percentile,
         read_jsonl,
         render_accuracy_prompt,
+        resolve_model_pricing,
         resolve_endpoint,
         row_id,
+        summarize_token_usage,
         text_sha256,
         write_jsonl,
     )
@@ -67,6 +73,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--timeout", type=float, default=120.0)
     parser.add_argument("--retries", type=int, default=3)
     parser.add_argument("--retry-backoff", type=float, default=1.0)
+    parser.add_argument("--cache-hit-input-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--cache-miss-input-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--output-price", type=float, default=None, help="USD per 1M tokens")
+    parser.add_argument("--price-multiplier", type=float, default=1.0, help="Multiplier for peak pricing or account-specific rates")
     parser.add_argument("--start", type=int, default=0)
     parser.add_argument("--limit", type=int, default=0, help="0 means all selected rows")
     parser.add_argument("--overwrite", action="store_true", help="replace existing output instead of resuming")
@@ -125,6 +135,13 @@ def run(args: argparse.Namespace) -> int:
         model=args.model,
         model_env=args.model_env,
     )
+    pricing = resolve_model_pricing(
+        model,
+        cache_hit_input=getattr(args, "cache_hit_input_price", None),
+        cache_miss_input=getattr(args, "cache_miss_input_price", None),
+        output=getattr(args, "output_price", None),
+        multiplier=getattr(args, "price_multiplier", 1.0),
+    )
     output_path = args.output.resolve()
     failure_path = (args.failures or output_path.with_name("judge_failures.jsonl")).resolve()
     api_error_path = output_path.with_name("api_errors.jsonl")
@@ -164,6 +181,7 @@ def run(args: argparse.Namespace) -> int:
         "prompt_version": JUDGE_PROMPT_VERSION,
         "prompt_template_sha256": JUDGE_PROMPT_SHA256,
         "prompt_artifact_dir": str(prompt_dir),
+        "pricing": pricing or "NOT_RECORDED",
         "start": args.start,
         "limit": args.limit,
         "start_time_utc": run_started_at.isoformat(),
@@ -201,6 +219,9 @@ def run(args: argparse.Namespace) -> int:
                 retries=args.retries,
                 retry_backoff=args.retry_backoff,
             )
+            request_cost = calculate_usage_cost(usage, pricing)
+            if request_cost is not None:
+                usage["cost"] = request_cost
             label = parse_judge_label(raw_response)
             is_correct = label == "CORRECT"
             write_jsonl(
@@ -264,6 +285,10 @@ def run(args: argparse.Namespace) -> int:
     latencies = [float(row["latency_ms"]) for row in result_rows if isinstance(row.get("latency_ms"), (int, float))]
     request_attempts = sum(int(row.get("usage", {}).get("request_attempts", 1)) for row in result_rows)
     retry_count = sum(int(row.get("usage", {}).get("retry_count", 0)) for row in result_rows)
+    token_usage = summarize_token_usage(
+        [row.get("usage", {}) for row in result_rows if isinstance(row.get("usage"), dict)],
+        pricing,
+    )
     run_finished_at = datetime.now(timezone.utc)
     summary = {
         "task": "judge",
@@ -288,12 +313,8 @@ def run(args: argparse.Namespace) -> int:
             "p95": percentile(latencies, 0.95),
             "p99": percentile(latencies, 0.99),
         },
-        "token_usage": {
-            "input_tokens": sum(int(row.get("usage", {}).get("prompt_tokens", 0)) for row in result_rows),
-            "output_tokens": sum(int(row.get("usage", {}).get("completion_tokens", 0)) for row in result_rows),
-            "total_tokens": sum(int(row.get("usage", {}).get("total_tokens", 0)) for row in result_rows),
-            "cost": "NOT_RECORDED",
-        },
+        "token_usage": token_usage,
+        "pricing": pricing or "NOT_RECORDED",
         "output": str(output_path),
         "failures": str(failure_path),
         "model": model,

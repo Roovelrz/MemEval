@@ -160,6 +160,12 @@ $env:DEEPSEEK_MODEL = "deepseek-v4-flash"
 The repository-root `.env` is also loaded automatically by these two runners;
 existing process environment variables take precedence.
 
+For `deepseek-v4-flash`, the runners calculate USD cost from cache-hit input,
+cache-miss input, and output tokens using the auditable built-in DeepSeek price
+entry. The three per-million-token rates and a price multiplier can be
+overridden independently for Answer and Judge; unknown models remain
+`NOT_RECORDED` unless all three rates are supplied.
+
 Run the stages independently:
 
 ```powershell
@@ -220,6 +226,12 @@ quadrants, and upstream-first root-cause labels. The supporting files are:
 Existing raw artifacts are not changed. Information the earlier runners did not
 persist, such as per-session Add acknowledgements, exact sent prompts, and
 provider-side truncation, is displayed as `NOT_RECORDED` instead of inferred.
+The report also freezes `integrity_report.json`, writes a selected-case
+`dataset_validation.json`, reports conditional Answer accuracy and end-to-end
+latency, and records Embedding/Extraction as either measured, `NOT_RECORDED`,
+or explicitly `NOT_APPLICABLE`. New retrieval runs retain an
+`eval_code_snapshot/manifest.json` so a dirty working tree does not hide the
+exact runner source used.
 
 To build or rebuild only the report for an existing run, without rerunning ReMe
 or calling the Answer/Judge APIs:

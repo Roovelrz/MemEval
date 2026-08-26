@@ -7,11 +7,34 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 from scripts import run_answer_eval, run_judge_eval
-from scripts.llm_eval_common import parse_judge_label, read_jsonl, render_answer_prompt, write_jsonl
+from scripts.llm_eval_common import (
+    calculate_usage_cost,
+    parse_judge_label,
+    read_jsonl,
+    render_answer_prompt,
+    resolve_model_pricing,
+    write_jsonl,
+)
 from tests.helpers import workspace_directory
 
 
 class LlmEvalRunnersTest(unittest.TestCase):
+    def test_deepseek_v4_flash_cost_uses_cache_hit_miss_and_output_rates(self) -> None:
+        pricing = resolve_model_pricing("deepseek-v4-flash")
+        cost = calculate_usage_cost(
+            {
+                "prompt_tokens": 1_500_000,
+                "prompt_cache_hit_tokens": 1_000_000,
+                "prompt_cache_miss_tokens": 500_000,
+                "completion_tokens": 100_000,
+            },
+            pricing,
+        )
+
+        self.assertIsNotNone(pricing)
+        self.assertIsNotNone(cost)
+        self.assertAlmostEqual(cost["total_cost_usd"], 0.1008)
+
     def test_answer_prompt_contains_question_date_and_structured_memory_timestamp(self) -> None:
         prompt = render_answer_prompt(
             {

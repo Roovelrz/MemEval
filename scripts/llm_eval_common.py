@@ -20,6 +20,17 @@ LOCAL_ENV_PATH = Path(__file__).resolve().parents[1] / ".env"
 ANSWER_PROMPT_VERSION = "longmemeval-answer-v2-structured-time"
 JUDGE_PROMPT_VERSION = "longmemeval-judge-v1"
 
+DEEPSEEK_PRICING_SOURCE = "https://api-docs.deepseek.com/quick_start/pricing"
+MODEL_PRICING_USD_PER_MILLION: dict[str, dict[str, Any]] = {
+    "deepseek-v4-flash": {
+        "cache_hit_input": 0.0028,
+        "cache_miss_input": 0.14,
+        "output": 0.28,
+        "source": DEEPSEEK_PRICING_SOURCE,
+        "observed_date": "2026-08-26",
+    }
+}
+
 
 def load_local_env(path: Path = LOCAL_ENV_PATH) -> None:
     """Load simple KEY=VALUE entries without overriding process variables."""
@@ -128,6 +139,127 @@ def percentile(values: list[float], quantile: float) -> float | None:
     upper = min(lower + 1, len(usable) - 1)
     fraction = position - lower
     return usable[lower] + (usable[upper] - usable[lower]) * fraction
+
+
+def resolve_model_pricing(
+    model: str,
+    *,
+    cache_hit_input: float | None = None,
+    cache_miss_input: float | None = None,
+    output: float | None = None,
+    multiplier: float = 1.0,
+) -> dict[str, Any] | None:
+    """Resolve auditable USD-per-million-token rates for one model.
+
+    Known-model defaults are deliberately small and explicit. Unknown models
+    require all three rates, so a partial override cannot silently undercount.
+    """
+
+    if multiplier <= 0:
+        raise ValueError("price multiplier must be positive")
+    configured = MODEL_PRICING_USD_PER_MILLION.get(model.strip().lower())
+    overrides = (cache_hit_input, cache_miss_input, output)
+    if configured is None and all(value is None for value in overrides):
+        return None
+    if configured is None and any(value is None for value in overrides):
+        raise ValueError("unknown model pricing requires cache-hit, cache-miss, and output rates")
+
+    resolved = dict(configured or {})
+    for name, value in (
+        ("cache_hit_input", cache_hit_input),
+        ("cache_miss_input", cache_miss_input),
+        ("output", output),
+    ):
+        if value is not None:
+            if value < 0:
+                raise ValueError("token prices must be non-negative")
+            resolved[name] = float(value)
+    resolved.update(
+        {
+            "model": model,
+            "currency": "USD",
+            "unit_tokens": 1_000_000,
+            "multiplier": float(multiplier),
+            "source": resolved.get("source", "CLI_OVERRIDE"),
+            "observed_date": resolved.get("observed_date", "USER_SUPPLIED"),
+        }
+    )
+    return resolved
+
+
+def calculate_usage_cost(usage: dict[str, Any], pricing: dict[str, Any] | None) -> dict[str, Any] | None:
+    """Calculate one request's cost, billing unclassified input as cache miss."""
+
+    if pricing is None:
+        return None
+    input_tokens = int(usage.get("prompt_tokens", usage.get("input_tokens", 0)) or 0)
+    output_tokens = int(usage.get("completion_tokens", usage.get("output_tokens", 0)) or 0)
+    cache_hit_tokens = int(usage.get("prompt_cache_hit_tokens", 0) or 0)
+    raw_cache_miss = usage.get("prompt_cache_miss_tokens")
+    cache_miss_tokens = (
+        int(raw_cache_miss or 0)
+        if raw_cache_miss is not None
+        else max(0, input_tokens - cache_hit_tokens)
+    )
+    classified_input = cache_hit_tokens + cache_miss_tokens
+    if classified_input < input_tokens:
+        cache_miss_tokens += input_tokens - classified_input
+    input_tokens = max(input_tokens, cache_hit_tokens + cache_miss_tokens)
+
+    divisor = float(pricing["unit_tokens"])
+    multiplier = float(pricing.get("multiplier", 1.0))
+    hit_cost = cache_hit_tokens * float(pricing["cache_hit_input"]) * multiplier / divisor
+    miss_cost = cache_miss_tokens * float(pricing["cache_miss_input"]) * multiplier / divisor
+    output_cost = output_tokens * float(pricing["output"]) * multiplier / divisor
+    return {
+        "currency": "USD",
+        "input_tokens": input_tokens,
+        "cache_hit_input_tokens": cache_hit_tokens,
+        "cache_miss_input_tokens": cache_miss_tokens,
+        "output_tokens": output_tokens,
+        "cache_hit_input_cost_usd": hit_cost,
+        "cache_miss_input_cost_usd": miss_cost,
+        "output_cost_usd": output_cost,
+        "total_cost_usd": hit_cost + miss_cost + output_cost,
+    }
+
+
+def summarize_token_usage(
+    usages: list[dict[str, Any]], pricing: dict[str, Any] | None
+) -> dict[str, Any]:
+    costs = [calculate_usage_cost(usage, pricing) for usage in usages]
+    recorded_costs = [cost for cost in costs if cost is not None]
+    input_tokens = sum(int(usage.get("prompt_tokens", usage.get("input_tokens", 0)) or 0) for usage in usages)
+    output_tokens = sum(int(usage.get("completion_tokens", usage.get("output_tokens", 0)) or 0) for usage in usages)
+    cache_hit_tokens = sum(int(usage.get("prompt_cache_hit_tokens", 0) or 0) for usage in usages)
+    cache_miss_tokens = sum(
+        int(usage.get("prompt_cache_miss_tokens", 0) or 0)
+        if usage.get("prompt_cache_miss_tokens") is not None
+        else max(
+            0,
+            int(usage.get("prompt_tokens", usage.get("input_tokens", 0)) or 0)
+            - int(usage.get("prompt_cache_hit_tokens", 0) or 0),
+        )
+        for usage in usages
+    )
+    return {
+        "input_tokens": input_tokens,
+        "cache_hit_input_tokens": cache_hit_tokens,
+        "cache_miss_input_tokens": cache_miss_tokens,
+        "output_tokens": output_tokens,
+        "total_tokens": sum(
+            int(usage.get("total_tokens") or 0)
+            or int(usage.get("prompt_tokens", usage.get("input_tokens", 0)) or 0)
+            + int(usage.get("completion_tokens", usage.get("output_tokens", 0)) or 0)
+            for usage in usages
+        ),
+        "cost_usd": (
+            sum(float(cost["total_cost_usd"]) for cost in recorded_costs)
+            if pricing is not None
+            else "NOT_RECORDED"
+        ),
+        "pricing": pricing or "NOT_RECORDED",
+    }
 
 
 class LLMRequestError(RuntimeError):

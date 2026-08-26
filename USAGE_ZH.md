@@ -234,7 +234,7 @@ py -3.12 scripts/build_trace_report.py `
   --data datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json
 ```
 
-重新生成 Trace 只会更新 `<run-dir>/trace/` 中的分析报告，不会改写 `retrieval.jsonl`、`prepared.jsonl`、`answers.jsonl` 或 `scores.jsonl`。
+重新生成 Trace 会更新 `<run-dir>/trace/`，并生成 Run 级 `dataset_validation.json`、复制源数据的 `integrity_report.json`；不会改写 `retrieval.jsonl`、`prepared.jsonl`、`answers.jsonl` 或 `scores.jsonl`。
 
 ## 5. 常用参数
 
@@ -266,6 +266,8 @@ py -3.12 scripts/build_trace_report.py `
 
 当前 baseline 不启用 embedding、LLM、auto-memory、auto-resource 或 auto-dream。若把 `vector-weight` 改为非 0，应同时提供真正可用的自定义 ReMe 配置，不能只改一个数值。
 
+BM25 baseline 会明确记录 `Embedding/Extraction status=NOT_APPLICABLE`、调用数 0、失败数 0。若启用向量检索，ReMe Health 可提供 `chunks_with_embedding`；当前接口没有暴露真实 embedding API 调用次数时，该字段保持 `NOT_RECORDED`，不会用 chunk 数冒充 API 请求数。
+
 ### Answer / Judge
 
 | 参数 | 作用 |
@@ -279,6 +281,19 @@ py -3.12 scripts/build_trace_report.py `
 | `--start` / `--limit` | 在独立 Answer/Judge runner 中选择行范围 |
 | `--overwrite` | 删除该阶段已有输出后重跑；会失去该输出文件中的旧结果，谨慎使用 |
 
+### LLM Cost
+
+`deepseek-v4-flash` 默认使用 DeepSeek 官方价格表中每百万 Token 的价格：Cache Hit Input `$0.0028`、Cache Miss Input `$0.14`、Output `$0.28`。价格来源：[DeepSeek Models & Pricing](https://api-docs.deepseek.com/quick_start/pricing)，代码内记录的核对日期为 `2026-08-26`。
+
+价格可能变化。完整 Runner 可通过以下参数覆盖 Answer/Judge 单价：
+
+- `--answer-cache-hit-input-price` / `--judge-cache-hit-input-price`
+- `--answer-cache-miss-input-price` / `--judge-cache-miss-input-price`
+- `--answer-output-price` / `--judge-output-price`
+- `--answer-price-multiplier` / `--judge-price-multiplier`
+
+独立 Answer/Judge Runner 使用没有 `answer-` 或 `judge-` 前缀的同名参数。模型不在内置价格表中时，必须同时提供三种价格；否则 Cost 保持 `NOT_RECORDED`。峰时价格或账号侧系数可通过 multiplier 显式传入，并随 Run 配置保存。
+
 ## 6. 结果目录怎么读
 
 一次完整运行的目录结构大致如下：
@@ -287,6 +302,10 @@ py -3.12 scripts/build_trace_report.py `
 results/reme_end_to_end/<run-id>/
 ├── run_config.json
 ├── end_to_end_run_config.json
+├── dataset_validation.json
+├── integrity_report.json
+├── eval_code_snapshot/
+│   └── manifest.json
 ├── reme_bm25.yaml
 ├── reme_service.log
 ├── retrieval.jsonl
@@ -319,6 +338,8 @@ results/reme_end_to_end/<run-id>/
 3. `trace/cases/<case_id>.md`：查看 Add → Retrieval → Answer → Judge 完整链路。
 4. `trace/judge_review.md`：人工复核 Judge=WRONG、Judge 失败或疑似误判。
 5. 最后才查看 JSONL、raw_search 和日志，作为溯源材料。
+
+`eval_code_snapshot/` 保存本次实际使用的 Runner/Report Python 源码及 SHA-256 manifest。即使 Git 工作区为 dirty，也可以确认当时运行的准确代码；`trace_summary.md` 会分别展示 Git commit、dirty 状态和快照 hash。
 
 ## 7. 四象限和 Root Cause 怎么看
 

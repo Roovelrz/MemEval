@@ -89,6 +89,7 @@ class TraceReportTest(unittest.TestCase):
                         "hit_at_k": 1,
                         "recall_at_k": 1.0,
                         "mrr": 1.0,
+                        "search_latency_ms": 3.0,
                         "retrieved": [
                             {
                                 "rank": 1,
@@ -114,6 +115,7 @@ class TraceReportTest(unittest.TestCase):
                         "hit_at_k": 0,
                         "recall_at_k": 0.0,
                         "mrr": 0.0,
+                        "search_latency_ms": 4.0,
                         "retrieved": [
                             {
                                 "rank": 1,
@@ -122,6 +124,31 @@ class TraceReportTest(unittest.TestCase):
                                 "text": "无关内容",
                             }
                         ],
+                    },
+                ],
+            )
+            write_jsonl(
+                directory / "add_trace.jsonl",
+                [
+                    {
+                        "case_id": "case-pass",
+                        "add_status": "PASS",
+                        "added_sessions": 2,
+                        "expected_sessions": 2,
+                        "added_evidence_sessions": 1,
+                        "expected_evidence_sessions": 1,
+                        "add_latency_ms": 1.0,
+                        "index_latency_ms": 2.0,
+                    },
+                    {
+                        "case_id": "case-miss",
+                        "add_status": "PASS",
+                        "added_sessions": 2,
+                        "expected_sessions": 2,
+                        "added_evidence_sessions": 1,
+                        "expected_evidence_sessions": 1,
+                        "add_latency_ms": 1.0,
+                        "index_latency_ms": 2.0,
                     },
                 ],
             )
@@ -147,8 +174,20 @@ class TraceReportTest(unittest.TestCase):
             write_jsonl(
                 directory / "answers.jsonl",
                 [
-                    {"id": "case-pass", "generated_answer": "45分钟。", "model": "answer-model"},
-                    {"id": "case-miss", "generated_answer": "茶", "model": "answer-model"},
+                    {
+                        "id": "case-pass",
+                        "generated_answer": "45分钟。",
+                        "model": "deepseek-v4-flash",
+                        "latency_ms": 5.0,
+                        "usage": {"prompt_tokens": 100, "completion_tokens": 10, "total_tokens": 110},
+                    },
+                    {
+                        "id": "case-miss",
+                        "generated_answer": "茶",
+                        "model": "deepseek-v4-flash",
+                        "latency_ms": 6.0,
+                        "usage": {"prompt_tokens": 100, "completion_tokens": 10, "total_tokens": 110},
+                    },
                 ],
             )
             write_jsonl(
@@ -159,14 +198,18 @@ class TraceReportTest(unittest.TestCase):
                         "is_correct": True,
                         "label": "CORRECT",
                         "judge_response": "```json\n{\"label\": \"CORRECT\"}\n```",
-                        "model": "judge-model",
+                        "model": "deepseek-v4-flash",
+                        "latency_ms": 7.0,
+                        "usage": {"prompt_tokens": 50, "completion_tokens": 5, "total_tokens": 55},
                     },
                     {
                         "id": "case-miss",
                         "is_correct": True,
                         "label": "CORRECT",
                         "judge_response": "CORRECT",
-                        "model": "judge-model",
+                        "model": "deepseek-v4-flash",
+                        "latency_ms": 8.0,
+                        "usage": {"prompt_tokens": 50, "completion_tokens": 5, "total_tokens": 55},
                     },
                 ],
             )
@@ -178,6 +221,11 @@ class TraceReportTest(unittest.TestCase):
             self.assertEqual(summary["quadrants"]["D_retrieval_fail_answer_pass"], 1)
             self.assertEqual(summary["root_cause_distribution"]["PASS"], 1)
             self.assertEqual(summary["root_cause_distribution"]["RETRIEVAL_MISS"], 1)
+            self.assertEqual(summary["conditional_answer_accuracy"]["full_evidence_recall"]["accuracy"], 1.0)
+            self.assertEqual(summary["conditional_answer_accuracy"]["zero_evidence_recall"]["accuracy"], 1.0)
+            self.assertEqual(summary["latency_breakdown"]["End-to-End"]["case_count"], 2)
+            self.assertIsInstance(summary["llm_cost"]["total_cost_usd"], float)
+            self.assertEqual(summary["dataset_integrity"]["status"], "PASS")
             self.assertTrue((directory / "trace" / "trace_summary.md").is_file())
             self.assertTrue((directory / "trace" / "trace_index.md").is_file())
             self.assertTrue((directory / "trace" / "judge_review.md").is_file())
@@ -187,13 +235,15 @@ class TraceReportTest(unittest.TestCase):
             self.assertIn("# Trace 汇总报告", trace_summary)
             self.assertIn("## 本次结果解读", trace_summary)
             self.assertIn("## Retrieval × Answer 四象限", trace_summary)
+            self.assertIn("## Retrieval 条件下的 Answer Accuracy", trace_summary)
+            self.assertIn("## LLM Token 与 Cost", trace_summary)
             self.assertIn("# Trace Index", trace_index)
 
             pass_trace = (directory / "trace" / "cases" / "case-pass.md").read_text(
                 encoding="utf-8"
             )
             self.assertIn("Equivalent after whitespace and punctuation normalization.", pass_trace)
-            self.assertIn("Successfully added sessions | NOT_RECORDED", pass_trace)
+            self.assertIn("Successfully added sessions | 2", pass_trace)
             self.assertIn("````text", pass_trace)
 
 

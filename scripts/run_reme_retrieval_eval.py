@@ -30,6 +30,12 @@ from typing import Any, Iterable
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from memory_eval.dataset_integrity import freeze_dataset_integrity
+
+
 DEFAULT_DATASET = (
     REPO_ROOT
     / "datasets"
@@ -525,6 +531,41 @@ def git_metadata(repo: Path) -> dict[str, Any]:
         return {"commit": "NOT_RECORDED", "dirty": "NOT_RECORDED"}
 
 
+def snapshot_eval_code(run_dir: Path, git_info: dict[str, Any]) -> dict[str, Any]:
+    """Persist the exact runner/report source used by the run, even when dirty."""
+
+    snapshot_dir = run_dir / "eval_code_snapshot"
+    source_files = sorted(
+        [
+            *[path for root in (REPO_ROOT / "scripts", REPO_ROOT / "memory_eval") for path in root.rglob("*.py")],
+            *[path for path in (REPO_ROOT / "pyproject.toml", REPO_ROOT / "requirements.txt") if path.is_file()],
+        ]
+    )
+    manifest_files: list[dict[str, str]] = []
+    for source in source_files:
+        relative = source.relative_to(REPO_ROOT)
+        target = snapshot_dir / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        manifest_files.append({"path": relative.as_posix(), "sha256": sha256_file(target)})
+    manifest = {
+        "schema_version": "memory_eval_code_snapshot_v1",
+        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "git_commit": git_info.get("commit", "NOT_RECORDED"),
+        "git_dirty": git_info.get("dirty", "NOT_RECORDED"),
+        "python_version": sys.version,
+        "files": manifest_files,
+    }
+    manifest_path = snapshot_dir / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return {
+        "directory": str(snapshot_dir),
+        "manifest": str(manifest_path),
+        "manifest_sha256": sha256_file(manifest_path),
+        "file_count": len(manifest_files),
+    }
+
+
 def find_index_results(node: Any) -> list[dict[str, Any]]:
     if isinstance(node, dict):
         for key in ("answer", "results"):
@@ -621,7 +662,8 @@ def run(args: argparse.Namespace) -> int:
 
     dataset_path = args.data.resolve()
     raw_cases = load_json_or_jsonl(dataset_path)
-    cases = [normalize_case(raw, index) for index, raw in enumerate(raw_cases)]
+    all_cases = [normalize_case(raw, index) for index, raw in enumerate(raw_cases)]
+    cases = list(all_cases)
     if args.shuffle:
         random.Random(args.seed).shuffle(cases)
     cases = cases[args.start:]
@@ -674,7 +716,14 @@ def run(args: argparse.Namespace) -> int:
             encoding="utf-8",
         )
 
+    dataset_validation = freeze_dataset_integrity(
+        dataset_path,
+        run_dir,
+        cases,
+        source_case_count=len(all_cases),
+    )
     eval_code = git_metadata(REPO_ROOT)
+    eval_code_snapshot = snapshot_eval_code(run_dir, eval_code)
 
     run_config = {
         "dataset": str(dataset_path),
@@ -707,6 +756,9 @@ def run(args: argparse.Namespace) -> int:
         "reme_config_sha256": sha256_file(config_path),
         "eval_code_commit": eval_code["commit"],
         "eval_code_dirty": eval_code["dirty"],
+        "eval_code_snapshot": eval_code_snapshot,
+        "dataset_validation": str(run_dir / "dataset_validation.json"),
+        "dataset_validation_status": dataset_validation["status"],
         "start_time_utc": run_started_at.isoformat(),
     }
     (run_dir / "run_config.json").write_text(json.dumps(run_config, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -754,6 +806,12 @@ def run(args: argparse.Namespace) -> int:
             "add_status": "PASS" if len(written_files) == len(case["sessions"]) else "FAIL",
             "add_error": None,
             "index_status": "NOT_RUN",
+            "embedding_status": "NOT_APPLICABLE" if not args.vector_weight else "NOT_RECORDED",
+            "embedding_call_count": 0 if not args.vector_weight else "NOT_RECORDED",
+            "embedding_failure_count": 0 if not args.vector_weight else "NOT_RECORDED",
+            "extraction_status": "NOT_APPLICABLE",
+            "extraction_call_count": 0,
+            "extraction_failure_count": 0,
         }
         port = args.base_port + case_index
         process: subprocess.Popen[str] | None = None
@@ -786,6 +844,7 @@ def run(args: argparse.Namespace) -> int:
                     "indexed_document_count": index_health.get("n_nodes", len(index_results) or len(written_files)),
                     "indexed_chunk_count": index_health.get("n_chunks", "NOT_RECORDED"),
                     "chunks_with_embedding": index_health.get("n_chunks_with_embedding", 0),
+                    "embedding_status": "NOT_APPLICABLE" if not args.vector_weight else "RECORDED_BY_REME_HEALTH",
                     "index_failed_paths": [str(item.get("path", "")) for item in index_failures],
                     "raw_reindex_file": str(raw_reindex_path),
                 }
@@ -916,6 +975,22 @@ def run(args: argparse.Namespace) -> int:
             "mrr": mean(row["mrr"] for row in rows),
             "avg_search_latency_ms": mean(row["search_latency_ms"] for row in rows),
         }
+    indexed_document_count = sum(
+        int(row["indexed_document_count"])
+        for row in add_rows
+        if isinstance(row.get("indexed_document_count"), (int, float))
+    )
+    indexed_chunk_count = sum(
+        int(row["indexed_chunk_count"])
+        for row in add_rows
+        if isinstance(row.get("indexed_chunk_count"), (int, float))
+    )
+    added_session_count = sum(int(row["added_sessions"]) for row in add_rows)
+    chunks_with_embedding = sum(
+        int(row["chunks_with_embedding"])
+        for row in add_rows
+        if isinstance(row.get("chunks_with_embedding"), (int, float))
+    )
     summary = {
         "run_id": run_id,
         "dataset": str(dataset_path),
@@ -926,7 +1001,7 @@ def run(args: argparse.Namespace) -> int:
         "end_time_utc": run_finished_at.isoformat(),
         "duration_ms": (run_finished_at - run_started_at).total_seconds() * 1000,
         "add_success_rate": mean(1 if row["add_status"] == "PASS" else 0 for row in add_rows),
-        "added_sessions": sum(int(row["added_sessions"]) for row in add_rows),
+        "added_sessions": added_session_count,
         "failed_add_sessions": sum(len(row["failed_session_ids"]) for row in add_rows),
         "added_turns": sum(int(row["added_turns"]) for row in add_rows),
         "evidence_add_success_rate": (
@@ -944,16 +1019,22 @@ def run(args: argparse.Namespace) -> int:
             "p99": percentile((row["add_latency_ms"] for row in add_rows), 0.99),
         },
         "index_success_rate": mean(1 if row["index_status"] == "PASS" else 0 for row in add_rows),
-        "indexed_document_count": sum(
-            int(row["indexed_document_count"])
-            for row in add_rows
-            if isinstance(row.get("indexed_document_count"), (int, float))
-        ),
-        "indexed_chunk_count": sum(
-            int(row["indexed_chunk_count"])
-            for row in add_rows
-            if isinstance(row.get("indexed_chunk_count"), (int, float))
-        ),
+        "indexed_document_count": indexed_document_count,
+        "indexed_chunk_count": indexed_chunk_count,
+        "average_chunks_per_session": indexed_chunk_count / added_session_count if added_session_count else None,
+        "embedding": {
+            "enabled": bool(args.vector_weight),
+            "status": "NOT_APPLICABLE" if not args.vector_weight else "RECORDED_BY_REME_HEALTH",
+            "call_count": 0 if not args.vector_weight else "NOT_RECORDED",
+            "failure_count": 0 if not args.vector_weight else "NOT_RECORDED",
+            "chunks_with_embedding": chunks_with_embedding,
+        },
+        "extraction": {
+            "enabled": False,
+            "status": "NOT_APPLICABLE",
+            "call_count": 0,
+            "failure_count": 0,
+        },
         "index_latency_ms": {
             "avg": mean(row.get("index_latency_ms") for row in add_rows),
             "p50": percentile((row.get("index_latency_ms") for row in add_rows), 0.50),

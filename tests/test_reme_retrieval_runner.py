@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import unittest
 
 from scripts.run_reme_retrieval_eval import (
@@ -7,10 +8,24 @@ from scripts.run_reme_retrieval_eval import (
     evaluate_retrieval,
     normalize_case,
     render_answer_context,
+    snapshot_eval_code,
 )
+from tests.helpers import workspace_directory
 
 
 class ReMeRetrievalRunnerTest(unittest.TestCase):
+    def test_eval_code_snapshot_records_exact_source_hashes(self) -> None:
+        with workspace_directory("eval-code-snapshot") as directory:
+            snapshot = snapshot_eval_code(directory, {"commit": "abc", "dirty": True})
+            manifest = json.loads(
+                (directory / "eval_code_snapshot" / "manifest.json").read_text(encoding="utf-8")
+            )
+
+            self.assertGreater(snapshot["file_count"], 0)
+            self.assertEqual(manifest["git_commit"], "abc")
+            self.assertTrue(manifest["git_dirty"])
+            self.assertTrue(any(item["path"] == "scripts/run_reme_retrieval_eval.py" for item in manifest["files"]))
+
     def test_normalizes_clean_case_and_preserves_evidence(self) -> None:
         case = normalize_case(
             {
