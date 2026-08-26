@@ -204,17 +204,18 @@ py -3.12 scripts/run_reme_end_to_end_eval.py `
 
 The orchestrator stops before Answer if Retrieval fails, and stops before
 Judge if Answer fails. After the model stages finish, it builds a human-readable
-Trace report from the artifacts that are available. It stores
-`end_to_end_run_config.json` and `end_to_end_summary.json` alongside
-`prepared.jsonl`, `answers.jsonl`, `scores.jsonl`, and all stage reports. Use `--answer-model` or
+Trace report and a local static HTML dashboard from the artifacts that are available. Every Run
+ends with two top-level folders: `Detailed Trace Report/` contains raw/provenance
+artifacts, while `Trace Summary/` contains the self-contained dashboard and concise
+human-facing summaries. Use `--answer-model` or
 `--judge-model` to override the environment model for one run; use separate
 `--answer-*` and `--judge-*` environment/base-url options when the two stages
 use different providers.
 
 ## Trace analysis report
 
-Every end-to-end run now writes its primary review output to
-`<run-dir>/trace/trace_summary.md`. The report combines Add observability,
+Every end-to-end run keeps its complete Markdown analysis at
+`<run-dir>/Detailed Trace Report/trace/trace_summary.md`. The report combines Add observability,
 Retrieval ranking and evidence checks, Answer context flow, Judge output, four
 quadrants, and upstream-first root-cause labels. The supporting files are:
 
@@ -243,6 +244,37 @@ py -3.12 scripts/build_trace_report.py `
 
 Use `--data <dataset.json>` only when the dataset path in `run_config.json` is
 missing or no longer valid.
+
+## Static HTML dashboard
+
+The end-to-end runner writes the primary visual entry point to
+`<run-dir>/Trace Summary/Dashboard.html`. This direct entry point opens the files
+under `Trace Summary/Dashboard/`, while the dashboard reuses
+`Detailed Trace Report/trace/trace_summary.json`
+and `trace/cases/*.json`; it never re-runs Eval, Judge, or root-cause logic and
+does not mutate source Trace artifacts. It includes aggregate metrics, the
+interactive Retrieval × Answer quadrant, capability/pipeline/failure pages,
+filterable case tables, full per-case Trace, latency, API stability, token/cost,
+run metadata, and optional version comparison.
+
+To rebuild only the dashboard after Trace already exists:
+
+```powershell
+py -3.12 scripts/build_html_report.py `
+  --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report" `
+  --output-dir "results/reme_end_to_end/<run-id>/Trace Summary/Dashboard"
+```
+
+To migrate an older flat Run once, use:
+
+```powershell
+py -3.12 scripts/organize_result_layout.py `
+  --run-dir results/reme_end_to_end/<run-id>
+```
+
+Open `Trace Summary/Dashboard.html` directly in a browser. All CSS, JavaScript, and links
+are relative, so no server or Node build is required. Missing observations stay
+visible as `NOT_RECORDED` rather than being inferred.
 
 ## AML Answer and Judge
 

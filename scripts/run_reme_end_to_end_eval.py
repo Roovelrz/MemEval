@@ -3,7 +3,7 @@
 The stages remain independently runnable.  This script only orchestrates
 them and keeps all artifacts for a run under one directory:
 
-    retrieval -> prepared.jsonl -> answers.jsonl -> scores.jsonl -> trace/
+    retrieval -> prepared.jsonl -> answers.jsonl -> scores.jsonl -> trace/ -> report/
 
 It intentionally does not put API keys in command lines or JSON artifacts.
 """
@@ -44,6 +44,8 @@ DEFAULT_DATASET = (
     / "dataset.json"
 )
 DEFAULT_OUTPUT = REPO_ROOT / "results" / "reme_end_to_end"
+DETAILED_DIR_NAME = "Detailed Trace Report"
+SUMMARY_DIR_NAME = "Trace Summary"
 
 
 def parse_args() -> argparse.Namespace:
@@ -250,6 +252,7 @@ def run(args: argparse.Namespace) -> int:
         "answer": None,
         "judge": None,
         "trace": None,
+        "html": None,
     }
     if retrieval_code == 0:
         answer_script = Path(__file__).with_name("run_answer_eval.py")
@@ -349,28 +352,57 @@ def run(args: argparse.Namespace) -> int:
     trace_code = _run_stage("Trace report", _stage_command(trace_script, *trace_args))
     stage_codes["trace"] = trace_code
 
+    layout_script = Path(__file__).with_name("organize_result_layout.py")
+    html_code = _run_stage(
+        "Result layout + HTML dashboard",
+        _stage_command(layout_script, "--run-dir", str(run_dir)),
+    )
+    stage_codes["html"] = html_code
+
+    detailed_dir = run_dir / DETAILED_DIR_NAME
+    summary_dir = run_dir / SUMMARY_DIR_NAME
+    dashboard_dir = summary_dir / "Dashboard"
+
+    def relocated(path: Path) -> Path:
+        resolved = path.resolve()
+        try:
+            relative = resolved.relative_to(run_dir.resolve())
+        except ValueError:
+            return resolved
+        return detailed_dir / relative
+
+    final_prepared_path = relocated(prepared_path)
+    final_answers_path = relocated(answers_path)
+    final_scores_path = relocated(scores_path)
+
     run_finished_at = datetime.now(timezone.utc)
     final_summary = {
         "task": "reme_retrieval_answer_judge",
         "run_id": args.run_id,
         "run_dir": str(run_dir),
+        "detailed_trace_report_dir": str(detailed_dir),
+        "trace_summary_dir": str(summary_dir),
         "stage_exit_codes": stage_codes,
         "start_time_utc": run_started_at.isoformat(),
         "end_time_utc": run_finished_at.isoformat(),
         "duration_ms": (run_finished_at - run_started_at).total_seconds() * 1000,
-        "retrieval": _read_optional(run_dir / "summary.json"),
-        "answer": _read_optional(answers_path.parent / "answer_summary.json"),
-        "judge": _read_optional(scores_path.parent / "judge_summary.json"),
+        "retrieval": _read_optional(detailed_dir / "summary.json"),
+        "answer": _read_optional(final_answers_path.parent / "answer_summary.json"),
+        "judge": _read_optional(final_scores_path.parent / "judge_summary.json"),
         "artifacts": {
-            "prepared": str(prepared_path),
-            "answers": str(answers_path),
-            "scores": str(scores_path),
-            "trace_summary": str(run_dir / "trace" / "trace_summary.md"),
-            "trace_index": str(run_dir / "trace" / "trace_index.md"),
-            "judge_review": str(run_dir / "trace" / "judge_review.md"),
+            "prepared": str(final_prepared_path),
+            "answers": str(final_answers_path),
+            "scores": str(final_scores_path),
+            "trace_summary": str(detailed_dir / "trace" / "trace_summary.md"),
+            "trace_index": str(detailed_dir / "trace" / "trace_index.md"),
+            "judge_review": str(detailed_dir / "trace" / "judge_review.md"),
+            "html_dashboard": str(summary_dir / "Dashboard.html"),
+            "html_report_manifest": str(dashboard_dir / "report_manifest.json"),
+            "concise_summary": str(summary_dir / "summary.json"),
         },
     }
-    (run_dir / "end_to_end_summary.json").write_text(
+    final_summary_dir = detailed_dir if detailed_dir.is_dir() else run_dir
+    (final_summary_dir / "end_to_end_summary.json").write_text(
         json.dumps(final_summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     print("\n=== End-to-end summary ===")

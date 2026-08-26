@@ -514,6 +514,7 @@ def _case_analysis(
                     "score": item.get("score"),
                     "is_evidence": session_id in evidence_ids,
                     "timestamp": session.get("timestamp", NOT_RECORDED),
+                    "text": text,
                     "text_excerpt": _excerpt(text),
                 }
             )
@@ -1778,8 +1779,12 @@ def build_trace_report(
     case_dir = trace_dir / "cases"
     case_dir.mkdir(parents=True, exist_ok=True)
     for case in cases:
-        path = case_dir / f"{_safe_name(case['case']['case_id'])}.md"
-        path.write_text(_render_case(case), encoding="utf-8")
+        case_name = _safe_name(case["case"]["case_id"])
+        (case_dir / f"{case_name}.md").write_text(_render_case(case), encoding="utf-8")
+        (case_dir / f"{case_name}.json").write_text(
+            json.dumps(case, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
 
     if dataset_path is not None and Path(dataset_path).is_file():
         selected_dataset_cases = [dataset_cases[ident] for ident in ordered_ids if ident in dataset_cases]

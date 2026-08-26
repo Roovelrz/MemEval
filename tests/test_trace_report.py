@@ -229,6 +229,7 @@ class TraceReportTest(unittest.TestCase):
             self.assertTrue((directory / "trace" / "trace_summary.md").is_file())
             self.assertTrue((directory / "trace" / "trace_index.md").is_file())
             self.assertTrue((directory / "trace" / "judge_review.md").is_file())
+            self.assertTrue((directory / "trace" / "cases" / "case-pass.json").is_file())
 
             trace_summary = (directory / "trace" / "trace_summary.md").read_text(encoding="utf-8")
             trace_index = (directory / "trace" / "trace_index.md").read_text(encoding="utf-8")
@@ -245,6 +246,14 @@ class TraceReportTest(unittest.TestCase):
             self.assertIn("Equivalent after whitespace and punctuation normalization.", pass_trace)
             self.assertIn("Successfully added sessions | 2", pass_trace)
             self.assertIn("````text", pass_trace)
+
+            pass_trace_json = json.loads(
+                (directory / "trace" / "cases" / "case-pass.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(
+                pass_trace_json["retrieval"]["top_results"][0]["text"],
+                "我单程通勤45分钟。",
+            )
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ LongMemEval-ZH 数据集
 → Answer Model
 → Judge Model
 → Trace 汇总与逐 Case 根因分析
+→ HTML Dashboard 静态展示
 ```
 
 最推荐的使用方式是先跑 1 条 case 做 Smoke Test，确认整条链路可用后，再扩大到 5 条和全部 20 条。不要一开始就跑全量。
@@ -22,6 +23,7 @@ LongMemEval-ZH 数据集
 | Answer | OpenAI-compatible Chat Completions API | 是 |
 | Judge | OpenAI-compatible Chat Completions API | 是 |
 | Trace Analysis | 本地 Python 汇总脚本 | 否 |
+| HTML Dashboard | 本地静态 Reporter | 否 |
 
 默认数据集位于：
 
@@ -115,7 +117,7 @@ py -3.12 scripts/run_reme_end_to_end_eval.py `
 完整流程会依次运行：
 
 ```text
-Retrieval → Answer → Judge → Trace report
+Retrieval → Answer → Judge → Trace report → HTML dashboard
 ```
 
 只有 Retrieval 成功才会启动 Answer；只有 Answer 成功才会启动 Judge。无论前面是否失败，最后都会尽量根据已有产物生成 Trace。
@@ -223,18 +225,39 @@ Judge runner 同样会跳过已经存在于 `scores.jsonl` 中的 case_id。
 
 ```powershell
 py -3.12 scripts/build_trace_report.py `
-  --run-dir results/reme_end_to_end/reme-e2e-1-fixed
+  --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report"
 ```
 
 如果 `run_config.json` 中没有有效的数据集路径，再显式指定：
 
 ```powershell
 py -3.12 scripts/build_trace_report.py `
-  --run-dir results/reme_end_to_end/reme-e2e-1-fixed `
+  --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report" `
   --data datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json
 ```
 
-重新生成 Trace 会更新 `<run-dir>/trace/`，并生成 Run 级 `dataset_validation.json`、复制源数据的 `integrity_report.json`；不会改写 `retrieval.jsonl`、`prepared.jsonl`、`answers.jsonl` 或 `scores.jsonl`。
+重新生成 Trace 会更新 `<run-dir>/Detailed Trace Report/trace/`；不会改写 `retrieval.jsonl`、`prepared.jsonl`、`answers.jsonl` 或 `scores.jsonl`。更新 Trace 后，再执行下面的 HTML 重建命令同步展示。
+
+### 4.5 只生成或重新生成 HTML Dashboard
+
+前提是 `Detailed Trace Report/trace/trace_summary.json` 和逐 Case JSON 已存在：
+
+```powershell
+py -3.12 scripts/build_html_report.py `
+  --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report" `
+  --output-dir "results/reme_end_to_end/<run-id>/Trace Summary/Dashboard"
+```
+
+打开 `Trace Summary/Dashboard.html` 即可查看，它会直接进入 `Dashboard/index.html`；不需要安装 Node、不需要数据库，也不需要启动 Web 服务。这个步骤只读取 Trace 产物并生成展示页面，不会重新判分、重新归因或修改 Trace；未记录的字段统一显示为 `NOT_RECORDED`。
+
+旧版平铺结果只需迁移一次：
+
+```powershell
+py -3.12 scripts/organize_result_layout.py `
+  --run-dir results/reme_end_to_end/<run-id>
+```
+
+迁移不会删除结果，只会把原始和溯源文件移动到 `Detailed Trace Report/`，并在 `Trace Summary/` 重建精简摘要和 HTML。
 
 ## 5. 常用参数
 
@@ -300,44 +323,54 @@ BM25 baseline 会明确记录 `Embedding/Extraction status=NOT_APPLICABLE`、调
 
 ```text
 results/reme_end_to_end/<run-id>/
-├── run_config.json
-├── end_to_end_run_config.json
-├── dataset_validation.json
-├── integrity_report.json
-├── eval_code_snapshot/
-│   └── manifest.json
-├── reme_bm25.yaml
-├── reme_service.log
-├── retrieval.jsonl
-├── prepared.jsonl
-├── answers.jsonl
-├── scores.jsonl
-├── failures.jsonl
-├── answer_failures.jsonl
-├── judge_failures.jsonl
-├── summary.json
-├── answer_summary.json
-├── judge_summary.json
-├── end_to_end_summary.json
-├── raw_search/
-└── trace/
-    ├── trace_summary.md
-    ├── trace_summary.json
-    ├── trace_index.md
-    ├── judge_review.md
-    └── cases/
-        └── <case_id>.md
+├── Detailed Trace Report/
+│   ├── run_config.json
+│   ├── end_to_end_run_config.json
+│   ├── end_to_end_summary.json
+│   ├── retrieval.jsonl
+│   ├── prepared.jsonl
+│   ├── answers.jsonl
+│   ├── scores.jsonl
+│   ├── raw_search/
+│   ├── eval_code_snapshot/
+│   ├── result_layout_manifest.json
+│   └── trace/
+│       ├── trace_summary.md
+│       ├── trace_summary.json
+│       ├── trace_index.md
+│       ├── judge_review.md
+│       └── cases/
+│           ├── <case_id>.md
+│           └── <case_id>.json
+└── Trace Summary/
+    ├── Dashboard.html
+    ├── Dashboard/
+    │   ├── index.html
+    │   ├── report_manifest.json
+    │   ├── assets/
+    │   ├── capabilities/
+    │   ├── pipeline/
+    │   ├── failures/
+    │   ├── cases/
+    │   ├── performance/
+    │   ├── comparison/
+    │   ├── run-info/
+    │   └── analysis/
+    ├── summary.json
+    └── trace_summary.md
 ```
 
 部分 failure 文件只有发生失败时才会出现。
 
 建议按以下顺序查看：
 
-1. `trace/trace_summary.md`：面向人的总结果和主要瓶颈。
-2. `trace/trace_index.md`：按失败优先级找到具体 case。
-3. `trace/cases/<case_id>.md`：查看 Add → Retrieval → Answer → Judge 完整链路。
-4. `trace/judge_review.md`：人工复核 Judge=WRONG、Judge 失败或疑似误判。
-5. 最后才查看 JSONL、raw_search 和日志，作为溯源材料。
+1. `Trace Summary/Dashboard.html`：最外层可视化入口，自动打开 Dashboard。
+2. `Trace Summary/summary.json`：只保留高信号 Run 指标，不包含逐 Case 大字段。
+3. `Trace Summary/trace_summary.md`：可审阅、可复制的中文总报告。
+4. `Detailed Trace Report/trace/trace_index.md`：按失败优先级找到具体 case。
+5. `Detailed Trace Report/trace/cases/<case_id>.md`：查看完整链路。
+6. `Detailed Trace Report/trace/judge_review.md`：人工复核 Judge 结果。
+7. 最后才查看 JSONL、raw_search 和日志，作为溯源材料。
 
 `eval_code_snapshot/` 保存本次实际使用的 Runner/Report Python 源码及 SHA-256 manifest。即使 Git 工作区为 dirty，也可以确认当时运行的准确代码；`trace_summary.md` 会分别展示 Git commit、dirty 状态和快照 hash。
 

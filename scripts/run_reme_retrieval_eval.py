@@ -536,10 +536,19 @@ def snapshot_eval_code(run_dir: Path, git_info: dict[str, Any]) -> dict[str, Any
 
     snapshot_dir = run_dir / "eval_code_snapshot"
     source_files = sorted(
-        [
-            *[path for root in (REPO_ROOT / "scripts", REPO_ROOT / "memory_eval") for path in root.rglob("*.py")],
-            *[path for path in (REPO_ROOT / "pyproject.toml", REPO_ROOT / "requirements.txt") if path.is_file()],
-        ]
+        {
+            *[
+                path
+                for root in (REPO_ROOT / "scripts", REPO_ROOT / "memory_eval")
+                for pattern in ("*.py", "*.css", "*.js")
+                for path in root.rglob(pattern)
+            ],
+            *[
+                path
+                for path in (REPO_ROOT / "pyproject.toml", REPO_ROOT / "requirements.txt")
+                if path.is_file()
+            ],
+        }
     )
     manifest_files: list[dict[str, str]] = []
     for source in source_files:
