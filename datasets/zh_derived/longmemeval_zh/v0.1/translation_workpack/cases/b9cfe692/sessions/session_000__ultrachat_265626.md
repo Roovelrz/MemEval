@@ -1,0 +1,130 @@
+---
+question_id: "b9cfe692"
+session_index: 0
+session_id: "ultrachat_265626"
+timestamp: "2023/05/24 (Wed) 22:25"
+is_evidence_session: false
+turn_count: 6
+translation_status: TODO
+---
+# Session 000 Translation
+
+> 按 turn 翻译，只编辑 `ZH_TURN_*` 边界内的内容。不要编辑 source、role、has_answer、ID 或时间。
+
+## Turn 000 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_000_BEGIN -->
+Who were the early pioneers of Czech ice hockey and how did they establish the foundation for the Extraliga?
+<!-- SOURCE_TURN_000_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_000_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_000_END -->
+
+## Turn 001 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_001_BEGIN -->
+The early pioneers of Czech ice hockey were players such as Václav Tille, Ladislav Svozil, and Josef Maleček, who helped establish the sport in the country in the early 20th century. 
+
+In 1908, the first official ice hockey match in Czech lands was played in Prague between teams from the alternative athletic clubs SK Slavia and AC Sparta. In 1923, the Czechoslovak Ice Hockey Federation was established, and it began organizing national championships.
+
+During the 1930s, Czechoslovakia emerged as one of the top ice hockey teams in the world, winning numerous medals in international tournaments. This success was due to the foundation established by early pioneers, who helped develop young players and establish a strong club system.
+
+After World War II, the Czechoslovak Extraliga was established as the top professional ice hockey league in the country. This league has since become one of the strongest in Europe, featuring many top players from around the world. The success of the Extraliga can be traced back to the early pioneers who established the foundations of Czech ice hockey.
+<!-- SOURCE_TURN_001_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_001_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_001_END -->
+
+## Turn 002 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_002_BEGIN -->
+Wow, it's amazing to see how far Czech ice hockey has come since those early days. Who are some of the top teams and players in the Extraliga now?
+<!-- SOURCE_TURN_002_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_002_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_002_END -->
+
+## Turn 003 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_003_BEGIN -->
+Yes, it is quite impressive. Some of the top teams in the Czech Extraliga currently are HC Oceláři Třinec, HC Sparta Praha, HC Kometa Brno, and HC Verva Litvínov. These teams have regularly competed for the championship in recent years and have a strong fan base.
+
+As for players, there are many highly skilled players in the league, both Czech and international. Some of the top Czech players include Jakub Voráček, David Pastrňák, and Jakub Vrána, all of whom have also played in the NHL. Other notable players include Martin Růžička, Jiří Sekáč, and Tomáš Kundrátek.
+
+The Extraliga also attracts top international players, such as Canadian forward Zach Boychuk and Swedish goaltender Viktor Fasth. The league has become a popular destination for players from around the world, which has contributed to its continued success.
+<!-- SOURCE_TURN_003_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_003_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_003_END -->
+
+## Turn 004 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_004_BEGIN -->
+It's great to hear that the Czech Extraliga is attracting so many top players from around the world. Do they play a similar style of hockey to the NHL, or is there a distinct Czech style of play?
+<!-- SOURCE_TURN_004_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_004_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_004_END -->
+
+## Turn 005 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_005_BEGIN -->
+The Czech Extraliga does have some differences in style of play compared to the NHL, but also incorporates many aspects of the North American game. The Czech style of play is often characterized as high-speed and skillful, with an emphasis on puck possession and creative offensive play.
+
+One notable feature of the Czech game is the use of the "trap", a defensive strategy designed to clog up the neutral zone and prevent the opposing team from entering the offensive zone with speed. This strategy requires disciplined defensive play and quick transitions to offense.
+
+Another aspect of the Czech game is the emphasis on passing and puck movement, with players often using quick, precise passes to move the puck up the ice and create scoring opportunities.
+
+Overall, the Czech style of play is a combination of speed, skill, and tactical discipline, with a focus on offensive creativity and puck possession. This style has made the Czech Extraliga an exciting and competitive league, and has helped to produce some of the top players in the world.
+<!-- SOURCE_TURN_005_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_005_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_005_END -->

@@ -1,0 +1,199 @@
+---
+question_id: "c8f1aeed"
+session_index: 32
+session_id: "sharegpt_fH5kcER_0"
+timestamp: "2023/05/27 (Sat) 16:41"
+is_evidence_session: false
+turn_count: 4
+translation_status: TODO
+---
+# Session 032 Translation
+
+> 按 turn 翻译，只编辑 `ZH_TURN_*` 边界内的内容。不要编辑 source、role、has_answer、ID 或时间。
+
+## Turn 000 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_000_BEGIN -->
+can you help me write a cover letter?
+<!-- SOURCE_TURN_000_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_000_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_000_END -->
+
+## Turn 001 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_001_BEGIN -->
+Yes, I'd be happy to help you write a cover letter! Here are some steps you can follow to write an effective cover letter:
+
+1. Start with a formal greeting and address the hiring manager by name, if possible.
+2. Introduce yourself and explain why you're the best fit for the job you're applying for. Highlight your relevant skills, qualifications, and experience.
+<!-- SOURCE_TURN_001_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_001_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_001_END -->
+
+## Turn 002 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_002_BEGIN -->
+I am going to paste the job posting and then my resume. Please use this information to craft the perfect cover letter and make any changes to my resume you feel would be beneficial. Here is the job listing.DIRECTOR, BRAND PARTNERSHIPS - NY
+(New York, NY)
+
+About Atmosphere:
+Atmosphere is the world’s #1 streaming service for businesses, offering 65+ channels of engaging, audio-optional TV. From news, sports and nature to viral videos, art and more, Atmosphere delivers fresh programming designed to elevate any business space. Our company was built from the ground up to create unparalleled value for advertisers and next-level entertainment for companies around the globe.
+
+About the role:
+Atmosphere is looking for a Director of Brand Partnerships to join our National Ad Sales team in its New York office. The Director will focus on selling video (TV, OTT/CTV, DOOH) advertising opportunities across our network of screens in over 30k venues across the US. 
+
+This role is truly a ground floor, exciting opportunity, as we have created a new advertising channel that gives brands the ability to reach folks they can’t reach with traditional TV or video advertising. We are looking for a highly motivated, self-starter to evangelize our brand to agencies and clients directly throughout the East Coast. We’re not looking for an order taker or lone wolf, as we adhere to a team first, collaborative culture.
+
+This position will be based in New York, NY, and will report to the VP of Sales, East.
+
+JOB DESCRIPTION
+
+Own the full sales cycle: prospect, pitch, close, and renew accounts
+Be able to articulate both direct IO and programmatic direct opportunities, as we are a buying agnostic platform
+Introduce Atmosphere's unique offering to agency contacts, programmatic teams and client direct, educating the market on how best to allocate video dollars towards our platform
+Manage RFP prioritization to weed out time wasters vs value-added relationships
+Drive proactive outreach while collaborating with your sales support team
+Use data analytics to boost narrative to clients
+Own CRM responsibilities associated with your client list
+Convey client feedback with recommendations based on this feedback to sales leadership
+Proactively develop first to market campaign strategies that are unique to specific clients
+Stay on top of industry trends, events, new technologies, unique opportunities
+Push the envelope and be innovative. We encourage new ideas
+REQUIREMENTS
+
+7-10+ years of demonstrated advertising sales success including experience selling both IO and programmatic direct
+Deep relationships with agencies and larger brands you’ve built over the years that you can use to immediately bring value to Atmosphere
+Organization and communication skills to handle a large book of business
+Strong background in TV/video and /or DOOH is highly desirable
+Ability to build and foster relationships both internally and externally
+Exceptional presenter with excellent negotiating skills
+Ability to tailor pitch materials to each client
+Know how to identify a need and close based on fulfillment of that need
+Seek opportunity in challenge, rejection, and failure
+Be someone your team WANTS to have a meal with at the end of a long day
+Located in New York metro area . Here is my resume 
+
+PARTNERSHIPS | AI | MEDIA | SALES | GROWTH 
+Business leader, spearheading partnerships that deliver profitable results. Identify and execute on opportunities. Effective networker, driving business growth and return on investment. 
+
+● Founded, led and sold one of the leading US out of home (OOH) media networks 
+● Purchased, scaled and sold a widely recognized on-air talent marketplace 
+● Sourced and built a network of 1000+ media personalities and influencers across industry paired with local green screen studios and freelance videographers across the world to provide a frictionless way to create content with talent regardless of location 
+● Designed a new revenue model, hired and managed sales team as CRO of a VC/Angel investor startup in the primary and secondary education space taking fledgling company from 0 - 1 
+● Led U.S. media licensing sales for the world's leading licensing agency for rights-holders of video content, opening NYC office and signing partnership agreements with leading media companies in the thought leadership space 
+
+Experience:
+Partnership and Growth Consultant, Compose.AI
+January 2021 - August 2022
+Growth advisor for seed round funded San Francisco start-up
+Created company growth plan after extensive category research and analysis
+Handled media production and advertising during ramp-up
+
+Head of Partnerships, Big Think, Inc.
+January 2019 - December 2021
+Growth and exit advisor to Big Think founders and executive team
+Consultant during successful sale of the company and its transition to the acquirer
+Business development advisor
+Created new revenue stream, Big Think LIVE as part of the Covid-19 action plan
+Served as acting director of production during acquisition and integration
+
+VP - Global Media Licensing, Executive Interviews, Inc.
+January 2018 - December 2019
+Created strategy, vision and sales process for new line of business focusing on the thought leadership category
+Opened and managed the NYC office for the UK-based company
+Signed new media partners and managed licensing negotiations between media partners and organizations
+
+Owner, Preserve Media
+January 2015 - December 2018
+Online and brick and mortar video production/conversion business in Florida
+Negotiated strategic partnerships with UPS stores to sell videotape and film conversion as an add-on service
+
+Chief Revenue Officer, Planet High School
+January 2014 - December 2015
+Developed a new revenue model selling local advertising on the platform along with a 50% back to school program of advertisers' choice
+Created a masterplan and built a local sales team in seven cities across three states at breakneck speed
+Worked closely with CTO in development of sales and marketing advertising portal on the platform
+
+Principal, Video Spokesmodel (VSM)
+January 2011 - December 2013
+Acquired, scaled, and sold a widely recognized on-air talent marketplace
+Built a network of 1000+ media personalities and influencers
+Established an international network of green screen studios and freelance videographers to film talent in any location
+
+Founder and President, Visitors TV
+January 2001 to December 2011 
+● Established, led and sold Florida’s largest tourist television network serving travelers in hotels and airports 
+● Negotiated long-term contracts with major hotel brands, government agencies and travel industry groups 
+● Managed operations, creative team and advertising sales efforts 
+● Led and negotiated in-bound acquisition of company after a decade in business 
+
+Education:
+Bachelor's degree in Public Relations, Grand Valley State University
+
+Skills:
+Partner development and sales
+Business growth and development
+Media licensing and partnerships
+Advertising and marketing
+Product development and strategy
+Team management and leadership
+<!-- SOURCE_TURN_002_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_002_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_002_END -->
+
+## Turn 003 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_003_BEGIN -->
+Dear [Hiring Manager’s Name],
+
+I am writing to express my interest in the Director of Brand Partnerships role at Atmosphere. As a seasoned business leader with a proven track record in sales, growth, and partnerships, I believe that I have the skills, experience, and passion to make a significant impact at your company.
+
+In my previous roles, I have successfully founded, led, and sold one of the leading OOH media networks, purchased and scaled a widely recognized on-air talent marketplace, and served as the Chief Revenue Officer for a VC/Angel-backed startup in the primary and secondary education space. Most recently, I served as the Head of Partnerships at Big Think, where I was instrumental in creating a new revenue stream, Big Think LIVE, as part of the Covid-19 action plan.
+
+I am particularly drawn to Atmosphere's mission to deliver engaging, audio-optional TV to businesses and your company's focus on creating unparalleled value for advertisers and next-level entertainment for companies around the globe. As someone who has a strong background in TV/video and DOOH, I am confident that I have the ability to articulate the unique offering of Atmosphere and educate the market on how best to allocate video dollars towards your platform.
+
+I have deep relationships with agencies and larger brands and I am highly organized and able to handle a large book of business. I have excellent communication skills and I am an exceptional presenter with excellent negotiating skills. I have a proven ability to tailor my pitch materials to each client and I know how to identify a need and close based on the fulfillment of that need. I am someone who seeks opportunity in challenge, rejection, and failure, and I am a team player who values collaboration and teamwork.
+
+I am located in the New York metro area and I am eager to bring my passion, experience, and drive to Atmosphere. Thank you for considering my application. I look forward to the opportunity to further discuss how I can contribute to your team.
+
+Sincerely,
+[Your Name]
+<!-- SOURCE_TURN_003_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_003_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_003_END -->

@@ -1,0 +1,264 @@
+---
+question_id: "77eafa52"
+session_index: 13
+session_id: "ultrachat_138810"
+timestamp: "2023/05/23 (Tue) 01:22"
+is_evidence_session: false
+turn_count: 12
+translation_status: TODO
+---
+# Session 013 Translation
+
+> 按 turn 翻译，只编辑 `ZH_TURN_*` 边界内的内容。不要编辑 source、role、has_answer、ID 或时间。
+
+## Turn 000 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_000_BEGIN -->
+How has the University of Wisconsin worked to ensure that its students and faculty are aware of the risks and symptoms associated with COVID-19?
+<!-- SOURCE_TURN_000_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_000_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_000_END -->
+
+## Turn 001 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_001_BEGIN -->
+The University of Wisconsin has implemented a comprehensive approach to ensure that its students and faculty are aware of the risks and symptoms associated with COVID-19. Here are some of the steps that UofW has taken:
+
+1. Communication: The university has sent regular emails and notifications to students and faculty regarding the risks and symptoms of COVID-19. These communications provide updated information about the disease and the university's response to it.
+
+2. Website: UofW has created a COVID-19 website that provides comprehensive information about the disease, including symptoms, prevention, and treatment options. The website also includes links to external resources related to COVID-19.
+
+3. Training: The university has conducted training sessions for its staff and faculty to ensure that they are aware of the risks and best practices associated with COVID-19. These training sessions emphasize the importance of social distancing, wearing masks, and regular hand washing.
+
+4. Campus Signs: UofW has installed signs throughout its campus reminding students and faculty of the importance of following COVID-19 guidelines. These signs also provide information on the symptoms and risks of the disease.
+
+5. Student Health Services: The university's student health services department has been working to provide information and resources to students regarding COVID-19. This includes information on symptoms, testing sites, and self-quarantine procedures.
+
+6. Testing and Tracing: UofW has implemented a robust COVID-19 testing and tracing program to identify and isolate individuals with the disease. This program includes regular testing of students and staff who are at higher risk of exposure to the disease.
+
+Overall, the University of Wisconsin has taken a comprehensive approach to ensure that its students and faculty are aware of the risks and symptoms associated with COVID-19. Through communication, training, and a comprehensive testing and tracing program, UofW is working to keep its community safe and healthy during these challenging times.
+<!-- SOURCE_TURN_001_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_001_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_001_END -->
+
+## Turn 002 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_002_BEGIN -->
+Can you tell me more about the testing and tracing program at UofW? How often are students and staff being tested?
+<!-- SOURCE_TURN_002_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_002_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_002_END -->
+
+## Turn 003 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_003_BEGIN -->
+The University of Wisconsin has implemented a robust testing and tracing program to identify and isolate individuals with COVID-19. The program includes regular testing of students and staff who are at higher risk of exposure to the disease.
+
+The testing program is divided into two categories: surveillance testing and symptomatic testing. Surveillance testing involves testing individuals who are not showing symptoms of COVID-19 but are at higher risk of exposure due to their on-campus activities or living situation. Symptomatic testing is conducted on individuals who exhibit symptoms of the disease.
+
+Surveillance testing is conducted on a weekly basis for students living in campus housing, attending in-person classes, or participating in on-campus activities. Staff who come into close contact with students or work in high-risk areas are also tested on a regular basis. The frequency of testing for staff and faculty may differ based on their level of exposure and risk.
+
+Symptomatic testing is available to students and staff who are exhibiting COVID-19 symptoms. The university has established a testing site on campus where individuals can be tested quickly and easily.
+
+In addition to testing, the university is conducting contact tracing to identify and isolate individuals who have been in close contact with a person who has tested positive for COVID-19. This includes working with the local health department to identify and isolate individuals who may have been exposed to the virus.
+
+Overall, the University of Wisconsin's testing and tracing program is designed to identify and isolate individuals who may have COVID-19 to prevent the spread of the disease within the university community.
+<!-- SOURCE_TURN_003_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_003_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_003_END -->
+
+## Turn 004 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_004_BEGIN -->
+Can students choose to opt-out of the testing program at UofW?
+<!-- SOURCE_TURN_004_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_004_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_004_END -->
+
+## Turn 005 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_005_BEGIN -->
+While regular testing is compulsory for students in certain groups such as those living in residence halls, participating in on-campus activities or attending classes in person, the university has not explicitly stated whether students can opt-out of the testing program or not. However, it is essential to note that opting out of regular testing could pose a risk to the individual and the community as an asymptomatic individual may unknowingly spread the virus. 
+
+The University of Wisconsin has emphasized the importance of regular testing and has encouraged all students and staff to participate in the testing program as it is an essential tool in controlling the spread of COVID-19 on campus. The testing program is crucial in identifying and isolating asymptomatic individuals, which can help to prevent a spike in cases and the spread of the disease.
+
+Overall, while the university has not given an explicit option for opting out of the regular testing program, it is essential for all students and staff to participate in the program to help control the spread of COVID-19 on campus.
+<!-- SOURCE_TURN_005_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_005_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_005_END -->
+
+## Turn 006 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_006_BEGIN -->
+I don't feel comfortable with the idea of regular testing. I think it's an invasion of my privacy and I don't want to be forced to do something I don't want to do.
+<!-- SOURCE_TURN_006_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_006_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_006_END -->
+
+## Turn 007 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_007_BEGIN -->
+As an AI language model, I do not have a personal view or position on the issue. However, it is understandable to feel concerned about regular testing and the potential impact it may have on personal privacy. It is essential to note that universities like the University of Wisconsin have implemented the testing protocols as a measure to safeguard the health and well-being of the campus community. 
+
+It is imperative to consider that regular testing is one of the most effective tools available to help prevent the spread of COVID-19 on campus. It can quickly identify individuals who may be asymptomatic and encourage them to self-quarantine to prevent the spread of the disease. Regular testing can provide students, faculty, and staff with a measure of security and confidence that the risks of exposure to COVID-19 are minimized to the extent possible.
+
+If you have concerns about regular testing, it is best to reach out to the university authorities to understand better the protocol and the specific reasons why regular testing is essential to prevent the spread of COVID-19 on the campus. Additionally, you can also review the university's privacy policies to ensure your concerns about privacy are appropriately addressed.
+<!-- SOURCE_TURN_007_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_007_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_007_END -->
+
+## Turn 008 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_008_BEGIN -->
+I still don't think it's fair that the university is forcing me to get tested regularly. I don't see why I should have to give up my privacy for their benefit. Plus, I don't even think I'm at risk of getting COVID-19.
+<!-- SOURCE_TURN_008_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_008_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_008_END -->
+
+## Turn 009 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_009_BEGIN -->
+Regular testing is a necessary measure in controlling the spread of COVID-19 on campus. It helps identify asymptomatic carriers of the virus, preventing them from inadvertently spreading the disease to others. By implementing regular testing protocols, the University of Wisconsin is prioritizing the safety and well-being of its students and staff.
+
+While it is understandable to be concerned about privacy, it is important to consider that regular testing protocols are required to help prevent a significant outbreak on campus. It is not only about protecting yourself, but also about protecting the health and safety of the entire campus community. It is possible that some individuals may be asymptomatic carriers of the virus and unknowingly spread it to others.
+
+Moreover, it is important to remember that COVID-19 can be severe and potentially fatal. While you may not perceive yourself to be at risk, others in the community may not share the same level of immunity or may have underlying health conditions that put them at higher risk. Protecting the health and safety of everyone on campus is a shared responsibility.
+
+It is important to understand that regular testing is not only for the benefit of the university, but also for the benefit of the individual community members. Regular testing helps to quickly identify positive cases and prevent the spread of the disease, ensuring that students and staff can safely continue to engage in in-person classes and other activities.
+
+If you are concerned about the testing protocol or have any specific concerns, it is recommended to reach out to the university authorities to discuss your concerns and any potential accommodations that can be made.
+<!-- SOURCE_TURN_009_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_009_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_009_END -->
+
+## Turn 010 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_010_BEGIN -->
+I still don't see why I should be forced to get tested regularly. I'm healthy and I take all the necessary precautions to avoid exposure to the virus. I should be able to choose whether or not I want to get tested, and my privacy should be protected. It's not fair that the university is treating all students as if they are the same.
+<!-- SOURCE_TURN_010_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_010_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_010_END -->
+
+## Turn 011 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_011_BEGIN -->
+I understand your concerns, and it is essential to know that universities across the world have implemented regular testing protocols to maintain the health and safety of students and staff on campus. The university has a responsibility to maintain a safe campus environment and prevent outbreaks from occurring. 
+
+It is important to note that even if you take all the necessary precautions, exposure to the COVID-19 virus is still possible. Regular testing is crucial in identifying asymptomatic individuals, which helps prevent potential outbreaks from occurring. Even healthy individuals can unknowingly carry the virus and spread it to others who may not be as resilient.
+
+Furthermore, the university is obligated to ensure that all students and staff on campus are protected and cared for equally. By implementing a regular testing protocol for all individuals, regardless of their perceived risk of exposure, the university can better identify positive cases and prevent transmission of the virus to all individuals on campus.
+
+While it is true that regular testing may involve some level of data privacy concerns, the university has instituted policies to respect and safeguard the privacy of all individuals. Moreover, the testing procedure is not intrusive, and tests are conducted by licensed medical professionals who ensure that all medical information is kept confidential.
+
+Overall, regular testing is essential for maintaining the health and safety of the campus community. Concerns about the testing protocol can be addressed by engaging with university authorities and discussing possible accommodations or opt-out options if there are any legitimate concerns.
+<!-- SOURCE_TURN_011_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_011_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_011_END -->

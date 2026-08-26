@@ -1,0 +1,490 @@
+{
+  "generated_at": "2026-08-25T09:28:30.927Z",
+  "sample_size": 20,
+  "max_source_chars": 5500,
+  "concurrency": 4,
+  "baidu_model_type": "llm",
+  "baidu_chunked": true,
+  "baidu_chunk_max_chars": 1800,
+  "deepseek_model": "deepseek-v4-flash",
+  "variants": [
+    {
+      "label": "baidu_llm_chunked",
+      "elapsed_ms": 10654,
+      "ok": 20
+    },
+    {
+      "label": "deepseek_direct",
+      "elapsed_ms": 8077,
+      "ok": 20
+    },
+    {
+      "label": "baidu_then_deepseek_verify",
+      "elapsed_ms": 8008,
+      "ok": 20,
+      "changed": 9
+    }
+  ],
+  "rows": [
+    {
+      "id": "28dc39ac/cases/28dc39ac/sessions/session_000__5854eebc_1.md:TURN_000",
+      "case_id": "28dc39ac",
+      "file": "cases/28dc39ac/sessions/session_000__5854eebc_1.md",
+      "block_type": "TURN_000",
+      "source": "I just finished watching the latest season of Stranger Things on Netflix and I'm already craving more sci-fi shows. Can you recommend some similar shows that I might enjoy? By the way, I had been waiting for the new season to drop since July, and it was totally worth the wait.",
+      "baidu": {
+        "ok": true,
+        "value": "我刚在网飞（Netflix）上看完《怪奇物语》的最新一季，现在我已经开始期待更多的科幻剧了。你能推荐一些类似的剧集，让我可能会喜欢吗？顺便说一下，我从七月就开始等待新一季的上线，这等待完全值得。"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我刚在Netflix上看完了《怪奇物语》最新一季，现在特别想看更多科幻剧。你能推荐一些类似的剧集吗？顺便说一句，我从七月份就开始等新一季上线，等待完全值得。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我刚在Netflix上看完《怪奇物语》的最新一季，现在我已经渴望更多科幻剧了。你能推荐一些类似的剧集，让我可能会喜欢吗？顺便说一下，我从七月起就一直在等待新一季的上线，而且这等待完全值得。",
+          "changed": true,
+          "note": "修正了“craving”的译法，并调整了“since July”的时态表达，使译文更准确流畅。"
+        }
+      }
+    },
+    {
+      "id": "4dfccbf7/cases/4dfccbf7/sessions/session_000__ultrachat_311480.md:TURN_000",
+      "case_id": "4dfccbf7",
+      "file": "cases/4dfccbf7/sessions/session_000__ultrachat_311480.md",
+      "block_type": "TURN_000",
+      "source": "What linguistic factors have contributed to the distinctiveness of Tamil within the Dravidian language family?",
+      "baidu": {
+        "ok": true,
+        "value": "哪些语言因素促成了泰米尔语在德拉威语系中的独特性？"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "泰米尔语在达罗毗荼语系中的独特性，受到了哪些语言学因素的影响？"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "哪些语言因素促成了泰米尔语在达罗毗荼语系中的独特性？",
+          "changed": true,
+          "note": "将“德拉威语系”修正为更通用的“达罗毗荼语系”。"
+        }
+      }
+    },
+    {
+      "id": "6ade9755/cases/6ade9755/sessions/session_000__27c10839_2.md:TURN_000",
+      "case_id": "6ade9755",
+      "file": "cases/6ade9755/sessions/session_000__27c10839_2.md",
+      "block_type": "TURN_000",
+      "source": "I'm having some issues with my herb garden. The basil and mint are doing great, but the cilantro is growing really slow. Do you think it's because I'm watering it too much or too little? By the way, I started treating my snake plant, Slinky, with neem oil for pests today.",
+      "baidu": {
+        "ok": true,
+        "value": "我的香草园遇到了一些问题。罗勒和薄荷长得很好，但香菜却长得特别慢。你觉得是因为我浇水太多还是太少？顺便说一下，我今天开始用印楝油给我的虎尾兰“斯林基”除虫了。"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我的香草园遇到了一些问题。罗勒和薄荷长得很好，但香菜长得特别慢。你觉得是因为我浇水太多还是太少呢？顺便说一下，我今天开始用印楝油给蛇尾兰Slinky治疗虫害了。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我的香草园遇到了一些问题。罗勒和薄荷长得很好，但香菜却长得特别慢。你觉得是因为我浇水太多还是太少？顺便说一下，我今天开始用印楝油给我的虎尾兰“斯林基”除虫了。",
+          "changed": false,
+          "note": "候选译文完整准确，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "75832dbd/cases/75832dbd/sessions/session_000__sharegpt_y7MbHgZ_21.md:TURN_000",
+      "case_id": "75832dbd",
+      "file": "cases/75832dbd/sessions/session_000__sharegpt_y7MbHgZ_21.md",
+      "block_type": "TURN_000",
+      "source": "A construction lawyer can provide valuable assistance in drafting and negotiating Deeds of Release, particularly in the context of construction contracts. Some of the ways in which a construction lawyer can help include:\r\n\r\n* Knowledge of relevant laws and regulations: A construction lawyer can provide guidance on the legal requirements for a valid Deed of Release, as well as any specific regulations that may apply to construction contracts in NSW.\r\n* Ability to negotiate terms: A construction lawyer can assist in negotiating the terms of the Deed of Release to ensure that the parties' rights and interests are protected, and that the document accurately reflects their agreement.\r\n* Guidance on potential risks and benefits: A construction lawyer can advise on the potential risks and benefits of signing a Deed of Release, and help the parties make an informed decision about whether to proceed.\r\n\r\nOverall, a construction lawyer's expertise can help ensure that the Deed of Release is legally valid, properly negotiated, and fully understood by all parties involved.",
+      "baidu": {
+        "ok": true,
+        "value": "建筑律师在起草和谈判免责书方面能提供宝贵的帮助，尤其是在建筑合同方面。建筑律师可以提供以下帮助：\n* 了解相关法律法规：建筑律师能够就有效免责契约的法律要求以及可能适用于新南威尔士州建筑合同的特定法规提供指导。\n* 条款谈判能力：建筑律师可以协助谈判解除契据的条款，以确保各方的权益得到保护，并确保该文件准确反映各方达成的协议。\n* 潜在风险与益处指南：建筑律师可就签署免责书（Deed of Release）的潜在风险与益处提供建议，并帮助各方在了解情况的基础上决定是否继续进行。\n总体而言，建筑律师的专业知识有助于确保解除契约具有法律效力、经过适当协商，且相关各方都能充分理解。"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "建筑律师在起草和谈判解除契约方面可以提供宝贵的协助，尤其是在建筑合同的背景下。建筑律师能够提供的帮助包括：\n\n* 对相关法律和法规的了解：建筑律师可以就有效解除契约的法律要求提供指导，以及可能适用于新南威尔士州建筑合同的任何具体规定。\n* 谈判条款的能力：建筑律师可以协助谈判解除契约的条款，以确保双方的权利和利益得到保护，并确保文件准确反映他们的协议。\n* 对潜在风险和收益的指导：建筑律师可以就签署解除契约的潜在风险和收益提供建议，并帮助双方做出是否继续的知情决定。\n\n总体而言，建筑律师的专业知识有助于确保解除契约在法律上有效、经过适当谈判，并被所有相关方充分理解。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "建筑律师在起草和谈判解除契据（Deed of Release）方面能提供宝贵的协助，尤其是在建筑合同的背景下。建筑律师可以提供帮助的方式包括：\n\n* 对相关法律和法规的了解：建筑律师能够就有效解除契据的法律要求，以及可能适用于新南威尔士州建筑合同的任何特定法规提供指导。\n* 谈判条款的能力：建筑律师可以协助谈判解除契据的条款，以确保各方的权利和利益得到保护，并确保该文件准确反映他们的协议。\n* 对潜在风险和利益的指导：建筑律师可以就签署解除契据的潜在风险和利益提供建议，并帮助各方在充分知情的情况下决定是否继续进行。\n\n总体而言，建筑律师的专业知识有助于确保解除契据在法律上有效、经过适当谈判，并得到所有相关各方的充分理解。",
+          "changed": true,
+          "note": "已修正术语不一致和漏译，确保完整准确翻译全文。"
+        }
+      }
+    },
+    {
+      "id": "7e00a6cb/cases/7e00a6cb/sessions/session_000__sharegpt_xuR7z91_24.md:TURN_000",
+      "case_id": "7e00a6cb",
+      "file": "cases/7e00a6cb/sessions/session_000__sharegpt_xuR7z91_24.md",
+      "block_type": "TURN_000",
+      "source": "ANNA AUGUSTOWSKA 51.0999 17.0299 5812\r\nAUCHAN POLSKA SP. Z 51.7789 19.4424 5411\r\nZABKA Z5782 K.1 50.4422 30.6196 5499\r\nSKLEP LIDL 1221 WRO 51.0763 17.0068 5411\r\nLIDL WIELICKA 50.0345 19.9685 5411\r\nJMP S.A. BIEDRONKA 6126 51.2494 22.5758 5411\r\nMARKET MAJA 48.0623 33.4977 5499\r\nZABKA Z6300 K.1 51.2191 22.7011 5499\r\nKAUFLAND PL 7962 51.0923 17.031 5411\r\nCARREFOUR LODZ PRZYBYS 51.7515 19.5022 5411\r\nPARFOIS AC1 50.0537 19.9556 5631\r\nMPSA - A 323 52.1787 21.0031 4111\r\nLPP CROPP 1512157 50.0671 19.9463 5651\r\nZABKA Z8793 K.1 51.0588 16.1772 5499\r\nSALAD STORY Wroclav 51.0963 17.0337 5812\r\nSTOKROTKA 1208 51.7179 19.4821 5499\r\nBilety Urbancard Wrocl 51.104 17.0304 4111\r\nMARKET PUNKT 50.0752 19.9292 5411\r\nKAUFLAND 01 53.4415 14.5554 5411\r\nAUCHAN POLSKA SP. Z 51.4258 21.1544 5411\r\nInmedio 31105 51.3816 21.1695 5994\r\nGREEN COFFEE 52.2332 21.013 5814\r\nCARREFOUR HIPERMARKET 52.2312 21.105 5411\r\nCIRCLE K KATOWICE, 50.2762 19.0177 5541\r\nZABKA Z7836 K.1 50.4422 30.6196 5499\r\nSTACJA PALIW KORYCIN 53.45 23.0897 5541\r\n2484420/8442/1667 52.2636 21.0196 4789\r\n3 BRZECZKOWICE MANUAL 2) 50.1966 19.1853 4784\r\nJMP S.A. BIEDRONKA 4110 52.2013 21.0337 5411\r\nZABKA Z4067 K.1 50.4422 30.6196 5499\r\nSHELL 11 51.7558 19.4707 5541\r\nMPSA - A 309 52.1681 21.018 4111\r\nMcDonalds 23 52.2278 21.0021 5814\r\nLIDL BOH. WARSZAWY 52.1711 20.813 5411\r\nZABKA Z6100 K.1 52.2283 21.0033 5499\r\nZABKA Z7811 K.1 51.0588 16.1772 5499\r\nLIDL WILENSKA 52.2579 21.0409 5411\r\nJMP S.A. BIEDRONKA 403 50.0428 19.9687 5411\r\nZABKA Z6932 K.1 51.0588 16.1772 5499\r\nZABKA Z3489 K.1 51.0588 16.1772 5499\r\nZABKA Z5582 K.1 50.4422 30.6196 5499\r\nBILETOMAT BILET ZTM 52.2297 21.0218 4111\r\nH&M 50.0663 19.9465 5651\r\nul. Pawia 5 50.0682 19.9463 6011\r\nJMP S.A. BIEDRONKA 528 52.2303 20.9939 5411\r\nJMP S.A. BIEDRONKA 166 50.8676 20.6204 5411\r\nSPAR EXPRESS 50.0356 19.9996 5411\r\nPEPCO 110336 KATOWICE 50.262 19.0192 5651\r\nSKLEP LIDL 1760 50.261 19.0089 5411\r\nBATEX -VENDING 52.106 20.8227 5814\r\nIKEA Retail Sp. z o 52.3057 21.0826 5812\r\nAUCHAN POLSKA SP. Z 51.4259 21.1547 5411\r\nJMP S.A. BIEDRONKA 4419 52.272 20.9602 5411\r\nZABKA Z3205 K.1 50.0702 19.9362 5499\r\nPEPCO 1012 WARSZAWA 26 KO 52.2418 21.1601 5651\r\nPOLREGIO EN63 001 49.8285 22.6494 4111\r\nul. Ordona 7 52.2256 20.9526 6011\r\nJMP S.A. BIEDRONKA 558 51.0968 17.036 5411\r\nZARA GALERIA MOKOTO 52.1806 21.0039 5699\r\neLeclerc 50.0193 22.0196 5411\r\nMORSKIE OKO I REST. 50.0637 19.9361 5812\r\nCIRCLE K WARSZAWA, 52.3148 20.9777 5541\r\nSKLEP LIDL 1941 51.1113 17.0066 5411",
+      "baidu": {
+        "ok": true,
+        "value": "安娜·奥古斯托夫斯卡 51.0999 17.0299 5812\n欧尚波兰公司。\nZ 51.7789 19.4424 5411\nZABKA Z5782 K.1 50.4422 30.6196 5499\nSKLEP LIDL 1221 WRO 51.0763 17.0068 5411\nLIDL WIELICKA 50.0345 19.9685 5411\nJMP 美国。\nBIEDRONKA 6126 51.2494 22.5758 5411\n市场MAJA 48.0623 33.4977 5499\nZABKA Z6300 K.1 51.2191 22.7011 5499\nKAUFLAND PL 7962 51.0923 17.031 5411\n家乐福 罗兹 普日比斯 51.7515 19.5022 5411\n偶尔 AC1 50.0537 19.9556 5631\nMPSA - A 323 52.1787 21.0031 4111\nLPP CROPP 1512157 50.0671 19.9463 5651\nZABKA Z8793 K.1 51.0588 16.1772 5499\n沙拉故事 Wroclav 51.0963 17.0337 5812\n斯托克罗卡 1208 51.7179 19.4821 5499\n弗罗茨瓦夫城市交通卡 51.104 17.0304 4111\n市场点 50.0752 19.9292 5411\nKAUFLAND 01 53.4415 14.5554 5411\n欧尚波兰公司。\nZ 51.4258 21.1544 5411\nInmedio 31105 51.3816 21.1695 5994\n生咖啡 52.2332 21.013 5814\n家乐福超市 52.2312 21.105 5411\n卡托维兹CIRCLE K，50.2762 19.0177 5541\nZABKA Z7836 K.1 50.4422 30.6196 5499\n加油站 53.45 23.0897 5541\n2484420/8442/1667 52.2636 21.0196 4789\n3 布热奇科维采手册 2) 50.1966 19.1853 4784\nJMP美国。\nBIEDRONKA 4110 52.2013 21.0337 5411\nZABKA Z4067 K.1 50.4422 30.6196 5499\n外壳11 51.7558 19.4707 5541\nMPSA - A 309 52.1681 21.018 4111\n麦当劳 23 52.2278 21.0021 5814\nLIDL（廉价超市）后台。\n华沙 52.1711 20.813 5411\nZABKA Z6100 K.1 52.2283 21.0033 5499\nZABKA Z7811 K.1 51.0588 16.1772 5499\nLIDL WILENSKA 52.2579 21.0409 5411\nJMP美国。\nBIEDRONKA 403 50.0428 19.9687 5411\nZABKA Z6932 K.1 51.0588 16.1772 5499\nZABKA Z3489 K.1 51.0588 16.1772 5499\nZABKA Z5582 K.1 50.4422 30.6196 5499\nBILETOMAT BILET ZTM 52.2297 21.0218 4111\nH&M 50.0663 19.9465 5651\nul。\n帕维亚 5 50.0682 19.9463 6011\nJMP美国。\n别德龙卡 528 52.2303 20.9939 5411\nJMP 美国。\n\nBIEDRONKA 166 50.8676 20.6204 5411\nSPAR EXPRESS 50.0356 19.9996 5411\nPEPCO 110336 卡托维兹 50.262 19.0192 5651\nSKLEP LIDL 1760 50.261 19.0089 5411\nBATEX -自动售货机 52.106 20.8227 5814\n宜家零售公司。\nz o 52.3057 21.0826 5812\n欧尚波兰公司。\nZ 51.4259 21.1547 5411\nJMP美国。\nBIEDRONKA 4419 52.272 20.9602 5411\nZABKA Z3205 K.1 50.0702 19.9362 5499\nPEPCO 1012 华沙 26 KO 52.2418 21.1601 5651\nPOLREGIO EN63 001 49.8285 22.6494 4111\n“ul.”。\n奥多纳 7 52.2256 20.9526 6011\nJMP美国。\nBIEDRONKA 558 51.0968 17.036 5411\nZARA GALERIA MOKOTO 52.1806 21.0039 5699\neLeclerc 50.0193 22.0196 5411\n海眼与休息。\n50.0637 19.9361 5812\n华沙CIRCLE K，52.3148 20.9777 5541\nSKLEP LIDL 1941 51.1113 17.0066 5411"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "安娜·奥古斯托夫斯卡 51.0999 17.0299 5812\n欧尚波兰有限公司 51.7789 19.4424 5411\n扎布卡 Z5782 K.1 50.4422 30.6196 5499\n利多超市 1221 弗罗茨瓦夫 51.0763 17.0068 5411\n利多超市 维利奇卡 50.0345 19.9685 5411\nJMP股份公司 彼德龙卡 6126 51.2494 22.5758 5411\n马娅市场 48.0623 33.4977 5499\n扎布卡 Z6300 K.1 51.2191 22.7011 5499\n考夫兰波兰 7962 51.0923 17.031 5411\n家乐福 罗兹 普日贝什 51.7515 19.5022 5411\n帕尔福瓦 AC1 50.0537 19.9556 5631\nMPSA - A 323 52.1787 21.0031 4111\nLPP 克罗普 1512157 50.0671 19.9463 5651\n扎布卡 Z8793 K.1 51.0588 16.1772 5499\n沙拉故事 弗罗茨瓦夫 51.0963 17.0337 5812\n斯托克罗特卡 1208 51.7179 19.4821 5499\n城市卡票务 弗罗茨瓦夫 51.104 17.0304 4111\n点市场 50.0752 19.9292 5411\n考夫兰 01 53.4415 14.5554 5411\n欧尚波兰有限公司 51.4258 21.1544 5411\n因梅迪奥 31105 51.3816 21.1695 5994\n绿咖啡 52.2332 21.013 5814\n家乐福大卖场 52.2312 21.105 5411\n环K 卡托维兹， 50.2762 19.0177 5541\n扎布卡 Z7836 K.1 50.4422 30.6196 5499\n科里钦加油站 53.45 23.0897 5541\n2484420/8442/1667 52.2636 21.0196 4789\n3 布热奇科维采 手动 2) 50.1966 19.1853 4784\nJMP股份公司 彼德龙卡 4110 52.2013 21.0337 5411\n扎布卡 Z4067 K.1 50.4422 30.6196 5499\n壳牌 11 51.7558 19.4707 5541\nMPSA - A 309 52.1681 21.018 4111\n麦当劳 23 52.2278 21.0021 5814\n利多超市 华沙战士大道 52.1711 20.813 5411\n扎布卡 Z6100 K.1 52.2283 21.0033 5499\n扎布卡 Z7811 K.1 51.0588 16.1772 5499\n利多超市 维伦斯卡 52.2579 21.0409 5411\nJMP股份公司 彼德龙卡 403 50.0428 19.9687 5411\n扎布卡 Z6932 K.1 51.0588 16.1772 5499\n扎布卡 Z3489 K.1 51.0588 16.1772 5499\n扎布卡 Z5582 K.1 50.4422 30.6196 5499\n票务机 ZTM车票 52.2297 21.0218 4111\nH&M 50.0663 19.9465 5651\n帕维亚街 5号 50.0682 19.9463 6011\nJMP股份公司 彼德龙卡 528 52.2303 20.9939 5411\nJMP股份公司 彼德龙卡 166 50.8676 20.6204 5411\n斯帕尔快捷 50.0356 19.9996 5411\n佩普科 110336 卡托维兹 50.262 19.0192 5651\n利多超市 1760 50.261 19.0089 5411\n巴泰克斯-自动售货 52.106 20.8227 5814\n宜家零售有限公司 52.3057 21.0826 5812\n欧尚波兰有限公司 51.4259 21.1547 5411\nJMP股份公司 彼德龙卡 4419 52.272 20.9602 5411\n扎布卡 Z3205 K.1 50.0702 19.9362 5499\n佩普科 1012 华沙 26 科 52.2418 21.1601 5651\n波兰区域铁路 EN63 001 49.8285 22.6494 4111\n奥尔东纳街 7号 52.2256 20.9526 6011\nJMP股份公司 彼德龙卡 558 51.0968 17.036 5411\nZARA 莫科托夫购物中心 52.1806 21.0039 5699\n勒克莱尔 50.0193 22.0196 5411\n海之眼 I 餐厅 50.0637 19.9361 5812\n环K 华沙， 52.3148 20.9777 5541\n利多超市 1941 51.1113 17.0066 5411"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "安娜·奥古斯托夫斯卡 51.0999 17.0299 5812\n欧尚波兰有限公司 51.7789 19.4424 5411\n扎布卡 Z5782 K.1 50.4422 30.6196 5499\n利多超市 1221 弗罗茨瓦夫 51.0763 17.0068 5411\n利多超市 维利奇卡 50.0345 19.9685 5411\nJMP股份公司 别德龙卡 6126 51.2494 22.5758 5411\n马亚超市 48.0623 33.4977 5499\n扎布卡 Z6300 K.1 51.2191 22.7011 5499\n考夫兰 波兰 7962 51.0923 17.031 5411\n家乐福 罗兹 普日贝什 51.7515 19.5022 5411\n帕尔福瓦 AC1 50.0537 19.9556 5631\nMPSA - A 323 52.1787 21.0031 4111\nLPP CROPP 1512157 50.0671 19.9463 5651\n扎布卡 Z8793 K.1 51.0588 16.1772 5499\n沙拉故事 弗罗茨瓦夫 51.0963 17.0337 5812\n斯托克罗特卡 1208 51.7179 19.4821 5499\n弗罗茨瓦夫城市卡车票 51.104 17.0304 4111\n点超市 50.0752 19.9292 5411\n考夫兰 01 53.4415 14.5554 5411\n欧尚波兰有限公司 51.4258 21.1544 5411\n因梅迪奥 31105 51.3816 21.1695 5994\n绿咖啡 52.2332 21.013 5814\n家乐福 大卖场 52.2312 21.105 5411\n卡托维兹CIRCLE K，50.2762 19.0177 5541\n扎布卡 Z7836 K.1 50.4422 30.6196 5499\n科里钦加油站 53.45 23.0897 5541\n2484420/8442/1667 52.2636 21.0196 4789\n3 布热奇科维采 手动 2) 50.1966 19.1853 4784\nJMP股份公司 别德龙卡 4110 52.2013 21.0337 5411\n扎布卡 Z4067 K.1 50.4422 30.6196 5499\n壳牌 11 51.7558 19.4707 5541\nMPSA - A 309 52.1681 21.018 4111\n麦当劳 23 52.2278 21.0021 5814\n利多超市 华沙战士大道 52.1711 20.813 5411\n扎布卡 Z6100 K.1 52.2283 21.0033 5499\n扎布卡 Z7811 K.1 51.0588 16.1772 5499\n利多超市 维伦斯卡 52.2579 21.0409 5411\nJMP股份公司 别德龙卡 403 50.0428 19.9687 5411\n扎布卡 Z6932 K.1 51.0588 16.1772 5499\n扎布卡 Z3489 K.1 51.0588 16.1772 5499\n扎布卡 Z5582 K.1 50.4422 30.6196 5499\nZTM车票售票机 52.2297 21.0218 4111\nH&M 50.0663 19.9465 5651\n帕维亚街 5 50.0682 19.9463 6011\nJMP股份公司 别德龙卡 528 52.2303 20.9939 5411\nJMP股份公司 别德龙卡 166 50.8676 20.6204 5411\n斯帕尔快捷 50.0356 19.9996 5411\n佩普科 110336 卡托维兹 50.262 19.0192 5651\n利多超市 1760 50.261 19.0089 5411\nBATEX -自动售货机 52.106 20.8227 5814\n宜家零售有限公司 52.3057 21.0826 5812\n欧尚波兰有限公司 51.4259 21.1547 5411\nJMP股份公司 别德龙卡 4419 52.272 20.9602 5411\n扎布卡 Z3205 K.1 50.0702 19.9362 5499\n佩普科 1012 华沙 26 KO 52.2418 21.1601 5651\n波兰区域铁路 EN63 001 49.8285 22.6494 4111\n奥尔多纳街 7 52.2256 20.9526 6011\nJMP股份公司 别德龙卡 558 51.0968 17.036 5411\nZARA 莫科托夫购物中心 52.1806 21.0039 5699\n勒克莱尔 50.0193 22.0196 5411\n海之眼餐厅 50.0637 19.9361 5812\n华沙CIRCLE K，52.3148 20.9777 5541\n利多超市 1941 51.1113 17.0066 5411",
+          "changed": true,
+          "note": "候选译文存在多处漏译、截断和错译，已根据原文完整重译。"
+        }
+      }
+    },
+    {
+      "id": "8077ef71/cases/8077ef71/sessions/session_000__sharegpt_6oXLF8d_0.md:TURN_000",
+      "case_id": "8077ef71",
+      "file": "cases/8077ef71/sessions/session_000__sharegpt_6oXLF8d_0.md",
+      "block_type": "TURN_000",
+      "source": "Write a maths school report for Stuart. It should be about 3 sentences long. His strength is expanding brackets. His target it area and perimeter.",
+      "baidu": {
+        "ok": true,
+        "value": "为斯图尔特写一份数学成绩报告。报告应包含约3句话。他的强项是展开括号。他的目标是面积和周长。"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "为斯图尔特撰写一份数学学科报告。报告长度约为三句话。他的强项是展开括号。他的目标是面积与周长。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "为斯图尔特写一份数学成绩报告。报告应包含约3句话。他的强项是展开括号。他的目标是面积和周长。",
+          "changed": false,
+          "note": "候选译文完整准确，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "830ce83f/cases/830ce83f/sessions/session_000__062e9120_1.md:TURN_000",
+      "case_id": "830ce83f",
+      "file": "cases/830ce83f/sessions/session_000__062e9120_1.md",
+      "block_type": "TURN_000",
+      "source": "I'm looking to explore more sculpting techniques and was wondering if you could recommend some online resources or tutorials on advanced clay modeling? By the way, I spend a few hours each week practicing at home, so I'm eager to try out new skills.",
+      "baidu": {
+        "ok": true,
+        "value": "我想探索更多的雕塑技巧，不知道你能否推荐一些关于高级黏土建模的在线资源或教程？顺便说一下，我每周都会在家练习几个小时，所以我很渴望尝试新技能。"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我想探索更多雕塑技巧，想问问你能不能推荐一些关于高级黏土建模的在线资源或教程？顺便说一下，我每周都会在家练习几个小时，所以很期待尝试新技能。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我想探索更多的雕塑技巧，不知道你能否推荐一些关于高级黏土建模的在线资源或教程？顺便说一下，我每周都会在家练习几个小时，所以我很渴望尝试新技能。",
+          "changed": false,
+          "note": "候选译文完整准确，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "89941a93/cases/89941a93/sessions/session_000__78c3d7ab.md:TURN_000",
+      "case_id": "89941a93",
+      "file": "cases/89941a93/sessions/session_000__78c3d7ab.md",
+      "block_type": "TURN_000",
+      "source": "I'm thinking of recording a walkthrough for Resident Evil Village, but I'm not sure what software to use for screen recording and video editing. Can you recommend some good options?",
+      "baidu": {
+        "ok": true,
+        "value": "我想录制《生化危机8》的攻略视频，但不确定该使用什么软件来进行屏幕录制和视频编辑。你能推荐一些好的选择吗？"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我在考虑为《生化危机：村庄》录制一段通关攻略视频，但不确定该用什么软件进行屏幕录制和视频编辑。你能推荐一些好的选择吗？"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我想录制《生化危机8》的攻略视频，但不确定该使用什么软件来进行屏幕录制和视频编辑。你能推荐一些好的选择吗？",
+          "changed": false,
+          "note": "译文准确完整，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "8a2466db/cases/8a2466db/sessions/session_000__ultrachat_74081.md:TURN_000",
+      "case_id": "8a2466db",
+      "file": "cases/8a2466db/sessions/session_000__ultrachat_74081.md",
+      "block_type": "TURN_000",
+      "source": "What are some potential risks associated with relying solely on logical reasoning to guide ethical decision-making?",
+      "baidu": {
+        "ok": true,
+        "value": "仅依赖逻辑推理来指导伦理决策会带来哪些潜在风险？"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "仅依赖逻辑推理来指导伦理决策存在哪些潜在风险？"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "仅依赖逻辑推理来指导伦理决策会带来哪些潜在风险？",
+          "changed": false,
+          "note": "候选译文准确完整，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "b3c15d39/cases/b3c15d39/sessions/session_000__answer_05d808e6_1.md:TURN_000",
+      "case_id": "b3c15d39",
+      "file": "cases/b3c15d39/sessions/session_000__answer_05d808e6_1.md",
+      "block_type": "TURN_000",
+      "source": "I'm thinking of taking my camera gear on a hike this weekend and I want to make sure I have everything I need. Can you give me a list of essential items to pack in my camera bag? By the way, I recently got a new bag from Peak Design, which I love, but I'm still getting used to the layout - it's been a challenge finding everything quickly, like when I was looking for my tripod during a photo walk on February 5th, which is also when I realized I lost my remote shutter release, so I ordered a new one online.",
+      "baidu": {
+        "ok": true,
+        "value": "我想这个周末带着相机装备去徒步旅行，想确保带上所有必需品。你能给我列一个相机包里要带的必备物品清单吗？顺便说一下，我最近从Peak Design买了一个新包，我很喜欢，但还在适应它的布局——快速找到所有东西对我来说是个挑战，比如2月5日我在拍照时想找三脚架，这时我才发现我的遥控快门丢了，于是我在网上订购了一个新的。"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我正考虑这个周末带着我的相机装备去远足，想确保带齐所有必需品。你能给我列一份相机包里必备物品的清单吗？顺便提一下，我最近从Peak Design买了一个新包，我非常喜欢，但我还在适应它的布局——快速找到东西一直是个挑战，比如2月5日那次摄影漫步时我找三脚架的经历，也就是在那时我发现遥控快门线丢了，所以我在网上订购了一个新的。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我想这个周末带着相机装备去徒步旅行，想确保带上所有必需品。你能给我列一个相机包里要带的必备物品清单吗？顺便说一下，我最近从Peak Design买了一个新包，我很喜欢，但还在适应它的布局——快速找到所有东西对我来说是个挑战，比如2月5日我在拍照时想找三脚架，这时我才发现我的遥控快门丢了，于是我在网上订购了一个新的。",
+          "changed": false,
+          "note": "候选译文完整准确，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "e493bb7c/cases/e493bb7c/sessions/session_000__acea489c.md:TURN_000",
+      "case_id": "e493bb7c",
+      "file": "cases/e493bb7c/sessions/session_000__acea489c.md",
+      "block_type": "TURN_000",
+      "source": "I'm looking for some new vegan recipes to try out. Do you have any good ideas for vegan comfort food?",
+      "baidu": {
+        "ok": true,
+        "value": "我正在寻找一些新的素食食谱来尝试。你对素食的慰藉食物有什么好的建议吗？"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我在寻找一些新的纯素食谱来尝试。你有什么好的纯素舒适食品点子吗？"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我正在寻找一些新的素食食谱来尝试。你有什么好的素食舒适食品建议吗？",
+          "changed": true,
+          "note": "修正了“慰藉食物”的译法，改为更自然的“舒适食品”。"
+        }
+      }
+    },
+    {
+      "id": "eeda8a6d/cases/eeda8a6d/sessions/session_000__b2a021c9_1.md:TURN_000",
+      "case_id": "eeda8a6d",
+      "file": "cases/eeda8a6d/sessions/session_000__b2a021c9_1.md",
+      "block_type": "TURN_000",
+      "source": "I'm looking for some recommendations on blues guitarists I should listen to. I've been getting into that genre lately and I'd love to explore more artists. By the way, I just started taking guitar lessons again on February 15th after a 5-year break, and it's been great so far!",
+      "baidu": {
+        "ok": true,
+        "value": "我正在寻找一些关于我应该听的蓝调吉他手推荐。我最近开始喜欢上这种音乐类型，很想探索更多艺术家。顺便说一下，在中断5年后，我于2月15日重新开始上吉他课，到目前为止感觉很棒！"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我在寻找一些关于蓝调吉他手的推荐，想听听他们的音乐。我最近开始迷上这个流派，很想探索更多艺术家。顺便说一下，我2月15日重新开始上吉他课了，这是时隔5年后的再次学习，到目前为止感觉非常棒！"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我正在寻找一些关于我应该听的蓝调吉他手的推荐。我最近开始接触这种音乐类型，很想探索更多艺术家。顺便说一下，在中断5年后，我于2月15日重新开始上吉他课，到目前为止感觉很好！",
+          "changed": true,
+          "note": "修正了'吉他手推荐'的表述，并调整了'开始喜欢上'为更准确的'开始接触'。"
+        }
+      }
+    },
+    {
+      "id": "gpt4_59149c77/cases/gpt4_59149c77/sessions/session_000__f04fae0a.md:TURN_000",
+      "case_id": "gpt4_59149c77",
+      "file": "cases/gpt4_59149c77/sessions/session_000__f04fae0a.md",
+      "block_type": "TURN_000",
+      "source": "I'm planning a trip to the grocery store this weekend and was thinking of trying some new recipes. Do you have any healthy dinner ideas that use chicken breast?",
+      "baidu": {
+        "ok": true,
+        "value": "我计划这个周末去一趟杂货店，想尝试一些新的食谱。你有没有用鸡胸肉做的健康晚餐推荐？"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我打算这个周末去趟杂货店，正想着尝试一些新食谱。你有什么用鸡胸肉做的健康晚餐点子吗？"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我计划这个周末去一趟杂货店，想尝试一些新的食谱。你有没有用鸡胸肉做的健康晚餐推荐？",
+          "changed": false,
+          "note": "候选译文完整准确，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "gpt4_6dc9b45b/cases/gpt4_6dc9b45b/sessions/session_000__1e058dfd_1.md:TURN_000",
+      "case_id": "gpt4_6dc9b45b",
+      "file": "cases/gpt4_6dc9b45b/sessions/session_000__1e058dfd_1.md",
+      "block_type": "TURN_000",
+      "source": "I'm looking for some dog-friendly hiking trails in my area. I've been inspired by Rachel's new puppy on Instagram - I commented on her post last Saturday and she shared a funny story about the puppy's first vet visit. Do you have any recommendations?",
+      "baidu": {
+        "ok": true,
+        "value": "我正在寻找我所在地区适合带狗徒步的小径。我在Instagram上被瑞秋的新小狗启发了——上周六我在她的帖子下评论了，她分享了一个关于小狗第一次去看兽医的有趣故事。你有什么推荐吗？"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我在寻找附近适合带狗徒步的路线。上周六我在Instagram上评论了Rachel的新小狗的帖子，她分享了一个关于小狗第一次看兽医的有趣故事，这让我受到了启发。你有什么推荐吗？"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我正在寻找我所在地区适合带狗徒步的小径。我在Instagram上被瑞秋的新小狗启发了——上周六我在她的帖子下评论了，她分享了一个关于小狗第一次去看兽医的有趣故事。你有什么推荐吗？",
+          "changed": false,
+          "note": "候选译文完整准确，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "28dc39ac/cases/28dc39ac/sessions/session_000__5854eebc_1.md:TURN_001",
+      "case_id": "28dc39ac",
+      "file": "cases/28dc39ac/sessions/session_000__5854eebc_1.md",
+      "block_type": "TURN_001",
+      "source": "A fellow Stranger Things fan! I'm happy to help you find your next sci-fi fix. Here are some shows that you might enjoy:\r\n\r\n1. **The Haunting of Hill House**: A Netflix series that shares a similar atmosphere and blend of horror, mystery, and sci-fi elements. It follows a family's supernatural experiences in a haunted house.\r\n2. **The X-Files**: A classic sci-fi horror series that has been revived in recent years. It follows FBI agents Mulder and Scully as they investigate paranormal cases.\r\n3. **Black Mirror**: A thought-provoking anthology series that explores the darker side of technology and its impact on society. Each episode is a standalone story with a unique sci-fi concept.\r\n4. **The OA**: Another Netflix series that combines sci-fi, mystery, and supernatural elements. It follows a young woman who returns after being missing for seven years, with a mysterious story to tell.\r\n5. **Fringe**: A J.J. Abrams-created series that explores cases involving fringe science and unexplained phenomena. It has a similar blend of sci-fi, mystery, and action.\r\n6. **Travelers**: A Netflix series that follows a team of special agents from the future who travel back in time to the present day to prevent a global catastrophe.\r\n7. **Legion**: An FX series that follows a mutant with time-traveling abilities as he tries to uncover the truth about his past and the sinister forces that seek to control him.\r\n8. **Colony**: A family drama set in a dystopian near-future, where an occupied Los Angeles serves as the backdrop for a resistance movement.\r\n9. **The Man in the High Castle**: An Amazon Prime series based on Philip K. Dick's novel, exploring an alternate history where the Axis powers won World War II.\r\n10. **Electric Dreams**: An anthology series based on Philip K. Dick's short stories, featuring a diverse range of sci-fi tales and themes.\r\n\r\nI hope you find some new shows to obsess over!",
+      "baidu": {
+        "ok": true,
+        "value": "《怪奇物语》的粉丝！很高兴能帮你找到下一部科幻佳作。以下是一些你可能会喜欢的节目：\n\n1. **《鬼入侵》**: 这是一部Netflix出品的电视剧，同样营造了一种恐怖、神秘和科幻元素交织的氛围。该剧讲述了一个家庭在一栋闹鬼的房子里所经历的超自然事件。\n2. **《X档案》**：一部近年来重播的经典科幻恐怖电视剧。该剧讲述了联邦调查局特工穆德和斯嘉丽调查超自然案件的故事。\n3. **黑镜**：这是一部引人深思的选集系列，深入探讨了科技的阴暗面及其对社会的影响。每一集都是一个独立的故事，包含独特的科幻概念。\n4. **《The OA》**：另一部融合了科幻、悬疑和超自然元素的Netflix剧集。该剧讲述了一位失踪七年后重返人间的年轻女子，她身上隐藏着一个神秘的故事。\n5. **Fringe**：由J.J. Abrams创作的系列剧，探索涉及边缘科学和无法解释的现象的案件。该剧同样融合了科幻、悬疑和动作元素。\n6. **时空旅人**：一部Netflix出品的电视剧，讲述了一组来自未来的特工穿越回现代，以阻止一场全球性灾难的故事。\n7. **军团**：这是一部FX系列剧，讲述了一位拥有时间旅行能力的变种人，他试图揭开自己过去的真相，以及那些试图控制他的邪恶势力。\n8. **殖民地**：一部以反乌托邦式近未来为背景的家庭剧，故事发生在被占领的洛杉矶，讲述了一场抵抗运动。\n9. **《高堡奇人》**: 一部基于菲利普·K·迪克小说的亚马逊Prime系列剧，探索了一个轴心国赢得第二次世界大战的另类历史。\n10. **《电子梦》**：一部基于菲利普·K·迪克短篇小说的选集系列，展现了丰富多彩的科幻故事和主题。\n我希望你能找到一些新的节目来让你着迷！"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "同为《怪奇物语》的粉丝！很高兴能帮你找到下一部科幻剧集。以下是一些你可能会喜欢的剧集：\n\n1. **《鬼入侵》**：一部Netflix系列剧，与《怪奇物语》有着相似的氛围，融合了恐怖、悬疑和科幻元素。它讲述了一个家庭在一座闹鬼的宅邸中的超自然经历。\n2. **《X档案》**：一部经典的科幻恐怖系列剧，近年来已重启。它讲述了FBI探员穆德和斯卡利调查超自然案件的故事。\n3. **《黑镜》**：一部发人深省的单元剧，探讨了技术的阴暗面及其对社会的影响。每一集都是一个独立的故事，带有独特的科幻概念。\n4. **《OA》**：另一部Netflix系列剧，结合了科幻、悬疑和超自然元素。它讲述了一位年轻女性失踪七年后归来，带着一个神秘故事的故事。\n5. **《危机边缘》**：由J.J.艾布拉姆斯创作的系列剧，探讨涉及边缘科学和未解现象的案件。它融合了科幻、悬疑和动作元素。\n6. **《旅行者》**：一部Netflix系列剧，讲述了一组来自未来的特工穿越回现在，以阻止全球性灾难的故事。\n7. **《大群》**：一部FX系列剧，讲述了一位拥有时间旅行能力的变种人，试图揭开自己过去的真相以及试图控制他的邪恶势力。\n8. **《殖民地》**：一部设定在反乌托邦近未来的家庭剧，被占领的洛杉矶成为抵抗运动的背景。\n9. **《高堡奇人》**：一部Amazon Prime系列剧，基于菲利普·K·迪克的小说，探索了轴心国赢得第二次世界大战的另类历史。\n10. **《电子梦》**：一部基于菲利普·K·迪克短篇小说的单元剧，涵盖了多样化的科幻故事和主题。\n\n希望你能找到一些让你着迷的新剧集！"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "《怪奇物语》的粉丝！很高兴能帮你找到下一部科幻佳作。以下是一些你可能会喜欢的剧集：\n\n1. **《鬼入侵》**：一部Netflix剧集，氛围与《怪奇物语》相似，融合了恐怖、悬疑和科幻元素。该剧讲述了一个家庭在一栋闹鬼的房子里经历的超自然事件。\n2. **《X档案》**：一部经典科幻恐怖剧集，近年来已重启。该剧讲述了联邦调查局特工穆德和斯卡利调查超自然案件的故事。\n3. **《黑镜》**：一部发人深省的选集剧集，探讨了科技的阴暗面及其对社会的影响。每一集都是一个独立的故事，包含独特的科幻概念。\n4. **《OA》**：另一部Netflix剧集，融合了科幻、悬疑和超自然元素。该剧讲述了一位失踪七年后归来的年轻女子，她带着一个神秘的故事。\n5. **《危机边缘》**：一部由J.J.艾布拉姆斯创作的剧集，探索涉及边缘科学和无法解释现象的案件。该剧同样融合了科幻、悬疑和动作元素。\n6. **《旅行者》**：一部Netflix剧集，讲述了一组来自未来的特工穿越回现在，以阻止一场全球性灾难的故事。\n7. **《军团》**：一部FX剧集，讲述了一位拥有时间旅行能力的变种人，他试图揭开自己过去的真相，以及那些试图控制他的邪恶势力。\n8. **《殖民地》**：一部以反乌托邦式近未来为背景的家庭剧，被占领的洛杉矶成为抵抗运动的背景。\n9. **《高堡奇人》**：一部基于菲利普·K·迪克小说的亚马逊Prime剧集，探索了轴心国赢得第二次世界大战的另类历史。\n10. **《电子梦》**：一部基于菲利普·K·迪克短篇小说的选集剧集，展现了多样化的科幻故事和主题。\n\n希望你能找到一些让你着迷的新剧！",
+          "changed": true,
+          "note": "修正了剧名翻译、角色名拼写及部分表述，确保完整准确。"
+        }
+      }
+    },
+    {
+      "id": "4dfccbf7/cases/4dfccbf7/sessions/session_000__ultrachat_311480.md:TURN_001",
+      "case_id": "4dfccbf7",
+      "file": "cases/4dfccbf7/sessions/session_000__ultrachat_311480.md",
+      "block_type": "TURN_001",
+      "source": "There are several linguistic factors that have contributed to the distinctiveness of Tamil within the Dravidian language family:\r\n\r\n1. Phonology: Tamil has a unique phonological system with a large number of consonants, including retroflex consonants that are not found in other Dravidian languages. It also has a complex system of vowel length, which has developed independently from other Dravidian languages.\r\n\r\n2. Morphology: Tamil has a highly agglutinative morphology, which allows for the formation of long and complex words by adding suffixes to the root words. This feature is not as prominent in other Dravidian languages.\r\n\r\n3. Syntax: Tamil has a different word order than other Dravidian languages. It follows a subject-object-verb (SOV) order, whereas other Dravidian languages mostly follow a subject-verb-object (SVO) order.\r\n\r\n4. Vocabulary: Tamil has borrowed many words from Sanskrit, which has influenced its vocabulary. In contrast, other Dravidian languages have been less influenced by Sanskrit.\r\n\r\n5. Script: Tamil uses a unique script, which is different from other Dravidian scripts. It has a large number of letters that represent different sounds, which allows for greater phonetic representation of the language.\r\n\r\nOverall, these factors have contributed to the distinctiveness of Tamil within the Dravidian language family.",
+      "baidu": {
+        "ok": true,
+        "value": "在达罗毗荼语系中，有多个语言因素共同促成了泰米尔语的独特性：\n1. 音系学：泰米尔语具有独特的音系系统，包含大量辅音，包括在其他德拉威语系语言中不存在的卷舌辅音。此外，泰米尔语的元音长度系统也十分复杂，该系统独立于其他德拉威语系语言发展而来。\n2. 形态学：泰米尔语具有高度黏着语的形态学特征，可以通过在词根后添加后缀来构成长而复杂的单词。这一特征在其他德拉威语系语言中并不那么显著。\n3. 句法：泰米尔语的语序与其他德拉威语不同。它遵循主语-宾语-动词（SOV）的语序，而其他德拉威语大多遵循主语-动词-宾语（SVO）的语序。\n4. 词汇：泰米尔语从梵语中借用了许多词汇，这对其词汇产生了影响。相比之下，其他德拉威语受梵语的影响较小。\n5. 文字：泰米尔语使用一种独特的文字，与其他德拉威语系文字不同。它有大量的字母，代表不同的发音，这使得该语言在语音表现上更为丰富。\n总体而言，这些因素共同促成了泰米尔语在德拉威语系中的独特性。"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "有几个语言学因素促成了泰米尔语在达罗毗荼语系中的独特性：\n\n1. 音系学：泰米尔语拥有独特的音系系统，包含大量辅音，其中包括其他达罗毗荼语言中未见的卷舌辅音。它还具备复杂的元音长度系统，这一特点独立于其他达罗毗荼语言发展而来。\n\n2. 形态学：泰米尔语具有高度黏着性的形态结构，允许通过在词根上添加后缀来构成长而复杂的词汇。这一特征在其他达罗毗荼语言中并不那么突出。\n\n3. 句法学：泰米尔语的语序与其他达罗毗荼语言不同。它遵循主语-宾语-动词（SOV）顺序，而其他达罗毗荼语言大多遵循主语-动词-宾语（SVO）顺序。\n\n4. 词汇：泰米尔语从梵语借用了大量词汇，这影响了其词汇构成。相比之下，其他达罗毗荼语言受梵语影响较小。\n\n5. 文字：泰米尔语使用独特的文字系统，与其他达罗毗荼文字不同。它拥有大量代表不同音素的字母，这使得语言能够更精确地进行语音表示。\n\n总体而言，这些因素共同促成了泰米尔语在达罗毗荼语系中的独特性。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "在达罗毗荼语系中，有多个语言因素共同促成了泰米尔语的独特性：\n\n1. 音系学：泰米尔语具有独特的音系系统，包含大量辅音，包括在其他达罗毗荼语系语言中不存在的卷舌辅音。此外，泰米尔语的元音长度系统也十分复杂，该系统独立于其他达罗毗荼语系语言发展而来。\n\n2. 形态学：泰米尔语具有高度黏着语的形态学特征，可以通过在词根后添加后缀来构成长而复杂的单词。这一特征在其他达罗毗荼语系语言中并不那么显著。\n\n3. 句法：泰米尔语的语序与其他达罗毗荼语不同。它遵循主语-宾语-动词（SOV）的语序，而其他达罗毗荼语大多遵循主语-动词-宾语（SVO）的语序。\n\n4. 词汇：泰米尔语从梵语中借用了许多词汇，这对其词汇产生了影响。相比之下，其他达罗毗荼语受梵语的影响较小。\n\n5. 文字：泰米尔语使用一种独特的文字，与其他达罗毗荼语系文字不同。它有大量的字母，代表不同的发音，这使得该语言在语音表现上更为丰富。\n\n总体而言，这些因素共同促成了泰米尔语在达罗毗荼语系中的独特性。",
+          "changed": true,
+          "note": "修正了术语翻译不一致（德拉威语系改为达罗毗荼语系），并统一了全文表述。"
+        }
+      }
+    },
+    {
+      "id": "6ade9755/cases/6ade9755/sessions/session_000__27c10839_2.md:TURN_001",
+      "case_id": "6ade9755",
+      "file": "cases/6ade9755/sessions/session_000__27c10839_2.md",
+      "block_type": "TURN_001",
+      "source": "I'm happy to help you with your herb garden concerns!\r\n\r\nCilantro can be a bit finicky, but I'd be happy to help you troubleshoot. Watering issues are a common culprit when it comes to slow growth. Here are a few questions to help us narrow down the cause:\r\n\r\n1. **How often are you watering your cilantro?** Cilantro prefers well-draining soil and can be susceptible to root rot if the soil is too wet. If you're watering daily, try scaling back to every other day or every two to three days, depending on the temperature and humidity in your area.\r\n2. **How much water are you giving it each time?** Make sure you're not overwatering, which can cause the roots to rot. A good rule of thumb is to provide about 1-2 inches of water per week, either through rainfall or irrigation.\r\n3. **Is the soil drying out completely between waterings?** If the soil is consistently moist, cilantro might not be getting enough oxygen. Try sticking your finger into the soil up to the first knuckle. If the soil feels dry, it's time to water.\r\n4. **Is your cilantro getting enough sunlight?** Cilantro loves full sun to partial shade, so if it's not getting at least 4-6 hours of direct sunlight, it might be struggling.\r\n5. **Is the soil temperature suitable?** Cilantro prefers cooler temperatures, between 60°F to 75°F (15°C to 24°C). If your soil is too hot or cold, it might affect growth.\r\n\r\nAs for your snake plant, Slinky, using neem oil is a great idea! Neem oil is a natural, gentle, and effective way to control pests like spider mites, mealybugs, and scale. Just make sure to follow the instructions on the label and test a small area of the plant first to ensure Slinky doesn't have any adverse reactions.\r\n\r\nKeep an eye on your cilantro's progress, and if you're still concerned, feel free to provide more details or ask additional questions. Happy gardening!",
+      "baidu": {
+        "ok": true,
+        "value": "我很乐意帮助你解决关于草药园的问题！\n香菜可能有点难养，但我很乐意帮你解决问题。当香菜生长缓慢时，浇水问题通常是罪魁祸首。以下是一些问题，可以帮助我们缩小原因的范围：\n1. **你多久浇一次香菜？**香菜喜欢排水良好的土壤，如果土壤过湿，则容易发生根腐病。如果你每天浇水，可以尝试减少浇水的频率，改为每隔一天或每两到三天浇一次水，具体取决于你所在地区的温度和湿度。\n2. **你每次给它浇多少水？**请确保不要浇水过多，否则会导致根部腐烂。一个好的经验法则是每周通过降雨或灌溉提供约1-2英寸的水。\n3. **两次浇水之间，土壤是否完全变干？** 如果土壤一直保持湿润，那可能是香菜没有获得足够的氧气。试着将手指插入土壤，直到第一指节处。如果感觉土壤干燥，那就是该浇水的时候了。\n4. **你的香菜是否获得了充足的阳光？**香菜喜欢充足的阳光至部分遮荫的环境，因此，如果它未能获得至少4-6小时的直射阳光，它可能会生长困难。\n5. **土壤温度是否适宜？**香菜喜欢较凉爽的温度，适宜温度为60°F至75°F（15°C至24°C）。如果土壤温度过高或过低，都可能影响其生长。\n至于你的虎尾兰，斯林基，使用印楝油是个好主意！印楝油是一种天然、温和且有效的害虫控制方法，可以控制蜘蛛螨、粉虱和蚧虫等害虫。只需确保按照标签上的说明使用，并先在植物的一小块区域进行测试，以确保斯林基不会产生任何不良反应。\n\n关注你的香菜生长情况，如果你仍然担心，请随时提供更多细节或提出更多问题。祝你园艺愉快！"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我很乐意帮你解决香草园的问题！\n\n香菜有时确实有点难伺候，但我很乐意帮你排查原因。浇水问题是导致生长缓慢的常见原因。这里有几个问题，可以帮助我们缩小范围：\n\n1. **你多久给香菜浇一次水？** 香菜喜欢排水良好的土壤，如果土壤过湿，容易发生根腐病。如果你每天都浇水，试着减少到每隔一天或每两到三天浇一次，具体取决于你所在地区的温度和湿度。\n2. **每次浇多少水？** 确保不要浇水过多，这会导致根部腐烂。一个经验法则是每周提供大约1-2英寸的水，无论是通过降雨还是灌溉。\n3. **两次浇水之间土壤是否完全干透？** 如果土壤一直湿润，香菜可能得不到足够的氧气。试着把手指插入土壤到第一个指节。如果感觉土壤干燥，就该浇水了。\n4. **你的香菜是否得到足够的阳光？** 香菜喜欢全日照到半阴，如果每天没有至少4-6小时的直射阳光，它可能会生长困难。\n5. **土壤温度是否合适？** 香菜喜欢较凉爽的温度，在60°F到75°F（15°C到24°C）之间。如果土壤太热或太冷，可能会影响生长。\n\n至于你的虎尾兰Slinky，使用印楝油是个好主意！印楝油是一种天然、温和且有效的方法，可以控制红蜘蛛、粉蚧和介壳虫等害虫。只需确保按照标签上的说明操作，并先在植物的一小块区域测试，以确保Slinky没有不良反应。\n\n留意香菜的进展，如果你仍然担心，随时提供更多细节或提出其他问题。祝你园艺愉快！"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我很乐意帮助你解决关于草药园的问题！\n\n香菜可能有点难养，但我很乐意帮你排查问题。浇水问题通常是导致生长缓慢的常见原因。以下是一些问题，可以帮助我们缩小原因范围：\n\n1. **你多久给香菜浇一次水？** 香菜喜欢排水良好的土壤，如果土壤过湿，容易发生根腐病。如果你每天浇水，可以尝试减少频率，改为每隔一天或每两到三天浇一次水，具体取决于你所在地区的温度和湿度。\n2. **你每次给它浇多少水？** 确保不要浇水过多，否则会导致根部腐烂。一个好的经验法则是每周通过降雨或灌溉提供约1-2英寸的水。\n3. **两次浇水之间，土壤是否完全变干？** 如果土壤一直保持湿润，香菜可能无法获得足够的氧气。试着将手指插入土壤，直到第一指节处。如果感觉土壤干燥，那就是该浇水的时候了。\n4. **你的香菜是否获得了充足的阳光？** 香菜喜欢充足的阳光至部分遮荫的环境，因此，如果它未能获得至少4-6小时的直射阳光，它可能会生长困难。\n5. **土壤温度是否适宜？** 香菜喜欢较凉爽的温度，适宜温度为60°F至75°F（15°C至24°C）。如果土壤温度过高或过低，都可能影响其生长。\n\n至于你的虎尾兰，斯林基，使用印楝油是个好主意！印楝油是一种天然、温和且有效的害虫控制方法，可以控制蜘蛛螨、粉虱和蚧虫等害虫。只需确保按照标签上的说明使用，并先在植物的一小块区域进行测试，以确保斯林基不会产生任何不良反应。\n\n关注你的香菜生长情况，如果你仍然担心，请随时提供更多细节或提出更多问题。祝你园艺愉快！",
+          "changed": false,
+          "note": "候选译文完整准确，无需修改。"
+        }
+      }
+    },
+    {
+      "id": "75832dbd/cases/75832dbd/sessions/session_000__sharegpt_y7MbHgZ_21.md:TURN_001",
+      "case_id": "75832dbd",
+      "file": "cases/75832dbd/sessions/session_000__sharegpt_y7MbHgZ_21.md",
+      "block_type": "TURN_001",
+      "source": "The final H2 is the Conclusion. Make sure it includes the following: \r\n- Sum up the key points discussed and reiterate the importance of seeking legal advice when entering into a Deed of Release in a construction contract in NSW. \r\n- Call to action on encouraging readers to consult with a skilled and experienced construction lawyer to ensure that their Deed of Release is legally valid and serves their best interests.\r\nWord count limit is only 100-150 words. Avoid using the phrase \"In conclusion.\"",
+      "baidu": {
+        "ok": true,
+        "value": "最后的H2是结论部分。请确保它包括以下内容：\n- 总结讨论的要点，并重申在新南威尔士州签订建筑合同中的免责契约时，寻求法律建议的重要性。\n- 呼吁读者咨询专业且经验丰富的建筑律师，以确保其解除契约具有法律效力，并符合其最佳利益。\n字数限制仅为100-150字。避免使用“总之”一词"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "最终的H2是结论部分。请确保其包含以下内容：\n- 总结所讨论的关键点，并重申在新南威尔士州签订建筑合同中的解除协议时寻求法律建议的重要性。\n- 呼吁读者咨询一位技能娴熟且经验丰富的建筑律师，以确保其解除协议在法律上有效并符合其最佳利益。\n字数限制仅为100-150字。避免使用“总之”这一短语。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "最后的H2是结论部分。请确保它包括以下内容：\n- 总结讨论的要点，并重申在新南威尔士州签订建筑合同中的免责契约时，寻求法律建议的重要性。\n- 呼吁读者咨询专业且经验丰富的建筑律师，以确保其解除契约具有法律效力，并符合其最佳利益。\n字数限制仅为100-150字。避免使用“总之”一词。",
+          "changed": false,
+          "note": "候选译文完整准确，无漏译或错译。"
+        }
+      }
+    },
+    {
+      "id": "7e00a6cb/cases/7e00a6cb/sessions/session_000__sharegpt_xuR7z91_24.md:TURN_001",
+      "case_id": "7e00a6cb",
+      "file": "cases/7e00a6cb/sessions/session_000__sharegpt_xuR7z91_24.md",
+      "block_type": "TURN_001",
+      "source": "I have processed the provided transaction information and created a JSON object with the 'details' key containing the requested information for each transaction. Due to the limitations of the model, I cannot accurately identify all merchants and provide their addresses. However, I have included the available information and approximated the nearest merchants when possible.\r\n```json\r\n{\r\n  \"details\": {\r\n    \"ANNA AUGUSTOWSKA\": {\r\n      \"latitude\": 51.0999,\r\n      \"longitude\": 17.0299,\r\n      \"mcc\r\n```",
+      "baidu": {
+        "ok": true,
+        "value": "我已经处理了提供的交易信息，并创建了一个JSON对象，其中“details”键包含了每笔交易所需的信息。由于模型的限制，我无法准确识别所有商家并提供其地址。不过，我已包含了可用信息，并在可能的情况下近似了最近的商家。\n```json\n{\n\"details\": {\n\"安娜·奥古斯托夫斯卡\"：{\n\"纬度\": 51.0999，\n\"经度\": 17.0299,，\n“mcc”\n```"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "我已处理所提供的交易信息，并创建了一个包含“details”键的JSON对象，其中包含了每笔交易所需的信息。由于模型限制，我无法准确识别所有商户并提供其地址。不过，我已包含可用信息，并在可能的情况下近似了最近的商户。  \n```json  \n{  \n  \"details\": {  \n    \"ANNA AUGUSTOWSKA\": {  \n      \"latitude\": 51.0999,  \n      \"longitude\": 17.0299,  \n      \"mcc"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "我已处理所提供的交易信息，并创建了一个JSON对象，其中“details”键包含每笔交易所需的信息。由于模型的限制，我无法准确识别所有商家并提供其地址。不过，我已包含可用信息，并在可能的情况下近似了最近的商家。\n```json\n{\n  \"details\": {\n    \"ANNA AUGUSTOWSKA\": {\n      \"latitude\": 51.0999,\n      \"longitude\": 17.0299,\n      \"mcc",
+          "changed": true,
+          "note": "候选译文存在漏译和截断，已根据原文完整修复。"
+        }
+      }
+    },
+    {
+      "id": "8077ef71/cases/8077ef71/sessions/session_000__sharegpt_6oXLF8d_0.md:TURN_001",
+      "case_id": "8077ef71",
+      "file": "cases/8077ef71/sessions/session_000__sharegpt_6oXLF8d_0.md",
+      "block_type": "TURN_001",
+      "source": "Stuart has shown excellent understanding and proficiency in expanding brackets. He consistently performs well in this area and demonstrates a solid grasp of the concept. Moving forward, his target should be to focus on improving his understanding of area and perimeter, in order to achieve greater success in these areas.",
+      "baidu": {
+        "ok": true,
+        "value": "斯图尔特在扩展括号方面展现出了出色的理解和熟练度。他在这方面一直表现良好，并充分掌握了这一概念。展望未来，他的目标应该是专注于提高对面积和周长的理解，以便在这些领域取得更大的成功。"
+      },
+      "deepseek_direct": {
+        "ok": true,
+        "value": "Stuart在展开括号方面表现出色，理解透彻且熟练。他在这方面一直表现优异，展现出对该概念的扎实掌握。展望未来，他的目标应聚焦于提升对面积和周长的理解，以便在这些领域取得更大成功。"
+      },
+      "hybrid": {
+        "ok": true,
+        "value": {
+          "translation": "斯图尔特在展开括号方面展现出了出色的理解和熟练度。他在这方面一直表现良好，并充分掌握了这一概念。展望未来，他的目标应该是专注于提高对面积和周长的理解，以便在这些领域取得更大的成功。",
+          "changed": false,
+          "note": "候选译文完整准确，无漏译或错译。"
+        }
+      }
+    }
+  ]
+}

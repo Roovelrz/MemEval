@@ -1,0 +1,312 @@
+---
+question_id: "2698e78f_abs"
+session_index: 31
+session_id: "49747dfe_3"
+timestamp: "2023/05/25 (Thu) 18:21"
+is_evidence_session: false
+turn_count: 12
+translation_status: TODO
+---
+# Session 031 Translation
+
+> 按 turn 翻译，只编辑 `ZH_TURN_*` 边界内的内容。不要编辑 source、role、has_answer、ID 或时间。
+
+## Turn 000 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_000_BEGIN -->
+I'm looking to plan a fun night in with my family soon. Can you suggest some popular board games that are suitable for a group of 8-10 people? Oh, by the way, my younger sister, Emma, just celebrated her 25th birthday last weekend, and it was great to catch up with everyone at my parents' place.
+<!-- SOURCE_TURN_000_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_000_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_000_END -->
+
+## Turn 001 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_001_BEGIN -->
+Happy belated birthday to your sister Emma! It's great that you all had a wonderful time catching up at your parents' place.
+
+Now, let's get to planning a fun night in with your family! Here are some popular board games that are suitable for a group of 8-10 people:
+
+1. **Taboo**: A classic word-guessing game that's perfect for large groups. Divide into teams and take turns describing a word without using certain "taboo" words or phrases.
+2. **Pictionary**: Another classic! Draw and guess words or phrases in teams. You can also create your own custom categories and words to make it more personalized.
+3. **Codenames**: A word-guessing game where players try to identify words based on one-word clues given by their teammate. Great for larger groups and promotes teamwork.
+4. **What Do You Meme**: A hilarious party game where players compete to create the funniest meme by combining caption cards with a random image.
+5. **Deception**: A social deduction game where one player takes on the role of a spy, and the others have to figure out who it is through a series of questions and actions.
+6. **Wits & Wagers**: A trivia game that's more about guessing the answers of your opponents than knowing the correct answer yourself. Great for large groups and encourages social interaction.
+7. **Two Rooms and a Boom**: A social deduction game where players are divided into two teams and try to figure out who's on their team and who's not.
+8. **Monikers**: A party game where players try to guess the name of a movie, book, or other item based on a brief description given by the player who drew it.
+9. **The Resistance**: A cooperative game where players work together to complete missions, but some players may be spies trying to sabotage the efforts of the others.
+10. **Junk Art**: A fast-paced dexterity game where players try to create the most impressive art piece using random junk items.
+
+These games are all highly rated and suitable for a group of 8-10 people. Make sure to check the recommended age range and playtime to ensure they fit your family's preferences.
+
+Have a fantastic game night!
+<!-- SOURCE_TURN_001_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_001_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_001_END -->
+
+## Turn 002 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_002_BEGIN -->
+That's a great list! I think my family would really enjoy Codenames and What Do You Meme. Do you think these games would be suitable for my grandma, who's not really tech-savvy?
+<!-- SOURCE_TURN_002_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_002_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_002_END -->
+
+## Turn 003 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_003_BEGIN -->
+Codenames and What Do You Meme are both excellent choices for a fun family game night!
+
+As for your grandma, I'm happy to report that both games are relatively tech-free and don't require any prior experience with technology. Here's why:
+
+**Codenames**: The game is played with cards, and the only "tech" involved is reading words and phrases on the cards. The gameplay is straightforward, and the goal is to identify words based on one-word clues given by your teammate. The game doesn't require any digital devices or apps, making it accessible to players of all ages and tech comfort levels.
+
+**What Do You Meme**: While the game does involve memes, which are often associated with the internet, the gameplay itself doesn't require any tech knowledge. Players compete to create the funniest meme by combining caption cards with a random image. The images are printed on cards, and the gameplay is all about creativity and humor. Your grandma might even enjoy the nostalgic feel of creating memes the old-school way!
+
+To ensure your grandma feels comfortable, you could also consider the following:
+
+* Take some time to explain the rules and objectives of each game before starting.
+* Offer to be her teammate or partner, so she can learn the game alongside you.
+* Emphasize that it's okay to ask questions or clarify rules during the game.
+* Encourage her to have fun and not worry too much about "winning" – the goal is to enjoy quality time together as a family!
+
+I hope this helps, and I'm sure your grandma will have a blast playing Codenames and What Do You Meme with your family!
+<!-- SOURCE_TURN_003_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_003_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_003_END -->
+
+## Turn 004 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_004_BEGIN -->
+That's really reassuring, thanks! I think I'll get both games and we can have a trial run before inviting the rest of the family over. By the way, I've been helping my parents with cat-sitting and feeding their new cat, Luna, when they're away. Do you have any tips on how to keep cats entertained and engaged?
+<!-- SOURCE_TURN_004_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_004_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_004_END -->
+
+## Turn 005 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_005_BEGIN -->
+That's wonderful that you're helping your parents with cat-sitting! I'm happy to help with some tips on keeping Luna entertained and engaged:
+
+1. **Play, play, play!**: Cats love to play, and it's essential for their physical and mental health. Engage Luna in play activities like chasing a laser pointer, feather toys, or a ball of yarn. You can also try interactive toys like puzzle toys or treat-dispensing toys.
+2. **Rotate toys**: Cats can get bored with the same old toys, so rotate them every few days to keep things fresh and exciting. This will encourage Luna to explore and play with new toys.
+3. **Provide scratching posts**: Cats need to scratch to maintain their nails and stretch their muscles. Provide Luna with scratching posts or pads made of different materials like sisal, carpet, or corrugated cardboard.
+4. **Create vertical space**: Cats love to climb and perch. Consider adding cat shelves, towers, or cat trees to provide Luna with vertical space to explore and observe her surroundings.
+5. **Sensory stimulation**: Cats have a strong sense of smell and enjoy exploring different textures, sounds, and smells. Offer Luna catnip toys, scratching pads with catnip, or even a cardboard box to explore.
+6. **Interactive feeding**: Instead of just placing food in a bowl, try using interactive feeding toys or puzzle feeders. These challenge Luna to work for her food, providing mental stimulation and slowing down eating.
+7. **Cuddle and socialize**: Spend quality time with Luna, cuddling, petting, and talking to her. Socialization is crucial for cats, and it will help strengthen your bond with her.
+8. **Window perches**: Allow Luna to observe the outdoors from a window perch. This will provide her with entertainment and stimulation, watching birds, trees, and other outdoor activities.
+9. **Cardboard boxes**: Cats often find cardboard boxes fascinating. Provide Luna with a new box to explore, and she'll likely have fun playing with it.
+10. **Observe and adapt**: Pay attention to Luna's preferences and adjust your approach accordingly. Some cats may prefer more gentle play, while others enjoy more energetic activities.
+
+Remember to always supervise playtime, ensure Luna's safety, and adjust activities according to her age, health, and energy level.
+
+I hope these tips help you keep Luna entertained and engaged while your parents are away!
+<!-- SOURCE_TURN_005_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_005_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_005_END -->
+
+## Turn 006 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_006_BEGIN -->
+I'm thinking of getting some toys and scratching posts for Luna, but I'm not sure what kind of toys would be suitable for her age. Do you have any recommendations for toys that are suitable for adult cats?
+<!-- SOURCE_TURN_006_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_006_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_006_END -->
+
+## Turn 007 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_007_BEGIN -->
+Adult cats, like Luna, often have unique preferences when it comes to toys. Since they've likely developed their hunting skills, they might enjoy more challenging and stimulating toys. Here are some recommendations for toys suitable for adult cats:
+
+1. **Wand Toys with Feathers or Fabric**: These usually consist of a flexible rod with a lure attached to the end, such as a feather, fabric, or other material. They allow you to engage Luna in a natural hunting behavior, encouraging her to pounce and chase.
+2. **Interactive Treat Dispensers**: These toys require Luna to work for her treats by rolling, pushing, or pawing at them. They provide mental stimulation and can help slow down eating.
+3. **Catnip Toys or Mice**: Many adult cats still enjoy catnip, and toys filled with high-quality catnip can be very appealing. You can also try toy mice with catnip or treats inside to encourage hunting behavior.
+4. **Tunnels and Tents**: Adult cats often enjoy hiding, stalking, and playing in tunnels and tents. These provide a cozy, secure space for Luna to explore and play.
+5. **Food Puzzle Toys**: These toys challenge Luna to figure out how to get her food out, providing mental stimulation and slowing down eating.
+6. **Crinkle Toys or Balls**: Crinkle toys or balls make noise when batted around, which can be very appealing to adult cats. They're also great for encouraging physical activity.
+7. **Scratching Posts with Hiding Spots**: Adult cats often enjoy scratching and marking their territory. Look for scratching posts with hiding spots or cubbies for Luna to retreat to.
+8. **Sensory Toys**: Toys with different textures, smells, and sensations can be very appealing to adult cats. Consider toys with furry surfaces, bell toys, or toys with hidden treats.
+
+When choosing toys for Luna, remember to:
+
+* Rotate toys regularly to keep things fresh and interesting.
+* Introduce new toys gradually to prevent overwhelming her.
+* Observe her preferences and reactions to different toys, and adjust your selection accordingly.
+* Ensure toys are durable and safe for Luna to play with.
+
+For scratching posts, look for sturdy, high-quality options made from materials like sisal, carpet, or corrugated cardboard. You can also consider vertical scratching posts or cat trees with multiple perches and hiding spots.
+
+I hope this helps you find the purrfect toys for Luna!
+<!-- SOURCE_TURN_007_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_007_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_007_END -->
+
+## Turn 008 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_008_BEGIN -->
+That's really helpful, thanks! I'll make sure to consider Luna's preferences and reactions when introducing new toys. By the way, I've been thinking about planning a family game night, and I was wondering if you could suggest some fun prizes for the winners.
+<!-- SOURCE_TURN_008_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_008_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_008_END -->
+
+## Turn 009 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_009_BEGIN -->
+What a great idea! Offering prizes can add an extra layer of excitement to your family game night! Here are some fun prize ideas that are suitable for a family game night:
+
+1. **Treats and Snacks**: Offer a selection of sweet treats, such as chocolates, cookies, or candies, or savory snacks like popcorn, nuts, or crackers.
+2. **Gift Cards**: Gift cards to popular restaurants, coffee shops, or stores like Amazon or Target can be a great prize. You can also consider gift cards to online streaming services or music platforms.
+3. **Fun Experiences**: Offer prizes that create memories, like tickets to a local movie theater, a board game café, or a fun activity like rock climbing, laser tag, or an escape room.
+4. **Personalized Items**: A customized mug, water bottle, or keychain with a fun design or inside joke can make a great prize.
+5. **Cozy Comforts**: A soft blanket, a set of scented candles, or a plush throw can be a wonderful prize for a cozy night in.
+6. **Game-related Prizes**: For a gaming-themed prize, consider a new board game, a puzzle, or a deck of cards. You could also offer a gaming accessory, like a controller skin or a set of gaming-themed coasters.
+7. **Creative Expression**: A set of art supplies, a journal, or a creative writing book can be a great prize for the more artistic family members.
+8. **Bragging Rights**: Sometimes, the best prize is simply the recognition and bragging rights that come with winning. You could create a "Champion of the Night" trophy or a funny certificate to commemorate the win.
+
+Remember to choose prizes that fit your family's interests and preferences. You could also consider offering a "mystery prize" or a surprise gift to add an element of excitement.
+
+I hope these ideas help you plan a fun and rewarding family game night!
+<!-- SOURCE_TURN_009_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_009_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_009_END -->
+
+## Turn 010 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_010_BEGIN -->
+I think I'll go with the treats and snacks idea. My family loves food, and it's always a great way to bond over some delicious treats. Plus, it's easy to customize the prizes to fit everyone's tastes. Thanks for the suggestion! By the way, I've been thinking about our family's cultural heritage, and I was wondering if you could suggest some ways to research and learn more about our ancestors.
+<!-- SOURCE_TURN_010_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_010_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_010_END -->
+
+## Turn 011 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_011_BEGIN -->
+What a wonderful idea! Exploring your family's cultural heritage can be a fascinating and rewarding experience. Researching your ancestors can help you connect with your roots, understand your family's history, and appreciate your cultural traditions. Here are some ways to research and learn more about your ancestors:
+
+1. **Talk to relatives**: Start by asking your parents, grandparents, aunts, uncles, and other older relatives about your family's history. They may have stories, photos, and documents to share that can help you get started.
+2. **Family archives**: Look for old family documents, such as birth and marriage certificates, passports, and immigration records. You can also search for old family photos, letters, and diaries that may provide clues about your ancestors.
+3. **Online genealogy resources**: There are many online resources available to help you research your family's history. Some popular options include:
+	* Ancestry.com: A paid subscription service that offers access to a vast collection of historical records and resources.
+	* FamilySearch.org: A free website provided by The Church of Jesus Christ of Latter-day Saints that offers access to a large collection of genealogical records and resources.
+	* MyHeritage.com: A paid subscription service that offers access to a large collection of historical records and resources, as well as DNA testing.
+4. **DNA testing**: Consider taking a DNA test through companies like AncestryDNA, 23andMe, or MyHeritage DNA. These tests can provide information about your ancestral origins, ethnicity, and connect you with distant relatives.
+5. **Local libraries and archives**: Visit local libraries and archives in your area or in the places where your ancestors lived. These institutions often have access to historical records, newspapers, and other resources that can help you research your family's history.
+6. **Cultural and historical societies**: Look for cultural and historical societies related to your ancestors' country of origin or ethnicity. These organizations often have resources, archives, and experts who can help you research your family's history.
+7. **Create a family tree**: Use online tools or software to create a family tree that includes your ancestors and their relationships. This can help you visualize your family's history and identify patterns and connections.
+8. **Share your findings**: Share your research with your family members and encourage them to contribute their own stories and information. This can help create a sense of community and shared heritage.
+
+Remember to be patient and persistent in your research. It may take time to uncover information about your ancestors, but the journey can be rewarding and enriching.
+
+I hope these suggestions help you get started on your journey to explore your family's cultural heritage!
+<!-- SOURCE_TURN_011_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_011_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_011_END -->

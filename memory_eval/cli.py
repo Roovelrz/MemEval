@@ -14,6 +14,7 @@ from pathlib import Path
 from memory_eval.datasets.longmemeval import load_longmemeval
 from memory_eval.memory.in_memory import InMemorySessionAdapter
 from memory_eval.metrics.report import build_summary
+from memory_eval.metrics.retrieval_report import build_retrieval_summary
 from memory_eval.runners.longmemeval import LongMemEvalRunner
 
 
@@ -78,7 +79,14 @@ def run_longmemeval(args: argparse.Namespace) -> int:
     run_dir = output_root / run_id
     run_dir.mkdir(parents=True, exist_ok=True)
 
-    adapter = InMemorySessionAdapter()
+    if args.memory_adapter == "reme":
+        from memory_eval.memory.reme import ReMeAdapter
+
+        reme_work_dir = Path(args.reme_work_dir or output_root / "_reme_workspace").resolve()
+        adapter = ReMeAdapter(reme_work_dir)
+    else:
+        reme_work_dir = None
+        adapter = InMemorySessionAdapter()
     runner = LongMemEvalRunner(adapter)
     prepared, retrieval = runner.prepare(
         cases=cases,
@@ -100,6 +108,18 @@ def run_longmemeval(args: argparse.Namespace) -> int:
         "judge_model": os.environ.get("JUDGE_MODEL", ""),
         "run_timestamp": datetime.now(timezone.utc).isoformat(),
     }
+    if args.memory_adapter == "reme":
+        import reme
+
+        config.update(
+            {
+                "retrieval_backend": "bm25",
+                "embedding_enabled": False,
+                "llm_enabled": False,
+                "reme_version": reme.__version__,
+                "reme_workspace": str(reme_work_dir),
+            }
+        )
     (run_dir / "run_config.json").write_text(
         json.dumps(config, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
@@ -107,6 +127,14 @@ def run_longmemeval(args: argparse.Namespace) -> int:
 
     print(f"Prepared {len(cases)} cases: {prepared}")
     print(f"Retrieval trace: {retrieval}")
+    retrieval_summary = run_dir / "summary.json"
+    build_retrieval_summary(
+        retrieval_path=retrieval,
+        output_path=retrieval_summary,
+        memory_adapter=args.memory_adapter,
+        top_k=args.top_k,
+    )
+    print(f"Retrieval summary: {retrieval_summary}")
     if args.prepare_only:
         print("AML Answer/Judge skipped because --prepare-only was set.")
         return 0
@@ -138,7 +166,11 @@ def parser() -> argparse.ArgumentParser:
         default=str(Path(__file__).resolve().parents[2] / "AML" / "agent-memory-leaderboard"),
         help="path to the read-only upstream AML repository",
     )
-    command.add_argument("--memory-adapter", choices=("in-memory",), default="in-memory")
+    command.add_argument("--memory-adapter", choices=("in-memory", "reme"), default="in-memory")
+    command.add_argument(
+        "--reme-work-dir",
+        help="adapter-owned sequential ReMe workspace root (defaults under output-dir)",
+    )
     command.add_argument(
         "--prepare-only",
         action="store_true",

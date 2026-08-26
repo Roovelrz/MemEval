@@ -1,0 +1,214 @@
+---
+question_id: "65240037"
+session_index: 44
+session_id: "ultrachat_481364"
+timestamp: "2023/05/29 (Mon) 02:33"
+is_evidence_session: false
+turn_count: 10
+translation_status: TODO
+---
+# Session 044 Translation
+
+> 按 turn 翻译，只编辑 `ZH_TURN_*` 边界内的内容。不要编辑 source、role、has_answer、ID 或时间。
+
+## Turn 000 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_000_BEGIN -->
+Can you recommend some healthy and satisfying meal prep recipes for a busy work week?
+<!-- SOURCE_TURN_000_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_000_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_000_END -->
+
+## Turn 001 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_001_BEGIN -->
+Sure, here are a few healthy and satisfying meal prep recipes for a busy work week:
+
+1. Quinoa Salad with Vegetables and Grilled Chicken: Cook a batch of quinoa and grill chicken breasts on Sunday. Chop up vegetables like cucumber, cherry tomatoes, avocado, and bell peppers. Mix everything together with a light dressing for a nutritious and filling lunch.
+
+2. Lentil Stew: Cook lentils with vegetables like carrots, onions, and celery in a slow cooker. You can add some spices and herbs to flavor it up. This is a great option for those cold winter days when you need something warm and comforting.
+
+3. Mason Jar Salads: These are perfect for people who like to meal prep in advance. Layer your ingredients in a mason jar starting with the dressing on the bottom, followed by grains, protein, and vegetables. Salad greens should go last so that they don't get soggy. These can be made up to 3 days in advance.
+
+4. Sweet Potato and Black Bean Enchiladas: Roast sweet potatoes and assemble black bean enchiladas on Sunday. Then bake them on the day you want to eat them for a warm, satisfying and healthy meal.
+
+5. Soup: Make a big batch of soup with vegetables, protein, and grains like barley or quinoa. Freeze it in individual portions and reheat it for a quick and easy lunch or dinner.
+<!-- SOURCE_TURN_001_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_001_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_001_END -->
+
+## Turn 002 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_002_BEGIN -->
+These all sound like great options! Which one would you say is the easiest to make? I don't have a lot of time for meal prep.
+<!-- SOURCE_TURN_002_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_002_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_002_END -->
+
+## Turn 003 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_003_BEGIN -->
+I don't have personal experience cooking, but i can say that mason jar salads are one of the easiest meal prep options. you can chop up your ingredients ahead of time and layer them into jars. these can be made in 10-15 minutes and don't require any cooking. just be sure to store them in the fridge until you're ready to eat. you can make a few at once to have for the week, and you can switch up the ingredients so that you don't get bored.
+<!-- SOURCE_TURN_003_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_003_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_003_END -->
+
+## Turn 004 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_004_BEGIN -->
+That's great to hear! I love salads, so mason jar salads sound perfect for me. Do you have any suggestions for dressings that would work well with the jar salads?
+<!-- SOURCE_TURN_004_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_004_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_004_END -->
+
+## Turn 005 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_005_BEGIN -->
+Certainly! Here are a few dressing options that work well with mason jar salads:
+
+1. Balsamic vinaigrette: This is a classic salad dressing that adds a nice tang to your salad. Mix together balsamic vinegar, olive oil, Dijon mustard, honey and some salt and pepper, all to your desired taste.
+
+2. Lemon vinaigrette: Fresh lemon juice, olive oil, honey, mustard, salt and black pepper make a great combo, add them to your taste.
+
+3. Ranch dressing: This is a creamy dressing that goes well with all kinds of vegetables, proteins and grains. Greek Yoghurt, mayo, milk and spices make a good combination.
+
+4. Caesar dressing: Made with olive oil, lemon juice, Parmesan cheese, garlic and anchovy paste, this creamy dressing is perfect for salads with chicken, fish or any other type of protein.
+
+Feel free to experiment with different combinations to find the ones you like best! To make sure the dressing doesn't make your salad soggy, pour it into the jar first and then layer your ingredients on top.
+<!-- SOURCE_TURN_005_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_005_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_005_END -->
+
+## Turn 006 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_006_BEGIN -->
+These dressings sound great! I'm excited to try making a few jars with different combinations.
+<!-- SOURCE_TURN_006_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_006_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_006_END -->
+
+## Turn 007 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_007_BEGIN -->
+I'm glad to have been of help. Mixing up the ingredients and dressings can make a huge difference in keeping things interesting, so don't be afraid to try new combinations. Good luck with your meal prep!
+<!-- SOURCE_TURN_007_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_007_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_007_END -->
+
+## Turn 008 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_008_BEGIN -->
+Do you have any suggestions for some creative ingredient combinations for my mason jar salads? I'd love to switch things up and try something new.
+<!-- SOURCE_TURN_008_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_008_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_008_END -->
+
+## Turn 009 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_009_BEGIN -->
+Of course! Here are some creative ingredient combinations for your mason jar salads:
+
+1. Roasted sweet potato, quinoa, kale, cranberries and feta cheese with a balsamic vinaigrette.
+
+2. Grilled chicken, avocado, black beans, corn and tomato with a lime vinaigrette.
+
+3. Broccoli, bell pepper, cucumber, mandarin orange, and cashews with a honey mustard dressing.
+
+4. Shrimp, quinoa, cucumber, red onion and tomato with a cilantro lime dressing.
+
+5. Roasted beet, goat cheese, walnuts, and arugula with a balsamic dressing.
+
+These are just a few ideas to get you started. You can mix and match ingredients to create your own unique salads that suit your taste. Just be sure to layer them properly in the jar to prevent sogginess.
+<!-- SOURCE_TURN_009_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_009_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_009_END -->

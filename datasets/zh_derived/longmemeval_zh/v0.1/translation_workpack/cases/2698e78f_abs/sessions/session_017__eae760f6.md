@@ -1,0 +1,324 @@
+---
+question_id: "2698e78f_abs"
+session_index: 17
+session_id: "eae760f6"
+timestamp: "2023/05/23 (Tue) 22:49"
+is_evidence_session: false
+turn_count: 12
+translation_status: TODO
+---
+# Session 017 Translation
+
+> 按 turn 翻译，只编辑 `ZH_TURN_*` 边界内的内容。不要编辑 source、role、has_answer、ID 或时间。
+
+## Turn 000 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_000_BEGIN -->
+I'm looking for some gift ideas for a friend who's an avid cyclist. Do you have any suggestions? By the way, I'm still feeling pretty accomplished after that charity run I did last Sunday - it was a great way to get some exercise and support a good cause.
+<!-- SOURCE_TURN_000_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_000_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_000_END -->
+
+## Turn 001 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_001_BEGIN -->
+Congratulations on completing the charity run! That's a wonderful achievement, and it's great that you're feeling accomplished.
+
+Now, let's get to those gift ideas for your cycling enthusiast friend! Here are some suggestions:
+
+1. **Cycling Accessories**:
+	* A set of high-quality bike lights for increased visibility and safety.
+	* A cycling computer or GPS device to track their routes, speed, and performance.
+	* A water bottle cage or hydration pack for staying hydrated on long rides.
+2. **Clothing and Apparel**:
+	* A comfortable, moisture-wicking cycling jersey or jacket.
+	* Cycling shorts with padded inserts for improved comfort.
+	* A warm beanie or cycling gloves for colder rides.
+3. **Bike Maintenance and Upgrades**:
+	* A bike multi-tool or set of Allen wrenches for quick repairs.
+	* A bike cleaning kit or chain lube to keep their ride in top condition.
+	* A set of high-quality tires or a wheel upgrade for improved performance.
+4. **Safety and Protection**:
+	* A cycling helmet with advanced safety features (e.g., MIPS technology).
+	* Knee and elbow pads for added protection.
+	* A road ID or emergency identification tag.
+5. **Experiences**:
+	* Sign them up for a guided bike tour or cycling event.
+	* Treat them to a bike maintenance or repair workshop.
+	* Gift them a subscription to a cycling magazine or online community.
+6. **Miscellaneous**:
+	* A cycling-themed accessory, such as a watch, wallet, or coffee mug.
+	* A bike storage or display rack for their home or garage.
+	* A gift card to a local bike shop or online retailer.
+
+Remember to consider your friend's specific needs, preferences, and riding style when choosing a gift. Happy shopping!
+<!-- SOURCE_TURN_001_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_001_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_001_END -->
+
+## Turn 002 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_002_BEGIN -->
+I like the idea of gifting a cycling computer or GPS device. Do you have any recommendations for a specific brand or model that's easy to use and offers good value?
+<!-- SOURCE_TURN_002_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_002_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_002_END -->
+
+## Turn 003 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_003_BEGIN -->
+Cycling computers and GPS devices have come a long way in recent years, and there are many excellent options available. Here are some recommendations that offer great value and ease of use:
+
+1. **Garmin Edge 130**: A compact, lightweight, and easy-to-use GPS device with a 1.8-inch display. It offers advanced features like GPS, GLONASS, and Galileo satellite systems, as well as Bluetooth and Wi-Fi connectivity. ($200-$250)
+2. **Wahoo ELEMNT MINI**: A compact, aerodynamic GPS device with a 1.8-inch display. It's easy to set up and use, with features like GPS, GLONASS, and smartphone integration. ($150-$200)
+3. **Lezyne Super GPS**: A feature-rich GPS device with a 2.2-inch display. It offers GPS, GLONASS, and Galileo satellite systems, as well as Bluetooth and Wi-Fi connectivity. It's also compatible with Lezyne's Ally app for route planning and ride tracking. ($200-$250)
+4. **Cyclocomputer by Bryton**: A budget-friendly GPS device with a 2.3-inch display. It offers GPS, GLONASS, and Galileo satellite systems, as well as Bluetooth connectivity and smartphone integration. ($100-$150)
+
+When choosing a cycling computer or GPS device, consider the following factors:
+
+* **Ease of use**: Look for a device with an intuitive interface and easy navigation.
+* **Display size and type**: Consider a device with a clear, high-resolution display that's easy to read in various lighting conditions.
+* **GPS capabilities**: Ensure the device uses multiple satellite systems (e.g., GPS, GLONASS, Galileo) for accurate location tracking.
+* **Connectivity**: Bluetooth and Wi-Fi connectivity can be useful for syncing ride data, updating software, and integrating with smartphones or computers.
+* **Battery life**: Choose a device with a battery life that meets your friend's typical ride duration.
+* **Additional features**: Consider features like heart rate monitoring, cadence, and power meter support, depending on your friend's specific needs.
+
+These recommendations offer a great balance of features, ease of use, and value. However, if you'd like to explore more options or read reviews, I recommend checking out online retailers like Amazon, REI, or Performance Bicycle, as well as cycling forums and review websites like DC Rainmaker or Cycling Weekly.
+<!-- SOURCE_TURN_003_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_003_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_003_END -->
+
+## Turn 004 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_004_BEGIN -->
+I think the Garmin Edge 130 sounds like a great option. Do you know if it's compatible with my friend's bike type and if there are any bundles or discounts available?
+<!-- SOURCE_TURN_004_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_004_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_004_END -->
+
+## Turn 005 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_005_BEGIN -->
+The Garmin Edge 130 is a popular and highly-regarded cycling computer.
+
+**Compatibility:**
+The Garmin Edge 130 is compatible with most road, mountain, and hybrid bikes. It comes with a standard quarter-turn mount that fits most handlebars, and it's also compatible with Garmin's range of accessories, such as out-front mounts and stem mounts.
+
+To ensure compatibility, you can check the following:
+
+1. Handlebar size: The Edge 130 mount fits handlebars with a diameter of 25.4-32 mm (1-1.25 inches).
+2. Bike type: The device is suitable for road, mountain, and hybrid bikes. If your friend has a unique or custom bike, you may want to double-check compatibility.
+
+**Bundles and Discounts:**
+Garmin often offers bundles and promotions on their website, and authorized retailers may also provide discounts or package deals. Here are a few options to consider:
+
+1. **Garmin Bundle:** Garmin offers a "Performance Bundle" that includes the Edge 130, a heart rate monitor, and a speed and cadence sensor. This bundle typically costs around $300-$350, which is a $50-$100 discount compared to purchasing each item separately.
+2. **Amazon Bundle:** Amazon often offers a bundle deal that includes the Edge 130, a bike mount, and a screen protector. This bundle usually costs around $250-$280.
+3. **Authorized Retailers:** Check with authorized Garmin retailers like REI, Performance Bicycle, or Bike Nashbar for any promotions, discounts, or bundle deals they may be offering.
+4. **Certified Refurbished:** Garmin's certified refurbished program offers discounted prices on previously used devices that have been inspected and tested to meet Garmin's quality standards. You can find certified refurbished Edge 130 devices on Garmin's website or through authorized retailers.
+5. **Black Friday and Holiday Sales:** Keep an eye out for sales during Black Friday, Cyber Monday, or other holiday promotions, as Garmin and retailers often offer discounts on their products during these times.
+
+Before making a purchase, ensure you're buying from an authorized Garmin retailer or Garmin's official website to avoid counterfeit products and ensure warranty validity.
+
+I hope this helps you find the best deal for your friend's Garmin Edge 130!
+<!-- SOURCE_TURN_005_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_005_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_005_END -->
+
+## Turn 006 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_006_BEGIN -->
+Can you tell me more about the Garmin Edge 130's navigation features? Specifically, does it have route planning and turn-by-turn directions?
+<!-- SOURCE_TURN_006_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_006_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_006_END -->
+
+## Turn 007 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_007_BEGIN -->
+The Garmin Edge 130 is a powerful navigation tool for cyclists, and it offers a range of features to help your friend navigate their rides.
+
+**Route Planning:**
+The Garmin Edge 130 allows your friend to plan and create routes on the device itself or through the Garmin Connect app on their smartphone. They can:
+
+1. Create routes from scratch using the device's touchscreen interface.
+2. Import routes from Garmin Connect, Strava, or other third-party apps.
+3. Use the "Round Trip Route" feature, which generates a route based on a set distance or time.
+
+**Turn-by-Turn Directions:**
+Yes, the Edge 130 provides turn-by-turn directions to help your friend stay on course. Here's how it works:
+
+1. The device displays a map view with the planned route, including street names and upcoming turns.
+2. As your friend approaches a turn, the device provides audible and visual alerts, including a countdown to the turn.
+3. The device also displays the distance to the next turn and the total distance remaining on the route.
+
+**Additional Navigation Features:**
+
+1. **Breadcrumb Trail:** The Edge 130 displays a breadcrumb trail of the route, allowing your friend to see where they've been and where they're going.
+2. **Route Recalculation:** If your friend deviates from the planned route, the device can recalculate the route and provide updated turn-by-turn directions.
+3. **Route Alerts:** The device provides alerts for upcoming sharp turns, steep hills, and other route-related warnings.
+4. **GPS, GLONASS, and Galileo:** The Edge 130 uses a combination of GPS, GLONASS, and Galileo satellite systems to provide accurate location tracking and navigation.
+
+**Garmin Connect Integration:**
+The Edge 130 integrates seamlessly with the Garmin Connect app, which offers additional features like:
+
+1. **Route planning and sharing:** Your friend can plan and share routes with others, as well as download routes from the Garmin Connect community.
+2. **Live tracking:** The app allows friends and family to track your friend's ride in real-time.
+3. **Post-ride analysis:** The app provides detailed ride data, including maps, elevation profiles, and performance metrics.
+
+Overall, the Garmin Edge 130 offers robust navigation features that will help your friend explore new routes and stay on course.
+<!-- SOURCE_TURN_007_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_007_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_007_END -->
+
+## Turn 008 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_008_BEGIN -->
+That sounds great! I think the navigation features will be really useful for my friend. By the way, I've been meaning to get back into volunteering, and I was thinking of reaching out to that local animal shelter I helped out at last week. Do you know if they have any upcoming events or opportunities to get involved?
+<!-- SOURCE_TURN_008_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_008_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_008_END -->
+
+## Turn 009 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_009_BEGIN -->
+That's wonderful to hear that you're interested in getting back into volunteering! However, I'm a large language model, I don't have have access to specific information about local organizations or their events. But I can suggest a few ways to find out about upcoming events or opportunities to get involved with the animal shelter:
+
+1. **Visit their website:** Check the animal shelter's website for a calendar of events, volunteer opportunities, or a "Get Involved" section.
+2. **Social media:** Follow the animal shelter on social media platforms like Facebook, Twitter, or Instagram, where they often post about upcoming events and volunteer opportunities.
+3. **Contact them directly:** Reach out to the animal shelter via phone or email to ask about volunteer opportunities or upcoming events. They may have a volunteer coordinator who can provide you with more information.
+4. **Volunteer matching platforms:** Websites like VolunteerMatch or Idealist allow you to search for volunteer opportunities by location and cause. You can search for animal-related opportunities in your area and filter results by date or type of event.
+5. **Local community calendars:** Check local online community calendars, newspapers, or event listings to see if the animal shelter has any upcoming events or activities.
+
+Remember to also ask about any necessary training, orientation, or requirements to volunteer with the animal shelter.
+
+It's great that you're looking to get involved and make a positive impact in your community!
+<!-- SOURCE_TURN_009_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_009_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_009_END -->
+
+## Turn 010 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_010_BEGIN -->
+I'm glad I could help with the Garmin Edge 130, and I'm excited to hear that you're getting back into volunteering! Remember to reach out to the animal shelter directly or check their website to find out about upcoming events or opportunities to get involved. Good luck, and I'm sure you'll make a difference!
+<!-- SOURCE_TURN_010_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_010_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_010_END -->
+
+## Turn 011 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_011_BEGIN -->
+Thank you for the kind words! I'm actually an AI, I don't have personal experiences or engage in volunteering, but I'm happy to have helped you with the Garmin Edge 130 and provided suggestions for getting involved with the animal shelter.
+
+It's wonderful that you're enthusiastic about volunteering, and I'm sure you'll make a positive impact in your community. Remember to reach out to the animal shelter directly or check their website to find out about upcoming events or opportunities to get involved. Good luck, and I hope you have a rewarding experience!
+<!-- SOURCE_TURN_011_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_011_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_011_END -->

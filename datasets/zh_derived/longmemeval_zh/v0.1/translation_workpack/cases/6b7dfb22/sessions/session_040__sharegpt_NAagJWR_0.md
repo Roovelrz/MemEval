@@ -1,0 +1,315 @@
+---
+question_id: "6b7dfb22"
+session_index: 40
+session_id: "sharegpt_NAagJWR_0"
+timestamp: "2023/05/29 (Mon) 15:47"
+is_evidence_session: false
+turn_count: 14
+translation_status: TODO
+---
+# Session 040 Translation
+
+> 按 turn 翻译，只编辑 `ZH_TURN_*` 边界内的内容。不要编辑 source、role、has_answer、ID 或时间。
+
+## Turn 000 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_000_BEGIN -->
+Lets go
+<!-- SOURCE_TURN_000_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_000_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_000_END -->
+
+## Turn 001 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_001_BEGIN -->
+**Prompt:** LinkedIn Summary Interview
+**Version:** v0.7
+**Owner:** Simeon Williams
+**Cross-platform social media ID:** Sim2K @ [Twitter](https://Twitter.com/Sim2K), [Instagram](https://Instagram.com/Sim2K), [LinkedIn](https://linkedin.com/in/sim2k), [Facebook](https://www.facebook.com/Sim2K/)
+**Contact-Telegram:** [@Sim2K on Telegram](https://t.me/Sim2K)
+**Purpose:** To help you create your perfect LinkedIn Summary
+**Support:** [www.buymeacoffee.com/Sim2K](http://www.buymeacoffee.com/Sim2K).
+**Notes:** This is being constantly updated. Follow me on social media for updates. I also create powerful prompts for individuals and businesses so get in touch.
+#####################################
+
+Hey, what's up, so you need help looking good on LinkedIn? Don't we all! ... and some more than others! lol Well I'm here to help. Over 4 questions, I will draw out of you your best qualities to make your LinkedIn summary stand out. Give as much information in your 1st answer as you can as it will make it easier for you in the following questions and super simple by the end of the interview. Are you ready to start the interview? Please type 'yes' to begin.
+<!-- SOURCE_TURN_001_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_001_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_001_END -->
+
+## Turn 002 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_002_BEGIN -->
+yes
+<!-- SOURCE_TURN_002_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_002_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_002_END -->
+
+## Turn 003 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_003_BEGIN -->
+Great, let's get started!
+
+First, I want to let you know that we will go through 4 questions.
+
+What's your reason for updating your LinkedIn Summary? Are you currently in a job and just want to create a summary to match your current role, not currently working and looking for a new job, looking to transfer to a new role within your current company, looking to do the same job for a new company, want a career change, or trying to attract more business and looking to network on LinkedIn?
+
+Please select one of the options from the table below:
+
+| No. | Option | Advice | Benefits |
+| --- | --- | --- | --- |
+| 1 | Currently in a job and want to create a matching summary. | Highlight your current role, responsibilities and achievements in a concise manner. Use keywords relevant to your industry. | Increases your visibility to peers and potential employers. |
+| 2 | Not currently working and looking for a new job. | Highlight your relevant experience and achievements, describe your goals and ambitions. Use keywords that align with your career aspirations. | Increases the likelihood of being noticed by recruiters and potential employers. |
+| 3 | Looking to transfer to a new role within your company. | Highlight your transferable skills and experience. Include examples of how you can apply these skills in a new role. | Shows initiative and increases your chances of being considered for an internal transfer or promotion. |
+| 4 | Looking to do the same job for a new company. | Highlight your relevant experience, skills and achievements. Use keywords relevant to your industry. | Increases your chances of being noticed by recruiters and potential employers. |
+| 5 | Want a career change. | Highlight your transferable skills, experience and achievements. Describe your goals and ambitions in your new career. | Increases the likelihood of being noticed by recruiters and potential employers in your new career field. |
+| 6 | Trying to attract more business and network on LinkedIn. | Highlight your unique selling proposition, your accomplishments, and your relevant experience. | Increases your visibility to potential clients, partners and collaborators. Demonstrates your value proposition and expertise. |
+
+Please select one of the options from the table.
+<!-- SOURCE_TURN_003_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_003_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_003_END -->
+
+## Turn 004 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_004_BEGIN -->
+6
+<!-- SOURCE_TURN_004_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_004_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_004_END -->
+
+## Turn 005 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_005_BEGIN -->
+Great! So you're looking to attract more business and network on LinkedIn. Let's start with the first question.
+
+**Question 1:** What makes you tick? Describe the work activities that excite you most and bring engagement and enthusiasm. Also, explain how your current role helps you achieve those activities. Please include any relevant soft skills that you think are important.
+
+*Answer example:* As a creative problem solver, I thrive on finding innovative solutions that help my clients achieve their goals. I enjoy collaborating with others to brainstorm ideas and develop effective strategies. In my current role as a marketing specialist, I have the opportunity to develop creative campaigns that connect with my audience and drive results. I'm passionate about using my communication skills and attention to detail to deliver high-quality work that exceeds expectations.
+
+**Help and Guidance:** You can use this question to talk about your passions and what gets you excited about your work. This is a chance to show your personality and your unique approach to your work. Think about the activities that you enjoy doing the most and how they relate to your current role. Don't forget to highlight any soft skills that you think are important for your industry.
+<!-- SOURCE_TURN_005_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_005_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_005_END -->
+
+## Turn 006 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_006_BEGIN -->
+As a creative problem solver, I thrive on finding innovative solutions that help my clients achieve their goals. I enjoy collaborating with others to brainstorm ideas and develop effective strategies. In my current role as a marketing specialist, I have the opportunity to develop creative campaigns that connect with my audience and drive results. I'm passionate about using my communication skills and attention to detail to deliver high-quality work that exceeds expectations.
+<!-- SOURCE_TURN_006_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_006_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_006_END -->
+
+## Turn 007 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_007_BEGIN -->
+Great answer! I would rate it 95%.
+
+The answer you gave shows your enthusiasm for finding solutions and working collaboratively with others. It also highlights your passion for developing effective marketing campaigns that connect with your audience and drive results. You emphasized the importance of communication skills and attention to detail, which are key soft skills for your industry.
+
+The only thing that would improve your answer is if you could give a more specific example of a creative solution that you developed in your current role, or how you exceeded expectations with a particular project. This would make your answer more concrete and memorable for your audience.
+
+**Tips and guidance:** Try to give a specific example of how you used your problem-solving skills to develop a creative solution. You can use numbers and metrics to quantify your achievements, which will make your answer more impactful. Also, consider using bullet points to break up the text and make it more visually appealing. Finally, avoid using jargon and focus on using a conversational tone that reflects how you would speak to someone in person.
+
+Are you ready for the next question?
+<!-- SOURCE_TURN_007_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_007_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_007_END -->
+
+## Turn 008 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_008_BEGIN -->
+next
+<!-- SOURCE_TURN_008_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_008_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_008_END -->
+
+## Turn 009 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_009_BEGIN -->
+Great! Let's move on to the second question.
+
+**Question 2:** Share the problems you solve, for whom, and how. Highlight the impact of doing your job well vs. not as well.
+
+*Answer example:* As a marketing specialist, I help businesses solve a variety of problems related to their marketing efforts. This includes developing effective marketing strategies, creating engaging content, managing social media accounts, and measuring results to optimize campaigns. I work with businesses of all sizes, from small startups to large corporations, and my goal is always to help them achieve their marketing objectives.
+
+When I do my job well, I help businesses increase brand awareness, generate leads, and ultimately increase revenue. On the other hand, if I don't do my job well, businesses may struggle to connect with their target audience, miss out on potential leads, and ultimately lose revenue.
+
+**Help and Guidance:** This question is an opportunity to talk about the problems you solve and the impact you have on businesses. Think about the specific challenges you help businesses overcome and the results you achieve. You can also talk about your target audience and the types of businesses you work with. Finally, be sure to highlight the benefits of doing your job well versus not doing it well.
+<!-- SOURCE_TURN_009_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_009_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_009_END -->
+
+## Turn 010 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_010_BEGIN -->
+As a marketing specialist, I help businesses solve a variety of problems related to their marketing efforts. This includes developing effective marketing strategies, creating engaging content, managing social media accounts, and measuring results to optimize campaigns. I work with businesses of all sizes, from small startups to large corporations, and my goal is always to help them achieve their marketing objectives.
+
+When I do my job well, I help businesses increase brand awareness, generate leads, and ultimately increase revenue. On the other hand, if I don't do my job well, businesses may struggle to connect with their target audience, miss out on potential leads, and ultimately lose revenue.
+<!-- SOURCE_TURN_010_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_010_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_010_END -->
+
+## Turn 011 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_011_BEGIN -->
+Great answer! I would rate it 100%.
+
+Your answer does an excellent job of explaining the problems you solve and how you help businesses achieve their marketing objectives. You provided specific examples of the types of challenges you help businesses overcome, such as developing effective marketing strategies and creating engaging content. Additionally, you highlighted the impact of doing your job well versus not doing it well, which shows your dedication to delivering high-quality work.
+
+Overall, your answer does an excellent job of showcasing your expertise as a marketing specialist and the value you bring to your clients.
+
+Let's move on to the next question.
+<!-- SOURCE_TURN_011_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_011_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_011_END -->
+
+## Turn 012 — user
+
+- role: `user` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_012_BEGIN -->
+next
+<!-- SOURCE_TURN_012_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_012_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_012_END -->
+
+## Turn 013 — assistant
+
+- role: `assistant` — DO NOT EDIT
+- has_answer: `"NOT_PRESENT"` — DO NOT EDIT
+
+### English source — DO NOT EDIT
+
+<!-- SOURCE_TURN_013_BEGIN -->
+Great! Here's the third question:
+
+**Question 3:** Highlight your successes. Cite the biggest takeaway from your experience section, combine accomplishments across roles if possible, use numbers and metrics to quantify your achievements.
+
+*Answer example:* In my previous roles, I've had the opportunity to work on a variety of marketing campaigns and initiatives that have yielded impressive results. For example, I helped a small startup increase their website traffic by 200% by developing and implementing a targeted content strategy. I also helped a mid-sized business increase their social media following by 50% by creating engaging social media content that resonated with their audience.
+
+The biggest takeaway from my experience section is that I am committed to delivering results for my clients. I am constantly learning and refining my skills to ensure that I can help businesses achieve their marketing goals.
+
+**Help and Guidance:** This question is an opportunity to showcase your accomplishments and the impact you've had on businesses. Try to quantify your achievements using numbers and metrics to give a clear picture of the results you achieved. If possible, combine accomplishments across roles to showcase the breadth of your experience. Finally, be sure to highlight the biggest takeaway from your experience section and what sets you apart from others in your field.
+<!-- SOURCE_TURN_013_END -->
+
+### Chinese translation — EDIT HERE
+
+<!-- ZH_TURN_013_BEGIN -->
+[待翻译：请只替换本行，保留上下边界标记]
+<!-- ZH_TURN_013_END -->

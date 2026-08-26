@@ -1,0 +1,26 @@
+{
+  "schema_version": "longmemeval_zh_manual_review_v1",
+  "dataset_id": "LongMemEval-ZH-20-v0.1",
+  "reviewed_at_utc": "2026-08-25T11:15:44.881Z",
+  "status": "PASS_WITHOUT_CONFIRMED_SEMANTIC_ERROR",
+  "scope": {
+    "evidence_sessions_reviewed": 34,
+    "distractor_sessions_reviewed": 30,
+    "evidence_review_method": "For every evidence session, inspected the has_answer turn(s) plus the question/gold-answer relation; checked names, places, dates, numbers, and negation in the evidence-bearing content.",
+    "distractor_review_method": "Inspected the deterministic 30-session sample and investigated every automated numeric/negation flag."
+  },
+  "findings": {
+    "confirmed_translation_errors": [],
+    "accepted_automated_false_positive_patterns": [
+      "Arabic numeric tokens rendered as Chinese numerals or Chinese units, e.g. 2 million -> 200万 and 10 Things -> 十件.",
+      "English decade/range wording rendered as Chinese date/range wording, e.g. late 1800s -> 19世纪末 and 20-40 -> 20到40.",
+      "English lack/limited/only wording rendered with Chinese lexical equivalents that do not always contain a direct 不/没 token."
+    ],
+    "reviewer_note": "No evidence-bearing translation was found to change a tested number, entity, place, date relation, or negation. Automated flags remain in semantic_review_manifest.json for auditability."
+  },
+  "files": {
+    "dataset": "dataset.json",
+    "integrity_report": "integrity_report.json",
+    "semantic_review_manifest": "semantic_review_manifest.json"
+  }
+}
