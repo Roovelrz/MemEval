@@ -1,0 +1,554 @@
+{
+  "run_dir": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1",
+  "total_cases": 1,
+  "successful_pipeline_cases": 1,
+  "failed_pipeline_cases": 0,
+  "retrieval_scored_cases": 1,
+  "top_k": 10,
+  "hit_at_k": 1.0,
+  "recall_at_k": 1.0,
+  "mrr": 1.0,
+  "answer_accuracy": 1.0,
+  "answer_scored_cases": 1,
+  "pipeline_success_rate": 1.0,
+  "grounded_end_to_end_accuracy": 1.0,
+  "add_failure_count": 0,
+  "retrieval_failure_count": 0,
+  "answer_failure_count": 0,
+  "judge_suspect_count": 0,
+  "judge_wrong_count": 0,
+  "quadrants": {
+    "A_retrieval_pass_answer_pass": 1,
+    "B_retrieval_pass_answer_fail": 0,
+    "C_retrieval_fail_answer_pass": 0,
+    "D_retrieval_fail_answer_fail": 0,
+    "not_scored": 0
+  },
+  "root_cause_distribution": {
+    "PASS": 1,
+    "DATA_ERROR": 0,
+    "ADD_FAILURE": 0,
+    "INDEX_FAILURE": 0,
+    "RETRIEVAL_MISS": 0,
+    "RETRIEVAL_PARTIAL": 0,
+    "RETRIEVAL_LOW_RANK": 0,
+    "RETRIEVAL_WRONG_CHUNK": 0,
+    "CONTEXT_LOSS": 0,
+    "CONTEXT_TRUNCATION": 0,
+    "ANSWER_FAILURE": 0,
+    "JUDGE_SUSPECT": 0,
+    "API_FAILURE": 0,
+    "TIMEOUT": 0,
+    "PIPELINE_FAILURE": 0
+  },
+  "run_info": {
+    "run_id": "reme-timeline-smoke-1",
+    "dataset_id": "dataset",
+    "dataset_name": "dataset",
+    "dataset_version": "LongMemEval-ZH-20case-v0.1",
+    "source_dataset": "dataset",
+    "language": "unknown",
+    "translated": false,
+    "case_count": 1,
+    "dataset_case_count": 20,
+    "session_count": 45,
+    "turn_count": 485,
+    "evidence_session_count": 1,
+    "memory_backend": "ReMe",
+    "memory_version": "0.4.1.8",
+    "top_k": 10,
+    "answer_model": "deepseek-v4-flash",
+    "judge_model": "deepseek-v4-flash",
+    "answer_prompt_version": "longmemeval-answer-v2-structured-time",
+    "judge_prompt_version": "longmemeval-judge-v1",
+    "eval_code_commit": "fb4123b6225ea289cf2014d52ad1b07da2bc09d2",
+    "eval_code_dirty": true,
+    "eval_code_snapshot": {
+      "directory": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\eval_code_snapshot",
+      "manifest": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\eval_code_snapshot\\manifest.json",
+      "manifest_sha256": "50aa7998efa01b1cb595ef587994db3bb20db29098cd01819abe0b9cb293ec34",
+      "file_count": 31
+    },
+    "reproducibility_status": "PASS_DIRTY_WITH_SOURCE_SNAPSHOT",
+    "start_time": "2026-08-27T02:52:52.745777+00:00",
+    "end_time": "2026-08-27T02:53:07.395881+00:00"
+  },
+  "retrieval_stage": {
+    "dataset_id": "dataset",
+    "dataset_name": "dataset",
+    "dataset_version": "LongMemEval-ZH-20case-v0.1",
+    "source_dataset": "dataset",
+    "language": "unknown",
+    "translated": false,
+    "case_count": 1,
+    "dataset_case_count": 20,
+    "run_id": "reme-timeline-smoke-1",
+    "retrieval_workers": 1,
+    "dataset": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\datasets\\zh_derived\\longmemeval_zh\\LongMemEval-ZH-20case-v0.1\\dataset.json",
+    "requested_cases": 1,
+    "successful_cases": 1,
+    "failed_cases": 0,
+    "start_time_utc": "2026-08-27T02:52:52.745777+00:00",
+    "end_time_utc": "2026-08-27T02:53:00.254105+00:00",
+    "duration_ms": 7508.3279999999995,
+    "add_success_rate": 1.0,
+    "added_sessions": 45,
+    "failed_add_sessions": 0,
+    "added_turns": 485,
+    "evidence_add_success_rate": 1.0,
+    "duplicate_add_count": 0,
+    "empty_content_add_count": 0,
+    "add_latency_ms": {
+      "avg": 24.64129999953002,
+      "p50": 24.64129999953002,
+      "p95": 24.64129999953002,
+      "p99": 24.64129999953002
+    },
+    "index_success_rate": 1.0,
+    "indexed_document_count": 45,
+    "indexed_chunk_count": 67,
+    "average_chunks_per_session": 1.488888888888889,
+    "embedding": {
+      "enabled": false,
+      "status": "NOT_APPLICABLE",
+      "call_count": 0,
+      "failure_count": 0,
+      "chunks_with_embedding": 0
+    },
+    "extraction": {
+      "enabled": false,
+      "status": "NOT_APPLICABLE",
+      "call_count": 0,
+      "failure_count": 0
+    },
+    "index_latency_ms": {
+      "avg": 751.3998000003994,
+      "p50": 751.3998000003994,
+      "p95": 751.3998000003994,
+      "p99": 751.3998000003994
+    },
+    "search_success_rate": 1.0,
+    "search_request_count": 1,
+    "empty_search_result_count": 0,
+    "search_retry_count": 0,
+    "search_latency_ms": {
+      "avg": 35.9400999996069,
+      "p50": 35.9400999996069,
+      "p95": 35.9400999996069,
+      "p99": 35.9400999996069
+    },
+    "hit_at_10": 1.0,
+    "recall_at_10": 1.0,
+    "mrr": 1.0,
+    "avg_index_latency_ms": 751.3998000003994,
+    "avg_search_latency_ms": 35.9400999996069,
+    "full_evidence_recall_rate": 1.0,
+    "partial_evidence_rate": 0.0,
+    "zero_evidence_rate": 0.0,
+    "question_type_breakdown": {
+      "single-session-user": {
+        "case_count": 1,
+        "hit_at_10": 1.0,
+        "recall_at_10": 1.0,
+        "mrr": 1.0,
+        "avg_search_latency_ms": 35.9400999996069
+      }
+    },
+    "api_stability": {
+      "memory_add_requests": 45,
+      "memory_index_requests": 1,
+      "memory_search_requests": 1,
+      "http_2xx": 2,
+      "http_4xx": 0,
+      "http_5xx": 0,
+      "timeouts": 0,
+      "retries": 0
+    }
+  },
+  "answer_stage": {
+    "task": "answer",
+    "input": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\prepared.jsonl",
+    "requested_rows": 1,
+    "successful_rows": 1,
+    "failed_rows": 0,
+    "success_rate": 1.0,
+    "failure_rate": 0.0,
+    "empty_answer_count": 0,
+    "timeout_count": 0,
+    "api_request_count": 1,
+    "retry_count": 0,
+    "latency_ms": {
+      "avg": 2414.031100000102,
+      "p50": 2414.031100000102,
+      "p95": 2414.031100000102,
+      "p99": 2414.031100000102
+    },
+    "token_usage": {
+      "input_tokens": 17517,
+      "cache_hit_input_tokens": 17408,
+      "cache_miss_input_tokens": 109,
+      "output_tokens": 175,
+      "total_tokens": 17692,
+      "cost_usd": 0.00011300240000000001,
+      "pricing": {
+        "cache_hit_input": 0.0028,
+        "cache_miss_input": 0.14,
+        "output": 0.28,
+        "source": "https://api-docs.deepseek.com/quick_start/pricing",
+        "observed_date": "2026-08-26",
+        "model": "deepseek-v4-flash",
+        "currency": "USD",
+        "unit_tokens": 1000000,
+        "multiplier": 1.0
+      }
+    },
+    "pricing": {
+      "cache_hit_input": 0.0028,
+      "cache_miss_input": 0.14,
+      "output": 0.28,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "observed_date": "2026-08-26",
+      "model": "deepseek-v4-flash",
+      "currency": "USD",
+      "unit_tokens": 1000000,
+      "multiplier": 1.0
+    },
+    "output": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\answers.jsonl",
+    "failures": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\answer_failures.jsonl",
+    "model": "deepseek-v4-flash",
+    "workers": 1,
+    "prompt_version": "longmemeval-answer-v2-structured-time",
+    "prompt_template_sha256": "714f78f1feb72fca661bd6d5ffb51be367e82bac562cc8acc9e7df3ed0bf4653",
+    "start_time_utc": "2026-08-27T02:53:00.486412+00:00",
+    "end_time_utc": "2026-08-27T02:53:02.904938+00:00"
+  },
+  "judge_stage": {
+    "task": "judge",
+    "input": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\prepared.jsonl",
+    "answers": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\answers.jsonl",
+    "requested_rows": 1,
+    "successful_rows": 1,
+    "failed_rows": 0,
+    "correct_rows": 1,
+    "accuracy": 1.0,
+    "success_rate": 1.0,
+    "failure_rate": 0.0,
+    "correct_count": 1,
+    "wrong_count": 0,
+    "parse_failure_count": 0,
+    "timeout_count": 0,
+    "api_request_count": 1,
+    "retry_count": 0,
+    "latency_ms": {
+      "avg": 4292.5410000007105,
+      "p50": 4292.5410000007105,
+      "p95": 4292.5410000007105,
+      "p99": 4292.5410000007105
+    },
+    "token_usage": {
+      "input_tokens": 720,
+      "cache_hit_input_tokens": 640,
+      "cache_miss_input_tokens": 80,
+      "output_tokens": 470,
+      "total_tokens": 1190,
+      "cost_usd": 0.00014459200000000003,
+      "pricing": {
+        "cache_hit_input": 0.0028,
+        "cache_miss_input": 0.14,
+        "output": 0.28,
+        "source": "https://api-docs.deepseek.com/quick_start/pricing",
+        "observed_date": "2026-08-26",
+        "model": "deepseek-v4-flash",
+        "currency": "USD",
+        "unit_tokens": 1000000,
+        "multiplier": 1.0
+      }
+    },
+    "pricing": {
+      "cache_hit_input": 0.0028,
+      "cache_miss_input": 0.14,
+      "output": 0.28,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "observed_date": "2026-08-26",
+      "model": "deepseek-v4-flash",
+      "currency": "USD",
+      "unit_tokens": 1000000,
+      "multiplier": 1.0
+    },
+    "output": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\scores.jsonl",
+    "failures": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\judge_failures.jsonl",
+    "model": "deepseek-v4-flash",
+    "workers": 1,
+    "prompt_version": "longmemeval-judge-v1",
+    "prompt_template_sha256": "735b6e1318fc61fa51feaffc297d19b8678d1acda750330fdbd53c9c2f8c9608",
+    "human_review_count": 0,
+    "judge_human_disagreement_rate": "NOT_RECORDED",
+    "start_time_utc": "2026-08-27T02:53:03.097930+00:00",
+    "end_time_utc": "2026-08-27T02:53:07.395881+00:00"
+  },
+  "latency_breakdown": {
+    "Add": {
+      "avg": 24.64129999953002,
+      "p50": 24.64129999953002,
+      "p95": 24.64129999953002,
+      "p99": 24.64129999953002
+    },
+    "Index": {
+      "avg": 751.3998000003994,
+      "p50": 751.3998000003994,
+      "p95": 751.3998000003994,
+      "p99": 751.3998000003994
+    },
+    "Search": {
+      "avg": 35.9400999996069,
+      "p50": 35.9400999996069,
+      "p95": 35.9400999996069,
+      "p99": 35.9400999996069
+    },
+    "Answer": {
+      "avg": 2414.031100000102,
+      "p50": 2414.031100000102,
+      "p95": 2414.031100000102,
+      "p99": 2414.031100000102
+    },
+    "Judge": {
+      "avg": 4292.5410000007105,
+      "p50": 4292.5410000007105,
+      "p95": 4292.5410000007105,
+      "p99": 4292.5410000007105
+    },
+    "End-to-End": {
+      "avg": 7518.553300000349,
+      "p50": 7518.553300000349,
+      "p95": 7518.553300000349,
+      "p99": 7518.553300000349,
+      "case_count": 1,
+      "method": "Per-case sum of Add, Index, Search, Answer, and Judge; excludes service startup and orchestration overhead."
+    }
+  },
+  "question_type_breakdown": {
+    "single-session-user": {
+      "case_count": 1,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "accuracy": 1.0,
+      "avg_search_latency_ms": 35.9400999996069
+    }
+  },
+  "evidence_count_breakdown": {
+    "single_evidence": {
+      "case_count": 1,
+      "recall_at_10": 1.0,
+      "accuracy": 1.0
+    },
+    "multiple_evidence": {
+      "case_count": 0,
+      "recall_at_10": null,
+      "accuracy": null
+    }
+  },
+  "conditional_answer_accuracy": {
+    "full_evidence_recall": {
+      "case_count": 1,
+      "judged_case_count": 1,
+      "correct_count": 1,
+      "accuracy": 1.0
+    },
+    "partial_evidence_recall": {
+      "case_count": 0,
+      "judged_case_count": 0,
+      "correct_count": 0,
+      "accuracy": null
+    },
+    "zero_evidence_recall": {
+      "case_count": 0,
+      "judged_case_count": 0,
+      "correct_count": 0,
+      "accuracy": null
+    },
+    "evidence_found": {
+      "case_count": 1,
+      "judged_case_count": 1,
+      "correct_count": 1,
+      "accuracy": 1.0
+    },
+    "has_gold_evidence": {
+      "case_count": 1,
+      "judged_case_count": 1,
+      "correct_count": 1,
+      "accuracy": 1.0
+    },
+    "no_gold_evidence": {
+      "case_count": 0,
+      "judged_case_count": 0,
+      "correct_count": 0,
+      "accuracy": null
+    }
+  },
+  "scenario_findings": {
+    "single_evidence_accuracy": 1.0,
+    "multiple_evidence_accuracy": null,
+    "multiple_minus_single_accuracy": null,
+    "temporal_accuracy": null,
+    "temporal_minus_overall_accuracy": null,
+    "knowledge_update_accuracy": null,
+    "knowledge_update_minus_overall_accuracy": null,
+    "evidence_found_answer_accuracy": 1.0
+  },
+  "dataset_integrity": {
+    "schema_version": "memory_eval_run_dataset_validation_v1",
+    "status": "PASS",
+    "scope": "selected_cases",
+    "selected_case_ids": [
+      "118b2229"
+    ],
+    "counts": {
+      "actual_loaded_case_count": 1,
+      "actual_loaded_session_count": 45,
+      "actual_loaded_turn_count": 485,
+      "evidence_session_count": 1,
+      "missing_question_count": 0,
+      "missing_gold_answer_count": 0,
+      "missing_evidence_id_count": 0,
+      "duplicate_session_id_count": 0,
+      "duplicate_case_id_count": 0,
+      "timestamp_anomaly_count": 0,
+      "data_parse_failure_count": 0,
+      "data_skipped_count": 0,
+      "unselected_case_count": 19
+    },
+    "notes": {
+      "unselected_cases": "Intentional case selection is not counted as skipped data.",
+      "timestamp_validation": "Accepts ISO-like YYYY-MM-DD or YYYY/MM/DD timestamps with an optional weekday and time."
+    },
+    "source_integrity": {
+      "status": "PASS",
+      "sha256": "de99f6e52479ef1815327aa51271dfde074ad7d8d46a7755f805c8f091485dd5",
+      "artifact": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\integrity_report.json"
+    }
+  },
+  "processing_observability": {
+    "indexed_document_count": 45,
+    "indexed_chunk_count": 67,
+    "average_chunks_per_session": 1.488888888888889,
+    "embedding": {
+      "enabled": false,
+      "status": "NOT_APPLICABLE",
+      "call_count": 0,
+      "failure_count": 0,
+      "chunks_with_embedding": 0
+    },
+    "extraction": {
+      "enabled": false,
+      "status": "NOT_APPLICABLE",
+      "call_count": 0,
+      "failure_count": 0
+    }
+  },
+  "llm_cost": {
+    "currency": "USD",
+    "answer_cost_usd": 0.00011300240000000001,
+    "judge_cost_usd": 0.00014459200000000003,
+    "total_cost_usd": 0.0002575944,
+    "answer_pricing": {
+      "cache_hit_input": 0.0028,
+      "cache_miss_input": 0.14,
+      "output": 0.28,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "observed_date": "2026-08-26",
+      "model": "deepseek-v4-flash",
+      "currency": "USD",
+      "unit_tokens": 1000000,
+      "multiplier": 1.0
+    },
+    "judge_pricing": {
+      "cache_hit_input": 0.0028,
+      "cache_miss_input": 0.14,
+      "output": 0.28,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "observed_date": "2026-08-26",
+      "model": "deepseek-v4-flash",
+      "currency": "USD",
+      "unit_tokens": 1000000,
+      "multiplier": 1.0
+    }
+  },
+  "api_stability": {
+    "memory": {
+      "memory_add_requests": 45,
+      "memory_index_requests": 1,
+      "memory_search_requests": 1,
+      "http_2xx": 2,
+      "http_4xx": 0,
+      "http_5xx": 0,
+      "timeouts": 0,
+      "retries": 0
+    },
+    "answer_api_requests": 1,
+    "judge_api_requests": 1,
+    "answer_retries": 0,
+    "judge_retries": 0,
+    "timeouts": 0,
+    "api_error_count": 0
+  },
+  "version_fixed_fields": {
+    "dataset_version": "LongMemEval-ZH-20case-v0.1",
+    "case_selection": [
+      "118b2229"
+    ],
+    "top_k": 10,
+    "answer_model": "deepseek-v4-flash",
+    "judge_model": "deepseek-v4-flash",
+    "answer_prompt_version": "longmemeval-answer-v2-structured-time",
+    "judge_prompt_version": "longmemeval-judge-v1",
+    "eval_code_commit": "fb4123b6225ea289cf2014d52ad1b07da2bc09d2",
+    "eval_code_snapshot_manifest_sha256": "50aa7998efa01b1cb595ef587994db3bb20db29098cd01819abe0b9cb293ec34",
+    "reproducibility_status": "PASS_DIRTY_WITH_SOURCE_SNAPSHOT",
+    "memory_config_sha256": "18b54b3af188d6bc3186ac1dea3185127bb49b7d27bd2673f5cfc2c14db487f4",
+    "memory_version": "0.4.1.8"
+  },
+  "conclusions": {
+    "memory_all_written": true,
+    "all_evidence_written": true,
+    "search_stable": true,
+    "recall_failure_count": 0,
+    "low_rank_failure_count": 0,
+    "ranking_failure_count": 0,
+    "wrong_chunk_failure_count": 0,
+    "context_loss_count": 0,
+    "judge_suspect_count": 0,
+    "max_latency_stage": "Judge",
+    "largest_error_source": "DATA_ERROR",
+    "reproducibility_status": "PASS_DIRTY_WITH_SOURCE_SNAPSHOT"
+  },
+  "observability_gaps": [
+    "Provider-side prompt truncation is not exposed by the OpenAI-compatible endpoint; client-side truncation is recorded.",
+    "Human Judge review remains a manual field and is not auto-filled."
+  ],
+  "cases": [
+    {
+      "case_id": "118b2229",
+      "question_type": "single-session-user",
+      "hit_at_k": 1,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 7.805655002593994,
+      "best_non_evidence_score": 5.5242509841918945,
+      "first_evidence_rank": 1,
+      "answer_correct": true,
+      "judge_label": "CORRECT",
+      "quadrant": "A: Retrieval PASS + Answer PASS",
+      "root_cause": "PASS",
+      "explanation": "Retrieval found all evidence, the evidence content reached Answer context, and Judge marked the answer CORRECT."
+    }
+  ],
+  "dataset": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\datasets\\zh_derived\\longmemeval_zh\\LongMemEval-ZH-20case-v0.1\\dataset.json",
+  "dataset_id": "dataset",
+  "dataset_name": "dataset",
+  "dataset_version": "LongMemEval-ZH-20case-v0.1",
+  "source_dataset": "dataset",
+  "language": "unknown",
+  "translated": false,
+  "case_count": 1
+}

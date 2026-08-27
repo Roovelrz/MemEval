@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case · 0862e8bf_abs · Memory Eval</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="case-detail-page">
+  <button class="menu-button" type="button" data-menu-toggle aria-label="切换导航">☰</button>
+  <nav class="sidebar"><div class="brand"><span class="brand-mark">M</span><div><strong>Memory Eval</strong><small>Trace Dashboard</small></div></div><a class="nav-link " href="../index.html"><span>总览</span></a><a class="nav-link " href="../analysis/quadrant.html"><span>四象限分析</span></a><a class="nav-link active" href="../cases/index.html"><span>Case 追踪</span></a><div class="nav-children"><a class="nav-sublink active" href="../cases/index.html">Case 列表</a><a class="nav-sublink " href="../capabilities/index.html">能力维度表现</a><a class="nav-sublink " href="../failures/index.html">失败归因</a></div><a class="nav-link " href="../pipeline/add.html"><span>流程观测</span></a><a class="nav-link " href="../performance/latency.html"><span>性能与时延</span></a><a class="nav-link " href="../comparison/index.html"><span>版本对比</span></a><a class="nav-link " href="../run-info/index.html"><span>运行信息</span></a></nav>
+  <main class="main-content">
+    <header class="page-header">
+      <div><p class="eyebrow">RUN · reme-en-local-20</p><h1>Case · 0862e8bf_abs</h1><p>single-session-user</p></div>
+      <div class="header-actions"><button class="button secondary" type="button" data-back-button data-back-fallback="../index.html">← 返回上一级</button><label class="benchmark-switch"><span>Benchmark</span><select data-benchmark-switch><option value="../index.html" selected>LongMemEval 英文全量基准</option><option value="../../../../../../reme_end_to_end/reme-e2e-20-layout-v1/Trace Summary/Dashboard/index.html" >LongMemEval 中文本地化基准</option><option value="../../../../../../custom/reme/reme-timeline-smoke-1/Trace Summary/Dashboard/index.html" >dataset</option></select></label><a class="button secondary" href="../trace_summary.md">查看 Markdown Trace</a></div>
+    </header>
+    <div class="tabs case-tracking-tabs"><a class="tab active" href="../cases/index.html">Case 列表</a><a class="tab " href="../capabilities/index.html">能力维度表现</a><a class="tab " href="../failures/index.html">失败归因</a></div><section class="panel case-timeline-panel"><div class="section-heading"><div><p class="eyebrow">CASE PROGRESS</p><h2>阶段进度</h2></div><div class="timeline-legend"><span><i class="timeline-legend-pass"></i>阶段通过</span><span><i class="timeline-legend-muted"></i>阶段失败或未到达</span></div></div><p class="timeline-caption">绿色节点表示该阶段已满足当前评测条件；灰色节点表示阶段失败、未到达或缺少记录。悬停节点可查看原因。</p><div class="case-timeline" aria-label="Case 阶段进度"><div class="timeline-stage timeline-pass" tabindex="0" role="img" aria-label="Add · 写入：成功。写入完成：52/52 个 Session" title="Add · 写入：成功。写入完成：52/52 个 Session"><span class="timeline-node">✓</span><strong>Add · 写入</strong><small>成功</small><span class="timeline-reason" role="tooltip">写入完成：52/52 个 Session</span></div><span class="timeline-link timeline-pass" aria-hidden="true"></span><div class="timeline-stage timeline-pass" tabindex="0" role="img" aria-label="Index · 索引：成功。索引完成：74 个 Chunk" title="Index · 索引：成功。索引完成：74 个 Chunk"><span class="timeline-node">✓</span><strong>Index · 索引</strong><small>成功</small><span class="timeline-reason" role="tooltip">索引完成：74 个 Chunk</span></div><span class="timeline-link timeline-pass" aria-hidden="true"></span><div class="timeline-stage timeline-fail" tabindex="0" role="img" aria-label="Retrieval · 检索：失败。未召回 Gold Evidence" title="Retrieval · 检索：失败。未召回 Gold Evidence"><span class="timeline-node">×</span><strong>Retrieval · 检索</strong><small>失败</small><span class="timeline-reason" role="tooltip">未召回 Gold Evidence</span></div><span class="timeline-link timeline-fail" aria-hidden="true"></span><div class="timeline-stage timeline-unknown" tabindex="0" role="img" aria-label="Context · 上下文：未记录。Answer 已执行，但 Evidence 上下文未记录" title="Context · 上下文：未记录。Answer 已执行，但 Evidence 上下文未记录"><span class="timeline-node">—</span><strong>Context · 上下文</strong><small>未记录</small><span class="timeline-reason" role="tooltip">Answer 已执行，但 Evidence 上下文未记录</span></div><span class="timeline-link timeline-unknown" aria-hidden="true"></span><div class="timeline-stage timeline-pass" tabindex="0" role="img" aria-label="Answer · 回答：成功。回答已生成，Judge 判定正确" title="Answer · 回答：成功。回答已生成，Judge 判定正确"><span class="timeline-node">✓</span><strong>Answer · 回答</strong><small>成功</small><span class="timeline-reason" role="tooltip">回答已生成，Judge 判定正确</span></div><span class="timeline-link timeline-pass" aria-hidden="true"></span><div class="timeline-stage timeline-pass" tabindex="0" role="img" aria-label="Judge · 判分：成功。判分完成：CORRECT" title="Judge · 判分：成功。判分完成：CORRECT"><span class="timeline-node">✓</span><strong>Judge · 判分</strong><small>成功</small><span class="timeline-reason" role="tooltip">判分完成：CORRECT</span></div><span class="timeline-link timeline-pass" aria-hidden="true"></span><div class="timeline-stage timeline-fail" tabindex="0" role="img" aria-label="Final · 结论：失败。流程完成，但最终失败：No gold evidence session appeared in TopK or the recorded candidate list." title="Final · 结论：失败。流程完成，但最终失败：No gold evidence session appeared in TopK or the recorded candidate list."><span class="timeline-node">×</span><strong>Final · 结论</strong><small>失败</small><span class="timeline-reason" role="tooltip">流程完成，但最终失败：No gold evidence session appeared in TopK or the recorded candidate list.</span></div></div></section>
+<section class="diagnosis-banner fail"><div><p class="eyebrow">问题诊断</p><h2>RETRIEVAL_MISS</h2><p>No gold evidence session appeared in TopK or the recorded candidate list.</p></div><div><span class="quadrant-detail q-c">C: Retrieval FAIL + Answer PASS</span></div></section>
+<section class="panel"><div class="section-heading"><h2>数据输入</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>case_id</code></th><td>0862e8bf_abs</td></tr><tr><th><code>question_type</code></th><td>single-session-user</td></tr><tr><th><code>question</code></th><td>What is the name of my hamster?</td></tr><tr><th><code>question_date</code></th><td>2023/05/30 (Tue) 21:39</td></tr><tr><th><code>gold_answer</code></th><td>You did not mention this information. You mentioned your cat Luna but not your hamster.</td></tr><tr><th><code>evidence_session_ids</code></th><td><div class="tag-list"><span class="tag">answer_c6fd8ebd_abs</span></div></td></tr><tr><th><code>total_sessions</code></th><td>52</td></tr><tr><th><code>total_turns</code></th><td>523</td></tr></tbody></table></div></section>
+<section class="panel"><div class="section-heading"><h2>写入追踪</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>expected_session_count</code></th><td>52</td></tr><tr><th><code>successfully_added_session_count</code></th><td>52</td></tr><tr><th><code>expected_turn_count</code></th><td>523</td></tr><tr><th><code>successfully_added_turn_count</code></th><td>523</td></tr><tr><th><code>expected_evidence_session_count</code></th><td>1</td></tr><tr><th><code>successfully_added_evidence_count</code></th><td>1</td></tr><tr><th><code>missing_evidence_in_dataset</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>evidence_dataset_status</code></th><td>PASS</td></tr><tr><th><code>evidence_add_status</code></th><td>PASS</td></tr><tr><th><code>add_latency_ms</code></th><td>31.7804</td></tr><tr><th><code>reindex_latency_ms</code></th><td>736.7856</td></tr><tr><th><code>workspace</code></th><td>E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-en-local-20\workspaces\0064_0862e8bf_abs</td></tr><tr><th><code>namespace</code></th><td>0862e8bf_abs</td></tr><tr><th><code>user_id</code></th><td><span class="value-missing">NOT_APPLICABLE</span></td></tr><tr><th><code>duplicate_session_ids_in_dataset</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>failed_session_ids</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>add_status</code></th><td>PASS</td></tr><tr><th><code>index_status</code></th><td>PASS</td></tr><tr><th><code>indexed_document_count</code></th><td>52</td></tr><tr><th><code>indexed_chunk_count</code></th><td>74</td></tr><tr><th><code>chunks_with_embedding</code></th><td>0</td></tr><tr><th><code>embedding_status</code></th><td><span class="value-missing">NOT_APPLICABLE</span></td></tr><tr><th><code>embedding_call_count</code></th><td>0</td></tr><tr><th><code>embedding_failure_count</code></th><td>0</td></tr><tr><th><code>extraction_status</code></th><td><span class="value-missing">NOT_APPLICABLE</span></td></tr><tr><th><code>extraction_call_count</code></th><td>0</td></tr><tr><th><code>extraction_failure_count</code></th><td>0</td></tr><tr><th><code>errors</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr></tbody></table></div></section>
+<section class="panel"><div class="section-heading"><h2>检索追踪</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>query</code></th><td>What is the name of my hamster?</td></tr><tr><th><code>top_k</code></th><td>10</td></tr><tr><th><code>Hit@10</code></th><td><span class="metric-value">0.0%</span></td></tr><tr><th><code>Recall@10</code></th><td><span class="metric-value">0.0%</span></td></tr><tr><th><code>mrr</code></th><td><span class="metric-value">0.0%</span></td></tr><tr><th><code>first_evidence_rank</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>first_evidence_rank_full</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>gold_evidence_count</code></th><td>1</td></tr><tr><th><code>retrieved_evidence_count</code></th><td>0</td></tr><tr><th><code>missing_evidence_ids</code></th><td><div class="tag-list"><span class="tag">answer_c6fd8ebd_abs</span></div></td></tr><tr><th><code>best_evidence_score</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>best_non_evidence_score</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>evidence_score_gap</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>evidence_content_present</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>search_latency_ms</code></th><td>13.4039</td></tr><tr><th><code>failure</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr></tbody></table></div><h3>top_results</h3><div class="result-list"></div></section>
+<section class="panel"><div class="section-heading"><h2>回答追踪</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>context_count</code></th><td>0</td></tr><tr><th><code>context_characters</code></th><td>0</td></tr><tr><th><code>context_token_estimate</code></th><td>0</td></tr><tr><th><code>context_order</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>context_timestamps</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>evidence_context_positions</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>distractor_count</code></th><td>0</td></tr><tr><th><code>evidence_in_retrieved_context</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>evidence_in_prompt</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>truncation_occurred</code></th><td><span class="status-muted">false</span></td></tr><tr><th><code>evidence_after_truncation</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>generated_answer</code></th><td>I don’t know.</td></tr><tr><th><code>gold_answer</code></th><td>You did not mention this information. You mentioned your cat Luna but not your hamster.</td></tr><tr><th><code>answer_difference</code></th><td>Surface forms differ; semantic equivalence requires Judge or human review.</td></tr><tr><th><code>model</code></th><td>deepseek-v4-flash</td></tr><tr><th><code>latency_ms</code></th><td>1055.2299</td></tr><tr><th><code>usage</code></th><td><div class="nested-fields"><div class="nested-row"><code>prompt_tokens</code><span>415</span></div><div class="nested-row"><code>completion_tokens</code><span>71</span></div><div class="nested-row"><code>total_tokens</code><span>486</span></div><div class="nested-row"><code>prompt_tokens_details</code><span><div class="nested-fields"><div class="nested-row"><code>cached_tokens</code><span>256</span></div></div></span></div><div class="nested-row"><code>completion_tokens_details</code><span><div class="nested-fields"><div class="nested-row"><code>reasoning_tokens</code><span>64</span></div></div></span></div><div class="nested-row"><code>prompt_cache_hit_tokens</code><span>256</span></div><div class="nested-row"><code>prompt_cache_miss_tokens</code><span>159</span></div><div class="nested-row"><code>request_attempts</code><span>1</span></div><div class="nested-row"><code>retry_count</code><span>0</span></div><div class="nested-row"><code>http_status</code><span>200</span></div><div class="nested-row"><code>cost</code><span><div class="nested-fields"><div class="nested-row"><code>currency</code><span>USD</span></div><div class="nested-row"><code>input_tokens</code><span>415</span></div><div class="nested-row"><code>cache_hit_input_tokens</code><span>256</span></div><div class="nested-row"><code>cache_miss_input_tokens</code><span>159</span></div><div class="nested-row"><code>output_tokens</code><span>71</span></div><div class="nested-row"><code>cache_hit_input_cost_usd</code><span>0.0000</span></div><div class="nested-row"><code>cache_miss_input_cost_usd</code><span>0.0000</span></div><div class="nested-row"><code>output_cost_usd</code><span>0.0000</span></div><div class="nested-row"><code>total_cost_usd</code><span>0.0000</span></div></div></span></div></div></td></tr><tr><th><code>failure</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr></tbody></table></div><h3>retrieved_contexts</h3><span class="value-missing">NOT_RECORDED</span></section>
+<section class="panel"><div class="section-heading"><h2>判分追踪</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>recorded</code></th><td><span class="status-pass">true</span></td></tr><tr><th><code>judge_prompt</code></th><td>E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-en-local-20\Detailed Trace Report\judge_prompts\0862e8bf_abs.txt</td></tr><tr><th><code>judge_prompt_version</code></th><td>longmemeval-judge-v1</td></tr><tr><th><code>judge_prompt_sha256</code></th><td>1abb42d1f301f04058beb4d4635c01747fb2d7065a2bcceae8c8f79d007ce729</td></tr><tr><th><code>judge_prompt_persisted</code></th><td><span class="status-pass">true</span></td></tr><tr><th><code>generated_answer</code></th><td>I don’t know.</td></tr><tr><th><code>gold_answer</code></th><td>You did not mention this information. You mentioned your cat Luna but not your hamster.</td></tr><tr><th><code>raw_response</code></th><td>```json
+{{
+    &quot;label&quot;: &quot;CORRECT&quot;
+}}
+```</td></tr><tr><th><code>parsed_label</code></th><td>CORRECT</td></tr><tr><th><code>is_correct</code></th><td><span class="status-pass">true</span></td></tr><tr><th><code>model</code></th><td>deepseek-v4-flash</td></tr><tr><th><code>latency_ms</code></th><td>1682.4454</td></tr><tr><th><code>usage</code></th><td><div class="nested-fields"><div class="nested-row"><code>prompt_tokens</code><span>730</span></div><div class="nested-row"><code>completion_tokens</code><span>100</span></div><div class="nested-row"><code>total_tokens</code><span>830</span></div><div class="nested-row"><code>prompt_tokens_details</code><span><div class="nested-fields"><div class="nested-row"><code>cached_tokens</code><span>512</span></div></div></span></div><div class="nested-row"><code>completion_tokens_details</code><span><div class="nested-fields"><div class="nested-row"><code>reasoning_tokens</code><span>84</span></div></div></span></div><div class="nested-row"><code>prompt_cache_hit_tokens</code><span>512</span></div><div class="nested-row"><code>prompt_cache_miss_tokens</code><span>218</span></div><div class="nested-row"><code>request_attempts</code><span>1</span></div><div class="nested-row"><code>retry_count</code><span>0</span></div><div class="nested-row"><code>http_status</code><span>200</span></div><div class="nested-row"><code>initial_max_tokens</code><span>8192</span></div><div class="nested-row"><code>final_max_tokens</code><span>8192</span></div><div class="nested-row"><code>length_recovery_count</code><span>0</span></div><div class="nested-row"><code>cost</code><span><div class="nested-fields"><div class="nested-row"><code>currency</code><span>USD</span></div><div class="nested-row"><code>input_tokens</code><span>730</span></div><div class="nested-row"><code>cache_hit_input_tokens</code><span>512</span></div><div class="nested-row"><code>cache_miss_input_tokens</code><span>218</span></div><div class="nested-row"><code>output_tokens</code><span>100</span></div><div class="nested-row"><code>cache_hit_input_cost_usd</code><span>0.0000</span></div><div class="nested-row"><code>cache_miss_input_cost_usd</code><span>0.0000</span></div><div class="nested-row"><code>output_cost_usd</code><span>0.0000</span></div><div class="nested-row"><code>total_cost_usd</code><span>0.0001</span></div></div></span></div></div></td></tr><tr><th><code>human_review</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>suspect_reasons</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>failure</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr></tbody></table></div></section>
+<section class="panel"><div class="section-heading"><h2>问题诊断</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>retrieval_pass</code></th><td><span class="status-muted">false</span></td></tr><tr><th><code>answer_pass</code></th><td><span class="status-pass">true</span></td></tr><tr><th><code>quadrant</code></th><td>C: Retrieval FAIL + Answer PASS</td></tr><tr><th><code>root_cause</code></th><td>RETRIEVAL_MISS</td></tr><tr><th><code>explanation</code></th><td>No gold evidence session appeared in TopK or the recorded candidate list.</td></tr><tr><th><code>suggested_fix</code></th><td>调整 query、BM25 分词或扩大候选集，先保证召回。</td></tr><tr><th><code>pipeline_complete</code></th><td><span class="status-pass">true</span></td></tr></tbody></table></div></section>
+<section class="panel"><details><summary>完整 Trace JSON</summary><pre class="json-block">{
+  &quot;case&quot;: {
+    &quot;case_id&quot;: &quot;0862e8bf_abs&quot;,
+    &quot;question_type&quot;: &quot;single-session-user&quot;,
+    &quot;question&quot;: &quot;What is the name of my hamster?&quot;,
+    &quot;question_date&quot;: &quot;2023/05/30 (Tue) 21:39&quot;,
+    &quot;gold_answer&quot;: &quot;You did not mention this information. You mentioned your cat Luna but not your hamster.&quot;,
+    &quot;evidence_session_ids&quot;: [
+      &quot;answer_c6fd8ebd_abs&quot;
+    ],
+    &quot;total_sessions&quot;: 52,
+    &quot;total_turns&quot;: 523
+  },
+  &quot;add&quot;: {
+    &quot;expected_session_count&quot;: 52,
+    &quot;successfully_added_session_count&quot;: 52,
+    &quot;expected_turn_count&quot;: 523,
+    &quot;successfully_added_turn_count&quot;: 523,
+    &quot;expected_evidence_session_count&quot;: 1,
+    &quot;successfully_added_evidence_count&quot;: 1,
+    &quot;missing_evidence_in_dataset&quot;: [],
+    &quot;evidence_dataset_status&quot;: &quot;PASS&quot;,
+    &quot;evidence_add_status&quot;: &quot;PASS&quot;,
+    &quot;add_latency_ms&quot;: 31.78039999329485,
+    &quot;reindex_latency_ms&quot;: 736.7855999909807,
+    &quot;workspace&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\en_full\\reme\\reme-en-local-20\\workspaces\\0064_0862e8bf_abs&quot;,
+    &quot;namespace&quot;: &quot;0862e8bf_abs&quot;,
+    &quot;user_id&quot;: &quot;NOT_APPLICABLE&quot;,
+    &quot;duplicate_session_ids_in_dataset&quot;: [],
+    &quot;failed_session_ids&quot;: [],
+    &quot;add_status&quot;: &quot;PASS&quot;,
+    &quot;index_status&quot;: &quot;PASS&quot;,
+    &quot;indexed_document_count&quot;: 52,
+    &quot;indexed_chunk_count&quot;: 74,
+    &quot;chunks_with_embedding&quot;: 0,
+    &quot;embedding_status&quot;: &quot;NOT_APPLICABLE&quot;,
+    &quot;embedding_call_count&quot;: 0,
+    &quot;embedding_failure_count&quot;: 0,
+    &quot;extraction_status&quot;: &quot;NOT_APPLICABLE&quot;,
+    &quot;extraction_call_count&quot;: 0,
+    &quot;extraction_failure_count&quot;: 0,
+    &quot;errors&quot;: &quot;NOT_RECORDED&quot;
+  },
+  &quot;retrieval&quot;: {
+    &quot;recorded&quot;: true,
+    &quot;query&quot;: &quot;What is the name of my hamster?&quot;,
+    &quot;top_k&quot;: 10,
+    &quot;hit_at_k&quot;: 0,
+    &quot;recall_at_k&quot;: 0.0,
+    &quot;mrr&quot;: 0.0,
+    &quot;first_evidence_rank&quot;: null,
+    &quot;first_evidence_rank_full&quot;: null,
+    &quot;gold_evidence_count&quot;: 1,
+    &quot;retrieved_evidence_count&quot;: 0,
+    &quot;missing_evidence_ids&quot;: [
+      &quot;answer_c6fd8ebd_abs&quot;
+    ],
+    &quot;best_evidence_score&quot;: null,
+    &quot;best_non_evidence_score&quot;: null,
+    &quot;evidence_score_gap&quot;: null,
+    &quot;evidence_content_present&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_content_by_session&quot;: {
+      &quot;answer_c6fd8ebd_abs&quot;: &quot;NOT_RECORDED&quot;
+    },
+    &quot;search_latency_ms&quot;: 13.403899996774271,
+    &quot;raw_result_count&quot;: 0,
+    &quot;returned_session_count&quot;: 0,
+    &quot;search_status&quot;: &quot;PASS&quot;,
+    &quot;search_retry_count&quot;: 0,
+    &quot;metrics_by_k&quot;: {
+      &quot;1&quot;: {
+        &quot;hit&quot;: 0,
+        &quot;recall&quot;: 0.0,
+        &quot;precision&quot;: 0.0
+      },
+      &quot;3&quot;: {
+        &quot;hit&quot;: 0,
+        &quot;recall&quot;: 0.0,
+        &quot;precision&quot;: 0.0
+      },
+      &quot;5&quot;: {
+        &quot;hit&quot;: 0,
+        &quot;recall&quot;: 0.0,
+        &quot;precision&quot;: 0.0
+      },
+      &quot;10&quot;: {
+        &quot;hit&quot;: 0,
+        &quot;recall&quot;: 0.0,
+        &quot;precision&quot;: 0.0
+      }
+    },
+    &quot;mean_evidence_rank&quot;: null,
+    &quot;top_results&quot;: [],
+    &quot;failure&quot;: null
+  },
+  &quot;answer&quot;: {
+    &quot;recorded&quot;: true,
+    &quot;question&quot;: &quot;What is the name of my hamster?&quot;,
+    &quot;context_count&quot;: 0,
+    &quot;context_characters&quot;: 0,
+    &quot;context_token_estimate&quot;: 0,
+    &quot;context_order&quot;: [],
+    &quot;context_timestamps&quot;: [],
+    &quot;evidence_context_positions&quot;: [],
+    &quot;distractor_count&quot;: 0,
+    &quot;retrieved_contexts&quot;: [],
+    &quot;retrieved_context_excerpts&quot;: [],
+    &quot;evidence_in_retrieved_context&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_in_context_by_session&quot;: {
+      &quot;answer_c6fd8ebd_abs&quot;: &quot;NOT_RECORDED&quot;
+    },
+    &quot;evidence_in_prompt&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_in_prompt_by_session&quot;: {
+      &quot;answer_c6fd8ebd_abs&quot;: &quot;NOT_RECORDED&quot;
+    },
+    &quot;answer_prompt&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\en_full\\reme\\reme-en-local-20\\answer_prompts\\0862e8bf_abs.txt&quot;,
+    &quot;answer_prompt_version&quot;: &quot;longmemeval-answer-v2-structured-time&quot;,
+    &quot;answer_prompt_sha256&quot;: &quot;1a5ae61723736c887d71a4766a69f0b1b4a91e5284901009884181d46809e28b&quot;,
+    &quot;answer_prompt_note&quot;: &quot;Exact sent prompt was not available.&quot;,
+    &quot;truncation_occurred&quot;: false,
+    &quot;evidence_before_truncation&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_after_truncation&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;generated_answer&quot;: &quot;I don’t know.&quot;,
+    &quot;gold_answer&quot;: &quot;You did not mention this information. You mentioned your cat Luna but not your hamster.&quot;,
+    &quot;answer_difference&quot;: &quot;Surface forms differ; semantic equivalence requires Judge or human review.&quot;,
+    &quot;model&quot;: &quot;deepseek-v4-flash&quot;,
+    &quot;latency_ms&quot;: 1055.2298999973573,
+    &quot;usage&quot;: {
+      &quot;prompt_tokens&quot;: 415,
+      &quot;completion_tokens&quot;: 71,
+      &quot;total_tokens&quot;: 486,
+      &quot;prompt_tokens_details&quot;: {
+        &quot;cached_tokens&quot;: 256
+      },
+      &quot;completion_tokens_details&quot;: {
+        &quot;reasoning_tokens&quot;: 64
+      },
+      &quot;prompt_cache_hit_tokens&quot;: 256,
+      &quot;prompt_cache_miss_tokens&quot;: 159,
+      &quot;request_attempts&quot;: 1,
+      &quot;retry_count&quot;: 0,
+      &quot;http_status&quot;: 200,
+      &quot;cost&quot;: {
+        &quot;currency&quot;: &quot;USD&quot;,
+        &quot;input_tokens&quot;: 415,
+        &quot;cache_hit_input_tokens&quot;: 256,
+        &quot;cache_miss_input_tokens&quot;: 159,
+        &quot;output_tokens&quot;: 71,
+        &quot;cache_hit_input_cost_usd&quot;: 7.168e-07,
+        &quot;cache_miss_input_cost_usd&quot;: 2.226e-05,
+        &quot;output_cost_usd&quot;: 1.9880000000000003e-05,
+        &quot;total_cost_usd&quot;: 4.28568e-05
+      }
+    },
+    &quot;failure&quot;: null
+  },
+  &quot;judge&quot;: {
+    &quot;recorded&quot;: true,
+    &quot;judge_prompt&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\en_full\\reme\\reme-en-local-20\\Detailed Trace Report\\judge_prompts\\0862e8bf_abs.txt&quot;,
+    &quot;judge_prompt_version&quot;: &quot;longmemeval-judge-v1&quot;,
+    &quot;judge_prompt_sha256&quot;: &quot;1abb42d1f301f04058beb4d4635c01747fb2d7065a2bcceae8c8f79d007ce729&quot;,
+    &quot;judge_prompt_persisted&quot;: true,
+    &quot;generated_answer&quot;: &quot;I don’t know.&quot;,
+    &quot;gold_answer&quot;: &quot;You did not mention this information. You mentioned your cat Luna but not your hamster.&quot;,
+    &quot;raw_response&quot;: &quot;```json\n{{\n    \&quot;label\&quot;: \&quot;CORRECT\&quot;\n}}\n```&quot;,
+    &quot;parsed_label&quot;: &quot;CORRECT&quot;,
+    &quot;is_correct&quot;: true,
+    &quot;model&quot;: &quot;deepseek-v4-flash&quot;,
+    &quot;latency_ms&quot;: 1682.4454000015976,
+    &quot;usage&quot;: {
+      &quot;prompt_tokens&quot;: 730,
+      &quot;completion_tokens&quot;: 100,
+      &quot;total_tokens&quot;: 830,
+      &quot;prompt_tokens_details&quot;: {
+        &quot;cached_tokens&quot;: 512
+      },
+      &quot;completion_tokens_details&quot;: {
+        &quot;reasoning_tokens&quot;: 84
+      },
+      &quot;prompt_cache_hit_tokens&quot;: 512,
+      &quot;prompt_cache_miss_tokens&quot;: 218,
+      &quot;request_attempts&quot;: 1,
+      &quot;retry_count&quot;: 0,
+      &quot;http_status&quot;: 200,
+      &quot;initial_max_tokens&quot;: 8192,
+      &quot;final_max_tokens&quot;: 8192,
+      &quot;length_recovery_count&quot;: 0,
+      &quot;cost&quot;: {
+        &quot;currency&quot;: &quot;USD&quot;,
+        &quot;input_tokens&quot;: 730,
+        &quot;cache_hit_input_tokens&quot;: 512,
+        &quot;cache_miss_input_tokens&quot;: 218,
+        &quot;output_tokens&quot;: 100,
+        &quot;cache_hit_input_cost_usd&quot;: 1.4336e-06,
+        &quot;cache_miss_input_cost_usd&quot;: 3.0520000000000006e-05,
+        &quot;output_cost_usd&quot;: 2.8000000000000003e-05,
+        &quot;total_cost_usd&quot;: 5.995360000000001e-05
+      }
+    },
+    &quot;human_review&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;suspect_reasons&quot;: [],
+    &quot;failure&quot;: null
+  },
+  &quot;final&quot;: {
+    &quot;retrieval_pass&quot;: false,
+    &quot;answer_pass&quot;: true,
+    &quot;quadrant&quot;: &quot;C: Retrieval FAIL + Answer PASS&quot;,
+    &quot;root_cause&quot;: &quot;RETRIEVAL_MISS&quot;,
+    &quot;explanation&quot;: &quot;No gold evidence session appeared in TopK or the recorded candidate list.&quot;,
+    &quot;suggested_fix&quot;: &quot;调整 query、BM25 分词或扩大候选集，先保证召回。&quot;,
+    &quot;pipeline_complete&quot;: true
+  }
+}</pre></details></section>
+
+    <footer>由现有 Trace 产物静态生成 · 不参与评测、判分或根因计算</footer>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

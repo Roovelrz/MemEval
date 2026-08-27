@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 稳定性 · Memory Eval</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="">
+  <button class="menu-button" type="button" data-menu-toggle aria-label="切换导航">☰</button>
+  <nav class="sidebar"><div class="brand"><span class="brand-mark">M</span><div><strong>Memory Eval</strong><small>Trace Dashboard</small></div></div><a class="nav-link " href="../index.html"><span>总览</span></a><a class="nav-link " href="../analysis/quadrant.html"><span>四象限分析</span></a><a class="nav-link " href="../cases/index.html"><span>Case 追踪</span></a><div class="nav-children"><a class="nav-sublink " href="../cases/index.html">Case 列表</a><a class="nav-sublink " href="../capabilities/index.html">能力维度表现</a><a class="nav-sublink " href="../failures/index.html">失败归因</a></div><a class="nav-link " href="../pipeline/add.html"><span>流程观测</span></a><a class="nav-link active" href="../performance/latency.html"><span>性能与时延</span></a><a class="nav-link " href="../comparison/index.html"><span>版本对比</span></a><a class="nav-link " href="../run-info/index.html"><span>运行信息</span></a></nav>
+  <main class="main-content">
+    <header class="page-header">
+      <div><p class="eyebrow">RUN · reme-e2e-20-layout-v1</p><h1>API 稳定性</h1></div>
+      <div class="header-actions"><button class="button secondary" type="button" data-back-button data-back-fallback="../index.html">← 返回上一级</button><label class="benchmark-switch"><span>Benchmark</span><select data-benchmark-switch><option value="../../../../../en_full/reme/reme-en-local-20/Trace Summary/Dashboard/index.html" >LongMemEval 英文全量基准</option><option value="../index.html" selected>LongMemEval 中文本地化基准</option><option value="../../../../../custom/reme/reme-timeline-smoke-1/Trace Summary/Dashboard/index.html" >dataset</option></select></label><a class="button secondary" href="../trace_summary.md">查看 Markdown Trace</a></div>
+    </header>
+    <div class="tabs"><a class="tab " href="latency.html">性能与时延</a><a class="tab active" href="api-stability.html">API 稳定性</a><a class="tab " href="token-usage.html">Token 与 Cost</a></div><section class="panel"><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>memory</code></th><td><div class="nested-fields"><div class="nested-row"><code>memory_add_requests</code><span>964</span></div><div class="nested-row"><code>memory_index_requests</code><span>20</span></div><div class="nested-row"><code>memory_search_requests</code><span>20</span></div><div class="nested-row"><code>http_2xx</code><span>40</span></div><div class="nested-row"><code>http_4xx</code><span>0</span></div><div class="nested-row"><code>http_5xx</code><span>0</span></div><div class="nested-row"><code>timeouts</code><span>0</span></div><div class="nested-row"><code>retries</code><span>0</span></div></div></td></tr><tr><th><code>answer_api_requests</code></th><td>23</td></tr><tr><th><code>judge_api_requests</code></th><td>22</td></tr><tr><th><code>answer_retries</code></th><td>3</td></tr><tr><th><code>judge_retries</code></th><td>2</td></tr><tr><th><code>timeouts</code></th><td>0</td></tr><tr><th><code>api_error_count</code></th><td>0</td></tr></tbody></table></div></section>
+    <footer>由现有 Trace 产物静态生成 · 不参与评测、判分或根因计算</footer>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+{
+  "dataset_id": "LongMemEval-ZH-20-v0.1",
+  "status": "FROZEN",
+  "build_time_utc": "2026-08-25T11:10:27.551Z",
+  "language": "zh-CN",
+  "selected_case_ids": [
+    "118b2229",
+    "1e043500",
+    "6ade9755",
+    "0a995998",
+    "28dc39ac",
+    "b3c15d39",
+    "eeda8a6d",
+    "8a2466db",
+    "06878be2",
+    "75832dbd",
+    "gpt4_59149c77",
+    "gpt4_6dc9b45b",
+    "4dfccbf7",
+    "8077ef71",
+    "830ce83f",
+    "89941a93",
+    "184da446",
+    "e493bb7c",
+    "7e00a6cb",
+    "1903aded"
+  ],
+  "selected_question_types": {
+    "118b2229": "single-session-user",
+    "1e043500": "single-session-user",
+    "6ade9755": "single-session-user",
+    "0a995998": "multi-session",
+    "28dc39ac": "multi-session",
+    "b3c15d39": "multi-session",
+    "eeda8a6d": "multi-session",
+    "8a2466db": "single-session-preference",
+    "06878be2": "single-session-preference",
+    "75832dbd": "single-session-preference",
+    "gpt4_59149c77": "temporal-reasoning",
+    "gpt4_6dc9b45b": "temporal-reasoning",
+    "4dfccbf7": "temporal-reasoning",
+    "8077ef71": "temporal-reasoning",
+    "830ce83f": "knowledge-update",
+    "89941a93": "knowledge-update",
+    "184da446": "knowledge-update",
+    "e493bb7c": "knowledge-update",
+    "7e00a6cb": "single-session-assistant",
+    "1903aded": "single-session-assistant"
+  },
+  "counts": {
+    "case_count": 20,
+    "session_count": 964,
+    "turn_count": 10055,
+    "translated_block_count": 10095,
+    "evidence_session_count": 34
+  },
+  "source_dataset": {
+    "name": "LongMemEval-S cleaned",
+    "path": "E:\\LRZ_Workplace\\fork\\LongMemEval\\data\\longmemeval_s_cleaned.json",
+    "sha256": "d6f21ea9d60a0d56f34a05b609c79c88a451d2ae03597821ea3d5a9678c3a442",
+    "git_commit": null
+  },
+  "translation": {
+    "final_model": "deepseek-v4-flash",
+    "workpack": "datasets\\zh_derived\\longmemeval_zh\\v0.1\\translation_workpack",
+    "provenance": "DeepSeek final pass for remaining blocks; existing historical translations retained; Baidu is not used in the remaining-translation pipeline."
+  },
+  "clean_schema": {
+    "case_fields": [
+      "case_id",
+      "question_type",
+      "question_date",
+      "question",
+      "gold_answer",
+      "answer_session_ids",
+      "sessions"
+    ],
+    "session_fields": [
+      "session_id",
+      "timestamp",
+      "is_evidence_session",
+      "turns"
+    ],
+    "turn_fields": [
+      "turn_index",
+      "role",
+      "content",
+      "has_answer"
+    ],
+    "has_answer_encoding": [
+      "true",
+      "false",
+      "NOT_PRESENT"
+    ],
+    "excluded_from_clean": [
+      "English source",
+      "SOURCE markers",
+      "ZH markers",
+      "TODO/status",
+      "translation instructions",
+      "workpack frontmatter"
+    ]
+  },
+  "files": {
+    "dataset": "dataset.json",
+    "manual_review_completion": "manual_review_completion.json"
+  },
+  "dataset_sha256": "b42110ca2c5691cef0d7599e09f8dce7bc94844e582d5b3fa5c76e6c0c1d9d18",
+  "frozen_at_utc": "2026-08-25T11:15:44.883Z",
+  "freeze": {
+    "immutable_input": "dataset.json",
+    "dataset_sha256": "b42110ca2c5691cef0d7599e09f8dce7bc94844e582d5b3fa5c76e6c0c1d9d18",
+    "integrity_report_sha256": "de99f6e52479ef1815327aa51271dfde074ad7d8d46a7755f805c8f091485dd5",
+    "semantic_review_manifest_sha256": "21f31a4ef977111df8bb1d12cf8bfd3b508c8866e99ff38dee83f366f37b6aa9",
+    "manual_review_completion_sha256": "6c241d540e3e8fc92a56a84d7045a2325461e4f899a84df9df6365b38e254e64",
+    "acceptance": {
+      "structural_integrity": "PASS",
+      "semantic_review": "PASS_WITHOUT_CONFIRMED_SEMANTIC_ERROR",
+      "evidence_sessions_reviewed": 34,
+      "distractor_sessions_reviewed": 30
+    },
+    "rule": "Downstream Memory implementations must consume this dataset.json and must not modify it in place."
+  }
+}

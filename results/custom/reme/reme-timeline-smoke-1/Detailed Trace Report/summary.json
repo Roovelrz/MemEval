@@ -1,0 +1,92 @@
+{
+  "dataset_id": "dataset",
+  "dataset_name": "dataset",
+  "dataset_version": "LongMemEval-ZH-20case-v0.1",
+  "source_dataset": "dataset",
+  "language": "unknown",
+  "translated": false,
+  "case_count": 1,
+  "dataset_case_count": 20,
+  "run_id": "reme-timeline-smoke-1",
+  "retrieval_workers": 1,
+  "dataset": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\datasets\\zh_derived\\longmemeval_zh\\LongMemEval-ZH-20case-v0.1\\dataset.json",
+  "requested_cases": 1,
+  "successful_cases": 1,
+  "failed_cases": 0,
+  "start_time_utc": "2026-08-27T02:52:52.745777+00:00",
+  "end_time_utc": "2026-08-27T02:53:00.254105+00:00",
+  "duration_ms": 7508.3279999999995,
+  "add_success_rate": 1.0,
+  "added_sessions": 45,
+  "failed_add_sessions": 0,
+  "added_turns": 485,
+  "evidence_add_success_rate": 1.0,
+  "duplicate_add_count": 0,
+  "empty_content_add_count": 0,
+  "add_latency_ms": {
+    "avg": 24.64129999953002,
+    "p50": 24.64129999953002,
+    "p95": 24.64129999953002,
+    "p99": 24.64129999953002
+  },
+  "index_success_rate": 1.0,
+  "indexed_document_count": 45,
+  "indexed_chunk_count": 67,
+  "average_chunks_per_session": 1.488888888888889,
+  "embedding": {
+    "enabled": false,
+    "status": "NOT_APPLICABLE",
+    "call_count": 0,
+    "failure_count": 0,
+    "chunks_with_embedding": 0
+  },
+  "extraction": {
+    "enabled": false,
+    "status": "NOT_APPLICABLE",
+    "call_count": 0,
+    "failure_count": 0
+  },
+  "index_latency_ms": {
+    "avg": 751.3998000003994,
+    "p50": 751.3998000003994,
+    "p95": 751.3998000003994,
+    "p99": 751.3998000003994
+  },
+  "search_success_rate": 1.0,
+  "search_request_count": 1,
+  "empty_search_result_count": 0,
+  "search_retry_count": 0,
+  "search_latency_ms": {
+    "avg": 35.9400999996069,
+    "p50": 35.9400999996069,
+    "p95": 35.9400999996069,
+    "p99": 35.9400999996069
+  },
+  "hit_at_10": 1.0,
+  "recall_at_10": 1.0,
+  "mrr": 1.0,
+  "avg_index_latency_ms": 751.3998000003994,
+  "avg_search_latency_ms": 35.9400999996069,
+  "full_evidence_recall_rate": 1.0,
+  "partial_evidence_rate": 0.0,
+  "zero_evidence_rate": 0.0,
+  "question_type_breakdown": {
+    "single-session-user": {
+      "case_count": 1,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "avg_search_latency_ms": 35.9400999996069
+    }
+  },
+  "api_stability": {
+    "memory_add_requests": 45,
+    "memory_index_requests": 1,
+    "memory_search_requests": 1,
+    "http_2xx": 2,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "timeouts": 0,
+    "retries": 0
+  }
+}

@@ -1,0 +1,640 @@
+2026-08-26 16:13:11 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:13:14 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:13:14 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:13:14 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:13:14 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [9232]
+INFO:     Waiting for application startup.
+2026-08-26 16:13:14 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:14 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:13:14 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:13:14 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:13:14 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:14 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:13:14 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:13:14 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:13:14 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23330}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23330 (Press CTRL+C to quit)
+2026-08-26 16:13:14 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:62733 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:14 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:13:14 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 53, 'modified': 0, 'deleted': 0}
+2026-08-26 16:13:14 | INFO | update_changes.py:101 | _apply_existing | Detected 53 added file(s)
+2026-08-26 16:13:15 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=53 estimated_bytes=6115176
+2026-08-26 16:13:15 | INFO | local_file_store.py:541 | dump | Saved 77 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0000_e47becba\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:13:15 | INFO | bm25_index.py:366 | dump | Saved 77 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0000_e47becba\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:13:15 | INFO | local_file_graph.py:45 | dump | Saved 53 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0000_e47becba\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:62734 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:13:15 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 53, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 77, 'n_chunks_with_embedding': 0, 'memory': '0.56 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 77, 'vocab_size': 7144, 'memory': '4.02 MB'}}}}
+INFO:     127.0.0.1:60093 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:15 | INFO | search.py:227 | execute | [SearchStep] query='What degree did I graduate with?' candidates=150 vector_hits=0 keyword_hits=2
+INFO:     127.0.0.1:60094 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:13:17 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:13:20 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:13:20 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:13:20 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:13:20 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [17064]
+INFO:     Waiting for application startup.
+2026-08-26 16:13:20 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:20 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:13:20 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:13:20 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:13:20 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:20 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:13:20 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:13:20 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:13:20 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23331}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23331 (Press CTRL+C to quit)
+2026-08-26 16:13:20 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:60108 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:20 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:13:20 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 45, 'modified': 0, 'deleted': 0}
+2026-08-26 16:13:20 | INFO | update_changes.py:101 | _apply_existing | Detected 45 added file(s)
+2026-08-26 16:13:21 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=45 estimated_bytes=5789616
+2026-08-26 16:13:21 | INFO | local_file_store.py:541 | dump | Saved 70 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0001_118b2229\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:13:21 | INFO | bm25_index.py:366 | dump | Saved 70 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0001_118b2229\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:13:21 | INFO | local_file_graph.py:45 | dump | Saved 45 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0001_118b2229\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:60109 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:13:21 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 45, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 70, 'n_chunks_with_embedding': 0, 'memory': '0.54 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 70, 'vocab_size': 7202, 'memory': '4.08 MB'}}}}
+INFO:     127.0.0.1:60110 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:21 | INFO | search.py:227 | execute | [SearchStep] query='How long is my daily commute to work?' candidates=150 vector_hits=0 keyword_hits=49
+INFO:     127.0.0.1:60112 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:13:23 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:13:26 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:13:26 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:13:26 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:13:26 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [7964]
+INFO:     Waiting for application startup.
+2026-08-26 16:13:26 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:26 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:13:26 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:13:26 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:13:26 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:26 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:13:26 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:13:26 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:13:26 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23332}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23332 (Press CTRL+C to quit)
+2026-08-26 16:13:26 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:59375 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:26 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:13:26 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 50, 'modified': 0, 'deleted': 0}
+2026-08-26 16:13:26 | INFO | update_changes.py:101 | _apply_existing | Detected 50 added file(s)
+2026-08-26 16:13:27 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=50 estimated_bytes=6153320
+2026-08-26 16:13:27 | INFO | local_file_store.py:541 | dump | Saved 81 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0002_51a45a95\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:13:27 | INFO | bm25_index.py:366 | dump | Saved 81 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0002_51a45a95\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:13:27 | INFO | local_file_graph.py:45 | dump | Saved 50 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0002_51a45a95\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:59376 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:13:27 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 50, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 81, 'n_chunks_with_embedding': 0, 'memory': '0.63 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 81, 'vocab_size': 7305, 'memory': '4.12 MB'}}}}
+INFO:     127.0.0.1:59377 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:27 | INFO | search.py:227 | execute | [SearchStep] query='Where did I redeem a $5 coupon on coffee creamer?' candidates=150 vector_hits=0 keyword_hits=5
+INFO:     127.0.0.1:59378 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:13:29 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:13:32 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:13:32 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:13:32 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:13:32 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [22228]
+INFO:     Waiting for application startup.
+2026-08-26 16:13:32 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:32 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:13:32 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:13:32 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.015s
+2026-08-26 16:13:32 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.015s
+2026-08-26 16:13:32 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:13:32 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:13:32 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.015s
+2026-08-26 16:13:32 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23333}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23333 (Press CTRL+C to quit)
+2026-08-26 16:13:33 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:56856 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:33 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:13:33 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 57, 'modified': 0, 'deleted': 0}
+2026-08-26 16:13:33 | INFO | update_changes.py:101 | _apply_existing | Detected 57 added file(s)
+2026-08-26 16:13:33 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=57 estimated_bytes=6311376
+2026-08-26 16:13:34 | INFO | local_file_store.py:541 | dump | Saved 85 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0003_58bf7951\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:13:34 | INFO | bm25_index.py:366 | dump | Saved 85 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0003_58bf7951\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:13:34 | INFO | local_file_graph.py:45 | dump | Saved 57 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0003_58bf7951\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:56857 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:13:34 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 57, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 85, 'n_chunks_with_embedding': 0, 'memory': '0.62 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 85, 'vocab_size': 7084, 'memory': '3.89 MB'}}}}
+INFO:     127.0.0.1:56858 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:34 | INFO | search.py:227 | execute | [SearchStep] query='What play did I attend at the local community theater?' candidates=150 vector_hits=0 keyword_hits=35
+INFO:     127.0.0.1:56859 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:13:36 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:13:39 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:13:39 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:13:39 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:13:39 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [16576]
+INFO:     Waiting for application startup.
+2026-08-26 16:13:39 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:39 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:13:39 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:13:39 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:13:39 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:39 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:13:39 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:13:39 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.016s
+2026-08-26 16:13:39 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23334}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23334 (Press CTRL+C to quit)
+2026-08-26 16:13:39 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:60020 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:39 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:13:39 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 50, 'modified': 0, 'deleted': 0}
+2026-08-26 16:13:39 | INFO | update_changes.py:101 | _apply_existing | Detected 50 added file(s)
+2026-08-26 16:13:40 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=50 estimated_bytes=6097920
+2026-08-26 16:13:40 | INFO | local_file_store.py:541 | dump | Saved 75 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0004_1e043500\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:13:40 | INFO | bm25_index.py:366 | dump | Saved 75 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0004_1e043500\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:13:40 | INFO | local_file_graph.py:45 | dump | Saved 50 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0004_1e043500\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:60021 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:13:40 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 50, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 75, 'n_chunks_with_embedding': 0, 'memory': '0.60 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 75, 'vocab_size': 7296, 'memory': '4.15 MB'}}}}
+INFO:     127.0.0.1:60022 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:40 | INFO | search.py:227 | execute | [SearchStep] query='What is the name of the playlist I created on Spotify?' candidates=150 vector_hits=0 keyword_hits=5
+INFO:     127.0.0.1:60023 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:13:42 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:13:45 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:13:45 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:13:45 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:13:45 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [22064]
+INFO:     Waiting for application startup.
+2026-08-26 16:13:45 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:45 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:13:45 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:13:45 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:13:45 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:45 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:13:45 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:13:45 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:13:45 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23335}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23335 (Press CTRL+C to quit)
+2026-08-26 16:13:46 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:54257 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:46 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:13:46 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 44, 'modified': 0, 'deleted': 0}
+2026-08-26 16:13:46 | INFO | update_changes.py:101 | _apply_existing | Detected 44 added file(s)
+2026-08-26 16:13:46 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=44 estimated_bytes=5795800
+2026-08-26 16:13:46 | INFO | local_file_store.py:541 | dump | Saved 71 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0005_c5e8278d\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:13:46 | INFO | bm25_index.py:366 | dump | Saved 71 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0005_c5e8278d\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:13:46 | INFO | local_file_graph.py:45 | dump | Saved 44 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0005_c5e8278d\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:54260 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:13:46 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 44, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 71, 'n_chunks_with_embedding': 0, 'memory': '0.59 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 71, 'vocab_size': 6382, 'memory': '3.63 MB'}}}}
+INFO:     127.0.0.1:54264 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:47 | INFO | search.py:227 | execute | [SearchStep] query='What was my last name before I changed it?' candidates=150 vector_hits=0 keyword_hits=1
+INFO:     127.0.0.1:54265 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:13:49 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:13:52 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:13:52 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:13:52 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:13:52 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [23144]
+INFO:     Waiting for application startup.
+2026-08-26 16:13:52 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:52 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:13:52 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:13:52 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:13:52 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:52 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:13:52 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:13:52 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:13:52 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23336}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23336 (Press CTRL+C to quit)
+2026-08-26 16:13:52 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:53193 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:52 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:13:52 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 51, 'modified': 0, 'deleted': 0}
+2026-08-26 16:13:52 | INFO | update_changes.py:101 | _apply_existing | Detected 51 added file(s)
+2026-08-26 16:13:53 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=51 estimated_bytes=6050712
+2026-08-26 16:13:53 | INFO | local_file_store.py:541 | dump | Saved 78 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0006_6ade9755\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:13:53 | INFO | bm25_index.py:366 | dump | Saved 78 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0006_6ade9755\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:13:53 | INFO | local_file_graph.py:45 | dump | Saved 51 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0006_6ade9755\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:53194 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:13:53 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 51, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 78, 'n_chunks_with_embedding': 0, 'memory': '0.58 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 78, 'vocab_size': 6726, 'memory': '3.86 MB'}}}}
+INFO:     127.0.0.1:53195 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:53 | INFO | search.py:227 | execute | [SearchStep] query='Where do I take yoga classes?' candidates=150 vector_hits=0 keyword_hits=3
+INFO:     127.0.0.1:53196 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:13:55 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:13:58 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:13:58 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:13:58 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:13:58 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [1248]
+INFO:     Waiting for application startup.
+2026-08-26 16:13:58 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:58 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:13:58 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:13:58 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:13:58 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:13:58 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:13:58 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:13:58 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:13:58 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23337}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23337 (Press CTRL+C to quit)
+2026-08-26 16:13:59 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:59709 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:13:59 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:13:59 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 50, 'modified': 0, 'deleted': 0}
+2026-08-26 16:13:59 | INFO | update_changes.py:101 | _apply_existing | Detected 50 added file(s)
+2026-08-26 16:13:59 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=50 estimated_bytes=6198776
+2026-08-26 16:14:00 | INFO | local_file_store.py:541 | dump | Saved 83 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0007_6f9b354f\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:00 | INFO | bm25_index.py:366 | dump | Saved 83 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0007_6f9b354f\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:00 | INFO | local_file_graph.py:45 | dump | Saved 50 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0007_6f9b354f\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:59712 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:00 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 50, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 83, 'n_chunks_with_embedding': 0, 'memory': '0.61 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 83, 'vocab_size': 7080, 'memory': '4.00 MB'}}}}
+INFO:     127.0.0.1:59713 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:00 | INFO | search.py:227 | execute | [SearchStep] query='What color did I repaint my bedroom walls?' candidates=150 vector_hits=0 keyword_hits=4
+INFO:     127.0.0.1:59714 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:02 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:05 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:05 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:05 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:05 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [20852]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:05 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:05 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:05 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:05 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:14:05 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:05 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:05 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:05 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:14:05 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23338}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23338 (Press CTRL+C to quit)
+2026-08-26 16:14:05 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:64083 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:05 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:05 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 50, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:05 | INFO | update_changes.py:101 | _apply_existing | Detected 50 added file(s)
+2026-08-26 16:14:06 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=50 estimated_bytes=5986400
+2026-08-26 16:14:06 | INFO | local_file_store.py:541 | dump | Saved 76 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0008_58ef2f1c\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:06 | INFO | bm25_index.py:366 | dump | Saved 76 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0008_58ef2f1c\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:06 | INFO | local_file_graph.py:45 | dump | Saved 50 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0008_58ef2f1c\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:64084 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:06 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 50, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 76, 'n_chunks_with_embedding': 0, 'memory': '0.58 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 76, 'vocab_size': 6771, 'memory': '3.96 MB'}}}}
+INFO:     127.0.0.1:64085 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:06 | INFO | search.py:227 | execute | [SearchStep] query="When did I volunteer at the local animal shelter's fundraising dinner?" candidates=150 vector_hits=0 keyword_hits=27
+INFO:     127.0.0.1:64086 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:08 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:11 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:11 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:11 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:11 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [6964]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:11 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:11 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:11 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:11 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.015s
+2026-08-26 16:14:11 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.015s
+2026-08-26 16:14:11 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:11 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:11 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.015s
+2026-08-26 16:14:11 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23339}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23339 (Press CTRL+C to quit)
+2026-08-26 16:14:12 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:50571 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:12 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:12 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 46, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:12 | INFO | update_changes.py:101 | _apply_existing | Detected 46 added file(s)
+2026-08-26 16:14:12 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=46 estimated_bytes=5896448
+2026-08-26 16:14:12 | INFO | local_file_store.py:541 | dump | Saved 76 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0009_f8c5f88b\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:12 | INFO | bm25_index.py:366 | dump | Saved 76 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0009_f8c5f88b\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:12 | INFO | local_file_graph.py:45 | dump | Saved 46 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0009_f8c5f88b\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:50586 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:12 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 46, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 76, 'n_chunks_with_embedding': 0, 'memory': '0.61 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 76, 'vocab_size': 6788, 'memory': '3.83 MB'}}}}
+INFO:     127.0.0.1:50587 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:12 | INFO | search.py:227 | execute | [SearchStep] query='Where did I buy my new tennis racket from?' candidates=150 vector_hits=0 keyword_hits=10
+INFO:     127.0.0.1:50588 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:15 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:18 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:18 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:18 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:18 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [6652]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:18 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:18 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:18 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:18 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:14:18 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:18 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:18 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:18 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:14:18 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23340}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23340 (Press CTRL+C to quit)
+2026-08-26 16:14:18 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:60926 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:18 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:18 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 53, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:18 | INFO | update_changes.py:101 | _apply_existing | Detected 53 added file(s)
+2026-08-26 16:14:18 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=53 estimated_bytes=6224632
+2026-08-26 16:14:18 | INFO | local_file_store.py:541 | dump | Saved 84 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0010_5d3d2817\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:18 | INFO | bm25_index.py:366 | dump | Saved 84 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0010_5d3d2817\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:18 | INFO | local_file_graph.py:45 | dump | Saved 53 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0010_5d3d2817\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:60927 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:19 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 53, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 84, 'n_chunks_with_embedding': 0, 'memory': '0.63 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 84, 'vocab_size': 7058, 'memory': '3.97 MB'}}}}
+INFO:     127.0.0.1:60928 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:19 | INFO | search.py:227 | execute | [SearchStep] query='What was my previous occupation?' candidates=150 vector_hits=0 keyword_hits=6
+INFO:     127.0.0.1:60929 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:21 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:24 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:24 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:24 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:24 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [22256]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:24 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:24 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:24 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:24 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:14:24 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:24 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:24 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:24 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:14:24 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23341}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23341 (Press CTRL+C to quit)
+2026-08-26 16:14:24 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:50718 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:24 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:24 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 45, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:24 | INFO | update_changes.py:101 | _apply_existing | Detected 45 added file(s)
+2026-08-26 16:14:25 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=45 estimated_bytes=5913992
+2026-08-26 16:14:25 | INFO | local_file_store.py:541 | dump | Saved 75 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0011_7527f7e2\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:25 | INFO | bm25_index.py:366 | dump | Saved 75 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0011_7527f7e2\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:25 | INFO | local_file_graph.py:45 | dump | Saved 45 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0011_7527f7e2\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:50721 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:25 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 45, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 75, 'n_chunks_with_embedding': 0, 'memory': '0.58 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 75, 'vocab_size': 6987, 'memory': '4.03 MB'}}}}
+INFO:     127.0.0.1:50722 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:25 | INFO | search.py:227 | execute | [SearchStep] query='How much did I spend on a designer handbag?' candidates=150 vector_hits=0 keyword_hits=4
+INFO:     127.0.0.1:50723 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:27 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:30 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:30 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:30 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:30 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [20888]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:30 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:30 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:30 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:30 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:14:30 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:30 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:30 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:30 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:14:30 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23342}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23342 (Press CTRL+C to quit)
+2026-08-26 16:14:30 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:65167 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:30 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:30 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 46, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:30 | INFO | update_changes.py:101 | _apply_existing | Detected 46 added file(s)
+2026-08-26 16:14:31 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=46 estimated_bytes=5852792
+2026-08-26 16:14:31 | INFO | local_file_store.py:541 | dump | Saved 75 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0012_c960da58\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:31 | INFO | bm25_index.py:366 | dump | Saved 75 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0012_c960da58\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:31 | INFO | local_file_graph.py:45 | dump | Saved 46 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0012_c960da58\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:65168 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:31 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 46, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 75, 'n_chunks_with_embedding': 0, 'memory': '0.65 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 75, 'vocab_size': 7651, 'memory': '4.20 MB'}}}}
+INFO:     127.0.0.1:65169 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:31 | INFO | search.py:227 | execute | [SearchStep] query='How many playlists do I have on Spotify?' candidates=150 vector_hits=0 keyword_hits=4
+INFO:     127.0.0.1:65170 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:33 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:36 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:36 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:36 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:36 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [9120]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:36 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:36 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:36 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:36 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:14:36 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:36 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:36 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:36 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:14:36 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23343}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23343 (Press CTRL+C to quit)
+2026-08-26 16:14:37 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:62051 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:37 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:37 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 50, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:37 | INFO | update_changes.py:101 | _apply_existing | Detected 50 added file(s)
+2026-08-26 16:14:38 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=50 estimated_bytes=5963232
+2026-08-26 16:14:38 | INFO | local_file_store.py:541 | dump | Saved 75 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0013_3b6f954b\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:38 | INFO | bm25_index.py:366 | dump | Saved 75 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0013_3b6f954b\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:38 | INFO | local_file_graph.py:45 | dump | Saved 50 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0013_3b6f954b\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:62054 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:38 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 50, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 75, 'n_chunks_with_embedding': 0, 'memory': '0.57 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 75, 'vocab_size': 7321, 'memory': '4.04 MB'}}}}
+INFO:     127.0.0.1:62055 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:38 | INFO | search.py:227 | execute | [SearchStep] query='Where did I attend for my study abroad program?' candidates=150 vector_hits=0 keyword_hits=16
+INFO:     127.0.0.1:62056 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:40 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:43 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:43 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:43 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:43 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [18548]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:43 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:43 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:43 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:43 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:14:43 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:43 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:43 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:43 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:14:43 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23344}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23344 (Press CTRL+C to quit)
+2026-08-26 16:14:43 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:64901 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:43 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:43 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 48, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:43 | INFO | update_changes.py:101 | _apply_existing | Detected 48 added file(s)
+2026-08-26 16:14:44 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=48 estimated_bytes=5905936
+2026-08-26 16:14:44 | INFO | local_file_store.py:541 | dump | Saved 73 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0014_726462e0\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:44 | INFO | bm25_index.py:366 | dump | Saved 73 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0014_726462e0\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:44 | INFO | local_file_graph.py:45 | dump | Saved 48 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0014_726462e0\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:64902 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:44 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 48, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 73, 'n_chunks_with_embedding': 0, 'memory': '0.61 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 73, 'vocab_size': 7448, 'memory': '4.08 MB'}}}}
+INFO:     127.0.0.1:56964 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:44 | INFO | search.py:227 | execute | [SearchStep] query='What was the discount I got on my first purchase from the new clothing brand?' candidates=150 vector_hits=0 keyword_hits=24
+INFO:     127.0.0.1:56965 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:46 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:49 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:49 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:49 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:49 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [8448]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:49 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:49 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:49 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:49 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:14:49 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:49 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:49 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:49 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:14:49 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23345}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23345 (Press CTRL+C to quit)
+2026-08-26 16:14:49 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:59910 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:49 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:49 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 49, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:49 | INFO | update_changes.py:101 | _apply_existing | Detected 49 added file(s)
+2026-08-26 16:14:50 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=49 estimated_bytes=6001488
+2026-08-26 16:14:50 | INFO | local_file_store.py:541 | dump | Saved 78 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0015_94f70d80\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:50 | INFO | bm25_index.py:366 | dump | Saved 78 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0015_94f70d80\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:50 | INFO | local_file_graph.py:45 | dump | Saved 49 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0015_94f70d80\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:59911 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:50 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 49, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 78, 'n_chunks_with_embedding': 0, 'memory': '0.62 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 78, 'vocab_size': 6521, 'memory': '3.80 MB'}}}}
+INFO:     127.0.0.1:59912 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:50 | INFO | search.py:227 | execute | [SearchStep] query='How long did it take me to assemble the IKEA bookshelf?' candidates=150 vector_hits=0 keyword_hits=18
+INFO:     127.0.0.1:59913 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:52 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:14:55 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:14:55 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:14:55 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:14:55 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [9804]
+INFO:     Waiting for application startup.
+2026-08-26 16:14:55 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:55 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:14:55 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:14:55 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:14:55 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:14:55 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:14:55 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:14:55 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:14:55 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23346}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23346 (Press CTRL+C to quit)
+2026-08-26 16:14:56 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:55167 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:56 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:14:56 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 50, 'modified': 0, 'deleted': 0}
+2026-08-26 16:14:56 | INFO | update_changes.py:101 | _apply_existing | Detected 50 added file(s)
+2026-08-26 16:14:56 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=50 estimated_bytes=5988888
+2026-08-26 16:14:56 | INFO | local_file_store.py:541 | dump | Saved 77 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0016_66f24dbb\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:14:57 | INFO | bm25_index.py:366 | dump | Saved 77 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0016_66f24dbb\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:14:57 | INFO | local_file_graph.py:45 | dump | Saved 50 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0016_66f24dbb\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:55170 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:14:57 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 50, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 77, 'n_chunks_with_embedding': 0, 'memory': '0.61 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 77, 'vocab_size': 7138, 'memory': '3.97 MB'}}}}
+INFO:     127.0.0.1:59709 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:14:57 | INFO | search.py:227 | execute | [SearchStep] query="What did I buy for my sister's birthday gift?" candidates=150 vector_hits=0 keyword_hits=7
+INFO:     127.0.0.1:59710 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:14:59 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:15:02 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:15:02 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:15:02 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:15:02 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [22840]
+INFO:     Waiting for application startup.
+2026-08-26 16:15:02 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:15:02 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:15:02 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:15:02 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:15:02 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:15:02 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:15:02 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:15:02 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:15:02 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23347}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23347 (Press CTRL+C to quit)
+2026-08-26 16:15:02 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:51467 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:15:02 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:15:02 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 44, 'modified': 0, 'deleted': 0}
+2026-08-26 16:15:02 | INFO | update_changes.py:101 | _apply_existing | Detected 44 added file(s)
+2026-08-26 16:15:02 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=44 estimated_bytes=5770616
+2026-08-26 16:15:02 | INFO | local_file_store.py:541 | dump | Saved 76 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0017_ad7109d1\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:15:03 | INFO | bm25_index.py:366 | dump | Saved 76 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0017_ad7109d1\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:15:03 | INFO | local_file_graph.py:45 | dump | Saved 44 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0017_ad7109d1\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:51468 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:15:03 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 44, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 76, 'n_chunks_with_embedding': 0, 'memory': '0.61 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 76, 'vocab_size': 6804, 'memory': '3.77 MB'}}}}
+INFO:     127.0.0.1:51469 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:15:03 | INFO | search.py:227 | execute | [SearchStep] query='What speed is my new internet plan?' candidates=150 vector_hits=0 keyword_hits=23
+INFO:     127.0.0.1:51470 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:15:05 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:15:08 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:15:08 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:15:08 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:15:08 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [3360]
+INFO:     Waiting for application startup.
+2026-08-26 16:15:08 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:15:08 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:15:08 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:15:08 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 16:15:08 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:15:08 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:15:08 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:15:08 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 16:15:08 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23348}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23348 (Press CTRL+C to quit)
+2026-08-26 16:15:08 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:51484 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:15:08 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:15:08 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 50, 'modified': 0, 'deleted': 0}
+2026-08-26 16:15:08 | INFO | update_changes.py:101 | _apply_existing | Detected 50 added file(s)
+2026-08-26 16:15:09 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=50 estimated_bytes=5940320
+2026-08-26 16:15:09 | INFO | local_file_store.py:541 | dump | Saved 74 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0018_af8d2e46\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:15:09 | INFO | bm25_index.py:366 | dump | Saved 74 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0018_af8d2e46\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:15:09 | INFO | local_file_graph.py:45 | dump | Saved 50 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0018_af8d2e46\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:51485 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:15:09 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 50, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 74, 'n_chunks_with_embedding': 0, 'memory': '0.58 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 74, 'vocab_size': 7254, 'memory': '4.06 MB'}}}}
+INFO:     127.0.0.1:51486 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:15:09 | INFO | search.py:227 | execute | [SearchStep] query='How many shirts did I pack for my 5-day trip to Costa Rica?' candidates=150 vector_hits=0 keyword_hits=25
+INFO:     127.0.0.1:51487 - "POST /search HTTP/1.1" 200 OK
+2026-08-26 16:15:11 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\reme_bm25.yaml
+2026-08-26 16:15:14 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 16:15:14 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 16:15:14 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 16:15:14 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [12664]
+INFO:     Waiting for application startup.
+2026-08-26 16:15:14 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 16:15:14 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 16:15:14 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 16:15:14 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.016s
+2026-08-26 16:15:14 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.016s
+2026-08-26 16:15:14 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 16:15:14 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 16:15:14 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.016s
+2026-08-26 16:15:14 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23349}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:23349 (Press CTRL+C to quit)
+2026-08-26 16:15:14 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:51480 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:15:14 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 16:15:14 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 49, 'modified': 0, 'deleted': 0}
+2026-08-26 16:15:14 | INFO | update_changes.py:101 | _apply_existing | Detected 49 added file(s)
+2026-08-26 16:15:15 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=49 estimated_bytes=5918976
+2026-08-26 16:15:15 | INFO | local_file_store.py:541 | dump | Saved 78 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0019_dccbc061\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 16:15:15 | INFO | bm25_index.py:366 | dump | Saved 78 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0019_dccbc061\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 16:15:15 | INFO | local_file_graph.py:45 | dump | Saved 49 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-longmemeval-en-20-v1\workspaces\0019_dccbc061\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:51481 - "POST /reindex HTTP/1.1" 200 OK
+2026-08-26 16:15:15 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 49, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 78, 'n_chunks_with_embedding': 0, 'memory': '0.60 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 78, 'vocab_size': 7205, 'memory': '4.03 MB'}}}}
+INFO:     127.0.0.1:64395 - "POST /health_check HTTP/1.1" 200 OK
+2026-08-26 16:15:15 | INFO | search.py:227 | execute | [SearchStep] query='What was my previous stance on spirituality?' candidates=150 vector_hits=0 keyword_hits=11
+INFO:     127.0.0.1:64396 - "POST /search HTTP/1.1" 200 OK

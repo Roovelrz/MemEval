@@ -1,0 +1,57 @@
+{
+  "task": "answer",
+  "input": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\prepared.jsonl",
+  "requested_rows": 1,
+  "successful_rows": 1,
+  "failed_rows": 0,
+  "success_rate": 1.0,
+  "failure_rate": 0.0,
+  "empty_answer_count": 0,
+  "timeout_count": 0,
+  "api_request_count": 1,
+  "retry_count": 0,
+  "latency_ms": {
+    "avg": 2414.031100000102,
+    "p50": 2414.031100000102,
+    "p95": 2414.031100000102,
+    "p99": 2414.031100000102
+  },
+  "token_usage": {
+    "input_tokens": 17517,
+    "cache_hit_input_tokens": 17408,
+    "cache_miss_input_tokens": 109,
+    "output_tokens": 175,
+    "total_tokens": 17692,
+    "cost_usd": 0.00011300240000000001,
+    "pricing": {
+      "cache_hit_input": 0.0028,
+      "cache_miss_input": 0.14,
+      "output": 0.28,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "observed_date": "2026-08-26",
+      "model": "deepseek-v4-flash",
+      "currency": "USD",
+      "unit_tokens": 1000000,
+      "multiplier": 1.0
+    }
+  },
+  "pricing": {
+    "cache_hit_input": 0.0028,
+    "cache_miss_input": 0.14,
+    "output": 0.28,
+    "source": "https://api-docs.deepseek.com/quick_start/pricing",
+    "observed_date": "2026-08-26",
+    "model": "deepseek-v4-flash",
+    "currency": "USD",
+    "unit_tokens": 1000000,
+    "multiplier": 1.0
+  },
+  "output": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\answers.jsonl",
+  "failures": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\custom\\reme\\reme-timeline-smoke-1\\answer_failures.jsonl",
+  "model": "deepseek-v4-flash",
+  "workers": 1,
+  "prompt_version": "longmemeval-answer-v2-structured-time",
+  "prompt_template_sha256": "714f78f1feb72fca661bd6d5ffb51be367e82bac562cc8acc9e7df3ed0bf4653",
+  "start_time_utc": "2026-08-27T02:53:00.486412+00:00",
+  "end_time_utc": "2026-08-27T02:53:02.904938+00:00"
+}

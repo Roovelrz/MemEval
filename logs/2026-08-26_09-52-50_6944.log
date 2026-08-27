@@ -1,0 +1,255 @@
+2026-08-26 09:52:50 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 09:52:50 | INFO | base_agent_wrapper.py:47 | __init__ | Agent SDK name=default package=agentscope version=2.0.6
+2026-08-26 09:52:50 | INFO | base_agent_wrapper.py:47 | __init__ | Agent SDK name=claude_code package=claude-agent-sdk version=0.2.144
+2026-08-26 09:52:50 | INFO | base_agent_wrapper.py:47 | __init__ | Agent SDK name=codex package=openai-codex version=0.147.0
+2026-08-26 09:52:50 | INFO | base_agent_wrapper.py:47 | __init__ | Agent SDK name=codex_oauth package=openai-codex version=0.147.0
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: auto_dream
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: auto_memory
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: auto_memory_cc
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: auto_resource
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: proactive
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: version
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: app_config
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: chat
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: status
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: help
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: traverse
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: graph_snapshot
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: search
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: node_search
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: daily_list
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: daily_reindex
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: frontmatter_delete
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: frontmatter_read
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: frontmatter_update
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: stat
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: list
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: move
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: delete
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: read
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: load
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: read_image
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: write
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: save
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: daily_write
+2026-08-26 09:52:50 | INFO | base_service.py:93 | add_jobs | Added job: edit
+2026-08-26 09:52:52 | ERROR | application.py:207 | _start_one | Failed to start as_llm:default: Missing credentials. Please pass an `api_key`, `workload_identity`, `admin_api_key`, or set the `OPENAI_API_KEY` or `OPENAI_ADMIN_KEY` environment variable.
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe\__main__.py", line 7, in <module>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\reme.py", line 115, in main
+    _start_application(kwargs, environment)
+    │                  │       └ {}
+    │                  └ {'config': 'E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\reme_retrieval\\reme-smoke-1\\reme_bm25.yaml', 'workspace...
+    └ <function _start_application at 0x00000218133C77E0>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\reme.py", line 98, in _start_application
+    ReMe(**kwargs).run_app()
+    │      └ {'service': {'backend': 'http', 'web_enabled': False, 'port': 23330, 'host': '127.0.0.1'}, 'jobs': {'index_update_loop': {'ba...
+    └ <class 'reme.reme.ReMe'>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\application.py", line 262, in run_app
+    self.context.service.run_app(app=self)
+    │    │       │       │           └ <reme.reme.ReMe object at 0x0000021813340F50>
+    │    │       │       └ <function BaseService.run_app at 0x0000021812DEEC00>
+    │    │       └ <reme.components.service.http_service.HttpService object at 0x00000218134673E0>
+    │    └ <reme.components.application_context.ApplicationContext object at 0x00000218133757F0>
+    └ <reme.reme.ReMe object at 0x0000021813340F50>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\components\service\base_service.py", line 104, in run_app
+    self.start_service(app)
+    │    │             └ <reme.reme.ReMe object at 0x0000021813340F50>
+    │    └ <function HttpService.start_service at 0x00000218131E51C0>
+    └ <reme.components.service.http_service.HttpService object at 0x00000218134673E0>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\components\service\http_service.py", line 81, in start_service
+    uvicorn.run(self.service, host=self.host, port=self.port, **self.kwargs)
+    │       │   │    │             │    │          │    │       │    └ {}
+    │       │   │    │             │    │          │    │       └ <reme.components.service.http_service.HttpService object at 0x00000218134673E0>
+    │       │   │    │             │    │          │    └ 23330
+    │       │   │    │             │    │          └ <reme.components.service.http_service.HttpService object at 0x00000218134673E0>
+    │       │   │    │             │    └ '127.0.0.1'
+    │       │   │    │             └ <reme.components.service.http_service.HttpService object at 0x00000218134673E0>
+    │       │   │    └ <fastapi.applications.FastAPI object at 0x000002181346E150>
+    │       │   └ <reme.components.service.http_service.HttpService object at 0x00000218134673E0>
+    │       └ <function run at 0x00000218125099E0>
+    └ <module 'uvicorn' from 'C:\\Users\\liruizhi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\uvicorn\\__init...
+
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\main.py", line 621, in run
+    server.run()
+    │      └ <function Server.run at 0x0000021812509DA0>
+    └ <uvicorn.server.Server object at 0x00000218124FF3B0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\server.py", line 77, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x0000021812509580>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x000002181346E3F0>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x00000218124FF3B0>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x0000021812509E40>
+           │           └ <uvicorn.server.Server object at 0x00000218124FF3B0>
+           └ <function run at 0x00000218105F5DA0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000218136C27A0>
+           │      └ <function Runner.run at 0x00000218106237E0>
+           └ <asyncio.runners.Runner object at 0x00000218136B84A0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-6' coro=<Server.serve() running at C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\sit...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000021810621300>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000218136B84A0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 678, in run_until_complete
+    self.run_forever()
+    │    └ <function ProactorEventLoop.run_forever at 0x0000021810676980>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 645, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000021810623060>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1999, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000218105AADE0>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002181346E650>()>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002181346E650>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002181346E650>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x000002181346E650>()>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\lifespan\on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+          │   │      │    │        │    └ <function LifespanOn.send at 0x0000021813747EC0>
+          │   │      │    │        └ <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>
+          │   │      │    └ <function LifespanOn.receive at 0x0000021813747F60>
+          │   │      └ <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>
+          │   └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+          └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000218136D1DF0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 30, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+                 │    │   │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+                 │    │   └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+                 │    └ <fastapi.applications.FastAPI object at 0x000002181346E150>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000218136D1DF0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+                           │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+                           └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │                │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │                └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000021813684560>
+          └ <fastapi.applications.FastAPI object at 0x000002181346E150>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │   │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │   └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x0000021813376BD0>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000021813684560>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\cors.py", line 80, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │   │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │   └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000021812A7CA70>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x0000021813376BD0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\middleware\exceptions.py", line 49, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │   │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │   └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+          │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x0000021813467B30>
+          └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000021812A7CA70>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │   │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │   └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+          │    └ <fastapi.routing.APIRouter object at 0x00000218134541A0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x0000021813467B30>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │                │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │                └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+          │    └ <bound method APIRouter.app of <fastapi.routing.APIRouter object at 0x00000218134541A0>>
+          └ <fastapi.routing.APIRouter object at 0x00000218134541A0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\routing.py", line 2726, in app
+    await self.lifespan(scope, receive, send)
+          │    │        │      │        └ <bound method LifespanOn.send of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │        │      └ <bound method LifespanOn.receive of <uvicorn.lifespan.on.LifespanOn object at 0x00000218136D02C0>>
+          │    │        └ {'type': 'lifespan', 'asgi': {'version': '3.0', 'spec_version': '2.0'}, 'state': {}, 'app': <fastapi.applications.FastAPI obj...
+          │    └ <function Router.lifespan at 0x00000218122FC400>
+          └ <fastapi.routing.APIRouter object at 0x00000218134541A0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\starlette\routing.py", line 648, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               │    │                └ <fastapi.applications.FastAPI object at 0x000002181346E150>
+               │    └ <function BaseService._lifespan.<locals>.lifespan at 0x000002181357E200>
+               └ <fastapi.routing.APIRouter object at 0x00000218134541A0>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+                       │    └ <async_generator object BaseService._lifespan.<locals>.lifespan at 0x0000021813750040>
+                       └ <contextlib._AsyncGeneratorContextManager object at 0x00000218134C8EF0>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\components\service\base_service.py", line 61, in lifespan
+    await app.start()
+          │   └ <function BaseComponent.start at 0x0000021812B3A5C0>
+          └ <reme.reme.ReMe object at 0x0000021813340F50>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\components\base_component.py", line 219, in start
+    await self._start()
+          │    └ <function Application._start at 0x00000218133C6DE0>
+          └ <reme.reme.ReMe object at 0x0000021813340F50>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\application.py", line 194, in _start
+    await self._start_one(c)
+          │    │          └ <reme.components.as_llm.OpenAIAsLLM object at 0x00000218132E7FE0>
+          │    └ <function Application._start_one at 0x00000218133C6E80>
+          └ <reme.reme.ReMe object at 0x0000021813340F50>
+
+> File "E:\LRZ_Workplace\fork\ReMe\reme\application.py", line 204, in _start_one
+    await c.start()
+          │ └ <function BaseComponent.start at 0x0000021812B3A5C0>
+          └ <reme.components.as_llm.OpenAIAsLLM object at 0x00000218132E7FE0>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\components\base_component.py", line 219, in start
+    await self._start()
+          │    └ <function BaseAsLLM._start at 0x0000021812B56520>
+          └ <reme.components.as_llm.OpenAIAsLLM object at 0x00000218132E7FE0>
+
+  File "E:\LRZ_Workplace\fork\ReMe\reme\components\as_llm\__init__.py", line 42, in _start
+    self.model = model_cls(credential=credential, parameters=parameters, **kwargs)
+    │    │       │                    │                      │             └ {'model': 'qwen3.7-plus', 'stream': True, 'context_size': 200000, 'max_retries': 3}
+    │    │       │                    │                      └ Parameters(max_tokens=65536, thinking_enable=False, reasoning_effort=None, temperature=None, top_p=None, parallel_tool_calls=...
+    │    │       │                    └ OpenAICredential(id='d1c727521d7e4263b0e56b86949f9e97', name='', type='openai_credential', api_key=SecretStr(''), organizatio...
+    │    │       └ <class 'agentscope.model._openai_chat._model.OpenAIChatModel'>
+    │    └ None
+    └ <reme.components.as_llm.OpenAIAsLLM object at 0x00000218132E7FE0>
+
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\agentscope\model\_openai_chat\_model.py", line 170, in __init__
+    self.client: openai.AsyncClient = openai.AsyncClient(
+    │            │      │             │      └ <class 'openai.AsyncOpenAI'>
+    │            │      │             └ <module 'openai' from 'C:\\Users\\liruizhi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\__init__...
+    │            │      └ <class 'openai.AsyncOpenAI'>
+    │            └ <module 'openai' from 'C:\\Users\\liruizhi\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\openai\\__init__...
+    └ <agentscope.model._openai_chat._model.OpenAIChatModel object at 0x0000021813685E80>
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_client.py", line 947, in __init__
+    raise OpenAIError(
+          └ <class 'openai.OpenAIError'>
+
+openai.OpenAIError: Missing credentials. Please pass an `api_key`, `workload_identity`, `admin_api_key`, or set the `OPENAI_API_KEY` or `OPENAI_ADMIN_KEY` environment variable.

@@ -1,0 +1,79 @@
+{
+  "schema_version": "memory_eval_dataset_registry_v1",
+  "datasets": [
+    {
+      "dataset_id": "LongMemEval-EN-Full",
+      "dataset_name": "LongMemEval 英文全量基准",
+      "source_dataset": "LongMemEval-S cleaned",
+      "language": "en",
+      "version": "local-d6f21ea9",
+      "path": "../LongMemEval/data/longmemeval_s_cleaned.json",
+      "sha256": "d6f21ea9d60a0d56f34a05b609c79c88a451d2ae03597821ea3d5a9678c3a442",
+      "case_count": 500,
+      "translated": false,
+      "result_group": "en_full",
+      "status": "available"
+    },
+    {
+      "dataset_id": "LongMemEval-ZH-20-v0.1",
+      "dataset_name": "LongMemEval 中文本地化基准",
+      "source_dataset": "LongMemEval-S cleaned",
+      "language": "zh-CN",
+      "version": "v0.1",
+      "path": "datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json",
+      "sha256": "b42110ca2c5691cef0d7599e09f8dce7bc94844e582d5b3fa5c76e6c0c1d9d18",
+      "case_count": 20,
+      "translated": true,
+      "result_group": "zh_localized",
+      "status": "available"
+    },
+    {
+      "dataset_id": "LoCoMo-EN-Full",
+      "dataset_name": "LoCoMo 英文全量基准",
+      "source_dataset": "LoCoMo",
+      "language": "en",
+      "version": null,
+      "path": null,
+      "case_count": null,
+      "translated": false,
+      "result_group": "en_full",
+      "status": "reserved"
+    },
+    {
+      "dataset_id": "LoCoMo-ZH-Localized",
+      "dataset_name": "LoCoMo 中文本地化基准",
+      "source_dataset": "LoCoMo",
+      "language": "zh-CN",
+      "version": null,
+      "path": null,
+      "case_count": null,
+      "translated": true,
+      "result_group": "zh_localized",
+      "status": "reserved"
+    },
+    {
+      "dataset_id": "PersonaMem-EN-Full",
+      "dataset_name": "PersonaMem 英文全量基准",
+      "source_dataset": "PersonaMem",
+      "language": "en",
+      "version": null,
+      "path": null,
+      "case_count": null,
+      "translated": false,
+      "result_group": "en_full",
+      "status": "reserved"
+    },
+    {
+      "dataset_id": "PersonaMem-ZH-Localized",
+      "dataset_name": "PersonaMem 中文本地化基准",
+      "source_dataset": "PersonaMem",
+      "language": "zh-CN",
+      "version": null,
+      "path": null,
+      "case_count": null,
+      "translated": true,
+      "result_group": "zh_localized",
+      "status": "reserved"
+    }
+  ]
+}

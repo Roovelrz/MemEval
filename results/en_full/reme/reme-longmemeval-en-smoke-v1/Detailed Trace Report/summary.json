@@ -1,0 +1,91 @@
+{
+  "dataset_id": "LongMemEval-EN-Full",
+  "dataset_name": "LongMemEval 英文全量基准",
+  "dataset_version": "local-d6f21ea9",
+  "source_dataset": "LongMemEval-S cleaned",
+  "language": "en",
+  "translated": false,
+  "case_count": 1,
+  "dataset_case_count": 500,
+  "run_id": "reme-longmemeval-en-smoke-v1",
+  "dataset": "E:\\LRZ_Workplace\\fork\\LongMemEval\\data\\longmemeval_s_cleaned.json",
+  "requested_cases": 1,
+  "successful_cases": 1,
+  "failed_cases": 0,
+  "start_time_utc": "2026-08-26T08:11:42.742992+00:00",
+  "end_time_utc": "2026-08-26T08:11:53.816231+00:00",
+  "duration_ms": 11073.239,
+  "add_success_rate": 1.0,
+  "added_sessions": 53,
+  "failed_add_sessions": 0,
+  "added_turns": 550,
+  "evidence_add_success_rate": 1.0,
+  "duplicate_add_count": 0,
+  "empty_content_add_count": 0,
+  "add_latency_ms": {
+    "avg": 36.968400003388524,
+    "p50": 36.968400003388524,
+    "p95": 36.968400003388524,
+    "p99": 36.968400003388524
+  },
+  "index_success_rate": 1.0,
+  "indexed_document_count": 53,
+  "indexed_chunk_count": 77,
+  "average_chunks_per_session": 1.4528301886792452,
+  "embedding": {
+    "enabled": false,
+    "status": "NOT_APPLICABLE",
+    "call_count": 0,
+    "failure_count": 0,
+    "chunks_with_embedding": 0
+  },
+  "extraction": {
+    "enabled": false,
+    "status": "NOT_APPLICABLE",
+    "call_count": 0,
+    "failure_count": 0
+  },
+  "index_latency_ms": {
+    "avg": 778.3511000016006,
+    "p50": 778.3511000016006,
+    "p95": 778.3511000016006,
+    "p99": 778.3511000016006
+  },
+  "search_success_rate": 1.0,
+  "search_request_count": 1,
+  "empty_search_result_count": 0,
+  "search_retry_count": 0,
+  "search_latency_ms": {
+    "avg": 29.281300012371503,
+    "p50": 29.281300012371503,
+    "p95": 29.281300012371503,
+    "p99": 29.281300012371503
+  },
+  "hit_at_10": 1.0,
+  "recall_at_10": 1.0,
+  "mrr": 1.0,
+  "avg_index_latency_ms": 778.3511000016006,
+  "avg_search_latency_ms": 29.281300012371503,
+  "full_evidence_recall_rate": 1.0,
+  "partial_evidence_rate": 0.0,
+  "zero_evidence_rate": 0.0,
+  "question_type_breakdown": {
+    "single-session-user": {
+      "case_count": 1,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "avg_search_latency_ms": 29.281300012371503
+    }
+  },
+  "api_stability": {
+    "memory_add_requests": 53,
+    "memory_index_requests": 1,
+    "memory_search_requests": 1,
+    "http_2xx": 2,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "timeouts": 0,
+    "retries": 0
+  }
+}

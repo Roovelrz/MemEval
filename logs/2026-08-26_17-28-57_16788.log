@@ -1,0 +1,23 @@
+2026-08-26 17:28:57 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-08-26 17:28:57 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-08-26 17:28:57 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-08-26 17:28:57 | INFO | base_service.py:93 | add_jobs | Added job: search
+2026-08-26 17:28:58 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.000s
+2026-08-26 17:28:58 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-08-26 17:28:58 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-08-26 17:28:58 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.000s
+2026-08-26 17:28:58 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.000s
+2026-08-26 17:28:58 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-08-26 17:28:58 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-08-26 17:28:58 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.000s
+2026-08-26 17:28:58 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 23420}
+2026-08-26 17:28:58 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+2026-08-26 17:28:58 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-08-26 17:28:58 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 46, 'modified': 0, 'deleted': 0}
+2026-08-26 17:28:58 | INFO | update_changes.py:101 | _apply_existing | Detected 46 added file(s)
+2026-08-26 17:28:58 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=46 estimated_bytes=5921752
+2026-08-26 17:28:58 | INFO | local_file_store.py:541 | dump | Saved 75 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-en-local-20\workspaces\0090_80ec1f4f\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-08-26 17:28:58 | INFO | bm25_index.py:366 | dump | Saved 75 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-en-local-20\workspaces\0090_80ec1f4f\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-08-26 17:28:58 | INFO | local_file_graph.py:45 | dump | Saved 46 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\en_full\reme\reme-en-local-20\workspaces\0090_80ec1f4f\metadata\file_graph\default.jsonl.zst
+2026-08-26 17:28:58 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 46, 'n_edges': 0, 'n_pending': 0, 'memory': '0.04 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 75, 'n_chunks_with_embedding': 0, 'memory': '0.58 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 75, 'vocab_size': 7308, 'memory': '4.01 MB'}}}}
+2026-08-26 17:28:58 | INFO | search.py:227 | execute | [SearchStep] query='How many different museums or galleries did I visit in the month of February?' candidates=150 vector_hits=0 keyword_hits=19

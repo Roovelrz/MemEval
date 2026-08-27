@@ -1,0 +1,104 @@
+{
+  "run_id": "reme-e2e-20-context-v2",
+  "dataset": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\datasets\\zh_derived\\longmemeval_zh\\LongMemEval-ZH-20-v0.1\\dataset.json",
+  "requested_cases": 20,
+  "successful_cases": 20,
+  "failed_cases": 0,
+  "start_time_utc": "2026-08-26T04:19:37.422976+00:00",
+  "end_time_utc": "2026-08-26T04:21:14.129738+00:00",
+  "duration_ms": 96706.762,
+  "add_success_rate": 1.0,
+  "added_sessions": 964,
+  "failed_add_sessions": 0,
+  "added_turns": 10055,
+  "evidence_add_success_rate": 1.0,
+  "duplicate_add_count": 1,
+  "empty_content_add_count": 0,
+  "add_latency_ms": {
+    "avg": 30.457070000556996,
+    "p50": 30.548800008546095,
+    "p95": 34.73050000029617,
+    "p99": 38.68706000153906
+  },
+  "index_success_rate": 1.0,
+  "indexed_document_count": 964,
+  "indexed_chunk_count": 1395,
+  "index_latency_ms": {
+    "avg": 581.2629250001919,
+    "p50": 580.5182000040077,
+    "p95": 599.4736349945015,
+    "p99": 601.2556069933635
+  },
+  "search_success_rate": 1.0,
+  "search_request_count": 20,
+  "empty_search_result_count": 0,
+  "search_retry_count": 0,
+  "search_latency_ms": {
+    "avg": 21.055890002753586,
+    "p50": 22.279550008533988,
+    "p95": 27.496945007442267,
+    "p99": 30.682029006857185
+  },
+  "hit_at_10": 0.95,
+  "recall_at_10": 0.95,
+  "mrr": 0.8821428571428571,
+  "avg_index_latency_ms": 581.2629250001919,
+  "avg_search_latency_ms": 21.055890002753586,
+  "full_evidence_recall_rate": 0.95,
+  "partial_evidence_rate": 0.0,
+  "zero_evidence_rate": 0.05,
+  "question_type_breakdown": {
+    "knowledge-update": {
+      "case_count": 4,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "avg_search_latency_ms": 18.05400000012014
+    },
+    "multi-session": {
+      "case_count": 4,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "avg_search_latency_ms": 24.808650003251387
+    },
+    "single-session-assistant": {
+      "case_count": 2,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 0.75,
+      "avg_search_latency_ms": 23.58210000238614
+    },
+    "single-session-preference": {
+      "case_count": 3,
+      "hit_at_10": 0.6666666666666666,
+      "recall_at_10": 0.6666666666666666,
+      "mrr": 0.6666666666666666,
+      "avg_search_latency_ms": 22.872000001370907
+    },
+    "single-session-user": {
+      "case_count": 3,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "avg_search_latency_ms": 19.983666672487743
+    },
+    "temporal-reasoning": {
+      "case_count": 4,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 0.7857142857142857,
+      "avg_search_latency_ms": 18.484000003809342
+    }
+  },
+  "api_stability": {
+    "memory_add_requests": 964,
+    "memory_index_requests": 20,
+    "memory_search_requests": 20,
+    "http_2xx": 40,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "timeouts": 0,
+    "retries": 0
+  }
+}

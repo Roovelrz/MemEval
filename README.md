@@ -101,6 +101,7 @@ path is therefore the most reproducible invocation:
 py -3.12 scripts/run_reme_retrieval_eval.py `
   --data datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
   --cases 1 `
+  --workers 2 `
   --top-k 10 `
   --run-id reme-smoke-1 `
   --reme-cmd "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe"
@@ -109,16 +110,21 @@ py -3.12 scripts/run_reme_retrieval_eval.py `
 Then expand in the recommended order:
 
 ```powershell
-# five cases
-py -3.12 scripts/run_reme_retrieval_eval.py --data <dataset.json> --cases 5 --run-id reme-5
+# five cases; two isolated ReMe services are safe for the current local laptop
+py -3.12 scripts/run_reme_retrieval_eval.py --data <dataset.json> --cases 5 --workers 2 --run-id reme-5
 
-# all selected cases, with a deterministic shuffled order
-py -3.12 scripts/run_reme_retrieval_eval.py --data <dataset.json> --cases 0 --shuffle --seed 42 --run-id reme-all
+# server example; raise Retrieval independently after checking server RAM/CPU
+py -3.12 scripts/run_reme_retrieval_eval.py --data <dataset.json> --cases 0 --workers 8 --shuffle --seed 42 --run-id reme-all
 ```
 
 Useful switches are `--start`, `--cases/--limit`, `--top-k`,
 `--search-multiplier`, `--min-score`, `--base-port`, `--startup-timeout`,
-`--keep-workspaces`, and `--reme-config`. Replace `--data` with any JSON/JSONL
+`--workers/--retrieval-workers`, `--keep-workspaces`, and `--reme-config`.
+Each Retrieval worker starts an isolated ReMe service with a distinct port,
+workspace, raw artifact path, and log. Results are still written in selected-case
+order. The standalone runner defaults to `1` for backward compatibility; the
+end-to-end runner defaults to `2` for a conservative local-laptop profile.
+Replace `--data` with any JSON/JSONL
 dataset whose cases expose `case_id`, `question`, `gold_answer`, and a
 `sessions` list; the runner also accepts the original LongMemEval
 `haystack_sessions` shape.
@@ -131,7 +137,8 @@ Each run is stored below `results/reme_retrieval/<run-id>/`:
 - `raw_search/`: exact ReMe response for each successful case.
 - `failures.jsonl`: case-level startup, indexing, or search failures.
 - `summary.json`: aggregate metrics and success/failure counts.
-- `workspaces/` and `reme_service.log`: retained only when `--keep-workspaces` is set (the log is always retained).
+- `workspaces/`: retained only when `--keep-workspaces` is set.
+- `reme_service_logs/`: one retained service log per case, including parallel runs.
 
 The first validated smoke run on the frozen `LongMemEval-ZH-20-v0.1` dataset
 retrieved its evidence session at rank 1 for case `118b2229` (`Hit@10=1`,
@@ -159,6 +166,13 @@ $env:DEEPSEEK_MODEL = "deepseek-v4-flash"
 
 The repository-root `.env` is also loaded automatically by these two runners;
 existing process environment variables take precedence.
+
+Answer and Judge default to `8192` output tokens. If a caller explicitly uses
+a smaller value and the provider returns an empty response with
+`finish_reason=length`, the shared client performs one recovery attempt at
+`8192` tokens. Resumable runs reconcile `answer_failures.jsonl` and
+`judge_failures.jsonl` against successful output IDs, while `api_errors.jsonl`
+remains an append-only attempt history for provenance.
 
 For `deepseek-v4-flash`, the runners calculate USD cost from cache-hit input,
 cache-miss input, and output tokens using the auditable built-in DeepSeek price
@@ -194,13 +208,47 @@ orchestrates the three stages in one run. It exposes the ReMe dataset,
 workspace, BM25/search, Answer, and Judge settings in one command:
 
 ```powershell
+# 中文本地化 20 条；--cases 0 也会运行该注册数据集的全部 20 条
 py -3.12 scripts/run_reme_end_to_end_eval.py `
-  --data datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
+  --dataset LongMemEval-ZH-20-v0.1 `
+  --cases 20 `
+  --top-k 10 `
+  --run-id reme-longmemeval-zh20
+
+# 英文官方原版；先 smoke，再把 --cases 改为 20 或 0（全量 500）
+py -3.12 scripts/run_reme_end_to_end_eval.py `
+  --dataset LongMemEval-EN-Full `
   --cases 1 `
   --top-k 10 `
-  --run-id reme-e2e-1 `
-  --reme-cmd "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe"
+  --run-id reme-longmemeval-en-smoke
 ```
+
+The end-to-end runner uses the local-safe defaults Retrieval `2`, Answer `4`,
+and Judge `4`. Override them independently with `--retrieval-workers`,
+`--answer-workers`, and `--judge-workers`; use `1` to restore sequential
+behavior for any stage. Standalone runners preserve sequential behavior by
+default and expose `--workers`, for example:
+
+```powershell
+py -3.12 scripts/run_answer_eval.py --input <prepared.jsonl> --output <answers.jsonl> --workers 4
+py -3.12 scripts/run_judge_eval.py --input <prepared.jsonl> --answers <answers.jsonl> --output <scores.jsonl> --workers 4
+```
+
+Suggested starting profiles:
+
+```powershell
+# Local i5 / 16 GB / integrated graphics: BM25 Retrieval is CPU/RAM bound
+py -3.12 scripts/run_reme_end_to_end_eval.py --dataset LongMemEval-EN-Full --cases 20 --retrieval-workers 2 --answer-workers 4 --judge-workers 4
+
+# Server starting point; benchmark 20 cases before increasing Retrieval to 8
+py -3.12 scripts/run_reme_end_to_end_eval.py --dataset LongMemEval-EN-Full --cases 100 --retrieval-workers 4 --answer-workers 8 --judge-workers 8
+```
+
+注册信息位于 `datasets/registry.json`。当前实际接入
+`LongMemEval-EN-Full` 和 `LongMemEval-ZH-20-v0.1`；LoCoMo 与 PersonaMem
+仅预留、不会被 runner 误当成可运行数据。旧的 `--data <path>` 命令仍然可用。
+未显式设置 `--output-dir` 时，结果自动隔离到
+`results/en_full/reme/<run-id>/` 或 `results/zh_localized/reme/<run-id>/`。
 
 The orchestrator stops before Answer if Retrieval fails, and stops before
 Judge if Answer fails. After the model stages finish, it builds a human-readable
@@ -242,6 +290,15 @@ py -3.12 scripts/build_trace_report.py `
   --run-dir results/reme_end_to_end/reme-e2e-1-fixed
 ```
 
+For an already organized Run that was resumed from `Detailed Trace Report`,
+refresh its concise summary and Dashboard in place after rebuilding Trace:
+
+```powershell
+py -3.12 scripts/organize_result_layout.py `
+  --run-dir results/en_full/reme/<run-id> `
+  --refresh
+```
+
 Use `--data <dataset.json>` only when the dataset path in `run_config.json` is
 missing or no longer valid.
 
@@ -256,6 +313,9 @@ does not mutate source Trace artifacts. It includes aggregate metrics, the
 interactive Retrieval × Answer quadrant, capability/pipeline/failure pages,
 filterable case tables, full per-case Trace, latency, API stability, token/cost,
 run metadata, and optional version comparison.
+Dashboard 首页还会从现有结果中选择每个 Dataset case 数最多、时间最新的
+Run，展示“Benchmark 表现”；顶部 Benchmark 下拉框会跳转到另一套完整
+Dashboard，因此四象限、Case Trace、流程观测和性能页面会一起切换。
 
 To rebuild only the dashboard after Trace already exists:
 

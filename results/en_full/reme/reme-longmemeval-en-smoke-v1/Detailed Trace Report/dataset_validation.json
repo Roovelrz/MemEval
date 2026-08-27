@@ -1,0 +1,32 @@
+{
+  "schema_version": "memory_eval_run_dataset_validation_v1",
+  "status": "FAIL",
+  "scope": "selected_cases",
+  "selected_case_ids": [
+    "e47becba"
+  ],
+  "counts": {
+    "actual_loaded_case_count": 1,
+    "actual_loaded_session_count": 0,
+    "actual_loaded_turn_count": 0,
+    "evidence_session_count": 1,
+    "missing_question_count": 0,
+    "missing_gold_answer_count": 0,
+    "missing_evidence_id_count": 1,
+    "duplicate_session_id_count": 0,
+    "duplicate_case_id_count": 0,
+    "timestamp_anomaly_count": 0,
+    "data_parse_failure_count": 0,
+    "data_skipped_count": 0,
+    "unselected_case_count": 499
+  },
+  "notes": {
+    "unselected_cases": "Intentional case selection is not counted as skipped data.",
+    "timestamp_validation": "Accepts ISO-like YYYY-MM-DD or YYYY/MM/DD timestamps with an optional weekday and time."
+  },
+  "source_integrity": {
+    "status": "NOT_RECORDED",
+    "sha256": "NOT_RECORDED",
+    "artifact": "NOT_RECORDED"
+  }
+}

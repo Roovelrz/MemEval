@@ -1,0 +1,200 @@
+{
+  "schema_version": "memory_eval_concise_summary_v1",
+  "run_info": {
+    "run_id": "reme-longmemeval-zh-smoke-v1",
+    "dataset_id": "LongMemEval-ZH-20-v0.1",
+    "dataset_name": "LongMemEval 中文本地化基准",
+    "dataset_version": "v0.1",
+    "source_dataset": "LongMemEval-S cleaned",
+    "language": "zh-CN",
+    "translated": true,
+    "case_count": 1,
+    "dataset_case_count": 20,
+    "session_count": 45,
+    "turn_count": 485,
+    "evidence_session_count": 1,
+    "memory_backend": "ReMe",
+    "memory_version": "0.4.1.8",
+    "top_k": 10,
+    "answer_model": "deepseek-v4-flash",
+    "judge_model": "deepseek-v4-flash",
+    "answer_prompt_version": "longmemeval-answer-v2-structured-time",
+    "judge_prompt_version": "longmemeval-judge-v1",
+    "eval_code_commit": "fb4123b6225ea289cf2014d52ad1b07da2bc09d2",
+    "eval_code_dirty": true,
+    "eval_code_snapshot": {
+      "directory": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\zh_localized\\reme\\reme-longmemeval-zh-smoke-v1\\eval_code_snapshot",
+      "manifest": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\zh_localized\\reme\\reme-longmemeval-zh-smoke-v1\\eval_code_snapshot\\manifest.json",
+      "manifest_sha256": "3f97e8cbe743b82f9369561b97c304182e2c54618bba64fbbf9794caf53b128e",
+      "file_count": 31
+    },
+    "reproducibility_status": "PASS_DIRTY_WITH_SOURCE_SNAPSHOT",
+    "start_time": "2026-08-26T08:19:49.489638+00:00",
+    "end_time": "2026-08-26T08:20:00.339381+00:00"
+  },
+  "dataset": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\datasets\\zh_derived\\longmemeval_zh\\LongMemEval-ZH-20-v0.1\\dataset.json",
+  "dataset_id": "LongMemEval-ZH-20-v0.1",
+  "dataset_name": "LongMemEval 中文本地化基准",
+  "dataset_version": "v0.1",
+  "source_dataset": "LongMemEval-S cleaned",
+  "language": "zh-CN",
+  "translated": true,
+  "case_count": 1,
+  "total_cases": 1,
+  "successful_pipeline_cases": 1,
+  "failed_pipeline_cases": 0,
+  "top_k": 10,
+  "hit_at_k": 1.0,
+  "recall_at_k": 1.0,
+  "mrr": 1.0,
+  "answer_accuracy": 1.0,
+  "pipeline_success_rate": 1.0,
+  "grounded_end_to_end_accuracy": 1.0,
+  "quadrants": {
+    "A_retrieval_pass_answer_pass": 1,
+    "B_retrieval_fail_answer_fail": 0,
+    "C_retrieval_pass_answer_fail": 0,
+    "D_retrieval_fail_answer_pass": 0,
+    "not_scored": 0
+  },
+  "root_cause_distribution": {
+    "PASS": 1,
+    "DATA_ERROR": 0,
+    "ADD_FAILURE": 0,
+    "INDEX_FAILURE": 0,
+    "RETRIEVAL_MISS": 0,
+    "RETRIEVAL_PARTIAL": 0,
+    "RETRIEVAL_LOW_RANK": 0,
+    "RETRIEVAL_WRONG_CHUNK": 0,
+    "CONTEXT_LOSS": 0,
+    "CONTEXT_TRUNCATION": 0,
+    "ANSWER_FAILURE": 0,
+    "JUDGE_SUSPECT": 0,
+    "API_FAILURE": 0,
+    "TIMEOUT": 0,
+    "PIPELINE_FAILURE": 0
+  },
+  "question_type_breakdown": {
+    "single-session-user": {
+      "case_count": 1,
+      "hit_at_10": 1.0,
+      "recall_at_10": 1.0,
+      "mrr": 1.0,
+      "accuracy": 1.0,
+      "avg_search_latency_ms": 31.8453999934718
+    }
+  },
+  "evidence_count_breakdown": {
+    "single_evidence": {
+      "case_count": 1,
+      "recall_at_10": 1.0,
+      "accuracy": 1.0
+    },
+    "multiple_evidence": {
+      "case_count": 0,
+      "recall_at_10": null,
+      "accuracy": null
+    }
+  },
+  "latency_breakdown": {
+    "Add": {
+      "avg": 21.989600005326793,
+      "p50": 21.989600005326793,
+      "p95": 21.989600005326793,
+      "p99": 21.989600005326793
+    },
+    "Index": {
+      "avg": 735.6405000027735,
+      "p50": 735.6405000027735,
+      "p95": 735.6405000027735,
+      "p99": 735.6405000027735
+    },
+    "Search": {
+      "avg": 31.8453999934718,
+      "p50": 31.8453999934718,
+      "p95": 31.8453999934718,
+      "p99": 31.8453999934718
+    },
+    "Answer": {
+      "avg": 2092.731400000048,
+      "p50": 2092.731400000048,
+      "p95": 2092.731400000048,
+      "p99": 2092.731400000048
+    },
+    "Judge": {
+      "avg": 2341.1123999976553,
+      "p50": 2341.1123999976553,
+      "p95": 2341.1123999976553,
+      "p99": 2341.1123999976553
+    },
+    "End-to-End": {
+      "avg": 5223.319299999275,
+      "p50": 5223.319299999275,
+      "p95": 5223.319299999275,
+      "p99": 5223.319299999275,
+      "case_count": 1,
+      "method": "Per-case sum of Add, Index, Search, Answer, and Judge; excludes service startup and orchestration overhead."
+    }
+  },
+  "llm_cost": {
+    "currency": "USD",
+    "answer_cost_usd": 9.98424e-05,
+    "judge_cost_usd": 5.0512e-05,
+    "total_cost_usd": 0.0001503544,
+    "answer_pricing": {
+      "cache_hit_input": 0.0028,
+      "cache_miss_input": 0.14,
+      "output": 0.28,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "observed_date": "2026-08-26",
+      "model": "deepseek-v4-flash",
+      "currency": "USD",
+      "unit_tokens": 1000000,
+      "multiplier": 1.0
+    },
+    "judge_pricing": {
+      "cache_hit_input": 0.0028,
+      "cache_miss_input": 0.14,
+      "output": 0.28,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "observed_date": "2026-08-26",
+      "model": "deepseek-v4-flash",
+      "currency": "USD",
+      "unit_tokens": 1000000,
+      "multiplier": 1.0
+    }
+  },
+  "api_stability": {
+    "memory": {
+      "memory_add_requests": 45,
+      "memory_index_requests": 1,
+      "memory_search_requests": 1,
+      "http_2xx": 2,
+      "http_4xx": 0,
+      "http_5xx": 0,
+      "timeouts": 0,
+      "retries": 0
+    },
+    "answer_api_requests": 1,
+    "judge_api_requests": 1,
+    "answer_retries": 0,
+    "judge_retries": 0,
+    "timeouts": 0,
+    "api_error_count": 0
+  },
+  "conclusions": {
+    "memory_all_written": true,
+    "all_evidence_written": true,
+    "search_stable": true,
+    "recall_failure_count": 0,
+    "low_rank_failure_count": 0,
+    "ranking_failure_count": 0,
+    "wrong_chunk_failure_count": 0,
+    "context_loss_count": 0,
+    "judge_suspect_count": 0,
+    "max_latency_stage": "Judge",
+    "largest_error_source": "DATA_ERROR",
+    "reproducibility_status": "PASS_DIRTY_WITH_SOURCE_SNAPSHOT"
+  },
+  "comparison": null
+}

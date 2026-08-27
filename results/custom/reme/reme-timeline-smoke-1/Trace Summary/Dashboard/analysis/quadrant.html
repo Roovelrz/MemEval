@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>端到端能力四象限分析 · Memory Eval</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="">
+  <button class="menu-button" type="button" data-menu-toggle aria-label="切换导航">☰</button>
+  <nav class="sidebar"><div class="brand"><span class="brand-mark">M</span><div><strong>Memory Eval</strong><small>Trace Dashboard</small></div></div><a class="nav-link " href="../index.html"><span>总览</span></a><a class="nav-link active" href="../analysis/quadrant.html"><span>四象限分析</span></a><a class="nav-link " href="../cases/index.html"><span>Case 追踪</span></a><div class="nav-children"><a class="nav-sublink " href="../cases/index.html">Case 列表</a><a class="nav-sublink " href="../capabilities/index.html">能力维度表现</a><a class="nav-sublink " href="../failures/index.html">失败归因</a></div><a class="nav-link " href="../pipeline/add.html"><span>流程观测</span></a><a class="nav-link " href="../performance/latency.html"><span>性能与时延</span></a><a class="nav-link " href="../comparison/index.html"><span>版本对比</span></a><a class="nav-link " href="../run-info/index.html"><span>运行信息</span></a></nav>
+  <main class="main-content">
+    <header class="page-header">
+      <div><p class="eyebrow">RUN · reme-timeline-smoke-1</p><h1>端到端能力四象限分析</h1><p>Case / Question Type / Run 三种粒度</p></div>
+      <div class="header-actions"><button class="button secondary" type="button" data-back-button data-back-fallback="../index.html">← 返回上一级</button><label class="benchmark-switch"><span>Benchmark</span><select data-benchmark-switch><option value="../../../../../../en_full/reme/reme-en-local-20/Trace Summary/Dashboard/index.html" >LongMemEval 英文全量基准</option><option value="../../../../../../reme_end_to_end/reme-e2e-20-layout-v1/Trace Summary/Dashboard/index.html" >LongMemEval 中文本地化基准</option><option value="../index.html" selected>dataset</option></select></label><a class="button secondary" href="../trace_summary.md">查看 Markdown Trace</a></div>
+    </header>
+    <section class="panel quadrant-panel">
+<div class="section-heading"><div><p class="eyebrow">INTERACTIVE ANALYSIS</p><h2>端到端能力四象限分析</h2></div>
+<div class="segmented"><button class="active" data-chart-level="case">Case</button><button data-chart-level="type">Question Type</button><button data-chart-level="run">Run</button></div></div>
+<div class="chart-filters"><label>question_type<select data-chart-filter="question_type"><option value="">全部</option><option value="single-session-user">single-session-user</option></select></label><label>root_cause<select data-chart-filter="root_cause"><option value="">全部</option><option value="PASS">PASS</option></select></label><label>quadrant<select data-chart-filter="quadrant"><option value="">全部</option><option value="A: Retrieval PASS + Answer PASS">A: Retrieval PASS + Answer PASS</option></select></label></div>
+<div class="quadrant-layout"><div class="y-label">Answer PASS ↑</div><div class="quadrant-chart" data-quadrant-chart data-score-axis-x="best_evidence_score" data-score-axis-y="best_non_evidence_score" aria-label="象限内点位按 best_evidence_score 和 best_non_evidence_score 排列">
+<div class="quadrant-zone zone-c"><strong>C <em data-quadrant-count="C">0</em></strong><span>检索失败 · 回答成功</span></div><div class="quadrant-zone zone-a"><strong>A <em data-quadrant-count="A">1</em></strong><span>检索成功 · 回答成功</span></div>
+<div class="quadrant-zone zone-d"><strong>D <em data-quadrant-count="D">0</em></strong><span>检索失败 · 回答失败</span></div><div class="quadrant-zone zone-b"><strong>B <em data-quadrant-count="B">0</em></strong><span>检索成功 · 回答失败</span></div><div class="axis-x">Retrieval PASS →</div><div class="chart-points" data-chart-points></div></div></div>
+<script type="application/json" data-chart-data>{"top_k": 10, "case": [{"case_id": "118b2229", "question_type": "single-session-user", "hit_at_k": 1, "recall_at_k": 1.0, "mrr": 1.0, "best_evidence_score": 7.805655002593994, "best_non_evidence_score": 5.5242509841918945, "first_evidence_rank": 1, "answer_correct": true, "judge_label": "CORRECT", "quadrant": "A: Retrieval PASS + Answer PASS", "root_cause": "PASS", "explanation": "Retrieval found all evidence, the evidence content reached Answer context, and Judge marked the answer CORRECT.", "level": "case", "label": "118b2229", "quadrant_code": "A", "href": "../cases/118b2229.html"}], "type": [{"level": "type", "label": "single-session-user", "question_type": "single-session-user", "root_cause": "AGGREGATED", "quadrant": "AGGREGATED", "quadrant_code": "N", "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0, "answer_correct": 1.0, "judge_label": "AGGREGATED", "x": 1.0, "y": 1.0, "href": "../capabilities/single-session-user.html"}], "run": [{"level": "run", "label": "reme-timeline-smoke-1", "question_type": "ALL", "root_cause": "AGGREGATED", "quadrant": "AGGREGATED", "quadrant_code": "N", "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0, "answer_correct": 1.0, "judge_label": "AGGREGATED", "x": 1.0, "y": 1.0, "href": "../run-info/index.html"}]}</script></section>
+    <footer>由现有 Trace 产物静态生成 · 不参与评测、判分或根因计算</footer>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

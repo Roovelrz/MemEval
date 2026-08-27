@@ -1,0 +1,213 @@
+{
+  "case": {
+    "case_id": "0862e8bf_abs",
+    "question_type": "single-session-user",
+    "question": "What is the name of my hamster?",
+    "question_date": "2023/05/30 (Tue) 21:39",
+    "gold_answer": "You did not mention this information. You mentioned your cat Luna but not your hamster.",
+    "evidence_session_ids": [
+      "answer_c6fd8ebd_abs"
+    ],
+    "total_sessions": 52,
+    "total_turns": 523
+  },
+  "add": {
+    "expected_session_count": 52,
+    "successfully_added_session_count": 52,
+    "expected_turn_count": 523,
+    "successfully_added_turn_count": 523,
+    "expected_evidence_session_count": 1,
+    "successfully_added_evidence_count": 1,
+    "missing_evidence_in_dataset": [],
+    "evidence_dataset_status": "PASS",
+    "evidence_add_status": "PASS",
+    "add_latency_ms": 31.78039999329485,
+    "reindex_latency_ms": 736.7855999909807,
+    "workspace": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\en_full\\reme\\reme-en-local-20\\workspaces\\0064_0862e8bf_abs",
+    "namespace": "0862e8bf_abs",
+    "user_id": "NOT_APPLICABLE",
+    "duplicate_session_ids_in_dataset": [],
+    "failed_session_ids": [],
+    "add_status": "PASS",
+    "index_status": "PASS",
+    "indexed_document_count": 52,
+    "indexed_chunk_count": 74,
+    "chunks_with_embedding": 0,
+    "embedding_status": "NOT_APPLICABLE",
+    "embedding_call_count": 0,
+    "embedding_failure_count": 0,
+    "extraction_status": "NOT_APPLICABLE",
+    "extraction_call_count": 0,
+    "extraction_failure_count": 0,
+    "errors": "NOT_RECORDED"
+  },
+  "retrieval": {
+    "recorded": true,
+    "query": "What is the name of my hamster?",
+    "top_k": 10,
+    "hit_at_k": 0,
+    "recall_at_k": 0.0,
+    "mrr": 0.0,
+    "first_evidence_rank": null,
+    "first_evidence_rank_full": null,
+    "gold_evidence_count": 1,
+    "retrieved_evidence_count": 0,
+    "missing_evidence_ids": [
+      "answer_c6fd8ebd_abs"
+    ],
+    "best_evidence_score": null,
+    "best_non_evidence_score": null,
+    "evidence_score_gap": null,
+    "evidence_content_present": "NOT_RECORDED",
+    "evidence_content_by_session": {
+      "answer_c6fd8ebd_abs": "NOT_RECORDED"
+    },
+    "search_latency_ms": 13.403899996774271,
+    "raw_result_count": 0,
+    "returned_session_count": 0,
+    "search_status": "PASS",
+    "search_retry_count": 0,
+    "metrics_by_k": {
+      "1": {
+        "hit": 0,
+        "recall": 0.0,
+        "precision": 0.0
+      },
+      "3": {
+        "hit": 0,
+        "recall": 0.0,
+        "precision": 0.0
+      },
+      "5": {
+        "hit": 0,
+        "recall": 0.0,
+        "precision": 0.0
+      },
+      "10": {
+        "hit": 0,
+        "recall": 0.0,
+        "precision": 0.0
+      }
+    },
+    "mean_evidence_rank": null,
+    "top_results": [],
+    "failure": null
+  },
+  "answer": {
+    "recorded": true,
+    "question": "What is the name of my hamster?",
+    "context_count": 0,
+    "context_characters": 0,
+    "context_token_estimate": 0,
+    "context_order": [],
+    "context_timestamps": [],
+    "evidence_context_positions": [],
+    "distractor_count": 0,
+    "retrieved_contexts": [],
+    "retrieved_context_excerpts": [],
+    "evidence_in_retrieved_context": "NOT_RECORDED",
+    "evidence_in_context_by_session": {
+      "answer_c6fd8ebd_abs": "NOT_RECORDED"
+    },
+    "evidence_in_prompt": "NOT_RECORDED",
+    "evidence_in_prompt_by_session": {
+      "answer_c6fd8ebd_abs": "NOT_RECORDED"
+    },
+    "answer_prompt": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\en_full\\reme\\reme-en-local-20\\answer_prompts\\0862e8bf_abs.txt",
+    "answer_prompt_version": "longmemeval-answer-v2-structured-time",
+    "answer_prompt_sha256": "1a5ae61723736c887d71a4766a69f0b1b4a91e5284901009884181d46809e28b",
+    "answer_prompt_note": "Exact sent prompt was not available.",
+    "truncation_occurred": false,
+    "evidence_before_truncation": "NOT_RECORDED",
+    "evidence_after_truncation": "NOT_RECORDED",
+    "generated_answer": "I don’t know.",
+    "gold_answer": "You did not mention this information. You mentioned your cat Luna but not your hamster.",
+    "answer_difference": "Surface forms differ; semantic equivalence requires Judge or human review.",
+    "model": "deepseek-v4-flash",
+    "latency_ms": 1055.2298999973573,
+    "usage": {
+      "prompt_tokens": 415,
+      "completion_tokens": 71,
+      "total_tokens": 486,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 64
+      },
+      "prompt_cache_hit_tokens": 256,
+      "prompt_cache_miss_tokens": 159,
+      "request_attempts": 1,
+      "retry_count": 0,
+      "http_status": 200,
+      "cost": {
+        "currency": "USD",
+        "input_tokens": 415,
+        "cache_hit_input_tokens": 256,
+        "cache_miss_input_tokens": 159,
+        "output_tokens": 71,
+        "cache_hit_input_cost_usd": 7.168e-07,
+        "cache_miss_input_cost_usd": 2.226e-05,
+        "output_cost_usd": 1.9880000000000003e-05,
+        "total_cost_usd": 4.28568e-05
+      }
+    },
+    "failure": null
+  },
+  "judge": {
+    "recorded": true,
+    "judge_prompt": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\en_full\\reme\\reme-en-local-20\\Detailed Trace Report\\judge_prompts\\0862e8bf_abs.txt",
+    "judge_prompt_version": "longmemeval-judge-v1",
+    "judge_prompt_sha256": "1abb42d1f301f04058beb4d4635c01747fb2d7065a2bcceae8c8f79d007ce729",
+    "judge_prompt_persisted": true,
+    "generated_answer": "I don’t know.",
+    "gold_answer": "You did not mention this information. You mentioned your cat Luna but not your hamster.",
+    "raw_response": "```json\n{{\n    \"label\": \"CORRECT\"\n}}\n```",
+    "parsed_label": "CORRECT",
+    "is_correct": true,
+    "model": "deepseek-v4-flash",
+    "latency_ms": 1682.4454000015976,
+    "usage": {
+      "prompt_tokens": 730,
+      "completion_tokens": 100,
+      "total_tokens": 830,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 84
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 218,
+      "request_attempts": 1,
+      "retry_count": 0,
+      "http_status": 200,
+      "initial_max_tokens": 8192,
+      "final_max_tokens": 8192,
+      "length_recovery_count": 0,
+      "cost": {
+        "currency": "USD",
+        "input_tokens": 730,
+        "cache_hit_input_tokens": 512,
+        "cache_miss_input_tokens": 218,
+        "output_tokens": 100,
+        "cache_hit_input_cost_usd": 1.4336e-06,
+        "cache_miss_input_cost_usd": 3.0520000000000006e-05,
+        "output_cost_usd": 2.8000000000000003e-05,
+        "total_cost_usd": 5.995360000000001e-05
+      }
+    },
+    "human_review": "NOT_RECORDED",
+    "suspect_reasons": [],
+    "failure": null
+  },
+  "final": {
+    "retrieval_pass": false,
+    "answer_pass": true,
+    "quadrant": "C: Retrieval FAIL + Answer PASS",
+    "root_cause": "RETRIEVAL_MISS",
+    "explanation": "No gold evidence session appeared in TopK or the recorded candidate list.",
+    "suggested_fix": "调整 query、BM25 分词或扩大候选集，先保证召回。",
+    "pipeline_complete": true
+  }
+}
