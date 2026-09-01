@@ -25,7 +25,13 @@ class DatasetRegistryTest(unittest.TestCase):
 
     def test_reserved_dataset_fails_before_runner_starts(self) -> None:
         with self.assertRaisesRegex(ValueError, "reserved"):
-            resolve_dataset("LoCoMo-EN-Full")
+            resolve_dataset("LoCoMo-ZH-Localized")
+
+    def test_local_english_datasets_are_available(self) -> None:
+        _, locomo_spec = resolve_dataset("LoCoMo-EN-Full")
+        _, personamem_spec = resolve_dataset("PersonaMem-EN-Full")
+        self.assertEqual(locomo_spec["adapter"], "locomo")
+        self.assertEqual(personamem_spec["adapter"], "personamem-v2")
 
     def test_run_metadata_distinguishes_selected_and_source_case_counts(self) -> None:
         spec = load_dataset_registry()["LongMemEval-EN-Full"]

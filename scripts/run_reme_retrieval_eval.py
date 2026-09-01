@@ -35,6 +35,19 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from memory_eval.dataset_integrity import freeze_dataset_integrity
+from memory_eval.adapters.dataset import load_dataset_cases
+from memory_eval.adapters.dataset.longmemeval import normalize_case as adapter_normalize_case
+from memory_eval.adapters.memory import create_memory_adapter
+from memory_eval.adapters.memory.reme import (
+    create_bm25_config as adapter_create_bm25_config,
+    deduplicate_sessions as adapter_deduplicate_sessions,
+    http_post as adapter_http_post,
+    resolve_reme_command as adapter_resolve_reme_command,
+    safe_name as adapter_safe_name,
+    start_reme as adapter_start_reme,
+    stop_reme as adapter_stop_reme,
+    wait_for_reme as adapter_wait_for_reme,
+)
 from memory_eval.dataset_registry import (
     DEFAULT_DATASET_ID,
     default_output_root,
@@ -617,6 +630,20 @@ def find_index_health(node: Any) -> dict[str, Any]:
     return {}
 
 
+# Compatibility exports for existing imports and test patch points. Runtime
+# behavior is owned by memory_eval.adapters, so adapter changes take effect in
+# every runner without editing this orchestration script.
+normalize_case = adapter_normalize_case
+safe_name = adapter_safe_name
+create_bm25_config = adapter_create_bm25_config
+resolve_reme_command = adapter_resolve_reme_command
+deduplicate_sessions = adapter_deduplicate_sessions
+start_reme = adapter_start_reme
+stop_reme = adapter_stop_reme
+wait_for_reme = adapter_wait_for_reme
+http_post = adapter_http_post
+
+
 def retrieval_metrics_at_k(
     retrieved: list[dict[str, Any]], evidence_ids: list[str], k: int
 ) -> dict[str, float | int | None]:
@@ -651,6 +678,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the ReMe BM25 retrieval baseline")
     parser.add_argument("--dataset", default=DEFAULT_DATASET_ID, help="Registered dataset ID or a dataset path")
     parser.add_argument("--data", type=Path, default=None, help="Dataset path override kept for backward compatibility")
+    parser.add_argument(
+        "--dataset-adapter",
+        default="auto",
+        help="Dataset adapter: auto, longmemeval, locomo, or personamem-v2",
+    )
     parser.add_argument("--cases", "--limit", dest="limit", type=int, default=1, help="0 means all")
     parser.add_argument("--start", type=int, default=0)
     parser.add_argument("--top-k", type=int, default=10)
@@ -658,7 +690,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--min-score", type=float, default=0.0)
     parser.add_argument("--shuffle", action="store_true")
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--memory-adapter", default="reme", choices=("reme",))
+    parser.add_argument("--memory-adapter", default="reme", choices=("reme", "off"))
     parser.add_argument(
         "--workers",
         "--retrieval-workers",
@@ -690,14 +722,15 @@ def run(args: argparse.Namespace) -> int:
         raise ValueError("--workers/--retrieval-workers must be positive")
 
     dataset_path, dataset_spec = resolve_dataset(args.dataset, args.data)
-    raw_cases = load_json_or_jsonl(dataset_path)
-    all_cases = [normalize_case(raw, index) for index, raw in enumerate(raw_cases)]
-    cases = list(all_cases)
-    if args.shuffle:
-        random.Random(args.seed).shuffle(cases)
-    cases = cases[args.start:]
-    if args.limit > 0:
-        cases = cases[: args.limit]
+    dataset_result = load_dataset_cases(
+        dataset_path,
+        adapter_name=str(getattr(args, "dataset_adapter", "auto")),
+        start=args.start,
+        limit=args.limit,
+        shuffle=args.shuffle,
+        seed=args.seed,
+    )
+    cases = dataset_result.cases
     if not cases:
         raise ValueError("No cases selected")
     if args.base_port < 1 or args.base_port + len(cases) - 1 > 65535:
@@ -706,7 +739,7 @@ def run(args: argparse.Namespace) -> int:
     dataset_metadata = run_dataset_metadata(
         dataset_spec,
         selected_case_count=len(cases),
-        source_case_count=len(all_cases),
+        source_case_count=dataset_result.source_case_count,
     )
     dataset_sha256 = sha256_file(dataset_path)
     expected_sha256 = dataset_spec.get("sha256")
@@ -718,7 +751,7 @@ def run(args: argparse.Namespace) -> int:
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     dataset_slug = safe_name(str(dataset_metadata["dataset_id"])).lower()
-    run_id = args.run_id.strip() or f"reme_{dataset_slug}_{len(cases)}cases_k{args.top_k}_{timestamp}"
+    run_id = args.run_id.strip() or f"{args.memory_adapter}_{dataset_slug}_{len(cases)}cases_k{args.top_k}_{timestamp}"
     output_root = args.output_dir.resolve() if args.output_dir else default_output_root(dataset_spec, args.memory_adapter)
     run_dir = output_root / run_id
     workspace_root = run_dir / "workspaces"
@@ -729,8 +762,25 @@ def run(args: argparse.Namespace) -> int:
     raw_search_dir.mkdir(parents=True, exist_ok=True)
     raw_reindex_dir.mkdir(parents=True, exist_ok=True)
 
-    config_path = args.reme_config.resolve() if args.reme_config else create_bm25_config(run_dir / "reme_bm25.yaml", args.vector_weight)
-    command = resolve_reme_command(args.reme_cmd)
+    if args.memory_adapter == "reme":
+        config_path = args.reme_config.resolve() if args.reme_config else create_bm25_config(
+            run_dir / "reme_bm25.yaml", args.vector_weight
+        )
+        command = resolve_reme_command(args.reme_cmd)
+    else:
+        config_path = None
+        command = []
+    memory_adapter = create_memory_adapter(
+        args.memory_adapter,
+        command=command,
+        config_path=config_path,
+        startup_timeout=args.startup_timeout,
+        vector_weight=args.vector_weight,
+        start_fn=start_reme,
+        stop_fn=stop_reme,
+        wait_fn=wait_for_reme,
+        http_fn=http_post,
+    )
     retrieval_path = run_dir / "retrieval.jsonl"
     prepared_path = run_dir / "prepared.jsonl"
     failures_path = run_dir / "failures.jsonl"
@@ -765,7 +815,7 @@ def run(args: argparse.Namespace) -> int:
         dataset_path,
         run_dir,
         cases,
-        source_case_count=len(all_cases),
+        source_case_count=dataset_result.source_case_count,
     )
     eval_code = git_metadata(REPO_ROOT)
     eval_code_snapshot = snapshot_eval_code(run_dir, eval_code)
@@ -774,13 +824,12 @@ def run(args: argparse.Namespace) -> int:
         **dataset_metadata,
         "dataset": str(dataset_path),
         "dataset_format": dataset_path.suffix.lower() or "json",
+        "dataset_adapter": dataset_result.adapter_name,
         "memory_adapter": args.memory_adapter,
-        "memory_backend": "ReMe",
-        "memory_version": reme_version(),
-        "retrieval_backend": "BM25" if args.vector_weight == 0.0 else "ReMe configured hybrid",
+        **memory_adapter.run_metadata(),
         "retrieval_workers": retrieval_workers,
         "model": args.model,
-        "reme_config": str(config_path),
+        "reme_config": str(config_path) if config_path is not None else "NOT_APPLICABLE",
         "vector_weight": args.vector_weight,
         "embedding_enabled": args.vector_weight != 0.0,
         "llm_enabled": False,
@@ -798,8 +847,8 @@ def run(args: argparse.Namespace) -> int:
         "top_k": args.top_k,
         "search_multiplier": args.search_multiplier,
         "min_score": args.min_score,
-        "reme_command": command,
-        "reme_config_sha256": sha256_file(config_path),
+        "reme_command": command or "NOT_APPLICABLE",
+        "reme_config_sha256": sha256_file(config_path) if config_path is not None else "NOT_APPLICABLE",
         "eval_code_commit": eval_code["commit"],
         "eval_code_dirty": eval_code["dirty"],
         "eval_code_snapshot": eval_code_snapshot,
@@ -813,16 +862,6 @@ def run(args: argparse.Namespace) -> int:
         case_index, case = pair
         case_id = case["case_id"]
         workspace = workspace_root / f"{case_index:04d}_{safe_name(case_id)}"
-        if workspace.exists():
-            shutil.rmtree(workspace)
-        workspace.mkdir(parents=True, exist_ok=True)
-        add_started = time.perf_counter()
-        path_map = write_case_workspace(
-            workspace,
-            case,
-            str(dataset_metadata["dataset_id"]),
-        )
-        add_latency_ms = (time.perf_counter() - add_started) * 1000
         session_ids = [session["session_id"] for session in case["sessions"]]
         duplicate_session_ids = sorted(
             ident for ident in set(session_ids) if session_ids.count(ident) > 1
@@ -832,27 +871,24 @@ def run(args: argparse.Namespace) -> int:
             for session in case["sessions"]
             if not any(str(message.get("content", "")).strip() for message in session["messages"])
         ]
-        written_files = list((workspace / "daily" / safe_name(case_id)).glob("*.md"))
-        added_session_ids = [path_map[path.name] for path in written_files]
-        added_evidence_ids = sorted(set(added_session_ids) & set(case["evidence_session_ids"]))
         add_row: dict[str, Any] = {
             "case_id": case_id,
-            "add_mode": "filesystem_session_ingest",
+            "add_mode": "filesystem_session_ingest" if memory_adapter.enabled else "memory_disabled",
             "expected_sessions": len(case["sessions"]),
-            "added_sessions": len(written_files),
+            "added_sessions": 0,
             "expected_turns": sum(len(session["messages"]) for session in case["sessions"]),
-            "added_turns": sum(len(session["messages"]) for session in case["sessions"]),
+            "added_turns": 0,
             "expected_evidence_sessions": len(case["evidence_session_ids"]),
-            "added_evidence_sessions": len(added_evidence_ids),
-            "failed_session_ids": sorted(set(session_ids) - set(added_session_ids)),
+            "added_evidence_sessions": 0,
+            "failed_session_ids": [],
             "duplicate_session_ids": duplicate_session_ids,
             "empty_content_session_ids": empty_session_ids,
             "namespace": case_id,
             "user_id": "NOT_APPLICABLE",
             "workspace": str(workspace),
-            "add_request_count": len(case["sessions"]),
-            "add_latency_ms": add_latency_ms,
-            "add_status": "PASS" if len(written_files) == len(case["sessions"]) else "FAIL",
+            "add_request_count": len(case["sessions"]) if memory_adapter.enabled else 0,
+            "add_latency_ms": 0.0,
+            "add_status": "NOT_RUN",
             "add_error": None,
             "index_status": "NOT_RUN",
             "embedding_status": "NOT_APPLICABLE" if not args.vector_weight else "NOT_RECORDED",
@@ -865,59 +901,92 @@ def run(args: argparse.Namespace) -> int:
         port = args.base_port + case_index
         service_log_path = service_log_dir / f"{case_index:04d}_{safe_name(case_id)}.log"
         add_row["service_port"] = port
-        add_row["service_log"] = str(service_log_path)
-        process: subprocess.Popen[str] | None = None
-        log_file: Any = None
+        add_row["service_log"] = str(service_log_path) if memory_adapter.enabled else "NOT_APPLICABLE"
+        runtime = None
         print(
-            f"[{case_index + 1}/{len(cases)}] case={case_id} started port={port}",
+            f"[{case_index + 1}/{len(cases)}] case={case_id} started adapter={memory_adapter.name}",
             flush=True,
         )
-        current_stage = "service_start"
+        current_stage = "add"
         try:
-            process, log_file = start_reme(command, workspace, port, config_path, service_log_path)
-            wait_for_reme(port, args.startup_timeout)
-            current_stage = "index"
-            reindex_start = time.perf_counter()
-            reindex_response = http_post(port, "reindex", {}, timeout=300)
-            reindex_latency_ms = (time.perf_counter() - reindex_start) * 1000
-            raw_reindex_path = raw_reindex_dir / f"{case_index:04d}_{safe_name(case_id)}.json"
-            raw_reindex_path.write_text(
-                json.dumps(reindex_response, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            runtime = memory_adapter.open_case(
+                workspace=workspace,
+                case=case,
+                dataset_id=str(dataset_metadata["dataset_id"]),
+                port=port,
+                service_log_path=service_log_path,
             )
-            if isinstance(reindex_response, dict) and reindex_response.get("success") is False:
-                raise RuntimeError(f"ReMe reindex failed: {reindex_response.get('answer', '')}")
-            index_results = find_index_results(reindex_response)
-            health_response = http_post(port, "health_check", {}, timeout=30)
-            index_health = find_index_health(health_response)
-            index_failures = [item for item in index_results if item.get("success") is False]
+            added_session_ids = [
+                runtime.path_map[path.name]
+                for path in runtime.written_files
+                if path.name in runtime.path_map
+            ]
+            added_evidence_ids = sorted(set(added_session_ids) & set(case["evidence_session_ids"]))
             add_row.update(
                 {
-                    "index_status": "PASS" if not index_failures else "FAIL",
-                    "index_request_count": 1,
-                    "index_http_status": 200,
-                    "index_latency_ms": reindex_latency_ms,
-                    "indexed_document_count": index_health.get("n_nodes", len(index_results) or len(written_files)),
-                    "indexed_chunk_count": index_health.get("n_chunks", "NOT_RECORDED"),
-                    "chunks_with_embedding": index_health.get("n_chunks_with_embedding", 0),
-                    "embedding_status": "NOT_APPLICABLE" if not args.vector_weight else "RECORDED_BY_REME_HEALTH",
-                    "index_failed_paths": [str(item.get("path", "")) for item in index_failures],
-                    "raw_reindex_file": str(raw_reindex_path),
+                    "added_sessions": len(runtime.written_files),
+                    "added_turns": (
+                        sum(len(session["messages"]) for session in case["sessions"])
+                        if memory_adapter.enabled
+                        else 0
+                    ),
+                    "added_evidence_sessions": len(added_evidence_ids),
+                    "failed_session_ids": (
+                        sorted(set(session_ids) - set(added_session_ids))
+                        if memory_adapter.enabled
+                        else []
+                    ),
+                    "add_latency_ms": runtime.add_latency_ms,
+                    "add_status": (
+                        "PASS"
+                        if memory_adapter.enabled and len(runtime.written_files) == len(case["sessions"])
+                        else ("NOT_APPLICABLE" if not memory_adapter.enabled else "FAIL")
+                    ),
                 }
             )
-            search_limit = max(args.top_k, args.top_k * args.search_multiplier)
-            current_stage = "search"
-            search_start = time.perf_counter()
-            search_response = http_post(
-                port,
-                "search",
-                {"query": case["question"], "limit": search_limit, "min_score": args.min_score},
-                timeout=120,
+            current_stage = "index"
+            index_result = memory_adapter.index(runtime)
+            raw_reindex_path = raw_reindex_dir / f"{case_index:04d}_{safe_name(case_id)}.json"
+            if memory_adapter.enabled:
+                raw_reindex_path.write_text(
+                    json.dumps(index_result.response, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+            add_row.update(
+                {
+                    "index_status": (
+                        "PASS"
+                        if memory_adapter.enabled and not index_result.failures
+                        else ("NOT_APPLICABLE" if not memory_adapter.enabled else "FAIL")
+                    ),
+                    "index_request_count": 1 if memory_adapter.enabled else 0,
+                    "index_http_status": 200 if memory_adapter.enabled else "NOT_APPLICABLE",
+                    "index_latency_ms": index_result.latency_ms,
+                    "indexed_document_count": index_result.health.get(
+                        "n_nodes", len(index_result.items) or len(runtime.written_files)
+                    ),
+                    "indexed_chunk_count": index_result.health.get("n_chunks", "NOT_RECORDED"),
+                    "chunks_with_embedding": index_result.health.get("n_chunks_with_embedding", 0),
+                    "embedding_status": "NOT_APPLICABLE" if not args.vector_weight else "RECORDED_BY_REME_HEALTH",
+                    "index_failed_paths": [str(item.get("path", "")) for item in index_result.failures],
+                    "raw_reindex_file": str(raw_reindex_path) if memory_adapter.enabled else "NOT_APPLICABLE",
+                }
             )
-            search_latency_ms = (time.perf_counter() - search_start) * 1000
+            current_stage = "search"
+            search_result = memory_adapter.search(
+                runtime,
+                query=case["question"],
+                top_k=args.top_k,
+                search_multiplier=args.search_multiplier,
+                min_score=args.min_score,
+            )
             raw_search_path = raw_search_dir / f"{case_index:04d}_{safe_name(case_id)}.json"
-            raw_search_path.write_text(json.dumps(search_response, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            raw_results = find_results(search_response) or []
-            retrieved = deduplicate_sessions(raw_results, args.top_k, path_map)
+            if memory_adapter.enabled:
+                raw_search_path.write_text(
+                    json.dumps(search_result.response, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+            retrieved = search_result.retrieved
             session_map = {session["session_id"]: session for session in case["sessions"]}
             for item in retrieved:
                 session = session_map.get(item["session_id"], {})
@@ -942,7 +1011,7 @@ def run(args: argparse.Namespace) -> int:
                 "session_count": len(case["sessions"]),
                 "evidence_session_ids": case["evidence_session_ids"],
                 "retrieved": retrieved,
-                "raw_result_count": len(raw_results),
+                "raw_result_count": len(search_result.raw_results),
                 "hit_at_k": metrics["hit"],
                 "recall_at_k": metrics["recall"],
                 "mrr": metrics["mrr"],
@@ -952,14 +1021,14 @@ def run(args: argparse.Namespace) -> int:
                 "missing_evidence_count": len(case["evidence_session_ids"]) - len(set(
                     item["session_id"] for item in retrieved if item["session_id"] in set(case["evidence_session_ids"])
                 )),
-                "index_latency_ms": reindex_latency_ms,
-                "search_latency_ms": search_latency_ms,
+                "index_latency_ms": index_result.latency_ms,
+                "search_latency_ms": search_result.latency_ms,
                 "search_status": "PASS",
-                "search_request_count": 1,
-                "search_http_status": 200,
+                "search_request_count": 1 if memory_adapter.enabled else 0,
+                "search_http_status": 200 if memory_adapter.enabled else "NOT_APPLICABLE",
                 "search_retry_count": 0,
                 "returned_session_count": len(retrieved),
-                "raw_search_file": str(raw_search_path),
+                "raw_search_file": str(raw_search_path) if memory_adapter.enabled else "NOT_APPLICABLE",
             }
             prepared_row = {
                 "id": case_id,
@@ -979,6 +1048,9 @@ def run(args: argparse.Namespace) -> int:
                     for item in retrieved
                 ],
             }
+            for name in ("speaker_1_name", "speaker_2_name"):
+                if case.get(name) is not None:
+                    prepared_row[name] = case[name]
             return {
                 "case_index": case_index,
                 "case_id": case_id,
@@ -988,8 +1060,11 @@ def run(args: argparse.Namespace) -> int:
                 "failure": None,
             }
         except Exception as exc:
-            if current_stage in {"service_start", "index"}:
+            if current_stage in {"add", "index"}:
                 add_row["index_status"] = "FAIL"
+            if current_stage == "add":
+                add_row["add_status"] = "FAIL"
+                add_row["add_error"] = str(exc)
             add_row["index_error"] = str(exc) if current_stage == "index" else None
             return {
                 "case_index": case_index,
@@ -1006,10 +1081,8 @@ def run(args: argparse.Namespace) -> int:
                 },
             }
         finally:
-            if process is not None and log_file is not None:
-                stop_reme(process, log_file)
-            if workspace.exists() and not args.keep_workspaces:
-                shutil.rmtree(workspace, ignore_errors=True)
+            if runtime is not None:
+                memory_adapter.close_case(runtime, keep_workspace=args.keep_workspaces)
 
     successes: list[dict[str, Any]] = []
     add_rows: list[dict[str, Any]] = []
@@ -1084,6 +1157,8 @@ def run(args: argparse.Namespace) -> int:
     summary = {
         **dataset_metadata,
         "run_id": run_id,
+        "dataset_adapter": dataset_result.adapter_name,
+        "memory_adapter": memory_adapter.name,
         "retrieval_workers": retrieval_workers,
         "dataset": str(dataset_path),
         "requested_cases": len(cases),
@@ -1092,14 +1167,18 @@ def run(args: argparse.Namespace) -> int:
         "start_time_utc": run_started_at.isoformat(),
         "end_time_utc": run_finished_at.isoformat(),
         "duration_ms": (run_finished_at - run_started_at).total_seconds() * 1000,
-        "add_success_rate": mean(1 if row["add_status"] == "PASS" else 0 for row in add_rows),
+        "add_success_rate": (
+            mean(1 if row["add_status"] == "PASS" else 0 for row in add_rows)
+            if memory_adapter.enabled
+            else None
+        ),
         "added_sessions": added_session_count,
         "failed_add_sessions": sum(len(row["failed_session_ids"]) for row in add_rows),
         "added_turns": sum(int(row["added_turns"]) for row in add_rows),
         "evidence_add_success_rate": (
             sum(int(row["added_evidence_sessions"]) for row in add_rows)
             / sum(int(row["expected_evidence_sessions"]) for row in add_rows)
-            if sum(int(row["expected_evidence_sessions"]) for row in add_rows)
+            if memory_adapter.enabled and sum(int(row["expected_evidence_sessions"]) for row in add_rows)
             else None
         ),
         "duplicate_add_count": sum(len(row["duplicate_session_ids"]) for row in add_rows),
@@ -1110,7 +1189,11 @@ def run(args: argparse.Namespace) -> int:
             "p95": percentile((row["add_latency_ms"] for row in add_rows), 0.95),
             "p99": percentile((row["add_latency_ms"] for row in add_rows), 0.99),
         },
-        "index_success_rate": mean(1 if row["index_status"] == "PASS" else 0 for row in add_rows),
+        "index_success_rate": (
+            mean(1 if row["index_status"] == "PASS" else 0 for row in add_rows)
+            if memory_adapter.enabled
+            else None
+        ),
         "indexed_document_count": indexed_document_count,
         "indexed_chunk_count": indexed_chunk_count,
         "average_chunks_per_session": indexed_chunk_count / added_session_count if added_session_count else None,
@@ -1134,7 +1217,7 @@ def run(args: argparse.Namespace) -> int:
             "p99": percentile((row.get("index_latency_ms") for row in add_rows), 0.99),
         },
         "search_success_rate": len(successes) / len(cases),
-        "search_request_count": len(successes),
+        "search_request_count": len(successes) if memory_adapter.enabled else 0,
         "empty_search_result_count": sum(not row["retrieved"] for row in successes),
         "search_retry_count": sum(int(row.get("search_retry_count", 0)) for row in successes),
         "search_latency_ms": {
@@ -1155,8 +1238,12 @@ def run(args: argparse.Namespace) -> int:
         "api_stability": {
             "memory_add_requests": sum(int(row["add_request_count"]) for row in add_rows),
             "memory_index_requests": sum(int(row.get("index_request_count", 0)) for row in add_rows),
-            "memory_search_requests": len(successes),
-            "http_2xx": sum(1 for row in add_rows if row.get("index_http_status") == 200) + len(successes),
+            "memory_search_requests": len(successes) if memory_adapter.enabled else 0,
+            "http_2xx": (
+                sum(1 for row in add_rows if row.get("index_http_status") == 200) + len(successes)
+                if memory_adapter.enabled
+                else 0
+            ),
             "http_4xx": 0,
             "http_5xx": 0,
             "timeouts": sum(1 for row in _read_failure_rows(failures_path) if "timeout" in str(row.get("error_type", "")).lower()),
@@ -1164,7 +1251,7 @@ def run(args: argparse.Namespace) -> int:
         },
     }
     (run_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("\n=== ReMe Retrieval Eval Finished ===")
+    print(f"\n=== {memory_adapter.name} Retrieval Eval Finished ===")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print(f"Results: {run_dir}")
     return 0 if len(successes) == len(cases) else 2

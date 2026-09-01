@@ -18,6 +18,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 try:
     from scripts.llm_eval_common import (
         ANSWER_PROMPT_SHA256,
@@ -33,11 +37,6 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution path
         JUDGE_PROMPT_VERSION,
     )
 
-
-REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
-
 from memory_eval.dataset_registry import (
     DEFAULT_DATASET_ID,
     default_output_root,
@@ -51,6 +50,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run ReMe retrieval + Answer + Judge")
     parser.add_argument("--dataset", default=DEFAULT_DATASET_ID, help="Registered dataset ID or a dataset path")
     parser.add_argument("--data", type=Path, default=None, help="Dataset path override kept for backward compatibility")
+    parser.add_argument("--dataset-adapter", default="auto")
     parser.add_argument("--cases", "--limit", dest="cases", type=int, default=1, help="0 means all")
     parser.add_argument("--start", type=int, default=0)
     parser.add_argument("--shuffle", action="store_true")
@@ -64,7 +64,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--reme-config", type=Path, default=None)
     parser.add_argument("--vector-weight", type=float, default=0.0)
     parser.add_argument("--memory-model", default="none", help="label stored for the retrieval stage")
-    parser.add_argument("--memory-adapter", default="reme", choices=("reme",))
+    parser.add_argument("--memory-adapter", default="reme", choices=("reme", "off"))
     parser.add_argument(
         "--retrieval-workers",
         type=int,
@@ -82,6 +82,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--answer-model-env", default="DEEPSEEK_MODEL")
     parser.add_argument("--answer-base-url", default=None)
     parser.add_argument("--answer-model", default=None)
+    parser.add_argument("--answer-llm-adapter", default="openai-compatible")
     parser.add_argument("--answer-max-tokens", type=int, default=8192)
     parser.add_argument("--answer-temperature", type=float, default=0.0)
     parser.add_argument("--answer-timeout", type=float, default=120.0)
@@ -98,6 +99,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--judge-model-env", default="DEEPSEEK_MODEL")
     parser.add_argument("--judge-base-url", default=None)
     parser.add_argument("--judge-model", default=None)
+    parser.add_argument("--judge-llm-adapter", default="openai-compatible")
     parser.add_argument("--judge-max-tokens", type=int, default=8192)
     parser.add_argument("--judge-temperature", type=float, default=0.0)
     parser.add_argument("--judge-timeout", type=float, default=120.0)
@@ -150,7 +152,7 @@ def run(args: argparse.Namespace) -> int:
             character if character.isalnum() else "-"
             for character in str(dataset_spec["dataset_id"]).lower()
         ).strip("-")
-        args.run_id = f"reme_{dataset_slug}_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
+        args.run_id = f"{args.memory_adapter}_{dataset_slug}_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
 
     output_root = args.output_dir.resolve() if args.output_dir else default_output_root(dataset_spec, args.memory_adapter)
     run_dir = output_root / args.run_id
@@ -172,6 +174,7 @@ def run(args: argparse.Namespace) -> int:
         "run_id": args.run_id,
         "dataset": str(dataset_path),
         "dataset_id": dataset_spec["dataset_id"],
+        "dataset_adapter": args.dataset_adapter,
         "dataset_name": dataset_spec["dataset_name"],
         "dataset_version": dataset_spec.get("version"),
         "source_dataset": dataset_spec["source_dataset"],
@@ -182,6 +185,7 @@ def run(args: argparse.Namespace) -> int:
         "output_dir": str(run_dir),
         "baseline_run": str(args.baseline_run.resolve()) if args.baseline_run else None,
         "retrieval": {
+            "memory_adapter": args.memory_adapter,
             "top_k": args.top_k,
             "cases": args.cases,
             "start": args.start,
@@ -199,6 +203,7 @@ def run(args: argparse.Namespace) -> int:
             "workers": args.retrieval_workers,
         },
         "answer": {
+            "llm_adapter": args.answer_llm_adapter,
             "output": str(answers_path),
             "api_key_env": args.answer_api_key_env,
             "base_url_env": args.answer_base_url_env,
@@ -218,6 +223,7 @@ def run(args: argparse.Namespace) -> int:
             "prompt_template_sha256": ANSWER_PROMPT_SHA256,
         },
         "judge": {
+            "llm_adapter": args.judge_llm_adapter,
             "output": str(scores_path),
             "api_key_env": args.judge_api_key_env,
             "base_url_env": args.judge_base_url_env,
@@ -248,6 +254,8 @@ def run(args: argparse.Namespace) -> int:
         str(dataset_spec["dataset_id"]),
         "--data",
         str(dataset_path),
+        "--dataset-adapter",
+        args.dataset_adapter,
         "--cases",
         str(args.cases),
         "--start",
@@ -307,6 +315,8 @@ def run(args: argparse.Namespace) -> int:
             args.answer_base_url_env,
             "--model-env",
             args.answer_model_env,
+            "--llm-adapter",
+            args.answer_llm_adapter,
             "--max-tokens",
             str(args.answer_max_tokens),
             "--temperature",
@@ -348,6 +358,8 @@ def run(args: argparse.Namespace) -> int:
                 args.judge_base_url_env,
                 "--model-env",
                 args.judge_model_env,
+                "--llm-adapter",
+                args.judge_llm_adapter,
                 "--max-tokens",
                 str(args.judge_max_tokens),
                 "--temperature",

@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from memory_eval.dataset_integrity import freeze_dataset_integrity
+from memory_eval.adapters.dataset import load_dataset_cases
 from scripts.llm_eval_common import resolve_model_pricing, summarize_token_usage
 
 
@@ -87,33 +88,29 @@ def _index_rows(rows: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return output
 
 
-def _load_dataset(path: Path | None) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+def _load_dataset(
+    path: Path | None,
+    *,
+    adapter_name: str = "auto",
+    start: int = 0,
+    limit: int = 0,
+    shuffle: bool = False,
+    seed: int = 42,
+) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
     if path is None or not path.is_file():
         return {}, {}
-    if path.suffix.lower() == ".jsonl":
-        cases = _read_jsonl(path)
-        metadata: dict[str, Any] = {}
-    else:
-        payload = _read_json(path)
-        if isinstance(payload, list):
-            cases = payload
-            metadata = {}
-        elif isinstance(payload, dict):
-            for key in ("cases", "items", "data", "samples"):
-                if isinstance(payload.get(key), list):
-                    cases = payload[key]
-                    break
-            else:
-                cases = []
-            metadata = {key: value for key, value in payload.items() if key != "cases"}
-        else:
-            cases = []
-            metadata = {}
-    return {
-        str(case.get("case_id", case.get("question_id", case.get("id", "")))): case
-        for case in cases
-        if isinstance(case, dict)
-    }, metadata
+    result = load_dataset_cases(
+        path,
+        adapter_name=adapter_name,
+        start=start,
+        limit=limit,
+        shuffle=shuffle,
+        seed=seed,
+    )
+    return {str(case["case_id"]): case for case in result.cases}, {
+        "dataset_adapter": result.adapter_name,
+        "source_case_count": result.source_case_count,
+    }
 
 
 def _dataset_sessions(case: dict[str, Any] | None) -> list[dict[str, Any]]:
@@ -1744,7 +1741,14 @@ def build_trace_report(
         dataset_path = Path(str(dataset_value)) if dataset_value else None
     else:
         dataset_path = Path(dataset_path)
-    dataset_cases, dataset_metadata = _load_dataset(dataset_path.resolve() if dataset_path else None)
+    dataset_cases, dataset_metadata = _load_dataset(
+        dataset_path.resolve() if dataset_path else None,
+        adapter_name=str(run_config.get("dataset_adapter", "auto")),
+        start=int(run_config.get("start") or 0),
+        limit=int(run_config.get("requested_cases") or 0),
+        shuffle=bool(run_config.get("shuffle", False)),
+        seed=int(run_config.get("seed") or 42),
+    )
 
     prepared_rows = _read_jsonl(run_dir / "prepared.jsonl")
     retrieval_rows = _read_jsonl(run_dir / "retrieval.jsonl")
@@ -1808,7 +1812,7 @@ def build_trace_report(
             Path(dataset_path).resolve(),
             run_dir,
             selected_dataset_cases,
-            source_case_count=len(dataset_cases),
+            source_case_count=int(dataset_metadata.get("source_case_count") or len(dataset_cases)),
         )
     summary = _summary(cases, run_dir, top_k)
     summary["dataset"] = str(dataset_path.resolve()) if dataset_path else NOT_RECORDED

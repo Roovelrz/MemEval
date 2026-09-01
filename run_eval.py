@@ -29,10 +29,11 @@ END_TO_END_RUNNER = REPO_ROOT / "scripts" / "run_reme_end_to_end_eval.py"
 # ---------------------------------------------------------------------------
 CONFIG: dict[str, Any] = {
     # Put the dataset file path here.  Absolute paths are recommended because
-    # datasets may live outside this repository.  JSON and JSONL are supported
-    # by the underlying runner.  A registered dataset ID is also accepted for
+    # datasets may live outside this repository.  JSON, JSONL and supported
+    # benchmark CSV files are accepted.  A registered dataset ID is also accepted for
     # backward compatibility, but a path is the preferred form.
     "dataset": "E:\\LRZ_Workplace\\fork\\LongMemEval\\data\\longmemeval_s_cleaned.json",
+    "dataset_adapter": "auto",  # auto / longmemeval / locomo / personamem-v2
 
     # Case selection.  ``cases=0`` means all cases after ``start``.
     # Keep this at 1 for a smoke test, then change to 20/100/etc.
@@ -51,8 +52,8 @@ CONFIG: dict[str, Any] = {
     "reme_cmd": None,  # e.g. r"C:\\path\\to\\reme.exe"; None uses PATH
     "reme_config": None,  # optional custom ReMe YAML config path
     "vector_weight": 0.0,  # 0.0 = BM25 baseline
-    "memory_adapter": "reme", #Memory系统适配器，可选择自己的系统
-    "memory_model": "none", #Memory模型，可选择自己的模型
+    "memory_adapter": "reme", # reme / off；off 用于无记忆对照实验
+    "memory_model": "none", # 当前仅作为检索实验标签记录
     "keep_workspaces": False,
 
     # Output and reproducibility.  Empty run_id creates a UTC timestamp ID.
@@ -67,6 +68,7 @@ CONFIG: dict[str, Any] = {
     "answer_model_env": "DEEPSEEK_MODEL",
     "answer_base_url": None,
     "answer_model": None,
+    "answer_llm_adapter": "openai-compatible",
     "answer_max_tokens": 8192,
     "answer_temperature": 0.0,
     "answer_timeout": 120.0,
@@ -84,6 +86,7 @@ CONFIG: dict[str, Any] = {
     "judge_model_env": "DEEPSEEK_MODEL",
     "judge_base_url": None,
     "judge_model": None,
+    "judge_llm_adapter": "openai-compatible",
     "judge_max_tokens": 8192,
     "judge_temperature": 0.0,
     "judge_timeout": 120.0,
@@ -133,6 +136,7 @@ def build_command(config: dict[str, Any]) -> list[str]:
 
     option_map = (
         ("--cases", "cases"),
+        ("--dataset-adapter", "dataset_adapter"),
         ("--start", "start"),
         ("--top-k", "top_k"),
         ("--search-multiplier", "search_multiplier"),
@@ -154,6 +158,7 @@ def build_command(config: dict[str, Any]) -> list[str]:
         ("--answer-model-env", "answer_model_env"),
         ("--answer-base-url", "answer_base_url"),
         ("--answer-model", "answer_model"),
+        ("--answer-llm-adapter", "answer_llm_adapter"),
         ("--answer-max-tokens", "answer_max_tokens"),
         ("--answer-temperature", "answer_temperature"),
         ("--answer-timeout", "answer_timeout"),
@@ -168,6 +173,7 @@ def build_command(config: dict[str, Any]) -> list[str]:
         ("--judge-model-env", "judge_model_env"),
         ("--judge-base-url", "judge_base_url"),
         ("--judge-model", "judge_model"),
+        ("--judge-llm-adapter", "judge_llm_adapter"),
         ("--judge-max-tokens", "judge_max_tokens"),
         ("--judge-temperature", "judge_temperature"),
         ("--judge-timeout", "judge_timeout"),

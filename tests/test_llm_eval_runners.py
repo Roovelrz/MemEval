@@ -6,7 +6,7 @@ import hashlib
 import threading
 import unittest
 from types import SimpleNamespace
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from scripts import run_answer_eval, run_judge_eval
 from scripts.llm_eval_common import (
@@ -61,7 +61,10 @@ class LlmEvalRunnersTest(unittest.TestCase):
             requested_limits.append(json.loads(request.data.decode("utf-8"))["max_tokens"])
             return FakeResponse(responses[len(requested_limits) - 1])
 
-        with patch("scripts.llm_eval_common.urllib.request.urlopen", side_effect=fake_urlopen):
+        with patch(
+            "memory_eval.adapters.llm.openai_compatible.urllib.request.urlopen",
+            side_effect=fake_urlopen,
+        ):
             content, usage = complete(
                 api_key="test-key",
                 base_url="http://example.test/v1",
@@ -118,7 +121,8 @@ class LlmEvalRunnersTest(unittest.TestCase):
                 answer_barrier.wait(timeout=2)
                 return "答案", {"total_tokens": 1}
 
-            with patch.object(run_answer_eval, "complete", side_effect=answer_complete):
+            answer_adapter = SimpleNamespace(complete=answer_complete)
+            with patch.object(run_answer_eval, "create_llm_adapter", return_value=answer_adapter):
                 self.assertEqual(run_answer_eval.run(answer_args), 0)
             self.assertEqual([row["id"] for row in read_jsonl(answers)], ["case-1", "case-2"])
 
@@ -149,7 +153,8 @@ class LlmEvalRunnersTest(unittest.TestCase):
                 judge_barrier.wait(timeout=2)
                 return json.dumps({"label": "CORRECT"}), {"total_tokens": 1}
 
-            with patch.object(run_judge_eval, "complete", side_effect=judge_complete):
+            judge_adapter = SimpleNamespace(complete=judge_complete)
+            with patch.object(run_judge_eval, "create_llm_adapter", return_value=judge_adapter):
                 self.assertEqual(run_judge_eval.run(judge_args), 0)
             self.assertEqual([row["id"] for row in read_jsonl(scores)], ["case-1", "case-2"])
 
@@ -223,7 +228,9 @@ class LlmEvalRunnersTest(unittest.TestCase):
                 temperature=0.0,
                 overwrite=False,
             )
-            with patch.object(run_answer_eval, "complete", return_value=("茶", {"total_tokens": 1})) as complete:
+            complete = Mock(return_value=("茶", {"total_tokens": 1}))
+            adapter = SimpleNamespace(complete=complete)
+            with patch.object(run_answer_eval, "create_llm_adapter", return_value=adapter):
                 self.assertEqual(run_answer_eval.run(args), 0)
                 complete.assert_called_once()
             answer_row = read_jsonl(answers)[0]
@@ -236,7 +243,9 @@ class LlmEvalRunnersTest(unittest.TestCase):
                 directory / "answer_failures.jsonl",
                 [{"id": "case-1", "stage": "answer", "error": "old failure"}],
             )
-            with patch.object(run_answer_eval, "complete") as complete:
+            complete = Mock()
+            adapter = SimpleNamespace(complete=complete)
+            with patch.object(run_answer_eval, "create_llm_adapter", return_value=adapter):
                 self.assertEqual(run_answer_eval.run(args), 0)
                 complete.assert_not_called()
             self.assertEqual(read_jsonl(directory / "answer_failures.jsonl"), [])
@@ -284,7 +293,9 @@ class LlmEvalRunnersTest(unittest.TestCase):
                 overwrite=False,
             )
             responses = [(json.dumps({"label": "CORRECT"}), {}), (json.dumps({"label": "WRONG"}), {})]
-            with patch.object(run_judge_eval, "complete", side_effect=responses):
+            complete = Mock(side_effect=responses)
+            adapter = SimpleNamespace(complete=complete)
+            with patch.object(run_judge_eval, "create_llm_adapter", return_value=adapter):
                 self.assertEqual(run_judge_eval.run(args), 0)
             summary = json.loads((directory / "judge_summary.json").read_text(encoding="utf-8"))
             self.assertEqual(summary["successful_rows"], 2)
@@ -299,7 +310,9 @@ class LlmEvalRunnersTest(unittest.TestCase):
                 directory / "judge_failures.jsonl",
                 [{"id": "case-1", "stage": "judge", "error": "old failure"}],
             )
-            with patch.object(run_judge_eval, "complete") as complete:
+            complete = Mock()
+            adapter = SimpleNamespace(complete=complete)
+            with patch.object(run_judge_eval, "create_llm_adapter", return_value=adapter):
                 self.assertEqual(run_judge_eval.run(args), 0)
                 complete.assert_not_called()
             self.assertEqual(read_jsonl(directory / "judge_failures.jsonl"), [])

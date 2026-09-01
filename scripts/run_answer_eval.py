@@ -9,18 +9,24 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from memory_eval.adapters.llm import create_llm_adapter
+
 try:  # works both as ``python scripts/run_answer_eval.py`` and as a package import
     from scripts.llm_eval_common import (
         ANSWER_PROMPT_SHA256,
         ANSWER_PROMPT_VERSION,
         LLMRequestError,
-        complete,
         calculate_usage_cost,
         memory_text,
         percentile,
@@ -39,7 +45,6 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution path
         ANSWER_PROMPT_SHA256,
         ANSWER_PROMPT_VERSION,
         LLMRequestError,
-        complete,
         calculate_usage_cost,
         memory_text,
         percentile,
@@ -55,7 +60,6 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution path
     )
 
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = REPO_ROOT / "results" / "reme_retrieval" / "reme-baseline-20" / "prepared.jsonl"
 
 
@@ -70,6 +74,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--api-key", default=None, help="optional direct key; prefer --api-key-env")
     parser.add_argument("--base-url", default=None)
     parser.add_argument("--model", default=None)
+    parser.add_argument("--llm-adapter", default="openai-compatible")
     parser.add_argument("--max-tokens", type=int, default=8192)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--timeout", type=float, default=120.0)
@@ -123,6 +128,13 @@ def run(args: argparse.Namespace) -> int:
         model=args.model,
         model_env=args.model_env,
     )
+    llm_adapter_name = str(getattr(args, "llm_adapter", "openai-compatible"))
+    llm_adapter = create_llm_adapter(
+        llm_adapter_name,
+        api_key=api_key,
+        base_url=base_url,
+        model=model,
+    )
     pricing = resolve_model_pricing(
         model,
         cache_hit_input=getattr(args, "cache_hit_input_price", None),
@@ -155,6 +167,7 @@ def run(args: argparse.Namespace) -> int:
         "base_url": base_url,
         "model_env": args.model_env,
         "model": model,
+        "llm_adapter": llm_adapter_name,
         "max_tokens": args.max_tokens,
         "temperature": args.temperature,
         "timeout": args.timeout,
@@ -189,10 +202,7 @@ def run(args: argparse.Namespace) -> int:
             contexts = [contexts]
         context_text = memory_text(contexts)
         try:
-            generated, usage = complete(
-                api_key=api_key,
-                base_url=base_url,
-                model=model,
+            generated, usage = llm_adapter.complete(
                 prompt=prompt,
                 max_tokens=args.max_tokens,
                 temperature=args.temperature,
@@ -319,6 +329,7 @@ def run(args: argparse.Namespace) -> int:
         "output": str(output_path),
         "failures": str(failure_path),
         "model": model,
+        "llm_adapter": llm_adapter_name,
         "workers": workers,
         "prompt_version": ANSWER_PROMPT_VERSION,
         "prompt_template_sha256": ANSWER_PROMPT_SHA256,
