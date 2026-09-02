@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_64k_no4",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:2/question:4"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_64k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_64k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_64k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_64k:context:document_000",
+      "event_count": 1,
+      "token_count": 55762
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_64k_no4",
+      "text": "What is the name of the current chairperson of the institution where Harry Markowitz received his education?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_64k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 2,
+      "source_question_index": 4,
+      "source_name": "factconsolidation_mh_64k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Harry Markowitz",
+          "relation": "educated_at",
+          "value": "University of Chicago",
+          "winning_fact_id": "factconsolidation_mh_64k:fact_02503"
+        },
+        {
+          "step": 2,
+          "subject": "University of Chicago",
+          "relation": "chairperson",
+          "value": "Zeki Öztürk",
+          "winning_fact_id": "factconsolidation_mh_64k:fact_02175"
+        }
+      ],
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T15:06:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Zeki Öztürk",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_01864",
+          "value": "Robert Zimmer",
+          "order": 1864,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_02175",
+          "value": "Zeki Öztürk",
+          "order": 2175,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_02503",
+          "value": "University of Chicago",
+          "order": 2503,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_64k:fact_02503",
+        "factconsolidation_mh_64k:fact_02175"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_64k:fact_01864"
+      ]
+    }
+  }
+}

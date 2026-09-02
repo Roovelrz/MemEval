@@ -1,0 +1,167 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d01:lme:7401057b",
+    "dimension_id": "D01",
+    "dimension_name": "memory_extraction_and_write",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "7401057b"
+    },
+    "identity": {
+      "context_id": "d01:lme:7401057b",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/7401057b.json",
+      "event_start": "d01:lme:7401057b:e000",
+      "event_end": "d01:lme:7401057b:e027",
+      "event_count": 28,
+      "token_count": 7654
+    },
+    "query": {
+      "query_id": "7401057b",
+      "text": "How many free night's stays can I redeem at any Hilton property with my accumulated points?",
+      "timestamp": "2023/06/16 (Fri) 09:50"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "knowledge-update",
+      "tags": [
+        "knowledge_update",
+        "knowledge-update",
+        "d01",
+        "human_review_required"
+      ],
+      "selection_seed": "d01-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "write",
+    "payload": {
+      "scored_event_ids": [
+        "d01:lme:7401057b:e000",
+        "d01:lme:7401057b:e001",
+        "d01:lme:7401057b:e002",
+        "d01:lme:7401057b:e003",
+        "d01:lme:7401057b:e004",
+        "d01:lme:7401057b:e005",
+        "d01:lme:7401057b:e006",
+        "d01:lme:7401057b:e007",
+        "d01:lme:7401057b:e008",
+        "d01:lme:7401057b:e009",
+        "d01:lme:7401057b:e010",
+        "d01:lme:7401057b:e011",
+        "d01:lme:7401057b:e012",
+        "d01:lme:7401057b:e013",
+        "d01:lme:7401057b:e014",
+        "d01:lme:7401057b:e015",
+        "d01:lme:7401057b:e016",
+        "d01:lme:7401057b:e017",
+        "d01:lme:7401057b:e018",
+        "d01:lme:7401057b:e019",
+        "d01:lme:7401057b:e020",
+        "d01:lme:7401057b:e021",
+        "d01:lme:7401057b:e022",
+        "d01:lme:7401057b:e023",
+        "d01:lme:7401057b:e024",
+        "d01:lme:7401057b:e025",
+        "d01:lme:7401057b:e026",
+        "d01:lme:7401057b:e027"
+      ],
+      "gold_memories": [
+        {
+          "memory_id": "d01:lme:7401057b:m00",
+          "canonical_content": "The user was planning a weekend getaway to Las Vegas and was considering staying at Hilton Lake Las Vegas Resort.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:7401057b:e002"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:7401057b:m01",
+          "canonical_content": "The user was considering redeeming Hilton Honors points for the Las Vegas stay.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:7401057b:e004",
+            "d01:lme:7401057b:e006"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:7401057b:m02",
+          "canonical_content": "The user had enough Hilton Honors points for one free night at any Hilton property on May 29, 2023; by May 30, 2023, the user had enough points for two free nights.",
+          "memory_type": "personal_fact",
+          "evidence_event_ids": [
+            "d01:lme:7401057b:e006",
+            "d01:lme:7401057b:e014"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:7401057b:m03",
+          "canonical_content": "The user was considering other Hilton properties in Las Vegas, including Hilton Grand Vacations Club and Waldorf Astoria Las Vegas.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:7401057b:e008",
+            "d01:lme:7401057b:e010"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:7401057b:m04",
+          "canonical_content": "The user was planning a trip to Europe in November 2023 and was considering hotels in Paris with an Eiffel Tower view.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:7401057b:e014"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:7401057b:m05",
+          "canonical_content": "The user's Paris hotel budget was about $200 to $300 per night, with a preference for a relatively central location, a fitness center, and breakfast included.",
+          "memory_type": "constraint",
+          "evidence_event_ids": [
+            "d01:lme:7401057b:e016"
+          ]
+        }
+      ],
+      "non_memory_event_ids": [
+        "d01:lme:7401057b:e000",
+        "d01:lme:7401057b:e001",
+        "d01:lme:7401057b:e003",
+        "d01:lme:7401057b:e005",
+        "d01:lme:7401057b:e007",
+        "d01:lme:7401057b:e009",
+        "d01:lme:7401057b:e011",
+        "d01:lme:7401057b:e012",
+        "d01:lme:7401057b:e013",
+        "d01:lme:7401057b:e015",
+        "d01:lme:7401057b:e017",
+        "d01:lme:7401057b:e018",
+        "d01:lme:7401057b:e019",
+        "d01:lme:7401057b:e020",
+        "d01:lme:7401057b:e021",
+        "d01:lme:7401057b:e022",
+        "d01:lme:7401057b:e023",
+        "d01:lme:7401057b:e024",
+        "d01:lme:7401057b:e025",
+        "d01:lme:7401057b:e026",
+        "d01:lme:7401057b:e027"
+      ]
+    }
+  },
+  "annotation": {
+    "draft_origin": "deterministic_qa_and_personal_sentence_extraction",
+    "human_review_status": "approved",
+    "required": true,
+    "reviewer": "liruizhi",
+    "reviewed_at": "2026-09-01T13:51:08+08:00",
+    "review_notes": [],
+    "checks": {
+      "all_memory_worthy_events_covered": true,
+      "canonical_content_verified": true,
+      "memory_type_verified": true,
+      "non_memory_event_ids_verified": true
+    }
+  }
+}

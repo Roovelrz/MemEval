@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_sh_6k_no73",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:4/question:73"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_sh_6k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_sh_6k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_sh_6k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_sh_6k:context:document_000",
+      "event_count": 1,
+      "token_count": 5437
+    },
+    "query": {
+      "query_id": "factconsolidation_sh_6k_no73",
+      "text": "Who is Tony Blair married to?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "single-hop",
+        "factconsolidation_sh_6k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 4,
+      "source_question_index": 73,
+      "source_name": "factconsolidation_sh_6k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Tony Blair",
+          "relation": "spouse",
+          "value": "Alan Jay Lerner",
+          "winning_fact_id": "factconsolidation_sh_6k:fact_00424"
+        }
+      ],
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T15:12:21+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Alan Jay Lerner",
+      "conflict_type": "single-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_sh_6k:fact_00141",
+          "value": "Cherie Blair",
+          "order": 141,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_sh_6k:fact_00424",
+          "value": "Alan Jay Lerner",
+          "order": 424,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_sh_6k:fact_00424"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_sh_6k:fact_00141"
+      ]
+    }
+  }
+}

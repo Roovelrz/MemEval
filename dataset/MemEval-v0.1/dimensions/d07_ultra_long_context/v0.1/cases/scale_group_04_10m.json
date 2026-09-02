@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d07:beam10m:scale_group_04_10m",
+    "dimension_id": "D07",
+    "dimension_name": "ultra_long_context",
+    "source": {
+      "dataset": "BEAM-10M",
+      "revision": "9b2096193fe74e2837e4713e483351e19817773c",
+      "split": "10M",
+      "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=0/preference_following[1]"
+    },
+    "identity": {
+      "context_id": "d07:beam10m:scale_group_04:10m",
+      "user_id": "beam10m:conversation_06",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/scale_group_04_10m.jsonl",
+      "event_start": "d07:beam10m:conv_06:event_02731",
+      "event_end": "d07:beam10m:conv_06:event_19957",
+      "event_count": 17227,
+      "token_count": 9924039
+    },
+    "query": {
+      "query_id": "d07:beam10m:scale_group_04_10m:query",
+      "text": "I'm planning how to allocate my budget for improving my skills and gear. How would you suggest I divide my spending?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "medium",
+      "tags": [
+        "d07",
+        "beam-10m",
+        "paired_scale",
+        "preference_following",
+        "10m"
+      ],
+      "case_kind": "paired_scale",
+      "ability_category": "preference_following",
+      "source_probe_index": 1,
+      "source_answer_field": "expected_compliance",
+      "source_chat_ids": [
+        2750,
+        2760
+      ],
+      "source_rubric": [
+        "LLM response should contain: recommends investing more in lessons or practice",
+        "LLM response should contain: suggests limiting spending on accessories"
+      ],
+      "token_estimator": "ceil(character_count/4) per event",
+      "annotation_status": "approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "codex_after_lrz_revision",
+        "reviewed_at": "2026-09-02T16:32:31+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "scale",
+    "payload": {
+      "scale_group_id": "d07:scale_group:04",
+      "scale_level": "10M",
+      "target_tokens": 10000000,
+      "gold_answer": "Response should emphasize allocating more budget towards lessons or skill development rather than spending on accessories or gear upgrades, reflecting the user's prioritization",
+      "gold_evidence_ids": [
+        "d07:beam10m:conv_06:event_02750",
+        "d07:beam10m:conv_06:event_02760"
+      ],
+      "paired_anchor_id": "d07:beam10m:scale_group_04_100k",
+      "expected_retrievable": true
+    }
+  }
+}

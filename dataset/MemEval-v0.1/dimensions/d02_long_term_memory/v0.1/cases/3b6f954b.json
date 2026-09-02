@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d02:lme:3b6f954b",
+    "dimension_id": "D02",
+    "dimension_name": "long_term_memory_retrieval",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "3b6f954b"
+    },
+    "identity": {
+      "context_id": "d02:lme:3b6f954b",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/3b6f954b.json",
+      "event_start": "d02:lme:3b6f954b:e00000",
+      "event_end": "d02:lme:3b6f954b:e00469",
+      "event_count": 470,
+      "token_count": 99694
+    },
+    "query": {
+      "query_id": "3b6f954b",
+      "text": "Where did I attend for my study abroad program?",
+      "timestamp": "2023/05/30 (Tue) 16:24"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-user",
+      "tags": [
+        "information_extraction",
+        "single-session-user",
+        "d02",
+        "retrieval"
+      ],
+      "selection_seed": "d02-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "retrieval",
+    "payload": {
+      "gold_evidence_ids": [
+        "answer_94030872"
+      ],
+      "gold_answer": "University of Melbourne in Australia",
+      "retrieval_k": [
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  }
+}

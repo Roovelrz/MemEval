@@ -1,0 +1,184 @@
+{
+  "schema_version": "0.1",
+  "dimension_id": "D06",
+  "dimension_name": "dynamic_update_conflict",
+  "status": "complete_after_replacement",
+  "source": {
+    "dataset": "MemoryAgentBench",
+    "repo": "ai-hyz/MemoryAgentBench",
+    "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+    "split": "Conflict_Resolution",
+    "raw_file": "datasets/raw/memoryagentbench/data/Conflict_Resolution-00000-of-00001.parquet",
+    "raw_sha256": "24d5c3f09ce0ce15625cb9f8a98f44f0d864ca6c94d7b4ad04eb697ca3a5ff45",
+    "top_level_records": 8,
+    "source_questions": 800
+  },
+  "selection": {
+    "seed": "d06-v0.1-20260902",
+    "method": "每个官方 source 按固定哈希排序；仅选唯一有向图路径且至少含一个不同旧值的样本；去除重复 Question",
+    "source_quotas": {
+      "factconsolidation_mh_6k": 5,
+      "factconsolidation_mh_32k": 5,
+      "factconsolidation_mh_64k": 5,
+      "factconsolidation_mh_262k": 4,
+      "factconsolidation_sh_6k": 5,
+      "factconsolidation_sh_32k": 5,
+      "factconsolidation_sh_64k": 4,
+      "factconsolidation_sh_262k": 4
+    },
+    "source_counts": {
+      "factconsolidation_mh_6k": 5,
+      "factconsolidation_mh_32k": 5,
+      "factconsolidation_mh_64k": 5,
+      "factconsolidation_mh_262k": 4,
+      "factconsolidation_sh_6k": 5,
+      "factconsolidation_sh_32k": 5,
+      "factconsolidation_sh_64k": 4,
+      "factconsolidation_sh_262k": 4
+    },
+    "conflict_type_counts": {
+      "multi-hop": 19,
+      "single-hop": 18
+    },
+    "question_types_policy": "原始字段全为空，使用官方 source 名称 sh/mh 派生",
+    "human_review_exclusions": {
+      "factconsolidation_mh_6k_no73": "manufacturer 的成立城市不能等同于产品制造地点",
+      "factconsolidation_mh_32k_no20": "Question 询问国家，但官方 Answer 是人物",
+      "factconsolidation_mh_64k_no21": "citizenship 不能等同于所属 organization",
+      "factconsolidation_mh_262k_no34": "宗教 founder 不能等同于建立宗教建筑的人"
+    }
+  },
+  "counts": {
+    "contexts": 8,
+    "cases": 37,
+    "review_cases": 37,
+    "winning_fact_versions": 65,
+    "stale_fact_versions": 54,
+    "original_review_cases": 37
+  },
+  "path_length_counts": {
+    "1": 18,
+    "2": 13,
+    "3": 3,
+    "4": 3
+  },
+  "metrics": [
+    "Latest-value Accuracy",
+    "Conflict Resolution Accuracy",
+    "Stale Retrieval Rate"
+  ],
+  "timestamp_policy": "源 question_dates 和事件时间不可用；全部保持 null",
+  "human_review": {
+    "required": true,
+    "required_cases": 37,
+    "approved_cases": 37,
+    "status": "complete_after_replacement",
+    "reviewers": [
+      "lrz",
+      "codex"
+    ],
+    "merged_at": "2026-09-02T15:30:56+08:00",
+    "original_submission_status_counts": {
+      "approved": 33,
+      "needs_revision": 4
+    },
+    "final_status_counts": {
+      "approved": 33,
+      "approved_after_replacement": 4
+    },
+    "submission_label": "D06_human_review_FINAL_all_json_lrz",
+    "replacement_summary": {
+      "count": 4,
+      "mapping": {
+        "factconsolidation_mh_6k_no73": "factconsolidation_mh_6k_no1",
+        "factconsolidation_mh_32k_no20": "factconsolidation_mh_32k_no1",
+        "factconsolidation_mh_64k_no21": "factconsolidation_mh_64k_no73",
+        "factconsolidation_mh_262k_no34": "factconsolidation_mh_262k_no43"
+      },
+      "reasons": {
+        "factconsolidation_mh_6k_no73": "manufacturer 的成立城市不能等同于产品制造地点",
+        "factconsolidation_mh_32k_no20": "Question 询问国家，但官方 Answer 是人物",
+        "factconsolidation_mh_64k_no21": "citizenship 不能等同于所属 organization",
+        "factconsolidation_mh_262k_no34": "宗教 founder 不能等同于建立宗教建筑的人"
+      },
+      "policy": "同一官方 source、同一 multi-hop 类型、同一配额内确定性替换，并重新做语义审核"
+    }
+  },
+  "validation": {
+    "checks": {
+      "case_count_is_37": true,
+      "context_count_is_8": true,
+      "review_case_count_is_37": true,
+      "source_arrays_aligned": true,
+      "qa_pair_ids_unique": true,
+      "all_selected_paths_unique": true,
+      "all_paths_end_at_gold_answer": true,
+      "all_cases_have_stale_versions": true,
+      "winning_versions_are_latest": true,
+      "stale_versions_precede_winners": true,
+      "source_contexts_preserved_exactly": true,
+      "document_role_not_invented_as_conversation": true,
+      "missing_native_timestamps_preserved_as_null": true,
+      "human_semantic_review_complete": true,
+      "all_human_review_issues_resolved": true,
+      "original_review_submission_preserved": true,
+      "replacement_source_and_type_preserved": true
+    }
+  },
+  "file_hashes": {
+    "cases/factconsolidation_mh_262k_no23.json": "b1e5d8f7a96067701a149a420ce2ff068132573cc14c90a03a09ec7c38ff4961",
+    "cases/factconsolidation_mh_262k_no43.json": "7ce5ef55bc7a209e9fcc3cec68ad37f070444b670df13e2d0231880ff6cec614",
+    "cases/factconsolidation_mh_262k_no48.json": "7b20d48218c7d12d46e74544d316b2ea8a5ee60d1acd262cd599ee7a6936a63c",
+    "cases/factconsolidation_mh_262k_no80.json": "ab7332ca4e4d97ca5a3b1eb5f9015359706d00d2bbbb05730be890e66e0b88f0",
+    "cases/factconsolidation_mh_32k_no1.json": "5d581c22fb9a5c01b0cad83fae2074ca2c56ce6e7880146739754c5abcb16929",
+    "cases/factconsolidation_mh_32k_no23.json": "934956390d7fedea0d5f199f2b2452d834f9372473485422192969f8faaccd73",
+    "cases/factconsolidation_mh_32k_no42.json": "12ba15aef386aa9644872f083df4e0829d1b0d4d5f8c5ee02740166e60a24298",
+    "cases/factconsolidation_mh_32k_no45.json": "9ad8a7a561b4a5df405dd0fe7697857c72ff59360c79c8702ce1edc66ecc2538",
+    "cases/factconsolidation_mh_32k_no48.json": "b5a925d315d25a2f6e951da24df932168f9f936443b5d669b13337331885dc37",
+    "cases/factconsolidation_mh_64k_no16.json": "01f5a439e426c918d60b55dced11c4af99f23312eee2d4c110b8c8c387c54c4b",
+    "cases/factconsolidation_mh_64k_no2.json": "b40af42393db8bf3b8df4080b597e09d3f6b6940919a3ee25c29d1f5f868ee8f",
+    "cases/factconsolidation_mh_64k_no25.json": "6d73a134dd9d7afe482a9f74d0cee54ff9f1bc27a1509874a92bf76a2cb9cb08",
+    "cases/factconsolidation_mh_64k_no4.json": "bac8ff58221d00ba64d034964652b7f122eb36c7541449990b6e16aa897cc2cf",
+    "cases/factconsolidation_mh_64k_no73.json": "ac0fd8889e878f87a94fbdbf88136a3a20a57e986a75122f49d7410da9d577a8",
+    "cases/factconsolidation_mh_6k_no1.json": "531b2364e1a539e3607b632c49954097fe480b796de9c067517b2d6a62ed3c50",
+    "cases/factconsolidation_mh_6k_no28.json": "78790038064ddd541786b685e32687598c19e1b36db7472dd33d4dc667800921",
+    "cases/factconsolidation_mh_6k_no60.json": "0ed78bd93fdbfe8574ca912260a62c214deeb5cf577622d4b66f4cc294881103",
+    "cases/factconsolidation_mh_6k_no79.json": "ea667dad2368f9e930e484c607a8d97ab1869d376f9fe254706ff008996d73ee",
+    "cases/factconsolidation_mh_6k_no9.json": "3616d2ecf3a964240872bd86a3962c8acc4dc8bd0726e3a944cf051e634ab04b",
+    "cases/factconsolidation_sh_262k_no13.json": "f8ef86f0f5dc609a45d13a30d933d4709fbfeafd6a9752d8d90af3864176b830",
+    "cases/factconsolidation_sh_262k_no32.json": "d37112bb3be3360f4bac6fbbf27a6201b7efefbeb0a5b36c6797a04ff65716aa",
+    "cases/factconsolidation_sh_262k_no42.json": "b840752fffe656cdc439fa71ba16f61870c2f19ac368d87b7ae5ae8cf12c807b",
+    "cases/factconsolidation_sh_262k_no51.json": "fe257193a09eab05a72d3334acaa8d03ff893106599e7963efff3cb8ff840cdf",
+    "cases/factconsolidation_sh_32k_no47.json": "0f2a7855056b780c1e268279e9ead94da9e08a0ee28074b1a4e23dc15ddb3f1b",
+    "cases/factconsolidation_sh_32k_no54.json": "8275c400476c399a74701401183ba77a809893cbcd92c0828e826a40ca4bc6f2",
+    "cases/factconsolidation_sh_32k_no70.json": "e680d0aef69e152b2d6a6b989c96d865cfa056175544d5b91f29d3d7ad6bac74",
+    "cases/factconsolidation_sh_32k_no76.json": "9ed600fe2775bf6cdde0a7f1674e293295f52d8df1bcd49ee5442973f375a234",
+    "cases/factconsolidation_sh_32k_no79.json": "f7c799545f804282bad86cecb6516f98e9ee483e9d45415aa845066d79088fca",
+    "cases/factconsolidation_sh_64k_no35.json": "72511b8b470a7d3562683fa1ccd7b51b6b58572ecfac01f5ccaef3bf38aadbec",
+    "cases/factconsolidation_sh_64k_no4.json": "c9f1aaeca5d2187030f709b0175f630ce571d925af0c326880092229402729ad",
+    "cases/factconsolidation_sh_64k_no58.json": "dc93eda89cba9d054d93f753eb78078ad7563ad1f8278a471900622bad2463ab",
+    "cases/factconsolidation_sh_64k_no78.json": "fffb6bc75ffbbc2b5aeabb4838690bad73706a38304910cebb14926898d6f884",
+    "cases/factconsolidation_sh_6k_no36.json": "542ddb0f6b441696ac4f44986e726ba39a26e005ea73ad7fc2976f9384e9b2dd",
+    "cases/factconsolidation_sh_6k_no55.json": "9aa756e833ae383e6f9f91ff9a070462d8d48a6acbe93ebfd8b1b2eac528aebc",
+    "cases/factconsolidation_sh_6k_no62.json": "a94e036b884bdb2f8650678395fce131229ea5abb9165a35fa18137333ea9a3e",
+    "cases/factconsolidation_sh_6k_no70.json": "519b0508cf6810514426a762ba6e7737b8d0835fdeaaef0b0b0883d1655ec597",
+    "cases/factconsolidation_sh_6k_no73.json": "3c13ee3fc716a2986718a6fc04775faa3718e7d80ce9a96e74d810f8fb36d8a1",
+    "contexts/factconsolidation_mh_262k.json": "b2721411e233a07335a990df0d646272af8c0272e92c96cd352ba4b051e52256",
+    "contexts/factconsolidation_mh_32k.json": "9e943f64b42e80acb738491420aeac79fa2b5f361aa29eb405e588dff5949587",
+    "contexts/factconsolidation_mh_64k.json": "fce2d11030bb5f904c7ab8fff1e0e515d1e8703932f930436a86e18e8e526780",
+    "contexts/factconsolidation_mh_6k.json": "943fc8dd5252b431c2571ad42e803e5337c100fe5cd9fad35177b21c609a09d4",
+    "contexts/factconsolidation_sh_262k.json": "461477edffc0c51eb671f133bd5203b02fab44beb7ecd9bcdd88d53f2bfba86f",
+    "contexts/factconsolidation_sh_32k.json": "461e898859b8c38bf5ff96868056d4043b37ef8f32220d30544164b8ed64c6b3",
+    "contexts/factconsolidation_sh_64k.json": "9ecddd3a747cd1c61450e9c97ccffbd58fdfee84600bb70131733ff131311402",
+    "contexts/factconsolidation_sh_6k.json": "2f896c0f1df4f41b8bf6e5d08247f5e723b4b3ece365e677d769284343a58bee",
+    "README.md": "8b4e4820bf0e684856e7a58717386569c58e5c102ede1377a66c8c250fc42f77"
+  },
+  "review_cleanup": {
+    "status": "removed_after_final_benchmark_audit",
+    "removed_at": "2026-09-02T17:28:41+08:00",
+    "original_file_count": 78,
+    "original_size_bytes": 357936,
+    "original_tree_sha256": "21454d02a2cae992c39690228e42184b18f285a673e241278c58fbac565256f0",
+    "conclusions_retained_in_cases_and_manifest": true
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_04:negative",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "1b20e0f944d7665f435e24eb8b76f4d45d83c419",
+      "split": "explicit/train",
+      "source_record_id": "explicit:0138"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:explicit:0138:current",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_04_negative.json",
+      "event_start": "d04:prefeval:explicit:0138:current:preference",
+      "event_end": "d04:prefeval:explicit:0138:current:preference",
+      "event_count": 1,
+      "token_count": 17
+    },
+    "query": {
+      "query_id": "pair_04:negative",
+      "text": "Could you recommend some new music releases for my upcoming road trip across the country?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "negative",
+      "tags": [
+        "d04",
+        "activation",
+        "negative",
+        "explicit",
+        "entertain_music_book"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_04",
+      "source_row_index": 138,
+      "source_form": "explicit",
+      "topic": "entertain_music_book",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [],
+        "answer_criteria_revised": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": false,
+      "required_memory_ids": [],
+      "preference": "I cannot stand heavy metal and refuse to listen to music involving excessive screaming or distortion.",
+      "answer_criteria": {
+        "explanation": "Many popular new music releases could fall into the heavy metal or similar genres that the user strongly dislikes. The assistant would need to carefully curate recommendations to avoid violating this unusual musical preference.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d01:lme:3e321797",
+    "dimension_id": "D01",
+    "dimension_name": "memory_extraction_and_write",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "3e321797"
+    },
+    "identity": {
+      "context_id": "d01:lme:3e321797",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/3e321797.json",
+      "event_start": "d01:lme:3e321797:e000",
+      "event_end": "d01:lme:3e321797:e015",
+      "event_count": 16,
+      "token_count": 2965
+    },
+    "query": {
+      "query_id": "3e321797",
+      "text": "I wanted to follow up on our previous conversation about natural remedies for dark circles under the eyes. You mentioned applying tomato juice mixed with lemon juice, how long did you say I should leave it on for?",
+      "timestamp": "2023/05/30 (Tue) 23:45"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-assistant",
+      "tags": [
+        "information_extraction",
+        "single-session-assistant",
+        "d01",
+        "human_review_required"
+      ],
+      "selection_seed": "d01-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "write",
+    "payload": {
+      "scored_event_ids": [
+        "d01:lme:3e321797:e000",
+        "d01:lme:3e321797:e001",
+        "d01:lme:3e321797:e002",
+        "d01:lme:3e321797:e003",
+        "d01:lme:3e321797:e004",
+        "d01:lme:3e321797:e005",
+        "d01:lme:3e321797:e006",
+        "d01:lme:3e321797:e007",
+        "d01:lme:3e321797:e008",
+        "d01:lme:3e321797:e009",
+        "d01:lme:3e321797:e010",
+        "d01:lme:3e321797:e011",
+        "d01:lme:3e321797:e012",
+        "d01:lme:3e321797:e013",
+        "d01:lme:3e321797:e014",
+        "d01:lme:3e321797:e015"
+      ],
+      "gold_memories": [
+        {
+          "memory_id": "d01:lme:3e321797:m00",
+          "canonical_content": "The user's SEO content project aims to rank higher for the target keyword pre-construction checklist.",
+          "memory_type": "goal",
+          "evidence_event_ids": [
+            "d01:lme:3e321797:e004"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:3e321797:m01",
+          "canonical_content": "The user was interested in trying natural remedies for dark circles under the eyes.",
+          "memory_type": "preference",
+          "evidence_event_ids": [
+            "d01:lme:3e321797:e010",
+            "d01:lme:3e321797:e014"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:3e321797:m02",
+          "canonical_content": "The user planned to consult a doctor before trying the natural remedies and intended to book an appointment the following week.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:3e321797:e012",
+            "d01:lme:3e321797:e014"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:3e321797:m03",
+          "canonical_content": "The user was advised to leave a tomato-juice and lemon-juice mixture on the under-eye area for 10 minutes before rinsing it off.",
+          "memory_type": "other",
+          "evidence_event_ids": [
+            "d01:lme:3e321797:e009"
+          ]
+        }
+      ],
+      "non_memory_event_ids": [
+        "d01:lme:3e321797:e000",
+        "d01:lme:3e321797:e001",
+        "d01:lme:3e321797:e002",
+        "d01:lme:3e321797:e003",
+        "d01:lme:3e321797:e005",
+        "d01:lme:3e321797:e006",
+        "d01:lme:3e321797:e007",
+        "d01:lme:3e321797:e008",
+        "d01:lme:3e321797:e011",
+        "d01:lme:3e321797:e013",
+        "d01:lme:3e321797:e015"
+      ]
+    }
+  },
+  "annotation": {
+    "draft_origin": "deterministic_qa_and_personal_sentence_extraction",
+    "human_review_status": "approved",
+    "required": true,
+    "reviewer": "liruizhi",
+    "reviewed_at": "2026-09-01T13:51:08+08:00",
+    "review_notes": [],
+    "checks": {
+      "all_memory_worthy_events_covered": true,
+      "canonical_content_verified": true,
+      "memory_type_verified": true,
+      "non_memory_event_ids_verified": true
+    }
+  }
+}

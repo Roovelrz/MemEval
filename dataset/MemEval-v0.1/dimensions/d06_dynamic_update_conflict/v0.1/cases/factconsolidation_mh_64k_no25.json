@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_64k_no25",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:2/question:25"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_64k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_64k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_64k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_64k:context:document_000",
+      "event_count": 1,
+      "token_count": 55762
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_64k_no25",
+      "text": "What city serves as the headquarters of the educational institution attended by Siim Kallas?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_64k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 2,
+      "source_question_index": 25,
+      "source_name": "factconsolidation_mh_64k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Siim Kallas",
+          "relation": "educated_at",
+          "value": "Howard University",
+          "winning_fact_id": "factconsolidation_mh_64k:fact_04112"
+        },
+        {
+          "step": 2,
+          "subject": "Howard University",
+          "relation": "headquarters_city",
+          "value": "Mexico City",
+          "winning_fact_id": "factconsolidation_mh_64k:fact_03163"
+        }
+      ],
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T15:06:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Mexico City",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_01931",
+          "value": "Washington, D.C.",
+          "order": 1931,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_03063",
+          "value": "University of Tartu",
+          "order": 3063,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_03163",
+          "value": "Mexico City",
+          "order": 3163,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_04112",
+          "value": "Howard University",
+          "order": 4112,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_64k:fact_04112",
+        "factconsolidation_mh_64k:fact_03163"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_64k:fact_03063",
+        "factconsolidation_mh_64k:fact_01931"
+      ]
+    }
+  }
+}

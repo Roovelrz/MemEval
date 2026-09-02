@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d07:beam10m:stress_01_10m",
+    "dimension_id": "D07",
+    "dimension_name": "ultra_long_context",
+    "source": {
+      "dataset": "BEAM-10M",
+      "revision": "9b2096193fe74e2837e4713e483351e19817773c",
+      "split": "10M",
+      "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=0/temporal_reasoning[0]"
+    },
+    "identity": {
+      "context_id": "d07:beam10m:stress_01:10m",
+      "user_id": "beam10m:conversation_01",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/stress_01_10m_full.jsonl",
+      "event_start": "d07:beam10m:conv_01:event_00000",
+      "event_end": "d07:beam10m:conv_01:event_19894",
+      "event_count": 19895,
+      "token_count": 12341617
+    },
+    "query": {
+      "query_id": "d07:beam10m:stress_01_10m:query",
+      "text": "How many days are there between when I launch the testing suite development and when I start the deployment preparation for the RAG system?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "easy",
+      "tags": [
+        "d07",
+        "beam-10m",
+        "10m_stress",
+        "temporal_reasoning",
+        "10m"
+      ],
+      "case_kind": "10m_stress",
+      "ability_category": "temporal_reasoning",
+      "source_probe_index": 0,
+      "source_answer_field": "answer",
+      "source_chat_ids": {
+        "first_event": [
+          13775
+        ],
+        "second_event": [
+          15675
+        ]
+      },
+      "source_rubric": [
+        "LLM response should state: 14 days",
+        "LLM response should state: from February 15, 2025 till March 1, 2025"
+      ],
+      "token_estimator": "ceil(character_count/4) per event",
+      "annotation_status": "approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T16:19:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "scale",
+    "payload": {
+      "scale_group_id": "d07:stress:01",
+      "scale_level": "10M",
+      "target_tokens": 10000000,
+      "gold_answer": "There are 14 days between launching the testing suite development on February 15 and starting the deployment preparation on March 1.",
+      "gold_evidence_ids": [
+        "d07:beam10m:conv_01:event_13775",
+        "d07:beam10m:conv_01:event_15675"
+      ],
+      "paired_anchor_id": null,
+      "expected_retrievable": true
+    }
+  }
+}

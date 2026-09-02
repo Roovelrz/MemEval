@@ -1,0 +1,169 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:601:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:1203"
+    },
+    "identity": {
+      "context_id": "d05:personamem:601:history",
+      "user_id": "personamem:601",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_601.json",
+      "event_start": "d05:personamem:601:history:event_0001",
+      "event_end": "d05:personamem:601:history:event_0243",
+      "event_count": 243,
+      "token_count": 31099
+    },
+    "query": {
+      "query_id": "personamem:601:benchmark:1203",
+      "text": "How can I rebuild my emotional strength when I’m feeling completely drained?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "therapy_background"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "601",
+      "target_source_row_index": 1203,
+      "target_pref_type": "therapy_background",
+      "target_topic": "Mental Health",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona601.json",
+      "raw_persona_file": "data/raw_data/raw_data_250820_224501_persona601.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": false,
+        "gold_answer_rewritten": true,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:601:profile:item_04",
+          "slot": "personal_fact",
+          "value": "After supporting a friend through a mental health crisis, she realized she had neglected her own emotional needs and resilience.",
+          "evidence_event_ids": [
+            "d05:personamem:601:history:event_0155",
+            "d05:personamem:601:history:event_0156"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1203,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona601.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1203",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_601.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "After supporting a friend through a mental health crisis, she realized she had neglected her own emotional needs and resilience.",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:601:profile:item_05",
+          "slot": "personal_fact",
+          "value": "Surgical removal of appendix in her late teens",
+          "evidence_event_ids": [
+            "d05:personamem:601:history:event_0127",
+            "d05:personamem:601:history:event_0128",
+            "d05:personamem:601:history:event_0129",
+            "d05:personamem:601:history:event_0130"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1187,
+            "source_pref_type": "health_and_medical_conditions",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona601.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1187",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_601.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Surgical removal of appendix in her late teens",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_05"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:601:profile:item_01",
+          "slot": "preference",
+          "value": "Has shown interest in visiting art exhibitions and galleries.",
+          "evidence_event_ids": [
+            "d05:personamem:601:history:event_0035",
+            "d05:personamem:601:history:event_0036",
+            "d05:personamem:601:history:event_0037",
+            "d05:personamem:601:history:event_0038"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1207,
+            "source_pref_type": "stereotypical_pref",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona601.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1207",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_601.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Frequently visits art exhibitions and galleries",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_01"
+            }
+          }
+        }
+      ],
+      "gold_answer": "After spending so much energy supporting someone else, rebuild gradually: set firmer boundaries, schedule real rest, reconnect with activities that replenish you, and let trusted people support you as well. If the exhaustion persists or affects daily functioning, consider talking with a mental-health professional.",
+      "target_preference_ids": [
+        "d05:personamem:601:profile:item_04"
+      ]
+    }
+  }
+}

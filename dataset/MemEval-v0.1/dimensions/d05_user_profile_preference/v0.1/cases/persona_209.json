@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:209:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:1586"
+    },
+    "identity": {
+      "context_id": "d05:personamem:209:history",
+      "user_id": "personamem:209",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_209.json",
+      "event_start": "d05:personamem:209:history:event_0001",
+      "event_end": "d05:personamem:209:history:event_0235",
+      "event_count": 235,
+      "token_count": 30774
+    },
+    "query": {
+      "query_id": "personamem:209:benchmark:1586",
+      "text": "How do I stay true to my work when I’m afraid people won’t fully understand it?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "therapy_background"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "209",
+      "target_source_row_index": 1586,
+      "target_pref_type": "therapy_background",
+      "target_topic": "Work",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona209.json",
+      "raw_persona_file": "data/raw_data/raw_data_250815_163935_persona209.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": false,
+        "gold_answer_rewritten": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:209:profile:item_04",
+          "slot": "personal_fact",
+          "value": "Struggles to explain cultural nuances in his films to Western audiences without feeling like he is diluting his message.",
+          "evidence_event_ids": [
+            "d05:personamem:209:history:event_0145",
+            "d05:personamem:209:history:event_0146"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1586,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250815_163935_persona209.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1586",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_209.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Struggles to explain cultural nuances in his films to Western audiences without feeling like he is diluting his message.",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:209:profile:item_01",
+          "slot": "preference",
+          "value": "Created a short film titled 'Threads of the Harbor'.",
+          "evidence_event_ids": [
+            "d05:personamem:209:history:event_0145",
+            "d05:personamem:209:history:event_0146"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1586,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250815_163935_persona209.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1586",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_209.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Has an interest in Middle Eastern history and archaeology",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:209:profile:item_03",
+          "slot": "preference",
+          "value": "Draws on memories of summers in Alexandria in his film work.",
+          "evidence_event_ids": [
+            "d05:personamem:209:history:event_0145",
+            "d05:personamem:209:history:event_0146"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1586,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250815_163935_persona209.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1586",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_209.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Participates in photography competitions",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        }
+      ],
+      "gold_answer": "Omar, your films’ cultural textures are their strength—rather than diluting them, consider creating small points of entry for Western audiences without overexplaining. Layer your visuals and narrative so that even if certain nuances are missed, the emotional truth remains intact. This way, you stay rooted in your heritage while still inviting broader engagement.",
+      "target_preference_ids": [
+        "d05:personamem:209:profile:item_04"
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d02:lme:7527f7e2",
+    "dimension_id": "D02",
+    "dimension_name": "long_term_memory_retrieval",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "7527f7e2"
+    },
+    "identity": {
+      "context_id": "d02:lme:7527f7e2",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/7527f7e2.json",
+      "event_start": "d02:lme:7527f7e2:e00000",
+      "event_end": "d02:lme:7527f7e2:e00489",
+      "event_count": 490,
+      "token_count": 103519
+    },
+    "query": {
+      "query_id": "7527f7e2",
+      "text": "How much did I spend on a designer handbag?",
+      "timestamp": "2023/05/30 (Tue) 23:20"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-user",
+      "tags": [
+        "information_extraction",
+        "single-session-user",
+        "d02",
+        "retrieval"
+      ],
+      "selection_seed": "d02-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "retrieval",
+    "payload": {
+      "gold_evidence_ids": [
+        "answer_7cb94507"
+      ],
+      "gold_answer": "$800",
+      "retrieval_k": [
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  }
+}

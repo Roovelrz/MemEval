@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_32k_no45",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:1/question:45"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_32k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_32k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_32k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_32k:context:document_000",
+      "event_count": 1,
+      "token_count": 28007
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_32k_no45",
+      "text": "What is the location of the headquarters of the company that employed Ward Kimball?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_32k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 1,
+      "source_question_index": 45,
+      "source_name": "factconsolidation_mh_32k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Ward Kimball",
+          "relation": "employer",
+          "value": "Google",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_01366"
+        },
+        {
+          "step": 2,
+          "subject": "Google",
+          "relation": "headquarters_city",
+          "value": "Plovdiv",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_00997"
+        }
+      ],
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T15:06:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Plovdiv",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_00207",
+          "value": "The Walt Disney Company",
+          "order": 207,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_00515",
+          "value": "Mountain View",
+          "order": 515,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_00997",
+          "value": "Plovdiv",
+          "order": 997,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_01366",
+          "value": "Google",
+          "order": 1366,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_32k:fact_01366",
+        "factconsolidation_mh_32k:fact_00997"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_32k:fact_00207",
+        "factconsolidation_mh_32k:fact_00515"
+      ]
+    }
+  }
+}

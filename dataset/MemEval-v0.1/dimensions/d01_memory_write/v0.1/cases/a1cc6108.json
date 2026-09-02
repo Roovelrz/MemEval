@@ -1,0 +1,188 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d01:lme:a1cc6108",
+    "dimension_id": "D01",
+    "dimension_name": "memory_extraction_and_write",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "a1cc6108"
+    },
+    "identity": {
+      "context_id": "d01:lme:a1cc6108",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/a1cc6108.json",
+      "event_start": "d01:lme:a1cc6108:e000",
+      "event_end": "d01:lme:a1cc6108:e029",
+      "event_count": 30,
+      "token_count": 8628
+    },
+    "query": {
+      "query_id": "a1cc6108",
+      "text": "How old was I when Alex was born?",
+      "timestamp": "2023/05/30 (Tue) 20:23"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-session",
+      "tags": [
+        "multi_session_reasoning",
+        "multi-session",
+        "d01",
+        "human_review_required"
+      ],
+      "selection_seed": "d01-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "write",
+    "payload": {
+      "scored_event_ids": [
+        "d01:lme:a1cc6108:e000",
+        "d01:lme:a1cc6108:e001",
+        "d01:lme:a1cc6108:e002",
+        "d01:lme:a1cc6108:e003",
+        "d01:lme:a1cc6108:e004",
+        "d01:lme:a1cc6108:e005",
+        "d01:lme:a1cc6108:e006",
+        "d01:lme:a1cc6108:e007",
+        "d01:lme:a1cc6108:e008",
+        "d01:lme:a1cc6108:e009",
+        "d01:lme:a1cc6108:e010",
+        "d01:lme:a1cc6108:e011",
+        "d01:lme:a1cc6108:e012",
+        "d01:lme:a1cc6108:e013",
+        "d01:lme:a1cc6108:e014",
+        "d01:lme:a1cc6108:e015",
+        "d01:lme:a1cc6108:e016",
+        "d01:lme:a1cc6108:e017",
+        "d01:lme:a1cc6108:e018",
+        "d01:lme:a1cc6108:e019",
+        "d01:lme:a1cc6108:e020",
+        "d01:lme:a1cc6108:e021",
+        "d01:lme:a1cc6108:e022",
+        "d01:lme:a1cc6108:e023",
+        "d01:lme:a1cc6108:e024",
+        "d01:lme:a1cc6108:e025",
+        "d01:lme:a1cc6108:e026",
+        "d01:lme:a1cc6108:e027",
+        "d01:lme:a1cc6108:e028",
+        "d01:lme:a1cc6108:e029"
+      ],
+      "gold_memories": [
+        {
+          "memory_id": "d01:lme:a1cc6108:m00",
+          "canonical_content": "The user mentors a 21-year-old intern named Alex.",
+          "memory_type": "relationship",
+          "evidence_event_ids": [
+            "d01:lme:a1cc6108:e000",
+            "d01:lme:a1cc6108:e002"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:a1cc6108:m01",
+          "canonical_content": "The user was 32 years old as of May 24, 2023, having turned 32 the previous month.",
+          "memory_type": "personal_fact",
+          "evidence_event_ids": [
+            "d01:lme:a1cc6108:e012"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:a1cc6108:m02",
+          "canonical_content": "The user was approximately 11 years old when Alex was born, based on the stated ages of 32 for the user and 21 for Alex.",
+          "memory_type": "personal_fact",
+          "evidence_event_ids": [
+            "d01:lme:a1cc6108:e002",
+            "d01:lme:a1cc6108:e012"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:a1cc6108:m03",
+          "canonical_content": "The user wants to retire by age 60.",
+          "memory_type": "goal",
+          "evidence_event_ids": [
+            "d01:lme:a1cc6108:e004",
+            "d01:lme:a1cc6108:e018"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:a1cc6108:m04",
+          "canonical_content": "The user is considering a career change into data science and analytics.",
+          "memory_type": "goal",
+          "evidence_event_ids": [
+            "d01:lme:a1cc6108:e012",
+            "d01:lme:a1cc6108:e014"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:a1cc6108:m05",
+          "canonical_content": "The user plans to learn Python through online courses, spend a few hours each week studying, and apply the skills to personal projects such as finance or fitness analysis.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:a1cc6108:e016",
+            "d01:lme:a1cc6108:e018"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:a1cc6108:m06",
+          "canonical_content": "The user's grandmother was 75 years old as of May 2023.",
+          "memory_type": "relationship",
+          "evidence_event_ids": [
+            "d01:lme:a1cc6108:e008",
+            "d01:lme:a1cc6108:e016"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:a1cc6108:m07",
+          "canonical_content": "The user reported annual income of about $80,000, about $50,000 already saved for retirement, desired retirement spending of about $60,000 per year, assumptions of 5% annual investment returns and 2.5% inflation, and a goal of saving at least 20% of income each month.",
+          "memory_type": "constraint",
+          "evidence_event_ids": [
+            "d01:lme:a1cc6108:e020"
+          ]
+        }
+      ],
+      "non_memory_event_ids": [
+        "d01:lme:a1cc6108:e001",
+        "d01:lme:a1cc6108:e003",
+        "d01:lme:a1cc6108:e005",
+        "d01:lme:a1cc6108:e006",
+        "d01:lme:a1cc6108:e007",
+        "d01:lme:a1cc6108:e009",
+        "d01:lme:a1cc6108:e010",
+        "d01:lme:a1cc6108:e011",
+        "d01:lme:a1cc6108:e013",
+        "d01:lme:a1cc6108:e015",
+        "d01:lme:a1cc6108:e017",
+        "d01:lme:a1cc6108:e019",
+        "d01:lme:a1cc6108:e021",
+        "d01:lme:a1cc6108:e022",
+        "d01:lme:a1cc6108:e023",
+        "d01:lme:a1cc6108:e024",
+        "d01:lme:a1cc6108:e025",
+        "d01:lme:a1cc6108:e026",
+        "d01:lme:a1cc6108:e027",
+        "d01:lme:a1cc6108:e028",
+        "d01:lme:a1cc6108:e029"
+      ]
+    }
+  },
+  "annotation": {
+    "draft_origin": "deterministic_qa_and_personal_sentence_extraction",
+    "human_review_status": "approved",
+    "required": true,
+    "reviewer": "liruizhi",
+    "reviewed_at": "2026-09-01T14:00:07+08:00",
+    "review_notes": [],
+    "checks": {
+      "all_memory_worthy_events_covered": true,
+      "canonical_content_verified": true,
+      "memory_type_verified": true,
+      "non_memory_event_ids_verified": true
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-26:q0126:derived_lifecycle",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-26:qa:0126"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-26:q0126:lifecycle",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-26_q0126_lifecycle.json",
+      "event_start": "d03:locomo:conv-26:q0126:lifecycle:D1:1",
+      "event_end": "d03:locomo:conv-26:q0126:lifecycle:forget",
+      "event_count": 420,
+      "token_count": 13341
+    },
+    "query": {
+      "query_id": "conv-26:qa:0126",
+      "text": "What activity did Caroline used to do with her dad?",
+      "timestamp": "2023-10-24T09:55:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "derived_lifecycle",
+      "tags": [
+        "d03",
+        "temporal",
+        "derived_lifecycle",
+        "locomo_category_4"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-26",
+      "source_qa_index": 126,
+      "source_category": 4
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "Horseback riding",
+      "evidence_event_ids": [
+        "d03:locomo:conv-26:q0126:lifecycle:D13:7"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-26:q0126:lifecycle:D13:7",
+          "days_before_query": 61
+        },
+        {
+          "relation": "deleted_before_query",
+          "forget_event_id": "d03:locomo:conv-26:q0126:lifecycle:forget",
+          "days_before_query": 1
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-26:q0126:lifecycle:D13:7": "2023-08-23T15:31:00"
+      },
+      "query_time": "2023-10-24T09:55:00",
+      "time_gap_days": 61,
+      "lifecycle": {
+        "valid_from": "2023-08-23T15:31:00",
+        "valid_until": "2023-10-23T09:55:00",
+        "deleted_at": "2023-10-23T09:55:00",
+        "expected_active": false
+      }
+    }
+  }
+}

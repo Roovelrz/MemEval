@@ -1,0 +1,167 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:55:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:3404"
+    },
+    "identity": {
+      "context_id": "d05:personamem:55:history",
+      "user_id": "personamem:55",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_055.json",
+      "event_start": "d05:personamem:55:history:event_0001",
+      "event_end": "d05:personamem:55:history:event_0243",
+      "event_count": 243,
+      "token_count": 30443
+    },
+    "query": {
+      "query_id": "personamem:55:benchmark:3404",
+      "text": "How can I calm my mind when sudden problems make me feel overwhelmed and anxious?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "anti_stereotypical_pref"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "55",
+      "target_source_row_index": 3404,
+      "target_pref_type": "therapy_background",
+      "target_topic": "Mindset",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona55.json",
+      "raw_persona_file": "data/raw_data/raw_data_250815_163935_persona55.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": true,
+        "gold_answer_rewritten": true,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:55:profile:item_04",
+          "slot": "personal_fact",
+          "value": "Faced pressure when a time-sensitive shipment delay threatened a promised client timeline.",
+          "evidence_event_ids": [
+            "d05:personamem:55:history:event_0051",
+            "d05:personamem:55:history:event_0052",
+            "d05:personamem:55:history:event_0053",
+            "d05:personamem:55:history:event_0054"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3404,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250815_163935_persona55.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3404",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_055.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Experienced panic after a major shipment was delayed, fearing it would hurt her brand’s reputation.",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:55:profile:item_05",
+          "slot": "personal_fact",
+          "value": "Experienced low energy and a dizzy spell during long studio sessions in her early twenties.",
+          "evidence_event_ids": [
+            "d05:personamem:55:history:event_0081",
+            "d05:personamem:55:history:event_0082"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3413,
+            "source_pref_type": "health_and_medical_conditions",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250815_163935_persona55.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3413",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_055.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "History of mild anemia during her early 20s, now managed with proper diet",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_05"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:55:profile:item_02",
+          "slot": "preference",
+          "value": "Has discussed two-wheel travel as an alternative to traveling by compact car.",
+          "evidence_event_ids": [
+            "d05:personamem:55:history:event_0087",
+            "d05:personamem:55:history:event_0088"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3429,
+            "source_pref_type": "anti_stereotypical_pref",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250815_163935_persona55.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3429",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_055.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Chooses bicycles or skateboards over compact cars",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_02"
+            }
+          }
+        }
+      ],
+      "gold_answer": "When a sudden delivery problem feels overwhelming, first separate the immediate facts from the feared consequences. Write down the next three controllable actions, communicate the delay and recovery plan clearly to the client, and take a short pause before making further decisions. One delayed shipment does not define the quality of your work.",
+      "target_preference_ids": [
+        "d05:personamem:55:profile:item_04"
+      ]
+    }
+  }
+}

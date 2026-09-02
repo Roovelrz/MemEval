@@ -1,0 +1,306 @@
+{
+  "inventory_version": "0.1",
+  "created_at": "2026-09-02T17:28:41+08:00",
+  "authorization": "用户明确要求全局 PASS 后清理过程文件",
+  "precondition_report": "datasets/manifests/reports/benchmark_macro_audit_v0_1.json",
+  "preserve": [
+    "Agent Memory Eval 数据集构建开发文档 v0.1.md",
+    "datasets/raw/",
+    "datasets/manifests/",
+    "datasets/dimensions/*/v0.1/cases/",
+    "datasets/dimensions/*/v0.1/contexts/",
+    "datasets/dimensions/*/v0.1/manifest.json",
+    "datasets/dimensions/*/v0.1/README.md"
+  ],
+  "dimension_review_directories": [
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\datasets\\dimensions\\d04_proactive_memory_activation\\v0.1\\review",
+      "exists_at_inventory": true,
+      "file_count": 21,
+      "size_bytes": 136173,
+      "tree_sha256": "e844268ac4afd613e197a5d10549e819a3458a6bac4bb22794eb9025a0384f5c",
+      "removed": true
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\datasets\\dimensions\\d05_user_profile_preference\\v0.1\\review",
+      "exists_at_inventory": true,
+      "file_count": 76,
+      "size_bytes": 1875463,
+      "tree_sha256": "0dca4bccba2825141ade05001295aa22100e8407623314f6974f01b49ff350e3",
+      "removed": true
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\datasets\\dimensions\\d06_dynamic_update_conflict\\v0.1\\review",
+      "exists_at_inventory": true,
+      "file_count": 78,
+      "size_bytes": 357936,
+      "tree_sha256": "21454d02a2cae992c39690228e42184b18f285a673e241278c58fbac565256f0",
+      "removed": true
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\datasets\\dimensions\\d07_ultra_long_context\\v0.1\\review",
+      "exists_at_inventory": true,
+      "file_count": 33,
+      "size_bytes": 144006,
+      "tree_sha256": "b86d2946bb61040f733a427069ed084dd4c85392d55b15ac2b7896d1228e1d3f",
+      "removed": true
+    }
+  ],
+  "root_process_files": [
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\audit_agent_memory_datasets.py",
+      "relative_path": "audit_agent_memory_datasets.py",
+      "size_bytes": 69113,
+      "sha256": "d61aabb58017744797bd6b34ce300cfc5df77de2d45cd3809aa393ce0114f2e5",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\audit_all_dimensions_v01.py",
+      "relative_path": "audit_all_dimensions_v01.py",
+      "size_bytes": 15593,
+      "sha256": "99c95d9ec6121e1e66ec920087d787cbdb3586203efba80be271fbf8543fc2bd",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\audit_post_cleanup_v01.py",
+      "relative_path": "audit_post_cleanup_v01.py",
+      "size_bytes": 10062,
+      "sha256": "24ea9a082724a4cd12b5528e4c9334e0dd5cb9b46a85e54ec6cf7cf3c744e7a4",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\build_d01_v01.py",
+      "relative_path": "build_d01_v01.py",
+      "size_bytes": 23198,
+      "sha256": "16f0b7fe0528564fe1b772eff6b488cb4e4e7f0c3855a5a9fcd70f00953b45d6",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\build_d02_v01.py",
+      "relative_path": "build_d02_v01.py",
+      "size_bytes": 17516,
+      "sha256": "2981786347ad944b74f1b1c0b5f1efef37843abd30646eb70106e86a4262c39f",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\build_d03_v01.py",
+      "relative_path": "build_d03_v01.py",
+      "size_bytes": 28419,
+      "sha256": "b1e7de832480a272bb3524272574543f99a37ca08934e30f13406df98a94fc80",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\build_d04_v01.py",
+      "relative_path": "build_d04_v01.py",
+      "size_bytes": 30202,
+      "sha256": "c1261dc2df02ae0236f33b08b9f5d4be2b6de9f138132bfd855c25109b81949d",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\build_d05_v01.py",
+      "relative_path": "build_d05_v01.py",
+      "size_bytes": 30314,
+      "sha256": "64c566fc5d53b7e1cdac9f392684f3cdede58667e515784af03d003b5b818344",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\build_d06_v01.py",
+      "relative_path": "build_d06_v01.py",
+      "size_bytes": 34253,
+      "sha256": "fc69086fe6e5ca8b9a1542d5a9c53fb4a50d13e6f3b03019bf9503867d874323",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\build_d07_v01.py",
+      "relative_path": "build_d07_v01.py",
+      "size_bytes": 39695,
+      "sha256": "a521b3696fc21bdb8aaa9bbfd4ddc8e3dc598aab1a8786c7ee94413e8ecd022e",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\build_d08_v01.py",
+      "relative_path": "build_d08_v01.py",
+      "size_bytes": 23454,
+      "sha256": "796665225259d081118597e9fac9ff9c2ba8f51d41573957ffb401938e684311",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\check_d04_reviews.py",
+      "relative_path": "check_d04_reviews.py",
+      "size_bytes": 2884,
+      "sha256": "4ce71179010fdb1c8f47988032a303f2fbe7d0a6fbfa223c472fb301b608ca34",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\check_d05_reviews.py",
+      "relative_path": "check_d05_reviews.py",
+      "size_bytes": 3979,
+      "sha256": "8d9007e7c8dec4a8f49fcc62c78f85c8c21655314bde0478dfc0a0e8bb8b0a02",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\check_d06_reviews.py",
+      "relative_path": "check_d06_reviews.py",
+      "size_bytes": 17809,
+      "sha256": "bf68030839fa8325615cb552cac04f5e8bdc47ce856b50c560352eaa7f56e9b3",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\check_d07_reviews.py",
+      "relative_path": "check_d07_reviews.py",
+      "size_bytes": 19692,
+      "sha256": "6471653e5e9a3ba7eebcc8f653f9536e761e04d9ed47afe1f4eec304ce0ef9a2",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\check_d08.py",
+      "relative_path": "check_d08.py",
+      "size_bytes": 17808,
+      "sha256": "46b7898189958477db4ac8944198f5b79039da826b025a98b3b96fc7478f10c4",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\download_agent_memory_datasets.lock.json",
+      "relative_path": "download_agent_memory_datasets.lock.json",
+      "size_bytes": 754,
+      "sha256": "a8a6344a0f98ecbd53f578eb88e761acc899cab1a4082060e6407bcd33c4f1e1",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\download_agent_memory_datasets.ps1",
+      "relative_path": "download_agent_memory_datasets.ps1",
+      "size_bytes": 19533,
+      "sha256": "7d358ec2554459a4b3fe298e0bfc3d54a019d1cd86c94ede0d1b4b69876d8e6b",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\finalize_d01_and_query_ids_v01.py",
+      "relative_path": "finalize_d01_and_query_ids_v01.py",
+      "size_bytes": 6933,
+      "sha256": "0169a3088418da3e70094b6a4e9367c8be87e195d52e610c041ad60ff2f4704e",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\finalize_review_artifacts_v01.py",
+      "relative_path": "finalize_review_artifacts_v01.py",
+      "size_bytes": 8622,
+      "sha256": "895cfe8d54b04b4f972c2b37db92e6b3598968242876324bbc98d82e690d3701",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\merge_d05_reviews.py",
+      "relative_path": "merge_d05_reviews.py",
+      "size_bytes": 26007,
+      "sha256": "4bfd33e986328b1b12ac7b6a79bde5a6c3d935a3046a40871b0f07bc1727d44c",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\merge_d06_reviews.py",
+      "relative_path": "merge_d06_reviews.py",
+      "size_bytes": 17011,
+      "sha256": "d5e5efdd835d595cadd83bef25f18511946d7498290a2e94aa1980a24b964b02",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\merge_d07_reviews.py",
+      "relative_path": "merge_d07_reviews.py",
+      "size_bytes": 15333,
+      "sha256": "63a1cb516d34cda8b699cc04946fe3e8e19d3da250afa524392313357f46d538",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    },
+    {
+      "path": "E:\\LRZ_Workplace\\fork\\remove_cross_dimension_duplicates_v01.py",
+      "relative_path": "remove_cross_dimension_duplicates_v01.py",
+      "size_bytes": 5502,
+      "sha256": "c0dc0dfe1030586fedfd992e2767499babf707f512adc6bbe8be72536415fdc0",
+      "action": "delete_after_post_cleanup_integrity_pass"
+    }
+  ],
+  "external_review_work_directories": [
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\d01_memory_write_atomic_reviewed_20json",
+      "exists_at_inventory": true,
+      "file_count": 76,
+      "size_bytes": 1874377,
+      "tree_sha256": "760ded2d16ee69231eab24e877ae0a29a24b2df0aaaccd07f6aaaec5ccbc3cdf"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\d01_memory_write_atomic_reviewed_batch2_20json",
+      "exists_at_inventory": true,
+      "file_count": 20,
+      "size_bytes": 460844,
+      "tree_sha256": "ec378c7677940eda19ae0115dbb27bd01017fde4159ac9ea8087f641497dabbc"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\d01_memory_write_atomic_reviewed_batch3_20json",
+      "exists_at_inventory": true,
+      "file_count": 20,
+      "size_bytes": 536269,
+      "tree_sha256": "f05eaad0ed9ab7620d573bf037fed854b000b77a2d83ca94f47812a943cf5213"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\D04_human_review_2026-09-01",
+      "exists_at_inventory": true,
+      "file_count": 20,
+      "size_bytes": 136448,
+      "tree_sha256": "6de671bc5539e77c3c5cbc7c43a67eb7657a0602181666d6f232d9df1d84774a"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\D04_human_review_ALL_PASS_lrz",
+      "exists_at_inventory": true,
+      "file_count": 20,
+      "size_bytes": 134133,
+      "tree_sha256": "225bb3d2b02b87b20fbd16f516e19f4d263229d3b9b06538ad1902afc61cccc1"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\D05_human_review_all_37_lrz",
+      "exists_at_inventory": true,
+      "file_count": 38,
+      "size_bytes": 907339,
+      "tree_sha256": "52ad74aaaf3f8db20af34aadc6111e486ddd4d0d7bb6cb9c2220da3ff80c69f4"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\D05_review",
+      "exists_at_inventory": true,
+      "file_count": 39,
+      "size_bytes": 901214,
+      "tree_sha256": "df9237e25258f586e23d0022dc587bcfd91b753fa9fbb5d68d547bb95d66b4ba"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\D06_human_review_FINAL_all_json_lrz",
+      "exists_at_inventory": true,
+      "file_count": 38,
+      "size_bytes": 170257,
+      "tree_sha256": "56db240734d48d0252c7a745a9d6c27bb93b127ccbb052d028bdd29c74fdd066"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\D07_human_review_ALL_13_lrz",
+      "exists_at_inventory": true,
+      "file_count": 16,
+      "size_bytes": 68809,
+      "tree_sha256": "a9aed4928e7957c32f40896a9c5cd93fd9abb8439e04aa4bfc239bb785808d0c"
+    },
+    {
+      "path": "C:\\Users\\liruizhi\\Downloads\\D07_human_review_lrz",
+      "exists_at_inventory": true,
+      "file_count": 16,
+      "size_bytes": 69064,
+      "tree_sha256": "12d93303a47705c374c3965dc3eef0c91fd03b7af7ec581ec81730bc7751c607"
+    }
+  ],
+  "status": "completed",
+  "completed_at": "2026-09-02T17:32:11+08:00",
+  "completion": {
+    "post_cleanup_integrity_report": "datasets/manifests/reports/post_cleanup_integrity_v0_1.json",
+    "post_cleanup_integrity_result": "PASS",
+    "root_process_files_deleted": 24,
+    "root_process_files_remaining": 0,
+    "external_review_work_directories_deleted": 10,
+    "external_review_work_directories_remaining": 0,
+    "dimension_review_directories_remaining": 0,
+    "formal_case_count_after_deduplication": 298,
+    "missing_context_references": 0,
+    "duplicate_case_ids": 0,
+    "duplicate_query_ids": 0
+  }
+}

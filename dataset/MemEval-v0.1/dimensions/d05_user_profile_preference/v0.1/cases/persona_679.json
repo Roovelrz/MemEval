@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:679:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:2025"
+    },
+    "identity": {
+      "context_id": "d05:personamem:679:history",
+      "user_id": "personamem:679",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_679.json",
+      "event_start": "d05:personamem:679:history:event_0001",
+      "event_end": "d05:personamem:679:history:event_0233",
+      "event_count": 233,
+      "token_count": 30507
+    },
+    "query": {
+      "query_id": "personamem:679:benchmark:2025",
+      "text": "What are some fun and active ways to make the most of a sunny Saturday outdoors?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "anti_stereotypical_pref"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "679",
+      "target_source_row_index": 2025,
+      "target_pref_type": "neutral_preferences",
+      "target_topic": "leisure",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona679.json",
+      "raw_persona_file": "data/raw_data/raw_data_250820_224501_persona679.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": true,
+        "gold_answer_rewritten": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:679:profile:item_03",
+          "slot": "preference",
+          "value": "Enjoys cycling on weekends",
+          "evidence_event_ids": [
+            "d05:personamem:679:history:event_0057",
+            "d05:personamem:679:history:event_0058"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 2025,
+            "source_pref_type": "neutral_preferences",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona679.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#2025",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_679.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Enjoys cycling on weekends",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_03"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:679:profile:item_04",
+          "slot": "personal_fact",
+          "value": "Experienced increasing difficulty sleeping due to overthinking about personal and career decisions.",
+          "evidence_event_ids": [
+            "d05:personamem:679:history:event_0077",
+            "d05:personamem:679:history:event_0078"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 2033,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona679.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#2033",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_679.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Experienced increasing difficulty sleeping due to overthinking about personal and career decisions.",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:679:profile:item_02",
+          "slot": "preference",
+          "value": "Skipped a neighborhood cultural festival to work on personal housing sketches.",
+          "evidence_event_ids": [
+            "d05:personamem:679:history:event_0029",
+            "d05:personamem:679:history:event_0030"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 2020,
+            "source_pref_type": "anti_stereotypical_pref",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona679.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#2020",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_679.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Prioritizes personal projects over community events",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_02"
+            }
+          }
+        }
+      ],
+      "gold_answer": "You could start the morning with a scenic cycling route around Lagos Island or along the Lekki-Ikoyi Bridge, then take a break at a waterfront café. In the afternoon, explore a local park like Freedom Park for some relaxing sketching or photography before heading home. It’s a good balance of movement, creativity, and enjoying the sunny weather.",
+      "target_preference_ids": [
+        "d05:personamem:679:profile:item_03"
+      ]
+    }
+  }
+}

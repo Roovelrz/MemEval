@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "context_id": "d04:prefeval:explicit:0911:current",
+  "source": {
+    "dataset": "PrefEval",
+    "revision": "1b20e0f944d7665f435e24eb8b76f4d45d83c419",
+    "split": "explicit/train",
+    "source_record_id": "explicit:0911"
+  },
+  "events": [
+    {
+      "event_id": "d04:prefeval:explicit:0911:current:preference",
+      "session_id": "d04:prefeval:explicit:0911:current:current_input",
+      "turn_id": "preference",
+      "order": 0,
+      "timestamp": null,
+      "role": "current_input",
+      "content": "I avoid restaurants that primarily serve spicy food.",
+      "source_ref": "explicit/train.parquet#911/preference",
+      "metadata": {
+        "source_form": "explicit",
+        "source_field": "preference",
+        "input_scope": "current"
+      }
+    }
+  ]
+}

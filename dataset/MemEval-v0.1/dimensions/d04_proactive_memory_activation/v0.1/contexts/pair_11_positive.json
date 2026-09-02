@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "context_id": "d04:prefeval:implicit_choice:0576:history",
+  "source": {
+    "dataset": "PrefEval",
+    "revision": "319fbe0236a00f40152b27da01a6f86271657db1",
+    "split": "implicit_choice/train",
+    "source_record_id": "implicit_choice:0576"
+  },
+  "events": [
+    {
+      "event_id": "d04:prefeval:implicit_choice:0576:history:conversation_query",
+      "session_id": "d04:prefeval:implicit_choice:0576:history:history",
+      "turn_id": "conversation_query",
+      "order": 0,
+      "timestamp": null,
+      "role": "user",
+      "content": "What are some good places to visit for a weekend getaway?",
+      "source_ref": "implicit_choice/train.parquet#576/conversation_query",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_query"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0576:history:assistant_options",
+      "session_id": "d04:prefeval:implicit_choice:0576:history:history",
+      "turn_id": "assistant_options",
+      "order": 1,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "There are many great options for a weekend getaway, depending on your interests. Here are a few possibilities:\n1. A major metropolitan area with world-class museums.\n2. A quiet mountain town with scenic hiking trails.\n3. A popular beach destination with lively boardwalks.\n4. A bustling city known for its vibrant nightlife.",
+      "source_ref": "implicit_choice/train.parquet#576/conversation_assistant_options",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_options"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0576:history:user_selection",
+      "session_id": "d04:prefeval:implicit_choice:0576:history:history",
+      "turn_id": "user_selection",
+      "order": 2,
+      "timestamp": null,
+      "role": "user",
+      "content": "I think the quiet mountain town with scenic hiking trails sounds perfect for me. I generally dislike cities with high noise pollution, so the other options seem too noisy or crowded for me, not just for this weekend.",
+      "source_ref": "implicit_choice/train.parquet#576/conversation_user_selection",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_user_selection",
+        "human_review_revision": {
+          "reviewer": "lrz",
+          "reviewed_at": "2026-09-01T18:00:00+08:00",
+          "review_file": "review/pairs/pair_11.json",
+          "original_content_sha256": "b04eec4cf69e194cba3a4a2ef98d77da0c60b1ad161aa82f8fa76ca3e0ea2b6a",
+          "source_ref_preserved_as_derivation_origin": "implicit_choice/train.parquet#576/conversation_user_selection"
+        }
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0576:history:assistant_acknowledgment",
+      "session_id": "d04:prefeval:implicit_choice:0576:history:history",
+      "turn_id": "assistant_acknowledgment",
+      "order": 3,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "A quiet mountain town with hiking trails is an excellent choice for a peaceful weekend getaway.",
+      "source_ref": "implicit_choice/train.parquet#576/conversation_assistant_acknowledgment",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_acknowledgment"
+      }
+    }
+  ]
+}

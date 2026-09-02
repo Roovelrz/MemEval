@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:429:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:3887"
+    },
+    "identity": {
+      "context_id": "d05:personamem:429:history",
+      "user_id": "personamem:429",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_429.json",
+      "event_start": "d05:personamem:429:history:event_0001",
+      "event_end": "d05:personamem:429:history:event_0205",
+      "event_count": 205,
+      "token_count": 30939
+    },
+    "query": {
+      "query_id": "personamem:429:benchmark:3887",
+      "text": "What are some fun cultural events or activities happening around town this month that could make for a nice weekend outing?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "anti_stereotypical_pref"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "429",
+      "target_source_row_index": 3887,
+      "target_pref_type": "anti_stereotypical_pref",
+      "target_topic": "entertainment",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona429.json",
+      "raw_persona_file": "data/raw_data/raw_data_250818_011555_persona429.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": false,
+        "gold_answer_rewritten": true,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:429:profile:item_02",
+          "slot": "preference",
+          "value": "Attends local community fairs and folk festivals",
+          "evidence_event_ids": [
+            "d05:personamem:429:history:event_0134",
+            "d05:personamem:429:history:event_0135"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3887,
+            "source_pref_type": "anti_stereotypical_pref",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250818_011555_persona429.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3887",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_429.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Attends local community fairs and folk festivals",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_02"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:429:profile:item_04",
+          "slot": "personal_fact",
+          "value": "Felt stressed balancing advanced technical work with the expectation to mentor junior developers.",
+          "evidence_event_ids": [
+            "d05:personamem:429:history:event_0136",
+            "d05:personamem:429:history:event_0137"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3888,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250818_011555_persona429.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3888",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_429.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Felt stressed balancing advanced technical work with the expectation to mentor junior developers.",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:429:profile:item_01",
+          "slot": "preference",
+          "value": "Reads articles about space-exploration news to decompress after work.",
+          "evidence_event_ids": [
+            "d05:personamem:429:history:event_0065",
+            "d05:personamem:429:history:event_0066"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3886,
+            "source_pref_type": "stereotypical_pref",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250818_011555_persona429.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3886",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_429.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Enjoys discussing space exploration news",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_01"
+            }
+          }
+        }
+      ],
+      "gold_answer": "Look for neighborhood street fairs, local craft markets, folk-music performances, and community cultural festivals. Because dates change, check the city's official events calendar or the organizers' current listings before planning the weekend.",
+      "target_preference_ids": [
+        "d05:personamem:429:profile:item_02"
+      ]
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d07:beam10m:stress_03_10m",
+    "dimension_id": "D07",
+    "dimension_name": "ultra_long_context",
+    "source": {
+      "dataset": "BEAM-10M",
+      "revision": "9b2096193fe74e2837e4713e483351e19817773c",
+      "split": "10M",
+      "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=2/multi_session_reasoning[0]"
+    },
+    "identity": {
+      "context_id": "d07:beam10m:stress_03:10m",
+      "user_id": "beam10m:conversation_03",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/stress_03_10m_full.jsonl",
+      "event_start": "d07:beam10m:conv_03:event_00000",
+      "event_end": "d07:beam10m:conv_03:event_20191",
+      "event_count": 20192,
+      "token_count": 12652346
+    },
+    "query": {
+      "query_id": "d07:beam10m:stress_03_10m:query",
+      "text": "How many agents in total did I mention while debugging issues related to timeouts, format mismatches, and state overload?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "easy",
+      "tags": [
+        "d07",
+        "beam-10m",
+        "10m_stress",
+        "multi_session_reasoning",
+        "10m"
+      ],
+      "case_kind": "10m_stress",
+      "ability_category": "multi_session_reasoning",
+      "source_probe_index": 0,
+      "source_answer_field": "answer",
+      "source_chat_ids": [
+        13986,
+        14154,
+        14350
+      ],
+      "source_rubric": [
+        "LLM response should state: 130 agents"
+      ],
+      "token_estimator": "ceil(character_count/4) per event",
+      "annotation_status": "approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T16:19:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "scale",
+    "payload": {
+      "scale_group_id": "d07:stress:03",
+      "scale_level": "10M",
+      "target_tokens": 10000000,
+      "gold_answer": "130 agents",
+      "gold_evidence_ids": [
+        "d07:beam10m:conv_03:event_13986",
+        "d07:beam10m:conv_03:event_14154",
+        "d07:beam10m:conv_03:event_14350"
+      ],
+      "paired_anchor_id": null,
+      "expected_retrievable": true
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-30:q0020:native_temporal",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-30:qa:0020"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-30",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-30.json",
+      "event_start": "d03:locomo:conv-30:D1:1",
+      "event_end": "d03:locomo:conv-30:D19:14",
+      "event_count": 369,
+      "token_count": 10493
+    },
+    "query": {
+      "query_id": "conv-30:qa:0020",
+      "text": "When did Gina get accepted for the design internship?",
+      "timestamp": "2023-07-23T18:46:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "native_temporal",
+      "tags": [
+        "d03",
+        "temporal",
+        "native_temporal",
+        "locomo_category_2"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-30",
+      "source_qa_index": 20,
+      "source_category": 2
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "27 May, 2023",
+      "evidence_event_ids": [
+        "d03:locomo:conv-30:D12:1"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-30:D12:1",
+          "days_before_query": 56
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-30:D12:1": "2023-05-27T19:18:00"
+      },
+      "query_time": "2023-07-23T18:46:00",
+      "time_gap_days": 56,
+      "lifecycle": {
+        "valid_from": "2023-05-27T19:18:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

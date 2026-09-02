@@ -1,0 +1,376 @@
+{
+  "schema_version": "0.1",
+  "dimension_id": "D08",
+  "contexts": [
+    {
+      "context_id": "d08:context:cross_user_01",
+      "context_ref": "contexts/cross_user_01.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 85,
+      "event_start": "d08:agentmembench:mdv2_d8cf26a97bf9abebc32f:memory",
+      "event_end": "d08:agentmembench:mdv2_5d2b1cdc8204e685a263:memory",
+      "sha256": "2775a5af141e27fc580c4824f7b26076d5bb8cef99f5844eba98bcc00b80435f"
+    },
+    {
+      "context_id": "d08:context:cross_user_02",
+      "context_ref": "contexts/cross_user_02.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 73,
+      "event_start": "d08:agentmembench:mdv2_c3c1aaea79d78c670bef:memory",
+      "event_end": "d08:agentmembench:mdv2_0e4056b8cf4ee6db39aa:memory",
+      "sha256": "0f98c4dbaf38b559608efbdcfcb2fe494c336e608e6dc943e34426de7c4ac131"
+    },
+    {
+      "context_id": "d08:context:cross_user_03",
+      "context_ref": "contexts/cross_user_03.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 86,
+      "event_start": "d08:agentmembench:mdv2_0e3e852189b7b2280d47:memory",
+      "event_end": "d08:agentmembench:mdv2_f6687422436d2989272f:memory",
+      "sha256": "0082700642fc2e07922b36f7c6f338e1d744d6de1bb10c5e139980a76e038a99"
+    },
+    {
+      "context_id": "d08:context:cross_user_04",
+      "context_ref": "contexts/cross_user_04.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 37,
+      "event_start": "d08:agentmembench:mdv2_bcdae76d88ed98175bb2:memory",
+      "event_end": "d08:agentmembench:mdv2_63f1d3d70fc1c2512a84:memory",
+      "sha256": "f4456446b8498ab015435fb07e2e13aee470113ae6b499dfbc845255f997502e"
+    },
+    {
+      "context_id": "d08:context:cross_user_05",
+      "context_ref": "contexts/cross_user_05.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 63,
+      "event_start": "d08:agentmembench:mdv2_d5768d4ce3b726a581e3:memory",
+      "event_end": "d08:agentmembench:mdv2_a0ca6590f03b4eb27997:memory",
+      "sha256": "8c3fbccb3539b27eac7b8c9b7310862f4244d3c6db2971a038857a699c6a3bd0"
+    },
+    {
+      "context_id": "d08:context:cross_user_06",
+      "context_ref": "contexts/cross_user_06.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 51,
+      "event_start": "d08:agentmembench:mdv2_b3cef4b4717a2afa85a6:memory",
+      "event_end": "d08:agentmembench:mdv2_4dc577f09529c9d6944b:memory",
+      "sha256": "04a83ed34afddc9dccba339f0b21afdca01e2584e5998bd521dc4a9f8d16e44e"
+    },
+    {
+      "context_id": "d08:context:cross_user_07",
+      "context_ref": "contexts/cross_user_07.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 61,
+      "event_start": "d08:agentmembench:mdv2_f9d886a98b9c800774d8:memory",
+      "event_end": "d08:agentmembench:mdv2_8f1ef3b557e518ceeefc:memory",
+      "sha256": "71eb72a12f1bcff91eff55eaa7ea6a80936f5a38c2d0dbc629192bf6d747abf4"
+    },
+    {
+      "context_id": "d08:context:cross_user_08",
+      "context_ref": "contexts/cross_user_08.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 51,
+      "event_start": "d08:agentmembench:mdv2_5803376c91a94aba8825:memory",
+      "event_end": "d08:agentmembench:mdv2_794184042b512d25f68b:memory",
+      "sha256": "dae88b60d31dfebf9632c56524d3f71463c6e8dec93b8015bbca09d7f0f2404f"
+    },
+    {
+      "context_id": "d08:context:cross_user_09",
+      "context_ref": "contexts/cross_user_09.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 65,
+      "event_start": "d08:agentmembench:mdv2_4996c808c56d22472a44:memory",
+      "event_end": "d08:agentmembench:mdv2_3ce211b409759d6b35f9:memory",
+      "sha256": "850def328029c534f3c5d1795424fe7e1227d21fe65229181b1c994994285bee"
+    },
+    {
+      "context_id": "d08:context:cross_user_10",
+      "context_ref": "contexts/cross_user_10.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 47,
+      "event_start": "d08:agentmembench:mdv2_d19df125d8460cd4b9ef:memory",
+      "event_end": "d08:agentmembench:mdv2_42b9114d920b465ecb0b:memory",
+      "sha256": "3824e4dd0d8be08696b923d7a8ac8710f510859c76ab3c0646e69b76a29fa715"
+    },
+    {
+      "context_id": "d08:context:cross_user_11",
+      "context_ref": "contexts/cross_user_11.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 32,
+      "event_start": "d08:agentmembench:mdv2_6b39a74ebe96626e443f:memory",
+      "event_end": "d08:agentmembench:mdv2_0d3ff65639b866622b06:memory",
+      "sha256": "2d89767c2da974d6aad6bdc9fc143fdd02aa707851634dc523c2160781411c1a"
+    },
+    {
+      "context_id": "d08:context:cross_user_12",
+      "context_ref": "contexts/cross_user_12.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 69,
+      "event_start": "d08:agentmembench:mdv2_23348bedf8496c68f89f:memory",
+      "event_end": "d08:agentmembench:mdv2_cf8281d5645681e357e9:memory",
+      "sha256": "5156d37651a425c60330fd5bfa98f5b32924d49052753dd1c4406eb1143c2e92"
+    },
+    {
+      "context_id": "d08:context:cross_user_13",
+      "context_ref": "contexts/cross_user_13.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 71,
+      "event_start": "d08:agentmembench:mdv2_b83c9311ea95c91d546e:memory",
+      "event_end": "d08:agentmembench:mdv2_3bdf79fa293788467f25:memory",
+      "sha256": "d49de7201106ef0513dbc34c10944b9ce3bb258a46d74f7d2f1c0af2039c612e"
+    },
+    {
+      "context_id": "d08:context:cross_user_14",
+      "context_ref": "contexts/cross_user_14.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 76,
+      "event_start": "d08:agentmembench:mdv2_ec2f234ad6f0a881cf79:memory",
+      "event_end": "d08:agentmembench:mdv2_62eb8f08fd0489754614:memory",
+      "sha256": "91173c37ec09242d94549ab544a7fbd962a7f7ae8156a6c8864c48d571eeffac"
+    },
+    {
+      "context_id": "d08:context:cross_user_15",
+      "context_ref": "contexts/cross_user_15.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 62,
+      "event_start": "d08:agentmembench:mdv2_76f4821cee2a1e3b4c85:memory",
+      "event_end": "d08:agentmembench:mdv2_72538f9c1909ede963c9:memory",
+      "sha256": "f103dc06ab0ba6f85e7248a9003106e6fdd20e9f2ad6214807f04b1e2b2cfa26"
+    },
+    {
+      "context_id": "d08:context:cross_user_16",
+      "context_ref": "contexts/cross_user_16.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 39,
+      "event_start": "d08:agentmembench:mdv2_f6266efaba0561965eb3:memory",
+      "event_end": "d08:agentmembench:mdv2_2d692fa2c8b84369bad1:memory",
+      "sha256": "4378064fbed7657bd77bdf95397aa83d3dfd0e66ca35390e686b451d235f0420"
+    },
+    {
+      "context_id": "d08:context:cross_user_17",
+      "context_ref": "contexts/cross_user_17.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 58,
+      "event_start": "d08:agentmembench:mdv2_ca2ec3fa16e3759eaf91:memory",
+      "event_end": "d08:agentmembench:mdv2_dd25aa2795d0d0b3f89d:memory",
+      "sha256": "918f2e782f28c84b0f720f20d6030a982617802001b09a6c706964488834a7b0"
+    },
+    {
+      "context_id": "d08:context:cross_user_18",
+      "context_ref": "contexts/cross_user_18.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 56,
+      "event_start": "d08:agentmembench:mdv2_0cd564071e6cf9538dfa:memory",
+      "event_end": "d08:agentmembench:mdv2_d0f3a58c73708bb75770:memory",
+      "sha256": "8cd4d3ec91db307164c2c80b65b82495624a166b7d7af7598e4197c3bbe3e9e2"
+    },
+    {
+      "context_id": "d08:context:cross_user_19",
+      "context_ref": "contexts/cross_user_19.jsonl",
+      "scenario_type": "cross_user_isolation",
+      "event_count": 2,
+      "token_count_estimate": 46,
+      "event_start": "d08:agentmembench:mdv2_dd2162d3a8059345c5d6:memory",
+      "event_end": "d08:agentmembench:mdv2_c1f2fb89738200d06cbc:memory",
+      "sha256": "926076dd852b6600c3a5523e2db02ab35fb79c512d8b6bf092f675af94caa914"
+    },
+    {
+      "context_id": "d08:context:deletion_01",
+      "context_ref": "contexts/deletion_01.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 38,
+      "event_start": "d08:agentmembench:mdv2_184161d97788688e686b:memory",
+      "event_end": "d08:generated:deletion:01:delete",
+      "sha256": "7287700b373273117d0cfb2cb6ce282c5ef5c4ea30773e64f671a1488d9a1091"
+    },
+    {
+      "context_id": "d08:context:deletion_02",
+      "context_ref": "contexts/deletion_02.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 54,
+      "event_start": "d08:agentmembench:mdv2_963252b8f3b3aaf4c64a:memory",
+      "event_end": "d08:generated:deletion:02:delete",
+      "sha256": "d647322a33d2bd8e33798d94ee92b3842f5992999306ffdd9d949c5d347192ae"
+    },
+    {
+      "context_id": "d08:context:deletion_03",
+      "context_ref": "contexts/deletion_03.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 38,
+      "event_start": "d08:agentmembench:mdv2_d8597dbd7a89dd0685af:memory",
+      "event_end": "d08:generated:deletion:03:delete",
+      "sha256": "b3eceb3bad656c9fdc318debb733538043e4e2c6b957d3a63d0603a08789339d"
+    },
+    {
+      "context_id": "d08:context:deletion_04",
+      "context_ref": "contexts/deletion_04.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 46,
+      "event_start": "d08:agentmembench:mdv2_742783a81f229d178cd8:memory",
+      "event_end": "d08:generated:deletion:04:delete",
+      "sha256": "1ac5cc2d7a07888880a2d2d280ab5600035d4ea2adc170dd27b629fb6cc67be3"
+    },
+    {
+      "context_id": "d08:context:deletion_05",
+      "context_ref": "contexts/deletion_05.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 41,
+      "event_start": "d08:agentmembench:mdv2_064e123ca3da48a64e23:memory",
+      "event_end": "d08:generated:deletion:05:delete",
+      "sha256": "1e563d97bd53e934f675380d23364d4fe6351fea9c83f7c0598c7622aa116dde"
+    },
+    {
+      "context_id": "d08:context:deletion_06",
+      "context_ref": "contexts/deletion_06.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 58,
+      "event_start": "d08:agentmembench:mdv2_4876b0d4711befdc5b70:memory",
+      "event_end": "d08:generated:deletion:06:delete",
+      "sha256": "84dffbb68f9b2e2bd6b8c5df2be53e2f935cd62923d87fb36237a084fd27d8b6"
+    },
+    {
+      "context_id": "d08:context:deletion_07",
+      "context_ref": "contexts/deletion_07.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 45,
+      "event_start": "d08:agentmembench:mdv2_cb79c54885eb09a6e01c:memory",
+      "event_end": "d08:generated:deletion:07:delete",
+      "sha256": "b811f2bda11f10826f2e9dba6c8a22538ea504df73c151d1cef74ce7a6a4b31f"
+    },
+    {
+      "context_id": "d08:context:deletion_08",
+      "context_ref": "contexts/deletion_08.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 38,
+      "event_start": "d08:agentmembench:mdv2_78c9648cd6426b53eda0:memory",
+      "event_end": "d08:generated:deletion:08:delete",
+      "sha256": "309035307afcdad0641540be1ddc3397130dafab06756a47e50a72776f860676"
+    },
+    {
+      "context_id": "d08:context:deletion_09",
+      "context_ref": "contexts/deletion_09.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 35,
+      "event_start": "d08:agentmembench:mdv2_589bdb39731a97a09865:memory",
+      "event_end": "d08:generated:deletion:09:delete",
+      "sha256": "ac3bc3e7d7054d7acab0fa25fd77ce768995ded1acb451bd9a4adcf36472e2a0"
+    },
+    {
+      "context_id": "d08:context:deletion_10",
+      "context_ref": "contexts/deletion_10.jsonl",
+      "scenario_type": "deletion",
+      "event_count": 2,
+      "token_count_estimate": 53,
+      "event_start": "d08:agentmembench:mdv2_6fdef99a9b5fea85e8fa:memory",
+      "event_end": "d08:generated:deletion:10:delete",
+      "sha256": "e476ef7ca2d4c01844ed6b4bc5bb3bc0dadafb9dbf374339cdb58d55af65b223"
+    },
+    {
+      "context_id": "d08:context:forbidden_canary_01",
+      "context_ref": "contexts/forbidden_canary_01.jsonl",
+      "scenario_type": "forbidden_canary_exposure",
+      "event_count": 2,
+      "token_count_estimate": 40,
+      "event_start": "d08:generated:canary:01:memory",
+      "event_end": "d08:agentmembench:mdv2_bc26775ca04f6b002d79:memory",
+      "sha256": "e30102d7324ba445a50922bbfeec6c5a59931f2d988228e5aabe97315de18d45"
+    },
+    {
+      "context_id": "d08:context:forbidden_canary_02",
+      "context_ref": "contexts/forbidden_canary_02.jsonl",
+      "scenario_type": "forbidden_canary_exposure",
+      "event_count": 2,
+      "token_count_estimate": 40,
+      "event_start": "d08:agentmembench:mdv2_6f63def6ab30977b2db4:memory",
+      "event_end": "d08:generated:canary:02:memory",
+      "sha256": "bb20cc5acda52b989c3c1a73a2694c6265718e1a457adba336e6d99adfd93ae9"
+    },
+    {
+      "context_id": "d08:context:forbidden_canary_03",
+      "context_ref": "contexts/forbidden_canary_03.jsonl",
+      "scenario_type": "forbidden_canary_exposure",
+      "event_count": 2,
+      "token_count_estimate": 41,
+      "event_start": "d08:generated:canary:03:memory",
+      "event_end": "d08:agentmembench:mdv2_98d9337b4ac9c2e3fd21:memory",
+      "sha256": "8a84a35258a8d92581a996f80ff2d67645b51bdb76b12c069d8bf3bc7bd6cd0b"
+    },
+    {
+      "context_id": "d08:context:forbidden_canary_04",
+      "context_ref": "contexts/forbidden_canary_04.jsonl",
+      "scenario_type": "forbidden_canary_exposure",
+      "event_count": 2,
+      "token_count_estimate": 49,
+      "event_start": "d08:agentmembench:mdv2_6ef0f2e1d0cc8e1e6b7b:memory",
+      "event_end": "d08:generated:canary:04:memory",
+      "sha256": "c4ee772407ad43768829d9d4faeeac14796e46d67c756b85d08fbaacc4985079"
+    },
+    {
+      "context_id": "d08:context:forbidden_canary_05",
+      "context_ref": "contexts/forbidden_canary_05.jsonl",
+      "scenario_type": "forbidden_canary_exposure",
+      "event_count": 2,
+      "token_count_estimate": 38,
+      "event_start": "d08:generated:canary:05:memory",
+      "event_end": "d08:agentmembench:mdv2_dfe3c59ae8b5392e65c9:memory",
+      "sha256": "e213a1a98037e3c93bb9a43c25215db5bba4445fda248d66f23e02f06f96e87a"
+    },
+    {
+      "context_id": "d08:context:forbidden_canary_06",
+      "context_ref": "contexts/forbidden_canary_06.jsonl",
+      "scenario_type": "forbidden_canary_exposure",
+      "event_count": 2,
+      "token_count_estimate": 47,
+      "event_start": "d08:agentmembench:mdv2_2a283015a39a7d9d8719:memory",
+      "event_end": "d08:generated:canary:06:memory",
+      "sha256": "42e1b75362d561c8b56b06bda77b804dd591f1c4b238250a24655626fd510b04"
+    },
+    {
+      "context_id": "d08:context:forbidden_canary_07",
+      "context_ref": "contexts/forbidden_canary_07.jsonl",
+      "scenario_type": "forbidden_canary_exposure",
+      "event_count": 2,
+      "token_count_estimate": 41,
+      "event_start": "d08:generated:canary:07:memory",
+      "event_end": "d08:agentmembench:mdv2_6b1e8992fbca759bf3d1:memory",
+      "sha256": "d2be781f2435a52cd5b4afcb7f9fcc39677f767368e4bdc949835db908cc17c9"
+    },
+    {
+      "context_id": "d08:context:forbidden_canary_08",
+      "context_ref": "contexts/forbidden_canary_08.jsonl",
+      "scenario_type": "forbidden_canary_exposure",
+      "event_count": 2,
+      "token_count_estimate": 54,
+      "event_start": "d08:agentmembench:mdv2_fdb1fff0632a2cbfb65b:memory",
+      "event_end": "d08:generated:canary:08:memory",
+      "sha256": "25b9261dba4118e29a6c44b697a6a966308f91fd5195caa50531bd6ec15da65e"
+    }
+  ]
+}

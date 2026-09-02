@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_32k_no42",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:1/question:42"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_32k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_32k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_32k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_32k:context:document_000",
+      "event_count": 1,
+      "token_count": 28007
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_32k_no42",
+      "text": "At which educational organization did the author of the Lorentz ether theory receive their education?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_32k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 1,
+      "source_question_index": 42,
+      "source_name": "factconsolidation_mh_32k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Lorentz ether theory",
+          "relation": "author",
+          "value": "William Shakespeare",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_01719"
+        },
+        {
+          "step": 2,
+          "subject": "William Shakespeare",
+          "relation": "educated_at",
+          "value": "University of Oxford",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_00897"
+        }
+      ],
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T15:06:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "University of Oxford",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_00778",
+          "value": "King Edward VI School, Stratford-upon-Avon",
+          "order": 778,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_00897",
+          "value": "University of Oxford",
+          "order": 897,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_01540",
+          "value": "Hendrik Lorentz",
+          "order": 1540,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_01719",
+          "value": "William Shakespeare",
+          "order": 1719,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_32k:fact_01719",
+        "factconsolidation_mh_32k:fact_00897"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_32k:fact_01540",
+        "factconsolidation_mh_32k:fact_00778"
+      ]
+    }
+  }
+}

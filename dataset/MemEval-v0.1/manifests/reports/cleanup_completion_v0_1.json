@@ -1,0 +1,33 @@
+{
+  "cleanup_version": "0.1",
+  "completed_at": "2026-09-02T17:32:11+08:00",
+  "result": "PASS",
+  "pre_cleanup_audit": "datasets/manifests/reports/benchmark_macro_audit_v0_1.json",
+  "post_cleanup_integrity_audit": "datasets/manifests/reports/post_cleanup_integrity_v0_1.json",
+  "inventory": "datasets/manifests/reports/cleanup_inventory_v0_1.json",
+  "dataset": {
+    "dimensions": 8,
+    "cases": 298,
+    "missing_context_references": 0,
+    "duplicate_case_ids": 0,
+    "duplicate_query_ids": 0,
+    "ready_for_source_adapter": true
+  },
+  "removed": {
+    "cross_dimension_duplicate_cases": [
+      "datasets/dimensions/d01_memory_write/v0.1/cases/3b6f954b.json",
+      "datasets/dimensions/d02_long_term_memory/v0.1/cases/e25c3b8d.json"
+    ],
+    "cross_dimension_duplicate_contexts": [
+      "datasets/dimensions/d01_memory_write/v0.1/contexts/3b6f954b.json",
+      "datasets/dimensions/d02_long_term_memory/v0.1/contexts/e25c3b8d.json"
+    ],
+    "root_process_files": 24,
+    "external_review_work_directories": 10,
+    "dimension_review_directories": 4
+  },
+  "retained_original_query_ids": {
+    "3b6f954b": "D02",
+    "e25c3b8d": "D01"
+  }
+}

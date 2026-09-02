@@ -1,0 +1,141 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d01:lme:352ab8bd",
+    "dimension_id": "D01",
+    "dimension_name": "memory_extraction_and_write",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "352ab8bd"
+    },
+    "identity": {
+      "context_id": "d01:lme:352ab8bd",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/352ab8bd.json",
+      "event_start": "d01:lme:352ab8bd:e000",
+      "event_end": "d01:lme:352ab8bd:e025",
+      "event_count": 26,
+      "token_count": 6907
+    },
+    "query": {
+      "query_id": "352ab8bd",
+      "text": "Can you remind me what was the average improvement in framerate when using the Hardware-Aware Modular Training (HAMT) agent in the 'To Adapt or Not to Adapt? Real-Time Adaptation for Semantic Segmentation' submission?",
+      "timestamp": "2023/05/30 (Tue) 23:31"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-assistant",
+      "tags": [
+        "information_extraction",
+        "single-session-assistant",
+        "d01",
+        "human_review_required"
+      ],
+      "selection_seed": "d01-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "write",
+    "payload": {
+      "scored_event_ids": [
+        "d01:lme:352ab8bd:e000",
+        "d01:lme:352ab8bd:e001",
+        "d01:lme:352ab8bd:e002",
+        "d01:lme:352ab8bd:e003",
+        "d01:lme:352ab8bd:e004",
+        "d01:lme:352ab8bd:e005",
+        "d01:lme:352ab8bd:e006",
+        "d01:lme:352ab8bd:e007",
+        "d01:lme:352ab8bd:e008",
+        "d01:lme:352ab8bd:e009",
+        "d01:lme:352ab8bd:e010",
+        "d01:lme:352ab8bd:e011",
+        "d01:lme:352ab8bd:e012",
+        "d01:lme:352ab8bd:e013",
+        "d01:lme:352ab8bd:e014",
+        "d01:lme:352ab8bd:e015",
+        "d01:lme:352ab8bd:e016",
+        "d01:lme:352ab8bd:e017",
+        "d01:lme:352ab8bd:e018",
+        "d01:lme:352ab8bd:e019",
+        "d01:lme:352ab8bd:e020",
+        "d01:lme:352ab8bd:e021",
+        "d01:lme:352ab8bd:e022",
+        "d01:lme:352ab8bd:e023",
+        "d01:lme:352ab8bd:e024",
+        "d01:lme:352ab8bd:e025"
+      ],
+      "gold_memories": [
+        {
+          "memory_id": "d01:lme:352ab8bd:m00",
+          "canonical_content": "The user was reviewing the CVPR submission titled To Adapt or Not to Adapt? Real-Time Adaptation for Semantic Segmentation.",
+          "memory_type": "personal_fact",
+          "evidence_event_ids": [
+            "d01:lme:352ab8bd:e001"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:352ab8bd:m01",
+          "canonical_content": "The user was told that the Hardware-Aware Modular Training agent in the reviewed submission improved framerate by approximately 20 percent on average.",
+          "memory_type": "other",
+          "evidence_event_ids": [
+            "d01:lme:352ab8bd:e000"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:352ab8bd:m02",
+          "canonical_content": "The user was told that adding Active Training Modulation produced a further framerate improvement of approximately four times in the reviewed submission.",
+          "memory_type": "other",
+          "evidence_event_ids": [
+            "d01:lme:352ab8bd:e000"
+          ]
+        }
+      ],
+      "non_memory_event_ids": [
+        "d01:lme:352ab8bd:e002",
+        "d01:lme:352ab8bd:e003",
+        "d01:lme:352ab8bd:e004",
+        "d01:lme:352ab8bd:e005",
+        "d01:lme:352ab8bd:e006",
+        "d01:lme:352ab8bd:e007",
+        "d01:lme:352ab8bd:e008",
+        "d01:lme:352ab8bd:e009",
+        "d01:lme:352ab8bd:e010",
+        "d01:lme:352ab8bd:e011",
+        "d01:lme:352ab8bd:e012",
+        "d01:lme:352ab8bd:e013",
+        "d01:lme:352ab8bd:e014",
+        "d01:lme:352ab8bd:e015",
+        "d01:lme:352ab8bd:e016",
+        "d01:lme:352ab8bd:e017",
+        "d01:lme:352ab8bd:e018",
+        "d01:lme:352ab8bd:e019",
+        "d01:lme:352ab8bd:e020",
+        "d01:lme:352ab8bd:e021",
+        "d01:lme:352ab8bd:e022",
+        "d01:lme:352ab8bd:e023",
+        "d01:lme:352ab8bd:e024",
+        "d01:lme:352ab8bd:e025"
+      ]
+    }
+  },
+  "annotation": {
+    "draft_origin": "deterministic_qa_and_personal_sentence_extraction",
+    "human_review_status": "approved",
+    "required": true,
+    "reviewer": "liruizhi",
+    "reviewed_at": "2026-09-01T13:51:08+08:00",
+    "review_notes": [],
+    "checks": {
+      "all_memory_worthy_events_covered": true,
+      "canonical_content_verified": true,
+      "memory_type_verified": true,
+      "non_memory_event_ids_verified": true
+    }
+  }
+}

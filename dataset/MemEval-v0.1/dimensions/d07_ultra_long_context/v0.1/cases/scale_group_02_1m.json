@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d07:beam10m:scale_group_02_1m",
+    "dimension_id": "D07",
+    "dimension_name": "ultra_long_context",
+    "source": {
+      "dataset": "BEAM-10M",
+      "revision": "9b2096193fe74e2837e4713e483351e19817773c",
+      "split": "10M",
+      "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=2/information_extraction[0]"
+    },
+    "identity": {
+      "context_id": "d07:beam10m:scale_group_02:1m",
+      "user_id": "beam10m:conversation_03",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/scale_group_02_1m.jsonl",
+      "event_start": "d07:beam10m:conv_03:event_02156",
+      "event_end": "d07:beam10m:conv_03:event_03699",
+      "event_count": 1544,
+      "token_count": 1000466
+    },
+    "query": {
+      "query_id": "d07:beam10m:scale_group_02_1m:query",
+      "text": "What version of the platform did I say supports up to 2,000 agents with response times under 150ms?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "easy",
+      "tags": [
+        "d07",
+        "beam-10m",
+        "paired_scale",
+        "information_extraction",
+        "1m"
+      ],
+      "case_kind": "paired_scale",
+      "ability_category": "information_extraction",
+      "source_probe_index": 0,
+      "source_answer_field": "answer",
+      "source_chat_ids": [
+        2172
+      ],
+      "source_rubric": [
+        "LLM response should state: Kubernetes 1.25"
+      ],
+      "token_estimator": "ceil(character_count/4) per event",
+      "annotation_status": "approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T16:19:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "scale",
+    "payload": {
+      "scale_group_id": "d07:scale_group:02",
+      "scale_level": "1M",
+      "target_tokens": 1000000,
+      "gold_answer": "Kubernetes 1.25",
+      "gold_evidence_ids": [
+        "d07:beam10m:conv_03:event_02172"
+      ],
+      "paired_anchor_id": "d07:beam10m:scale_group_02_100k",
+      "expected_retrievable": true
+    }
+  }
+}

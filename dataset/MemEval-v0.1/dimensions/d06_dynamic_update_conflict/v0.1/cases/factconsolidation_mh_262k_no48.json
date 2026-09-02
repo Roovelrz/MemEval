@@ -1,0 +1,163 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_262k_no48",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:3/question:48"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_262k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_262k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_262k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_262k:context:document_000",
+      "event_count": 1,
+      "token_count": 224735
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_262k_no48",
+      "text": "Which language is the official language of the country where the spouse of the artist who sang \"All of Me\" comes from?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_262k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 3,
+      "source_question_index": 48,
+      "source_name": "factconsolidation_mh_262k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "All of Me",
+          "relation": "performed_by",
+          "value": "Bobby Brown",
+          "winning_fact_id": "factconsolidation_mh_262k:fact_08600"
+        },
+        {
+          "step": 2,
+          "subject": "Bobby Brown",
+          "relation": "spouse",
+          "value": "Lois Lane",
+          "winning_fact_id": "factconsolidation_mh_262k:fact_12774"
+        },
+        {
+          "step": 3,
+          "subject": "Lois Lane",
+          "relation": "citizenship",
+          "value": "South Korea",
+          "winning_fact_id": "factconsolidation_mh_262k:fact_11186"
+        },
+        {
+          "step": 4,
+          "subject": "South Korea",
+          "relation": "official_language",
+          "value": "Spanish",
+          "winning_fact_id": "factconsolidation_mh_262k:fact_17625"
+        }
+      ],
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T15:12:21+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Spanish",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_262k:fact_02306",
+          "value": "United States of America",
+          "order": 2306,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_262k:fact_02762",
+          "value": "Whitney Houston",
+          "order": 2762,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_262k:fact_05088",
+          "value": "John Legend",
+          "order": 5088,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_262k:fact_08600",
+          "value": "Bobby Brown",
+          "order": 8600,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_262k:fact_11186",
+          "value": "South Korea",
+          "order": 11186,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_262k:fact_12106",
+          "value": "Korean",
+          "order": 12106,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_262k:fact_12774",
+          "value": "Lois Lane",
+          "order": 12774,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_262k:fact_17625",
+          "value": "Spanish",
+          "order": 17625,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_262k:fact_08600",
+        "factconsolidation_mh_262k:fact_12774",
+        "factconsolidation_mh_262k:fact_11186",
+        "factconsolidation_mh_262k:fact_17625"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_262k:fact_05088",
+        "factconsolidation_mh_262k:fact_02762",
+        "factconsolidation_mh_262k:fact_02306",
+        "factconsolidation_mh_262k:fact_12106"
+      ]
+    }
+  }
+}

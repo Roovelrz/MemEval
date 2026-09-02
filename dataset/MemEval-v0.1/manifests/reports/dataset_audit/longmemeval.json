@@ -1,0 +1,238 @@
+{
+  "audit_version": "0.2",
+  "dataset": "longmemeval",
+  "generated_at": "2026-09-01T11:35:42+08:00",
+  "audit_scope": {
+    "raw_dataset_audit": true,
+    "common_envelope_implemented": false,
+    "canonical_event_adapter_implemented": false,
+    "note": "Sections 5-7 are assessed only for future mapping readiness; no adapter output is claimed."
+  },
+  "issues": [],
+  "limitations": [],
+  "files": {
+    "longmemeval_oracle.json": {
+      "records": 500,
+      "fields": [
+        "answer",
+        "answer_session_ids",
+        "haystack_dates",
+        "haystack_session_ids",
+        "haystack_sessions",
+        "question",
+        "question_date",
+        "question_id",
+        "question_type"
+      ],
+      "field_types": {
+        "answer": [
+          "int",
+          "str"
+        ],
+        "answer_session_ids": [
+          "list"
+        ],
+        "haystack_dates": [
+          "list"
+        ],
+        "haystack_session_ids": [
+          "list"
+        ],
+        "haystack_sessions": [
+          "list"
+        ],
+        "question": [
+          "str"
+        ],
+        "question_date": [
+          "str"
+        ],
+        "question_id": [
+          "str"
+        ],
+        "question_type": [
+          "str"
+        ]
+      },
+      "null_ratio": {
+        "answer": 0.0,
+        "answer_session_ids": 0.0,
+        "haystack_dates": 0.0,
+        "haystack_session_ids": 0.0,
+        "haystack_sessions": 0.0,
+        "question": 0.0,
+        "question_date": 0.0,
+        "question_id": 0.0,
+        "question_type": 0.0
+      },
+      "unique_question_ids": 500,
+      "duplicate_question_ids": 0,
+      "duplicate_full_records": 0
+    },
+    "longmemeval_s_cleaned.json": {
+      "records": 500,
+      "fields": [
+        "answer",
+        "answer_session_ids",
+        "haystack_dates",
+        "haystack_session_ids",
+        "haystack_sessions",
+        "question",
+        "question_date",
+        "question_id",
+        "question_type"
+      ],
+      "field_types": {
+        "answer": [
+          "int",
+          "str"
+        ],
+        "answer_session_ids": [
+          "list"
+        ],
+        "haystack_dates": [
+          "list"
+        ],
+        "haystack_session_ids": [
+          "list"
+        ],
+        "haystack_sessions": [
+          "list"
+        ],
+        "question": [
+          "str"
+        ],
+        "question_date": [
+          "str"
+        ],
+        "question_id": [
+          "str"
+        ],
+        "question_type": [
+          "str"
+        ]
+      },
+      "null_ratio": {
+        "answer": 0.0,
+        "answer_session_ids": 0.0,
+        "haystack_dates": 0.0,
+        "haystack_session_ids": 0.0,
+        "haystack_sessions": 0.0,
+        "question": 0.0,
+        "question_date": 0.0,
+        "question_id": 0.0,
+        "question_type": 0.0
+      },
+      "unique_question_ids": 500,
+      "duplicate_question_ids": 0,
+      "duplicate_full_records": 0
+    }
+  },
+  "total_records": 1000,
+  "unique_ids": {
+    "longmemeval_oracle.json": 500,
+    "longmemeval_s_cleaned.json": 500
+  },
+  "cross_variant_shared_question_ids": 500,
+  "counts": {
+    "questions": 1000,
+    "answers": 1000
+  },
+  "context_length_chars": {
+    "count": 1000,
+    "min": 496.0,
+    "p50": 282042.5,
+    "p95": 500027.0,
+    "max": 513953.0,
+    "mean": 257861.436
+  },
+  "session_count_distribution": {
+    "count": 1000,
+    "min": 1.0,
+    "p50": 22.0,
+    "p95": 52.0,
+    "max": 62.0,
+    "mean": 24.815
+  },
+  "turn_count_distribution": {
+    "count": 1000,
+    "min": 2.0,
+    "p50": 234.0,
+    "p95": 532.0,
+    "max": 616.0,
+    "mean": 257.71
+  },
+  "evidence": {
+    "references": 1896,
+    "resolvable": 1896,
+    "resolvable_rate": 1.0
+  },
+  "timestamps": {
+    "non_null": 25815,
+    "parseable": 25815,
+    "parseable_rate": 1.0
+  },
+  "categories": {
+    "knowledge-update": 156,
+    "multi-session": 266,
+    "single-session-assistant": 112,
+    "single-session-preference": 60,
+    "single-session-user": 140,
+    "temporal-reasoning": 266
+  },
+  "users": {
+    "available": false,
+    "count": null
+  },
+  "array_checks": {
+    "session_ids_dates_sessions_equal": true,
+    "failure_count": 0,
+    "failure_samples": [],
+    "question_id_unique_within_each_file": true
+  },
+  "mapping_readiness": {
+    "common_envelope": "ready_with_deterministic case_id/context_id; user_id and tenant_id remain null",
+    "context_ref": "required because one history is paired with a query and variants share question identities",
+    "canonical_event": "role/content available; session_id and timestamp available; turn_id must be generated deterministically"
+  },
+  "download_integrity": {
+    "manifest_path": "E:\\LRZ_Workplace\\fork\\datasets\\manifests\\longmemeval.yaml",
+    "exists": true,
+    "required_fields_present": true,
+    "files_listed": 2,
+    "actual_files": 2,
+    "hashes_checked": 2,
+    "missing_files": [],
+    "extra_files": [],
+    "hash_mismatches": [],
+    "full_revisions_valid": true,
+    "source_revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+    "license": "MIT"
+  },
+  "section_4_checklist": {
+    "checks": {
+      "total_records": "complete",
+      "fields": "complete",
+      "field_types": "complete",
+      "null_ratio": "complete",
+      "unique_ids": "complete",
+      "duplicate_records": "complete",
+      "context_length_distribution": "complete",
+      "session_count_distribution": "complete",
+      "turn_count_distribution": "complete",
+      "question_count": "complete",
+      "answer_count": "complete",
+      "evidence_parseability": "complete",
+      "timestamp_parseability": "complete",
+      "category_counts": "complete",
+      "user_counts": "complete",
+      "anomalous_records": "complete",
+      "array_field_checks": "complete"
+    },
+    "all_required_checks_complete": true,
+    "missing_checks": [],
+    "note": "Not-applicable source semantics are complete only when the report states the reason explicitly."
+  },
+  "status": "pass",
+  "issue_counts": {}
+}

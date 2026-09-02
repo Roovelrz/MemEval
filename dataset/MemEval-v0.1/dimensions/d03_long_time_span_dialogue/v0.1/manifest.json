@@ -1,0 +1,191 @@
+{
+  "schema_version": "0.1",
+  "dimension_id": "D03",
+  "dimension_name": "long_time_span_dialogue",
+  "version": "v0.1",
+  "build_status": "complete",
+  "source": {
+    "dataset": "LoCoMo",
+    "repository": "snap-research/LoCoMo",
+    "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+    "file": "datasets/raw/locomo/data/locomo10.json",
+    "sha256": "553cd5a15e25f2ceccc6ed185221eba645080c93e5b91087560a91aa5961f365",
+    "official_category_mapping": {
+      "1": "multi-hop",
+      "2": "temporal",
+      "3": "open-domain",
+      "4": "single-hop",
+      "5": "adversarial-abstention"
+    },
+    "mapping_basis": "LoCoMo task_eval/evaluation.py and task_eval/gpt_utils.py"
+  },
+  "selection": {
+    "seed": "d03-v0.1-20260901",
+    "ranking": "sha256(seed + ':' + sample_id + ':qa:' + zero_padded_qa_index), ascending",
+    "native_temporal": {
+      "source_category": 2,
+      "time_gap_day_bins": {
+        "0-30": 8,
+        "31-90": 8,
+        "91+": 8
+      }
+    },
+    "cross_session_long_gap": {
+      "source_category": 1,
+      "minimum_evidence_sessions": 2,
+      "minimum_time_gap_days_exclusive": 90,
+      "time_gap_day_bins": {
+        "91-150": 2,
+        "151-210": 3,
+        "211+": 3
+      }
+    },
+    "derived_lifecycle": {
+      "source_category": 4,
+      "source_evidence_turns": 1,
+      "source_time_gap_day_bins": {
+        "0-30": 2,
+        "31-90": 2,
+        "91+": 2
+      },
+      "delete_offset_days_after_last_session": 1,
+      "query_offset_days_after_delete": 1
+    },
+    "filters": [
+      "non_empty_question_and_answer",
+      "all_evidence_ids_resolvable_after_official_style_normalization",
+      "pure_text_evidence_only"
+    ]
+  },
+  "time_semantics": {
+    "timezone": "source timestamps contain no timezone; ISO values remain timezone-naive",
+    "native_query_time": "latest available conversation session timestamp",
+    "time_gap_days": "maximum whole-day gap from any Gold evidence event to the query"
+  },
+  "metrics": [
+    "Temporal Accuracy",
+    "Long-gap Recall",
+    "Deleted Hit Rate"
+  ],
+  "counts": {
+    "contexts": 16,
+    "cases": 38
+  },
+  "validation": {
+    "checks": {
+      "case_count_is_38": true,
+      "case_ids_unique": true,
+      "kind_targets_exact": true,
+      "common_envelope_valid": true,
+      "context_refs_valid": true,
+      "canonical_events_valid": true,
+      "evidence_resolves": true,
+      "source_gold_preserved": true,
+      "source_category_mapping_valid": true,
+      "pure_text_evidence_only": true,
+      "time_semantics_valid": true,
+      "lifecycle_semantics_valid": true,
+      "no_gold_label_leakage": true,
+      "temporal_bins_exact": true,
+      "cross_session_bins_exact": true,
+      "lifecycle_bins_exact": true
+    },
+    "kind_counts": {
+      "native_temporal": 24,
+      "cross_session_long_gap": 8,
+      "derived_lifecycle": 6
+    },
+    "temporal_bin_counts": {
+      "91+": 8,
+      "31-90": 8,
+      "0-30": 8
+    },
+    "cross_session_bin_counts": {
+      "91-150": 2,
+      "211+": 3,
+      "151-210": 3
+    },
+    "lifecycle_source_bin_counts": {
+      "91+": 2,
+      "31-90": 2,
+      "0-30": 2
+    },
+    "source_conversation_counts": {
+      "conv-26": 7,
+      "conv-30": 1,
+      "conv-41": 2,
+      "conv-42": 2,
+      "conv-43": 2,
+      "conv-44": 3,
+      "conv-47": 12,
+      "conv-48": 3,
+      "conv-49": 5,
+      "conv-50": 1
+    },
+    "time_gap_days_range": [
+      2,
+      293
+    ],
+    "context_count": 16
+  },
+  "human_review": {
+    "required": false,
+    "reason": "原生 Gold 未改写；生命周期样本由固定规则添加控制事件并保留完整来源追踪。"
+  },
+  "file_hashes": {
+    "cases/conv-26_q0000_native_temporal.json": "ffef692183311cda73557b2ef23a1b68475a5fe7c46e0e753fd84fa4c21348e7",
+    "cases/conv-26_q0039_cross_session_long_gap.json": "cd467776ea2ec32c68903ab0c28ddba34ddc2f36d723f1f8339f279d46207841",
+    "cases/conv-26_q0058_native_temporal.json": "59b2ea0fa57239bf7db715bfcfcae80d50b4949dc6d524be90fa0881f683cb8b",
+    "cases/conv-26_q0063_native_temporal.json": "9e9909d1f64664af3b6bc5123c21f25316e3f1b3968e347bdfd23d89be9e6aa4",
+    "cases/conv-26_q0072_native_temporal.json": "37c4387e2dcbbf3507eb0befddfed6dbaa5bf8205e63d1497b8d9ab29c909768",
+    "cases/conv-26_q0087_derived_lifecycle.json": "449488b1574b21a44b1d59487ee9a4c3958c098cc3eb28e02cda8af44b2fc187",
+    "cases/conv-26_q0126_derived_lifecycle.json": "219ee3a5e15ba9cfd6853cf574ffb74dc9dd94a255fe9272ec2be64a746c85fd",
+    "cases/conv-30_q0020_native_temporal.json": "bd1ea5d9027257434c0a86922d25e48885d5832a366eebcda6788d54cfd836cd",
+    "cases/conv-41_q0006_cross_session_long_gap.json": "b72dccea468a7a7866f930742e22d51d0e574e19829afa7367dc2cfac0774bba",
+    "cases/conv-41_q0054_native_temporal.json": "3ce23c016b737a4ba708da94ecd9c75dd925f6b84164fc2d6d61de3f6a39ba74",
+    "cases/conv-42_q0005_cross_session_long_gap.json": "834fa9ed6dbb0ee5a3a20434503a82efd071e6883fbbc2eb126eb8d7c48528a7",
+    "cases/conv-42_q0015_native_temporal.json": "effb19d4bc3f7fabe4d7776652ac77b4a90d889359d73242cbee39703370922f",
+    "cases/conv-43_q0068_native_temporal.json": "c097877d3b0fab538568e822e1e34c9bcc45fc4cc5608b0ec6e9cf82eb05c488",
+    "cases/conv-43_q0146_derived_lifecycle.json": "ff4345a1747507f44803db6c77d49855ce3083d66cabd7d17eeeeb4967a3fc20",
+    "cases/conv-44_q0038_native_temporal.json": "b8ca0a4a0ca40576ae8727008190d020faf6f21e3e1965d3a91a393f042900ea",
+    "cases/conv-44_q0042_cross_session_long_gap.json": "85edff19c68e773222505294c0a6665368a7bf92bd0cc6e45ef9f88aae219ab6",
+    "cases/conv-44_q0072_derived_lifecycle.json": "8100ec75547e6ec0a6522fc5a4ebd4318c46f60e8bcd234fa60a610bc6fda835",
+    "cases/conv-47_q0001_native_temporal.json": "396a5c44d950705a85897e99531c1a2273c184b3a7bcb922a933e346c6ac02ce",
+    "cases/conv-47_q0004_native_temporal.json": "4718b1e100d28e827f5ec1c6f888da762d92a84f2446ca92184ed32d514e05f0",
+    "cases/conv-47_q0018_cross_session_long_gap.json": "13bf70fde30bff03b238380511e1e8c76b33606f752e4b926fa196cd0e8fa663",
+    "cases/conv-47_q0039_native_temporal.json": "50fc3be1a41718c6bcd27f4f88287c6c7bb9224a857778d991e4a8973a9b791f",
+    "cases/conv-47_q0043_native_temporal.json": "e160c8bf6923b38e8dc5b6980f09d3078a0cd165175022958c31d2d5dd51c29e",
+    "cases/conv-47_q0050_native_temporal.json": "55cdd14dbcf3d815f71c8241140d7fd8a13bde2345c1ff180b5a906c1571ad93",
+    "cases/conv-47_q0059_native_temporal.json": "1644ce2c9c1d4cedb389c6581dc90de25af520b4e4930f64a46daf263d4b09f2",
+    "cases/conv-47_q0061_native_temporal.json": "990b46acde48dc2af9842adfa8a25aa2f5c634fb302cb13e7fb69d8f2f5c40b6",
+    "cases/conv-47_q0062_native_temporal.json": "4781163b9ca6d29e6bf01e4724fae2902f42acc94cd320085855bdab95baa217",
+    "cases/conv-47_q0063_native_temporal.json": "ad7e3d405d2ed935a60a3889a80e40de429268e164a243aedb18d6c79a02b2ab",
+    "cases/conv-47_q0138_derived_lifecycle.json": "a9a49bbdd7c9da093e4ebf747f02e3f96a2fafcda254b00a8a044f55d6d82d52",
+    "cases/conv-47_q0139_derived_lifecycle.json": "8d7318c3d8f57f13e86cd9c20eb059040fca32fca4e83411dc445c1ef82cc27c",
+    "cases/conv-48_q0017_native_temporal.json": "1b4dfb10bb3a04a9c33f4a15424b511115330f7cfc9f551ce5d88b4b82121880",
+    "cases/conv-48_q0034_native_temporal.json": "14642b869079ecf978f3d4e368ec4723fe0aee3e3807cf621eedc399c515a0a1",
+    "cases/conv-48_q0071_native_temporal.json": "9ed4e594c156647c7dd16573ac1180074bb82811fb4ea6eed8818ecc52bcc45c",
+    "cases/conv-49_q0017_native_temporal.json": "837d4ad8e0eb9553547b7d376504512087457a8356a32027064c9f3d175120a6",
+    "cases/conv-49_q0032_cross_session_long_gap.json": "6399824aa7d587a21147a22d39e3c77c8ffcffafd37176ca12b5848d1da29344",
+    "cases/conv-49_q0055_cross_session_long_gap.json": "61dc782746f17ecdcd831ae8c2a8b6f73e16b54cab490bf053033e2f9fdb10c2",
+    "cases/conv-49_q0060_native_temporal.json": "7d398feaef6c184430f5d1b23c371d4b8792df4657c1d19a65c51588ec8bd1c9",
+    "cases/conv-49_q0064_cross_session_long_gap.json": "c3a1b77b561787ed52d6bc0c2caa47c480f3af47dc712feeca17ed818380adac",
+    "cases/conv-50_q0044_native_temporal.json": "6152067523e36dbf59d5257e9ac10a72f1f20c07601fb8eb3d48ee6749d24a83",
+    "contexts/conv-26.json": "6ecc0a7753c7bbb4b0d4050dcc6df85cecb269627f962233dbd16f5484769fc7",
+    "contexts/conv-26_q0087_lifecycle.json": "45d1fa0236557667f27915dd5ae88f2312b7f29ec6cbaadcb8e461a7625380bf",
+    "contexts/conv-26_q0126_lifecycle.json": "3d74d20449d0c975c46e84b840131a2292ad46208ebf8de2b73d1b483e3e7e5a",
+    "contexts/conv-30.json": "21aa23e323b1bf55c4ad11ac6c1f5e82f62889c0676fcefaa60d4056951f660a",
+    "contexts/conv-41.json": "d7134c25a7679d8b9afc0cf2e640b4151564e8d184e75ab4b346152e908d7d0e",
+    "contexts/conv-42.json": "2870b8996cf8645fd5ca2dad830de915297a211437e0f9d061c062e29a776a49",
+    "contexts/conv-43.json": "16528d1070b94752e9127e494eb6eb02041e662ba55ef9ccb07e71df9d13ab4f",
+    "contexts/conv-43_q0146_lifecycle.json": "1fc0f681d8aac8934e21b4f35188c5fa726a8e84b771d4ddbc99381ace75c95b",
+    "contexts/conv-44.json": "b4876b9f2d78b9d49792b3b2906450bdbfa5c12cc1c09f31c80e75ed3806ec47",
+    "contexts/conv-44_q0072_lifecycle.json": "8c9924a8a6b31d6217c82588668f3d607b3f74e692022eb2115c6f29b0bddad0",
+    "contexts/conv-47.json": "63dc18c0e852fc8dd1fba244c47f06e2a9def85e6c2229c76c688e1db561f6b0",
+    "contexts/conv-47_q0138_lifecycle.json": "d0bb97eac6637ce02b081fd1442abf041760717b09ba5631360b8c0fb0582215",
+    "contexts/conv-47_q0139_lifecycle.json": "b8d475b745d88c7a8350c26bea376e30c2e671430d0aab63128551cc3260ea73",
+    "contexts/conv-48.json": "b27ee0eb14afcb23a02d6aa950ddd708b3fd7822404f48899e942b6f332ce5e7",
+    "contexts/conv-49.json": "c1f55cc0d82d677ebd7098db87604776145a950f0a7be77675e491d21722e94a",
+    "contexts/conv-50.json": "0fbce8dad365b1d61346244f9ad2e5efe87c775aac32715ece5c9b1b2f190927"
+  }
+}

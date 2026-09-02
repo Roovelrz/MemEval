@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d07:beam10m:scale_group_01_1m",
+    "dimension_id": "D07",
+    "dimension_name": "ultra_long_context",
+    "source": {
+      "dataset": "BEAM-10M",
+      "revision": "9b2096193fe74e2837e4713e483351e19817773c",
+      "split": "10M",
+      "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=1/contradiction_resolution[1]"
+    },
+    "identity": {
+      "context_id": "d07:beam10m:scale_group_01:1m",
+      "user_id": "beam10m:conversation_02",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/scale_group_01_1m.jsonl",
+      "event_start": "d07:beam10m:conv_02:event_02137",
+      "event_end": "d07:beam10m:conv_02:event_03753",
+      "event_count": 1617,
+      "token_count": 1001293
+    },
+    "query": {
+      "query_id": "d07:beam10m:scale_group_01_1m:query",
+      "text": "Have I revised my data flow designs for this project?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "clear",
+      "tags": [
+        "d07",
+        "beam-10m",
+        "paired_scale",
+        "contradiction_resolution",
+        "1m"
+      ],
+      "case_kind": "paired_scale",
+      "ability_category": "contradiction_resolution",
+      "source_probe_index": 1,
+      "source_answer_field": "ideal_answer",
+      "source_chat_ids": {
+        "first_statement": [
+          2144,
+          2152
+        ],
+        "second_statement": [
+          2218
+        ]
+      },
+      "source_rubric": [
+        "LLM response should state: there is contradictory information",
+        "LLM response should mention: You said you've iterated on your data flow designs multiple times",
+        "LLM response should mention: you also mentioned that you have never revised any data flow designs",
+        "LLM response should mention: which statement is correct?"
+      ],
+      "token_estimator": "ceil(character_count/4) per event",
+      "annotation_status": "approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T16:19:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "scale",
+    "payload": {
+      "scale_group_id": "d07:scale_group:01",
+      "scale_level": "1M",
+      "target_tokens": 1000000,
+      "gold_answer": "I notice you've mentioned contradictory information about this. You said you've iterated on your data flow designs multiple times, but you also mentioned that you have never revised any data flow designs for this project. Could you clarify which is correct?",
+      "gold_evidence_ids": [
+        "d07:beam10m:conv_02:event_02144",
+        "d07:beam10m:conv_02:event_02152",
+        "d07:beam10m:conv_02:event_02218"
+      ],
+      "paired_anchor_id": "d07:beam10m:scale_group_01_100k",
+      "expected_retrievable": true
+    }
+  }
+}

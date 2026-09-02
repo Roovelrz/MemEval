@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-47:q0018:cross_session_long_gap",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-47:qa:0018"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-47",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-47.json",
+      "event_start": "d03:locomo:conv-47:D1:1",
+      "event_end": "d03:locomo:conv-47:D31:25",
+      "event_count": 689,
+      "token_count": 18812
+    },
+    "query": {
+      "query_id": "conv-47:qa:0018",
+      "text": "Which books has John recommended to James?",
+      "timestamp": "2022-11-07T20:57:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "cross_session_long_gap",
+      "tags": [
+        "d03",
+        "temporal",
+        "cross_session_long_gap",
+        "locomo_category_1"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-47",
+      "source_qa_index": 18,
+      "source_category": 1
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "The Name of the Wind, Stormlight Archive, Kingkiller Chronicles, Expanse",
+      "evidence_event_ids": [
+        "d03:locomo:conv-47:D8:14",
+        "d03:locomo:conv-47:D14:10"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-47:D8:14",
+          "days_before_query": 192
+        },
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-47:D14:10",
+          "days_before_query": 144
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-47:D8:14": "2022-04-29T14:36:00",
+        "d03:locomo:conv-47:D14:10": "2022-06-16T17:07:00"
+      },
+      "query_time": "2022-11-07T20:57:00",
+      "time_gap_days": 192,
+      "lifecycle": {
+        "valid_from": "2022-04-29T14:36:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

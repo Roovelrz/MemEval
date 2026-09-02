@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_19:positive",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "319fbe0236a00f40152b27da01a6f86271657db1",
+      "split": "implicit_choice/train",
+      "source_record_id": "implicit_choice:0977"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:implicit_choice:0977:history",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_19_positive.json",
+      "event_start": "d04:prefeval:implicit_choice:0977:history:conversation_query",
+      "event_end": "d04:prefeval:implicit_choice:0977:history:assistant_acknowledgment",
+      "event_count": 4,
+      "token_count": 133
+    },
+    "query": {
+      "query_id": "pair_19:positive",
+      "text": "I need to travel from New York to Los Angeles for a work conference next month. What would be the best transportation option for me?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "positive",
+      "tags": [
+        "d04",
+        "activation",
+        "positive",
+        "implicit_choice",
+        "travel_transportation"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_19",
+      "source_row_index": 977,
+      "source_form": "implicit_choice",
+      "topic": "travel_transportation",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [
+          "d04:prefeval:implicit_choice:0977:history:user_selection"
+        ],
+        "answer_criteria_revised": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": true,
+      "required_memory_ids": [
+        "d04:prefeval:implicit_choice:0977:history:conversation_query",
+        "d04:prefeval:implicit_choice:0977:history:assistant_options",
+        "d04:prefeval:implicit_choice:0977:history:user_selection"
+      ],
+      "preference": "I have an intense fear of flying, so I actively avoid air travel whenever possible.",
+      "answer_criteria": {
+        "explanation": "Naturally, one would recommend flying as the fastest and most convenient way to travel between New York and Los Angeles. However, the user's preference of avoiding air travel due to a fear of flying makes suggesting a flight inadvisable. The assistant should explore alternative options like trains, buses, or even driving while considering factors like travel time, cost, and the user's discomfort with flying.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

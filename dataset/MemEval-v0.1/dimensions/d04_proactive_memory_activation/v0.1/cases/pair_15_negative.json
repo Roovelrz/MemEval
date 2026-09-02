@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_15:negative",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "1b20e0f944d7665f435e24eb8b76f4d45d83c419",
+      "split": "explicit/train",
+      "source_record_id": "explicit:0759"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:explicit:0759:current",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_15_negative.json",
+      "event_start": "d04:prefeval:explicit:0759:current:preference",
+      "event_end": "d04:prefeval:explicit:0759:current:preference",
+      "event_count": 1,
+      "token_count": 15
+    },
+    "query": {
+      "query_id": "pair_15:negative",
+      "text": "I'm looking for a new laptop for programming. Any recommendations for me?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "negative",
+      "tags": [
+        "d04",
+        "activation",
+        "negative",
+        "explicit",
+        "shop_technology"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_15",
+      "source_row_index": 759,
+      "source_form": "explicit",
+      "topic": "shop_technology",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [],
+        "answer_criteria_revised": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": false,
+      "required_memory_ids": [],
+      "preference": "I only buy products that support Linux out-of-the-box.",
+      "answer_criteria": {
+        "explanation": "Most laptops come with Windows or macOS, and may not support Linux out-of-the-box. The assistant needs to suggest laptops that are compatible with Linux from the start.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

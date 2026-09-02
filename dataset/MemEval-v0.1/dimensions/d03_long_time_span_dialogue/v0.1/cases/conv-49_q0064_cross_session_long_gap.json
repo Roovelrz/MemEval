@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-49:q0064:cross_session_long_gap",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-49:qa:0064"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-49",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-49.json",
+      "event_start": "d03:locomo:conv-49:D1:1",
+      "event_end": "d03:locomo:conv-49:D25:20",
+      "event_count": 509,
+      "token_count": 15005
+    },
+    "query": {
+      "query_id": "conv-49:qa:0064",
+      "text": "Which ailment does Sam have to face due to his weight?",
+      "timestamp": "2024-01-11T21:37:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "cross_session_long_gap",
+      "tags": [
+        "d03",
+        "temporal",
+        "cross_session_long_gap",
+        "locomo_category_1"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-49",
+      "source_qa_index": 64,
+      "source_category": 1
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "gastritis",
+      "evidence_event_ids": [
+        "d03:locomo:conv-49:D2:6",
+        "d03:locomo:conv-49:D7:2",
+        "d03:locomo:conv-49:D12:1",
+        "d03:locomo:conv-49:D14:1"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-49:D2:6",
+          "days_before_query": 232
+        },
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-49:D7:2",
+          "days_before_query": 149
+        },
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-49:D12:1",
+          "days_before_query": 95
+        },
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-49:D14:1",
+          "days_before_query": 86
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-49:D2:6": "2023-05-24T19:11:00",
+        "d03:locomo:conv-49:D7:2": "2023-08-15T16:20:00",
+        "d03:locomo:conv-49:D12:1": "2023-10-08T15:09:00",
+        "d03:locomo:conv-49:D14:1": "2023-10-17T13:50:00"
+      },
+      "query_time": "2024-01-11T21:37:00",
+      "time_gap_days": 232,
+      "lifecycle": {
+        "valid_from": "2023-05-24T19:11:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

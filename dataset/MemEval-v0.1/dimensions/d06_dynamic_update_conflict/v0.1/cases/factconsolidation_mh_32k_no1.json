@@ -1,0 +1,133 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_32k_no1",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:1/question:1"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_32k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_32k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_32k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_32k:context:document_000",
+      "event_count": 1,
+      "token_count": 28007
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_32k_no1",
+      "text": "From which continent does the sport of Haverfordwest County A.F.C. originally hail?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_32k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 1,
+      "source_question_index": 1,
+      "source_name": "factconsolidation_mh_32k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved_after_replacement",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Haverfordwest County A.F.C.",
+          "relation": "associated_sport",
+          "value": "association football",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_01035"
+        },
+        {
+          "step": 2,
+          "subject": "association football",
+          "relation": "created_in_country",
+          "value": "Italy",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_01628"
+        },
+        {
+          "step": 3,
+          "subject": "Italy",
+          "relation": "located_continent",
+          "value": "Oceania",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_01363"
+        }
+      ],
+      "human_review": {
+        "status": "approved_after_replacement",
+        "reviewer": "codex",
+        "reviewed_at": "2026-09-02T15:30:56+08:00",
+        "replaces": "factconsolidation_mh_32k_no20",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Oceania",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_00328",
+          "value": "England",
+          "order": 328,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_01035",
+          "value": "association football",
+          "order": 1035,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_01241",
+          "value": "Europe",
+          "order": 1241,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_01363",
+          "value": "Oceania",
+          "order": 1363,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_01628",
+          "value": "Italy",
+          "order": 1628,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_32k:fact_01035",
+        "factconsolidation_mh_32k:fact_01628",
+        "factconsolidation_mh_32k:fact_01363"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_32k:fact_00328",
+        "factconsolidation_mh_32k:fact_01241"
+      ]
+    }
+  }
+}

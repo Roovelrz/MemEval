@@ -1,0 +1,387 @@
+{
+  "audit_version": "0.2",
+  "dataset": "beam",
+  "generated_at": "2026-09-01T11:36:02+08:00",
+  "audit_scope": {
+    "raw_dataset_audit": true,
+    "common_envelope_implemented": false,
+    "canonical_event_adapter_implemented": false,
+    "note": "Sections 5-7 are assessed only for future mapping readiness; no adapter output is claimed."
+  },
+  "issues": [],
+  "limitations": [],
+  "total_records": 100,
+  "files": {
+    "10m/data/10M-00000-of-00002.parquet": {
+      "records": 5,
+      "fields": [
+        "conversation_id",
+        "conversation_seed",
+        "narratives",
+        "user_profile",
+        "conversation_plan",
+        "user_questions",
+        "chat",
+        "probing_questions",
+        "plans"
+      ],
+      "field_types": {
+        "conversation_id": "string",
+        "conversation_seed": "struct<category: string, id: int64, mode: string, subtopics: list<element: string>, theme: string, timeline: string, title: string>",
+        "narratives": "string",
+        "user_profile": "struct<user_info: string, user_relationships: string>",
+        "conversation_plan": "string",
+        "user_questions": "list<element: null>",
+        "chat": "list<element: struct<plan-1: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-10: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-2: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-3: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-4: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-5: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-6: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-7: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-8: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-9: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>>>",
+        "probing_questions": "string",
+        "plans": "list<element: struct<chat: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>, conversation_plan: string, conversation_seed: struct<action_dates: struct<current_phase_relation: string, main_action_duration: string, main_action_ends: string, main_action_starts: string, main_action_type: string>, category: string, continuity_hooks: list<element: string>, development_dates: struct<current_phase_relation: string, main_development_duration: string, main_development_ends: string, main_development_starts: string, main_development_type: string>, future_mathematical_references: list<element: string>, future_references: list<element: string>, future_technical_references: list<element: string>, id: int64, key_mathematical_milestones: list<element: string>, key_milestones: list<element: string>, key_technical_milestones: list<element: string>, mathematical_continuity_hooks: list<element: string>, phase_boundaries: struct<can_mention: list<element: string>, cannot_mention: list<element: string>, tense_for_main_action: string, tense_for_main_development: string, tense_for_main_study: string>, phase_type: string, study_dates: struct<current_phase_relation: string, main_study_duration: string, main_study_ends: string, main_study_starts: string, main_study_type: string>, subtopics: list<element: string>, technical_continuity_hooks: list<element: string>, theme: string, timeline: string, title: string>, narratives: string, plan_id: string, user_profile: struct<user_relationships: string>, user_questions: list<element: struct<messages: list<element: list<element: string>>, time_anchor: string>>>>"
+      },
+      "null_ratio": {
+        "conversation_id": 0.0,
+        "conversation_seed": 0.0,
+        "narratives": 0.0,
+        "user_profile": 0.0,
+        "conversation_plan": 0.0,
+        "user_questions": 0.0,
+        "chat": 0.0,
+        "probing_questions": 0.0,
+        "plans": 0.0
+      },
+      "probing_category_counts": {
+        "abstention": 10,
+        "contradiction_resolution": 10,
+        "event_ordering": 10,
+        "information_extraction": 10,
+        "instruction_following": 10,
+        "knowledge_update": 10,
+        "multi_session_reasoning": 10,
+        "preference_following": 10,
+        "summarization": 10,
+        "temporal_reasoning": 10
+      },
+      "unique_conversation_ids": 5,
+      "duplicate_conversation_ids": 0,
+      "duplicate_full_records": 0
+    },
+    "10m/data/10M-00001-of-00002.parquet": {
+      "records": 5,
+      "fields": [
+        "conversation_id",
+        "conversation_seed",
+        "narratives",
+        "user_profile",
+        "conversation_plan",
+        "user_questions",
+        "chat",
+        "probing_questions",
+        "plans"
+      ],
+      "field_types": {
+        "conversation_id": "string",
+        "conversation_seed": "struct<category: string, id: int64, mode: string, subtopics: list<element: string>, theme: string, timeline: string, title: string>",
+        "narratives": "string",
+        "user_profile": "struct<user_info: string, user_relationships: string>",
+        "conversation_plan": "string",
+        "user_questions": "list<element: null>",
+        "chat": "list<element: struct<plan-1: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-10: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-2: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-3: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-4: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-5: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-6: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-7: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-8: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>, plan-9: list<element: struct<batch_number: int64, time_anchor: null, turns: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>>>>>",
+        "probing_questions": "string",
+        "plans": "list<element: struct<chat: list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>, conversation_plan: string, conversation_seed: struct<action_dates: struct<current_phase_relation: string, main_action_duration: string, main_action_ends: string, main_action_starts: string, main_action_type: string>, category: string, continuity_hooks: list<element: string>, development_dates: struct<current_phase_relation: string, main_development_duration: string, main_development_ends: string, main_development_starts: string, main_development_type: string>, future_mathematical_references: list<element: string>, future_references: list<element: string>, future_technical_references: list<element: string>, id: int64, key_mathematical_milestones: list<element: string>, key_milestones: list<element: string>, key_technical_milestones: list<element: string>, mathematical_continuity_hooks: list<element: string>, phase_boundaries: struct<can_mention: list<element: string>, cannot_mention: list<element: string>, tense_for_main_action: string, tense_for_main_development: string, tense_for_main_study: string>, phase_type: string, study_dates: struct<current_phase_relation: string, main_study_duration: string, main_study_ends: string, main_study_starts: string, main_study_type: string>, subtopics: list<element: string>, technical_continuity_hooks: list<element: string>, theme: string, timeline: string, title: string>, narratives: string, plan_id: string, user_profile: struct<user_relationships: string>, user_questions: list<element: struct<messages: list<element: list<element: string>>, time_anchor: string>>>>"
+      },
+      "null_ratio": {
+        "conversation_id": 0.0,
+        "conversation_seed": 0.0,
+        "narratives": 0.0,
+        "user_profile": 0.0,
+        "conversation_plan": 0.0,
+        "user_questions": 0.0,
+        "chat": 0.0,
+        "probing_questions": 0.0,
+        "plans": 0.0
+      },
+      "probing_category_counts": {
+        "abstention": 10,
+        "contradiction_resolution": 10,
+        "event_ordering": 10,
+        "information_extraction": 10,
+        "instruction_following": 10,
+        "knowledge_update": 10,
+        "multi_session_reasoning": 10,
+        "preference_following": 10,
+        "summarization": 10,
+        "temporal_reasoning": 10
+      },
+      "unique_conversation_ids": 5,
+      "duplicate_conversation_ids": 0,
+      "duplicate_full_records": 0
+    },
+    "regular/data/100K-00000-of-00001.parquet": {
+      "records": 20,
+      "fields": [
+        "conversation_id",
+        "conversation_seed",
+        "narratives",
+        "user_profile",
+        "conversation_plan",
+        "user_questions",
+        "chat",
+        "probing_questions"
+      ],
+      "field_types": {
+        "conversation_id": "string",
+        "conversation_seed": "struct<category: string, id: int64, subtopics: list<element: string>, theme: string, title: string>",
+        "narratives": "string",
+        "user_profile": "struct<user_info: string, user_relationships: string>",
+        "conversation_plan": "string",
+        "user_questions": "list<element: struct<messages: list<element: list<element: string>>, time_anchor: string>>",
+        "chat": "list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>",
+        "probing_questions": "string"
+      },
+      "null_ratio": {
+        "conversation_id": 0.0,
+        "conversation_seed": 0.0,
+        "narratives": 0.0,
+        "user_profile": 0.0,
+        "conversation_plan": 0.0,
+        "user_questions": 0.0,
+        "chat": 0.0,
+        "probing_questions": 0.0
+      },
+      "probing_category_counts": {
+        "abstention": 40,
+        "contradiction_resolution": 40,
+        "event_ordering": 40,
+        "information_extraction": 40,
+        "instruction_following": 40,
+        "knowledge_update": 40,
+        "multi_session_reasoning": 40,
+        "preference_following": 40,
+        "summarization": 40,
+        "temporal_reasoning": 40
+      },
+      "unique_conversation_ids": 20,
+      "duplicate_conversation_ids": 0,
+      "duplicate_full_records": 0
+    },
+    "regular/data/1M-00000-of-00001.parquet": {
+      "records": 35,
+      "fields": [
+        "conversation_id",
+        "conversation_seed",
+        "narratives",
+        "user_profile",
+        "conversation_plan",
+        "user_questions",
+        "chat",
+        "probing_questions"
+      ],
+      "field_types": {
+        "conversation_id": "string",
+        "conversation_seed": "struct<category: string, id: int64, subtopics: list<element: string>, theme: string, title: string>",
+        "narratives": "string",
+        "user_profile": "struct<user_info: string, user_relationships: string>",
+        "conversation_plan": "string",
+        "user_questions": "list<element: struct<messages: list<element: list<element: string>>, time_anchor: string>>",
+        "chat": "list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>",
+        "probing_questions": "string"
+      },
+      "null_ratio": {
+        "conversation_id": 0.0,
+        "conversation_seed": 0.0,
+        "narratives": 0.0,
+        "user_profile": 0.0,
+        "conversation_plan": 0.0,
+        "user_questions": 0.0,
+        "chat": 0.0,
+        "probing_questions": 0.0
+      },
+      "probing_category_counts": {
+        "abstention": 70,
+        "contradiction_resolution": 70,
+        "event_ordering": 70,
+        "information_extraction": 70,
+        "instruction_following": 70,
+        "knowledge_update": 70,
+        "multi_session_reasoning": 70,
+        "preference_following": 70,
+        "summarization": 70,
+        "temporal_reasoning": 70
+      },
+      "unique_conversation_ids": 35,
+      "duplicate_conversation_ids": 0,
+      "duplicate_full_records": 0
+    },
+    "regular/data/500K-00000-of-00001.parquet": {
+      "records": 35,
+      "fields": [
+        "conversation_id",
+        "conversation_seed",
+        "narratives",
+        "user_profile",
+        "conversation_plan",
+        "user_questions",
+        "chat",
+        "probing_questions"
+      ],
+      "field_types": {
+        "conversation_id": "string",
+        "conversation_seed": "struct<category: string, id: int64, subtopics: list<element: string>, theme: string, title: string>",
+        "narratives": "string",
+        "user_profile": "struct<user_info: string, user_relationships: string>",
+        "conversation_plan": "string",
+        "user_questions": "list<element: struct<messages: list<element: list<element: string>>, time_anchor: string>>",
+        "chat": "list<element: list<element: struct<content: string, id: int64, index: string, question_type: string, role: string, time_anchor: string>>>",
+        "probing_questions": "string"
+      },
+      "null_ratio": {
+        "conversation_id": 0.0,
+        "conversation_seed": 0.0,
+        "narratives": 0.0,
+        "user_profile": 0.0,
+        "conversation_plan": 0.0,
+        "user_questions": 0.0,
+        "chat": 0.0,
+        "probing_questions": 0.0
+      },
+      "probing_category_counts": {
+        "abstention": 70,
+        "contradiction_resolution": 70,
+        "event_ordering": 70,
+        "information_extraction": 70,
+        "instruction_following": 70,
+        "knowledge_update": 70,
+        "multi_session_reasoning": 70,
+        "preference_following": 70,
+        "summarization": 70,
+        "temporal_reasoning": 70
+      },
+      "unique_conversation_ids": 35,
+      "duplicate_conversation_ids": 0,
+      "duplicate_full_records": 0
+    }
+  },
+  "unique_ids": {
+    "raw_conversation_ids_across_scales": 35,
+    "scale_namespaced_conversation_ids": 100,
+    "canonical_context_ids": 100,
+    "total": 100
+  },
+  "raw_id_collisions_across_scales": 65,
+  "raw_id_collisions_resolved_by_namespace": true,
+  "duplicates_within_file": [],
+  "duplicate_full_record_files": [],
+  "context_length_chars": {
+    "count": 100,
+    "min": 401167.0,
+    "p50": 2658127.0,
+    "p95": 46461209.25,
+    "max": 56797788.0,
+    "mean": 7133721.06
+  },
+  "session_or_chat_group_distribution": {
+    "count": 100,
+    "min": 3.0,
+    "p50": 10.0,
+    "p95": 100.0,
+    "max": 100.0,
+    "mean": 17.9
+  },
+  "turn_count_distribution": {
+    "count": 100,
+    "min": 188.0,
+    "p50": 1247.0,
+    "p95": 19969.7,
+    "max": 23716.0,
+    "mean": 3271.16
+  },
+  "counts": {
+    "probing_questions": 2000,
+    "answers_or_expected_responses": 2000
+  },
+  "evidence": {
+    "structured_source_chat_ids": 10533,
+    "resolvable": 10533,
+    "resolvable_rate": 1.0
+  },
+  "timestamps": {
+    "non_null_turn_time_anchors": 1789,
+    "datetime_parseable": 1789,
+    "datetime_parseable_rate": 1.0,
+    "note": "Non-date relative anchors may be valid ordering labels and should preserve original time semantics."
+  },
+  "categories": {
+    "abstention": 200,
+    "contradiction_resolution": 200,
+    "event_ordering": 200,
+    "information_extraction": 200,
+    "instruction_following": 200,
+    "knowledge_update": 200,
+    "multi_session_reasoning": 200,
+    "preference_following": 200,
+    "summarization": 200,
+    "temporal_reasoning": 200
+  },
+  "users": {
+    "synthetic_conversation_count": 100,
+    "native_user_id": false
+  },
+  "roles": {
+    "assistant": 163557,
+    "user": 163559
+  },
+  "array_checks": {
+    "probing_questions_safe_parse": true
+  },
+  "mapping_readiness": {
+    "common_envelope": "context_id uses beam:{source_file}:{conversation_id}; deterministic case/query IDs are still required",
+    "context_ref": "required, especially for 10M contexts shared by many probing questions",
+    "canonical_event": "role/content/id/time_anchor are available; 10M must traverse plans[] instead of assuming regular schema"
+  },
+  "quality_resolution": {
+    "namespace_resolution_valid": true,
+    "context_id_template": "beam:{source_file}:{conversation_id}",
+    "canonical_context_ids_unique": true
+  },
+  "download_integrity": {
+    "manifest_path": "E:\\LRZ_Workplace\\fork\\datasets\\manifests\\beam.yaml",
+    "exists": true,
+    "required_fields_present": true,
+    "files_listed": 5,
+    "actual_files": 5,
+    "hashes_checked": 5,
+    "missing_files": [],
+    "extra_files": [],
+    "hash_mismatches": [],
+    "full_revisions_valid": true,
+    "source_revision": {
+      "Mohammadta/BEAM": "3205395e897e7318c7b094ef4e6047b9b82dbb03",
+      "Mohammadta/BEAM-10M": "9b2096193fe74e2837e4713e483351e19817773c"
+    },
+    "license": "CC-BY-SA-4.0"
+  },
+  "section_4_checklist": {
+    "checks": {
+      "total_records": "complete",
+      "fields": "complete",
+      "field_types": "complete",
+      "null_ratio": "complete",
+      "unique_ids": "complete",
+      "duplicate_records": "complete",
+      "context_length_distribution": "complete",
+      "session_count_distribution": "complete",
+      "turn_count_distribution": "complete",
+      "question_count": "complete",
+      "answer_count": "complete",
+      "evidence_parseability": "complete",
+      "timestamp_parseability": "complete",
+      "category_counts": "complete",
+      "user_counts": "complete",
+      "anomalous_records": "complete",
+      "array_field_checks": "complete"
+    },
+    "all_required_checks_complete": true,
+    "missing_checks": [],
+    "note": "Not-applicable source semantics are complete only when the report states the reason explicitly."
+  },
+  "status": "pass",
+  "issue_counts": {}
+}

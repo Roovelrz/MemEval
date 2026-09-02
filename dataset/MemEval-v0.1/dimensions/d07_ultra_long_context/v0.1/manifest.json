@@ -1,0 +1,291 @@
+{
+  "schema_version": "0.1",
+  "dimension_id": "D07",
+  "dimension_name": "ultra_long_context",
+  "status": "complete_after_review_repair",
+  "source": {
+    "datasets": [
+      "BEAM",
+      "BEAM-10M"
+    ],
+    "repos": [
+      "Mohammadta/BEAM",
+      "Mohammadta/BEAM-10M"
+    ],
+    "revisions": {
+      "Mohammadta/BEAM": "3205395e897e7318c7b094ef4e6047b9b82dbb03",
+      "Mohammadta/BEAM-10M": "9b2096193fe74e2837e4713e483351e19817773c"
+    },
+    "license": "CC-BY-SA-4.0",
+    "raw_files_verified": [
+      "10m/data/10M-00000-of-00002.parquet",
+      "10m/data/10M-00001-of-00002.parquet",
+      "regular/data/100K-00000-of-00001.parquet",
+      "regular/data/1M-00000-of-00001.parquet",
+      "regular/data/500K-00000-of-00001.parquet"
+    ],
+    "dimension_case_source": "BEAM-10M",
+    "regular_beam_policy": "只核验，不将不同 conversation 的100K/500K/1M伪装成 paired group"
+  },
+  "construction": {
+    "selection_seed": "d07-v0.1-20260902",
+    "paired_selections": [
+      {
+        "group": 1,
+        "conversation_id": "2",
+        "category": "contradiction_resolution",
+        "question_index": 1
+      },
+      {
+        "group": 2,
+        "conversation_id": "3",
+        "category": "information_extraction",
+        "question_index": 0
+      },
+      {
+        "group": 3,
+        "conversation_id": "4",
+        "category": "knowledge_update",
+        "question_index": 0
+      },
+      {
+        "group": 4,
+        "conversation_id": "6",
+        "category": "preference_following",
+        "question_index": 1
+      },
+      {
+        "group": 5,
+        "conversation_id": "7",
+        "category": "information_extraction",
+        "question_index": 1
+      },
+      {
+        "group": 6,
+        "conversation_id": "8",
+        "category": "preference_following",
+        "question_index": 0
+      },
+      {
+        "group": 7,
+        "conversation_id": "9",
+        "category": "knowledge_update",
+        "question_index": 1
+      },
+      {
+        "group": 8,
+        "conversation_id": "10",
+        "category": "information_extraction",
+        "question_index": 0
+      }
+    ],
+    "stress_selections": [
+      {
+        "stress": 1,
+        "conversation_id": "1",
+        "category": "temporal_reasoning",
+        "question_index": 0
+      },
+      {
+        "stress": 2,
+        "conversation_id": "2",
+        "category": "information_extraction",
+        "question_index": 1
+      },
+      {
+        "stress": 3,
+        "conversation_id": "3",
+        "category": "multi_session_reasoning",
+        "question_index": 0
+      },
+      {
+        "stress": 4,
+        "conversation_id": "6",
+        "category": "knowledge_update",
+        "question_index": 1
+      },
+      {
+        "stress": 5,
+        "conversation_id": "8",
+        "category": "knowledge_update",
+        "question_index": 1
+      }
+    ],
+    "scale_levels": {
+      "100K": 100000,
+      "500K": 500000,
+      "1M": 1000000,
+      "10M": 10000000
+    },
+    "token_estimator": "ceil(character_count/4) per event",
+    "paired_window_policy": "从 Gold Evidence 前约10K估算 token 开始，固定起点，连续增加后续 Context",
+    "minimum_10m_window_estimate": 9500000,
+    "stress_minimum_evidence_position": 8000000
+  },
+  "counts": {
+    "contexts": 36,
+    "cases": 37,
+    "paired_groups": 8,
+    "paired_cases": 32,
+    "stress_cases": 5,
+    "review_units": 13,
+    "review_covered_cases": 37
+  },
+  "scale_counts": {
+    "10M": 13,
+    "100K": 8,
+    "500K": 8,
+    "1M": 8
+  },
+  "ability_category_case_counts": {
+    "temporal_reasoning": 1,
+    "contradiction_resolution": 4,
+    "information_extraction": 13,
+    "multi_session_reasoning": 1,
+    "knowledge_update": 10,
+    "preference_following": 8
+  },
+  "metrics": [
+    "Accuracy by Scale",
+    "Recall@K by Scale",
+    "Paired Recall Degradation",
+    "Retrieval Latency",
+    "Memory Build Latency",
+    "Token Cost",
+    "API Cost"
+  ],
+  "human_review": {
+    "required": true,
+    "required_units": 13,
+    "covered_cases": 37,
+    "approved_units": 13,
+    "status": "complete_after_repair",
+    "reviewers": [
+      "lrz",
+      "codex"
+    ],
+    "merged_at": "2026-09-02T16:32:31+08:00",
+    "original_status_counts": {
+      "approved": 12,
+      "needs_revision": 1
+    },
+    "final_status_counts": {
+      "approved": 13
+    },
+    "submission_label": "D07_human_review_lrz",
+    "repair_summary": {
+      "count": 1,
+      "unit": "scale_group_04",
+      "rejected_question": "Have I ever joined any violin-related groups on Reddit?",
+      "replacement_category": "preference_following",
+      "policy": "同一官方 conversation 内替换，重新构造四档 paired Context 并复核全部不变量"
+    }
+  },
+  "validation": {
+    "checks": {
+      "case_count_is_37": true,
+      "context_count_is_36": true,
+      "review_unit_count_is_13": true,
+      "review_units_cover_37_cases": true,
+      "paired_group_count_is_8": true,
+      "paired_cases_per_group_is_4": true,
+      "paired_question_answer_evidence_invariant": true,
+      "paired_contexts_nested_and_monotonic": true,
+      "paired_gold_evidence_present_at_100k": true,
+      "stress_case_count_is_5": true,
+      "stress_evidence_after_8m": true,
+      "all_source_chat_ids_resolved": true,
+      "probing_questions_parsed_with_literal_eval": true,
+      "raw_hashes_verified_for_all_5_files": true,
+      "human_semantic_review_complete": true,
+      "all_human_review_issues_resolved": true,
+      "original_review_submission_preserved": true,
+      "repaired_group_revalidated_at_all_scales": true
+    }
+  },
+  "file_hashes": {
+    "cases/scale_group_01_100k.json": "94aea8a7871b9071e75d59c9cfc8bef8da7679b4826c4bd400cca10354b2edd5",
+    "cases/scale_group_01_10m.json": "3065ff1b08253d183764ff9521cc8cd200aef1c7b76fc26d58ba78d5cb5bb928",
+    "cases/scale_group_01_1m.json": "ffe2c2adf859eae03960e127775d7f0a739c274f4124550e29e2642d8c44c9d6",
+    "cases/scale_group_01_500k.json": "f40a351ca056055231d751a6089e00ab4117b1e9b8be3c6c0bb2852a44329171",
+    "cases/scale_group_02_100k.json": "257abf5f7dfcb33d1df5127c1da93fa741d45c1623cf9ac22bffc885f9a46c4a",
+    "cases/scale_group_02_10m.json": "f5653d4caad5232dd864e96a5a0c91a96da0bf5f5b02d75d1e8dd7aa65d81186",
+    "cases/scale_group_02_1m.json": "045a05d4a8724b00ac9454333a8a0594776ca345585cf44168116d81462b55ac",
+    "cases/scale_group_02_500k.json": "906b0849244171464ab0e73d8c57375c51a622f4476d219924a2bd4fce771a7d",
+    "cases/scale_group_03_100k.json": "89dac182252faff857f49296f6109421c92c918833d872e268b06a87f2048d6a",
+    "cases/scale_group_03_10m.json": "86944f8ba942863dc53e46fdd4e0e2da49387ea8a68514f74476709feb4c738d",
+    "cases/scale_group_03_1m.json": "ba127f76ade528b08edb85178471ee0f879804d1682badffc9347f0fb94db929",
+    "cases/scale_group_03_500k.json": "91b02a9246c2687d4d0e733234eca2b0181a271ff07063f6d4e1bffe6d3ec422",
+    "cases/scale_group_04_100k.json": "84a1bb6946b5178e8644e84877cb1742dfd0521646f8a90df2204084fa18fec7",
+    "cases/scale_group_04_10m.json": "2cbb5acb94cfdd2590bac8b254a102a41032283db47234af247eaf3bbd8ded8c",
+    "cases/scale_group_04_1m.json": "820c9e32cc47e4b58917f4e1386a7464e275357270a3c1bebda5f1d2e360ace8",
+    "cases/scale_group_04_500k.json": "7cb92e93de6409a0f98df5386ec431a3bde5afb6fea962bd41fd8bff023de743",
+    "cases/scale_group_05_100k.json": "96e51faebbfc8064eb74bf69808c94e9f90c29cfb45f8f892509a140a046e5a5",
+    "cases/scale_group_05_10m.json": "83953215e3905a28e5ba1c85a7bf30be173e1ecb0f8d5781425c6fd6905aaba9",
+    "cases/scale_group_05_1m.json": "4590e3f1a487d0f7ab261be93f6c1d611d868a1ff860dd0d33a1ab7015ce9785",
+    "cases/scale_group_05_500k.json": "ac9f32768cc6551e0c48d678fe1e525f7c220ba7255c2760b61e38c012fea48d",
+    "cases/scale_group_06_100k.json": "1adb128eb3b99dec9e6d1e466f757cf511bf4512dfb9e646fbe81143d5c2f7c4",
+    "cases/scale_group_06_10m.json": "f23d9343fd815dc346db508559a1031445b61c1b39281ae27e7d5c5389ea31fb",
+    "cases/scale_group_06_1m.json": "41861c610f8b20275ccd1c1d3d7f2d09f6759fa0d3396b776faaa1a33ca044aa",
+    "cases/scale_group_06_500k.json": "a958b304554c979f93df489f38ca04092a3a0d49eb8f541d6e43cf6f9eab7521",
+    "cases/scale_group_07_100k.json": "76b53193b5f82bd9856dacebee0d3ee0ada2bb06e2328d8cecbb87f6f98b69fd",
+    "cases/scale_group_07_10m.json": "5e833dcfc788effe3c9fc8b5b901d80b038d5643e5ae9a65aff56dbe20e5cd17",
+    "cases/scale_group_07_1m.json": "c328097e5c3d64acda32afdbd8b2b6247bcedb81514d69eb74ed252c4b8d7f10",
+    "cases/scale_group_07_500k.json": "e729bd6055a69219785336921b6bfeb7c280c5de0f0d6023e87fff50a51ee7ad",
+    "cases/scale_group_08_100k.json": "9bbd024d9cbd5aabb6912ae96c21a8e37f3bd6d557407bae5a1281128fd61e54",
+    "cases/scale_group_08_10m.json": "6741c951a5dc23abb8ae546798312f5c9a204f9d87e5e6560a44b6025e0a1dea",
+    "cases/scale_group_08_1m.json": "1252ba0e611e53e8d2ec947e063bf74243f65d3308c586a67921cfc615284fb7",
+    "cases/scale_group_08_500k.json": "c7fe795152777b7b85554fb4d37d720e9652d98715ca3e2fadb121df63562cb6",
+    "cases/stress_01_10m.json": "6aac59563191f0b33635d9c2773c6c8696842f84220d3641b130dca29e696a58",
+    "cases/stress_02_10m.json": "e743cae736a7df7eb810b3b556d54b0571ca97b80ef08a0629e2dd7e582b999a",
+    "cases/stress_03_10m.json": "6b82f27daf5241f710de3149d478eb64938b60265e09d0bd2a4f372b881dddf1",
+    "cases/stress_04_10m.json": "43eaff8eb5a13bd2642d068e6c640abcc946e9e74d1f40467d8757da55797c6d",
+    "cases/stress_05_10m.json": "2e9bdcbe3e0683ffea06c6ffc1e504d1d991558ff9b9c613261f7e19bae1f158",
+    "contexts/index.json": "21600f93fdf4dceeafa15e1ff47837bb29f4ac59b6fac59f1320fb97ab46a424",
+    "contexts/scale_group_01_100k.jsonl": "4f490cd28d399118085dfeb87f8c0be89ebea174b619e845b69c4af8462d14f7",
+    "contexts/scale_group_01_10m.jsonl": "67fef5299f78e57f795ddf76782b852186d763b21cfdaaddc1fe4962a0c8d313",
+    "contexts/scale_group_01_1m.jsonl": "ce728f367488539b073dbe4ba95cd263389403e185cc3018bde04de76ba0c594",
+    "contexts/scale_group_01_500k.jsonl": "b2fd29a710e47a0cda36ce8c8fc9c3d1b0154c5d23efb9239322f87da87ecb96",
+    "contexts/scale_group_02_100k.jsonl": "5cd8aff17793a44ede098478b4b589acb08322c79df41a0e41468a449c867097",
+    "contexts/scale_group_02_10m.jsonl": "2d308673fabe8e05872a8679006cc55bc77c8257b53443ffaaadb7f5ba412417",
+    "contexts/scale_group_02_1m.jsonl": "c7ce1f04348e826141d864879838e18710c3219247214a261a88ec650ed4e63f",
+    "contexts/scale_group_02_500k.jsonl": "e72b56a0dc780ce703234ed7cab1dee7cb681a1aa210f35ed117d7c199eea789",
+    "contexts/scale_group_03_100k.jsonl": "dfc81ca086552c3983767293e716f7007d54b2826e24b15e174e9f2a3f793c95",
+    "contexts/scale_group_03_10m.jsonl": "167eb98116ea11a3761690efad77f5f01dd506e056df2c2df4a080eb2b0a9d99",
+    "contexts/scale_group_03_1m.jsonl": "f0d885474cf84f440029eac8e138d0e09f3971922c5dc39da38456362f31cf22",
+    "contexts/scale_group_03_500k.jsonl": "a724d38bd89040c3c670b2bfb3bee825b86119cff12af08333a4786095e94e33",
+    "contexts/scale_group_04_100k.jsonl": "1a7c4f7714a4e3d9df2b20fe6dccc1be941b8d39b33c735ffe7ddec9bf2c848e",
+    "contexts/scale_group_04_10m.jsonl": "a092118a1eaa79e5aa978ee46217fb09c826c44b4d03cb4f814356bbbfc3ed14",
+    "contexts/scale_group_04_1m.jsonl": "24cb605c4d3ea38c33809b64022b2637cf1a29fab60e8b374881a2d0b232595b",
+    "contexts/scale_group_04_500k.jsonl": "3a6b6b62371e2a704826d924959e0f3399a4913f4ae5dc3ec1e056956afc4418",
+    "contexts/scale_group_05_100k.jsonl": "ea68d0252ee69530a3f13e781040c180860ade369ebff9b5b7100764b35a1cd5",
+    "contexts/scale_group_05_10m.jsonl": "aa3d63fca3fa3d82c1f17bbf8299e228717078ef02731ae4aec83b73243ad18c",
+    "contexts/scale_group_05_1m.jsonl": "8e0890bbb7c37fb7515146f9047f514edf3cf1d5b83144b40030a5f24a92e2a3",
+    "contexts/scale_group_05_500k.jsonl": "34eafc63301a1e45e41deaa0f5a4b56b72d48dbe0311475691c8e9d5f7756499",
+    "contexts/scale_group_06_100k.jsonl": "d60ee24d55cae656712325cb55aff94f81a32149cbeefdaa84ffb571a05e959d",
+    "contexts/scale_group_06_10m.jsonl": "95905bc8422b66ef58c1406886abca17f175a8ec94ee37396a813d0f5e7e72d5",
+    "contexts/scale_group_06_1m.jsonl": "563f25e99d8e5ebd093b337d351c92d7e4076995de12ff3f6262aa5d4ed30657",
+    "contexts/scale_group_06_500k.jsonl": "aae8331f069ee506cfe9b2bb7acf63ae15b9c6410c639791924f86cb4e15086c",
+    "contexts/scale_group_07_100k.jsonl": "2fadf22daa420c44961613d8dd138e476ca420b3d9bd71c7a33a81f6615a1b31",
+    "contexts/scale_group_07_10m.jsonl": "5cbdeefb2867726b46c1d4f0aba73035c60bec7f8fe9335ae8eb3e98ffd0ec02",
+    "contexts/scale_group_07_1m.jsonl": "57d5febacc7f43265c33e5c33224a3767fbb7730cea62763353bb4ce97eb6dd9",
+    "contexts/scale_group_07_500k.jsonl": "90fc412fb2dbbc70461399674fd558ffcccfec0007605b0a5bc1c7740bd21328",
+    "contexts/scale_group_08_100k.jsonl": "25a06ada5dabbb40eae2230d6ee20761163be8837baf1d034078b4fbbb7f6081",
+    "contexts/scale_group_08_10m.jsonl": "212e06aae6bc77f862da3e1a61ac3524a3ab48b7b38764a14d5d18c97515553b",
+    "contexts/scale_group_08_1m.jsonl": "56ac29ce02ae5e58cff054b069b06b9c7722dfdf6f09d84e6406f9255f256dd5",
+    "contexts/scale_group_08_500k.jsonl": "8deeb3d37e52cd6b78a60bd315a168fa0f1d5626229822fca0f9aa72e742230c",
+    "contexts/stress_01_10m_full.jsonl": "7ecea69063c8de8434eea5e3f78e701412c5a9e460cbbae02c0dc1497d4d8cc6",
+    "contexts/stress_02_10m_full.jsonl": "ea3ef02c9ecd2c5fed30951b6fe278a89a9c306f9061605ca44e5374fbb1dccc",
+    "contexts/stress_03_10m_full.jsonl": "aafb1431a4d71f4fd97f57d7170c7b7c8a4710c4568149a4c768e3ced240ec53",
+    "contexts/stress_04_10m_full.jsonl": "ce4202ac917456389904bbef7df768669bf7cf8ce0fd4928680ca611e8fe9d9c",
+    "README.md": "1d24c1a4c356709a5d835c6ec907eeb55dbdf9faed87acefa1c90835aeea3127"
+  },
+  "review_cleanup": {
+    "status": "removed_after_final_benchmark_audit",
+    "removed_at": "2026-09-02T17:28:41+08:00",
+    "original_file_count": 33,
+    "original_size_bytes": 144006,
+    "original_tree_sha256": "b86d2946bb61040f733a427069ed084dd4c85392d55b15ac2b7896d1228e1d3f",
+    "conclusions_retained_in_cases_and_manifest": true
+  }
+}

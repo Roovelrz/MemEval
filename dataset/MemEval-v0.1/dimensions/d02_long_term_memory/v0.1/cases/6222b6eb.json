@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d02:lme:6222b6eb",
+    "dimension_id": "D02",
+    "dimension_name": "long_term_memory_retrieval",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "6222b6eb"
+    },
+    "identity": {
+      "context_id": "d02:lme:6222b6eb",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/6222b6eb.json",
+      "event_start": "d02:lme:6222b6eb:e00000",
+      "event_end": "d02:lme:6222b6eb:e00496",
+      "event_count": 497,
+      "token_count": 105338
+    },
+    "query": {
+      "query_id": "6222b6eb",
+      "text": "I was going through our previous conversation about atmospheric correction methods, and I wanted to confirm - you mentioned that 6S, MAJA, and Sen2Cor are all algorithms for atmospheric correction of remote sensing images. Can you remind me which one is implemented in the SIAC_GEE tool?",
+      "timestamp": "2023/05/30 (Tue) 23:32"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-assistant",
+      "tags": [
+        "information_extraction",
+        "single-session-assistant",
+        "d02",
+        "retrieval"
+      ],
+      "selection_seed": "d02-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "retrieval",
+    "payload": {
+      "gold_evidence_ids": [
+        "answer_sharegpt_H9PiM5G_0"
+      ],
+      "gold_answer": "The 6S algorithm is implemented in the SIAC_GEE tool.",
+      "retrieval_k": [
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  }
+}

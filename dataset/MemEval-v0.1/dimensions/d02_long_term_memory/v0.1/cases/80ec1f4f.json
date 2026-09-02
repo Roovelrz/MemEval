@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d02:lme:80ec1f4f",
+    "dimension_id": "D02",
+    "dimension_name": "long_term_memory_retrieval",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "80ec1f4f"
+    },
+    "identity": {
+      "context_id": "d02:lme:80ec1f4f",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/80ec1f4f.json",
+      "event_start": "d02:lme:80ec1f4f:e00000",
+      "event_end": "d02:lme:80ec1f4f:e00486",
+      "event_count": 487,
+      "token_count": 102199
+    },
+    "query": {
+      "query_id": "80ec1f4f",
+      "text": "How many different museums or galleries did I visit in the month of February?",
+      "timestamp": "2023/03/03 (Fri) 23:25"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-session",
+      "tags": [
+        "multi_session_reasoning",
+        "multi-session",
+        "d02",
+        "retrieval"
+      ],
+      "selection_seed": "d02-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "retrieval",
+    "payload": {
+      "gold_evidence_ids": [
+        "answer_990c8992_2",
+        "answer_990c8992_1",
+        "answer_990c8992_3"
+      ],
+      "gold_answer": 2,
+      "retrieval_k": [
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  }
+}

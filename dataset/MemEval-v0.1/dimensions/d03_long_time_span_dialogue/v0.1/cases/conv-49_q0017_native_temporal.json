@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-49:q0017:native_temporal",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-49:qa:0017"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-49",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-49.json",
+      "event_start": "d03:locomo:conv-49:D1:1",
+      "event_end": "d03:locomo:conv-49:D25:20",
+      "event_count": 509,
+      "token_count": 15005
+    },
+    "query": {
+      "query_id": "conv-49:qa:0017",
+      "text": "When did Sam's friends mock him for being overweight?",
+      "timestamp": "2024-01-11T21:37:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "native_temporal",
+      "tags": [
+        "d03",
+        "temporal",
+        "native_temporal",
+        "locomo_category_2"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-49",
+      "source_qa_index": 17,
+      "source_category": 2
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "Friday before 27 July 2023",
+      "evidence_event_ids": [
+        "d03:locomo:conv-49:D4:1"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-49:D4:1",
+          "days_before_query": 168
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-49:D4:1": "2023-07-27T10:52:00"
+      },
+      "query_time": "2024-01-11T21:37:00",
+      "time_gap_days": 168,
+      "lifecycle": {
+        "valid_from": "2023-07-27T10:52:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

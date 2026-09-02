@@ -1,0 +1,276 @@
+{
+  "audit_version": "0.1-macro",
+  "generated_at": "2026-09-02T17:26:46+08:00",
+  "scope": "D01-D08 数据层宏观完整性与 Source Adapter 进入门禁",
+  "result": "PASS",
+  "ready_for_source_adapter": true,
+  "summary": {
+    "total_cases": 298,
+    "expected_total_cases": 298,
+    "dimensions_present": 8,
+    "source_audits_passed": 7,
+    "independent_checkers_passed": 5,
+    "independent_checkers_total": 5,
+    "global_case_ids_unique": true,
+    "global_query_ids_unique": true
+  },
+  "dimensions": {
+    "D01": {
+      "directory": "datasets\\dimensions\\d01_memory_write\\v0.1",
+      "expected_cases": 37,
+      "actual_cases": 37,
+      "expected_payload_type": "write",
+      "manifest_exists": true,
+      "context_refs_missing": [],
+      "empty_queries": [],
+      "payload_type_errors": [],
+      "source_record_id_missing": [],
+      "status": "complete",
+      "status_complete": true,
+      "human_review_status": "complete",
+      "human_review_complete": true,
+      "declared_hashes_checked": 75,
+      "declared_hashes_valid": true,
+      "hash_problems": [],
+      "payload_type_counts": {
+        "write": 37
+      }
+    },
+    "D02": {
+      "directory": "datasets\\dimensions\\d02_long_term_memory\\v0.1",
+      "expected_cases": 37,
+      "actual_cases": 37,
+      "expected_payload_type": "retrieval",
+      "manifest_exists": true,
+      "context_refs_missing": [],
+      "empty_queries": [],
+      "payload_type_errors": [],
+      "source_record_id_missing": [],
+      "status": "complete",
+      "status_complete": true,
+      "human_review_status": "not_required",
+      "human_review_complete": true,
+      "declared_hashes_checked": 75,
+      "declared_hashes_valid": true,
+      "hash_problems": [],
+      "payload_type_counts": {
+        "retrieval": 37
+      }
+    },
+    "D03": {
+      "directory": "datasets\\dimensions\\d03_long_time_span_dialogue\\v0.1",
+      "expected_cases": 38,
+      "actual_cases": 38,
+      "expected_payload_type": "temporal",
+      "manifest_exists": true,
+      "context_refs_missing": [],
+      "empty_queries": [],
+      "payload_type_errors": [],
+      "source_record_id_missing": [],
+      "status": "complete",
+      "status_complete": true,
+      "human_review_status": "not_required",
+      "human_review_complete": true,
+      "declared_hashes_checked": 54,
+      "declared_hashes_valid": true,
+      "hash_problems": [],
+      "payload_type_counts": {
+        "temporal": 38
+      }
+    },
+    "D04": {
+      "directory": "datasets\\dimensions\\d04_proactive_memory_activation\\v0.1",
+      "expected_cases": 38,
+      "actual_cases": 38,
+      "expected_payload_type": "activation",
+      "manifest_exists": true,
+      "context_refs_missing": [],
+      "empty_queries": [],
+      "payload_type_errors": [],
+      "source_record_id_missing": [],
+      "status": "complete",
+      "status_complete": true,
+      "human_review_status": "complete",
+      "human_review_complete": true,
+      "declared_hashes_checked": 96,
+      "declared_hashes_valid": true,
+      "hash_problems": [],
+      "payload_type_counts": {
+        "activation": 38
+      }
+    },
+    "D05": {
+      "directory": "datasets\\dimensions\\d05_user_profile_preference\\v0.1",
+      "expected_cases": 37,
+      "actual_cases": 37,
+      "expected_payload_type": "profile",
+      "manifest_exists": true,
+      "context_refs_missing": [],
+      "empty_queries": [],
+      "payload_type_errors": [],
+      "source_record_id_missing": [],
+      "status": "complete",
+      "status_complete": true,
+      "human_review_status": "complete_after_repair",
+      "human_review_complete": true,
+      "declared_hashes_checked": 151,
+      "declared_hashes_valid": true,
+      "hash_problems": [],
+      "payload_type_counts": {
+        "profile": 37
+      }
+    },
+    "D06": {
+      "directory": "datasets\\dimensions\\d06_dynamic_update_conflict\\v0.1",
+      "expected_cases": 37,
+      "actual_cases": 37,
+      "expected_payload_type": "conflict",
+      "manifest_exists": true,
+      "context_refs_missing": [],
+      "empty_queries": [],
+      "payload_type_errors": [],
+      "source_record_id_missing": [],
+      "status": "complete_after_replacement",
+      "status_complete": true,
+      "human_review_status": "complete_after_replacement",
+      "human_review_complete": true,
+      "declared_hashes_checked": 124,
+      "declared_hashes_valid": true,
+      "hash_problems": [],
+      "payload_type_counts": {
+        "conflict": 37
+      }
+    },
+    "D07": {
+      "directory": "datasets\\dimensions\\d07_ultra_long_context\\v0.1",
+      "expected_cases": 37,
+      "actual_cases": 37,
+      "expected_payload_type": "scale",
+      "manifest_exists": true,
+      "context_refs_missing": [],
+      "empty_queries": [],
+      "payload_type_errors": [],
+      "source_record_id_missing": [],
+      "status": "complete_after_review_repair",
+      "status_complete": true,
+      "human_review_status": "complete_after_repair",
+      "human_review_complete": true,
+      "declared_hashes_checked": 108,
+      "declared_hashes_valid": true,
+      "hash_problems": [],
+      "payload_type_counts": {
+        "scale": 37
+      }
+    },
+    "D08": {
+      "directory": "datasets\\dimensions\\d08_privacy_user_isolation\\v0.1",
+      "expected_cases": 37,
+      "actual_cases": 37,
+      "expected_payload_type": "privacy",
+      "manifest_exists": true,
+      "context_refs_missing": [],
+      "empty_queries": [],
+      "payload_type_errors": [],
+      "source_record_id_missing": [],
+      "status": "complete",
+      "status_complete": true,
+      "human_review_status": "not_required_deterministic_gold",
+      "human_review_complete": true,
+      "declared_hashes_checked": 76,
+      "declared_hashes_valid": true,
+      "hash_problems": [],
+      "payload_type_counts": {
+        "privacy": 37
+      }
+    }
+  },
+  "source_audits": {
+    "agentmembench": {
+      "status": "pass",
+      "issues": 0,
+      "limitations": 1
+    },
+    "beam": {
+      "status": "pass",
+      "issues": 0,
+      "limitations": 0
+    },
+    "locomo": {
+      "status": "pass",
+      "issues": 0,
+      "limitations": 0
+    },
+    "longmemeval": {
+      "status": "pass",
+      "issues": 0,
+      "limitations": 0
+    },
+    "memoryagentbench": {
+      "status": "pass",
+      "issues": 0,
+      "limitations": 0
+    },
+    "personamem_v2": {
+      "status": "pass",
+      "issues": 0,
+      "limitations": 0
+    },
+    "prefeval": {
+      "status": "pass",
+      "issues": 0,
+      "limitations": 0
+    }
+  },
+  "independent_checkers": {
+    "D04": {
+      "script": "check_d04_reviews.py",
+      "exit_code": 0,
+      "passed": true,
+      "last_line": "PASS: 19 份 D04 人工审核单全部通过，最终状态已同步。"
+    },
+    "D05": {
+      "script": "check_d05_reviews.py",
+      "exit_code": 0,
+      "passed": true,
+      "last_line": "PASS: 37 份 D05 人工审核单全部通过，可以交回合并。"
+    },
+    "D06": {
+      "script": "check_d06_reviews.py",
+      "exit_code": 0,
+      "passed": true,
+      "last_line": "}"
+    },
+    "D07": {
+      "script": "check_d07_reviews.py",
+      "exit_code": 0,
+      "passed": true,
+      "last_line": "}"
+    },
+    "D08": {
+      "script": "check_d08.py",
+      "exit_code": 0,
+      "passed": true,
+      "last_line": "}"
+    }
+  },
+  "global_duplicate_case_ids": [],
+  "global_duplicate_query_ids": [],
+  "d01_external_review_diagnosis": {
+    "path": "C:\\Users\\liruizhi\\Downloads\\d01_memory_write_atomic_reviewed_20json",
+    "exists": true,
+    "reviewed_cases": 37,
+    "approved_cases": 37,
+    "dimension_gold_equal": 37,
+    "dimension_gold_different": 0,
+    "contexts_equal": 37,
+    "contexts_different": 0,
+    "missing_pairs": []
+  },
+  "blockers": [],
+  "warnings": [],
+  "cleanup_inventory": {
+    "status": "completed",
+    "report": "datasets/manifests/reports/cleanup_inventory_v0_1.json",
+    "post_cleanup_integrity_report": "datasets/manifests/reports/post_cleanup_integrity_v0_1.json"
+  }
+}

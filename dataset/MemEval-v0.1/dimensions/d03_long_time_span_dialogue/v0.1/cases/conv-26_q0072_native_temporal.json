@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-26:q0072:native_temporal",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-26:qa:0072"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-26",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-26.json",
+      "event_start": "d03:locomo:conv-26:D1:1",
+      "event_end": "d03:locomo:conv-26:D19:15",
+      "event_count": 419,
+      "token_count": 13340
+    },
+    "query": {
+      "query_id": "conv-26:qa:0072",
+      "text": "When did Melanie's friend adopt a child?",
+      "timestamp": "2023-10-22T09:55:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "native_temporal",
+      "tags": [
+        "d03",
+        "temporal",
+        "native_temporal",
+        "locomo_category_2"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-26",
+      "source_qa_index": 72,
+      "source_category": 2
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": 2022,
+      "evidence_event_ids": [
+        "d03:locomo:conv-26:D17:3"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-26:D17:3",
+          "days_before_query": 8
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-26:D17:3": "2023-10-13T10:31:00"
+      },
+      "query_time": "2023-10-22T09:55:00",
+      "time_gap_days": 8,
+      "lifecycle": {
+        "valid_from": "2023-10-13T10:31:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

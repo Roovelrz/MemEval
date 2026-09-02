@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_18:negative",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "1b20e0f944d7665f435e24eb8b76f4d45d83c419",
+      "split": "explicit/train",
+      "source_record_id": "explicit:0911"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:explicit:0911:current",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_18_negative.json",
+      "event_start": "d04:prefeval:explicit:0911:current:preference",
+      "event_end": "d04:prefeval:explicit:0911:current:preference",
+      "event_count": 1,
+      "token_count": 9
+    },
+    "query": {
+      "query_id": "pair_18:negative",
+      "text": "What restaurants in Mexico City would you suggest I try?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "negative",
+      "tags": [
+        "d04",
+        "activation",
+        "negative",
+        "explicit",
+        "travel_restaurant"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_18",
+      "source_row_index": 911,
+      "source_form": "explicit",
+      "topic": "travel_restaurant",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [],
+        "answer_criteria_revised": true,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": false,
+      "required_memory_ids": [],
+      "preference": "I avoid restaurants that primarily serve spicy food.",
+      "answer_criteria": {
+        "explanation": "The user avoids restaurants that primarily serve spicy food. The assistant should recommend Mexico City restaurants whose overall menu and flavor profile are generally mild or not primarily spicy, rather than restaurants that are mainly spicy but happen to offer a few non-spicy dishes.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

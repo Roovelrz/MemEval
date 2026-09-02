@@ -1,0 +1,23 @@
+dataset_name: 'BEAM 100K, 500K, 1M, and 10M'
+source_repo:
+  - 'Mohammadta/BEAM'
+  - 'Mohammadta/BEAM-10M'
+source_revision:
+  'Mohammadta/BEAM': '3205395e897e7318c7b094ef4e6047b9b82dbb03'
+  'Mohammadta/BEAM-10M': '9b2096193fe74e2837e4713e483351e19817773c'
+download_date: '2026-09-01'
+license: 'CC-BY-SA-4.0'
+files:
+  - '10m/data/10M-00000-of-00002.parquet'
+  - '10m/data/10M-00001-of-00002.parquet'
+  - 'regular/data/100K-00000-of-00001.parquet'
+  - 'regular/data/1M-00000-of-00001.parquet'
+  - 'regular/data/500K-00000-of-00001.parquet'
+file_hashes:
+  '10m/data/10M-00000-of-00002.parquet': '31d96fd47ec56221d202e68792f26c00e49467dd4b36ee105c36ebd19ef78ad5'
+  '10m/data/10M-00001-of-00002.parquet': 'a4f13fe25af51d57405ae41008689c31d1421377f3efde56a024b441deb2ee65'
+  'regular/data/100K-00000-of-00001.parquet': 'c0519be25907005ba873c927c50877471d550873039d96c041554d0075a78ace'
+  'regular/data/1M-00000-of-00001.parquet': '41b5acbbb55a586b1305514ef9d9fb03365d9b3331b598a1c2dd7603d93ef533'
+  'regular/data/500K-00000-of-00001.parquet': 'af05921c979355038e1761b7cde3d2dd713200dd3071b278de0200f6c7f30122'
+adapter_version: 'v0.1-pending'
+notes: 'All official data shards for the four documented scales; dataset cards and repository metadata are not downloaded.'

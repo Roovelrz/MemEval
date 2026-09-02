@@ -1,0 +1,178 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d01:lme:86b68151",
+    "dimension_id": "D01",
+    "dimension_name": "memory_extraction_and_write",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "86b68151"
+    },
+    "identity": {
+      "context_id": "d01:lme:86b68151",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/86b68151.json",
+      "event_start": "d01:lme:86b68151:e000",
+      "event_end": "d01:lme:86b68151:e025",
+      "event_count": 26,
+      "token_count": 3866
+    },
+    "query": {
+      "query_id": "86b68151",
+      "text": "Where did I buy my new bookshelf from?",
+      "timestamp": "2023/05/30 (Tue) 18:56"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-user",
+      "tags": [
+        "information_extraction",
+        "single-session-user",
+        "d01",
+        "human_review_required"
+      ],
+      "selection_seed": "d01-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "write",
+    "payload": {
+      "scored_event_ids": [
+        "d01:lme:86b68151:e000",
+        "d01:lme:86b68151:e001",
+        "d01:lme:86b68151:e002",
+        "d01:lme:86b68151:e003",
+        "d01:lme:86b68151:e004",
+        "d01:lme:86b68151:e005",
+        "d01:lme:86b68151:e006",
+        "d01:lme:86b68151:e007",
+        "d01:lme:86b68151:e008",
+        "d01:lme:86b68151:e009",
+        "d01:lme:86b68151:e010",
+        "d01:lme:86b68151:e011",
+        "d01:lme:86b68151:e012",
+        "d01:lme:86b68151:e013",
+        "d01:lme:86b68151:e014",
+        "d01:lme:86b68151:e015",
+        "d01:lme:86b68151:e016",
+        "d01:lme:86b68151:e017",
+        "d01:lme:86b68151:e018",
+        "d01:lme:86b68151:e019",
+        "d01:lme:86b68151:e020",
+        "d01:lme:86b68151:e021",
+        "d01:lme:86b68151:e022",
+        "d01:lme:86b68151:e023",
+        "d01:lme:86b68151:e024",
+        "d01:lme:86b68151:e025"
+      ],
+      "gold_memories": [
+        {
+          "memory_id": "d01:lme:86b68151:m00",
+          "canonical_content": "The user planned to try Closet or Stylebook for closet organization.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:86b68151:e002"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:86b68151:m01",
+          "canonical_content": "The user organized their closet during the weekend before May 28, 2023.",
+          "memory_type": "event",
+          "evidence_event_ids": [
+            "d01:lme:86b68151:e002"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:86b68151:m02",
+          "canonical_content": "The user donated old books to the local library.",
+          "memory_type": "event",
+          "evidence_event_ids": [
+            "d01:lme:86b68151:e002"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:86b68151:m03",
+          "canonical_content": "The user rearranged the living-room furniture by swapping the couch and armchair to create more space.",
+          "memory_type": "event",
+          "evidence_event_ids": [
+            "d01:lme:86b68151:e006"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:86b68151:m04",
+          "canonical_content": "The user's new bookshelf is from IKEA.",
+          "memory_type": "personal_fact",
+          "evidence_event_ids": [
+            "d01:lme:86b68151:e008"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:86b68151:m05",
+          "canonical_content": "The user wants books to remain organized and within easy reach.",
+          "memory_type": "goal",
+          "evidence_event_ids": [
+            "d01:lme:86b68151:e008",
+            "d01:lme:86b68151:e010"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:86b68151:m06",
+          "canonical_content": "The user plans to visit Uxbridge and see all of the historical landmarks discussed in the conversation.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:86b68151:e016",
+            "d01:lme:86b68151:e018"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:86b68151:m07",
+          "canonical_content": "The user is interested in trying local cuisine when visiting Uxbridge.",
+          "memory_type": "preference",
+          "evidence_event_ids": [
+            "d01:lme:86b68151:e020"
+          ]
+        }
+      ],
+      "non_memory_event_ids": [
+        "d01:lme:86b68151:e000",
+        "d01:lme:86b68151:e001",
+        "d01:lme:86b68151:e003",
+        "d01:lme:86b68151:e004",
+        "d01:lme:86b68151:e005",
+        "d01:lme:86b68151:e007",
+        "d01:lme:86b68151:e009",
+        "d01:lme:86b68151:e011",
+        "d01:lme:86b68151:e012",
+        "d01:lme:86b68151:e013",
+        "d01:lme:86b68151:e014",
+        "d01:lme:86b68151:e015",
+        "d01:lme:86b68151:e017",
+        "d01:lme:86b68151:e019",
+        "d01:lme:86b68151:e021",
+        "d01:lme:86b68151:e022",
+        "d01:lme:86b68151:e023",
+        "d01:lme:86b68151:e024",
+        "d01:lme:86b68151:e025"
+      ]
+    }
+  },
+  "annotation": {
+    "draft_origin": "deterministic_qa_and_personal_sentence_extraction",
+    "human_review_status": "approved",
+    "required": true,
+    "reviewer": "liruizhi",
+    "reviewed_at": "2026-09-01T14:00:07+08:00",
+    "review_notes": [],
+    "checks": {
+      "all_memory_worthy_events_covered": true,
+      "canonical_content_verified": true,
+      "memory_type_verified": true,
+      "non_memory_event_ids_verified": true
+    }
+  }
+}

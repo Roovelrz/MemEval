@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_16:positive",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "319fbe0236a00f40152b27da01a6f86271657db1",
+      "split": "implicit_choice/train",
+      "source_record_id": "implicit_choice:0820"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:implicit_choice:0820:history",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_16_positive.json",
+      "event_start": "d04:prefeval:implicit_choice:0820:history:conversation_query",
+      "event_end": "d04:prefeval:implicit_choice:0820:history:assistant_acknowledgment",
+      "event_count": 4,
+      "token_count": 99
+    },
+    "query": {
+      "query_id": "pair_16:positive",
+      "text": "What are some exciting activities to do in Queenstown?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "positive",
+      "tags": [
+        "d04",
+        "activation",
+        "positive",
+        "implicit_choice",
+        "travel_activities"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_16",
+      "source_row_index": 820,
+      "source_form": "implicit_choice",
+      "topic": "travel_activities",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [],
+        "answer_criteria_revised": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": true,
+      "required_memory_ids": [
+        "d04:prefeval:implicit_choice:0820:history:conversation_query",
+        "d04:prefeval:implicit_choice:0820:history:assistant_options",
+        "d04:prefeval:implicit_choice:0820:history:user_selection"
+      ],
+      "preference": "I dislike adventure sports.",
+      "answer_criteria": {
+        "explanation": "Queenstown is famous for its adventure sports, so the assistant needs to find activities that are exciting but do not involve adventure sports.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

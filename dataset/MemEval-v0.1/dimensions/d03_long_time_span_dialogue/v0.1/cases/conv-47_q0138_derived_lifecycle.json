@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-47:q0138:derived_lifecycle",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-47:qa:0138"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-47:q0138:lifecycle",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-47_q0138_lifecycle.json",
+      "event_start": "d03:locomo:conv-47:q0138:lifecycle:D1:1",
+      "event_end": "d03:locomo:conv-47:q0138:lifecycle:forget",
+      "event_count": 690,
+      "token_count": 18813
+    },
+    "query": {
+      "query_id": "conv-47:qa:0138",
+      "text": "What inspired James to create his game?",
+      "timestamp": "2022-11-09T20:57:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "derived_lifecycle",
+      "tags": [
+        "d03",
+        "temporal",
+        "derived_lifecycle",
+        "locomo_category_4"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-47",
+      "source_qa_index": 138,
+      "source_category": 4
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "Witcher 3",
+      "evidence_event_ids": [
+        "d03:locomo:conv-47:q0138:lifecycle:D27:6"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-47:q0138:lifecycle:D27:6",
+          "days_before_query": 27
+        },
+        {
+          "relation": "deleted_before_query",
+          "forget_event_id": "d03:locomo:conv-47:q0138:lifecycle:forget",
+          "days_before_query": 1
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-47:q0138:lifecycle:D27:6": "2022-10-13T14:14:00"
+      },
+      "query_time": "2022-11-09T20:57:00",
+      "time_gap_days": 27,
+      "lifecycle": {
+        "valid_from": "2022-10-13T14:14:00",
+        "valid_until": "2022-11-08T20:57:00",
+        "deleted_at": "2022-11-08T20:57:00",
+        "expected_active": false
+      }
+    }
+  }
+}

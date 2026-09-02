@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_6k_no1",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:0/question:1"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_6k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_6k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_6k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_6k:context:document_000",
+      "event_count": 1,
+      "token_count": 5437
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_6k_no1",
+      "text": "In which location did the spouse of Igor of Kiev pass away?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_6k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 0,
+      "source_question_index": 1,
+      "source_name": "factconsolidation_mh_6k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved_after_replacement",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Igor of Kiev",
+          "relation": "spouse",
+          "value": "Olga of Kiev",
+          "winning_fact_id": "factconsolidation_mh_6k:fact_00175"
+        },
+        {
+          "step": 2,
+          "subject": "Olga of Kiev",
+          "relation": "died_in",
+          "value": "Rodez",
+          "winning_fact_id": "factconsolidation_mh_6k:fact_00450"
+        }
+      ],
+      "human_review": {
+        "status": "approved_after_replacement",
+        "reviewer": "codex",
+        "reviewed_at": "2026-09-02T15:30:56+08:00",
+        "replaces": "factconsolidation_mh_6k_no73",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Rodez",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00125",
+          "value": "Kyiv",
+          "order": 125,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00175",
+          "value": "Olga of Kiev",
+          "order": 175,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00450",
+          "value": "Rodez",
+          "order": 450,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_6k:fact_00175",
+        "factconsolidation_mh_6k:fact_00450"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_6k:fact_00125"
+      ]
+    }
+  }
+}

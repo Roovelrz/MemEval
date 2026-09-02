@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_09:positive",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "2c4b0ca892ec350e67ff6358135f772482514ad0",
+      "split": "implicit_persona/train",
+      "source_record_id": "implicit_persona:0440"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:implicit_persona:0440:history",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_09_positive.json",
+      "event_start": "d04:prefeval:implicit_persona:0440:history:turn_00_user",
+      "event_end": "d04:prefeval:implicit_persona:0440:history:turn_04_assistant",
+      "event_count": 10,
+      "token_count": 772
+    },
+    "query": {
+      "query_id": "pair_09:positive",
+      "text": "How can I track my fitness progress and set goals effectively?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "positive",
+      "tags": [
+        "d04",
+        "activation",
+        "positive",
+        "implicit_persona",
+        "lifestyle_fit"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_09",
+      "source_row_index": 440,
+      "source_form": "implicit_persona",
+      "topic": "lifestyle_fit",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [
+          "d04:prefeval:implicit_persona:0440:history:turn_02_user"
+        ],
+        "answer_criteria_revised": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": true,
+      "required_memory_ids": [
+        "d04:prefeval:implicit_persona:0440:history:turn_02_user"
+      ],
+      "preference": "I avoid engaging in any activities that involve advanced technology or gadgets.",
+      "answer_criteria": {
+        "explanation": "Tracking fitness progress often involves technology like apps or wearables. The assistant should suggest manual tracking methods or paper logs as alternatives.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

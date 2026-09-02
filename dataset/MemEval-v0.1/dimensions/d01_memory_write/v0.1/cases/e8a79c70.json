@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d01:lme:e8a79c70",
+    "dimension_id": "D01",
+    "dimension_name": "memory_extraction_and_write",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "e8a79c70"
+    },
+    "identity": {
+      "context_id": "d01:lme:e8a79c70",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/e8a79c70.json",
+      "event_start": "d01:lme:e8a79c70:e000",
+      "event_end": "d01:lme:e8a79c70:e021",
+      "event_count": 22,
+      "token_count": 5242
+    },
+    "query": {
+      "query_id": "e8a79c70",
+      "text": "I was going through our previous conversation about making a classic French omelette, and I wanted to confirm - how many eggs did you say we need for the recipe?",
+      "timestamp": "2023/05/30 (Tue) 08:29"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-assistant",
+      "tags": [
+        "information_extraction",
+        "single-session-assistant",
+        "d01",
+        "human_review_required"
+      ],
+      "selection_seed": "d01-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "write",
+    "payload": {
+      "scored_event_ids": [
+        "d01:lme:e8a79c70:e000",
+        "d01:lme:e8a79c70:e001",
+        "d01:lme:e8a79c70:e002",
+        "d01:lme:e8a79c70:e003",
+        "d01:lme:e8a79c70:e004",
+        "d01:lme:e8a79c70:e005",
+        "d01:lme:e8a79c70:e006",
+        "d01:lme:e8a79c70:e007",
+        "d01:lme:e8a79c70:e008",
+        "d01:lme:e8a79c70:e009",
+        "d01:lme:e8a79c70:e010",
+        "d01:lme:e8a79c70:e011",
+        "d01:lme:e8a79c70:e012",
+        "d01:lme:e8a79c70:e013",
+        "d01:lme:e8a79c70:e014",
+        "d01:lme:e8a79c70:e015",
+        "d01:lme:e8a79c70:e016",
+        "d01:lme:e8a79c70:e017",
+        "d01:lme:e8a79c70:e018",
+        "d01:lme:e8a79c70:e019",
+        "d01:lme:e8a79c70:e020",
+        "d01:lme:e8a79c70:e021"
+      ],
+      "gold_memories": [
+        {
+          "memory_id": "d01:lme:e8a79c70:m00",
+          "canonical_content": "The user attended a charity concert in late March 2023 and found it inspiring and enjoyable.",
+          "memory_type": "event",
+          "evidence_event_ids": [
+            "d01:lme:e8a79c70:e000",
+            "d01:lme:e8a79c70:e004"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:e8a79c70:m01",
+          "canonical_content": "The user wanted to find local volunteer opportunities in order to give back to the community.",
+          "memory_type": "goal",
+          "evidence_event_ids": [
+            "d01:lme:e8a79c70:e000"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:e8a79c70:m02",
+          "canonical_content": "On May 21, 2023, the user said they had participated in the 'Walk for Hunger' charity event the previous Sunday and found it a great experience.",
+          "memory_type": "event",
+          "evidence_event_ids": [
+            "d01:lme:e8a79c70:e002"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:e8a79c70:m03",
+          "canonical_content": "The user is particularly interested in volunteer events related to food security.",
+          "memory_type": "preference",
+          "evidence_event_ids": [
+            "d01:lme:e8a79c70:e002"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:e8a79c70:m04",
+          "canonical_content": "The user was interested in music-related volunteer opportunities, especially music therapy programs that work with seniors.",
+          "memory_type": "preference",
+          "evidence_event_ids": [
+            "d01:lme:e8a79c70:e004",
+            "d01:lme:e8a79c70:e006",
+            "d01:lme:e8a79c70:e008"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:e8a79c70:m05",
+          "canonical_content": "The classic French omelette recipe discussed with the user uses 2-3 eggs.",
+          "memory_type": "other",
+          "evidence_event_ids": [
+            "d01:lme:e8a79c70:e013"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:e8a79c70:m06",
+          "canonical_content": "The user planned to try making a classic French omelette.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:e8a79c70:e016"
+          ]
+        }
+      ],
+      "non_memory_event_ids": [
+        "d01:lme:e8a79c70:e001",
+        "d01:lme:e8a79c70:e003",
+        "d01:lme:e8a79c70:e005",
+        "d01:lme:e8a79c70:e007",
+        "d01:lme:e8a79c70:e009",
+        "d01:lme:e8a79c70:e010",
+        "d01:lme:e8a79c70:e011",
+        "d01:lme:e8a79c70:e012",
+        "d01:lme:e8a79c70:e014",
+        "d01:lme:e8a79c70:e015",
+        "d01:lme:e8a79c70:e017",
+        "d01:lme:e8a79c70:e018",
+        "d01:lme:e8a79c70:e019",
+        "d01:lme:e8a79c70:e020",
+        "d01:lme:e8a79c70:e021"
+      ]
+    }
+  },
+  "annotation": {
+    "draft_origin": "deterministic_qa_and_personal_sentence_extraction",
+    "human_review_status": "approved",
+    "required": true,
+    "reviewer": "liruizhi",
+    "reviewed_at": "2026-09-01T15:30:56+08:00",
+    "review_notes": [
+      "Gold memories were corrected and atomized by Codex, then finalized under the reviewer's explicit completion instruction after validation."
+    ],
+    "checks": {
+      "all_memory_worthy_events_covered": true,
+      "canonical_content_verified": true,
+      "memory_type_verified": true,
+      "non_memory_event_ids_verified": true
+    }
+  }
+}

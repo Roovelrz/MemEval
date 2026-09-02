@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "context_id": "d04:prefeval:implicit_choice:0977:history",
+  "source": {
+    "dataset": "PrefEval",
+    "revision": "319fbe0236a00f40152b27da01a6f86271657db1",
+    "split": "implicit_choice/train",
+    "source_record_id": "implicit_choice:0977"
+  },
+  "events": [
+    {
+      "event_id": "d04:prefeval:implicit_choice:0977:history:conversation_query",
+      "session_id": "d04:prefeval:implicit_choice:0977:history:history",
+      "turn_id": "conversation_query",
+      "order": 0,
+      "timestamp": null,
+      "role": "user",
+      "content": "What are some options for traveling from New York to Los Angeles?",
+      "source_ref": "implicit_choice/train.parquet#977/conversation_query",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_query"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0977:history:assistant_options",
+      "session_id": "d04:prefeval:implicit_choice:0977:history:history",
+      "turn_id": "assistant_options",
+      "order": 1,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "There are several options for traveling from New York to Los Angeles. You could book a direct flight for a quick and convenient journey, rent a car and drive across the country for an adventurous road trip, take a cross-country train ride to enjoy the scenic landscapes, or hop on a series of connecting flights to reach the destination.",
+      "source_ref": "implicit_choice/train.parquet#977/conversation_assistant_options",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_options"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0977:history:user_selection",
+      "session_id": "d04:prefeval:implicit_choice:0977:history:history",
+      "turn_id": "user_selection",
+      "order": 2,
+      "timestamp": null,
+      "role": "user",
+      "content": "I'll go with the cross-country train ride. I have an intense fear of flying, so I actively avoid air travel whenever possible. Driving also doesn't appeal to me for this trip.",
+      "source_ref": "implicit_choice/train.parquet#977/conversation_user_selection",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_user_selection",
+        "human_review_revision": {
+          "reviewer": "lrz",
+          "reviewed_at": "2026-09-01T18:00:00+08:00",
+          "review_file": "review/pairs/pair_19.json",
+          "original_content_sha256": "e07e78f41ba884dddf55d9bc2c7f7a29626148232fc200bdf3cd5a9e35d410a6",
+          "source_ref_preserved_as_derivation_origin": "implicit_choice/train.parquet#977/conversation_user_selection"
+        }
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0977:history:assistant_acknowledgment",
+      "session_id": "d04:prefeval:implicit_choice:0977:history:history",
+      "turn_id": "assistant_acknowledgment",
+      "order": 3,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "Understood, the cross-country train ride is a great choice.",
+      "source_ref": "implicit_choice/train.parquet#977/conversation_assistant_acknowledgment",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_acknowledgment"
+      }
+    }
+  ]
+}

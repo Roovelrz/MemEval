@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:721:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:3627"
+    },
+    "identity": {
+      "context_id": "d05:personamem:721:history",
+      "user_id": "personamem:721",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_721.json",
+      "event_start": "d05:personamem:721:history:event_0001",
+      "event_end": "d05:personamem:721:history:event_0239",
+      "event_count": 239,
+      "token_count": 30717
+    },
+    "query": {
+      "query_id": "personamem:721:benchmark:3627",
+      "text": "What are some interesting activities or places to check out in a major city if I only have one free afternoon there?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "neutral_preferences"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "721",
+      "target_source_row_index": 3627,
+      "target_pref_type": "neutral_preferences",
+      "target_topic": "Travel",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona721.json",
+      "raw_persona_file": "data/raw_data/raw_data_250820_224501_persona721.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": false,
+        "gold_answer_rewritten": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:721:profile:item_03",
+          "slot": "preference",
+          "value": "Is interested in how museums decide what enters an exhibition.",
+          "evidence_event_ids": [
+            "d05:personamem:721:history:event_0169",
+            "d05:personamem:721:history:event_0170"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3627,
+            "source_pref_type": "neutral_preferences",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona721.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3627",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_721.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Appreciates visiting museums",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_03"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:721:profile:item_04",
+          "slot": "personal_fact",
+          "value": "Long conference sessions can cause deep lower-back discomfort.",
+          "evidence_event_ids": [
+            "d05:personamem:721:history:event_0155",
+            "d05:personamem:721:history:event_0156"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3619,
+            "source_pref_type": "health_and_medical_conditions",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona721.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3619",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_721.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Has had nightmares and stress responses after witnessing violence at an overseas Pride event.",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_05"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:721:profile:item_05",
+          "slot": "personal_fact",
+          "value": "Has experienced recurring lower-back discomfort during long periods of sitting since his teens.",
+          "evidence_event_ids": [
+            "d05:personamem:721:history:event_0155",
+            "d05:personamem:721:history:event_0156"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 3619,
+            "source_pref_type": "health_and_medical_conditions",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona721.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#3619",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_721.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Mild scoliosis diagnosed in adolescence, monitored but untreated",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_05"
+            }
+          }
+        }
+      ],
+      "gold_answer": "If you only have one afternoon, I’d head to the city’s most renowned art museum or a more niche contemporary gallery—there’s nothing quite like immersing yourself in a curated collection to get a sense of the local cultural heartbeat. Pair that with a stop at a nearby café or wine bar for a reflective wind‑down, where you can soak in the afternoon’s impressions.",
+      "target_preference_ids": [
+        "d05:personamem:721:profile:item_03"
+      ]
+    }
+  }
+}

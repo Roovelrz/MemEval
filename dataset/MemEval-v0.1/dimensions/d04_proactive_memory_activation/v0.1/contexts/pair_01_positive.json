@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "context_id": "d04:prefeval:implicit_choice:0027:history",
+  "source": {
+    "dataset": "PrefEval",
+    "revision": "319fbe0236a00f40152b27da01a6f86271657db1",
+    "split": "implicit_choice/train",
+    "source_record_id": "implicit_choice:0027"
+  },
+  "events": [
+    {
+      "event_id": "d04:prefeval:implicit_choice:0027:history:conversation_query",
+      "session_id": "d04:prefeval:implicit_choice:0027:history:history",
+      "turn_id": "conversation_query",
+      "order": 0,
+      "timestamp": null,
+      "role": "user",
+      "content": "What are some fun activities to do with friends this weekend?",
+      "source_ref": "implicit_choice/train.parquet#27/conversation_query",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_query"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0027:history:assistant_options",
+      "session_id": "d04:prefeval:implicit_choice:0027:history:history",
+      "turn_id": "assistant_options",
+      "order": 1,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "There are several fun options to consider for a weekend activity with friends. You could try the new virtual reality escape room experience, check out the virtual reality gaming center, go for a hike or have a picnic in the park, or visit the immersive 360-degree movie theater.",
+      "source_ref": "implicit_choice/train.parquet#27/conversation_assistant_options",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_options"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0027:history:user_selection",
+      "session_id": "d04:prefeval:implicit_choice:0027:history:history",
+      "turn_id": "user_selection",
+      "order": 2,
+      "timestamp": null,
+      "role": "user",
+      "content": "Let's go for a hike or have a picnic in the park. Virtual reality gives me motion sickness, so I avoid VR experiences. The movie theater might be too enclosed as well.",
+      "source_ref": "implicit_choice/train.parquet#27/conversation_user_selection",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_user_selection",
+        "human_review_revision": {
+          "reviewer": "lrz",
+          "reviewed_at": "2026-09-01T18:00:00+08:00",
+          "review_file": "review/pairs/pair_01.json",
+          "original_content_sha256": "04d9be9e4be925e4140abbba7203f5ab9172a0ea6483623422a953c67b99ef6c",
+          "source_ref_preserved_as_derivation_origin": "implicit_choice/train.parquet#27/conversation_user_selection"
+        }
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0027:history:assistant_acknowledgment",
+      "session_id": "d04:prefeval:implicit_choice:0027:history:history",
+      "turn_id": "assistant_acknowledgment",
+      "order": 3,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "Sounds like a great choice for an enjoyable outdoor activity.",
+      "source_ref": "implicit_choice/train.parquet#27/conversation_assistant_acknowledgment",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_acknowledgment"
+      }
+    }
+  ]
+}

@@ -1,0 +1,727 @@
+{
+  "schema_version": "0.1",
+  "dimension_id": "D07",
+  "token_estimator": "ceil(character_count/4) per event",
+  "contexts": [
+    {
+      "context_id": "d07:beam10m:scale_group_01:100k",
+      "context_ref": "contexts/scale_group_01_100k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "2"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2137,
+      "source_event_end_id": 2293,
+      "event_count": 157,
+      "token_count_estimate": 100657,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 100000,
+      "event_start": "d07:beam10m:conv_02:event_02137",
+      "event_end": "d07:beam10m:conv_02:event_02293",
+      "sha256": "4f490cd28d399118085dfeb87f8c0be89ebea174b619e845b69c4af8462d14f7"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_01:10m",
+      "context_ref": "contexts/scale_group_01_10m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "2"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2137,
+      "source_event_end_id": 18362,
+      "event_count": 16226,
+      "token_count_estimate": 10000125,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_02:event_02137",
+      "event_end": "d07:beam10m:conv_02:event_18362",
+      "sha256": "67fef5299f78e57f795ddf76782b852186d763b21cfdaaddc1fe4962a0c8d313"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_01:1m",
+      "context_ref": "contexts/scale_group_01_1m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "2"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2137,
+      "source_event_end_id": 3753,
+      "event_count": 1617,
+      "token_count_estimate": 1001293,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 1000000,
+      "event_start": "d07:beam10m:conv_02:event_02137",
+      "event_end": "d07:beam10m:conv_02:event_03753",
+      "sha256": "ce728f367488539b073dbe4ba95cd263389403e185cc3018bde04de76ba0c594"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_01:500k",
+      "context_ref": "contexts/scale_group_01_500k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "2"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2137,
+      "source_event_end_id": 2926,
+      "event_count": 790,
+      "token_count_estimate": 500015,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 500000,
+      "event_start": "d07:beam10m:conv_02:event_02137",
+      "event_end": "d07:beam10m:conv_02:event_02926",
+      "sha256": "b2fd29a710e47a0cda36ce8c8fc9c3d1b0154c5d23efb9239322f87da87ecb96"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_02:100k",
+      "context_ref": "contexts/scale_group_02_100k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "3"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2156,
+      "source_event_end_id": 2317,
+      "event_count": 162,
+      "token_count_estimate": 100408,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 100000,
+      "event_start": "d07:beam10m:conv_03:event_02156",
+      "event_end": "d07:beam10m:conv_03:event_02317",
+      "sha256": "5cd8aff17793a44ede098478b4b589acb08322c79df41a0e41468a449c867097"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_02:10m",
+      "context_ref": "contexts/scale_group_02_10m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "3"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2156,
+      "source_event_end_id": 18069,
+      "event_count": 15914,
+      "token_count_estimate": 10000187,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_03:event_02156",
+      "event_end": "d07:beam10m:conv_03:event_18069",
+      "sha256": "2d308673fabe8e05872a8679006cc55bc77c8257b53443ffaaadb7f5ba412417"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_02:1m",
+      "context_ref": "contexts/scale_group_02_1m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "3"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2156,
+      "source_event_end_id": 3699,
+      "event_count": 1544,
+      "token_count_estimate": 1000466,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 1000000,
+      "event_start": "d07:beam10m:conv_03:event_02156",
+      "event_end": "d07:beam10m:conv_03:event_03699",
+      "sha256": "c7ce1f04348e826141d864879838e18710c3219247214a261a88ec650ed4e63f"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_02:500k",
+      "context_ref": "contexts/scale_group_02_500k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "3"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2156,
+      "source_event_end_id": 2877,
+      "event_count": 722,
+      "token_count_estimate": 500161,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 500000,
+      "event_start": "d07:beam10m:conv_03:event_02156",
+      "event_end": "d07:beam10m:conv_03:event_02877",
+      "sha256": "e72b56a0dc780ce703234ed7cab1dee7cb681a1aa210f35ed117d7c199eea789"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_03:100k",
+      "context_ref": "contexts/scale_group_03_100k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 3,
+        "conversation_id": "4"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 0,
+      "source_event_end_id": 279,
+      "event_count": 280,
+      "token_count_estimate": 105531,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 100000,
+      "event_start": "d07:beam10m:conv_04:event_00000",
+      "event_end": "d07:beam10m:conv_04:event_00279",
+      "sha256": "dfc81ca086552c3983767293e716f7007d54b2826e24b15e174e9f2a3f793c95"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_03:10m",
+      "context_ref": "contexts/scale_group_03_10m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 3,
+        "conversation_id": "4"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 0,
+      "source_event_end_id": 19201,
+      "event_count": 19202,
+      "token_count_estimate": 9896767,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_04:event_00000",
+      "event_end": "d07:beam10m:conv_04:event_19201",
+      "sha256": "167eb98116ea11a3761690efad77f5f01dd506e056df2c2df4a080eb2b0a9d99"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_03:1m",
+      "context_ref": "contexts/scale_group_03_1m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 3,
+        "conversation_id": "4"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 0,
+      "source_event_end_id": 2313,
+      "event_count": 2314,
+      "token_count_estimate": 1001257,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 1000000,
+      "event_start": "d07:beam10m:conv_04:event_00000",
+      "event_end": "d07:beam10m:conv_04:event_02313",
+      "sha256": "f0d885474cf84f440029eac8e138d0e09f3971922c5dc39da38456362f31cf22"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_03:500k",
+      "context_ref": "contexts/scale_group_03_500k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 3,
+        "conversation_id": "4"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 0,
+      "source_event_end_id": 1293,
+      "event_count": 1294,
+      "token_count_estimate": 500020,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 500000,
+      "event_start": "d07:beam10m:conv_04:event_00000",
+      "event_end": "d07:beam10m:conv_04:event_01293",
+      "sha256": "a724d38bd89040c3c670b2bfb3bee825b86119cff12af08333a4786095e94e33"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_04:100k",
+      "context_ref": "contexts/scale_group_04_100k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 0,
+        "conversation_id": "6"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2731,
+      "source_event_end_id": 2925,
+      "event_count": 195,
+      "token_count_estimate": 101084,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 100000,
+      "event_start": "d07:beam10m:conv_06:event_02731",
+      "event_end": "d07:beam10m:conv_06:event_02925",
+      "sha256": "1a7c4f7714a4e3d9df2b20fe6dccc1be941b8d39b33c735ffe7ddec9bf2c848e"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_04:10m",
+      "context_ref": "contexts/scale_group_04_10m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 0,
+        "conversation_id": "6"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2731,
+      "source_event_end_id": 19957,
+      "event_count": 17227,
+      "token_count_estimate": 9924039,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_06:event_02731",
+      "event_end": "d07:beam10m:conv_06:event_19957",
+      "sha256": "a092118a1eaa79e5aa978ee46217fb09c826c44b4d03cb4f814356bbbfc3ed14"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_04:1m",
+      "context_ref": "contexts/scale_group_04_1m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 0,
+        "conversation_id": "6"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2731,
+      "source_event_end_id": 4631,
+      "event_count": 1901,
+      "token_count_estimate": 1000002,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 1000000,
+      "event_start": "d07:beam10m:conv_06:event_02731",
+      "event_end": "d07:beam10m:conv_06:event_04631",
+      "sha256": "24cb605c4d3ea38c33809b64022b2637cf1a29fab60e8b374881a2d0b232595b"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_04:500k",
+      "context_ref": "contexts/scale_group_04_500k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 0,
+        "conversation_id": "6"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2731,
+      "source_event_end_id": 3708,
+      "event_count": 978,
+      "token_count_estimate": 500041,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 500000,
+      "event_start": "d07:beam10m:conv_06:event_02731",
+      "event_end": "d07:beam10m:conv_06:event_03708",
+      "sha256": "3a6b6b62371e2a704826d924959e0f3399a4913f4ae5dc3ec1e056956afc4418"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_05:100k",
+      "context_ref": "contexts/scale_group_05_100k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "7"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2291,
+      "source_event_end_id": 2501,
+      "event_count": 211,
+      "token_count_estimate": 100729,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 100000,
+      "event_start": "d07:beam10m:conv_07:event_02291",
+      "event_end": "d07:beam10m:conv_07:event_02501",
+      "sha256": "ea68d0252ee69530a3f13e781040c180860ade369ebff9b5b7100764b35a1cd5"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_05:10m",
+      "context_ref": "contexts/scale_group_05_10m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "7"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2291,
+      "source_event_end_id": 21001,
+      "event_count": 18711,
+      "token_count_estimate": 10000106,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_07:event_02291",
+      "event_end": "d07:beam10m:conv_07:event_21001",
+      "sha256": "aa3d63fca3fa3d82c1f17bbf8299e228717078ef02731ae4aec83b73243ad18c"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_05:1m",
+      "context_ref": "contexts/scale_group_05_1m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "7"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2291,
+      "source_event_end_id": 4211,
+      "event_count": 1921,
+      "token_count_estimate": 1000064,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 1000000,
+      "event_start": "d07:beam10m:conv_07:event_02291",
+      "event_end": "d07:beam10m:conv_07:event_04211",
+      "sha256": "8e0890bbb7c37fb7515146f9047f514edf3cf1d5b83144b40030a5f24a92e2a3"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_05:500k",
+      "context_ref": "contexts/scale_group_05_500k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "7"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 2291,
+      "source_event_end_id": 3219,
+      "event_count": 929,
+      "token_count_estimate": 500250,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 500000,
+      "event_start": "d07:beam10m:conv_07:event_02291",
+      "event_end": "d07:beam10m:conv_07:event_03219",
+      "sha256": "34eafc63301a1e45e41deaa0f5a4b56b72d48dbe0311475691c8e9d5f7756499"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_06:100k",
+      "context_ref": "contexts/scale_group_06_100k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "8"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 878,
+      "source_event_end_id": 1077,
+      "event_count": 200,
+      "token_count_estimate": 100245,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 100000,
+      "event_start": "d07:beam10m:conv_08:event_00878",
+      "event_end": "d07:beam10m:conv_08:event_01077",
+      "sha256": "d60ee24d55cae656712325cb55aff94f81a32149cbeefdaa84ffb571a05e959d"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_06:10m",
+      "context_ref": "contexts/scale_group_06_10m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "8"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 878,
+      "source_event_end_id": 20687,
+      "event_count": 19810,
+      "token_count_estimate": 10000260,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_08:event_00878",
+      "event_end": "d07:beam10m:conv_08:event_20687",
+      "sha256": "95905bc8422b66ef58c1406886abca17f175a8ec94ee37396a813d0f5e7e72d5"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_06:1m",
+      "context_ref": "contexts/scale_group_06_1m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "8"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 878,
+      "source_event_end_id": 2747,
+      "event_count": 1870,
+      "token_count_estimate": 1000566,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 1000000,
+      "event_start": "d07:beam10m:conv_08:event_00878",
+      "event_end": "d07:beam10m:conv_08:event_02747",
+      "sha256": "563f25e99d8e5ebd093b337d351c92d7e4076995de12ff3f6262aa5d4ed30657"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_06:500k",
+      "context_ref": "contexts/scale_group_06_500k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "8"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 878,
+      "source_event_end_id": 1835,
+      "event_count": 958,
+      "token_count_estimate": 500908,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 500000,
+      "event_start": "d07:beam10m:conv_08:event_00878",
+      "event_end": "d07:beam10m:conv_08:event_01835",
+      "sha256": "aae8331f069ee506cfe9b2bb7acf63ae15b9c6410c639791924f86cb4e15086c"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_07:100k",
+      "context_ref": "contexts/scale_group_07_100k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 3,
+        "conversation_id": "9"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 851,
+      "source_event_end_id": 1057,
+      "event_count": 207,
+      "token_count_estimate": 100221,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 100000,
+      "event_start": "d07:beam10m:conv_09:event_00851",
+      "event_end": "d07:beam10m:conv_09:event_01057",
+      "sha256": "2fadf22daa420c44961613d8dd138e476ca420b3d9bd71c7a33a81f6615a1b31"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_07:10m",
+      "context_ref": "contexts/scale_group_07_10m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 3,
+        "conversation_id": "9"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 851,
+      "source_event_end_id": 21033,
+      "event_count": 20183,
+      "token_count_estimate": 10000088,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_09:event_00851",
+      "event_end": "d07:beam10m:conv_09:event_21033",
+      "sha256": "5cbdeefb2867726b46c1d4f0aba73035c60bec7f8fe9335ae8eb3e98ffd0ec02"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_07:1m",
+      "context_ref": "contexts/scale_group_07_1m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 3,
+        "conversation_id": "9"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 851,
+      "source_event_end_id": 2861,
+      "event_count": 2011,
+      "token_count_estimate": 1000207,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 1000000,
+      "event_start": "d07:beam10m:conv_09:event_00851",
+      "event_end": "d07:beam10m:conv_09:event_02861",
+      "sha256": "57d5febacc7f43265c33e5c33224a3767fbb7730cea62763353bb4ce97eb6dd9"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_07:500k",
+      "context_ref": "contexts/scale_group_07_500k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 3,
+        "conversation_id": "9"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 851,
+      "source_event_end_id": 1885,
+      "event_count": 1035,
+      "token_count_estimate": 500255,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 500000,
+      "event_start": "d07:beam10m:conv_09:event_00851",
+      "event_end": "d07:beam10m:conv_09:event_01885",
+      "sha256": "90fc412fb2dbbc70461399674fd558ffcccfec0007605b0a5bc1c7740bd21328"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_08:100k",
+      "context_ref": "contexts/scale_group_08_100k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 4,
+        "conversation_id": "10"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 7263,
+      "source_event_end_id": 7413,
+      "event_count": 151,
+      "token_count_estimate": 101412,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 100000,
+      "event_start": "d07:beam10m:conv_10:event_07263",
+      "event_end": "d07:beam10m:conv_10:event_07413",
+      "sha256": "25a06ada5dabbb40eae2230d6ee20761163be8837baf1d034078b4fbbb7f6081"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_08:10m",
+      "context_ref": "contexts/scale_group_08_10m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 4,
+        "conversation_id": "10"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 7263,
+      "source_event_end_id": 23501,
+      "event_count": 16239,
+      "token_count_estimate": 10000478,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_10:event_07263",
+      "event_end": "d07:beam10m:conv_10:event_23501",
+      "sha256": "212e06aae6bc77f862da3e1a61ac3524a3ab48b7b38764a14d5d18c97515553b"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_08:1m",
+      "context_ref": "contexts/scale_group_08_1m.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 4,
+        "conversation_id": "10"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 7263,
+      "source_event_end_id": 8851,
+      "event_count": 1589,
+      "token_count_estimate": 1000607,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 1000000,
+      "event_start": "d07:beam10m:conv_10:event_07263",
+      "event_end": "d07:beam10m:conv_10:event_08851",
+      "sha256": "56ac29ce02ae5e58cff054b069b06b9c7722dfdf6f09d84e6406f9255f256dd5"
+    },
+    {
+      "context_id": "d07:beam10m:scale_group_08:500k",
+      "context_ref": "contexts/scale_group_08_500k.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 4,
+        "conversation_id": "10"
+      },
+      "construction": "同一官方10M conversation的连续窗口；固定起点，仅扩大结束边界",
+      "source_event_start_id": 7263,
+      "source_event_end_id": 8075,
+      "event_count": 813,
+      "token_count_estimate": 501112,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 500000,
+      "event_start": "d07:beam10m:conv_10:event_07263",
+      "event_end": "d07:beam10m:conv_10:event_08075",
+      "sha256": "8deeb3d37e52cd6b78a60bd315a168fa0f1d5626229822fca0f9aa72e742230c"
+    },
+    {
+      "context_id": "d07:beam10m:stress_01:10m",
+      "context_ref": "contexts/stress_01_10m_full.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 0,
+        "conversation_id": "1"
+      },
+      "construction": "官方10M conversation完整 chat",
+      "source_event_start_id": 0,
+      "source_event_end_id": 19894,
+      "event_count": 19895,
+      "token_count_estimate": 12341617,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_01:event_00000",
+      "event_end": "d07:beam10m:conv_01:event_19894",
+      "sha256": "7ecea69063c8de8434eea5e3f78e701412c5a9e460cbbae02c0dc1497d4d8cc6"
+    },
+    {
+      "context_id": "d07:beam10m:stress_02:10m",
+      "context_ref": "contexts/stress_02_10m_full.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 1,
+        "conversation_id": "2"
+      },
+      "construction": "官方10M conversation完整 chat",
+      "source_event_start_id": 0,
+      "source_event_end_id": 19056,
+      "event_count": 19057,
+      "token_count_estimate": 11717561,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_02:event_00000",
+      "event_end": "d07:beam10m:conv_02:event_19056",
+      "sha256": "ea3ef02c9ecd2c5fed30951b6fe278a89a9c306f9061605ca44e5374fbb1dccc"
+    },
+    {
+      "context_id": "d07:beam10m:stress_03:10m",
+      "context_ref": "contexts/stress_03_10m_full.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00000-of-00002.parquet",
+        "source_row_index": 2,
+        "conversation_id": "3"
+      },
+      "construction": "官方10M conversation完整 chat",
+      "source_event_start_id": 0,
+      "source_event_end_id": 20191,
+      "event_count": 20192,
+      "token_count_estimate": 12652346,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_03:event_00000",
+      "event_end": "d07:beam10m:conv_03:event_20191",
+      "sha256": "aafb1431a4d71f4fd97f57d7170c7b7c8a4710c4568149a4c768e3ced240ec53"
+    },
+    {
+      "context_id": "d07:beam10m:stress_04:10m",
+      "context_ref": "contexts/stress_04_10m_full.jsonl",
+      "source": {
+        "dataset": "BEAM-10M",
+        "shard": "10m/data/10M-00001-of-00002.parquet",
+        "source_row_index": 0,
+        "conversation_id": "6"
+      },
+      "construction": "官方10M conversation完整 chat",
+      "source_event_start_id": 0,
+      "source_event_end_id": 19957,
+      "event_count": 19958,
+      "token_count_estimate": 11265336,
+      "token_estimator": "ceil(character_count/4) per event",
+      "target_tokens": 10000000,
+      "event_start": "d07:beam10m:conv_06:event_00000",
+      "event_end": "d07:beam10m:conv_06:event_19957",
+      "sha256": "ce4202ac917456389904bbef7df768669bf7cf8ce0fd4928680ca611e8fe9d9c"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d07:beam10m:scale_group_05_1m",
+    "dimension_id": "D07",
+    "dimension_name": "ultra_long_context",
+    "source": {
+      "dataset": "BEAM-10M",
+      "revision": "9b2096193fe74e2837e4713e483351e19817773c",
+      "split": "10M",
+      "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=1/information_extraction[1]"
+    },
+    "identity": {
+      "context_id": "d07:beam10m:scale_group_05:1m",
+      "user_id": "beam10m:conversation_07",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/scale_group_05_1m.jsonl",
+      "event_start": "d07:beam10m:conv_07:event_02291",
+      "event_end": "d07:beam10m:conv_07:event_04211",
+      "event_count": 1921,
+      "token_count": 1000064
+    },
+    "query": {
+      "query_id": "d07:beam10m:scale_group_05_1m:query",
+      "text": "How much did I say dinner cost at the place where Jenna seemed distant?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "medium",
+      "tags": [
+        "d07",
+        "beam-10m",
+        "paired_scale",
+        "information_extraction",
+        "1m"
+      ],
+      "case_kind": "paired_scale",
+      "ability_category": "information_extraction",
+      "source_probe_index": 1,
+      "source_answer_field": "answer",
+      "source_chat_ids": [
+        2318
+      ],
+      "source_rubric": [
+        "LLM response should state: $40"
+      ],
+      "token_estimator": "ceil(character_count/4) per event",
+      "annotation_status": "approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T16:19:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "scale",
+    "payload": {
+      "scale_group_id": "d07:scale_group:05",
+      "scale_level": "1M",
+      "target_tokens": 1000000,
+      "gold_answer": "You said dinner cost $40 at Sea Breeze Cafe last night.",
+      "gold_evidence_ids": [
+        "d07:beam10m:conv_07:event_02318"
+      ],
+      "paired_anchor_id": "d07:beam10m:scale_group_05_100k",
+      "expected_retrievable": true
+    }
+  }
+}

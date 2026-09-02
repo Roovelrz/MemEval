@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d02:lme:e9327a54",
+    "dimension_id": "D02",
+    "dimension_name": "long_term_memory_retrieval",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "e9327a54"
+    },
+    "identity": {
+      "context_id": "d02:lme:e9327a54",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/e9327a54.json",
+      "event_start": "d02:lme:e9327a54:e00000",
+      "event_end": "d02:lme:e9327a54:e00532",
+      "event_count": 533,
+      "token_count": 101632
+    },
+    "query": {
+      "query_id": "e9327a54",
+      "text": "I'm planning to revisit Orlando. I was wondering if you could remind me of that unique dessert shop with the giant milkshakes we talked about last time?",
+      "timestamp": "2023/05/30 (Tue) 19:46"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-assistant",
+      "tags": [
+        "information_extraction",
+        "single-session-assistant",
+        "d02",
+        "retrieval"
+      ],
+      "selection_seed": "d02-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "retrieval",
+    "payload": {
+      "gold_evidence_ids": [
+        "answer_ultrachat_480665"
+      ],
+      "gold_answer": "The Sugar Factory at Icon Park.",
+      "retrieval_k": [
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  }
+}

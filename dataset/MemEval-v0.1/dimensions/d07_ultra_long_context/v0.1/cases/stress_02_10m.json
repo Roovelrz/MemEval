@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d07:beam10m:stress_02_10m",
+    "dimension_id": "D07",
+    "dimension_name": "ultra_long_context",
+    "source": {
+      "dataset": "BEAM-10M",
+      "revision": "9b2096193fe74e2837e4713e483351e19817773c",
+      "split": "10M",
+      "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=1/information_extraction[1]"
+    },
+    "identity": {
+      "context_id": "d07:beam10m:stress_02:10m",
+      "user_id": "beam10m:conversation_02",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/stress_02_10m_full.jsonl",
+      "event_start": "d07:beam10m:conv_02:event_00000",
+      "event_end": "d07:beam10m:conv_02:event_19056",
+      "event_count": 19057,
+      "token_count": 11717561
+    },
+    "query": {
+      "query_id": "d07:beam10m:stress_02_10m:query",
+      "text": "How many points did I simulate when mocking the sensor APIs with unittest.mock?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "easy",
+      "tags": [
+        "d07",
+        "beam-10m",
+        "10m_stress",
+        "information_extraction",
+        "10m"
+      ],
+      "case_kind": "10m_stress",
+      "ability_category": "information_extraction",
+      "source_probe_index": 1,
+      "source_answer_field": "answer",
+      "source_chat_ids": [
+        14703
+      ],
+      "source_rubric": [
+        "LLM response should state: 5,000 points"
+      ],
+      "token_estimator": "ceil(character_count/4) per event",
+      "annotation_status": "approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T16:19:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "scale",
+    "payload": {
+      "scale_group_id": "d07:stress:02",
+      "scale_level": "10M",
+      "target_tokens": 10000000,
+      "gold_answer": "You simulated 5,000 points.",
+      "gold_evidence_ids": [
+        "d07:beam10m:conv_02:event_14703"
+      ],
+      "paired_anchor_id": null,
+      "expected_retrievable": true
+    }
+  }
+}

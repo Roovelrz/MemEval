@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_03:negative",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "1b20e0f944d7665f435e24eb8b76f4d45d83c419",
+      "split": "explicit/train",
+      "source_record_id": "explicit:0108"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:explicit:0108:current",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_03_negative.json",
+      "event_start": "d04:prefeval:explicit:0108:current:preference",
+      "event_end": "d04:prefeval:explicit:0108:current:preference",
+      "event_count": 1,
+      "token_count": 13
+    },
+    "query": {
+      "query_id": "pair_03:negative",
+      "text": "What are some engaging strategy games for me?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "negative",
+      "tags": [
+        "d04",
+        "activation",
+        "negative",
+        "explicit",
+        "entertain_games"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_03",
+      "source_row_index": 108,
+      "source_form": "explicit",
+      "topic": "entertain_games",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [],
+        "answer_criteria_revised": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": false,
+      "required_memory_ids": [],
+      "preference": "I find it tedious to play games that require extensive resource management.",
+      "answer_criteria": {
+        "explanation": "Strategy games often involve resource management as a key mechanic. The assistant should recommend strategy games that focus more on tactics and less on managing resources.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

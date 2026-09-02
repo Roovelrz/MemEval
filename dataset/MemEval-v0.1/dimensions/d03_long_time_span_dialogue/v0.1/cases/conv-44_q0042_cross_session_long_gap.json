@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-44:q0042:cross_session_long_gap",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-44:qa:0042"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-44",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-44.json",
+      "event_start": "d03:locomo:conv-44:D1:1",
+      "event_end": "d03:locomo:conv-44:D28:18",
+      "event_count": 675,
+      "token_count": 19156
+    },
+    "query": {
+      "query_id": "conv-44:qa:0042",
+      "text": "What technique is Audrey using to discipline her dogs?",
+      "timestamp": "2023-11-22T09:02:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "cross_session_long_gap",
+      "tags": [
+        "d03",
+        "temporal",
+        "cross_session_long_gap",
+        "locomo_category_1"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-44",
+      "source_qa_index": 42,
+      "source_category": 1
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "Positive reinforcement",
+      "evidence_event_ids": [
+        "d03:locomo:conv-44:D6:4",
+        "d03:locomo:conv-44:D26:5"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-44:D6:4",
+          "days_before_query": 194
+        },
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-44:D26:5",
+          "days_before_query": 24
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-44:D6:4": "2023-05-11T14:03:00",
+        "d03:locomo:conv-44:D26:5": "2023-10-28T14:36:00"
+      },
+      "query_time": "2023-11-22T09:02:00",
+      "time_gap_days": 194,
+      "lifecycle": {
+        "valid_from": "2023-05-11T14:03:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

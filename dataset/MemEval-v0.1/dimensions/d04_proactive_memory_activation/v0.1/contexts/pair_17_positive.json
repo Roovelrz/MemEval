@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "context_id": "d04:prefeval:implicit_choice:0871:history",
+  "source": {
+    "dataset": "PrefEval",
+    "revision": "319fbe0236a00f40152b27da01a6f86271657db1",
+    "split": "implicit_choice/train",
+    "source_record_id": "implicit_choice:0871"
+  },
+  "events": [
+    {
+      "event_id": "d04:prefeval:implicit_choice:0871:history:conversation_query",
+      "session_id": "d04:prefeval:implicit_choice:0871:history:history",
+      "turn_id": "conversation_query",
+      "order": 0,
+      "timestamp": null,
+      "role": "user",
+      "content": "What are some good hotels for my upcoming trip to Cancun?",
+      "source_ref": "implicit_choice/train.parquet#871/conversation_query",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_query"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0871:history:assistant_options",
+      "session_id": "d04:prefeval:implicit_choice:0871:history:history",
+      "turn_id": "assistant_options",
+      "order": 1,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "Here are some highly-rated hotels in Cancun that you may want to consider:\n1. The Marriott Cancun Resort offers a variety of dining options and à la carte activities.\n2. The Grand Oasis Cancun is an all-inclusive resort with unlimited food and drinks included.\n3. The Paradisus Cancun is an all-inclusive luxury resort with all meals and activities bundled.\n4. The Riu Palace Peninsula is an all-inclusive resort with unlimited food, drinks, and entertainment.",
+      "source_ref": "implicit_choice/train.parquet#871/conversation_assistant_options",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_options"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0871:history:user_selection",
+      "session_id": "d04:prefeval:implicit_choice:0871:history:history",
+      "turn_id": "user_selection",
+      "order": 2,
+      "timestamp": null,
+      "role": "user",
+      "content": "I think the Marriott Cancun Resort sounds like the best fit for me. I prefer hotels that do not offer all-inclusive packages because I like having flexibility in dining and activities.",
+      "source_ref": "implicit_choice/train.parquet#871/conversation_user_selection",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_user_selection",
+        "human_review_revision": {
+          "reviewer": "lrz",
+          "reviewed_at": "2026-09-01T18:00:00+08:00",
+          "review_file": "review/pairs/pair_17.json",
+          "original_content_sha256": "d44216e4c8a2b7048d0fa95939b2aedb2cbfebb99ac36feac2a6541280b252cb",
+          "source_ref_preserved_as_derivation_origin": "implicit_choice/train.parquet#871/conversation_user_selection"
+        }
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0871:history:assistant_acknowledgment",
+      "session_id": "d04:prefeval:implicit_choice:0871:history:history",
+      "turn_id": "assistant_acknowledgment",
+      "order": 3,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "Understood, the Marriott Cancun Resort seems like a great choice for your preferences.",
+      "source_ref": "implicit_choice/train.parquet#871/conversation_assistant_acknowledgment",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_acknowledgment"
+      }
+    }
+  ]
+}

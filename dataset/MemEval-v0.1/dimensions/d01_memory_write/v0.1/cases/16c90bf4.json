@@ -1,0 +1,135 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d01:lme:16c90bf4",
+    "dimension_id": "D01",
+    "dimension_name": "memory_extraction_and_write",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "16c90bf4"
+    },
+    "identity": {
+      "context_id": "d01:lme:16c90bf4",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/16c90bf4.json",
+      "event_start": "d01:lme:16c90bf4:e000",
+      "event_end": "d01:lme:16c90bf4:e015",
+      "event_count": 16,
+      "token_count": 1607
+    },
+    "query": {
+      "query_id": "16c90bf4",
+      "text": "I'm looking back at our previous conversation about the Seco de Cordero recipe from Ancash. You mentioned using a light or medium-bodied beer, but I was wondering if you could remind me what type of beer you specifically recommended?",
+      "timestamp": "2023/05/30 (Tue) 22:48"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-assistant",
+      "tags": [
+        "information_extraction",
+        "single-session-assistant",
+        "d01",
+        "human_review_required"
+      ],
+      "selection_seed": "d01-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "write",
+    "payload": {
+      "scored_event_ids": [
+        "d01:lme:16c90bf4:e000",
+        "d01:lme:16c90bf4:e001",
+        "d01:lme:16c90bf4:e002",
+        "d01:lme:16c90bf4:e003",
+        "d01:lme:16c90bf4:e004",
+        "d01:lme:16c90bf4:e005",
+        "d01:lme:16c90bf4:e006",
+        "d01:lme:16c90bf4:e007",
+        "d01:lme:16c90bf4:e008",
+        "d01:lme:16c90bf4:e009",
+        "d01:lme:16c90bf4:e010",
+        "d01:lme:16c90bf4:e011",
+        "d01:lme:16c90bf4:e012",
+        "d01:lme:16c90bf4:e013",
+        "d01:lme:16c90bf4:e014",
+        "d01:lme:16c90bf4:e015"
+      ],
+      "gold_memories": [
+        {
+          "memory_id": "d01:lme:16c90bf4:m00",
+          "canonical_content": "The user had never tried a lamb stew before discussing Seco de Cordero.",
+          "memory_type": "personal_fact",
+          "evidence_event_ids": [
+            "d01:lme:16c90bf4:e004"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:16c90bf4:m01",
+          "canonical_content": "The user decided to use a Pilsner when making Seco de Cordero.",
+          "memory_type": "decision",
+          "evidence_event_ids": [
+            "d01:lme:16c90bf4:e006"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:16c90bf4:m02",
+          "canonical_content": "The user planned to make Seco de Cordero during the weekend after May 28, 2023.",
+          "memory_type": "plan",
+          "evidence_event_ids": [
+            "d01:lme:16c90bf4:e008"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:16c90bf4:m03",
+          "canonical_content": "The user accepted Arroz con Leche as a suitable dessert for the Seco de Cordero dinner.",
+          "memory_type": "decision",
+          "evidence_event_ids": [
+            "d01:lme:16c90bf4:e009",
+            "d01:lme:16c90bf4:e010"
+          ]
+        },
+        {
+          "memory_id": "d01:lme:16c90bf4:m04",
+          "canonical_content": "The user is interested in trying more classic Peruvian recipes.",
+          "memory_type": "preference",
+          "evidence_event_ids": [
+            "d01:lme:16c90bf4:e010"
+          ]
+        }
+      ],
+      "non_memory_event_ids": [
+        "d01:lme:16c90bf4:e000",
+        "d01:lme:16c90bf4:e001",
+        "d01:lme:16c90bf4:e002",
+        "d01:lme:16c90bf4:e003",
+        "d01:lme:16c90bf4:e005",
+        "d01:lme:16c90bf4:e007",
+        "d01:lme:16c90bf4:e011",
+        "d01:lme:16c90bf4:e012",
+        "d01:lme:16c90bf4:e013",
+        "d01:lme:16c90bf4:e014",
+        "d01:lme:16c90bf4:e015"
+      ]
+    }
+  },
+  "annotation": {
+    "draft_origin": "deterministic_qa_and_personal_sentence_extraction",
+    "human_review_status": "approved",
+    "required": true,
+    "reviewer": "liruizhi",
+    "reviewed_at": "2026-09-01T13:42:46+08:00",
+    "review_notes": [],
+    "checks": {
+      "all_memory_worthy_events_covered": true,
+      "canonical_content_verified": true,
+      "memory_type_verified": true,
+      "non_memory_event_ids_verified": true
+    }
+  }
+}

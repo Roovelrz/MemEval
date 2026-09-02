@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_32k_no48",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:1/question:48"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_32k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_32k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_32k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_32k:context:document_000",
+      "event_count": 1,
+      "token_count": 28007
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_32k_no48",
+      "text": "What is the sport in which Tyrone Willingham specializes and plays a special position on the team?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_32k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 1,
+      "source_question_index": 48,
+      "source_name": "factconsolidation_mh_32k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Tyrone Willingham",
+          "relation": "plays_position",
+          "value": "quarterback",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_00661"
+        },
+        {
+          "step": 2,
+          "subject": "quarterback",
+          "relation": "associated_sport",
+          "value": "Muay Thai",
+          "winning_fact_id": "factconsolidation_mh_32k:fact_01083"
+        }
+      ],
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T15:06:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Muay Thai",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_00332",
+          "value": "American football",
+          "order": 332,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_00661",
+          "value": "quarterback",
+          "order": 661,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_32k:fact_01083",
+          "value": "Muay Thai",
+          "order": 1083,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_32k:fact_00661",
+        "factconsolidation_mh_32k:fact_01083"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_32k:fact_00332"
+      ]
+    }
+  }
+}

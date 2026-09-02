@@ -1,0 +1,148 @@
+{
+  "audit_version": "0.1-post-cleanup",
+  "generated_at": "2026-09-02T17:30:13+08:00",
+  "scope": "D01-D08 正式数据产物、Manifest、哈希、全局标识及 Source Audit",
+  "result": "PASS",
+  "ready_for_source_adapter": true,
+  "summary": {
+    "total_cases": 298,
+    "expected_total_cases": 298,
+    "dimensions_passed": 8,
+    "dimensions_total": 8,
+    "source_audits_passed": 7,
+    "source_audits_total": 7,
+    "global_case_ids_unique": true,
+    "global_query_ids_unique": true
+  },
+  "dimensions": {
+    "D01": {
+      "directory": "datasets\\dimensions\\d01_memory_write\\v0.1",
+      "cases": 37,
+      "contexts": 37,
+      "expected": 37,
+      "expected_contexts": 37,
+      "payload_types": {
+        "write": 37
+      },
+      "declared_hashes_checked": 75,
+      "issues": []
+    },
+    "D02": {
+      "directory": "datasets\\dimensions\\d02_long_term_memory\\v0.1",
+      "cases": 37,
+      "contexts": 37,
+      "expected": 37,
+      "expected_contexts": 37,
+      "payload_types": {
+        "retrieval": 37
+      },
+      "declared_hashes_checked": 75,
+      "issues": []
+    },
+    "D03": {
+      "directory": "datasets\\dimensions\\d03_long_time_span_dialogue\\v0.1",
+      "cases": 38,
+      "contexts": 16,
+      "expected": 38,
+      "expected_contexts": 16,
+      "payload_types": {
+        "temporal": 38
+      },
+      "declared_hashes_checked": 54,
+      "issues": []
+    },
+    "D04": {
+      "directory": "datasets\\dimensions\\d04_proactive_memory_activation\\v0.1",
+      "cases": 38,
+      "contexts": 38,
+      "expected": 38,
+      "expected_contexts": 38,
+      "payload_types": {
+        "activation": 38
+      },
+      "declared_hashes_checked": 77,
+      "issues": []
+    },
+    "D05": {
+      "directory": "datasets\\dimensions\\d05_user_profile_preference\\v0.1",
+      "cases": 37,
+      "contexts": 37,
+      "expected": 37,
+      "expected_contexts": 37,
+      "payload_types": {
+        "profile": 37
+      },
+      "declared_hashes_checked": 75,
+      "issues": []
+    },
+    "D06": {
+      "directory": "datasets\\dimensions\\d06_dynamic_update_conflict\\v0.1",
+      "cases": 37,
+      "contexts": 8,
+      "expected": 37,
+      "expected_contexts": 8,
+      "payload_types": {
+        "conflict": 37
+      },
+      "declared_hashes_checked": 46,
+      "issues": []
+    },
+    "D07": {
+      "directory": "datasets\\dimensions\\d07_ultra_long_context\\v0.1",
+      "cases": 37,
+      "contexts": 36,
+      "expected": 37,
+      "expected_contexts": 36,
+      "payload_types": {
+        "scale": 37
+      },
+      "declared_hashes_checked": 75,
+      "issues": []
+    },
+    "D08": {
+      "directory": "datasets\\dimensions\\d08_privacy_user_isolation\\v0.1",
+      "cases": 37,
+      "contexts": 37,
+      "expected": 37,
+      "expected_contexts": 37,
+      "payload_types": {
+        "privacy": 37
+      },
+      "declared_hashes_checked": 76,
+      "issues": []
+    }
+  },
+  "source_audits": [
+    {
+      "file": "agentmembench.json",
+      "passed": true
+    },
+    {
+      "file": "beam.json",
+      "passed": true
+    },
+    {
+      "file": "locomo.json",
+      "passed": true
+    },
+    {
+      "file": "longmemeval.json",
+      "passed": true
+    },
+    {
+      "file": "memoryagentbench.json",
+      "passed": true
+    },
+    {
+      "file": "personamem_v2.json",
+      "passed": true
+    },
+    {
+      "file": "prefeval.json",
+      "passed": true
+    }
+  ],
+  "duplicate_case_ids": [],
+  "duplicate_query_ids": [],
+  "blockers": []
+}

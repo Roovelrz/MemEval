@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "context_id": "d04:prefeval:implicit_choice:0759:history",
+  "source": {
+    "dataset": "PrefEval",
+    "revision": "319fbe0236a00f40152b27da01a6f86271657db1",
+    "split": "implicit_choice/train",
+    "source_record_id": "implicit_choice:0759"
+  },
+  "events": [
+    {
+      "event_id": "d04:prefeval:implicit_choice:0759:history:conversation_query",
+      "session_id": "d04:prefeval:implicit_choice:0759:history:history",
+      "turn_id": "conversation_query",
+      "order": 0,
+      "timestamp": null,
+      "role": "user",
+      "content": "What laptop should I buy for programming and general use?",
+      "source_ref": "implicit_choice/train.parquet#759/conversation_query",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_query"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0759:history:assistant_options",
+      "session_id": "d04:prefeval:implicit_choice:0759:history:history",
+      "turn_id": "assistant_options",
+      "order": 1,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "When choosing a laptop for programming and general use, there are several good options to consider:\n1. Apple's MacBook Pro is a popular choice for developers.\n2. The Microsoft Surface Laptop 4 is a sleek and powerful option.\n3. The System76 Lemur Pro is a great Linux-based laptop.\n4. The Dell XPS 13 is a well-rounded Windows laptop.",
+      "source_ref": "implicit_choice/train.parquet#759/conversation_assistant_options",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_options"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0759:history:user_selection",
+      "session_id": "d04:prefeval:implicit_choice:0759:history:history",
+      "turn_id": "user_selection",
+      "order": 2,
+      "timestamp": null,
+      "role": "user",
+      "content": "I'll go with the System76 Lemur Pro. I only buy products that support Linux out of the box, so the other options don't fit my needs.",
+      "source_ref": "implicit_choice/train.parquet#759/conversation_user_selection",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_user_selection",
+        "human_review_revision": {
+          "reviewer": "lrz",
+          "reviewed_at": "2026-09-01T18:00:00+08:00",
+          "review_file": "review/pairs/pair_15.json",
+          "original_content_sha256": "58ad3f17c0ee965d45f51931034943b099f5f8122e933abab35c51ec7fe9a77b",
+          "source_ref_preserved_as_derivation_origin": "implicit_choice/train.parquet#759/conversation_user_selection"
+        }
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0759:history:assistant_acknowledgment",
+      "session_id": "d04:prefeval:implicit_choice:0759:history:history",
+      "turn_id": "assistant_acknowledgment",
+      "order": 3,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "Understood, the System76 Lemur Pro is an excellent choice for your requirements.",
+      "source_ref": "implicit_choice/train.parquet#759/conversation_assistant_acknowledgment",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_acknowledgment"
+      }
+    }
+  ]
+}

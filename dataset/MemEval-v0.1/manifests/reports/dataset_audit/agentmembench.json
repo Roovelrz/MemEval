@@ -1,0 +1,212 @@
+{
+  "audit_version": "0.2",
+  "dataset": "agentmembench",
+  "generated_at": "2026-09-01T11:36:14+08:00",
+  "audit_scope": {
+    "raw_dataset_audit": true,
+    "common_envelope_implemented": false,
+    "canonical_event_adapter_implemented": false,
+    "note": "Sections 5-7 are assessed only for future mapping readiness; no adapter output is claimed."
+  },
+  "issues": [],
+  "limitations": [
+    "Source conversation turns are absent from this release, so local turn-level evidence existence is not claimed; validation is limited to syntax and pinned upstream release attestation."
+  ],
+  "total_records": 9170,
+  "fields": [
+    "annotator_backend",
+    "annotator_model",
+    "language",
+    "memory_events",
+    "prompt_version",
+    "record_id",
+    "session_id",
+    "source_dataset",
+    "source_id",
+    "source_license",
+    "verifier_version"
+  ],
+  "event_fields": [
+    "event_type",
+    "evidence_turn_indices",
+    "ground_truth",
+    "query",
+    "raw_text",
+    "release_verified",
+    "turn_idx"
+  ],
+  "field_types": {
+    "annotator_backend": [
+      "str"
+    ],
+    "annotator_model": [
+      "str"
+    ],
+    "language": [
+      "str"
+    ],
+    "memory_events": [
+      "list"
+    ],
+    "prompt_version": [
+      "str"
+    ],
+    "record_id": [
+      "str"
+    ],
+    "session_id": [
+      "str"
+    ],
+    "source_dataset": [
+      "str"
+    ],
+    "source_id": [
+      "str"
+    ],
+    "source_license": [
+      "str"
+    ],
+    "verifier_version": [
+      "str"
+    ]
+  },
+  "null_ratio": {
+    "annotator_backend": 0.0,
+    "annotator_model": 0.0,
+    "language": 0.0,
+    "memory_events": 0.0,
+    "prompt_version": 0.0,
+    "record_id": 0.0,
+    "session_id": 0.0,
+    "source_dataset": 0.0,
+    "source_id": 0.0,
+    "source_license": 0.0,
+    "verifier_version": 0.0
+  },
+  "unique_ids": {
+    "record_ids": 9170,
+    "session_ids": 8607
+  },
+  "duplicate_record_ids": 0,
+  "duplicate_full_records": 0,
+  "context_length_chars": {
+    "count": 9170,
+    "min": 21.0,
+    "p50": 118.0,
+    "p95": 170.0,
+    "max": 282.0,
+    "mean": 117.11046892039259
+  },
+  "session_record_count_distribution": {
+    "count": 8607,
+    "min": 1.0,
+    "p50": 1.0,
+    "p95": 2.0,
+    "max": 3.0,
+    "mean": 1.065411874056001
+  },
+  "turn_count_distribution": {
+    "applicable": false,
+    "reason": "The released records contain extracted memory events but omit the source conversation turns."
+  },
+  "event_count_distribution": {
+    "count": 9170,
+    "min": 1.0,
+    "p50": 1.0,
+    "p95": 1.0,
+    "max": 1.0,
+    "mean": 1.0
+  },
+  "counts": {
+    "questions": 9170,
+    "answers": 9170,
+    "events": 9170
+  },
+  "evidence": {
+    "indices": 13068,
+    "syntactically_valid": 13068,
+    "syntactic_valid_rate": 1.0,
+    "resolvable_to_source_turn": null,
+    "reason": "Upstream conversation turns are intentionally not included, so existence cannot be checked locally."
+  },
+  "timestamps": {
+    "available": false,
+    "parseable_rate": null
+  },
+  "categories": {
+    "PERSONAL_FACT": 2170,
+    "TASK_REQUEST": 7000
+  },
+  "users": {
+    "native_user_id": false,
+    "unique_source_sessions": 8607
+  },
+  "release_verification": {
+    "verified_events": 9170,
+    "total_events": 9170,
+    "all_verified": true
+  },
+  "upstream_meta_consistency": {
+    "meta_records": 9170,
+    "audit_records": 9170,
+    "local_records": 9170,
+    "upstream_audit_passed": true,
+    "upstream_violations": []
+  },
+  "malformed_jsonl_lines": [],
+  "array_checks": {
+    "evidence_turn_indices_are_non_negative_integers": true,
+    "evidence_index_count": 13068
+  },
+  "mapping_readiness": {
+    "common_envelope": "record_id/session_id/source_id are available; user_id/tenant_id/timestamp remain null",
+    "context_ref": "recommended when grouping multiple records by source session",
+    "canonical_event": "event content/query/gold/evidence indices exist, but source role/timestamp are absent and must not be fabricated"
+  },
+  "quality_resolution": {
+    "evidence_scope_valid": true,
+    "validation_scope": "syntactic_plus_upstream_release_attestation",
+    "raw_source_turns_in_release": false,
+    "resolution": "validate index syntax, release_verified, source provenance, record counts, and the bundled upstream audit; do not claim local turn-level existence or fabricate omitted turns"
+  },
+  "download_integrity": {
+    "manifest_path": "E:\\LRZ_Workplace\\fork\\datasets\\manifests\\agentmembench.yaml",
+    "exists": true,
+    "required_fields_present": true,
+    "files_listed": 3,
+    "actual_files": 3,
+    "hashes_checked": 3,
+    "missing_files": [],
+    "extra_files": [],
+    "hash_mismatches": [],
+    "full_revisions_valid": true,
+    "source_revision": "186c9a54edd47aae42d8b6990520f8e902b60303",
+    "license": "ODC-BY-1.0"
+  },
+  "section_4_checklist": {
+    "checks": {
+      "total_records": "complete",
+      "fields": "complete",
+      "field_types": "complete",
+      "null_ratio": "complete",
+      "unique_ids": "complete",
+      "duplicate_records": "complete",
+      "context_length_distribution": "complete",
+      "session_count_distribution": "complete",
+      "turn_count_distribution": "complete",
+      "question_count": "complete",
+      "answer_count": "complete",
+      "evidence_parseability": "complete",
+      "timestamp_parseability": "complete",
+      "category_counts": "complete",
+      "user_counts": "complete",
+      "anomalous_records": "complete",
+      "array_field_checks": "complete"
+    },
+    "all_required_checks_complete": true,
+    "missing_checks": [],
+    "note": "Not-applicable source semantics are complete only when the report states the reason explicitly."
+  },
+  "status": "pass",
+  "issue_counts": {}
+}

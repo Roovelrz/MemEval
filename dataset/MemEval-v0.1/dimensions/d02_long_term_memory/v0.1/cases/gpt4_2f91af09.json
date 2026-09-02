@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d02:lme:gpt4_2f91af09",
+    "dimension_id": "D02",
+    "dimension_name": "long_term_memory_retrieval",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "gpt4_2f91af09"
+    },
+    "identity": {
+      "context_id": "d02:lme:gpt4_2f91af09",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/gpt4_2f91af09.json",
+      "event_start": "d02:lme:gpt4_2f91af09:e00000",
+      "event_end": "d02:lme:gpt4_2f91af09:e00514",
+      "event_count": 515,
+      "token_count": 103024
+    },
+    "query": {
+      "query_id": "gpt4_2f91af09",
+      "text": "How many total pieces of writing have I completed since I started writing again three weeks ago, including short stories, poems, and pieces for the writing challenge?",
+      "timestamp": "2023/05/30 (Tue) 17:14"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-session",
+      "tags": [
+        "multi_session_reasoning",
+        "multi-session",
+        "d02",
+        "retrieval"
+      ],
+      "selection_seed": "d02-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "retrieval",
+    "payload": {
+      "gold_evidence_ids": [
+        "answer_669318cf_2",
+        "answer_669318cf_1",
+        "answer_669318cf_3"
+      ],
+      "gold_answer": "23",
+      "retrieval_k": [
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  }
+}

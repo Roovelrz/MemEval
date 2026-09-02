@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-48:q0071:native_temporal",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-48:qa:0071"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-48",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-48.json",
+      "event_start": "d03:locomo:conv-48:D1:1",
+      "event_end": "d03:locomo:conv-48:D30:18",
+      "event_count": 681,
+      "token_count": 16810
+    },
+    "query": {
+      "query_id": "conv-48:qa:0071",
+      "text": "When did Deborah go to a community meetup?",
+      "timestamp": "2023-09-20T10:17:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "native_temporal",
+      "tags": [
+        "d03",
+        "temporal",
+        "native_temporal",
+        "locomo_category_2"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-48",
+      "source_qa_index": 71,
+      "source_category": 2
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "last week of August 2023",
+      "evidence_event_ids": [
+        "d03:locomo:conv-48:D24:1"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-48:D24:1",
+          "days_before_query": 16
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-48:D24:1": "2023-09-03T14:14:00"
+      },
+      "query_time": "2023-09-20T10:17:00",
+      "time_gap_days": 16,
+      "lifecycle": {
+        "valid_from": "2023-09-03T14:14:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

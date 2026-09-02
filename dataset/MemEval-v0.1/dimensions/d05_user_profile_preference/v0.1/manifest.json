@@ -1,0 +1,195 @@
+{
+  "schema_version": "0.1",
+  "dimension_id": "D05",
+  "dimension_name": "user_profile_preference",
+  "version": "v0.1",
+  "build_status": "complete",
+  "source": {
+    "dataset": "PersonaMem-v2",
+    "repository": "bowen-upenn/PersonaMem-v2",
+    "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+    "license": "CC-BY-4.0",
+    "benchmark_file": "benchmark/text/benchmark.csv",
+    "history_scope": "data/chat_history_32k",
+    "excluded": [
+      "train",
+      "val",
+      "128K",
+      "multimodal"
+    ]
+  },
+  "selection": {
+    "seed": "d05-v0.1-20260901",
+    "persona_count": 37,
+    "profile_items_per_persona": 3,
+    "required_source_pref_types": [
+      "stereotypical_pref",
+      "anti_stereotypical_pref",
+      "neutral_preferences",
+      "therapy_background",
+      "health_and_medical_conditions"
+    ],
+    "filter": {
+      "who": [
+        "self",
+        "user"
+      ],
+      "updated": false,
+      "sensitive_info": false
+    },
+    "timestamp_policy": "native unavailable; preserve null and do not use filename timestamps",
+    "system_prompt_policy": "excluded because it contains the full generated persona",
+    "post_review_policy": "Human review found systematic semantic overstatement; retain 3 directly supported items per persona, conservatively rewrite only flagged values, and switch target/query/gold when needed."
+  },
+  "metrics": [
+    "Profile Precision",
+    "Preference Recall",
+    "Profile Consistency",
+    "Personalized Answer Accuracy"
+  ],
+  "counts": {
+    "contexts": 37,
+    "cases": 37,
+    "personas": 37,
+    "profile_items": 111,
+    "review_cases": 37
+  },
+  "validation": {
+    "checks": {
+      "case_count_is_37": true,
+      "context_count_is_37": true,
+      "persona_ids_unique": true,
+      "profile_item_count_is_3_after_review": true,
+      "profile_ids_unique": true,
+      "evidence_refs_valid": true,
+      "target_preference_ids_valid": true,
+      "all_source_rows_stable_non_sensitive_self": true,
+      "no_system_prompt_events": true,
+      "no_artificial_timestamps": true,
+      "no_gold_leakage_in_context_metadata": true,
+      "all_human_review_issues_resolved": true,
+      "original_review_submission_preserved": true,
+      "repair_provenance_complete": true
+    },
+    "target_pref_type_counts": {
+      "neutral_preferences": 16,
+      "therapy_background": 8,
+      "stereotypical_pref": 5,
+      "anti_stereotypical_pref": 5,
+      "health_and_medical_conditions": 3
+    },
+    "review_status_counts": {
+      "approved_after_repair": 37
+    }
+  },
+  "human_review": {
+    "required": true,
+    "required_cases": 37,
+    "approved_cases": 37,
+    "issues_found_cases": 37,
+    "repaired_cases": 37,
+    "status": "complete_after_repair",
+    "reviewers": [
+      "lrz"
+    ],
+    "submission_label": "D05_human_review_all_37_lrz",
+    "repairer": "codex",
+    "repaired_at": "2026-09-01T18:13:25+08:00",
+    "repair_summary": {
+      "targets_changed": 22,
+      "profile_values_rewritten": 55,
+      "gold_answers_rewritten": 9,
+      "profile_items_dropped": 74
+    }
+  },
+  "pre_review_validation": {
+    "status": "needs_revision",
+    "cases": 37,
+    "issue": "Exact string resolution did not guarantee semantic support for the source preference label."
+  },
+  "file_hashes": {
+    "cases/persona_039.json": "a6bf101ff938b4e77613e9ce09dd45c24056797d7ad41692862178d4525efff2",
+    "cases/persona_054.json": "c257e58c12ff461551ef28005b11ca99161e05988da8b76fb9cec9837c01e913",
+    "cases/persona_055.json": "b0795fcf69d5d6504d16310bf7abae6fe4e7ffd4d35b0e8f1922b4d0c3a795dc",
+    "cases/persona_078.json": "ab231a7d8f02ffc1897de06cb076e504031904b061fc6064e975e70c54d473a5",
+    "cases/persona_120.json": "8d4bd4b946e486554f9a1e3c46d7d1a53c41f8c2c10e80c58280b746dcc1722c",
+    "cases/persona_139.json": "560d238863983d8dda28dff4c4a8e098b03e661e2e29d5ec16ee9897132964d4",
+    "cases/persona_209.json": "79573ac83dcdb869c2f62834c47c5c2e1929b8d1d07bec26c846ae7c8352c0e3",
+    "cases/persona_218.json": "80d14ead07bd2b28c749e4ca66c89cf1bc87aa41401338a6bb8c8c88345b01a5",
+    "cases/persona_235.json": "d064488ee97b2388d893cdbb1598d2e3d80b806de9ad900a8ff6618e90fb6487",
+    "cases/persona_237.json": "202afea0698170b50da848795f5fd99e17b9eeb7a7ff8b62c21626b7a9f944ff",
+    "cases/persona_377.json": "2bfd092d2339f8c768ad2a5f7eca6044a226ced2b543ba3f1f2b95cb160474c7",
+    "cases/persona_382.json": "de06fa7a38564ab85c1773e96c0a34eee16815b9a5e19c6c89ed5707209f78f1",
+    "cases/persona_425.json": "3e15085e898d5137c6c8be5d80617497a14c52d4f01de3c0ed23175fe8dbb5dc",
+    "cases/persona_429.json": "b960d6af277e0f14e2d264625043d48ccab83a592d28997a74daeea9ee14c903",
+    "cases/persona_462.json": "460c07b54e1f157126ebf6d3b6a0687fa81dcd721d4ae5e2553172b36b941354",
+    "cases/persona_493.json": "c2b5ff97f5de2508d9dbc965c066630134cb4f0135583a122eaa7b191f46224a",
+    "cases/persona_599.json": "c7d92f3aaa8f726180c467e9dc966702d74b348c1ab9f28a4253de5b2dcf03dd",
+    "cases/persona_601.json": "9efc712f486e13728c968b53e2dc8d547b2b209d1ca1cc687dc93015815fc209",
+    "cases/persona_635.json": "c84936fa252ba23e0345b23050cf3248f5ffa66c0db4c9e61dd7471028ab0184",
+    "cases/persona_652.json": "1891f72d133f7c56cfb74fd47793ec0c453d4feea1aa336ede3e26cf6b1d8517",
+    "cases/persona_679.json": "22976669b8804bb01d95291f3d9f5cb910d00744de11a191eda1becfb6fd8452",
+    "cases/persona_714.json": "54c69e8495ce6e1a490a8917101629813dc500dd5b245c25b4805d91a4b13011",
+    "cases/persona_721.json": "0a51e031c8191487a202bd047a75be2a00f717e4e410edf2991e3ca2e3cce6cd",
+    "cases/persona_764.json": "71cc5068f4c9b37355ebb04191e242f80b3036fa16531b24e359c29f5322fc5a",
+    "cases/persona_787.json": "e234b07dfb0d87064f8af591f2ac6f034f1f2e293f0cd2f54bf8083c9dfe1fe0",
+    "cases/persona_800.json": "dc4f1262c1717bccb37b124e34279da66484f85603d04362e4e80d59fc450002",
+    "cases/persona_810.json": "7e8dce69f7bb9ee258e5188b565bfe2fdded55df4e4c854687a182ca0b964683",
+    "cases/persona_822.json": "33f54b15bc2a06b3010d4d763c56d9a9d50591f1f918d629feed34fd93a5a784",
+    "cases/persona_837.json": "143b087997622116d7b4be6f6b872a4dd3034e22e082494e09e4a3207191967a",
+    "cases/persona_845.json": "fb074f56a263116633859f899bbde8f8cf57ea1a076638b13b8039596c90f2df",
+    "cases/persona_849.json": "6e3559f4c8b29b6211483063f278f2bc880e5d7877d209abf1dd4cc43bbaee63",
+    "cases/persona_867.json": "2a1d42fa27b22d46c3c06fecda4f928166f672115cdf6d5c4dedcbcef5490e3e",
+    "cases/persona_879.json": "5f1a936907461a2ab45ee3831ff5a73a6ec17f553a658de3864859bc858cb17e",
+    "cases/persona_938.json": "7810709162ca1b14417655cf2418720a81864a639d576a1e5bb5af0f9c06c8a5",
+    "cases/persona_978.json": "ff372203a18b571a623dae3e7b1f90ba1cb05d5a4c7d85bf4531d4672286295c",
+    "cases/persona_986.json": "af07586d0da8cad58b61867e5f1ffbba0b906f5f47a3281da2e8db4d7db716bf",
+    "cases/persona_989.json": "9ebe895f15169b25ecf8c852de2e97fbb5f1f23262386dcf306d19e27d2c34b7",
+    "contexts/persona_039.json": "b71f9c0836539be06b5cf4f75b16d56c6c01867c6f532128a4f80c9becf799ea",
+    "contexts/persona_054.json": "63f48796ac8180431e6564bcac88547ecd29c3c7e852b3c134c385108487051c",
+    "contexts/persona_055.json": "33c554fbe368ecbce01b5cb6bb7558ff9a03cbc11aef5e672453282c355e6920",
+    "contexts/persona_078.json": "b1720e7c9d02e9e074c6af0baea62bf2905aa24e8ecee25a91cf37139a73f3e2",
+    "contexts/persona_120.json": "eebde9c89f5e3b8c6db782dbd85f43b6618a1b33a2e19a2dd0af0f6ef4ce8a5e",
+    "contexts/persona_139.json": "adae40212017b1825c85ec72cabb00626d947a7450c167630212799616f03123",
+    "contexts/persona_209.json": "a87806f8a0c0a4734a4b6aef7892fed19b56bdd7086e49de8f8bb4a7612d429b",
+    "contexts/persona_218.json": "2184cbb413cdab0bf9e5fda4a7aeec3f60d66296dff617fe1738cc78fbe0c374",
+    "contexts/persona_235.json": "148550a3cf281f55586bbf2360ae00faa28a02931e0f98f02d306e99851c14cd",
+    "contexts/persona_237.json": "b63491fedf2d7fdd471bfd2c2a942c9d301a43cdd723d3f7f4a2a5557aae48b3",
+    "contexts/persona_377.json": "413084e3617fac3fe94070e2a056eb314a07497d6ce6160d9420c25fea06784a",
+    "contexts/persona_382.json": "d0df12396c3ee6ab44d91ebe3ca0abd547b513379da2619347af9380348f6307",
+    "contexts/persona_425.json": "da312d7b2eaa799f64c822c8560fa920be0bd6c00ce5c2ed5b70f89b09237d8a",
+    "contexts/persona_429.json": "4a2ba1f652f0a776cc1bfac1deec3cf45b8ffdb40d1748897334c160571f7f83",
+    "contexts/persona_462.json": "617eff7e511807df3370d15f0d9339c41e02fc79f271076aa22e603fde802b0a",
+    "contexts/persona_493.json": "1f0a1219fb4e127767e90c475ac0b8ddc7a3fc47233a151f955229dd74da5191",
+    "contexts/persona_599.json": "45269b65419116f8ad8fe341dfc1d23a82d6644c2793e4d48d6ddae24a38a2dd",
+    "contexts/persona_601.json": "e88a0db2049f117eb8ea7aa71a90a0404ef7e314c8a3827495de3fef94131e03",
+    "contexts/persona_635.json": "f6a02ca0d95790c78670ce94a4e6a0967ee2a04df07f7bc93b7927c0f452c91f",
+    "contexts/persona_652.json": "9263d32577fa762a8edebe9f52ac74e15924b27ae2e92b05bdcde9a1e2eb6886",
+    "contexts/persona_679.json": "f7e7105c1285ad01e9ef337918d4bdbeaf4c83eceea0063e816abb6c652714af",
+    "contexts/persona_714.json": "9c0b4fb9ba75cc0e4c0358042a9b622a59cd9923ef856c5a6cc508e0df350940",
+    "contexts/persona_721.json": "68c154e739643801a49ec01d412bd98c3bdf57d5f9f6e9eb296e66ecec224b1c",
+    "contexts/persona_764.json": "42c40f1e03603b729dbd78df100e4457ed13e14cebd3acdc084afeb50dfbc1ff",
+    "contexts/persona_787.json": "73cf63b858f97c3f896304daf00790f056a2068ada9bed4f9d55f6a7be6b6387",
+    "contexts/persona_800.json": "493f1b98bed2841c64f43a4756bf649ec8b58baba8614e3480425b383763b714",
+    "contexts/persona_810.json": "eb8ddf3bb3e3d430b6dcd932e06ccaa243ad6ad0124592c43e0f70f3798c7129",
+    "contexts/persona_822.json": "95a8cd65a0e966cdb7140d0f9fbc7685b80415c6a3ac87dbbddaad0c67c68e18",
+    "contexts/persona_837.json": "381f62d787526280013fa46470fc1620ac141755c0826ba0e1835ecbb3f2800f",
+    "contexts/persona_845.json": "2889699c9556f9550f968e399b3d6d88902759b844ae940560ea8419da29724a",
+    "contexts/persona_849.json": "8722a3ea141c52df23229f642c0f232fb68e6cf8c79c4fe8042c01b493b39809",
+    "contexts/persona_867.json": "6c3e83d8cf14ed648e404393aea8c34acd9d7fbfb496dbcabcd1f47f2d5fbf8a",
+    "contexts/persona_879.json": "5702ea8b4ba5f0b0f97b4abe81fbf58dba179844b99b169212876080c13fad1c",
+    "contexts/persona_938.json": "e8fbb81a43f44aca19539f41f5a2d06bbce2a48de94e56d27f494db4a14fb570",
+    "contexts/persona_978.json": "b7944cfba123799892cffd1dabbdd8508203c3298e122bda4e91c1b61ce516db",
+    "contexts/persona_986.json": "246c228e1b00d24b219b4999b9be8d84bd0d13b5a634585dd0c59e212e181cae",
+    "contexts/persona_989.json": "5a9f638d8959e024c0ec659d72bd9d90b382fb8afe972723d7585566e04f5788",
+    "README.md": "0e3077571bf7f6a14df1102e23f3bcc38dc359fc879fe8952b67729503406095"
+  },
+  "review_cleanup": {
+    "status": "removed_after_final_benchmark_audit",
+    "removed_at": "2026-09-02T17:28:41+08:00",
+    "original_file_count": 76,
+    "original_size_bytes": 1875463,
+    "original_tree_sha256": "0dca4bccba2825141ade05001295aa22100e8407623314f6974f01b49ff350e3",
+    "conclusions_retained_in_cases_and_manifest": true
+  }
+}

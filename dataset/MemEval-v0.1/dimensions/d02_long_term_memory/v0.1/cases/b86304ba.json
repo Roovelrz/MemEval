@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d02:lme:b86304ba",
+    "dimension_id": "D02",
+    "dimension_name": "long_term_memory_retrieval",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "b86304ba"
+    },
+    "identity": {
+      "context_id": "d02:lme:b86304ba",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/b86304ba.json",
+      "event_start": "d02:lme:b86304ba:e00000",
+      "event_end": "d02:lme:b86304ba:e00455",
+      "event_count": 456,
+      "token_count": 98680
+    },
+    "query": {
+      "query_id": "b86304ba",
+      "text": "How much is the painting of a sunset worth in terms of the amount I paid for it?",
+      "timestamp": "2023/05/30 (Tue) 23:18"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-user",
+      "tags": [
+        "information_extraction",
+        "single-session-user",
+        "d02",
+        "retrieval"
+      ],
+      "selection_seed": "d02-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "retrieval",
+    "payload": {
+      "gold_evidence_ids": [
+        "answer_645b0329"
+      ],
+      "gold_answer": "The painting is worth triple what I paid for it.",
+      "retrieval_k": [
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  }
+}

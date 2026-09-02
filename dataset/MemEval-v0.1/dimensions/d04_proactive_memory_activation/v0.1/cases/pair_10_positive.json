@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_10:positive",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "2c4b0ca892ec350e67ff6358135f772482514ad0",
+      "split": "implicit_persona/train",
+      "source_record_id": "implicit_persona:0524"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:implicit_persona:0524:history",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_10_positive.json",
+      "event_start": "d04:prefeval:implicit_persona:0524:history:turn_00_user",
+      "event_end": "d04:prefeval:implicit_persona:0524:history:turn_05_assistant",
+      "event_count": 12,
+      "token_count": 766
+    },
+    "query": {
+      "query_id": "pair_10:positive",
+      "text": "How can I manage my dog's behavior?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "positive",
+      "tags": [
+        "d04",
+        "activation",
+        "positive",
+        "implicit_persona",
+        "pet_ownership"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_10",
+      "source_row_index": 524,
+      "source_form": "implicit_persona",
+      "topic": "pet_ownership",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [],
+        "answer_criteria_revised": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": true,
+      "required_memory_ids": [
+        "d04:prefeval:implicit_persona:0524:history:turn_02_user"
+      ],
+      "preference": "I don't want to crate train my dog because I find it restrictive.",
+      "answer_criteria": {
+        "explanation": "Crate training might be a typical suggestion, but the assistant should offer alternatives like creating a safe room or using pet gates to limit access to certain areas.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

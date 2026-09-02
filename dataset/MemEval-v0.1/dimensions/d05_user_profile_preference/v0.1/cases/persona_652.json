@@ -1,0 +1,169 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:652:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:1905"
+    },
+    "identity": {
+      "context_id": "d05:personamem:652:history",
+      "user_id": "personamem:652",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_652.json",
+      "event_start": "d05:personamem:652:history:event_0001",
+      "event_end": "d05:personamem:652:history:event_0235",
+      "event_count": 235,
+      "token_count": 29168
+    },
+    "query": {
+      "query_id": "personamem:652:benchmark:1905",
+      "text": "Do you have suggestions for interesting community events or gatherings I could check out this month?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "health_and_medical_conditions"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "652",
+      "target_source_row_index": 1905,
+      "target_pref_type": "stereotypical_pref",
+      "target_topic": "Community",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona652.json",
+      "raw_persona_file": "data/raw_data/raw_data_250820_224501_persona652.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": true,
+        "gold_answer_rewritten": true,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:652:profile:item_01",
+          "slot": "preference",
+          "value": "Has attended a gathering connected to a local historical society.",
+          "evidence_event_ids": [
+            "d05:personamem:652:history:event_0029",
+            "d05:personamem:652:history:event_0030",
+            "d05:personamem:652:history:event_0031",
+            "d05:personamem:652:history:event_0032"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1905,
+            "source_pref_type": "stereotypical_pref",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona652.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1905",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_652.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Attends local historical society meetings",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_01"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:652:profile:item_02",
+          "slot": "preference",
+          "value": "Has compared murals from different places.",
+          "evidence_event_ids": [
+            "d05:personamem:652:history:event_0019",
+            "d05:personamem:652:history:event_0020",
+            "d05:personamem:652:history:event_0021",
+            "d05:personamem:652:history:event_0022"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1922,
+            "source_pref_type": "anti_stereotypical_pref",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona652.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1922",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_652.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Follows international street art culture",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_02"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:652:profile:item_04",
+          "slot": "personal_fact",
+          "value": "Has attended village gatherings less often since no longer going with Klára and feels hesitant about sitting alone.",
+          "evidence_event_ids": [
+            "d05:personamem:652:history:event_0150",
+            "d05:personamem:652:history:event_0151"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1916,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250820_224501_persona652.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1916",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_652.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Lost his wife of 46 years to cancer, leading to deep feelings of loneliness and an ongoing struggle with grief.",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        }
+      ],
+      "gold_answer": "Look for local-history lectures, village-hall exhibitions, archive open days, heritage walks, or community discussions of newly discovered records. Because schedules change, check the organizers' or council's current calendar before making plans.",
+      "target_preference_ids": [
+        "d05:personamem:652:profile:item_01"
+      ]
+    }
+  }
+}

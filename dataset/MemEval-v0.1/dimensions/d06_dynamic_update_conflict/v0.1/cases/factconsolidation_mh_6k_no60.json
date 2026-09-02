@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_6k_no60",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:0/question:60"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_6k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_6k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_6k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_6k:context:document_000",
+      "event_count": 1,
+      "token_count": 5437
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_6k_no60",
+      "text": "What is the place of death of the performer of the song collection \"Back to Black\"?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_6k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 0,
+      "source_question_index": 60,
+      "source_name": "factconsolidation_mh_6k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Back to Black",
+          "relation": "performed_by",
+          "value": "Frank Zappa",
+          "winning_fact_id": "factconsolidation_mh_6k:fact_00318"
+        },
+        {
+          "step": 2,
+          "subject": "Frank Zappa",
+          "relation": "died_in",
+          "value": "Berlin",
+          "winning_fact_id": "factconsolidation_mh_6k:fact_00051"
+        }
+      ],
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T15:06:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Berlin",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00037",
+          "value": "Los Angeles",
+          "order": 37,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00051",
+          "value": "Berlin",
+          "order": 51,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00288",
+          "value": "Amy Winehouse",
+          "order": 288,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00318",
+          "value": "Frank Zappa",
+          "order": 318,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_6k:fact_00318",
+        "factconsolidation_mh_6k:fact_00051"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_6k:fact_00288",
+        "factconsolidation_mh_6k:fact_00037"
+      ]
+    }
+  }
+}

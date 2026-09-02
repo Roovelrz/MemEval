@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_64k_no73",
+    "dimension_id": "D06",
+    "dimension_name": "dynamic_update_conflict",
+    "source": {
+      "dataset": "MemoryAgentBench",
+      "revision": "7ea066982b140a19337e17e60d45d4076e042faf",
+      "split": "Conflict_Resolution",
+      "source_record_id": "row:2/question:73"
+    },
+    "identity": {
+      "context_id": "d06:memoryagentbench:factconsolidation_mh_64k:context",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/factconsolidation_mh_64k.json",
+      "event_start": "d06:memoryagentbench:factconsolidation_mh_64k:context:document_000",
+      "event_end": "d06:memoryagentbench:factconsolidation_mh_64k:context:document_000",
+      "event_count": 1,
+      "token_count": 55762
+    },
+    "query": {
+      "query_id": "factconsolidation_mh_64k_no73",
+      "text": "What is the country of origin of the sport represented by Liga Profesional de Baloncesto?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "multi-hop",
+      "tags": [
+        "d06",
+        "dynamic-update",
+        "conflict",
+        "multi-hop",
+        "factconsolidation_mh_64k"
+      ],
+      "selection_seed": "d06-v0.1-20260902",
+      "source_row_index": 2,
+      "source_question_index": 73,
+      "source_name": "factconsolidation_mh_64k",
+      "source_question_type": null,
+      "question_type_policy": "原始 question_types 为空；仅由官方 source 名称中的 sh/mh 派生",
+      "question_date": null,
+      "annotation_status": "approved_after_replacement",
+      "reasoning_path": [
+        {
+          "step": 1,
+          "subject": "Liga Profesional de Baloncesto",
+          "relation": "associated_sport",
+          "value": "basketball",
+          "winning_fact_id": "factconsolidation_mh_64k:fact_02287"
+        },
+        {
+          "step": 2,
+          "subject": "basketball",
+          "relation": "created_in_country",
+          "value": "Soviet Union",
+          "winning_fact_id": "factconsolidation_mh_64k:fact_04421"
+        }
+      ],
+      "human_review": {
+        "status": "approved_after_replacement",
+        "reviewer": "codex",
+        "reviewed_at": "2026-09-02T15:30:56+08:00",
+        "replaces": "factconsolidation_mh_64k_no21",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "conflict",
+    "payload": {
+      "gold_answer": "Soviet Union",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_02287",
+          "value": "basketball",
+          "order": 2287,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_04158",
+          "value": "United States of America",
+          "order": 4158,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_64k:fact_04421",
+          "value": "Soviet Union",
+          "order": 4421,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_64k:fact_02287",
+        "factconsolidation_mh_64k:fact_04421"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_64k:fact_04158"
+      ]
+    }
+  }
+}

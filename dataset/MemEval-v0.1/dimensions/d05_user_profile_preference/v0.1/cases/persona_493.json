@@ -1,0 +1,171 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:493:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:1796"
+    },
+    "identity": {
+      "context_id": "d05:personamem:493:history",
+      "user_id": "personamem:493",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_493.json",
+      "event_start": "d05:personamem:493:history:event_0001",
+      "event_end": "d05:personamem:493:history:event_0223",
+      "event_count": 223,
+      "token_count": 30932
+    },
+    "query": {
+      "query_id": "personamem:493:benchmark:1796",
+      "text": "I’m planning a weekend in a big city and want to make the most of the evenings—what are some unique activities or events I should look into?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "anti_stereotypical_pref"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "493",
+      "target_source_row_index": 1796,
+      "target_pref_type": "neutral_preferences",
+      "target_topic": "travel",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona493.json",
+      "raw_persona_file": "data/raw_data/raw_data_250819_225921_persona493.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": true,
+        "gold_answer_rewritten": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:493:profile:item_03",
+          "slot": "preference",
+          "value": "Appreciates contemporary theater performances",
+          "evidence_event_ids": [
+            "d05:personamem:493:history:event_0031",
+            "d05:personamem:493:history:event_0032",
+            "d05:personamem:493:history:event_0033",
+            "d05:personamem:493:history:event_0034"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1796,
+            "source_pref_type": "neutral_preferences",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250819_225921_persona493.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1796",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_493.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Appreciates contemporary theater performances",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_03"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:493:profile:item_04",
+          "slot": "personal_fact",
+          "value": "Experienced burnout from managing demanding wellness programs and corporate expectations simultaneously.",
+          "evidence_event_ids": [
+            "d05:personamem:493:history:event_0155",
+            "d05:personamem:493:history:event_0156",
+            "d05:personamem:493:history:event_0157",
+            "d05:personamem:493:history:event_0158"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1788,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250819_225921_persona493.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1788",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_493.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Experienced burnout from managing demanding wellness programs and corporate expectations simultaneously.",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:493:profile:item_05",
+          "slot": "personal_fact",
+          "value": "Mild gastritis episode resolved with dietary adjustments",
+          "evidence_event_ids": [
+            "d05:personamem:493:history:event_0103",
+            "d05:personamem:493:history:event_0104",
+            "d05:personamem:493:history:event_0105",
+            "d05:personamem:493:history:event_0106"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 1800,
+            "source_pref_type": "health_and_medical_conditions",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250819_225921_persona493.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#1800",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_493.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Mild gastritis episode resolved with dietary adjustments",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_05"
+            }
+          }
+        }
+      ],
+      "gold_answer": "Since you appreciate contemporary theater, I’d suggest catching a cutting-edge play or an experimental performance at a well-regarded local venue—many big cities have emerging artist showcases that push creative boundaries. You might also pair it with a pre-show vegan-friendly dinner at a trendy plant-based restaurant nearby. For a memorable finish, look for post-show Q&A sessions or meet-the-cast events to add depth to the experience.",
+      "target_preference_ids": [
+        "d05:personamem:493:profile:item_03"
+      ]
+    }
+  }
+}

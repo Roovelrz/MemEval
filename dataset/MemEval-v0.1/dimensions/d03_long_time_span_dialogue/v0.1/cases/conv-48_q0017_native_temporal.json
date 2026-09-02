@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-48:q0017:native_temporal",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-48:qa:0017"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-48",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-48.json",
+      "event_start": "d03:locomo:conv-48:D1:1",
+      "event_end": "d03:locomo:conv-48:D30:18",
+      "event_count": 681,
+      "token_count": 16810
+    },
+    "query": {
+      "query_id": "conv-48:qa:0017",
+      "text": "When did Jolene buy her pet Seraphim?",
+      "timestamp": "2023-09-20T10:17:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "native_temporal",
+      "tags": [
+        "d03",
+        "temporal",
+        "native_temporal",
+        "locomo_category_2"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-48",
+      "source_qa_index": 17,
+      "source_category": 2
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "in 2022",
+      "evidence_event_ids": [
+        "d03:locomo:conv-48:D2:24"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-48:D2:24",
+          "days_before_query": 236
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-48:D2:24": "2023-01-27T09:49:00"
+      },
+      "query_time": "2023-09-20T10:17:00",
+      "time_gap_days": 236,
+      "lifecycle": {
+        "valid_from": "2023-01-27T09:49:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

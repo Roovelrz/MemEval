@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d07:beam10m:scale_group_06_100k",
+    "dimension_id": "D07",
+    "dimension_name": "ultra_long_context",
+    "source": {
+      "dataset": "BEAM-10M",
+      "revision": "9b2096193fe74e2837e4713e483351e19817773c",
+      "split": "10M",
+      "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=2/preference_following[0]"
+    },
+    "identity": {
+      "context_id": "d07:beam10m:scale_group_06:100k",
+      "user_id": "beam10m:conversation_08",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/scale_group_06_100k.jsonl",
+      "event_start": "d07:beam10m:conv_08:event_00878",
+      "event_end": "d07:beam10m:conv_08:event_01077",
+      "event_count": 200,
+      "token_count": 100245
+    },
+    "query": {
+      "query_id": "d07:beam10m:scale_group_06_100k:query",
+      "text": "I'm planning the route for our upcoming trip. How would you suggest I map it out?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "medium",
+      "tags": [
+        "d07",
+        "beam-10m",
+        "paired_scale",
+        "preference_following",
+        "100k"
+      ],
+      "case_kind": "paired_scale",
+      "ability_category": "preference_following",
+      "source_probe_index": 0,
+      "source_answer_field": "expected_compliance",
+      "source_chat_ids": [
+        902,
+        908,
+        912
+      ],
+      "source_rubric": [
+        "LLM response should contain: recommends routes without tolls",
+        "LLM response should contain: offers detours that bypass toll roads",
+        "LLM response should contain: acknowledges avoiding toll fees in route planning"
+      ],
+      "token_estimator": "ceil(character_count/4) per event",
+      "annotation_status": "approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-02T16:19:00+08:00",
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "scale",
+    "payload": {
+      "scale_group_id": "d07:scale_group:06",
+      "scale_level": "100K",
+      "target_tokens": 100000,
+      "gold_answer": "Response should suggest routes that avoid toll roads when possible, offering alternatives without toll fees rather than routes that include tolls.",
+      "gold_evidence_ids": [
+        "d07:beam10m:conv_08:event_00902",
+        "d07:beam10m:conv_08:event_00908",
+        "d07:beam10m:conv_08:event_00912"
+      ],
+      "paired_anchor_id": "d07:beam10m:scale_group_06_100k",
+      "expected_retrievable": true
+    }
+  }
+}

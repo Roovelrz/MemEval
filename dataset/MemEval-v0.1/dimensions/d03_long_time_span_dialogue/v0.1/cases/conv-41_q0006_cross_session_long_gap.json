@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-41:q0006:cross_session_long_gap",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-41:qa:0006"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-41",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-41.json",
+      "event_start": "d03:locomo:conv-41:D1:1",
+      "event_end": "d03:locomo:conv-41:D32:17",
+      "event_count": 663,
+      "token_count": 20619
+    },
+    "query": {
+      "query_id": "conv-41:qa:0006",
+      "text": "Where has Maria made friends?",
+      "timestamp": "2023-08-16T11:08:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "cross_session_long_gap",
+      "tags": [
+        "d03",
+        "temporal",
+        "cross_session_long_gap",
+        "locomo_category_1"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-41",
+      "source_qa_index": 6,
+      "source_category": 1
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "homeless shelter, gym, church",
+      "evidence_event_ids": [
+        "d03:locomo:conv-41:D4:1",
+        "d03:locomo:conv-41:D2:1",
+        "d03:locomo:conv-41:D19:1",
+        "d03:locomo:conv-41:D14:10"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-41:D4:1",
+          "days_before_query": 218
+        },
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-41:D2:1",
+          "days_before_query": 236
+        },
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-41:D19:1",
+          "days_before_query": 60
+        },
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-41:D14:10",
+          "days_before_query": 101
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-41:D4:1": "2023-01-09T19:06:00",
+        "d03:locomo:conv-41:D2:1": "2022-12-22T18:10:00",
+        "d03:locomo:conv-41:D19:1": "2023-06-16T19:20:00",
+        "d03:locomo:conv-41:D14:10": "2023-05-06T17:04:00"
+      },
+      "query_time": "2023-08-16T11:08:00",
+      "time_gap_days": 236,
+      "lifecycle": {
+        "valid_from": "2022-12-22T18:10:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d04:prefeval:pair_14:negative",
+    "dimension_id": "D04",
+    "dimension_name": "proactive_memory_activation",
+    "source": {
+      "dataset": "PrefEval",
+      "revision": "1b20e0f944d7665f435e24eb8b76f4d45d83c419",
+      "split": "explicit/train",
+      "source_record_id": "explicit:0733"
+    },
+    "identity": {
+      "context_id": "d04:prefeval:explicit:0733:current",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/pair_14_negative.json",
+      "event_start": "d04:prefeval:explicit:0733:current:preference",
+      "event_end": "d04:prefeval:explicit:0733:current:preference",
+      "event_count": 1,
+      "token_count": 7
+    },
+    "query": {
+      "query_id": "pair_14:negative",
+      "text": "Can you help me find a fun car for weekend drives?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "negative",
+      "tags": [
+        "d04",
+        "activation",
+        "negative",
+        "explicit",
+        "shop_motors"
+      ],
+      "selection_seed": "d04-v0.1-20260901",
+      "pair_id": "pair_14",
+      "source_row_index": 733,
+      "source_form": "explicit",
+      "topic": "shop_motors",
+      "annotation_status": "human_review_approved",
+      "human_review": {
+        "status": "approved",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T18:00:00+08:00",
+        "context_revision_event_ids": [],
+        "answer_criteria_revised": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "activation",
+    "payload": {
+      "should_activate": false,
+      "required_memory_ids": [],
+      "preference": "I don't like convertibles.",
+      "answer_criteria": {
+        "explanation": "Convertibles are often considered fun weekend cars. The assistant should find coupes or other sporty car types that aren't convertibles.",
+        "must_respect_preference": true
+      }
+    }
+  }
+}

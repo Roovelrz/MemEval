@@ -1,0 +1,175 @@
+{
+  "schema_version": "0.1",
+  "dimension_id": "D01",
+  "dimension_name": "memory_extraction_and_write",
+  "version": "v0.1",
+  "build_status": "complete",
+  "source": {
+    "dataset": "LongMemEval-S",
+    "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+    "cleaned_file": "datasets/raw/longmemeval/longmemeval_s_cleaned.json",
+    "cleaned_sha256": "d6f21ea9d60a0d56f34a05b609c79c88a451d2ae03597821ea3d5a9678c3a442",
+    "oracle_file": "datasets/raw/longmemeval/longmemeval_oracle.json",
+    "oracle_sha256": "821a2034d219ab45846873dd14c14f12cfe7776e73527a483f9dac095d38620c",
+    "oracle_usage": "evidence event localization only"
+  },
+  "selection": {
+    "seed": "d01-v0.1-20260901",
+    "category_targets": {
+      "information_extraction": 18,
+      "knowledge_update": 10,
+      "multi_session_reasoning": 9
+    },
+    "excluded_source_types": [
+      "temporal-reasoning"
+    ],
+    "abstention_used": false
+  },
+  "counts": {
+    "contexts": 37,
+    "cases": 37
+  },
+  "validation": {
+    "checks": {
+      "case_ids_unique": true,
+      "context_ids_unique": true,
+      "category_targets_exact": true,
+      "event_count_8_to_30": true,
+      "gold_memory_count_2_to_8": true,
+      "non_memory_events_present": true,
+      "no_abstention": true,
+      "memory_types_allowed": true,
+      "common_envelope_references_valid": true,
+      "context_ref_paths_valid": true,
+      "canonical_event_schema_valid": true,
+      "gold_payload_event_references_valid": true,
+      "window_contains_evidence_neighbor_and_ordinary": true,
+      "all_human_review_approved": true,
+      "case_count_is_37": true
+    },
+    "category_counts": {
+      "information_extraction": 18,
+      "knowledge_update": 10,
+      "multi_session_reasoning": 9
+    },
+    "source_question_type_counts": {
+      "knowledge-update": 10,
+      "multi-session": 9,
+      "single-session-assistant": 7,
+      "single-session-preference": 3,
+      "single-session-user": 8
+    },
+    "event_count_range": [
+      16,
+      30
+    ],
+    "gold_memory_count_range": [
+      3,
+      8
+    ]
+  },
+  "human_review": {
+    "required_cases": 37,
+    "completed_cases": 37,
+    "approved_cases": 37,
+    "status": "complete",
+    "reviewers": [
+      "liruizhi"
+    ],
+    "submission_label": "d01_memory_write_atomic_reviewed_20json",
+    "submission_aggregate_sha256": "760ded2d16ee69231eab24e877ae0a29a24b2df0aaaccd07f6aaaec5ccbc3cdf",
+    "provenance_policy": "最终审核 annotation 随每个正式 Case 保留；外部工作目录可在全局审计通过后清理",
+    "excluded_after_review": {
+      "source_record_id": "3b6f954b",
+      "reason": "与 D02 样本语义重复，按用户最终口径从 D01 删除"
+    }
+  },
+  "file_hashes": {
+    "cases/001be529.json": "69a395350f61b2c0388dfdf7c8413c92c9db035f88ea099b277e9e7f24bce84e",
+    "cases/06db6396.json": "50ea573770c7f319c91ce1df1f36165bbb57beac52ec55eda22d5130e2b9d341",
+    "cases/09ba9854.json": "f20a6ce69a655fc85bf547ca8280119ade42427d67908426cb31361916a95498",
+    "cases/0f05491a.json": "0176a9d32ffb0c181d22f0aa797c2e6ff95fdc573ec6aa56c7b659e8c81ce5cf",
+    "cases/10e09553.json": "2c23f3bd8ec4e36aef4d1c4910abc8b4ebb6696b1cfd7598ba61c1e71e410e22",
+    "cases/15745da0.json": "5cb333a413069f7f9f42bde8be5abee80155edfdee29f82ed9d58b43a5ff3dbd",
+    "cases/16c90bf4.json": "545261b2d634c07e735db27d816de28318bd2dd2138afc416d1254c3b2efd3df",
+    "cases/19b5f2b3.json": "0a9b5a19d50b279abef0d29d6423e92b1e1eec3f43fa7fc7a48ad0c45a6028fe",
+    "cases/1da05512.json": "e8adfd02da8c8209c4d067ff4f02e8d9d913fdc48cb863341c7ba2d1afe079f7",
+    "cases/2133c1b5.json": "25257f4cedf9ccc558b1c2099bf678e39264e7d28e880a2590d2d7f6962c46ff",
+    "cases/29f2956b.json": "456e3ed861d878fce2c65797aea7ef5f6cb214640f17398468950ceb16f9c526",
+    "cases/352ab8bd.json": "78ad8e0cf38243d1ed9499566af8ce15e6f857e8ff46e6c1ab76beb4521110af",
+    "cases/3e321797.json": "1d9703cc53f118236f263f580a68923bb183ec19959b2c60262c93c7853b80e7",
+    "cases/3fdac837.json": "ac875e4954441aa18ba880a8d69fe2f2a9dd992e2ebbc3a1ef07c84a29c7dba1",
+    "cases/42ec0761.json": "1d5929efedfcce026e85b4646eb162a31ebc12f134484d2dca290e0c66d7a6f4",
+    "cases/55241a1f.json": "1c62c3c22a176870f8825ba8ed6e9341768104e9400e4f0e8f91fd63ed97ba15",
+    "cases/65240037.json": "57dcc9f5f4f43bf07d29adf0f8a780804d8eadffab748a901bd698bb76fcbfb6",
+    "cases/71a3fd6b.json": "4039edd1a69bf1420319ee01fa7afe7083794fdf493bb9a97200f9bad02f4759",
+    "cases/7401057b.json": "6b0c24b96c23b6b31cd406b94c1abe603b5053624af293a01c2fc5c34589ae85",
+    "cases/76d63226.json": "6a5519c098df284f6f8f2976cfeac449ad8d08759258156150f94500ceaf846f",
+    "cases/86b68151.json": "98aeae82fbf5a1bca41d84af93d484f0cc8d3a9f997534891eb72ef83e592b76",
+    "cases/8e91e7d9.json": "2266d0c79b156f12c776a04be330290d3d0502a0a4c7a14a0e91fa8aae5ecdf2",
+    "cases/9bbe84a2.json": "a7d1e3f2c8b067799c8bf0a9219e4931251ebe97ee3185601facf5a9a45e3347",
+    "cases/a11281a2.json": "732b8ac2dfe9a8e719410728b627ceed8fac14bbf43761bb672d1532a9289c92",
+    "cases/a1cc6108.json": "bcef6fea722828639085d32eec6a3953d42fa7948a017ab75c4f6621f19ba856",
+    "cases/a2f3aa27.json": "6c76ce6a0ab4e7302faf59346b9e5a55cad1bcba3a82154897fdeba72bf63412",
+    "cases/a346bb18.json": "ac025f084e10a3563f0e46ea61865cd8dd0284938ff0ed648f8dca42cf668f88",
+    "cases/b0479f84.json": "d95e79e04104e7a3ea965a80508057e73b3657e68a72fb4fae8443362ac2a583",
+    "cases/c19f7a0b.json": "0ea6ee697f47444881c9f59297029c440da73c73d159f2869279cf0803829adb",
+    "cases/c4f10528.json": "c409b2abcdfc97e40595011c506f17a9bd3aebac6d5ec549c8e40eb438540a5b",
+    "cases/c5e8278d.json": "a6b5f9a02d106f79761419a119f37ab9dc2eb33271b9be8035aa6116ee82087f",
+    "cases/d24813b1.json": "e566b27ffbce3364e5cfddf2f6c011d47a2c845b9a3a18e318c4d6488608a9de",
+    "cases/dd2973ad.json": "2f0047c1852e3f327c8c06fb19ed4b1df71f6fb95da270ddc46d95cbbe555be3",
+    "cases/e25c3b8d.json": "5e6cff9d3a9108c3c9e170b1ad78a0b08e9c553ac2c67f66fb53f16838c8d9da",
+    "cases/e61a7584.json": "8bca3f86c990c4c5740261bf1f1eb3898bd4219549e0e7034c696c3a451cb3be",
+    "cases/e8a79c70.json": "91f8f6c7abca0cad126956ff05400a51a59a081772ae7c8484e5cfe6ab741a21",
+    "cases/f9e8c073.json": "567ae955ed153e328959b22f105a1c181b47ffbb077ea42937b6b7ed43729ee8",
+    "contexts/001be529.json": "3589459f813e676038069f9367492cc90a5e47e0ffd9e9b2e7b6a15acccdd56d",
+    "contexts/06db6396.json": "6e6f0b5ec2f1f9eb6df847085c652b4766b0d1e7270185bd36cfb84a72d93dbe",
+    "contexts/09ba9854.json": "fd0f7ee131eeb5f0c80ad9de91689f2b96863b4da73ac33a655908c63719eef8",
+    "contexts/0f05491a.json": "e62bbc8b0bc67b0c9307243e86fc2931feb61db3e2a5cfc303f9ed860583e604",
+    "contexts/10e09553.json": "cec65f42f6f631c1a429b47579b9d662f2ea38f67579c1c1a5aae65a60dc963a",
+    "contexts/15745da0.json": "7c0cea11df4e376152eb16dcefdd014325d95390f92d39f5ca513ca81748cae7",
+    "contexts/16c90bf4.json": "a8502aebee6ce488eb1b76aa4968aef472293ddedc8b84f905fe6cf75eb31bf6",
+    "contexts/19b5f2b3.json": "601f356dea7dfb395e5f50a276cf793c92ffe8ee9e26444f1ba584d95a105275",
+    "contexts/1da05512.json": "0cc12c9b54809b807dbcbd6a322cca69b32cc5789d24b64ea1452fb00737866b",
+    "contexts/2133c1b5.json": "3398effc8cbafd0e3096b8aab9c044fb4b5c5b65a63351b32e3c03571c69ce65",
+    "contexts/29f2956b.json": "910dd12086e2d68a337deb7bea632b2b9cf6e6bfbe0ca5a26eee182787b5e7d8",
+    "contexts/352ab8bd.json": "2b468c7fb369697f20d66ac93af0bc5f7c2e46e11e64654b0f3e5158821bb4d5",
+    "contexts/3e321797.json": "475a4d2cbc1ef6da50e5ccdeff7d04db851a18e3c4637839fc14bcef0b801c2a",
+    "contexts/3fdac837.json": "c916d2168cb7d675ad3abdc94b8b9d031319e783bdd439965170c36efd2560ee",
+    "contexts/42ec0761.json": "b38799f9c5d3e968121e28f285729e99b1d45eef21e45bebf54607057bc2a24a",
+    "contexts/55241a1f.json": "b611ffd4e65fbec939c9c8fd47565262455d859d1983df803e0193166510f224",
+    "contexts/65240037.json": "ab30daa5ac74c2169f2688e052d6988cbc601105e4fa0c77dd7783b3f4c97be4",
+    "contexts/71a3fd6b.json": "eff93751c0f89523ae05db78c7675cd9bf5e6851f088539179897a8802bfa6ab",
+    "contexts/7401057b.json": "0fadddaffd90cd6d92da2d8105bea4a1952ed0a52e47aef0058f58b6906221a3",
+    "contexts/76d63226.json": "95adeb3d6b95602321cc53d5bab599309427240f8899bea7267f4e63f615bb66",
+    "contexts/86b68151.json": "2ea662a58ee21440efd6176b9bdce3af6a8c940b7539844549010999b6e0feae",
+    "contexts/8e91e7d9.json": "d3e80c3576475f01786135803e8cfb2c2d24953d035389b546b6a74c17f85131",
+    "contexts/9bbe84a2.json": "a331481dd93c507d2bedd769f77c62dbf38189fc4d4bc8e20e926d6bf90392c8",
+    "contexts/a11281a2.json": "02d4ed236bd4a82d52f758be1cd591eac67a464efa15d102bafa4ab765dee2ce",
+    "contexts/a1cc6108.json": "e41430648f05f2e225bfdfdd1676f5c9bfb36897cb346eb22e1128000b62441a",
+    "contexts/a2f3aa27.json": "c6a35904c04bf3f15c8281383e2eb958a64f8d6e790a59c1232b3f8e2bb1e27a",
+    "contexts/a346bb18.json": "fcc5e071f8322a54be1592ba2581a85f5d264b3db4a5fd49dc3f45b00c22669c",
+    "contexts/b0479f84.json": "c86c36c582b5ce7075e497e6abc4c54a1e8cc7078db33a946a6e5503d619f622",
+    "contexts/c19f7a0b.json": "cd1d5ea04bc0873f9070b78a63090c0ab1b40c3aaad7909964102b364583aaf2",
+    "contexts/c4f10528.json": "c84715ccdf89b12f3bed1f4cefe5503058379bb582a75642ddf00e8f08eeeef7",
+    "contexts/c5e8278d.json": "d85e84458ac3ba9cc77d7467809f9ec2c39af5ef1c60a5acbd920ed70e884d6c",
+    "contexts/d24813b1.json": "43db968a008278a3bbe9ccf31405f563be143cbad7e591db8d551946983c8ef3",
+    "contexts/dd2973ad.json": "14d24ea41be8256e3cb761d2652a13b7a0df147b72ff3632a11953f862c38e33",
+    "contexts/e25c3b8d.json": "e5cb67e9aa917e610e4f341f2b9fe797a58cf97c787d4a4237008ad594398b8b",
+    "contexts/e61a7584.json": "5d9a3410f9496d8dba8fc5ef363e33b3f051e8b0a705cedfde01e63d68c918b7",
+    "contexts/e8a79c70.json": "6141d962bedbcdc6cd378f5d6307f817706821c61713e369b8c7f2d10e4f3b9c",
+    "contexts/f9e8c073.json": "7d28243d3179fce9b5d8f6e8ba796df974868f566e20d9fda6d2ae8e7d1a1051",
+    "README.md": "6b65a13a0d5ae9c179bb062ca1685e14a190c9df420202b11f838467c1cededf"
+  },
+  "finalized_at": "2026-09-02T17:26:46+08:00",
+  "global_deduplication": {
+    "status": "complete",
+    "removed_source_record_ids": [
+      "3b6f954b"
+    ],
+    "retained_source_record_ids": [
+      "e25c3b8d"
+    ],
+    "changed_at": "2026-09-02T17:26:46+08:00"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-43:q0146:derived_lifecycle",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-43:qa:0146"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-43:q0146:lifecycle",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-43_q0146_lifecycle.json",
+      "event_start": "d03:locomo:conv-43:q0146:lifecycle:D1:1",
+      "event_end": "d03:locomo:conv-43:q0146:lifecycle:forget",
+      "event_count": 681,
+      "token_count": 19901
+    },
+    "query": {
+      "query_id": "conv-43:qa:0146",
+      "text": "What did Tim recently start learning in addition to being part of a travel club and working on studies?",
+      "timestamp": "2024-01-14T13:41:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "derived_lifecycle",
+      "tags": [
+        "d03",
+        "temporal",
+        "derived_lifecycle",
+        "locomo_category_4"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-43",
+      "source_qa_index": 146,
+      "source_category": 4
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "an instrument",
+      "evidence_event_ids": [
+        "d03:locomo:conv-43:q0146:lifecycle:D21:9"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-43:q0146:lifecycle:D21:9",
+          "days_before_query": 38
+        },
+        {
+          "relation": "deleted_before_query",
+          "forget_event_id": "d03:locomo:conv-43:q0146:lifecycle:forget",
+          "days_before_query": 1
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-43:q0146:lifecycle:D21:9": "2023-12-06T17:34:00"
+      },
+      "query_time": "2024-01-14T13:41:00",
+      "time_gap_days": 38,
+      "lifecycle": {
+        "valid_from": "2023-12-06T17:34:00",
+        "valid_until": "2024-01-13T13:41:00",
+        "deleted_at": "2024-01-13T13:41:00",
+        "expected_active": false
+      }
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "schema_version": "0.1",
+  "dimension_id": "D02",
+  "dimension_name": "long_term_memory_retrieval",
+  "version": "v0.1",
+  "build_status": "complete",
+  "source": {
+    "dataset": "LongMemEval-S",
+    "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+    "cleaned_file": "datasets/raw/longmemeval/longmemeval_s_cleaned.json",
+    "cleaned_sha256": "d6f21ea9d60a0d56f34a05b609c79c88a451d2ae03597821ea3d5a9678c3a442",
+    "gold_origin": "native answer and answer_session_ids",
+    "oracle_file_used": false
+  },
+  "selection": {
+    "seed": "d02-v0.1-20260901",
+    "ranking": "sha256(seed + ':d02:lme:' + question_id), ascending",
+    "category_targets": {
+      "information_extraction": 20,
+      "multi_session_reasoning": 17
+    },
+    "source_category_mapping": {
+      "single-session-user": "information_extraction",
+      "single-session-assistant": "information_extraction",
+      "multi-session": "multi_session_reasoning"
+    },
+    "excluded_source_types": [
+      "single-session-preference",
+      "knowledge-update",
+      "temporal-reasoning"
+    ],
+    "eligibility": {
+      "abstention_variants_excluded": true,
+      "complete_parallel_haystack_required": true,
+      "unique_haystack_session_ids_required": true,
+      "native_gold_evidence_must_resolve": true
+    }
+  },
+  "retrieval": {
+    "evidence_granularity": "session",
+    "retrieval_k": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "metrics": [
+      "Hit@K",
+      "Recall@K",
+      "MRR"
+    ]
+  },
+  "counts": {
+    "contexts": 37,
+    "cases": 37
+  },
+  "validation": {
+    "checks": {
+      "case_ids_unique": true,
+      "context_ids_unique": true,
+      "category_targets_exact": true,
+      "source_types_allowed": true,
+      "excluded_source_types_absent": true,
+      "common_envelope_valid": true,
+      "context_ref_paths_valid": true,
+      "canonical_event_schema_valid": true,
+      "gold_evidence_ids_resolve": true,
+      "source_gold_preserved_exactly": true,
+      "full_haystack_context_preserved_exactly": true,
+      "context_contains_no_gold_labels": true,
+      "retrieval_k_exact": true,
+      "case_count_is_37": true,
+      "context_count_is_37": true
+    },
+    "category_counts": {
+      "multi_session_reasoning": 17,
+      "information_extraction": 20
+    },
+    "source_question_type_counts": {
+      "multi-session": 17,
+      "single-session-assistant": 8,
+      "single-session-user": 12
+    },
+    "event_count_range": [
+      431,
+      585
+    ],
+    "session_count_range": [
+      38,
+      54
+    ],
+    "gold_evidence_count_range": [
+      1,
+      5
+    ]
+  },
+  "human_review": {
+    "required": false,
+    "reason": "D02 preserves native LongMemEval answers and evidence session IDs without relabeling."
+  },
+  "file_hashes": {
+    "cases/00ca467f.json": "ba50d461542a03124d97e555b956cc082a7bb60c24b6f8364e67fad5779d9e5a",
+    "cases/0862e8bf.json": "ec64b0a7c8196bfd7968ce8baa8e8434969bfcad2774b548c7847d9adef0a5ff",
+    "cases/1568498a.json": "4a404c9164647359aaff52e8af4abd8613cc335e40edfa61f37d6889c3fac360",
+    "cases/21436231.json": "c5582ea14e2e057d11f35de842c1c63df2c4b7b995c04bcd9f730c46cb6c472b",
+    "cases/28dc39ac.json": "00df043d8ea46f5922943b104f2a16e18020ceb2abd39fe8523173b1a327dc64",
+    "cases/2bf43736.json": "19241c7464d86578bbe852659d873be5b561c00bd514e737ce9de673ae5f4f82",
+    "cases/2e6d26dc.json": "c83cc6f0267c7ce25e4baba3d9a3fc6950af63643e69dc2413373799f37439ec",
+    "cases/3249768e.json": "bbc210323d03de2c2adbb9a06a0bc5842d6976615f257c42c71b677e51ecb8bd",
+    "cases/37f165cf.json": "ffc17a35632f9ec7028f44bbd5bdd820aedb9b371f0d74c0910b64b44058bd5e",
+    "cases/3b6f954b.json": "5056cdc161a97af004e8f748ba577cc830553f63cc7072aafb20af10a9a4fcd8",
+    "cases/5025383b.json": "9820ced7f5be831a57aec7590b2bfa37ef710c3e9d1fffc3782016ea393ac34a",
+    "cases/51b23612.json": "2db324f04c309b26cb8b42547fb23a13ed77907ac5865833b872ff9482928cf9",
+    "cases/60d45044.json": "3c2ede8b2243cb446e61c66f7782a6eb428fc9e09ce4aff9c3b6778e5dd80d2d",
+    "cases/6222b6eb.json": "9ba49ed5483ba2f162421d8d563356cc699c2b1c30a8014a038303b0ef75f373",
+    "cases/6ade9755.json": "dbd68bc9217243f8bcf1e5a3e2c3b20ab8e5986903b7c6763f7ee5f110ef630f",
+    "cases/6b168ec8.json": "b873efdc1f0faa44789d806a591f3450cd1a8e53e6b04ddf4360ab28f60f748b",
+    "cases/720133ac.json": "071a4aac3ce440869d5c519e453e34cf608f17a28cd68842a66aae8c2887ed9d",
+    "cases/7527f7e2.json": "bcad45272f3e7e99ca7e743727ec84965057f52d9f56713f184ca41b4bc6fb8d",
+    "cases/80ec1f4f.json": "ce0247b61734e11ed28dcc5a082944c9c4a16ddff67e65754c8ad703b36b5411",
+    "cases/95bcc1c8.json": "ecce71a99fcc8e6167d6cc73b81940557c599f1e7ca1c1229c409657ab777f86",
+    "cases/9d25d4e0.json": "6fd47ca13bda98af82c8c1b6aaac88883c73109c3d42e277ab482ad418ac1b91",
+    "cases/9ee3ecd6.json": "cdd86d388b103e60d81de9f34e84ac9c7fee20fe59907b341446ad548c16bf14",
+    "cases/a4996e51.json": "892c304d346e6c692a7fb96e6ed87ee5f81f795cbbb7bd04c3a303c7b78a9196",
+    "cases/ad7109d1.json": "4a473c8fd1e77b93e726e59ac7354f15e5ec9d7e94dfc0fbb3e47c25b068cde6",
+    "cases/b86304ba.json": "a5336d27fb2154e30234567177d547f9b1187170654da20a616887fd5ac01dc5",
+    "cases/c14c00dd.json": "e6a35df54a402da3545ef7a519f8c24dd22fa8ef09007c16b072638490dc7234",
+    "cases/c7cf7dfd.json": "e2a74a1d550cae20541f7fe955251e69848c62c9c788a6de8c018bfaa819735b",
+    "cases/e56a43b9.json": "7e9c257ae3f4a18a90f049e983a88add2c7720ea1fd0a7f05fd7cc585f6a20d8",
+    "cases/e9327a54.json": "4c804c937ce492b562cdb12b799b58b254e7ad53fbbc7f9d54a5027da37d3574",
+    "cases/eeda8a6d.json": "cfb01b34852345f43d6c3e4268dd73e3b6255725defc945729cb109c5c0933d7",
+    "cases/f4f1d8a4.json": "a1b7f6dc57e82cc7b18aa2c0a0d8e04c1b44fcc1a98a644e7ce02f4183588d30",
+    "cases/fca762bc.json": "7d736eeaf928db3dd28aa8fc2562e2d388fc2185f7c841921802bab43f195290",
+    "cases/gpt4_194be4b3.json": "8e3b4a51a7e08cb8f405c03a07e25933b69267789bcb57f5d901ad211020aecc",
+    "cases/gpt4_2f91af09.json": "4ce9cb99623ce5cca51506b41dcb079140567ccfe98211f65b8063fb12a699ad",
+    "cases/gpt4_31ff4165.json": "95cecfa87c4f15517d86b63d2721fb3ce8f6595ce44b163c9f98a27b17173e47",
+    "cases/gpt4_ab202e7f.json": "f4dfcf42f31faf3c58bed9fee394cfd163a91386796e665399805ffa344cff35",
+    "cases/gpt4_e05b82a6.json": "9ee24c4f304c201530950a2113d7da0952c050d748a78b37874917b0c9b2545d",
+    "contexts/00ca467f.json": "22d05256b898f22b524f24701169d14da36ed99320208bd48ca704af690596f6",
+    "contexts/0862e8bf.json": "2b6171aced031e767899b24894ed68698f624437e8b38a9c2ae9bcef248b0182",
+    "contexts/1568498a.json": "4d60a6ef52a64ddd23672bb2a3bb9022e1afd5afe7ca4155bc5abfcaf64b7265",
+    "contexts/21436231.json": "d09d7700eed000fb0b29bbca28f941347cafe1e4f11ffe2677d0fbc2d1e660e2",
+    "contexts/28dc39ac.json": "97fa1a3dce27c731a7d2a3e41c2c7ec97393639959dc49c51ed3235c6fc1e48c",
+    "contexts/2bf43736.json": "e18b9ae32ca8156a5aa78ee2cbf14d1441462abd13a87a8f24d8b5593ee3d7b6",
+    "contexts/2e6d26dc.json": "9ff409cc944e3fb6a145195ecf26cf0b0e74fc52d8022b5fa7eabe9681a7b9a1",
+    "contexts/3249768e.json": "3e926724c7c6cfa33b54f083a868df82d5f71108d6f3aabb7579f1f9cb7e0ddf",
+    "contexts/37f165cf.json": "b5b3faa46299766c6f5571f186ec3d7b36de6abf20eadbd2c8510a86637fb568",
+    "contexts/3b6f954b.json": "fe7a5b0f7c72fda95c01243771a2b58812407ae4f185776c2572e4220cc8133e",
+    "contexts/5025383b.json": "e128c3918845bf6f296c56dd77dee092d72dcdca557710e73aba4d31f18c60d7",
+    "contexts/51b23612.json": "2a6ba22864c2e31382e9aa8368dd5efb4e7a2b483f63fbc989b5cf819b76dc56",
+    "contexts/60d45044.json": "e8063d6b98dc97bbcd382f9dcef4324519fc00f3d1f43166a636eae097bfe5ba",
+    "contexts/6222b6eb.json": "66ab0d33e58f1a809d223e76f152f1f4928efd971754f9a005437180e76d5e72",
+    "contexts/6ade9755.json": "0d4a4727d4f823c2e814e501657ba4983a936a453a2307917df06d8ee26e229c",
+    "contexts/6b168ec8.json": "63719f940023d0c8b374115b6a36fdea0c587b0226d43da67356a3ea79ba05e1",
+    "contexts/720133ac.json": "db8765409ffda5b7ab9dffaa8cf478ec0e43296da99e7fcd9c42a03f2e7e03f0",
+    "contexts/7527f7e2.json": "4983189b7457de529914cb94aed6fe0b1ed5bf510716b77f334f056fd0c9a46c",
+    "contexts/80ec1f4f.json": "3f8f18744e61002bf290fb54727d898c2584f78fb4e299996f30a0ad01f81e27",
+    "contexts/95bcc1c8.json": "4c04b3634a07dbd21afd7651b7e916eff1ab2243915b4426c70393809b414da8",
+    "contexts/9d25d4e0.json": "48ae94b8aa7793167f95fbbdc36af2dc462d0eeef4d0bb3cffdb8396b7ca3f68",
+    "contexts/9ee3ecd6.json": "8a05d5a2016ccbef5a70e941d29ff72c9de24948e142f60ba61b5a4578847cda",
+    "contexts/a4996e51.json": "05b018bb0654bd5b9432b763b6ad8a5b137cee093c6fa6a01d705542b78fdd6c",
+    "contexts/ad7109d1.json": "f3d217c8933870f3f77e3dc819ebca51490439da62dd812b9ebb249b6e2a70f7",
+    "contexts/b86304ba.json": "cc9b858d09bd09bc0369e01df6c32dda85c67a495753bb4888d260462f820b0c",
+    "contexts/c14c00dd.json": "cc299a4bfa312674a530fc15207fc77e3bf7c8a482ee09b1da7568f7977bd5eb",
+    "contexts/c7cf7dfd.json": "affe40562eca820b2f03575625850ee73af5eb1d7566dcd892003d6fdc80ee62",
+    "contexts/e56a43b9.json": "bf70e354366cba3a59581e810a4f5391d030a915d6aaf151027a50d0caf984e0",
+    "contexts/e9327a54.json": "1ecfd97432baea83857bdfa1bf806aaefa591e4be51a3e2e80b9e9e16a7cca49",
+    "contexts/eeda8a6d.json": "2e66c61e022b37674c4e1d32efefc75e5eaf721305047a70e26a9421058bf85e",
+    "contexts/f4f1d8a4.json": "06350972fa5062e17e98463c15afc0abcbd5ab266f3af707ab9b10ed39e3eaff",
+    "contexts/fca762bc.json": "c831a8c23b718b78687a53d6a50c9fe10e030dcac1f1fff995ea9db7a8b36c99",
+    "contexts/gpt4_194be4b3.json": "587c32a2513e5e5cb5ae019a6e7eafa30dff4f9e0ce6d56f42de622b335ce4ba",
+    "contexts/gpt4_2f91af09.json": "4b76a11754d7422cf2d69ea0e72c12871c44f94a4b6a31493a11e17720f37307",
+    "contexts/gpt4_31ff4165.json": "e2a90e6678fd0ad8b02388b494f3613793e2ee3441bdad9eb71941542bbaf030",
+    "contexts/gpt4_ab202e7f.json": "720aabdbcf4787b8d55ba289bc124035bee3ce81836068ee3163d3e00cf63a0b",
+    "contexts/gpt4_e05b82a6.json": "16bee58faf38ea478bb973bcdd74e904cc1ae8d6265d653b93d54ffbc1cc9e5d",
+    "README.md": "52e08460ca5167a1bd2fd04ceb0839ed96c3d445933dca4a2af4450b79319bee"
+  },
+  "finalized_at": "2026-09-02T17:26:46+08:00",
+  "global_deduplication": {
+    "status": "complete",
+    "removed_source_record_ids": [
+      "e25c3b8d"
+    ],
+    "retained_source_record_ids": [
+      "3b6f954b"
+    ],
+    "changed_at": "2026-09-02T17:26:46+08:00"
+  }
+}

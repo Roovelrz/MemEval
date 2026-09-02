@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d03:locomo:conv-43:q0068:native_temporal",
+    "dimension_id": "D03",
+    "dimension_name": "long_time_span_dialogue",
+    "source": {
+      "dataset": "LoCoMo",
+      "revision": "3eb6f2c585f5e1699204e3c3bdf7adc5c28cb376",
+      "split": "locomo10",
+      "source_record_id": "conv-43:qa:0068"
+    },
+    "identity": {
+      "context_id": "d03:locomo:conv-43",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/conv-43.json",
+      "event_start": "d03:locomo:conv-43:D1:1",
+      "event_end": "d03:locomo:conv-43:D29:15",
+      "event_count": 680,
+      "token_count": 19900
+    },
+    "query": {
+      "query_id": "conv-43:qa:0068",
+      "text": "What day did Tim get into his study abroad program?",
+      "timestamp": "2024-01-12T13:41:00"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "native_temporal",
+      "tags": [
+        "d03",
+        "temporal",
+        "native_temporal",
+        "locomo_category_2"
+      ],
+      "selection_seed": "d03-v0.1-20260901",
+      "source_sample_id": "conv-43",
+      "source_qa_index": 68,
+      "source_category": 2
+    }
+  },
+  "gold": {
+    "payload_type": "temporal",
+    "payload": {
+      "gold_answer": "Januarty 5, 2024",
+      "evidence_event_ids": [
+        "d03:locomo:conv-43:D28:1"
+      ],
+      "temporal_relations": [
+        {
+          "relation": "precedes_or_coincides_with_query",
+          "evidence_event_id": "d03:locomo:conv-43:D28:1",
+          "days_before_query": 4
+        }
+      ],
+      "evidence_time": {
+        "d03:locomo:conv-43:D28:1": "2024-01-07T17:24:00"
+      },
+      "query_time": "2024-01-12T13:41:00",
+      "time_gap_days": 4,
+      "lifecycle": {
+        "valid_from": "2024-01-07T17:24:00",
+        "valid_until": null,
+        "deleted_at": null,
+        "expected_active": true
+      }
+    }
+  }
+}

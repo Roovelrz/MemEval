@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "context_id": "d04:prefeval:implicit_choice:0689:history",
+  "source": {
+    "dataset": "PrefEval",
+    "revision": "319fbe0236a00f40152b27da01a6f86271657db1",
+    "split": "implicit_choice/train",
+    "source_record_id": "implicit_choice:0689"
+  },
+  "events": [
+    {
+      "event_id": "d04:prefeval:implicit_choice:0689:history:conversation_query",
+      "session_id": "d04:prefeval:implicit_choice:0689:history:history",
+      "turn_id": "conversation_query",
+      "order": 0,
+      "timestamp": null,
+      "role": "user",
+      "content": "What kind of home layout would you recommend for my new house?",
+      "source_ref": "implicit_choice/train.parquet#689/conversation_query",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_query"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0689:history:assistant_options",
+      "session_id": "d04:prefeval:implicit_choice:0689:history:history",
+      "turn_id": "assistant_options",
+      "order": 1,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "When choosing a home layout, there are several options to consider. Here are a few possibilities:\n1. A modern floor plan with a great room that combines the living and dining spaces.\n2. A traditional layout with separate living room, dining room, and kitchen.\n3. An open-concept design with the living area seamlessly flowing into the kitchen.\n4. A loft-style layout with an open floor plan and minimal walls or partitions.",
+      "source_ref": "implicit_choice/train.parquet#689/conversation_assistant_options",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_options"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0689:history:user_selection",
+      "session_id": "d04:prefeval:implicit_choice:0689:history:history",
+      "turn_id": "user_selection",
+      "order": 2,
+      "timestamp": null,
+      "role": "user",
+      "content": "I'll go with option 2, a traditional layout with separate living room, dining room, and kitchen. The other options seem too open and lack privacy.",
+      "source_ref": "implicit_choice/train.parquet#689/conversation_user_selection",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_user_selection"
+      }
+    },
+    {
+      "event_id": "d04:prefeval:implicit_choice:0689:history:assistant_acknowledgment",
+      "session_id": "d04:prefeval:implicit_choice:0689:history:history",
+      "turn_id": "assistant_acknowledgment",
+      "order": 3,
+      "timestamp": null,
+      "role": "assistant",
+      "content": "Understood, a traditional layout with distinct rooms is a great choice.",
+      "source_ref": "implicit_choice/train.parquet#689/conversation_assistant_acknowledgment",
+      "metadata": {
+        "source_form": "implicit_choice",
+        "source_field": "conversation_assistant_acknowledgment"
+      }
+    }
+  ]
+}

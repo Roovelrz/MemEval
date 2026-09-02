@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d02:lme:c7cf7dfd",
+    "dimension_id": "D02",
+    "dimension_name": "long_term_memory_retrieval",
+    "source": {
+      "dataset": "LongMemEval-S",
+      "revision": "98d7416c24c778c2fee6e6f3006e7a073259d48f",
+      "split": "cleaned_s",
+      "source_record_id": "c7cf7dfd"
+    },
+    "identity": {
+      "context_id": "d02:lme:c7cf7dfd",
+      "user_id": null,
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/c7cf7dfd.json",
+      "event_start": "d02:lme:c7cf7dfd:e00000",
+      "event_end": "d02:lme:c7cf7dfd:e00519",
+      "event_count": 520,
+      "token_count": 101131
+    },
+    "query": {
+      "query_id": "c7cf7dfd",
+      "text": "I'm going back to our previous conversation about traditional Indian embroidery and tailoring techniques. Can you remind me of the name of that online store based in India that sells traditional Indian fabrics, threads, and embellishments?",
+      "timestamp": "2023/05/30 (Tue) 20:59"
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "single-session-assistant",
+      "tags": [
+        "information_extraction",
+        "single-session-assistant",
+        "d02",
+        "retrieval"
+      ],
+      "selection_seed": "d02-v0.1-20260901"
+    }
+  },
+  "gold": {
+    "payload_type": "retrieval",
+    "payload": {
+      "gold_evidence_ids": [
+        "answer_ultrachat_456407"
+      ],
+      "gold_answer": "Nostalgia",
+      "retrieval_k": [
+        1,
+        3,
+        5,
+        10
+      ]
+    }
+  }
+}

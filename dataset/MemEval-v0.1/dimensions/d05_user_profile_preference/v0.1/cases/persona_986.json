@@ -1,0 +1,167 @@
+{
+  "schema_version": "0.1",
+  "envelope": {
+    "case_id": "d05:personamem:986:profile",
+    "dimension_id": "D05",
+    "dimension_name": "user_profile_preference",
+    "source": {
+      "dataset": "PersonaMem-v2",
+      "revision": "60316c4e35469ad6034541d85adc4c3b67248cc6",
+      "split": "benchmark/text+data/chat_history_32k",
+      "source_record_id": "benchmark:711"
+    },
+    "identity": {
+      "context_id": "d05:personamem:986:history",
+      "user_id": "personamem:986",
+      "tenant_id": null
+    },
+    "context": {
+      "context_ref": "contexts/persona_986.json",
+      "event_start": "d05:personamem:986:history:event_0001",
+      "event_end": "d05:personamem:986:history:event_0243",
+      "event_count": 243,
+      "token_count": 30220
+    },
+    "query": {
+      "query_id": "personamem:986:benchmark:711",
+      "text": "How do you keep going when it feels like your efforts never seem to lead anywhere?",
+      "timestamp": null
+    },
+    "metadata": {
+      "language": "en",
+      "difficulty": "standard",
+      "tags": [
+        "d05",
+        "profile",
+        "preference",
+        "personamem-v2",
+        "therapy_background"
+      ],
+      "selection_seed": "d05-v0.1-20260901",
+      "persona_id": "986",
+      "target_source_row_index": 711,
+      "target_pref_type": "therapy_background",
+      "target_topic": "Motivation",
+      "history_link": "data/chat_history_32k/chat_history_250913_163134_persona986.json",
+      "raw_persona_file": "data/raw_data/raw_data_250826_131038_persona986.json",
+      "annotation_status": "human_review_repaired_and_verified",
+      "human_review": {
+        "status": "approved_after_repair",
+        "reviewer": "lrz",
+        "reviewed_at": "2026-09-01T17:55:00+08:00",
+        "repairer": "codex",
+        "repaired_at": "2026-09-01T18:13:25+08:00",
+        "original_issue": "source preference labels overstate visible conversation evidence",
+        "profile_items_reduced_from": 5,
+        "profile_items_reduced_to": 3,
+        "target_changed": false,
+        "gold_answer_rewritten": false,
+        "audit_record_compacted_into_manifest": true
+      }
+    }
+  },
+  "gold": {
+    "payload_type": "profile",
+    "payload": {
+      "profile_snapshot_time": null,
+      "profile_items": [
+        {
+          "profile_id": "d05:personamem:986:profile:item_04",
+          "slot": "personal_fact",
+          "value": "Struggled with motivation following a series of rejected pitches for original projects.",
+          "evidence_event_ids": [
+            "d05:personamem:986:history:event_0047",
+            "d05:personamem:986:history:event_0048",
+            "d05:personamem:986:history:event_0049",
+            "d05:personamem:986:history:event_0050"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 711,
+            "source_pref_type": "therapy_background",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250826_131038_persona986.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#711",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_986.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Struggled with motivation following a series of rejected pitches for original projects.",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_04"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:986:profile:item_02",
+          "slot": "preference",
+          "value": "Thrives in fast-paced project environments",
+          "evidence_event_ids": [
+            "d05:personamem:986:history:event_0123",
+            "d05:personamem:986:history:event_0124"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 713,
+            "source_pref_type": "anti_stereotypical_pref",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250826_131038_persona986.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#713",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_986.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Thrives in fast-paced project environments",
+              "resolution": "retained_after_human_review",
+              "evidence_derived_from_item": "item_02"
+            }
+          }
+        },
+        {
+          "profile_id": "d05:personamem:986:profile:item_03",
+          "slot": "preference",
+          "value": "Used a reusable water bottle during a workshop.",
+          "evidence_event_ids": [
+            "d05:personamem:986:history:event_0111",
+            "d05:personamem:986:history:event_0112"
+          ],
+          "status": "active",
+          "metadata": {
+            "source_row_index": 714,
+            "source_pref_type": "neutral_preferences",
+            "source_who": "self",
+            "source_updated": false,
+            "source_sensitive_info": false,
+            "raw_persona_ref": "data/raw_data/raw_data_250826_131038_persona986.json",
+            "benchmark_ref": "benchmark/text/benchmark.csv#714",
+            "human_review_resolution": {
+              "submission": "review/submission_lrz/persona_986.json",
+              "reviewer": "lrz",
+              "reviewed_at": "2026-09-01T17:55:00+08:00",
+              "original_status": "needs_revision",
+              "repairer": "codex",
+              "repaired_at": "2026-09-01T18:13:25+08:00",
+              "original_value": "Uses a reusable water bottle",
+              "resolution": "conservative_evidence_grounded_paraphrase",
+              "evidence_derived_from_item": "item_03"
+            }
+          }
+        }
+      ],
+      "gold_answer": "When a series of rejected pitches starts to sap your motivation, it can help to revisit why you began creating in the first place—your commitment to maintaining artistic integrity and blending styles that speak to you. Sometimes stepping back to produce a small, personal piece, free of client expectations, can rekindle that creative spark. Sharing it with a trusted circle of peers might also remind you of the unique value your vision brings to the animation world.",
+      "target_preference_ids": [
+        "d05:personamem:986:profile:item_04"
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+dataset_name: 'PrefEval'
+source_repo:
+  - 'siyanzhao/prefeval_explicit'
+  - 'siyanzhao/prefeval_implicit_choice'
+  - 'siyanzhao/prefeval_implicit_persona'
+source_revision:
+  'siyanzhao/prefeval_explicit': '1b20e0f944d7665f435e24eb8b76f4d45d83c419'
+  'siyanzhao/prefeval_implicit_choice': '319fbe0236a00f40152b27da01a6f86271657db1'
+  'siyanzhao/prefeval_implicit_persona': '2c4b0ca892ec350e67ff6358135f772482514ad0'
+download_date: '2026-09-01'
+license: 'not-declared-in-huggingface-card'
+files:
+  - 'explicit/data/train-00000-of-00001.parquet'
+  - 'implicit_choice/data/train-00000-of-00001.parquet'
+  - 'implicit_persona/data/train-00000-of-00001.parquet'
+file_hashes:
+  'explicit/data/train-00000-of-00001.parquet': '31185e1241fa495f4585ed03bb7adc94dd4b87407246b83be2ada1c0c94787fe'
+  'implicit_choice/data/train-00000-of-00001.parquet': '9e6011534f82188cae4563b439a382880c82c624eeb14ea4df554b7e8152bec9'
+  'implicit_persona/data/train-00000-of-00001.parquet': '23163a86fe57a32a9665d1ecaac333b128ee4268ac9ce8928d036fb0bfb11314'
+adapter_version: 'v0.1-pending'
+notes: 'Exactly one official train parquet shard for each of explicit, implicit choice, and implicit persona.'
