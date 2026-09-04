@@ -42,8 +42,6 @@ D07/D08 等维度包含超长 JSONL Context，本目录下的 `*.jsonl` 使用 G
 git lfs pull
 ```
 
-## 核验报告
+## 核验方式
 
-- `manifests/reports/benchmark_macro_audit_v0_1.md`
-- `manifests/reports/post_cleanup_integrity_v0_1.md`
-- `manifests/reports/cleanup_completion_v0_1.md`
+阶段 23 使用 `dataset/build_pipeline/audit.py` 直接核验正式目录。核验结果仅在运行时返回，不保留中间报告文件；当前版本核验结果为 PASS。
