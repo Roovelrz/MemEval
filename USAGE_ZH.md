@@ -28,7 +28,7 @@ LongMemEval-ZH 数据集
 默认数据集位于：
 
 ```text
-datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json
+dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json
 ```
 
 ## 2. 第一次运行前的准备
@@ -106,7 +106,7 @@ $env:DEEPSEEK_MODEL = "deepseek-v4-flash"
 
 ```powershell
 py -3.12 scripts/run_reme_end_to_end_eval.py `
-  --data datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
+  --data dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
   --cases 1 `
   --start 0 `
   --top-k 10 `
@@ -168,7 +168,7 @@ py -3.12 scripts/run_reme_end_to_end_eval.py `
 
 ```powershell
 py -3.12 scripts/run_reme_retrieval_eval.py `
-  --data datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
+  --data dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
   --cases 1 `
   --top-k 10 `
   --run-id reme-retrieval-smoke `
@@ -233,7 +233,7 @@ py -3.12 scripts/build_trace_report.py `
 ```powershell
 py -3.12 scripts/build_trace_report.py `
   --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report" `
-  --data datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json
+  --data dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json
 ```
 
 重新生成 Trace 会更新 `<run-dir>/Detailed Trace Report/trace/`；不会改写 `retrieval.jsonl`、`prepared.jsonl`、`answers.jsonl` 或 `scores.jsonl`。更新 Trace 后，再执行下面的 HTML 重建命令同步展示。

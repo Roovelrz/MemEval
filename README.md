@@ -99,7 +99,7 @@ path is therefore the most reproducible invocation:
 
 ```powershell
 py -3.12 scripts/run_reme_retrieval_eval.py `
-  --data datasets/zh_derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
+  --data dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
   --cases 1 `
   --workers 2 `
   --top-k 10 `
@@ -244,7 +244,7 @@ py -3.12 scripts/run_reme_end_to_end_eval.py --dataset LongMemEval-EN-Full --cas
 py -3.12 scripts/run_reme_end_to_end_eval.py --dataset LongMemEval-EN-Full --cases 100 --retrieval-workers 4 --answer-workers 8 --judge-workers 8
 ```
 
-注册信息位于 `datasets/registry.json`。当前实际接入
+注册信息位于 `dataset/registry.json`。当前实际接入
 `LongMemEval-EN-Full`、`LoCoMo-EN-Full` 和 `PersonaMem-EN-Full`；对应文件
 均指向统一的 `../datasets/raw/`。`MemEval-v0.1` 的298条数据已经冻结并通过
 阶段23审计，但在阶段24 System Adapter 接入前保持 `reserved`，不会被 runner

@@ -8,7 +8,7 @@ from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-REGISTRY_PATH = REPO_ROOT / "datasets" / "registry.json"
+REGISTRY_PATH = REPO_ROOT / "dataset" / "registry.json"
 DEFAULT_DATASET_ID = "LongMemEval-ZH-20-v0.1"
 
 
