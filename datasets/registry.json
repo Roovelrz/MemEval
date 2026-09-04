@@ -1,0 +1,100 @@
+{
+  "schema_version": "memory_eval_dataset_registry_v1",
+  "datasets": [
+    {
+      "dataset_id": "MemEval-v0.1",
+      "dataset_name": "MemEval v0.1 八维度基准",
+      "source_dataset": "MemEval",
+      "language": "en",
+      "version": "v0.1",
+      "adapter": "memeval",
+      "path": "dataset/MemEval-v0.1",
+      "case_count": 298,
+      "translated": false,
+      "result_group": "memeval_v0_1",
+      "status": "reserved",
+      "blocked_by": "stage_24_system_adapter",
+      "integrity": "dimension manifests and stage-23 benchmark audit"
+    },
+    {
+      "dataset_id": "LongMemEval-EN-Full",
+      "dataset_name": "LongMemEval 英文全量基准",
+      "source_dataset": "LongMemEval-S cleaned",
+      "language": "en",
+      "version": "local-d6f21ea9",
+      "adapter": "longmemeval",
+      "path": "../datasets/raw/longmemeval/longmemeval_s_cleaned.json",
+      "sha256": "d6f21ea9d60a0d56f34a05b609c79c88a451d2ae03597821ea3d5a9678c3a442",
+      "case_count": 500,
+      "translated": false,
+      "result_group": "en_full",
+      "status": "available"
+    },
+    {
+      "dataset_id": "LongMemEval-ZH-20-v0.1",
+      "dataset_name": "LongMemEval 中文本地化基准",
+      "source_dataset": "LongMemEval-S cleaned",
+      "language": "zh-CN",
+      "version": "v0.1",
+      "adapter": "longmemeval",
+      "path": null,
+      "sha256": null,
+      "case_count": 20,
+      "translated": true,
+      "result_group": "zh_localized",
+      "status": "reserved"
+    },
+    {
+      "dataset_id": "LoCoMo-EN-Full",
+      "dataset_name": "LoCoMo 英文全量基准",
+      "source_dataset": "LoCoMo",
+      "language": "en",
+      "version": "locomo10-local",
+      "adapter": "locomo",
+      "path": "../datasets/raw/locomo/data/locomo10.json",
+      "sha256": "553cd5a15e25f2ceccc6ed185221eba645080c93e5b91087560a91aa5961f365",
+      "case_count": 1986,
+      "translated": false,
+      "result_group": "en_full",
+      "status": "available"
+    },
+    {
+      "dataset_id": "LoCoMo-ZH-Localized",
+      "dataset_name": "LoCoMo 中文本地化基准",
+      "source_dataset": "LoCoMo",
+      "language": "zh-CN",
+      "version": null,
+      "path": null,
+      "case_count": null,
+      "translated": true,
+      "result_group": "zh_localized",
+      "status": "reserved"
+    },
+    {
+      "dataset_id": "PersonaMem-EN-Full",
+      "dataset_name": "PersonaMem-v2 英文文本基准",
+      "source_dataset": "PersonaMem-v2",
+      "language": "en",
+      "version": "text-benchmark-local",
+      "adapter": "personamem-v2",
+      "path": "../datasets/raw/personamem_v2/benchmark/text/benchmark.csv",
+      "sha256": "95f2a8a324aab7baf2af937feae12731369e2abf7cad5ab3e170594cb25a3e52",
+      "case_count": 5000,
+      "translated": false,
+      "result_group": "en_full",
+      "status": "available"
+    },
+    {
+      "dataset_id": "PersonaMem-ZH-Localized",
+      "dataset_name": "PersonaMem 中文本地化基准",
+      "source_dataset": "PersonaMem-v2",
+      "language": "zh-CN",
+      "version": null,
+      "path": null,
+      "case_count": null,
+      "translated": true,
+      "result_group": "zh_localized",
+      "status": "reserved"
+    }
+  ]
+}

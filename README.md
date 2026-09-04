@@ -245,8 +245,10 @@ py -3.12 scripts/run_reme_end_to_end_eval.py --dataset LongMemEval-EN-Full --cas
 ```
 
 注册信息位于 `datasets/registry.json`。当前实际接入
-`LongMemEval-EN-Full` 和 `LongMemEval-ZH-20-v0.1`；LoCoMo 与 PersonaMem
-仅预留、不会被 runner 误当成可运行数据。旧的 `--data <path>` 命令仍然可用。
+`LongMemEval-EN-Full`、`LoCoMo-EN-Full` 和 `PersonaMem-EN-Full`；对应文件
+均指向统一的 `../datasets/raw/`。`MemEval-v0.1` 的298条数据已经冻结并通过
+阶段23审计，但在阶段24 System Adapter 接入前保持 `reserved`，不会被 runner
+误当成已经可运行。中文派生版本同样保持预留状态。旧的 `--data <path>` 命令仍然可用。
 未显式设置 `--output-dir` 时，结果自动隔离到
 `results/en_full/reme/<run-id>/` 或 `results/zh_localized/reme/<run-id>/`。
 
