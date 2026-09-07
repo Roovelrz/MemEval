@@ -23,11 +23,11 @@ class DatasetRegistryTest(unittest.TestCase):
         self.assertEqual(default_output_root(en_spec, "ReMe").parts[-2:], ("en_full", "reme"))
         self.assertEqual(default_output_root(zh_spec, "ReMe").parts[-2:], ("zh_localized", "reme"))
 
-    def test_registers_frozen_memeval_until_system_adapter_is_ready(self) -> None:
+    def test_registers_frozen_memeval_until_runner_is_ready(self) -> None:
         spec = load_dataset_registry()["MemEval-v0.1"]
 
         self.assertEqual(spec["case_count"], 298)
-        self.assertEqual(spec["blocked_by"], "stage_24_system_adapter")
+        self.assertEqual(spec["blocked_by"], "stage_25_26_capabilities_and_stage_27_runner")
         with self.assertRaisesRegex(ValueError, "reserved"):
             resolve_dataset("MemEval-v0.1")
 
