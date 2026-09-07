@@ -30,6 +30,8 @@ class FakeRuntime:
     canonical_case: dict
     events: list[dict]
     deleted: list[str]
+    event_to_session_id: dict[str, str]
+    memory_to_session_id: dict[str, str]
 
 
 class FakeSystem:
@@ -40,11 +42,15 @@ class FakeSystem:
     def __init__(self):
         self.opened_events = []
         self.cleaned = 0
+        self.created = 0
+        self.ingested = 0
+        self.searched = 0
 
     def run_metadata(self):
         return {"memory_version": "test"}
 
     def create_namespace(self, **kwargs):
+        self.created += 1
         events = json.loads(Path(kwargs["context_path"]).read_text(encoding="utf-8"))["events"]
         self.opened_events.append(events)
         sessions = [
@@ -52,9 +58,15 @@ class FakeSystem:
             for event in events if event.get("metadata", {}).get("operation") != "delete"
         ]
         evidence = kwargs["case"]["gold"]["payload"].get("gold_evidence_ids", [])
-        return FakeRuntime({"sessions": sessions, "evidence_session_ids": evidence}, events, [])
+        return FakeRuntime(
+            {"sessions": sessions, "evidence_session_ids": evidence}, events, [],
+            {event["event_id"]: event["session_id"] for event in events},
+            {event["metadata"]["memory_id"]: event["session_id"] for event in events
+             if event.get("metadata", {}).get("memory_id")},
+        )
 
     def ingest(self, runtime):
+        self.ingested += 1
         return SystemIngestResult({}, [], [], 1.5)
 
     def list_memories(self, runtime):
@@ -64,6 +76,7 @@ class FakeSystem:
         ])
 
     def search(self, runtime, **kwargs):
+        self.searched += 1
         hits = []
         for session in runtime.canonical_case["sessions"]:
             message = session["messages"][0]

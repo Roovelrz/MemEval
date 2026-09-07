@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import time
+from collections import Counter
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
@@ -12,6 +13,8 @@ from typing import Any, Iterable
 
 from dataset.build_pipeline.release import ReviewedCaseArtifact
 from memory_eval.systems import SystemAdapter, SystemOperationResult
+
+from .context_cache import ContextCache
 
 
 @dataclass(frozen=True)
@@ -22,6 +25,7 @@ class MemEvalRunConfig:
     search_multiplier: int = 1
     min_score: float = 0.0
     port: int = 25000
+    reuse_context: bool = False
 
 
 def _read_events(path: Path) -> list[dict[str, Any]]:
@@ -97,8 +101,35 @@ def _enrich_memories(runtime: Any, memories: list[dict[str, Any]]) -> list[dict[
     return output
 
 
-def _retrieval_metrics(runtime: Any, memories: list[dict[str, Any]]) -> dict[str, Any]:
-    gold = list(dict.fromkeys(runtime.canonical_case.get("evidence_session_ids", [])))
+def _evidence_session_ids(case: dict[str, Any], runtime: Any) -> list[str]:
+    dimension = case["envelope"]["dimension_id"]
+    payload = case["gold"]["payload"]
+    if dimension in {"D02", "D07"}:
+        references = payload.get("gold_evidence_ids", [])
+    elif dimension == "D03":
+        references = payload.get("evidence_event_ids", [])
+    elif dimension == "D06":
+        references = payload.get("winning_fact_ids", [])
+    else:
+        references = []
+    session_ids = {str(item["session_id"]) for item in runtime.canonical_case.get("sessions", [])}
+    output = []
+    for reference in references:
+        value = str(reference)
+        session_id = runtime.event_to_session_id.get(value) or runtime.memory_to_session_id.get(value)
+        if session_id is None and value in session_ids:
+            session_id = value
+        if session_id is None and dimension == "D06" and len(session_ids) == 1:
+            session_id = next(iter(session_ids))
+        if session_id is not None and session_id not in output:
+            output.append(session_id)
+    return output
+
+
+def _retrieval_metrics(
+    case: dict[str, Any], runtime: Any, memories: list[dict[str, Any]]
+) -> dict[str, Any]:
+    gold = _evidence_session_ids(case, runtime)
     retrieved = [str(item.get("session_id")) for item in memories if item.get("session_id")]
     if not gold:
         return {"retrieval_evaluated": False, "hit_at_k": None, "recall_at_k": None, "mrr": None}
@@ -162,6 +193,73 @@ class MemEvalRunner:
                 identity.get("tenant_id"), identity.get("user_id"),
             )
         )
+
+    def _new_result(
+        self, artifact: ReviewedCaseArtifact, config: MemEvalRunConfig, run_mode: str
+    ) -> dict[str, Any]:
+        envelope = artifact.case["envelope"]
+        metadata = self.system.run_metadata()
+        return {
+            "run_id": config.run_id,
+            "case_id": str(envelope["case_id"]),
+            "context_id": str(envelope["identity"]["context_id"]),
+            "dimension_id": artifact.dimension_id,
+            "system": self.system.name,
+            "system_version": metadata.get("memory_version", metadata.get("system_version")),
+            "run_mode": run_mode,
+            "reuse_context": run_mode == "context_batch",
+            "context_cache": None,
+            "prediction": None,
+            "retrieved_memories": [],
+            "trace": {},
+            "latency": {"ingest": None, "retrieval": None, "answer": None, "total": None},
+            "cost": {"input_tokens": None, "output_tokens": None, "api_cost": None},
+            "cost_scope": "case" if run_mode == "case_isolated" else "context_batch_cumulative",
+            "metrics": {},
+            "unsupported_metrics": [],
+            "status": "error",
+            "error": None,
+        }
+
+    def _complete_result(
+        self,
+        result: dict[str, Any],
+        runtime: Any,
+        case: dict[str, Any],
+        events: list[dict[str, Any]],
+        config: MemEvalRunConfig,
+        runner_trace: list[dict[str, Any]],
+        started: float,
+        ingest_latency: float | None,
+    ) -> None:
+        prediction, memories, metrics, status, unsupported, retrieval_ms = self._dimension_action(
+            runtime, case, events, config
+        )
+        runner_trace.append({"stage": "dimension_action", "status": status})
+        stats = self.system.get_stats(runtime)
+        system_trace = self.system.get_trace(runtime)
+        result.update(
+            prediction=prediction,
+            retrieved_memories=memories,
+            trace={"runner": runner_trace, "system": _operation_payload(system_trace)},
+            latency={
+                "ingest": ingest_latency,
+                "retrieval": retrieval_ms,
+                "answer": None,
+                "total": (time.perf_counter() - started) * 1000,
+            },
+            metrics=metrics,
+            unsupported_metrics=unsupported,
+            status=status,
+        )
+        if stats.status == "ok" and isinstance(stats.data, dict):
+            cost = stats.data.get("cost")
+            if isinstance(cost, dict):
+                result["cost"] = {
+                    "input_tokens": cost.get("input_tokens"),
+                    "output_tokens": cost.get("output_tokens"),
+                    "api_cost": cost.get("api_cost"),
+                }
 
     def _dimension_action(
         self,
@@ -234,7 +332,7 @@ class MemEvalRunner:
         if dimension == "D08":
             return None, memories, _privacy_metrics(case, memories), "ok", [], retrieval_ms
 
-        metrics = _retrieval_metrics(runtime, memories)
+        metrics = _retrieval_metrics(case, runtime, memories)
         if dimension == "D02":
             return None, memories, metrics, "ok", [], retrieval_ms
 
@@ -247,32 +345,20 @@ class MemEvalRunner:
 
     def run_case(self, artifact: ReviewedCaseArtifact, config: MemEvalRunConfig) -> dict[str, Any]:
         case_id = str(artifact.case["envelope"]["case_id"])
-        context_id = str(artifact.case["envelope"]["identity"]["context_id"])
         started = time.perf_counter()
         runtime = None
         runner_trace: list[dict[str, Any]] = []
         input_root = self.workspace_root / "_runner_inputs" / _safe_fragment(config.run_id)
-        metadata = self.system.run_metadata()
-        result = {
-            "run_id": config.run_id,
-            "case_id": case_id,
-            "context_id": context_id,
-            "dimension_id": artifact.dimension_id,
-            "system": self.system.name,
-            "system_version": metadata.get("memory_version", metadata.get("system_version")),
-            "run_mode": "case_isolated",
-            "prediction": None,
-            "retrieved_memories": [],
-            "trace": {},
-            "latency": {"ingest": None, "retrieval": None, "answer": None, "total": None},
-            "cost": {"input_tokens": None, "output_tokens": None, "api_cost": None},
-            "metrics": {},
-            "unsupported_metrics": [],
-            "status": "error",
-            "error": None,
+        result = self._new_result(artifact, config, "case_isolated")
+        result["context_cache"] = {
+            "hit": False, "context_sha256": None,
+            "ingest_owner_case_id": case_id, "query_index": 1, "query_count": 1,
         }
         try:
             case, context_path, events = _prepare_case_input(artifact, input_root)
+            result["context_cache"]["context_sha256"] = hashlib.sha256(
+                context_path.read_bytes()
+            ).hexdigest()
             (self.workspace_root / "logs").mkdir(parents=True, exist_ok=True)
             runtime = self.system.create_namespace(
                 namespace=self._namespace(case, config),
@@ -288,34 +374,9 @@ class MemEvalRunner:
             runner_trace.append({"stage": "ingest", "status": "ok", "failures": len(ingest.failures)})
             if ingest.failures:
                 raise RuntimeError(f"System ingest returned {len(ingest.failures)} failures")
-            prediction, memories, metrics, status, unsupported, retrieval_ms = self._dimension_action(
-                runtime, case, events, config
+            self._complete_result(
+                result, runtime, case, events, config, runner_trace, started, ingest.latency_ms
             )
-            runner_trace.append({"stage": "dimension_action", "status": status})
-            stats = self.system.get_stats(runtime)
-            system_trace = self.system.get_trace(runtime)
-            result.update(
-                prediction=prediction,
-                retrieved_memories=memories,
-                trace={"runner": runner_trace, "system": _operation_payload(system_trace)},
-                latency={
-                    "ingest": ingest.latency_ms,
-                    "retrieval": retrieval_ms,
-                    "answer": None,
-                    "total": (time.perf_counter() - started) * 1000,
-                },
-                metrics=metrics,
-                unsupported_metrics=unsupported,
-                status=status,
-            )
-            if stats.status == "ok" and isinstance(stats.data, dict):
-                cost = stats.data.get("cost")
-                if isinstance(cost, dict):
-                    result["cost"] = {
-                        "input_tokens": cost.get("input_tokens"),
-                        "output_tokens": cost.get("output_tokens"),
-                        "api_cost": cost.get("api_cost"),
-                    }
         except Exception as exc:
             runner_trace.append({"stage": "error", "status": "error", "type": type(exc).__name__})
             result["error"] = {"type": type(exc).__name__, "message": str(exc)}
@@ -342,6 +403,127 @@ class MemEvalRunner:
                         pass
         return result
 
+    def _run_context_batch(
+        self, artifacts: list[ReviewedCaseArtifact], config: MemEvalRunConfig
+    ) -> list[dict[str, Any]]:
+        groups = ContextCache().group(artifacts)
+        results: list[dict[str, Any]] = []
+        input_root = self.workspace_root / "_runner_inputs" / _safe_fragment(config.run_id)
+        (self.workspace_root / "logs").mkdir(parents=True, exist_ok=True)
+
+        for group in groups:
+            owner = group.artifacts[0]
+            owner_id = str(owner.case["envelope"]["case_id"])
+            runtime = None
+            prepared_path: Path | None = None
+            group_results: list[dict[str, Any]] = []
+            group_started = time.perf_counter()
+            try:
+                owner_case, context_path, events = _prepare_case_input(owner, input_root)
+                prepared_path = context_path if owner.dimension_id == "D08" else None
+                runtime = self.system.create_namespace(
+                    namespace=self._namespace(owner_case, config),
+                    workspace=self.workspace_root / "namespaces",
+                    case=owner_case,
+                    context_path=context_path,
+                    dataset_id=config.dataset_id,
+                    port=config.port,
+                    service_log_path=self.workspace_root / "logs" / f"{_safe_fragment(owner_id)}.log",
+                )
+                ingest = self.system.ingest(runtime)
+                if ingest.failures:
+                    raise RuntimeError(f"System ingest returned {len(ingest.failures)} failures")
+
+                for index, artifact in enumerate(group.artifacts, 1):
+                    started = group_started if index == 1 else time.perf_counter()
+                    result = self._new_result(artifact, config, "context_batch")
+                    result["context_cache"] = {
+                        "hit": index > 1,
+                        "context_sha256": group.context_sha256,
+                        "ingest_owner_case_id": owner_id,
+                        "query_index": index,
+                        "query_count": len(group.artifacts),
+                    }
+                    trace = [
+                        {"stage": "load_context", "status": "ok", "event_count": len(events),
+                         "cache_hit": index > 1},
+                        {"stage": "ingest", "status": "reused" if index > 1 else "ok",
+                         "failures": 0},
+                    ]
+                    try:
+                        case = owner_case if artifact is owner else artifact.case
+                        self._complete_result(
+                            result, runtime, case, events, config, trace, started,
+                            None if index > 1 else ingest.latency_ms,
+                        )
+                    except Exception as exc:
+                        trace.append({"stage": "error", "status": "error", "type": type(exc).__name__})
+                        result["error"] = {"type": type(exc).__name__, "message": str(exc)}
+                        result["trace"] = {"runner": trace}
+                        result["latency"]["total"] = (time.perf_counter() - started) * 1000
+                    group_results.append(result)
+            except Exception as exc:
+                for index, artifact in enumerate(group.artifacts, 1):
+                    result = self._new_result(artifact, config, "context_batch")
+                    result["context_cache"] = {
+                        "hit": False,
+                        "context_sha256": group.context_sha256,
+                        "ingest_owner_case_id": owner_id,
+                        "query_index": index,
+                        "query_count": len(group.artifacts),
+                    }
+                    result["error"] = {"type": type(exc).__name__, "message": str(exc)}
+                    result["trace"] = {"runner": [{"stage": "ingest", "status": "error"}]}
+                    result["latency"]["total"] = (time.perf_counter() - group_started) * 1000
+                    group_results.append(result)
+            finally:
+                if runtime is not None:
+                    try:
+                        self.system.cleanup(runtime)
+                    except Exception as exc:
+                        target = group_results[-1]
+                        target["status"] = "error"
+                        target["error"] = {
+                            "type": type(exc).__name__, "message": f"cleanup: {exc}"
+                        }
+                if prepared_path is not None:
+                    prepared_path.unlink(missing_ok=True)
+                    for directory in (input_root, input_root.parent):
+                        try:
+                            directory.rmdir()
+                        except (FileNotFoundError, OSError):
+                            pass
+            results.extend(group_results)
+        return results
+
+    def _write_summary(
+        self,
+        results: list[dict[str, Any]],
+        config: MemEvalRunConfig,
+        output: Path,
+        wall_latency_ms: float,
+    ) -> Path:
+        summary = {
+            "schema_version": "memeval_run_summary_v1",
+            "run_id": config.run_id,
+            "dataset_id": config.dataset_id,
+            "system": self.system.name,
+            "system_version": self.system.run_metadata().get("memory_version"),
+            "run_mode": "context_batch" if config.reuse_context else "case_isolated",
+            "reuse_context": config.reuse_context,
+            "case_count": len(results),
+            "context_count": len({row["context_id"] for row in results}),
+            "ingest_count": sum(
+                1 for row in results if not (row.get("context_cache") or {}).get("hit", False)
+            ),
+            "status_counts": dict(Counter(row["status"] for row in results)),
+            "wall_latency_ms": wall_latency_ms,
+            "results_path": str(output.resolve()),
+        }
+        path = output.with_name("run_summary.json")
+        path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        return path
+
     def run(
         self,
         artifacts: Iterable[ReviewedCaseArtifact],
@@ -350,13 +532,17 @@ class MemEvalRunner:
     ) -> list[dict[str, Any]]:
         if config.top_k < 1:
             raise ValueError("top_k must be positive")
+        rows = list(artifacts)
         output = Path(output_path)
         output.parent.mkdir(parents=True, exist_ok=True)
-        results = []
+        started = time.perf_counter()
+        results = self._run_context_batch(rows, config) if config.reuse_context else []
         with output.open("w", encoding="utf-8", newline="\n") as handle:
-            for artifact in artifacts:
-                result = self.run_case(artifact, config)
-                results.append(result)
+            for item in (rows if not config.reuse_context else results):
+                result = self.run_case(item, config) if not config.reuse_context else item
+                if not config.reuse_context:
+                    results.append(result)
                 handle.write(json.dumps(result, ensure_ascii=False) + "\n")
                 handle.flush()
+        self._write_summary(results, config, output, (time.perf_counter() - started) * 1000)
         return results
