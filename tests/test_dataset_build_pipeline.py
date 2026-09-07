@@ -232,7 +232,7 @@ def _event(
     return {
         "event_id": f"{record_id}:event:{index:06d}",
         "session_id": "s1",
-        "sequence": index,
+        "order": index,
         "role": "user",
         "content": content,
         "timestamp": timestamp,

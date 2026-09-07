@@ -113,7 +113,7 @@ def make_events(
             {
                 "event_id": f"{source_record_id}:event:{sequence:06d}",
                 "session_id": str(message.get("session_id", default_session_id)),
-                "sequence": sequence,
+                "order": sequence,
                 "role": str(message.get("role", "unknown")),
                 "content": content,
                 "timestamp": str(message.get("timestamp", "")),

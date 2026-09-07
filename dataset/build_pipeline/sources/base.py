@@ -13,7 +13,7 @@ class CanonicalEvent(TypedDict):
 
     event_id: str
     session_id: str
-    sequence: int
+    order: int
     role: str
     content: str
     timestamp: str
@@ -85,16 +85,16 @@ class SourceAdapter(ABC):
         if not events:
             raise ValueError(f"Record {source_record_id!r} must contain at least one event")
         seen_event_ids: set[str] = set()
-        for expected_sequence, event in enumerate(events):
+        for expected_order, event in enumerate(events):
             event_id = str(event.get("event_id", "")).strip()
             if not event_id:
                 raise ValueError(f"Record {source_record_id!r} contains an event without event_id")
             if event_id in seen_event_ids:
                 raise ValueError(f"Record {source_record_id!r} repeats event_id {event_id!r}")
             seen_event_ids.add(event_id)
-            if event.get("sequence") != expected_sequence:
+            if event.get("order") != expected_order:
                 raise ValueError(
-                    f"Record {source_record_id!r} event {event_id!r} has a non-contiguous sequence"
+                    f"Record {source_record_id!r} event {event_id!r} has a non-contiguous order"
                 )
             if not str(event.get("role", "")).strip():
                 raise ValueError(f"Record {source_record_id!r} event {event_id!r} has no role")

@@ -143,12 +143,12 @@ class D08PrivacyBuilder(SourceDimensionBuilder):
         elif scenario == "deletion":
             allowed = []
             deleted = [primary_memory_id]
-            sequence = len(scenario_events)
+            order = len(scenario_events)
             scenario_events.append(
                 {
                     "event_id": f"d08:{stable_id(scenario_id)}:delete",
                     "session_id": f"d08:{stable_id(scenario_id)}:lifecycle",
-                    "sequence": sequence,
+                    "order": order,
                     "role": "system",
                     "content": f"Delete memory {primary_memory_id}",
                     "timestamp": "",
