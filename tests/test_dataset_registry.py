@@ -27,7 +27,7 @@ class DatasetRegistryTest(unittest.TestCase):
         spec = load_dataset_registry()["MemEval-v0.1"]
 
         self.assertEqual(spec["case_count"], 298)
-        self.assertEqual(spec["blocked_by"], "stage_25_26_capabilities_and_stage_27_runner")
+        self.assertEqual(spec["blocked_by"], "stage_27_runner")
         with self.assertRaisesRegex(ValueError, "reserved"):
             resolve_dataset("MemEval-v0.1")
 
