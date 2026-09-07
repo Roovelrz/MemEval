@@ -176,7 +176,8 @@ class ReMeSystemAdapter(OptionalSystemOperations):
         context_path: Path, dataset_id: str, port: int, service_log_path: Path,
     ) -> ReMeSystemRuntime:
         """Caller supplies the namespace's Context; never infer access rights from Gold."""
-        digest = hashlib.sha256(namespace.encode("utf-8")).hexdigest()
+        # Keep formal Case and Session paths below the legacy Windows path limit.
+        digest = hashlib.sha256(namespace.encode("utf-8")).hexdigest()[:16]
         runtime = self.open_case(
             workspace=workspace / digest, case=case, context_path=context_path,
             dataset_id=dataset_id, port=port, service_log_path=service_log_path,

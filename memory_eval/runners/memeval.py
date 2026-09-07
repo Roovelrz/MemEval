@@ -503,6 +503,26 @@ class MemEvalRunner:
         output: Path,
         wall_latency_ms: float,
     ) -> Path:
+        dimensions = {}
+        for dimension_id in sorted({row["dimension_id"] for row in results}):
+            rows = [row for row in results if row["dimension_id"] == dimension_id]
+            metric_names = sorted({name for row in rows for name in row["metrics"]})
+            dimensions[dimension_id] = {
+                "case_count": len(rows),
+                "status_counts": dict(Counter(row["status"] for row in rows)),
+                "metrics": {
+                    name: (
+                        sum(values) / len(values) if (values := [
+                            float(row["metrics"][name]) for row in rows
+                            if isinstance(row["metrics"].get(name), (int, float))
+                        ]) else None
+                    )
+                    for name in metric_names
+                },
+                "unsupported_metric_counts": dict(Counter(
+                    name for row in rows for name in row["unsupported_metrics"]
+                )),
+            }
         summary = {
             "schema_version": "memeval_run_summary_v1",
             "run_id": config.run_id,
@@ -511,12 +531,17 @@ class MemEvalRunner:
             "system_version": self.system.run_metadata().get("memory_version"),
             "run_mode": "context_batch" if config.reuse_context else "case_isolated",
             "reuse_context": config.reuse_context,
+            "top_k": config.top_k,
+            "search_multiplier": config.search_multiplier,
+            "min_score": config.min_score,
             "case_count": len(results),
             "context_count": len({row["context_id"] for row in results}),
             "ingest_count": sum(
                 1 for row in results if not (row.get("context_cache") or {}).get("hit", False)
             ),
             "status_counts": dict(Counter(row["status"] for row in results)),
+            "dimensions": dimensions,
+            "system_metadata": self.system.run_metadata(),
             "wall_latency_ms": wall_latency_ms,
             "results_path": str(output.resolve()),
         }

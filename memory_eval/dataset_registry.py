@@ -44,6 +44,7 @@ def _custom_spec(path: Path) -> dict[str, Any]:
         "language": "unknown",
         "version": path.parent.name,
         "path": str(path),
+        "path_type": "directory" if path.is_dir() else "file",
         "case_count": None,
         "translated": False,
         "result_group": "custom",
@@ -79,8 +80,15 @@ def resolve_dataset(
 
 
 def _validate_resolved(path: Path, spec: dict[str, Any]) -> tuple[Path, dict[str, Any]]:
-    if not path.is_file():
-        raise FileNotFoundError(f"Dataset file not found: {path}")
+    path_type = str(spec.get("path_type") or "file")
+    if path_type == "directory":
+        if not path.is_dir():
+            raise FileNotFoundError(f"Dataset directory not found: {path}")
+    elif path_type == "file":
+        if not path.is_file():
+            raise FileNotFoundError(f"Dataset file not found: {path}")
+    else:
+        raise ValueError(f"Unknown dataset path_type: {path_type!r}")
     resolved = dict(spec)
     resolved["path"] = str(path)
     return path, resolved

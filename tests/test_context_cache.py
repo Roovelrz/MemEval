@@ -35,6 +35,7 @@ def test_context_batch_ingests_once_and_records_cache_hits_separately():
         assert summary["case_count"] == 2
         assert summary["context_count"] == 1
         assert summary["ingest_count"] == 1
+        assert summary["dimensions"]["D02"]["metrics"]["recall_at_k"] == 1.0
 
         isolated_system = FakeSystem()
         isolated_output = directory / "isolated" / "results.jsonl"

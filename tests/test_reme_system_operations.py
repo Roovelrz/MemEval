@@ -74,6 +74,7 @@ def test_namespace_delete_reset_and_observation_use_existing_backend():
         left = open_namespace("user/a", 25001)
         right = open_namespace("user:a", 25002)
         assert left.backend_runtime.workspace != right.backend_runtime.workspace
+        assert len(left.backend_runtime.workspace.name) == 16
         with pytest.raises(ValueError, match="overlaps"):
             open_namespace("user/a", 25003)
         with pytest.raises(ValueError, match="port"):

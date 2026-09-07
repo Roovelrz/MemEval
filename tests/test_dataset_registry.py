@@ -23,17 +23,22 @@ class DatasetRegistryTest(unittest.TestCase):
         self.assertEqual(default_output_root(en_spec, "ReMe").parts[-2:], ("en_full", "reme"))
         self.assertEqual(default_output_root(zh_spec, "ReMe").parts[-2:], ("zh_localized", "reme"))
 
-    def test_registers_frozen_memeval_until_runner_is_ready(self) -> None:
-        spec = load_dataset_registry()["MemEval-v0.1"]
+    def test_resolves_frozen_memeval_directory_for_the_runner(self) -> None:
+        path, spec = resolve_dataset("MemEval-v0.1")
 
         self.assertEqual(spec["case_count"], 298)
-        self.assertEqual(spec["blocked_by"], "stage_27_runner")
-        with self.assertRaisesRegex(ValueError, "reserved"):
-            resolve_dataset("MemEval-v0.1")
+        self.assertEqual(spec["adapter"], "memeval")
+        self.assertEqual(spec["path_type"], "directory")
+        self.assertTrue(path.is_dir())
 
     def test_reserved_dataset_fails_before_runner_starts(self) -> None:
         with self.assertRaisesRegex(ValueError, "reserved"):
             resolve_dataset("LoCoMo-ZH-Localized")
+
+    def test_custom_directory_keeps_directory_path_type(self) -> None:
+        path, spec = resolve_dataset(data_path="dataset/MemEval-v0.1")
+        self.assertTrue(path.is_dir())
+        self.assertEqual(spec["path_type"], "directory")
 
     def test_local_english_datasets_are_available(self) -> None:
         _, locomo_spec = resolve_dataset("LoCoMo-EN-Full")

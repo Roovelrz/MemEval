@@ -8,7 +8,7 @@
 
 阶段25定义统一接口、`SystemCapabilities` 和 `SystemOperationResult`。
 可选操作返回 `status="ok"` 或 `status="unsupported"`；后者包含原因且没有分数，
-阶段27 Evaluator/Runner 必须保留这个状态，不能将其转换为零分。
+阶段27 Evaluator/Runner 会保留这个状态，不会将其转换为零分。
 
 阶段26在 Wrapper 中增加命名空间、删除与观察接口。能力声明以当前文件/BM25
 后端为准：
@@ -47,8 +47,9 @@ finally:
 ```
 
 调用方必须把属于该命名空间的 Context 传入，并为并行命名空间分配不同端口。
-Wrapper 不从 Gold 的 allowed/forbidden 列表推断授权，也不代替 Runner 把混合用户
-Context 分流。重复使用活动目录或端口会报错。原有 `open_case/close_case` 仍可使用。
+Wrapper 不从 Gold 的 allowed/forbidden 列表推断授权。Runner 根据 Case identity
+把混合用户 Context 分流。重复使用活动目录或端口会报错。原有
+`open_case/close_case` 仍可使用。
 
 `open_case/create_namespace` 延续阶段24的行为，先写入初始文件，`ingest` 再建立索引。
 `list_memories` 读取实际 Session 文件，返回 `indexed` 状态、Event 和源 memory ID；
@@ -68,7 +69,7 @@ Context 中的 `metadata.operation="delete"` 是生命周期动作，不作为�
 检查正向检索、双命名空间隔离、局部删除、重置及全部删除。脚本只使用本地服务，
 无需 LLM API，成功后清理临时目录。
 
-阶段27 Runner 完成前，`MemEval-v0.1` 仍保持 `reserved`。
+阶段27、28完成后，`MemEval-v0.1` 已在数据集注册表中标记为 `available`。
 
 以后接入其他 Memory System 时，在本目录增加新的实现即可；不需要修改
 Dataset Builder，也不需要让 Runner 理解具体系统的私有格式。
