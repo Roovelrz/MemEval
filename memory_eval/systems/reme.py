@@ -69,7 +69,7 @@ def _gold_reference_ids(dimension_id: str, payload: dict[str, Any]) -> list[str]
             for event_id in item.get("evidence_event_ids", [])
         ]
     if dimension_id == "D06":
-        return [str(item.get("fact_id", "")) for item in payload.get("fact_versions", [])]
+        return [str(value) for value in payload.get("winning_fact_ids", [])]
     if dimension_id == "D08":
         return [
             str(value)
