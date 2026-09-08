@@ -9,7 +9,7 @@ System Adapter 写入，并按维度执行操作：
 | D02 | `search` | Session 级 Hit、Recall、MRR |
 | D03 | `search` + `query` | 检索可评分；Answer 未支持，所以状态为 `partial` |
 | D04 | `get_trace` | ReMe 无主动激活决策 Trace，状态为 `unsupported` |
-| D05 | `get_profile` | ReMe 无画像提取，状态为 `unsupported` |
+| D05 | `get_profile` + `search` | 检索指标可评分；ReMe 无画像提取，所以状态为 `partial` |
 | D06 | `search` + `query` | 检索可评分；Answer 未支持，所以状态为 `partial` |
 | D07 | `search` + `query` | 检索可评分；Answer 未支持，所以状态为 `partial` |
 | D08 | identity 分流、生命周期删除、`search` | 分别记录允许召回与禁止/删除/Canary 暴露 |
@@ -24,6 +24,19 @@ Retrieved Memories、Trace、Latency、Cost、Metrics、Status 和 Error。单�
 ```powershell
 py -3.12 scripts/run_memeval.py --dataset MemEval-v0.1 --dimension D08 --limit 1 --run-id d08-smoke
 ```
+
+运行期间 Retrieval、Answer、Judge 都会逐 Case 输出进度条、完成数、百分比、耗时和
+预计剩余时间。默认启用断点续跑；进程中断后，使用完全相同的 `--run-id` 和 Retrieval
+参数重新执行即可。Retrieval 跳过已有成功 Case，并重试错误 Case；Answer/Judge 按已有
+输出 ID 跳过成功请求：
+
+```powershell
+py -3.12 scripts/run_memeval.py --dataset MemEval-v0.1 --run-id reme-full-20260908-132206 --answer-workers 2 --judge-workers 2
+```
+
+首次运行会写入 `retrieval_run_config.json`。续跑时若数据选择、TopK、Context Batch 或
+ReMe 配置与首次运行不同，脚本会拒绝混合结果并要求使用新的 `--run-id`。`--no-resume`
+可用于明确禁止复用已有 Run；如果目标目录已有结果，它会直接报错而不会覆盖。
 
 阶段28提供性能专用 Context Batch Mode：
 

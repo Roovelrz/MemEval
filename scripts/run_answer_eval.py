@@ -21,6 +21,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from memory_eval.adapters.llm import create_llm_adapter
+from memory_eval.progress import ProgressReporter
 
 try:  # works both as ``python scripts/run_answer_eval.py`` and as a package import
     from scripts.llm_eval_common import (
@@ -75,7 +76,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--base-url", default=None)
     parser.add_argument("--model", default=None)
     parser.add_argument("--llm-adapter", default="openai-compatible")
-    parser.add_argument("--max-tokens", type=int, default=8192)
+    parser.add_argument("--max-tokens", type=int, default=65536)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--timeout", type=float, default=120.0)
     parser.add_argument("--retries", type=int, default=3)
@@ -193,7 +194,6 @@ def run(args: argparse.Namespace) -> int:
         index, item = pair
         ident = row_id(item)
         started = time.perf_counter()
-        print(f"[{index}/{total}] id={ident} started", flush=True)
         prompt = render_answer_prompt(item)
         prompt_path = prompt_dir / f"{_safe_name(ident)}.txt"
         prompt_path.write_text(prompt, encoding="utf-8", newline="")
@@ -250,13 +250,16 @@ def run(args: argparse.Namespace) -> int:
             return index, ident, None, failure
 
     pending: list[tuple[int, dict[str, Any]]] = []
+    selected_ids = {row_id(item) for item in rows}
+    progress = ProgressReporter("Answer", total, completed=len(done & selected_ids))
     for index, item in enumerate(rows, start=1):
         ident = row_id(item)
         if ident in done:
-            print(f"[{index}/{total}] id={ident} skipped (already in output)", flush=True)
             successes += 1
         else:
             pending.append((index, item))
+    if pending:
+        progress.start_heartbeat()
 
     if workers == 1:
         completed = map(process, pending)
@@ -269,27 +272,24 @@ def run(args: argparse.Namespace) -> int:
             if result is not None:
                 write_jsonl(output_path, [result], append=True)
                 successes += 1
-                print(f"[{index}/{total}] id={ident} completed", flush=True)
+                progress.advance(item_id=ident, status="completed")
             else:
                 assert failure is not None
                 write_jsonl(failure_path, [failure], append=True)
                 if failure.get("api_category"):
                     write_jsonl(api_error_path, [failure], append=True)
                 failures += 1
-                print(
-                    f"[{index}/{total}] id={ident} FAILED: "
-                    f"{failure['error_type']}: {failure['error']}",
-                    flush=True,
-                )
+                progress.advance(item_id=ident, status=f"FAILED:{failure['error_type']}")
     finally:
         if executor is not None:
             executor.shutdown(wait=True)
+        progress.close()
 
     result_rows = [
         row for row in (read_jsonl(output_path) if output_path.is_file() else [])
-        if row_id(row) in {row_id(item) for item in rows}
+        if row_id(row) in selected_ids
     ]
-    selected_id_set = {row_id(item) for item in rows}
+    selected_id_set = selected_ids
     successful_id_set = {row_id(row) for row in result_rows}
     failure_rows = [
         row

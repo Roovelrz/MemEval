@@ -36,6 +36,9 @@ ROOT_CAUSES = (
     "API_FAILURE",
     "TIMEOUT",
     "PIPELINE_FAILURE",
+    "PRIVACY_FAILURE",
+    "UNSUPPORTED_CAPABILITY",
+    "PARTIAL_CAPABILITY",
 )
 ROOT_PRIORITY = {
     "PIPELINE_FAILURE": 0,
@@ -52,6 +55,9 @@ ROOT_PRIORITY = {
     "JUDGE_SUSPECT": 8,
     "API_FAILURE": 9,
     "TIMEOUT": 9,
+    "PRIVACY_FAILURE": 9,
+    "UNSUPPORTED_CAPABILITY": 9,
+    "PARTIAL_CAPABILITY": 9,
     "PASS": 10,
 }
 
@@ -242,6 +248,9 @@ def _suggestion(root_cause: str) -> str:
         "API_FAILURE": "检查 API 状态码、重试与服务端错误记录。",
         "TIMEOUT": "检查超时层级并调整 timeout/retry，确认是否存在异常长输入。",
         "PIPELINE_FAILURE": "按缺失产物对应的阶段日志恢复链路。",
+        "PRIVACY_FAILURE": "检查用户隔离、删除状态和敏感信息过滤链路。",
+        "UNSUPPORTED_CAPABILITY": "系统未暴露该维度所需能力；保留为不支持，不折算成零分。",
+        "PARTIAL_CAPABILITY": "查看 unsupported_metrics，仅汇报已经实际测量的指标。",
     }[root_cause]
 
 
@@ -1476,6 +1485,9 @@ def _render_summary(summary: dict[str, Any]) -> str:
         "API_FAILURE": "Memory 或 LLM API 请求失败",
         "TIMEOUT": "某个 API 阶段超时",
         "PIPELINE_FAILURE": "链路产物缺失，无法完成该 case 的评测",
+        "PRIVACY_FAILURE": "敏感信息、跨用户记忆或已删除记忆被不当召回",
+        "UNSUPPORTED_CAPABILITY": "系统未暴露该维度要求的能力，不折算成零分",
+        "PARTIAL_CAPABILITY": "该维度只完成了系统当前支持的部分指标",
     }
     gap_translations = {
         "Provider-side prompt truncation is not exposed by the OpenAI-compatible endpoint; client-side truncation is recorded.":
@@ -1488,8 +1500,13 @@ def _render_summary(summary: dict[str, Any]) -> str:
             "本次运行使用了 dirty 工作区且没有源码快照；仅凭 Git commit 无法严格还原当时运行代码。",
     }
     non_pass = [(key, root[key]) for key in ROOT_CAUSES if key != "PASS" and root[key] > 0]
+    completion_text = (
+        "完成了各自适用的评测阶段"
+        if summary.get("dimension_metrics")
+        else "生成了完整的 Retrieval、Answer 和 Judge 产物"
+    )
     interpretation = [
-        f"- 本次共评测 **{summary['total_cases']}** 条 case，其中 **{summary['successful_pipeline_cases']}** 条生成了完整的 Retrieval、Answer 和 Judge 产物，**{summary['failed_pipeline_cases']}** 条链路不完整。",
+        f"- 本次共评测 **{summary['total_cases']}** 条 case，其中 **{summary['successful_pipeline_cases']}** 条{completion_text}，**{summary['failed_pipeline_cases']}** 条链路不完整。",
         f"- Retrieval 实际计分 **{summary['retrieval_scored_cases']}** 条，Hit@{summary['top_k']} 为 **{_pct(summary['hit_at_k'])}**，Recall@{summary['top_k']} 为 **{_pct(summary['recall_at_k'])}**，MRR 为 **{_display(summary['mrr'])}**。",
         f"- Answer/Judge 实际计分 **{summary['answer_scored_cases']}** 条，答案准确率为 **{_pct(summary['answer_accuracy'])}**。",
     ]
@@ -1648,7 +1665,7 @@ def _render_summary(summary: dict[str, Any]) -> str:
         f"| B：Retrieval ✓ + Answer ✗ | {q['B_retrieval_pass_answer_fail']} | 排查上下文丢失、Answer 推理或 Judge |",
         f"| C：Retrieval ✗ + Answer ✓ | {q['C_retrieval_fail_answer_pass']} | 可能依靠模型先验猜对，不能证明 Memory 有效 |",
         f"| D：Retrieval ✗ + Answer ✗ | {q['D_retrieval_fail_answer_fail']} | 优先排查检索召回和排序 |",
-        f"| 未计分 | {q['not_scored']} | Answer/Judge 产物不完整 |",
+        f"| 未计分 | {q['not_scored']} | Answer/Judge 不适用或产物不完整 |",
         "",
         "## 主要根因分布",
         "",

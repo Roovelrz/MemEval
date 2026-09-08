@@ -83,6 +83,61 @@ class LlmEvalRunnersTest(unittest.TestCase):
         self.assertEqual(usage["length_recovery_count"], 1)
         self.assertEqual(usage["final_max_tokens"], 8192)
 
+    def test_length_finish_expands_up_to_384k_cap(self) -> None:
+        requested_limits: list[int] = []
+
+        class FakeResponse:
+            status = 200
+
+            def __init__(self, final: bool) -> None:
+                payload = {
+                    "choices": [{
+                        "finish_reason": "stop" if final else "length",
+                        "message": {
+                            "content": "final answer" if final else "",
+                            "reasoning_content": "thinking" if not final else "",
+                        },
+                    }],
+                    "usage": {"total_tokens": 10},
+                }
+                self._body = io.BytesIO(json.dumps(payload).encode("utf-8"))
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_: object) -> None:
+                return None
+
+            def read(self) -> bytes:
+                return self._body.read()
+
+        def fake_urlopen(request, timeout: float):
+            del timeout
+            limit = json.loads(request.data.decode("utf-8"))["max_tokens"]
+            requested_limits.append(limit)
+            return FakeResponse(final=limit == 393216)
+
+        with patch(
+            "memory_eval.adapters.llm.openai_compatible.urllib.request.urlopen",
+            side_effect=fake_urlopen,
+        ):
+            content, usage = complete(
+                api_key="test-key",
+                base_url="http://example.test/v1",
+                model="fake-model",
+                prompt="question",
+                max_tokens=65536,
+                temperature=0.0,
+                timeout=5.0,
+                retries=0,
+                retry_backoff=0.0,
+            )
+
+        self.assertEqual(content, "final answer")
+        self.assertEqual(requested_limits, [65536, 131072, 262144, 393216])
+        self.assertEqual(usage["length_recovery_count"], 3)
+        self.assertEqual(usage["final_max_tokens"], 393216)
+
     def test_answer_and_judge_use_configured_concurrency(self) -> None:
         with workspace_directory("llm-concurrency") as directory:
             prepared = directory / "prepared.jsonl"

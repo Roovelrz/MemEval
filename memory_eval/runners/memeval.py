@@ -9,9 +9,10 @@ from collections import Counter
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 from dataset.build_pipeline.release import ReviewedCaseArtifact
+from memory_eval.progress import ProgressReporter
 from memory_eval.systems import SystemAdapter, SystemOperationResult
 
 from .context_cache import ContextCache
@@ -42,6 +43,61 @@ def _safe_fragment(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()[:16]
 
 
+def _retrieval_status(result: dict[str, Any]) -> str:
+    explicit = result.get("retrieval_status")
+    if isinstance(explicit, str):
+        return explicit
+    trace = result.get("trace")
+    runner = trace.get("runner") if isinstance(trace, dict) else None
+    if isinstance(runner, list):
+        for stage in reversed(runner):
+            if isinstance(stage, dict) and stage.get("stage") == "dimension_action":
+                return str(stage.get("status", "error"))
+    return str(result.get("status", "error"))
+
+
+def _d08_execution_identity(
+    case: dict[str, Any], events: list[dict[str, Any]]
+) -> dict[str, Any]:
+    declared = case["envelope"]["identity"]
+    scenario = case["envelope"].get("metadata", {}).get("scenario_type")
+    if scenario != "deletion":
+        return declared
+
+    delete_events = [
+        event
+        for event in events
+        if isinstance(event.get("metadata"), dict)
+        and event["metadata"].get("operation") == "delete"
+    ]
+    target_ids = {
+        str(event["metadata"].get("target_memory_id"))
+        for event in delete_events
+        if event["metadata"].get("target_memory_id")
+    }
+    lifecycle_events = [
+        event
+        for event in events
+        if isinstance(event.get("metadata"), dict)
+        and (
+            event["metadata"].get("operation") == "delete"
+            or str(event["metadata"].get("memory_id")) in target_ids
+        )
+    ]
+    identities = {
+        (event["metadata"].get("user_id"), event["metadata"].get("tenant_id"))
+        for event in lifecycle_events
+    }
+    if not target_ids or len(lifecycle_events) < 2 or len(identities) != 1:
+        raise ValueError(
+            "D08 deletion Context must declare one execution identity for its write/delete lifecycle"
+        )
+    user_id, tenant_id = next(iter(identities))
+    if not user_id or not tenant_id:
+        raise ValueError("D08 deletion execution identity must declare user_id and tenant_id")
+    return {**declared, "user_id": user_id, "tenant_id": tenant_id}
+
+
 def _visible_d08_events(case: dict[str, Any], events: list[dict[str, Any]]) -> list[dict[str, Any]]:
     identity = case["envelope"]["identity"]
     user_id = identity.get("user_id")
@@ -68,8 +124,9 @@ def _prepare_case_input(
     if artifact.dimension_id != "D08":
         return artifact.case, artifact.context_path, events
 
-    visible = _visible_d08_events(artifact.case, events)
     case = deepcopy(artifact.case)
+    case["envelope"]["identity"] = _d08_execution_identity(case, events)
+    visible = _visible_d08_events(case, events)
     case["envelope"]["context"]["event_count"] = len(visible)
     input_root.mkdir(parents=True, exist_ok=True)
     context_path = input_root / f"{_safe_fragment(case['envelope']['case_id'])}.json"
@@ -108,6 +165,12 @@ def _evidence_session_ids(case: dict[str, Any], runtime: Any) -> list[str]:
         references = payload.get("gold_evidence_ids", [])
     elif dimension == "D03":
         references = payload.get("evidence_event_ids", [])
+    elif dimension == "D05":
+        references = [
+            event_id
+            for item in payload.get("profile_items", [])
+            for event_id in item.get("evidence_event_ids", [])
+        ]
     elif dimension == "D06":
         references = payload.get("winning_fact_ids", [])
     else:
@@ -150,8 +213,11 @@ def _written_event_metrics(case: dict[str, Any], operation: SystemOperationResul
     rows = operation.data if isinstance(operation.data, list) else []
     written = {str(value) for row in rows for value in row.get("event_ids", [])}
     expected = {str(value) for value in case["gold"]["payload"].get("scored_event_ids", [])}
+    correct = written.intersection(expected)
     return {
-        "write_event_recall": len(written.intersection(expected)) / len(expected) if expected else None,
+        "write_event_precision": len(correct) / len(written) if written else None,
+        "write_event_recall": len(correct) / len(expected) if expected else None,
+        "unexpected_written_event_count": len(written - expected),
         "written_memory_units": len(rows),
         "semantic_memory_precision": None,
         "semantic_memory_recall": None,
@@ -251,6 +317,7 @@ class MemEvalRunner:
             metrics=metrics,
             unsupported_metrics=unsupported,
             status=status,
+            retrieval_status=status,
         )
         if stats.status == "ok" and isinstance(stats.data, dict):
             cost = stats.data.get("cost")
@@ -296,7 +363,25 @@ class MemEvalRunner:
                 if self.system.capabilities.profile
                 else _unsupported("System does not expose profiles")
             )
-            return _operation_payload(operation), memories, {}, operation.status, ["profile_accuracy"], None
+            if not self.system.capabilities.retrieval:
+                return (
+                    _operation_payload(operation), memories, {}, operation.status,
+                    ["profile_accuracy", "personalized_answer_accuracy"], None,
+                )
+            search = self.system.search(
+                runtime,
+                query=query,
+                top_k=config.top_k,
+                search_multiplier=config.search_multiplier,
+                min_score=config.min_score,
+            )
+            memories = _enrich_memories(runtime, search.memories)
+            metrics = _retrieval_metrics(case, runtime, memories)
+            return (
+                _operation_payload(operation), memories, metrics,
+                "partial" if operation.status == "unsupported" else operation.status,
+                ["profile_accuracy", "personalized_answer_accuracy"], search.latency_ms,
+            )
 
         if dimension == "D08" and not self.system.capabilities.user_isolation:
             operation = _unsupported("System does not isolate user namespaces")
@@ -404,7 +489,10 @@ class MemEvalRunner:
         return result
 
     def _run_context_batch(
-        self, artifacts: list[ReviewedCaseArtifact], config: MemEvalRunConfig
+        self,
+        artifacts: list[ReviewedCaseArtifact],
+        config: MemEvalRunConfig,
+        on_result: Callable[[dict[str, Any]], None] | None = None,
     ) -> list[dict[str, Any]]:
         groups = ContextCache().group(artifacts)
         results: list[dict[str, Any]] = []
@@ -494,6 +582,9 @@ class MemEvalRunner:
                         except (FileNotFoundError, OSError):
                             pass
             results.extend(group_results)
+            if on_result is not None:
+                for result in group_results:
+                    on_result(result)
         return results
 
     def _write_summary(
@@ -502,6 +593,10 @@ class MemEvalRunner:
         config: MemEvalRunConfig,
         output: Path,
         wall_latency_ms: float,
+        *,
+        resume_enabled: bool = False,
+        resumed_case_count: int = 0,
+        executed_case_count: int | None = None,
     ) -> Path:
         dimensions = {}
         for dimension_id in sorted({row["dimension_id"] for row in results}):
@@ -544,6 +639,13 @@ class MemEvalRunner:
             "system_metadata": self.system.run_metadata(),
             "wall_latency_ms": wall_latency_ms,
             "results_path": str(output.resolve()),
+            "resume": {
+                "enabled": resume_enabled,
+                "resumed_case_count": resumed_case_count,
+                "executed_case_count": (
+                    len(results) if executed_case_count is None else executed_case_count
+                ),
+            },
         }
         path = output.with_name("run_summary.json")
         path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -554,6 +656,8 @@ class MemEvalRunner:
         artifacts: Iterable[ReviewedCaseArtifact],
         config: MemEvalRunConfig,
         output_path: str | Path,
+        *,
+        resume: bool = False,
     ) -> list[dict[str, Any]]:
         if config.top_k < 1:
             raise ValueError("top_k must be positive")
@@ -561,13 +665,92 @@ class MemEvalRunner:
         output = Path(output_path)
         output.parent.mkdir(parents=True, exist_ok=True)
         started = time.perf_counter()
-        results = self._run_context_batch(rows, config) if config.reuse_context else []
+        selected_ids = [str(row.case["envelope"]["case_id"]) for row in rows]
+        if len(selected_ids) != len(set(selected_ids)):
+            raise ValueError("MemEval selection contains duplicate case IDs")
+
+        existing_rows: list[dict[str, Any]] = []
+        if resume and output.is_file():
+            for line_number, line in enumerate(
+                output.read_text(encoding="utf-8").splitlines(), start=1
+            ):
+                if not line.strip():
+                    continue
+                try:
+                    value = json.loads(line)
+                except json.JSONDecodeError as exc:
+                    raise ValueError(
+                        f"Cannot resume invalid JSONL at {output}:{line_number}: {exc}"
+                    ) from exc
+                if not isinstance(value, dict):
+                    raise ValueError(f"Cannot resume non-object row at {output}:{line_number}")
+                existing_rows.append(value)
+
+        expected_mode = "context_batch" if config.reuse_context else "case_isolated"
+        for result in existing_rows:
+            if result.get("run_id") != config.run_id:
+                raise ValueError("Cannot resume results written by a different run_id")
+            if result.get("run_mode") != expected_mode:
+                raise ValueError("Cannot resume with a different context-batch mode")
+            result.setdefault("retrieval_status", _retrieval_status(result))
+
+        latest_by_id = {
+            str(result.get("case_id")): result
+            for result in existing_rows
+            if result.get("case_id") is not None
+        }
+        completed_ids = {
+            case_id
+            for case_id in selected_ids
+            if case_id in latest_by_id and _retrieval_status(latest_by_id[case_id]) != "error"
+        }
+        pending = [
+            artifact
+            for artifact in rows
+            if str(artifact.case["envelope"]["case_id"]) not in completed_ids
+        ]
+        progress = ProgressReporter("Retrieval", len(rows), completed=len(completed_ids))
+
+        mode = "a" if resume and output.is_file() else "w"
+        try:
+            with output.open(mode, encoding="utf-8", newline="\n") as handle:
+                def persist(result: dict[str, Any]) -> None:
+                    handle.write(json.dumps(result, ensure_ascii=False) + "\n")
+                    handle.flush()
+                    progress.advance(
+                        item_id=str(result["case_id"]), status=str(result.get("status", "unknown"))
+                    )
+
+                if config.reuse_context:
+                    self._run_context_batch(pending, config, on_result=persist)
+                else:
+                    for artifact in pending:
+                        persist(self.run_case(artifact, config))
+        finally:
+            progress.close()
+
+        # Keep exactly one latest row per selected Case after a successful invocation.
+        latest_by_id = {
+            str(result["case_id"]): result
+            for result in (
+                json.loads(line)
+                for line in output.read_text(encoding="utf-8").splitlines()
+                if line.strip()
+            )
+        }
+        results = [latest_by_id[case_id] for case_id in selected_ids]
+        for result in results:
+            result.setdefault("retrieval_status", _retrieval_status(result))
         with output.open("w", encoding="utf-8", newline="\n") as handle:
-            for item in (rows if not config.reuse_context else results):
-                result = self.run_case(item, config) if not config.reuse_context else item
-                if not config.reuse_context:
-                    results.append(result)
+            for result in results:
                 handle.write(json.dumps(result, ensure_ascii=False) + "\n")
-                handle.flush()
-        self._write_summary(results, config, output, (time.perf_counter() - started) * 1000)
+        self._write_summary(
+            results,
+            config,
+            output,
+            (time.perf_counter() - started) * 1000,
+            resume_enabled=resume,
+            resumed_case_count=len(completed_ids),
+            executed_case_count=len(pending),
+        )
         return results

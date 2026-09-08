@@ -14,6 +14,8 @@ from .base import LLMRequestError
 
 
 LOCAL_ENV_PATH = Path(__file__).resolve().parents[3] / ".env"
+MIN_LENGTH_RECOVERY_TOKENS = 8192
+MAX_LENGTH_RECOVERY_TOKENS = 384 * 1024
 
 
 def load_local_env(path: Path = LOCAL_ENV_PATH) -> None:
@@ -124,8 +126,14 @@ class OpenAICompatibleLLMAdapter:
                     reasoning = str(message.get("reasoning_content") or "")
                     finish_reason = str(choices[0].get("finish_reason") or "unknown")
                     attempted_max_tokens = current_max_tokens
-                    if finish_reason == "length" and current_max_tokens < 8192:
-                        current_max_tokens = 8192
+                    if (
+                        finish_reason == "length"
+                        and current_max_tokens < MAX_LENGTH_RECOVERY_TOKENS
+                    ):
+                        current_max_tokens = min(
+                            MAX_LENGTH_RECOVERY_TOKENS,
+                            max(MIN_LENGTH_RECOVERY_TOKENS, current_max_tokens * 2),
+                        )
                         length_recovery_count += 1
                         max_attempts = max(max_attempts, attempt + 2)
                     raise ValueError(
@@ -172,4 +180,3 @@ class OpenAICompatibleLLMAdapter:
             http_status=last_status,
             category=last_category,
         ) from last_error
-

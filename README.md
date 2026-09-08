@@ -167,10 +167,9 @@ $env:DEEPSEEK_MODEL = "deepseek-v4-flash"
 The repository-root `.env` is also loaded automatically by these two runners;
 existing process environment variables take precedence.
 
-Answer and Judge default to `8192` output tokens. If a caller explicitly uses
-a smaller value and the provider returns an empty response with
-`finish_reason=length`, the shared client performs one recovery attempt at
-`8192` tokens. Resumable runs reconcile `answer_failures.jsonl` and
+Answer and Judge default to `65536` output tokens. If the provider returns an
+empty response with `finish_reason=length`, the shared client doubles the output
+budget up to the DeepSeek 384K hard limit (`393216`). Resumable runs reconcile `answer_failures.jsonl` and
 `judge_failures.jsonl` against successful output IDs, while `api_errors.jsonl`
 remains an append-only attempt history for provenance.
 

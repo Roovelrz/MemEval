@@ -17,3 +17,11 @@ def test_cli_selects_shared_context_for_batch_mode():
         artifacts[1].case["envelope"]["identity"]["context_id"]
     )
     assert artifacts[0].context_path.read_bytes() == artifacts[1].context_path.read_bytes()
+
+
+def test_cli_resumes_by_default_and_can_disable_resume():
+    args = parser().parse_args([])
+    assert args.resume is True
+    assert args.answer_max_tokens == 65536
+    assert args.judge_max_tokens == 65536
+    assert parser().parse_args(["--no-resume"]).resume is False

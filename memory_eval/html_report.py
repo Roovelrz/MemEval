@@ -22,6 +22,37 @@ CAPABILITY_LABELS = {
     "single-session-user": "单会话用户信息",
     "temporal-reasoning": "时间推理",
 }
+SPECIAL_DIMENSIONS = {
+    "D01": {
+        "title": "记忆抽取与写入",
+        "metrics": (
+            ("write_precision", "Write Precision", "写入事件中与 Gold 对齐的比例。"),
+            ("write_recall", "Write Recall", "Gold 事件中成功写入的比例。"),
+            ("written_memory_units", "Written Memory Units", "系统实际写入的记忆单元数量。"),
+            ("unexpected_written_event_count", "Unexpected Writes", "不属于 Gold 的写入事件数量。"),
+        ),
+    },
+    "D04": {
+        "title": "主动调用与记忆使用",
+        "metrics": (
+            ("activation_recall", "Activation Recall", "需要记忆时成功触发调用的比例。"),
+            ("required_activation_cases", "Required Cases", "Gold 标记为需要主动调用的 Case 数。"),
+            ("unsupported_activation_cases", "Unsupported Cases", "系统未暴露 Activation Trace 的 Case 数。"),
+            ("utilization_rate", "Utilization Rate", "无 gold_answer，本轮不适用。"),
+            ("e2e_accuracy", "E2E Accuracy", "无 gold_answer，本轮不适用。"),
+        ),
+    },
+    "D08": {
+        "title": "隐私与用户隔离",
+        "metrics": (
+            ("sensitive_exposure_rate", "Sensitive Exposure", "敏感 Canary 被暴露的比例，越低越好。"),
+            ("cross_user_leakage_rate", "Cross-user Leakage", "其他用户记忆被召回的比例，越低越好。"),
+            ("deleted_memory_hit_rate", "Deleted Hit Rate", "已删除记忆仍被召回的比例，越低越好。"),
+            ("privacy_pass_rate", "Privacy Pass Rate", "没有敏感、跨用户或删除后暴露的 Case 比例。"),
+            ("allowed_recall", "Allowed Recall", "存在允许记忆时的召回比例。"),
+        ),
+    },
+}
 ROOT_CAUSES = (
     "PASS",
     "DATA_ERROR",
@@ -38,6 +69,9 @@ ROOT_CAUSES = (
     "API_FAILURE",
     "TIMEOUT",
     "PIPELINE_FAILURE",
+    "PRIVACY_FAILURE",
+    "UNSUPPORTED_CAPABILITY",
+    "PARTIAL_CAPABILITY",
 )
 ROOT_PRIORITY = {
     name: index
@@ -57,6 +91,9 @@ ROOT_PRIORITY = {
             "RETRIEVAL_LOW_RANK",
             "DATA_ERROR",
             "TIMEOUT",
+            "PRIVACY_FAILURE",
+            "UNSUPPORTED_CAPABILITY",
+            "PARTIAL_CAPABILITY",
             "PASS",
         )
     )
@@ -88,7 +125,7 @@ def _is_rate_field(name: str) -> bool:
     lowered = name.lower()
     return any(
         token in lowered
-        for token in ("rate", "accuracy", "hit_at", "recall_at", "precision", "mrr")
+        for token in ("rate", "accuracy", "hit_at", "recall", "precision", "mrr")
     ) and not lowered.endswith(("count", "rank"))
 
 
@@ -259,9 +296,13 @@ def _quadrant_code(value: object) -> str:
 def _status_badge(value: object) -> str:
     text = str(value if value is not None else NOT_RECORDED)
     normalized = text.upper()
-    if normalized in {"PASS", "CORRECT", "TRUE", "A"}:
+    if normalized in {"PASS", "CORRECT", "TRUE", "A", "MEASURED", "EXISTING", "ADAPTED"}:
         tone = "pass"
-    elif normalized in {NOT_RECORDED, "NOT_APPLICABLE", "NONE", "N"}:
+    elif normalized in {
+        NOT_RECORDED, "NOT_APPLICABLE", "NONE", "N", "UNSUPPORTED",
+        "PARTIAL", "ADAPTED_UNSUPPORTED", "UNSUPPORTED_CAPABILITY",
+        "PARTIAL_CAPABILITY",
+    }:
         tone = "muted"
     else:
         tone = "fail"
@@ -272,6 +313,7 @@ def _nav(prefix: str, active: str) -> str:
     items = (
         ("home", "总览", "index.html"),
         ("quadrant", "四象限分析", "analysis/quadrant.html"),
+        ("dimensions", "D01 D04 D08", "dimensions/index.html"),
         ("pipeline", "流程观测", "pipeline/add.html"),
         ("performance", "性能与时延", "performance/latency.html"),
         ("comparison", "版本对比", "comparison/index.html"),
@@ -279,7 +321,7 @@ def _nav(prefix: str, active: str) -> str:
     )
     primary = "".join(
         f'<a class="nav-link {"active" if key == active else ""}" href="{prefix}{path}"><span>{label}</span></a>'
-        for key, label, path in items[:2]
+        for key, label, path in items[:3]
     )
     case_active = active in {"cases", "capabilities", "failures"}
     case_links = (
@@ -292,7 +334,7 @@ def _nav(prefix: str, active: str) -> str:
     )
     secondary = "".join(
         f'<a class="nav-link {"active" if key == active else ""}" href="{prefix}{path}"><span>{label}</span></a>'
-        for key, label, path in items[2:]
+        for key, label, path in items[3:]
     )
     return f'<nav class="sidebar"><div class="brand"><span class="brand-mark">M</span><div><strong>Memory Eval</strong><small>Trace Dashboard</small></div></div>{primary}{case_links}{secondary}</nav>'
 
@@ -404,8 +446,13 @@ def _case_table(
 
 
 def _quadrant_payload(summary: dict[str, Any], cases: list[dict[str, Any]], prefix: str) -> dict[str, Any]:
+    eligible_cases = [
+        case for case in cases
+        if case.get("dimension_id") not in SPECIAL_DIMENSIONS
+        and _quadrant_code(case.get("quadrant")) in "ABCD"
+    ]
     case_points = []
-    for case in cases:
+    for case in eligible_cases:
         code = _quadrant_code(case.get("quadrant"))
         case_points.append(
             {
@@ -434,6 +481,7 @@ def _quadrant_payload(summary: dict[str, Any], cases: list[dict[str, Any]], pref
             "href": f"{prefix}capabilities/{_slug(question_type)}.html",
         }
         for question_type, values in summary.get("question_type_breakdown", {}).items()
+        if question_type not in SPECIAL_DIMENSIONS
     ]
     run_points = [
         {
@@ -452,7 +500,7 @@ def _quadrant_payload(summary: dict[str, Any], cases: list[dict[str, Any]], pref
             "y": summary.get("answer_accuracy"),
             "href": f"{prefix}run-info/index.html",
         }
-    ]
+    ] if isinstance(summary.get("answer_accuracy"), (int, float)) else []
     return {
         "top_k": int(summary.get("top_k", 10)),
         "case": case_points,
@@ -463,13 +511,14 @@ def _quadrant_payload(summary: dict[str, Any], cases: list[dict[str, Any]], pref
 
 def _quadrant_chart(summary: dict[str, Any], cases: list[dict[str, Any]], *, prefix: str) -> str:
     payload = json.dumps(_quadrant_payload(summary, cases, prefix), ensure_ascii=False).replace("</", "<\\/")
+    eligible_cases = [case for case in cases if case.get("dimension_id") not in SPECIAL_DIMENSIONS]
     quadrant_counts = {
-        code: sum(_quadrant_code(case.get("quadrant")) == code for case in cases)
+        code: sum(_quadrant_code(case.get("quadrant")) == code for case in eligible_cases)
         for code in "ABCD"
     }
     options = lambda key: "".join(
         f'<option value="{_escape(value)}">{_escape(value)}</option>'
-        for value in sorted({str(case.get(key, NOT_RECORDED)) for case in cases})
+        for value in sorted({str(case.get(key, NOT_RECORDED)) for case in eligible_cases})
     )
     return f"""<section class="panel quadrant-panel">
 <div class="section-heading"><div><p class="eyebrow">INTERACTIVE ANALYSIS</p><h2>端到端能力四象限分析</h2></div>
@@ -479,6 +528,105 @@ def _quadrant_chart(summary: dict[str, Any], cases: list[dict[str, Any]], *, pre
 <div class="quadrant-zone zone-c"><strong>C <em data-quadrant-count="C">{quadrant_counts['C']}</em></strong><span>检索失败 · 回答成功</span></div><div class="quadrant-zone zone-a"><strong>A <em data-quadrant-count="A">{quadrant_counts['A']}</em></strong><span>检索成功 · 回答成功</span></div>
 <div class="quadrant-zone zone-d"><strong>D <em data-quadrant-count="D">{quadrant_counts['D']}</em></strong><span>检索失败 · 回答失败</span></div><div class="quadrant-zone zone-b"><strong>B <em data-quadrant-count="B">{quadrant_counts['B']}</em></strong><span>检索成功 · 回答失败</span></div><div class="axis-x">Retrieval PASS →</div><div class="chart-points" data-chart-points></div></div></div>
 <script type="application/json" data-chart-data>{payload}</script></section>"""
+
+
+def _special_dimension_cards(summary: dict[str, Any], *, prefix: str = "") -> str:
+    values = summary.get("dimension_metrics", {})
+    cards = []
+    for dimension_id, definition in SPECIAL_DIMENSIONS.items():
+        dimension = values.get(dimension_id, {}) if isinstance(values, dict) else {}
+        metrics = dimension.get("metrics", {}) if isinstance(dimension, dict) else {}
+        primary_key, primary_label, _ = definition["metrics"][0]
+        cards.append(
+            f'<a class="capability-card" href="{prefix}{dimension_id.lower()}.html">'
+            f'<span>{_escape(definition["title"])}</span><code>{dimension_id}</code>'
+            f'<div class="capability-score"><span>{_escape(primary_label)}</span>'
+            f'<strong>{_scalar(metrics.get(primary_key), primary_key)}</strong></div>'
+            f'<small>状态 · {_escape(dimension.get("availability", NOT_RECORDED))} · '
+            f'Answer/Judge · {_escape(dimension.get("answer_judge", "NOT_APPLICABLE"))}</small></a>'
+        )
+    return "".join(cards)
+
+
+def _dimension_metric_audit(summary: dict[str, Any]) -> str:
+    audit = summary.get("dimension_metric_audit", {})
+    rows = []
+    for dimension_id in (f"D{index:02d}" for index in range(1, 9)):
+        item = audit.get(dimension_id, {}) if isinstance(audit, dict) else {}
+        rows.append(
+            "<tr>"
+            f"<td><code>{dimension_id}</code></td>"
+            f"<td>{_value(item.get('document_metrics', []))}</td>"
+            f"<td>{_value(item.get('trace_fields', []))}</td>"
+            f"<td>{_status_badge(item.get('coverage', NOT_RECORDED))}</td>"
+            f"<td>{_escape(item.get('note', NOT_RECORDED))}</td>"
+            "</tr>"
+        )
+    return (
+        '<div class="table-wrap"><table class="data-table"><thead><tr>'
+        '<th>维度</th><th>开发文档关键指标</th><th>当前 Trace 字段</th>'
+        '<th>覆盖状态</th><th>核验结论</th></tr></thead>'
+        f'<tbody>{"".join(rows)}</tbody></table></div>'
+    )
+
+
+def _special_dimension_case_table(
+    cases: list[dict[str, Any]], dimension_id: str
+) -> str:
+    matched = [case for case in cases if case.get("dimension_id") == dimension_id]
+    rows = []
+    for case in matched:
+        metrics = case.get("metrics", {}) if isinstance(case.get("metrics"), dict) else {}
+        unsupported = case.get("unsupported_metrics", [])
+        rows.append(
+            f'<tr><td><a class="case-link" href="../{_case_link(case.get("case_id"))}">'
+            f'{_escape(case.get("case_id", NOT_RECORDED))}</a></td>'
+            f'<td>{_status_badge(case.get("status"))}</td><td>{_value(metrics)}</td>'
+            f'<td>{_value(unsupported)}</td></tr>'
+        )
+    if not rows:
+        return '<div class="empty-state">当前 Run 没有该维度 Case。</div>'
+    return (
+        '<div class="table-wrap"><table class="data-table"><thead><tr>'
+        '<th>case_id</th><th>status</th><th>raw metrics</th><th>unsupported_metrics</th>'
+        f'</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+    )
+
+
+def _special_dimension_page(
+    summary: dict[str, Any], cases: list[dict[str, Any]], dimension_id: str
+) -> str:
+    definition = SPECIAL_DIMENSIONS[dimension_id]
+    dimension = summary.get("dimension_metrics", {}).get(dimension_id, {})
+    metrics = dimension.get("metrics", {}) if isinstance(dimension, dict) else {}
+    metric_cards = "".join(
+        _metric_card(name, metrics.get(name), tone="blue", display_label=label, note=note)
+        for name, label, note in definition["metrics"]
+    )
+    content = f"""
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">INDEPENDENT DIMENSION</p><h2>{_escape(dimension_id)} 独立指标</h2></div>{_status_badge(dimension.get('availability', NOT_RECORDED))}</div>
+<p>Answer/Judge：{_status_badge(dimension.get('answer_judge', 'NOT_APPLICABLE'))}</p>
+<div class="metric-grid">{metric_cards}</div></section>
+<section class="panel"><div class="section-heading"><h2>指标来源与分母</h2></div>{_field_table({key: value for key, value in dimension.items() if key not in {'metrics'}})}</section>
+<section class="panel"><div class="section-heading"><h2>Case 明细</h2></div>{_special_dimension_case_table(cases, dimension_id)}</section>
+"""
+    return _page(
+        f"{dimension_id} {definition['title']}", content, summary,
+        active="dimensions", subtitle="不进入 Answer/Judge 四象限，按维度自身指标展示",
+    )
+
+
+def _special_dimensions_index(summary: dict[str, Any]) -> str:
+    content = f"""
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">NO GOLD ANSWER</p><h2>D01 D04 D08 独立指标</h2></div></div>
+<p>D01、D04、D08 不执行 Answer/Judge，不进入回答准确率或端到端四象限。</p>
+<div class="capability-grid">{_special_dimension_cards(summary)}</div></section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">METRIC AUDIT</p><h2>八维度关键指标核验</h2></div></div>{_dimension_metric_audit(summary)}</section>
+"""
+    return _page(
+        "独立维度指标", content, summary, active="dimensions",
+        subtitle="开发文档指标与当前 Eval Pipe Trace 字段对照",
+    )
 
 
 def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
@@ -504,8 +652,14 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
     capabilities = "".join(
         f'<a class="capability-card" href="capabilities/{_slug(name)}.html"><span>{_escape(CAPABILITY_LABELS.get(name, name))}</span><code>{_escape(name)}</code><div class="capability-score"><span>accuracy</span><strong>{_scalar(values.get("accuracy"), "accuracy")}</strong></div><small>case_count · {_escape(values.get("case_count", 0))}</small></a>'
         for name, values in summary.get("question_type_breakdown", {}).items()
+        if name not in SPECIAL_DIMENSIONS
     )
-    bad_cases = [case for case in cases if case.get("root_cause") != "PASS"][:8]
+    bad_cases = [
+        case for case in cases
+        if case.get("root_cause") not in {
+            "PASS", "PARTIAL_CAPABILITY", "UNSUPPORTED_CAPABILITY",
+        }
+    ][:8]
     benchmark_rows = "".join(
         "<tr>"
         f'<td><a href="{_escape(item.get("href", "index.html"))}">{_escape(item.get("dataset_name", item.get("dataset_id", NOT_RECORDED)))}</a></td>'
@@ -530,6 +684,7 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
   <article class="panel"><div class="section-heading"><h2>工程健康度</h2>{_status_badge('PASS' if summary.get('pipeline_success_rate') == 1 else 'ATTENTION')}</div><div class="metric-grid compact">{_metric_card('pipeline_success_rate', summary.get('pipeline_success_rate'))}{_metric_card('add_success_rate', retrieval.get('add_success_rate'))}{_metric_card('index_success_rate', retrieval.get('index_success_rate'))}{_metric_card('search_success_rate', retrieval.get('search_success_rate'))}{_metric_card('api_error_count', api.get('api_error_count'))}{_metric_card('timeouts', api.get('timeouts'))}</div></article>
 </section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">CORE METRICS</p><h2>检索质量 · 回答质量 · 有依据端到端能力</h2></div><span class="metric-primary-hint">主指标：@{primary_k}</span></div><div class="metric-grid">{_metric_card('hit_at_k', primary_hit, tone='blue', note=f'前 {primary_k} 条是否命中至少一个 Evidence', display_label=f'Hit@{primary_k}', hover_html=retrieval_tooltip)}{_metric_card('recall_at_k', primary_recall, tone='blue', note=f'前 {primary_k} 条覆盖了多少 Evidence', display_label=f'Recall@{primary_k}', hover_html=retrieval_tooltip)}{_metric_card('mrr', mrr, tone='blue', display_label='MRR', note='第一个相关 Evidence 排名越靠前，MRR 越高。')}{_metric_card('answer_accuracy', answer_accuracy, tone='violet', note='Judge 判定回答正确的 Case 占比。')}{_metric_card('grounded_end_to_end_accuracy', grounded, tone='green', note='检索找到正确 Evidence 且最终回答正确的 Case 占比。')}{_metric_card('answer_failure_count', summary.get('answer_failure_count'), tone='red', note='被归因到 Answer 失败的 Case 数。')}</div></section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">NOT APPLICABLE TO ANSWER JUDGE</p><h2>D01 D04 D08 独立指标</h2></div><a href="dimensions/index.html">独立查看</a></div><div class="capability-grid">{_special_dimension_cards(summary, prefix='dimensions/')}</div></section>
 {_quadrant_chart(summary, cases, prefix='')}
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">CAPABILITY BREAKDOWN</p><h2>能力维度表现</h2></div><a href="capabilities/index.html">独立查看</a></div><div class="capability-grid">{capabilities}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">EVIDENCE COVERAGE</p><h2>证据数量分层表现</h2></div></div>{_field_table(summary.get('evidence_count_breakdown', {}))}</section>
@@ -558,6 +713,7 @@ def _capabilities_index(summary: dict[str, Any], cases: list[dict[str, Any]]) ->
     cards = "".join(
         f'<a class="capability-card" href="{_slug(name)}.html"><span>{_escape(CAPABILITY_LABELS.get(name, name))}</span><code>{_escape(name)}</code><div class="capability-score"><span>accuracy</span><strong>{_scalar(values.get("accuracy"), "accuracy")}</strong></div><small>case_count · {_escape(values.get("case_count", 0))}</small></a>'
         for name, values in summary.get("question_type_breakdown", {}).items()
+        if name not in SPECIAL_DIMENSIONS
     ) or '<div class="empty-state">当前 Run 没有能力维度数据。</div>'
     content = _case_tracking_tabs("capabilities") + f'<section class="panel"><div class="section-heading"><div><p class="eyebrow">CASE TRACKING</p><h2>能力维度表现</h2></div><span>{len(cases)} Cases</span></div><div class="capability-grid">{cards}</div></section>'
     return _page("能力维度表现", content, summary, active="capabilities", subtitle="按 question_type 独立查看指标与对应 Case")
@@ -686,9 +842,10 @@ def _case_stage_timeline(detail: dict[str, Any]) -> str:
     answer = detail.get("answer", {}) if isinstance(detail.get("answer", {}), dict) else {}
     judge = detail.get("judge", {}) if isinstance(detail.get("judge", {}), dict) else {}
     final = detail.get("final", {}) if isinstance(detail.get("final", {}), dict) else {}
+    dimension_id = str(detail.get("case", {}).get("dimension_id", ""))
 
     def stage(key: str, label: str, status: str, reason: str) -> dict[str, str]:
-        normalized = status if status in {"pass", "fail", "unknown"} else "unknown"
+        normalized = status if status in {"pass", "fail", "unknown", "not-applicable"} else "unknown"
         return {"key": key, "label": label, "status": normalized, "reason": reason or "未记录"}
 
     add_status = str(add.get("add_status", "")).upper()
@@ -779,6 +936,11 @@ def _case_stage_timeline(detail: dict[str, Any]) -> str:
         label = judge.get("parsed_label") or "已记录"
         judge_stage = stage("judge", "Judge · 判分", "pass", f"判分完成：{label}")
 
+    if dimension_id in SPECIAL_DIMENSIONS:
+        context_stage = stage("context", "Context · 上下文", "not-applicable", "该维度无 gold_answer，不进入 Answer context")
+        answer_stage = stage("answer", "Answer · 回答", "not-applicable", "该维度无 gold_answer，Answer 不适用")
+        judge_stage = stage("judge", "Judge · 判分", "not-applicable", "该维度无 gold_answer，Judge 不适用")
+
     root_cause = str(final.get("root_cause", ""))
     if root_cause == "PASS":
         final_stage = stage("final", "Final · 结论", "pass", "Case 完成且通过")
@@ -788,7 +950,10 @@ def _case_stage_timeline(detail: dict[str, Any]) -> str:
         final_stage = stage("final", "Final · 结论", "unknown", "最终结论未完整记录")
 
     stages = [add_stage, index_stage, retrieval_stage, context_stage, answer_stage, judge_stage, final_stage]
-    status_labels = {"pass": "成功", "fail": "失败", "unknown": "未记录"}
+    status_labels = {
+        "pass": "成功", "fail": "失败", "unknown": "未记录",
+        "not-applicable": "不适用",
+    }
     items = []
     for index, current in enumerate(stages):
         status = current["status"]
@@ -819,6 +984,7 @@ def _case_detail(summary: dict[str, Any], detail: dict[str, Any]) -> str:
     answer = detail.get("answer", {})
     judge = detail.get("judge", {})
     final = detail.get("final", {})
+    dimension = detail.get("dimension", {})
     top_k = int(summary.get("top_k", retrieval.get("top_k", 10) or 10))
     top_results = []
     for item in retrieval.get("top_results", []):
@@ -836,6 +1002,7 @@ def _case_detail(summary: dict[str, Any], detail: dict[str, Any]) -> str:
 <section class="panel"><div class="section-heading"><h2>检索追踪</h2></div>{_field_table(retrieval, ("query", "top_k", "hit_at_k", "recall_at_k", "mrr", "first_evidence_rank", "first_evidence_rank_full", "gold_evidence_count", "retrieved_evidence_count", "missing_evidence_ids", "best_evidence_score", "best_non_evidence_score", "evidence_score_gap", "evidence_content_present", "search_latency_ms", "failure"), top_k=top_k)}<h3>top_results</h3><div class="result-list">{''.join(top_results)}</div></section>
 <section class="panel"><div class="section-heading"><h2>回答追踪</h2></div>{_field_table(answer, ("context_count", "context_characters", "context_token_estimate", "context_order", "context_timestamps", "evidence_context_positions", "distractor_count", "evidence_in_retrieved_context", "evidence_in_prompt", "truncation_occurred", "evidence_after_truncation", "generated_answer", "gold_answer", "answer_difference", "model", "latency_ms", "usage", "failure"))}<h3>retrieved_contexts</h3>{contexts or _scalar(None)}</section>
 <section class="panel"><div class="section-heading"><h2>判分追踪</h2></div>{_field_table(judge)}</section>
+<section class="panel"><div class="section-heading"><h2>维度独立指标</h2></div>{_field_table(dimension)}</section>
 <section class="panel"><div class="section-heading"><h2>问题诊断</h2></div>{_field_table(final)}</section>
 <section class="panel"><details><summary>完整 Trace JSON</summary><pre class="json-block">{_escape(raw_json)}</pre></details></section>
 """
@@ -917,8 +1084,18 @@ def build_html_report(
     write("index.html", _home(summary, summary_cases))
     write("analysis/quadrant.html", _page("端到端能力四象限分析", _quadrant_chart(summary, summary_cases, prefix="../"), summary, active="quadrant", subtitle="Case / Question Type / Run 三种粒度"))
     write("capabilities/index.html", _capabilities_index(summary, summary_cases))
-    for question_type in CAPABILITY_LABELS:
+    capability_pages = set(CAPABILITY_LABELS).union(
+        name for name in summary.get("question_type_breakdown", {})
+        if name not in SPECIAL_DIMENSIONS
+    )
+    for question_type in sorted(capability_pages):
         write(f"capabilities/{_slug(question_type)}.html", _capability_page(summary, summary_cases, question_type))
+    write("dimensions/index.html", _special_dimensions_index(summary))
+    for dimension_id in SPECIAL_DIMENSIONS:
+        write(
+            f"dimensions/{dimension_id.lower()}.html",
+            _special_dimension_page(summary, summary_cases, dimension_id),
+        )
     for stage in ("add", "index", "search", "answer", "judge"):
         write(f"pipeline/{stage}.html", _pipeline_page(summary, stage))
     write("failures/index.html", _failures_index(summary, summary_cases))

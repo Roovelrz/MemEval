@@ -219,6 +219,7 @@ tbody tr:hover { background: #f8faff; }
 .timeline-stage:hover .timeline-reason, .timeline-stage:focus-visible .timeline-reason { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 .timeline-stage.timeline-unknown .timeline-node { border-style: dashed; }
 .timeline-stage.timeline-fail .timeline-node { background: #aab4c4; color: white; }
+.timeline-stage.timeline-not-applicable .timeline-node { border-style: dashed; background: #edf0f5; color: #727d91; }
 .result-list { display: grid; gap: 10px; }
 .result-card { border: 1px solid var(--line); border-radius: 10px; background: #fafbfc; overflow: hidden; }
 .result-card.evidence-result { border-color: #63bf91; background: #f0faf5; box-shadow: inset 4px 0 #2da56b; }

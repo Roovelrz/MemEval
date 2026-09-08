@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from types import SimpleNamespace
 
-from dataset.build_pipeline.release import ReviewedCaseArtifact
+from dataset.build_pipeline.release import ReviewedBenchmark, ReviewedCaseArtifact
 from memory_eval.runners import MemEvalRunConfig, MemEvalRunner
 from memory_eval.systems import SystemCapabilities, SystemIngestResult, SystemOperationResult, SystemSearchResult
 from tests.helpers import workspace_directory
@@ -41,6 +41,7 @@ class FakeSystem:
 
     def __init__(self):
         self.opened_events = []
+        self.opened_identities = []
         self.cleaned = 0
         self.created = 0
         self.ingested = 0
@@ -53,6 +54,7 @@ class FakeSystem:
         self.created += 1
         events = json.loads(Path(kwargs["context_path"]).read_text(encoding="utf-8"))["events"]
         self.opened_events.append(events)
+        self.opened_identities.append(dict(kwargs["case"]["envelope"]["identity"]))
         sessions = [
             {"session_id": event["session_id"], "messages": [event]}
             for event in events if event.get("metadata", {}).get("operation") != "delete"
@@ -123,15 +125,21 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         )
 
         assert [row["status"] for row in results] == [
-            "partial", "ok", "partial", "unsupported", "unsupported", "partial", "partial"
+            "partial", "ok", "partial", "unsupported", "partial", "partial", "partial"
         ]
         assert results[0]["metrics"]["write_event_recall"] == 1.0
+        assert results[0]["metrics"]["write_event_precision"] == 1.0
+        assert results[0]["metrics"]["unexpected_written_event_count"] == 0
         assert results[1]["metrics"] == {
             "retrieval_evaluated": True, "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0
         }
         assert results[3]["prediction"]["status"] == "unsupported"
         assert results[3]["metrics"] == {}
         assert results[3]["error"] is None
+        assert results[4]["metrics"]["retrieval_evaluated"] is False
+        assert results[4]["unsupported_metrics"] == [
+            "profile_accuracy", "personalized_answer_accuracy"
+        ]
         assert all(set(("run_id", "case_id", "dimension_id", "system", "system_version",
                         "prediction", "retrieved_memories", "trace", "latency", "cost",
                         "metrics", "status", "error")) <= row.keys() for row in results)
@@ -169,6 +177,38 @@ def test_d08_identity_partition_and_lifecycle_delete_do_not_use_gold_for_access(
         assert not (directory / "work" / "_runner_inputs").exists()
 
 
+def test_all_frozen_d08_deletion_cases_use_lifecycle_execution_identity():
+    artifacts = [
+        artifact
+        for artifact in ReviewedBenchmark("dataset/MemEval-v0.1").iter_cases("D08")
+        if artifact.case["envelope"]["metadata"].get("scenario_type") == "deletion"
+    ]
+    assert len(artifacts) == 10
+
+    with workspace_directory("memeval-d08-deletion") as directory:
+        for artifact in artifacts:
+            system = FakeSystem()
+            result = MemEvalRunner(system, directory / "work").run_case(
+                artifact, MemEvalRunConfig("d08-deletion-regression")
+            )
+            events = json.loads(
+                artifact.context_path.read_text(encoding="utf-8").splitlines()[0]
+            )
+            expected_identity = {
+                "context_id": artifact.case["envelope"]["identity"]["context_id"],
+                "user_id": events["metadata"]["user_id"],
+                "tenant_id": events["metadata"]["tenant_id"],
+            }
+
+            assert system.opened_identities == [expected_identity]
+            assert len(system.opened_events[0]) == 2
+            assert result["status"] == "ok"
+            assert result["error"] is None
+            assert result["retrieved_memories"] == []
+            assert result["metrics"]["deleted_exposure_count"] == 0
+            assert result["metrics"]["privacy_pass"] == 1.0
+
+
 def test_runner_writes_error_result_and_still_cleans_up():
     class BrokenSystem(FakeSystem):
         def ingest(self, runtime):
@@ -185,3 +225,40 @@ def test_runner_writes_error_result_and_still_cleans_up():
         assert result["error"] == {"type": "RuntimeError", "message": "index unavailable"}
         assert result["latency"]["total"] is not None
         assert system.cleaned == 1
+
+
+def test_runner_resumes_completed_cases_and_compacts_results(capsys):
+    with workspace_directory("memeval-resume") as directory:
+        event = {"event_id": "e1", "session_id": "s1", "content": "needle", "metadata": {}}
+        first = artifact(directory, "D02", "first", [event], {"gold_evidence_ids": ["s1"]})
+        second = artifact(directory, "D02", "second", [event], {"gold_evidence_ids": ["s1"]})
+        output = directory / "results.jsonl"
+
+        MemEvalRunner(FakeSystem(), directory / "first-work").run(
+            [first], MemEvalRunConfig("resume-run", top_k=3), output
+        )
+        first_result = json.loads(output.read_text(encoding="utf-8"))
+        first_result.pop("retrieval_status")
+        first_result["status"] = "error"
+        first_result["error"] = {
+            "type": "LLMStageError", "message": "interrupted", "stage": "answer"
+        }
+        output.write_text(json.dumps(first_result) + "\n", encoding="utf-8")
+        resumed_system = FakeSystem()
+        results = MemEvalRunner(resumed_system, directory / "resume-work").run(
+            [first, second], MemEvalRunConfig("resume-run", top_k=3), output, resume=True
+        )
+
+        assert [row["case_id"] for row in results] == ["first", "second"]
+        assert results[0]["retrieval_status"] == "ok"
+        assert resumed_system.created == 1
+        assert len(output.read_text(encoding="utf-8").splitlines()) == 2
+        summary = json.loads((directory / "run_summary.json").read_text(encoding="utf-8"))
+        assert summary["resume"] == {
+            "enabled": True,
+            "resumed_case_count": 1,
+            "executed_case_count": 1,
+        }
+        progress = capsys.readouterr().out
+        assert "[Retrieval]" in progress
+        assert "2/2" in progress
