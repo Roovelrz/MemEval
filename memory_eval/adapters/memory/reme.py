@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import importlib.metadata
 import json
 import os
@@ -20,7 +21,11 @@ from .base import MemoryCaseRuntime, MemoryIndexResult, MemorySearchResult
 
 def safe_name(value: str) -> str:
     cleaned = "".join(char if char.isalnum() or char in "._-" else "_" for char in value)
-    return cleaned.strip("._") or "unnamed"
+    cleaned = cleaned.strip("._") or "unnamed"
+    if len(cleaned) <= 48:
+        return cleaned
+    suffix = hashlib.sha256(value.encode("utf-8")).hexdigest()[:12]
+    return f"{cleaned[:35]}-{suffix}"
 
 
 def render_session_markdown(case_id: str, session: dict[str, Any], dataset_id: str) -> str:
