@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from .release import DIMENSION_DIRECTORIES, ReviewedBenchmark, ReviewedCaseArtifact
+from .selection import validate_selected_sources
 
 
 # The development document described the pre-deduplication target of 300 Cases.
@@ -430,6 +431,16 @@ def audit_benchmark(
             report.errors.append(
                 f"{dimension_id} has {len(artifacts)} cases, expected {expected_count}"
             )
+        try:
+            manifest = benchmark.load_manifest(dimension_id)
+            selection_errors = validate_selected_sources(
+                benchmark.dimension_dir(dimension_id), manifest
+            )
+            report.errors.extend(
+                f"{dimension_id} selection manifest: {error}" for error in selection_errors
+            )
+        except (FileNotFoundError, ValueError, json.JSONDecodeError) as exc:
+            report.errors.append(f"{dimension_id} selection manifest cannot be verified: {exc}")
 
     seen_case_ids: dict[str, str] = {}
     seen_query_ids: dict[str, str] = {}

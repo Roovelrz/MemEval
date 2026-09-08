@@ -287,5 +287,196 @@
     "original_size_bytes": 144006,
     "original_tree_sha256": "b86d2946bb61040f733a427069ed084dd4c85392d55b15ac2b7896d1228e1d3f",
     "conclusions_retained_in_cases_and_manifest": true
+  },
+  "selected_sources": {
+    "case_count": 37,
+    "sha256": "bf36090ff30ec8c059eace6e60a6fe8da0f92f0818d723de16dc666b4b283a95",
+    "entries": [
+      {
+        "case_id": "d07:beam10m:scale_group_01_100k",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=1/contradiction_resolution[1]",
+        "source_question_id": "d07:beam10m:scale_group_01_100k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_01_10m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=1/contradiction_resolution[1]",
+        "source_question_id": "d07:beam10m:scale_group_01_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_01_1m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=1/contradiction_resolution[1]",
+        "source_question_id": "d07:beam10m:scale_group_01_1m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_01_500k",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=1/contradiction_resolution[1]",
+        "source_question_id": "d07:beam10m:scale_group_01_500k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_02_100k",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=2/information_extraction[0]",
+        "source_question_id": "d07:beam10m:scale_group_02_100k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_02_10m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=2/information_extraction[0]",
+        "source_question_id": "d07:beam10m:scale_group_02_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_02_1m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=2/information_extraction[0]",
+        "source_question_id": "d07:beam10m:scale_group_02_1m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_02_500k",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=2/information_extraction[0]",
+        "source_question_id": "d07:beam10m:scale_group_02_500k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_03_100k",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=3/knowledge_update[0]",
+        "source_question_id": "d07:beam10m:scale_group_03_100k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_03_10m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=3/knowledge_update[0]",
+        "source_question_id": "d07:beam10m:scale_group_03_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_03_1m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=3/knowledge_update[0]",
+        "source_question_id": "d07:beam10m:scale_group_03_1m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_03_500k",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=3/knowledge_update[0]",
+        "source_question_id": "d07:beam10m:scale_group_03_500k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_04_100k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=0/preference_following[1]",
+        "source_question_id": "d07:beam10m:scale_group_04_100k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_04_10m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=0/preference_following[1]",
+        "source_question_id": "d07:beam10m:scale_group_04_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_04_1m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=0/preference_following[1]",
+        "source_question_id": "d07:beam10m:scale_group_04_1m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_04_500k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=0/preference_following[1]",
+        "source_question_id": "d07:beam10m:scale_group_04_500k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_05_100k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=1/information_extraction[1]",
+        "source_question_id": "d07:beam10m:scale_group_05_100k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_05_10m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=1/information_extraction[1]",
+        "source_question_id": "d07:beam10m:scale_group_05_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_05_1m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=1/information_extraction[1]",
+        "source_question_id": "d07:beam10m:scale_group_05_1m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_05_500k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=1/information_extraction[1]",
+        "source_question_id": "d07:beam10m:scale_group_05_500k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_06_100k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=2/preference_following[0]",
+        "source_question_id": "d07:beam10m:scale_group_06_100k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_06_10m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=2/preference_following[0]",
+        "source_question_id": "d07:beam10m:scale_group_06_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_06_1m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=2/preference_following[0]",
+        "source_question_id": "d07:beam10m:scale_group_06_1m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_06_500k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=2/preference_following[0]",
+        "source_question_id": "d07:beam10m:scale_group_06_500k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_07_100k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=3/knowledge_update[1]",
+        "source_question_id": "d07:beam10m:scale_group_07_100k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_07_10m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=3/knowledge_update[1]",
+        "source_question_id": "d07:beam10m:scale_group_07_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_07_1m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=3/knowledge_update[1]",
+        "source_question_id": "d07:beam10m:scale_group_07_1m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_07_500k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=3/knowledge_update[1]",
+        "source_question_id": "d07:beam10m:scale_group_07_500k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_08_100k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=4/information_extraction[0]",
+        "source_question_id": "d07:beam10m:scale_group_08_100k:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_08_10m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=4/information_extraction[0]",
+        "source_question_id": "d07:beam10m:scale_group_08_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_08_1m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=4/information_extraction[0]",
+        "source_question_id": "d07:beam10m:scale_group_08_1m:query"
+      },
+      {
+        "case_id": "d07:beam10m:scale_group_08_500k",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=4/information_extraction[0]",
+        "source_question_id": "d07:beam10m:scale_group_08_500k:query"
+      },
+      {
+        "case_id": "d07:beam10m:stress_01_10m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=0/temporal_reasoning[0]",
+        "source_question_id": "d07:beam10m:stress_01_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:stress_02_10m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=1/information_extraction[1]",
+        "source_question_id": "d07:beam10m:stress_02_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:stress_03_10m",
+        "source_record_id": "10m/data/10M-00000-of-00002.parquet#row=2/multi_session_reasoning[0]",
+        "source_question_id": "d07:beam10m:stress_03_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:stress_04_10m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=0/knowledge_update[1]",
+        "source_question_id": "d07:beam10m:stress_04_10m:query"
+      },
+      {
+        "case_id": "d07:beam10m:stress_05_10m",
+        "source_record_id": "10m/data/10M-00001-of-00002.parquet#row=2/knowledge_update[1]",
+        "source_question_id": "d07:beam10m:stress_05_10m:query"
+      }
+    ]
   }
 }
