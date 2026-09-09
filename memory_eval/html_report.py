@@ -40,11 +40,11 @@ DIMENSION_DEFS = {
         "title": "长期记忆检索",
         "source": "LongMemEval",
         "tests": "长期记忆的证据检索命中与排序质量",
-        "primary": ("recall_at_k", "Recall@K 检索召回率"),
+        "primary": ("recall_at_k", "Recall@3 检索召回率"),
         "metrics": (
-            ("recall_at_k", "Recall@K 检索召回率", "前 K 条结果覆盖 Gold Evidence 的比例。"),
-            ("hit_at_k", "Hit@K 命中率", "前 K 条是否命中至少一个 Evidence。"),
-            ("mrr", "MRR 平均倒数排名", "第一个相关 Evidence 的排名越靠前越高。"),
+            ("recall_at_k", "Recall@3 检索召回率", "前 3 条结果覆盖 Gold Evidence 的比例（主指标 K=3，其余 K 悬停查看）。"),
+            ("hit_at_k", "Hit@3 命中率", "前 3 条是否命中至少一个 Evidence（其余 K 悬停查看）。"),
+            ("mrr", "MRR@3 平均倒数排名", "前 3 条中第一个相关 Evidence 的排名越靠前越高（其余 K 悬停查看）。"),
             ("answer_accuracy", "Answer Accuracy 回答准确率", "Judge 判定回答正确的比例。"),
         ),
     },
@@ -745,8 +745,18 @@ def _special_dimension_page(
     dimension = summary.get("dimension_metrics", {}).get(dimension_id, {})
     metrics = dimension.get("metrics", {}) if isinstance(dimension, dict) else {}
     availability = str(dimension.get("availability", NOT_RECORDED))
+    # 与首页"检索质量"卡片一致：主指标卡悬停展示完整 K 指标。
+    retrieval_by_k = (
+        metrics.get("retrieval_metrics_by_k")
+        if isinstance(metrics.get("retrieval_metrics_by_k"), dict) else {}
+    )
+    retrieval_tooltip = _retrieval_metric_tooltip(retrieval_by_k) if retrieval_by_k else ""
+    retrieval_metric_names = {"hit_at_k", "recall_at_k", "mrr"}
     metric_cards = "".join(
-        _metric_card(name, metrics.get(name), tone="blue", display_label=label, note=note)
+        _metric_card(
+            name, metrics.get(name), tone="blue", display_label=label, note=note,
+            hover_html=retrieval_tooltip if name in retrieval_metric_names else "",
+        )
         for name, label, note in definition["metrics"]
     )
     primary = definition.get("primary")

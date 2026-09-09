@@ -71,6 +71,49 @@ def test_memeval_trace_reuses_independent_dimension_metrics():
     assert metrics["D08"]["metrics"]["leakage_free_rate"] == 1.0
 
 
+def test_dimension_dashboard_d02_uses_k3_primary_with_full_k_breakdown():
+    adapter = MemEvalTraceAdapter.__new__(MemEvalTraceAdapter)
+    metrics = adapter._dimension_dashboard_metrics([
+        _result("r1", "D02", {
+            "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0,
+            "metrics_by_k": {
+                "1": {"hit": 1.0, "recall": 0.5, "mrr": 1.0},
+                "3": {"hit": 1.0, "recall": 1.0, "mrr": 0.5},
+                "10": {"hit": 1.0, "recall": 1.0, "mrr": 1.0},
+            },
+        }),
+        _result("r2", "D02", {
+            "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0,
+            "metrics_by_k": {
+                "1": {"hit": 0.0, "recall": 0.0, "mrr": 0.0},
+                "3": {"hit": 1.0, "recall": 0.5, "mrr": 0.5},
+                "10": {"hit": 1.0, "recall": 1.0, "mrr": 1.0},
+            },
+        }),
+    ])
+
+    d02 = metrics["D02"]["metrics"]
+    # 主指标取 K=3，而不是 top_k=10 的旧口径。
+    assert d02["primary_k"] == 3
+    assert d02["hit_at_k"] == 1.0
+    assert d02["recall_at_k"] == 0.75
+    assert d02["mrr"] == 0.5
+    assert d02["retrieval_metrics_by_k"]["1"]["recall"] == 0.25
+    assert d02["retrieval_metrics_by_k"]["10"]["recall"] == 1.0
+
+    # Dashboard 页面：主指标卡带完整 K 的悬停 tooltip。
+    summary = {
+        "run_info": {"run_id": "fixture"},
+        "dimension_metrics": {"D02": {"availability": "MEASURED", "answer_judge": "MEASURED", "metrics": d02}},
+    }
+    page = _special_dimension_page(summary, [], "D02")
+    assert "Recall@3" in page
+    assert "Hit@3" in page
+    assert "metric-tooltip" in page
+    assert "Hit@10" in page  # tooltip 内含其余 K 档位
+    assert "Hit@5" in page
+
+
 def test_dimension_dashboard_aggregates_d03_d06_new_metrics():
     adapter = MemEvalTraceAdapter.__new__(MemEvalTraceAdapter)
     adapter.artifacts = {
