@@ -54,10 +54,10 @@ DIMENSION_METRIC_AUDIT = {
     },
     "D05": {
         "document_metrics": ["Profile Precision", "Preference Recall", "Profile Consistency"],
-        "trace_fields": ["recall_at_k", "personalized_answer_accuracy"],
+        "trace_fields": ["recall_at_k (needle)", "session_recall_at_k", "personalized_answer_accuracy"],
         "missing_metrics": ["profile_precision", "profile_consistency"],
-        "coverage": "PARTIAL",
-        "note": "已有 Evidence 召回率和个性化答案准确率；ReMe 当前不提供画像快照。",
+        "coverage": "ADAPTED",
+        "note": "Recall 按 profile 证据事件文本是否出现在返回 chunk 中计算（PersonaMem 单 session 下 session 级恒真，保留为参照）；ReMe 当前不提供画像快照。",
     },
     "D06": {
         "document_metrics": ["Latest-value", "Conflict Resolution", "Stale Retrieval"],
@@ -770,6 +770,7 @@ class MemEvalTraceAdapter:
                 "answer_judge": "MEASURED" if answer_metric(d05, "personalized_answer_accuracy") is not None else NOT_RECORDED,
                 "metrics": {
                     "recall_at_k": mean_metric(d05, "recall_at_k"),
+                    "session_recall_at_k": mean_metric(d05, "session_recall_at_k"),
                     "personalized_answer_accuracy": answer_metric(d05, "personalized_answer_accuracy"),
                 },
             },

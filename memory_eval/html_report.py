@@ -79,7 +79,8 @@ DIMENSION_DEFS = {
         "primary": ("personalized_answer_accuracy", "个性化回答准确率"),
         "metrics": (
             ("personalized_answer_accuracy", "Personalized Accuracy 个性化准确率", "依据用户偏好回答的正确率。"),
-            ("recall_at_k", "Preference Recall 偏好召回率", "偏好 Evidence 的检索召回率。"),
+            ("recall_at_k", "Needle Recall needle 召回率", "profile 证据事件文本出现在返回 chunk 中的比例（PersonaMem 单 session 下 session 级恒为 1，不反映真实水平）。"),
+            ("session_recall_at_k", "Session Recall 会话召回率", "session 级对齐的召回率，单 session 场景下仅作参照。"),
         ),
     },
     "D06": {
