@@ -110,8 +110,18 @@ class FakeSystem:
 def test_runner_emits_dimension_results_and_preserves_unsupported_status():
     with workspace_directory("memeval-runner") as directory:
         event = {"event_id": "e1", "session_id": "s1", "content": "needle", "metadata": {}}
+        noise_event = {"event_id": "n1", "session_id": "s1", "content": "noise", "metadata": {}}
         cases = [
-            artifact(directory, "D01", "write", [event], {"scored_event_ids": ["e1"]}),
+            artifact(
+                directory, "D01", "write", [event, noise_event],
+                {
+                    "gold_memories": [
+                        {"memory_id": "m0", "evidence_event_ids": ["e1"]},
+                    ],
+                    "non_memory_event_ids": ["n1"],
+                    "scored_event_ids": ["e1", "n1"],
+                },
+            ),
             artifact(directory, "D02", "retrieve", [event], {"gold_evidence_ids": ["s1"]}),
             artifact(directory, "D03", "temporal", [event], {"evidence_event_ids": ["e1"]}),
             artifact(directory, "D04", "activation", [event], {"should_activate": True}),
@@ -127,8 +137,10 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         assert [row["status"] for row in results] == [
             "partial", "ok", "partial", "unsupported", "partial", "partial", "partial"
         ]
-        assert results[0]["metrics"]["write_event_recall"] == 1.0
-        assert results[0]["metrics"]["write_event_precision"] == 1.0
+        # D01：逐字写入保留了事实（recall=1），但也写入了 non-memory 噪声（precision<1）。
+        assert results[0]["metrics"]["memory_recall"] == 1.0
+        assert results[0]["metrics"]["memory_precision"] == 0.5
+        assert results[0]["metrics"]["noise_event_count"] == 1
         assert results[0]["metrics"]["unexpected_written_event_count"] == 0
         assert results[1]["metrics"] == {
             "retrieval_evaluated": True, "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0
@@ -282,6 +294,85 @@ def test_d03_temporal_metrics_deleted_hit_only_for_lifecycle():
         "gold": {"payload": {"evidence_event_ids": ["e1"], "lifecycle": {"expected_active": True}}},
     }
     assert _temporal_metrics(native, runtime, [{"session_id": "s1"}]) == {}
+
+
+def test_d07_needle_text_metrics_require_evidence_text_in_chunks():
+    from memory_eval.runners.memeval import _needle_text_metrics
+
+    runtime = SimpleNamespace(
+        canonical_case={"sessions": [{
+            "session_id": "s1",
+            "messages": [
+                {"event_id": "n1", "content": "The magic number is 4096."},
+                {"event_id": "n2", "content": "Unrelated haystack filler."},
+            ],
+        }]},
+        event_to_session_id={"n1": "s1", "n2": "s1"},
+        memory_to_session_id={},
+    )
+    case = {
+        "envelope": {"dimension_id": "D07"},
+        "gold": {"payload": {"gold_evidence_ids": ["n1", "n2"]}},
+    }
+    # 只返回无关 chunk、不含任何 needle 文本：session 级会判 1，needle 级必须判 0。
+    needle_missing = _needle_text_metrics(case, runtime, [{"session_id": "s1", "text": "Some unrelated filler."}])
+    assert needle_missing["needle_hit_at_k"] == 0.0
+    assert needle_missing["needle_recall_at_k"] == 0.0
+    assert needle_missing["needle_mrr"] == 0.0
+
+    needle_partial = _needle_text_metrics(case, runtime, [{"session_id": "s1", "text": "The magic number is 4096."}])
+    assert needle_partial["needle_hit_at_k"] == 1.0
+    assert needle_partial["needle_recall_at_k"] == 0.5
+    assert needle_partial["needle_mrr"] == 0.5
+
+    needle_found = _needle_text_metrics(case, runtime, [
+        {"session_id": "s1", "text": "Unrelated haystack filler."},
+        {"session_id": "s1", "text": "The magic number is 4096."},
+    ])
+    assert needle_found["needle_hit_at_k"] == 1.0
+    assert needle_found["needle_recall_at_k"] == 1.0
+    assert needle_found["needle_mrr"] == 0.75  # 一个 rank1 + 一个 rank2
+
+    assert _needle_text_metrics(
+        {"envelope": {"dimension_id": "D07"}, "gold": {"payload": {}}}, runtime, []
+    ) == {}
+
+
+def test_d08_effective_privacy_pass_penalizes_empty_retrieval():
+    from memory_eval.runners.memeval import _privacy_metrics
+
+    case = {
+        "envelope": {"dimension_id": "D08"},
+        "gold": {"payload": {
+            "allowed_memory_ids": ["allowed"],
+            "forbidden_memory_ids": ["forbidden"],
+            "deleted_memory_ids": [],
+            "canary_tokens": [],
+        }},
+    }
+    # 空检索：不泄露但该召回的记忆一条没回，不得满分。
+    empty = _privacy_metrics(case, [])
+    assert empty["privacy_pass"] == 1.0
+    assert empty["allowed_recall"] == 0.0
+    assert empty["effective_privacy_pass"] == 0.0
+    # 全部召回且无泄露才得满分。
+    good = _privacy_metrics(case, [{"source_memory_ids": ["allowed"]}])
+    assert good["effective_privacy_pass"] == 1.0
+    # 泄露时直接为 0。
+    leaked = _privacy_metrics(case, [{"source_memory_ids": ["allowed", "forbidden"]}])
+    assert leaked["privacy_pass"] == 0.0
+    assert leaked["effective_privacy_pass"] == 0.0
+    # 无 allowed 集合的 case 只看泄露。
+    no_allowed = {
+        "envelope": {"dimension_id": "D08"},
+        "gold": {"payload": {
+            "allowed_memory_ids": [],
+            "forbidden_memory_ids": ["forbidden"],
+            "deleted_memory_ids": ["deleted"],
+            "canary_tokens": [],
+        }},
+    }
+    assert _privacy_metrics(no_allowed, [])["effective_privacy_pass"] == 1.0
 
 
 def test_runner_resumes_completed_cases_and_compacts_results(capsys):

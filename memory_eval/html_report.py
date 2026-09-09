@@ -27,13 +27,13 @@ DIMENSION_DEFS = {
     "D01": {
         "title": "记忆抽取与写入",
         "source": "LongMemEval",
-        "tests": "从历史对话中抽取应写入记忆的事实",
-        "primary": ("write_precision", "Write Precision 写入精确率"),
+        "tests": "从历史对话中抽取应写入记忆的事实，并过滤非记忆噪声",
+        "primary": ("memory_precision", "Memory Precision 记忆精确率"),
         "metrics": (
-            ("write_precision", "Write Precision 写入精确率", "写入事件中与 Gold 对齐的比例。"),
-            ("write_recall", "Write Recall 写入召回率", "Gold 事件中成功写入的比例。"),
+            ("memory_precision", "Memory Precision 记忆精确率", "写入事件中属于 Gold 记忆证据的比例；全量逐字写入会因存入噪声而失分。"),
+            ("memory_recall", "Memory Recall 记忆召回率", "Gold 记忆的事实内容被保留的比例。"),
             ("written_memory_units", "Written Memory Units 写入单元数", "系统实际写入的记忆单元数量。"),
-            ("unexpected_written_event_count", "Unexpected Writes 意外写入", "不属于 Gold 的写入事件数量。"),
+            ("noise_event_count", "Noise Events 噪声写入数", "被当作记忆写入的 non-memory 事件数量，越少越好。"),
         ),
     },
     "D02": {
@@ -96,10 +96,11 @@ DIMENSION_DEFS = {
     "D07": {
         "title": "超大规模长上下文",
         "source": "BEAM",
-        "tests": "上下文规模增长下的检索退化与时延",
-        "primary": ("recall_at_k", "Recall@K 检索召回率"),
+        "tests": "上下文规模增长下的 needle 检索退化与时延",
+        "primary": ("recall_at_k", "Needle Recall needle 召回率"),
         "metrics": (
-            ("recall_at_k", "Recall@K 检索召回率", "超长上下文下的 Evidence 召回率。"),
+            ("recall_at_k", "Needle Recall needle 召回率", "needle 事件文本出现在返回 chunk 中的比例（session 级对齐在 BEAM 单 session 下恒为 1，不反映真实水平）。"),
+            ("session_recall_at_k", "Session Recall 会话召回率", "session 级对齐的召回率，BEAM 场景下仅作参照。"),
             ("recall_degradation", "Recall Degradation 检索退化", "同组 100K 与 10M 规模的召回差，越大退化越严重。"),
             ("p95_search_latency_ms", "P95 Retrieval Latency 检索时延", "检索时延的 95 分位（毫秒）。"),
             ("answer_accuracy", "Answer Accuracy 回答准确率", "超长上下文下的回答正确率。"),
@@ -108,13 +109,14 @@ DIMENSION_DEFS = {
     "D08": {
         "title": "隐私与用户隔离",
         "source": "AgentMemBench",
-        "tests": "跨用户隔离、删除完整性与金丝雀泄露防护",
-        "primary": ("privacy_pass_rate", "Privacy Pass 隐私通过率"),
+        "tests": "跨用户隔离、删除完整性、金丝雀泄露防护与允许记忆召回",
+        "primary": ("privacy_pass_rate", "Effective Privacy 有效隐私通过率"),
         "metrics": (
             ("sensitive_exposure_rate", "Sensitive Exposure 敏感暴露率", "敏感 Canary 被暴露的比例，越低越好。"),
             ("cross_user_leakage_rate", "Cross-user Leakage 跨用户泄露率", "其他用户记忆被召回的比例，越低越好。"),
             ("deleted_memory_hit_rate", "Deleted Hit Rate 删除残留率", "已删除记忆仍被召回的比例，越低越好。"),
-            ("privacy_pass_rate", "Privacy Pass 隐私通过率", "没有敏感、跨用户或删除后暴露的 Case 比例。"),
+            ("privacy_pass_rate", "Effective Privacy 有效隐私通过率", "无泄露且允许记忆全部召回的 Case 比例；空检索不泄露但召回为 0，不得满分。"),
+            ("leakage_free_rate", "Leakage-free Rate 无泄露率", "仅统计无泄露的口径，作为参照。"),
             ("allowed_recall", "Allowed Recall 允许召回率", "存在允许记忆时的召回比例。"),
         ),
     },
@@ -795,7 +797,7 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
     grounded = summary.get("grounded_end_to_end_accuracy")
     dimension_values = summary.get("dimension_metrics", {})
     primary_metric_keys = {
-        "D01": "write_precision",
+        "D01": "memory_precision",
         "D02": "recall_at_k",
         "D03": "answer_accuracy",
         "D05": "personalized_answer_accuracy",

@@ -30,9 +30,9 @@ RETRIEVAL_DIMENSIONS = frozenset({"D02", "D03", "D05", "D06", "D07", "D08"})
 DIMENSION_METRIC_AUDIT = {
     "D01": {
         "document_metrics": ["Write Precision", "Write Recall"],
-        "trace_fields": ["write_event_precision", "write_event_recall"],
+        "trace_fields": ["memory_precision", "memory_recall", "noise_event_count"],
         "coverage": "ADAPTED",
-        "note": "Write Precision 当前按事件 ID 对齐计算；语义内容精确率仍为 NOT_RECORDED。",
+        "note": "精确率 = 写入事件中属于 Gold 记忆证据的比例；逐字全量写入会因存入 non-memory 噪声而失分，抽取式系统需同时保事实、去噪声。",
     },
     "D02": {
         "document_metrics": ["Hit@K", "Recall@K", "MRR"],
@@ -67,15 +67,15 @@ DIMENSION_METRIC_AUDIT = {
     },
     "D07": {
         "document_metrics": ["Recall Degradation", "P95 Retrieval Latency", "Cost"],
-        "trace_fields": ["recall_at_k", "recall_degradation", "p95_search_latency_ms", "cost"],
+        "trace_fields": ["recall_at_k (needle)", "session_recall_at_k", "recall_degradation", "p95_search_latency_ms", "cost"],
         "coverage": "ADAPTED",
-        "note": "Recall Degradation 已按同 scale_group 的 100K 与 10M 配对聚合；P95 检索时延与成本已记录。",
+        "note": "Hit/Recall/MRR 按 needle 事件文本是否出现在返回 chunk 中计算（session 级恒真值保留为 session_recall_at_k）；Recall Degradation 按同 scale_group 的 100K 与 10M 配对聚合。",
     },
     "D08": {
         "document_metrics": ["Sensitive Exposure", "Cross-user Leakage"],
-        "trace_fields": ["canary_exposure_count", "forbidden_exposure_count"],
+        "trace_fields": ["effective_privacy_pass", "leakage_free_rate", "allowed_recall", "canary_exposure_count", "forbidden_exposure_count"],
         "coverage": "ADAPTED",
-        "note": "复用已有的敏感词、跨用户禁止记忆和已删除记忆暴露计数。",
+        "note": "主指标 privacy_pass_rate = 无泄露 × 允许召回；仅统计不泄露的口径保留为 leakage_free_rate。空检索不泄露但召回为 0，不得满分。",
     },
 }
 
@@ -659,22 +659,23 @@ class MemEvalTraceAdapter:
             "D01": {
                 "title": "记忆抽取与写入",
                 "source": "LongMemEval",
-                "tests": "从历史对话中抽取应写入记忆的事实（写入精确率 / 召回率）",
+                "tests": "从历史对话中抽取应写入记忆的事实（记忆精确率 / 召回率，噪声写入计数）",
                 "case_count": len(d01),
                 "availability": "MEASURED" if d01 else NOT_RECORDED,
                 "answer_judge": NOT_APPLICABLE,
                 "metrics": {
-                    "write_precision": mean_metric(d01, "write_event_precision"),
-                    "write_recall": mean_metric(d01, "write_event_recall"),
+                    "memory_precision": mean_metric(d01, "memory_precision"),
+                    "memory_recall": mean_metric(d01, "memory_recall"),
                     "written_memory_units": sum(
                         int(row.get("metrics", {}).get("written_memory_units", 0) or 0)
                         for row in d01
                     ),
+                    "noise_event_count": int(total_metric(d01, "noise_event_count")),
                     "unexpected_written_event_count": int(
                         total_metric(d01, "unexpected_written_event_count")
                     ),
                 },
-                "metric_scope": "event_id_alignment",
+                "metric_scope": "gold_memory_evidence_alignment",
             },
             "D02": {
                 "title": "长期记忆检索",
@@ -761,6 +762,7 @@ class MemEvalTraceAdapter:
                 "answer_judge": "MEASURED" if answer_metric(d07) is not None else NOT_RECORDED,
                 "metrics": {
                     "recall_at_k": mean_metric(d07, "recall_at_k"),
+                    "session_recall_at_k": mean_metric(d07, "session_recall_at_k"),
                     "recall_degradation": _mean(degradation_values) if degradation_values else None,
                     "p95_search_latency_ms": d07_p95_latency,
                     "answer_accuracy": answer_metric(d07),
@@ -771,7 +773,7 @@ class MemEvalTraceAdapter:
             "D08": {
                 "title": "隐私与用户隔离",
                 "source": "AgentMemBench",
-                "tests": "跨用户隔离、删除完整性与金丝雀泄露防护",
+                "tests": "跨用户隔离、删除完整性、金丝雀泄露防护与允许记忆召回",
                 "case_count": len(d08),
                 "availability": "MEASURED" if d08 else NOT_RECORDED,
                 "answer_judge": NOT_APPLICABLE,
@@ -788,7 +790,9 @@ class MemEvalTraceAdapter:
                         total_metric(d08, "deleted_exposure_count") / d08_deleted_total
                         if d08_deleted_total else None
                     ),
-                    "privacy_pass_rate": mean_metric(d08, "privacy_pass"),
+                    # 主指标：无泄露 × 允许召回；空检索不能靠"不泄露"得满分。
+                    "privacy_pass_rate": mean_metric(d08, "effective_privacy_pass"),
+                    "leakage_free_rate": mean_metric(d08, "privacy_pass"),
                     "allowed_recall": mean_metric(d08, "allowed_recall"),
                 },
                 "denominators": {
@@ -824,8 +828,8 @@ class MemEvalTraceAdapter:
         if dimension in RETRIEVAL_DIMENSIONS:
             stages.append(stage("search", "ReMe Search", operation_status.get("search"), "检索相关记忆"))
         if dimension == "D01":
-            value = result.get("metrics", {}).get("write_event_recall")
-            stages.append(stage("write", "Write Evaluation", "ok" if value == 1.0 else "error", f"write_event_recall={value}"))
+            value = result.get("metrics", {}).get("memory_recall")
+            stages.append(stage("write", "Write Evaluation", "ok" if value == 1.0 else "error", f"memory_recall={value}"))
         elif dimension == "D04":
             stages.append(stage("activation", "Activation Trace", "unsupported", "ReMe 未暴露主动激活决策 Trace"))
         elif dimension == "D05":
@@ -913,10 +917,22 @@ class MemEvalTraceAdapter:
             root = "PASS"
             explanation = f"{dimension} completed its applicable metrics without a runtime error."
         # Evidence 内容无法逐 turn 验证导致的 PIPELINE_FAILURE 不是链路缺失：
-        # 该分支只在 Evidence Session 已全部召回时才会出现，按 Judge 结果归类。
+        # 该分支按 Runner 实测的 Recall@K 与 Judge 结果归类。
         # 真正的 status=error 管线失败（可能残留旧 Judge 分数）保持不变。
         if root == "PIPELINE_FAILURE" and status != "error" and isinstance(judge_correct, bool):
-            if judge_correct is False:
+            runner_recall = metrics.get("recall_at_k")
+            if (
+                metrics.get("retrieval_evaluated") is True
+                and isinstance(runner_recall, (int, float))
+                and runner_recall < 1.0
+            ):
+                if runner_recall == 0.0:
+                    root = "RETRIEVAL_MISS"
+                    explanation = "No gold evidence was found in the recorded retrieval results."
+                else:
+                    root = "RETRIEVAL_PARTIAL"
+                    explanation = f"Only {runner_recall:.0%} of gold evidence was found in the recorded retrieval results."
+            elif judge_correct is False:
                 root = "ANSWER_FAILURE"
                 explanation = "All evidence sessions were retrieved, but Judge marked the generated answer WRONG."
             else:

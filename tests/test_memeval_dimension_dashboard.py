@@ -45,25 +45,30 @@ def test_memeval_trace_reuses_independent_dimension_metrics():
         [
             _result(
                 "d01", "D01",
-                {"write_event_precision": 0.5, "write_event_recall": 1.0,
-                 "written_memory_units": 2, "unexpected_written_event_count": 1},
+                {"memory_precision": 0.5, "memory_recall": 1.0,
+                 "written_memory_units": 2, "noise_event_count": 1,
+                 "unexpected_written_event_count": 0},
             ),
             _result("d04", "D04", {}, ["activation_decision"]),
             _result(
                 "d08", "D08",
                 {"canary_exposure_count": 0, "forbidden_exposure_count": 0,
-                 "deleted_exposure_count": 0, "privacy_pass": 1.0},
+                 "deleted_exposure_count": 0, "privacy_pass": 1.0,
+                 "effective_privacy_pass": 1.0, "allowed_recall": 1.0},
             ),
         ]
     )
 
-    assert metrics["D01"]["metrics"]["write_precision"] == 0.5
-    assert metrics["D01"]["metrics"]["write_recall"] == 1.0
+    assert metrics["D01"]["metrics"]["memory_precision"] == 0.5
+    assert metrics["D01"]["metrics"]["memory_recall"] == 1.0
     assert metrics["D04"]["availability"] == "UNSUPPORTED"
     assert metrics["D04"]["metrics"]["utilization_rate"] == "NOT_APPLICABLE"
     assert metrics["D08"]["metrics"]["sensitive_exposure_rate"] == 0.0
     assert metrics["D08"]["metrics"]["cross_user_leakage_rate"] == 0.0
     assert metrics["D08"]["metrics"]["deleted_memory_hit_rate"] == 0.0
+    # 主指标为有效隐私通过率（无泄露 × 允许召回），无泄露率保留为参照。
+    assert metrics["D08"]["metrics"]["privacy_pass_rate"] == 1.0
+    assert metrics["D08"]["metrics"]["leakage_free_rate"] == 1.0
 
 
 def test_dimension_dashboard_aggregates_d03_d06_new_metrics():
@@ -260,6 +265,27 @@ def test_unverifiable_evidence_content_classifies_by_judge_and_retrieval():
         {"status": "error", "dimension_id": "D02", "error": {"message": "boom"}, "metrics": {}},
     )
     assert errored["final"]["root_cause"] == "PIPELINE_FAILURE"
+
+    # Runner 实测召回为 0 时归为 RETRIEVAL_MISS（D07 needle 级），部分召回归 RETRIEVAL_PARTIAL
+    miss = {
+        "judge": {"is_correct": True},
+        "final": {"root_cause": "PIPELINE_FAILURE", "explanation": "", "suggested_fix": ""},
+    }
+    MemEvalTraceAdapter._override_final(
+        miss,
+        {"status": "ok", "dimension_id": "D07", "metrics": {"recall_at_k": 0.0, "retrieval_evaluated": True}},
+    )
+    assert miss["final"]["root_cause"] == "RETRIEVAL_MISS"
+
+    partial_recall = {
+        "judge": {"is_correct": False},
+        "final": {"root_cause": "PIPELINE_FAILURE", "explanation": "", "suggested_fix": ""},
+    }
+    MemEvalTraceAdapter._override_final(
+        partial_recall,
+        {"status": "ok", "dimension_id": "D07", "metrics": {"recall_at_k": 0.5, "retrieval_evaluated": True}},
+    )
+    assert partial_recall["final"]["root_cause"] == "RETRIEVAL_PARTIAL"
 
 
 def test_add_row_status_depends_only_on_ingest_event():

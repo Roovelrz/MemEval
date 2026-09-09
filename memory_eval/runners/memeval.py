@@ -253,19 +253,78 @@ def _retrieval_metrics(
 
 
 def _written_event_metrics(case: dict[str, Any], operation: SystemOperationResult) -> dict[str, Any]:
+    """D01: memory-worthiness of what the system actually persisted.
+
+    Gold splits every context event into memory evidence (gold_memories) and
+    non-memory noise. A verbatim "store everything" system keeps recall at 1.0
+    but fails precision because it also persists the noise; an extraction-based
+    system is rewarded only when it keeps the facts and drops the noise.
+    """
+
     if operation.status != "ok":
         return {}
     rows = operation.data if isinstance(operation.data, list) else []
-    written = {str(value) for row in rows for value in row.get("event_ids", [])}
-    expected = {str(value) for value in case["gold"]["payload"].get("scored_event_ids", [])}
-    correct = written.intersection(expected)
+    stored = {str(value) for row in rows for value in row.get("event_ids", [])}
+    payload = case["gold"]["payload"]
+    gold_memories = payload.get("gold_memories", [])
+    memory_worthy = {
+        str(event_id) for memory in gold_memories for event_id in memory.get("evidence_event_ids", [])
+    }
+    noise = {str(value) for value in payload.get("non_memory_event_ids", [])}
+    covered = sum(1 for memory in gold_memories if memory_worthy and set(map(str, memory.get("evidence_event_ids", []))) & stored)
     return {
-        "write_event_precision": len(correct) / len(written) if written else None,
-        "write_event_recall": len(correct) / len(expected) if expected else None,
-        "unexpected_written_event_count": len(written - expected),
+        "memory_precision": len(stored & memory_worthy) / len(stored) if stored else None,
+        "memory_recall": covered / len(gold_memories) if gold_memories else None,
+        "noise_event_count": len(stored & noise),
+        "unexpected_written_event_count": len(stored - memory_worthy - noise),
         "written_memory_units": len(rows),
-        "semantic_memory_precision": None,
-        "semantic_memory_recall": None,
+    }
+
+
+def _needle_text_metrics(case: dict[str, Any], runtime: Any, memories: list[dict[str, Any]]) -> dict[str, Any]:
+    """D07: needle-level retrieval quality measured on event text, not session IDs.
+
+    BEAM packs the whole haystack into one session, so session-level Recall@K
+    collapses to 1.0 whenever any chunk of that session returns. Here a needle
+    counts as retrieved only when its evidence text actually appears in the
+    returned chunk text.
+    """
+
+    payload = case["gold"]["payload"]
+    refs = [str(value) for value in payload.get("gold_evidence_ids", [])]
+    if not refs:
+        return {}
+    contents: dict[str, str] = {}
+    for session in runtime.canonical_case.get("sessions", []):
+        for message in session.get("messages", []):
+            if message.get("event_id"):
+                contents[str(message["event_id"])] = str(message.get("content", ""))
+    retrieved_texts = [str(item.get("text", "")) for item in memories]
+    reciprocal_ranks: list[float] = []
+    hits = 0
+    for ref in refs:
+        needle = _normalise_text(contents.get(ref, ""))
+        if not needle:
+            continue
+        first_rank = next(
+            (
+                rank
+                for rank, text in enumerate(retrieved_texts, 1)
+                if needle in _normalise_text(text)
+            ),
+            None,
+        )
+        if first_rank is not None:
+            hits += 1
+            reciprocal_ranks.append(1.0 / first_rank)
+        else:
+            reciprocal_ranks.append(0.0)
+    if not reciprocal_ranks:
+        return {}
+    return {
+        "needle_hit_at_k": float(bool(hits)),
+        "needle_recall_at_k": hits / len(reciprocal_ranks),
+        "needle_mrr": sum(reciprocal_ranks) / len(reciprocal_ranks),
     }
 
 
@@ -278,12 +337,18 @@ def _privacy_metrics(case: dict[str, Any], memories: list[dict[str, Any]]) -> di
     text = json.dumps(memories, ensure_ascii=False)
     exposed_canaries = [token for token in payload.get("canary_tokens", []) if token in text]
     prohibited = retrieved_ids.intersection(forbidden | deleted)
+    privacy_pass = float(not prohibited and not exposed_canaries)
+    allowed_recall = len(retrieved_ids.intersection(allowed)) / len(allowed) if allowed else None
+    # 隐私维度必须同时"不泄露"且"该召回的能召回"：
+    # 空检索虽然不可能泄露，但不满足允许记忆的召回要求，不能得满分。
+    effective_pass = privacy_pass * (allowed_recall if isinstance(allowed_recall, (int, float)) else 1.0)
     return {
-        "allowed_recall": len(retrieved_ids.intersection(allowed)) / len(allowed) if allowed else None,
+        "allowed_recall": allowed_recall,
         "forbidden_exposure_count": len(retrieved_ids.intersection(forbidden)),
         "deleted_exposure_count": len(retrieved_ids.intersection(deleted)),
         "canary_exposure_count": len(exposed_canaries),
-        "privacy_pass": float(not prohibited and not exposed_canaries),
+        "privacy_pass": privacy_pass,
+        "effective_privacy_pass": effective_pass,
     }
 
 
@@ -467,6 +532,18 @@ class MemEvalRunner:
             metrics.update(_temporal_metrics(case, runtime, memories))
         elif dimension == "D06":
             metrics.update(_conflict_metrics(case, memories))
+        elif dimension == "D07":
+            # BEAM 单 session 场景下 session 级指标恒为 1，保留原始值的同时
+            # 用 needle 文本级指标覆盖 hit/recall/mrr，反映真实检索水平。
+            needle = _needle_text_metrics(case, runtime, memories)
+            if needle:
+                metrics["session_hit_at_k"] = metrics.get("hit_at_k")
+                metrics["session_recall_at_k"] = metrics.get("recall_at_k")
+                metrics["session_mrr"] = metrics.get("mrr")
+                metrics.update(needle)
+                metrics["hit_at_k"] = needle["needle_hit_at_k"]
+                metrics["recall_at_k"] = needle["needle_recall_at_k"]
+                metrics["mrr"] = needle["needle_mrr"]
         if dimension == "D02":
             return None, memories, metrics, "ok", [], retrieval_ms
 
