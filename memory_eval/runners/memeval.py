@@ -295,17 +295,23 @@ def _written_event_metrics(case: dict[str, Any], operation: SystemOperationResul
     }
 
 
-def _needle_text_metrics(case: dict[str, Any], runtime: Any, memories: list[dict[str, Any]]) -> dict[str, Any]:
-    """D07: needle-level retrieval quality measured on event text, not session IDs.
+def _needle_text_metrics(
+    case: dict[str, Any], runtime: Any, memories: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Event-text-level retrieval quality for single-session dimensions (D05/D07).
 
-    BEAM packs the whole haystack into one session, so session-level Recall@K
-    collapses to 1.0 whenever any chunk of that session returns. Here a needle
-    counts as retrieved only when its evidence text actually appears in the
-    returned chunk text.
+    BEAM and PersonaMem pack the whole haystack into one session, so session-level
+    Recall@K collapses to 1.0 whenever any chunk of that session returns. Here a
+    needle counts as retrieved only when its evidence text actually appears in
+    the returned chunk text.
     """
 
     payload = case["gold"]["payload"]
-    refs = [str(value) for value in payload.get("gold_evidence_ids", [])]
+    refs = [
+        str(event_id)
+        for item in payload.get("profile_items", [])
+        for event_id in item.get("evidence_event_ids", [])
+    ] or [str(value) for value in payload.get("gold_evidence_ids", [])]
     if not refs:
         return {}
     contents: dict[str, str] = {}
@@ -501,6 +507,17 @@ class MemEvalRunner:
             )
             memories = _enrich_memories(runtime, search.memories)
             metrics = _retrieval_metrics(case, runtime, memories)
+            # PersonaMem 单 session 场景与 D07 同源：session 级指标恒真，
+            # 用 profile 证据事件文本级指标覆盖 hit/recall/mrr 反映真实检索水平。
+            needle = _needle_text_metrics(case, runtime, memories)
+            if needle:
+                metrics["session_hit_at_k"] = metrics.get("hit_at_k")
+                metrics["session_recall_at_k"] = metrics.get("recall_at_k")
+                metrics["session_mrr"] = metrics.get("mrr")
+                metrics.update(needle)
+                metrics["hit_at_k"] = needle["needle_hit_at_k"]
+                metrics["recall_at_k"] = needle["needle_recall_at_k"]
+                metrics["mrr"] = needle["needle_mrr"]
             return (
                 _operation_payload(operation), memories, metrics,
                 "partial" if operation.status == "unsupported" else operation.status,

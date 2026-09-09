@@ -342,6 +342,31 @@ def test_d07_needle_text_metrics_require_evidence_text_in_chunks():
         {"envelope": {"dimension_id": "D07"}, "gold": {"payload": {}}}, runtime, []
     ) == {}
 
+    # D05：证据引用来自 profile_items.evidence_event_ids。
+    d05_runtime = SimpleNamespace(
+        canonical_case={"sessions": [{
+            "session_id": "s1",
+            "messages": [{"event_id": "p1", "content": "Bought handmade postcards in Venice."}],
+        }]},
+        event_to_session_id={"p1": "s1"},
+        memory_to_session_id={},
+    )
+    d05_case = {
+        "envelope": {"dimension_id": "D05"},
+        "gold": {"payload": {
+            "profile_items": [
+                {"profile_id": "i1", "evidence_event_ids": ["p1"]},
+            ],
+        }},
+    }
+    # 返回 chunk 不含 profile 证据文本：session 级会判 1，needle 级必须判 0。
+    missing = _needle_text_metrics(d05_case, d05_runtime, [{"session_id": "s1", "text": "Some unrelated chunk."}])
+    assert missing["needle_hit_at_k"] == 0.0
+    assert missing["needle_recall_at_k"] == 0.0
+    found = _needle_text_metrics(d05_case, d05_runtime, [{"session_id": "s1", "text": "Bought handmade postcards in Venice."}])
+    assert found["needle_recall_at_k"] == 1.0
+    assert found["needle_mrr"] == 1.0
+
 
 def test_d08_effective_privacy_pass_penalizes_empty_retrieval():
     from memory_eval.runners.memeval import _privacy_metrics
