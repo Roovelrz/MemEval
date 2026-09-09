@@ -142,8 +142,13 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         assert results[0]["metrics"]["memory_precision"] == 0.5
         assert results[0]["metrics"]["noise_event_count"] == 1
         assert results[0]["metrics"]["unexpected_written_event_count"] == 0
-        assert results[1]["metrics"] == {
-            "retrieval_evaluated": True, "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0
+        assert results[1]["metrics"]["retrieval_evaluated"] is True
+        assert results[1]["metrics"]["hit_at_k"] == 1.0
+        assert results[1]["metrics"]["recall_at_k"] == 1.0
+        assert results[1]["metrics"]["mrr"] == 1.0
+        # 多 K 指标：只返回 1 条结果时只有 K=1 档位。
+        assert results[1]["metrics"]["metrics_by_k"] == {
+            "1": {"hit": 1.0, "recall": 1.0, "mrr": 1.0}
         }
         assert results[3]["prediction"]["status"] == "unsupported"
         assert results[3]["metrics"] == {}

@@ -244,11 +244,25 @@ def _retrieval_metrics(
     gold_set = set(gold)
     overlap = gold_set.intersection(retrieved)
     first_rank = next((rank for rank, value in enumerate(retrieved, 1) if value in gold_set), None)
+    # 多 K 指标：K 取 gold retrieval_k 与常用档位，供 Dashboard 以 K=3 为主指标展示。
+    metrics_by_k: dict[str, dict[str, float]] = {}
+    for cutoff in (1, 3, 5, 10):
+        if cutoff > len(retrieved):
+            continue
+        top = retrieved[:cutoff]
+        top_overlap = gold_set.intersection(top)
+        top_first = next((rank for rank, value in enumerate(top, 1) if value in gold_set), None)
+        metrics_by_k[str(cutoff)] = {
+            "hit": float(bool(top_overlap)),
+            "recall": len(top_overlap) / len(gold_set),
+            "mrr": 1.0 / top_first if top_first else 0.0,
+        }
     return {
         "retrieval_evaluated": True,
         "hit_at_k": float(bool(overlap)),
         "recall_at_k": len(overlap) / len(gold_set),
         "mrr": 1.0 / first_rank if first_rank else 0.0,
+        "metrics_by_k": metrics_by_k,
     }
 
 
