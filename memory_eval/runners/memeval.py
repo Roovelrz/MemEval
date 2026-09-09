@@ -189,6 +189,51 @@ def _evidence_session_ids(case: dict[str, Any], runtime: Any) -> list[str]:
     return output
 
 
+def _normalise_text(value: Any) -> str:
+    return " ".join(str(value or "").casefold().split())
+
+
+def _conflict_metrics(case: dict[str, Any], memories: list[dict[str, Any]]) -> dict[str, Any]:
+    """D06: whether stale / winning fact values surface in retrieved memory text."""
+
+    payload = case["gold"]["payload"]
+    versions = payload.get("fact_versions") or []
+    if not versions:
+        return {}
+    stale_ids = {str(value) for value in payload.get("stale_fact_ids", [])}
+    winning_ids = {str(value) for value in payload.get("winning_fact_ids", [])}
+    retrieved_text = _normalise_text(" ".join(str(item.get("text", "")) for item in memories))
+
+    def hit_rate(rows: list[dict[str, Any]]) -> float | None:
+        values = [_normalise_text(row.get("value")) for row in rows]
+        values = [value for value in values if value]
+        if not values:
+            return None
+        return sum(1 for value in values if value in retrieved_text) / len(values)
+
+    stale_rows = [row for row in versions if str(row.get("fact_id")) in stale_ids]
+    winning_rows = [row for row in versions if str(row.get("fact_id")) in winning_ids]
+    return {
+        "stale_fact_total": len(stale_rows),
+        "stale_retrieval_rate": hit_rate(stale_rows),
+        "winning_fact_total": len(winning_rows),
+        "winning_fact_recall": hit_rate(winning_rows),
+    }
+
+
+def _temporal_metrics(case: dict[str, Any], runtime: Any, memories: list[dict[str, Any]]) -> dict[str, Any]:
+    """D03: deleted-fact recall, only defined for lifecycle Cases (expected_active=False)."""
+
+    payload = case["gold"]["payload"]
+    lifecycle = payload.get("lifecycle") or {}
+    if lifecycle.get("expected_active") is not False:
+        return {}
+    evidence_sessions = set(_evidence_session_ids(case, runtime))
+    retrieved_sessions = {str(item.get("session_id")) for item in memories if item.get("session_id")}
+    deleted_hit = bool(evidence_sessions & retrieved_sessions) if evidence_sessions else None
+    return {"lifecycle_case": True, "deleted_hit": deleted_hit}
+
+
 def _retrieval_metrics(
     case: dict[str, Any], runtime: Any, memories: list[dict[str, Any]]
 ) -> dict[str, Any]:
@@ -418,6 +463,10 @@ class MemEvalRunner:
             return None, memories, _privacy_metrics(case, memories), "ok", [], retrieval_ms
 
         metrics = _retrieval_metrics(case, runtime, memories)
+        if dimension == "D03":
+            metrics.update(_temporal_metrics(case, runtime, memories))
+        elif dimension == "D06":
+            metrics.update(_conflict_metrics(case, memories))
         if dimension == "D02":
             return None, memories, metrics, "ok", [], retrieval_ms
 

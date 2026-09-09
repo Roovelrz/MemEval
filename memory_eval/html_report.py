@@ -22,34 +22,100 @@ CAPABILITY_LABELS = {
     "single-session-user": "单会话用户信息",
     "temporal-reasoning": "时间推理",
 }
-SPECIAL_DIMENSIONS = {
+SPECIAL_DIMENSIONS = {"D01", "D04", "D08"}
+DIMENSION_DEFS = {
     "D01": {
         "title": "记忆抽取与写入",
+        "source": "LongMemEval",
+        "tests": "从历史对话中抽取应写入记忆的事实",
+        "primary": ("write_precision", "Write Precision 写入精确率"),
         "metrics": (
-            ("write_precision", "Write Precision", "写入事件中与 Gold 对齐的比例。"),
-            ("write_recall", "Write Recall", "Gold 事件中成功写入的比例。"),
-            ("written_memory_units", "Written Memory Units", "系统实际写入的记忆单元数量。"),
-            ("unexpected_written_event_count", "Unexpected Writes", "不属于 Gold 的写入事件数量。"),
+            ("write_precision", "Write Precision 写入精确率", "写入事件中与 Gold 对齐的比例。"),
+            ("write_recall", "Write Recall 写入召回率", "Gold 事件中成功写入的比例。"),
+            ("written_memory_units", "Written Memory Units 写入单元数", "系统实际写入的记忆单元数量。"),
+            ("unexpected_written_event_count", "Unexpected Writes 意外写入", "不属于 Gold 的写入事件数量。"),
+        ),
+    },
+    "D02": {
+        "title": "长期记忆检索",
+        "source": "LongMemEval",
+        "tests": "长期记忆的证据检索命中与排序质量",
+        "primary": ("recall_at_k", "Recall@K 检索召回率"),
+        "metrics": (
+            ("recall_at_k", "Recall@K 检索召回率", "前 K 条结果覆盖 Gold Evidence 的比例。"),
+            ("hit_at_k", "Hit@K 命中率", "前 K 条是否命中至少一个 Evidence。"),
+            ("mrr", "MRR 平均倒数排名", "第一个相关 Evidence 的排名越靠前越高。"),
+            ("answer_accuracy", "Answer Accuracy 回答准确率", "Judge 判定回答正确的比例。"),
+        ),
+    },
+    "D03": {
+        "title": "长时间跨度对话",
+        "source": "LoCoMo",
+        "tests": "时间推理、长间隔回忆与删除后遗忘",
+        "primary": ("answer_accuracy", "Temporal Accuracy 回答准确率"),
+        "metrics": (
+            ("answer_accuracy", "Temporal Accuracy 回答准确率", "长时间跨度问答的 Judge 正确率。"),
+            ("recall_at_k", "Long-gap Recall 长间隔回召率", "长间隔 Evidence 的检索召回率。"),
+            ("deleted_hit_rate", "Deleted Hit Rate 删除残留率", "已删除事实仍被召回的比例，越低越好。"),
         ),
     },
     "D04": {
         "title": "主动调用与记忆使用",
+        "source": "PrefEval",
+        "tests": "系统是否自主激活记忆调用",
+        "primary": None,
         "metrics": (
-            ("activation_recall", "Activation Recall", "需要记忆时成功触发调用的比例。"),
-            ("required_activation_cases", "Required Cases", "Gold 标记为需要主动调用的 Case 数。"),
-            ("unsupported_activation_cases", "Unsupported Cases", "系统未暴露 Activation Trace 的 Case 数。"),
-            ("utilization_rate", "Utilization Rate", "无 gold_answer，本轮不适用。"),
-            ("e2e_accuracy", "E2E Accuracy", "无 gold_answer，本轮不适用。"),
+            ("activation_recall", "Activation Recall 激活召回率", "需要记忆时成功触发调用的比例。"),
+            ("required_activation_cases", "Required Cases 需激活数", "Gold 标记为需要主动调用的 Case 数。"),
+            ("unsupported_activation_cases", "Unsupported Cases 未支持数", "系统未暴露 Activation Trace 的 Case 数。"),
+            ("utilization_rate", "Utilization Rate 利用率", "无 gold_answer，本轮不适用。"),
+            ("e2e_accuracy", "E2E Accuracy 端到端准确率", "无 gold_answer，本轮不适用。"),
+        ),
+    },
+    "D05": {
+        "title": "用户画像与偏好",
+        "source": "PersonaMem-v2",
+        "tests": "用户偏好画像的召回与个性化回答",
+        "primary": ("personalized_answer_accuracy", "个性化回答准确率"),
+        "metrics": (
+            ("personalized_answer_accuracy", "Personalized Accuracy 个性化准确率", "依据用户偏好回答的正确率。"),
+            ("recall_at_k", "Preference Recall 偏好召回率", "偏好 Evidence 的检索召回率。"),
+        ),
+    },
+    "D06": {
+        "title": "动态更新与冲突",
+        "source": "MemoryAgentBench",
+        "tests": "冲突事实的最新值解析与陈旧值抑制",
+        "primary": ("answer_accuracy", "Latest-value 回答准确率"),
+        "metrics": (
+            ("answer_accuracy", "Latest-value 回答准确率", "冲突场景下 Judge 判定最新值的正确率。"),
+            ("stale_retrieval_rate", "Stale Retrieval 陈旧召回率", "旧版本事实出现在检索结果中的比例，越低越好。"),
+            ("winning_fact_recall", "Winning Recall 最新值召回率", "最新版本事实被检索覆盖的比例。"),
+        ),
+    },
+    "D07": {
+        "title": "超大规模长上下文",
+        "source": "BEAM",
+        "tests": "上下文规模增长下的检索退化与时延",
+        "primary": ("recall_at_k", "Recall@K 检索召回率"),
+        "metrics": (
+            ("recall_at_k", "Recall@K 检索召回率", "超长上下文下的 Evidence 召回率。"),
+            ("recall_degradation", "Recall Degradation 检索退化", "同组 100K 与 10M 规模的召回差，越大退化越严重。"),
+            ("p95_search_latency_ms", "P95 Retrieval Latency 检索时延", "检索时延的 95 分位（毫秒）。"),
+            ("answer_accuracy", "Answer Accuracy 回答准确率", "超长上下文下的回答正确率。"),
         ),
     },
     "D08": {
         "title": "隐私与用户隔离",
+        "source": "AgentMemBench",
+        "tests": "跨用户隔离、删除完整性与金丝雀泄露防护",
+        "primary": ("privacy_pass_rate", "Privacy Pass 隐私通过率"),
         "metrics": (
-            ("sensitive_exposure_rate", "Sensitive Exposure", "敏感 Canary 被暴露的比例，越低越好。"),
-            ("cross_user_leakage_rate", "Cross-user Leakage", "其他用户记忆被召回的比例，越低越好。"),
-            ("deleted_memory_hit_rate", "Deleted Hit Rate", "已删除记忆仍被召回的比例，越低越好。"),
-            ("privacy_pass_rate", "Privacy Pass Rate", "没有敏感、跨用户或删除后暴露的 Case 比例。"),
-            ("allowed_recall", "Allowed Recall", "存在允许记忆时的召回比例。"),
+            ("sensitive_exposure_rate", "Sensitive Exposure 敏感暴露率", "敏感 Canary 被暴露的比例，越低越好。"),
+            ("cross_user_leakage_rate", "Cross-user Leakage 跨用户泄露率", "其他用户记忆被召回的比例，越低越好。"),
+            ("deleted_memory_hit_rate", "Deleted Hit Rate 删除残留率", "已删除记忆仍被召回的比例，越低越好。"),
+            ("privacy_pass_rate", "Privacy Pass 隐私通过率", "没有敏感、跨用户或删除后暴露的 Case 比例。"),
+            ("allowed_recall", "Allowed Recall 允许召回率", "存在允许记忆时的召回比例。"),
         ),
     },
 }
@@ -313,7 +379,7 @@ def _nav(prefix: str, active: str) -> str:
     items = (
         ("home", "总览", "index.html"),
         ("quadrant", "四象限分析", "analysis/quadrant.html"),
-        ("dimensions", "D01 D04 D08", "dimensions/index.html"),
+        ("dimensions", "八维度得分", "dimensions/index.html"),
         ("pipeline", "流程观测", "pipeline/add.html"),
         ("performance", "性能与时延", "performance/latency.html"),
         ("comparison", "版本对比", "comparison/index.html"),
@@ -533,16 +599,25 @@ def _quadrant_chart(summary: dict[str, Any], cases: list[dict[str, Any]], *, pre
 def _special_dimension_cards(summary: dict[str, Any], *, prefix: str = "") -> str:
     values = summary.get("dimension_metrics", {})
     cards = []
-    for dimension_id, definition in SPECIAL_DIMENSIONS.items():
+    for dimension_id, definition in DIMENSION_DEFS.items():
         dimension = values.get(dimension_id, {}) if isinstance(values, dict) else {}
         metrics = dimension.get("metrics", {}) if isinstance(dimension, dict) else {}
-        primary_key, primary_label, _ = definition["metrics"][0]
+        availability = str(dimension.get("availability", NOT_RECORDED))
+        primary = definition.get("primary")
+        if availability == "UNSUPPORTED" or not primary:
+            score_html = '<div class="capability-score"><span>支持状态</span><strong class="unsupported">不支持</strong></div>'
+        else:
+            primary_key, primary_label = primary
+            score_html = (
+                f'<div class="capability-score"><span>{_escape(primary_label)}</span>'
+                f'<strong>{_scalar(metrics.get(primary_key), primary_key)}</strong></div>'
+            )
         cards.append(
             f'<a class="capability-card" href="{prefix}{dimension_id.lower()}.html">'
-            f'<span>{_escape(definition["title"])}</span><code>{dimension_id}</code>'
-            f'<div class="capability-score"><span>{_escape(primary_label)}</span>'
-            f'<strong>{_scalar(metrics.get(primary_key), primary_key)}</strong></div>'
-            f'<small>状态 · {_escape(dimension.get("availability", NOT_RECORDED))} · '
+            f'<span>{_escape(definition["title"])}</span><code>{dimension_id} · {_escape(definition["source"])}</code>'
+            f'{score_html}'
+            f'<small>测试维度 · {_escape(definition["tests"])}</small>'
+            f'<small>状态 · {_escape(availability)} · '
             f'Answer/Judge · {_escape(dimension.get("answer_judge", "NOT_APPLICABLE"))}</small></a>'
         )
     return "".join(cards)
@@ -593,53 +668,153 @@ def _special_dimension_case_table(
     )
 
 
+def _dimension_quadrant_chart(
+    dimension_id: str, summary: dict[str, Any], cases: list[dict[str, Any]], *, prefix: str
+) -> str:
+    """Dimension-scoped four-quadrant trace for Answer/Judge dimensions."""
+
+    definition = DIMENSION_DEFS[dimension_id]
+    matched = [
+        case for case in cases
+        if case.get("dimension_id") == dimension_id
+        and _quadrant_code(case.get("quadrant")) in "ABCD"
+    ]
+    dimension = summary.get("dimension_metrics", {}).get(dimension_id, {})
+    metrics = dimension.get("metrics", {}) if isinstance(dimension, dict) else {}
+    case_points = [
+        {
+            **case,
+            "level": "case",
+            "label": case.get("case_id"),
+            "quadrant_code": _quadrant_code(case.get("quadrant")),
+            "href": _case_link(case.get("case_id"), prefix),
+        }
+        for case in matched
+    ]
+    dimension_points = (
+        [
+            {
+                "level": "run",
+                "label": f"{dimension_id} 汇总",
+                "question_type": dimension_id,
+                "root_cause": "AGGREGATED",
+                "quadrant": "AGGREGATED",
+                "quadrant_code": "N",
+                "hit_at_k": metrics.get("hit_at_k"),
+                "recall_at_k": metrics.get("recall_at_k"),
+                "mrr": metrics.get("mrr"),
+                "answer_correct": metrics.get("answer_accuracy")
+                or metrics.get("personalized_answer_accuracy"),
+                "judge_label": "AGGREGATED",
+                "x": metrics.get("recall_at_k"),
+                "y": metrics.get("answer_accuracy")
+                or metrics.get("personalized_answer_accuracy"),
+                "href": "",
+            }
+        ]
+        if isinstance(metrics.get("recall_at_k"), (int, float)) else []
+    )
+    payload = json.dumps(
+        {"top_k": int(summary.get("top_k", 10)), "case": case_points, "type": [], "run": dimension_points},
+        ensure_ascii=False,
+    ).replace("</", "<\\/")
+    quadrant_counts = {
+        code: sum(_quadrant_code(case.get("quadrant")) == code for case in matched)
+        for code in "ABCD"
+    }
+    options = lambda key: "".join(
+        f'<option value="{_escape(value)}">{_escape(value)}</option>'
+        for value in sorted({str(case.get(key, NOT_RECORDED)) for case in matched})
+    )
+    return f"""<section class="panel quadrant-panel">
+<div class="section-heading"><div><p class="eyebrow">DIMENSION TRACE</p><h2>{_escape(dimension_id)} {_escape(definition['title'])} · 四象限追溯</h2></div>
+<div class="segmented"><button class="active" data-chart-level="case">Case</button><button data-chart-level="run">维度汇总</button></div></div>
+<div class="chart-filters"><label>root_cause<select data-chart-filter="root_cause"><option value="">全部</option>{options('root_cause')}</select></label><label>quadrant<select data-chart-filter="quadrant"><option value="">全部</option>{options('quadrant')}</select></label></div>
+<div class="quadrant-layout"><div class="y-label">Answer PASS ↑</div><div class="quadrant-chart" data-quadrant-chart data-score-axis-x="best_evidence_score" data-score-axis-y="best_non_evidence_score" aria-label="象限内点位按 best_evidence_score 和 best_non_evidence_score 排列">
+<div class="quadrant-zone zone-c"><strong>C <em data-quadrant-count="C">{quadrant_counts['C']}</em></strong><span>检索失败 · 回答成功</span></div><div class="quadrant-zone zone-a"><strong>A <em data-quadrant-count="A">{quadrant_counts['A']}</em></strong><span>检索成功 · 回答成功</span></div>
+<div class="quadrant-zone zone-d"><strong>D <em data-quadrant-count="D">{quadrant_counts['D']}</em></strong><span>检索失败 · 回答失败</span></div><div class="quadrant-zone zone-b"><strong>B <em data-quadrant-count="B">{quadrant_counts['B']}</em></strong><span>检索成功 · 回答失败</span></div><div class="axis-x">Retrieval PASS →</div><div class="chart-points" data-chart-points></div></div></div>
+<script type="application/json" data-chart-data>{payload}</script></section>"""
+
+
 def _special_dimension_page(
     summary: dict[str, Any], cases: list[dict[str, Any]], dimension_id: str
 ) -> str:
-    definition = SPECIAL_DIMENSIONS[dimension_id]
+    definition = DIMENSION_DEFS[dimension_id]
     dimension = summary.get("dimension_metrics", {}).get(dimension_id, {})
     metrics = dimension.get("metrics", {}) if isinstance(dimension, dict) else {}
+    availability = str(dimension.get("availability", NOT_RECORDED))
     metric_cards = "".join(
         _metric_card(name, metrics.get(name), tone="blue", display_label=label, note=note)
         for name, label, note in definition["metrics"]
     )
+    primary = definition.get("primary")
+    if availability == "UNSUPPORTED" or not primary:
+        primary_html = (
+            '<div class="metric-grid"><article class="metric-card tone-red">'
+            '<div class="metric-label"><code>系统支持状态</code></div>'
+            '<div class="metric-number">不支持</div>'
+            '<div class="metric-note">被测系统未暴露该维度所需能力，按 unsupported 记录，不判 0 分。</div></article></div>'
+        )
+    else:
+        primary_html = ""
+    quadrant_html = (
+        _dimension_quadrant_chart(dimension_id, summary, cases, prefix="../")
+        if dimension_id not in SPECIAL_DIMENSIONS
+        else ""
+    )
     content = f"""
-<section class="panel"><div class="section-heading"><div><p class="eyebrow">INDEPENDENT DIMENSION</p><h2>{_escape(dimension_id)} 独立指标</h2></div>{_status_badge(dimension.get('availability', NOT_RECORDED))}</div>
-<p>Answer/Judge：{_status_badge(dimension.get('answer_judge', 'NOT_APPLICABLE'))}</p>
-<div class="metric-grid">{metric_cards}</div></section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">INDEPENDENT DIMENSION</p><h2>{_escape(dimension_id)} {_escape(definition['title'])}</h2></div>{_status_badge(availability)}</div>
+<p>数据源 · {_escape(definition['source'])} ｜ 测试维度 · {_escape(definition['tests'])} ｜ Answer/Judge：{_status_badge(dimension.get('answer_judge', 'NOT_APPLICABLE'))}</p>
+{primary_html}<div class="metric-grid">{metric_cards}</div></section>
 <section class="panel"><div class="section-heading"><h2>指标来源与分母</h2></div>{_field_table({key: value for key, value in dimension.items() if key not in {'metrics'}})}</section>
+{quadrant_html}
 <section class="panel"><div class="section-heading"><h2>Case 明细</h2></div>{_special_dimension_case_table(cases, dimension_id)}</section>
 """
     return _page(
         f"{dimension_id} {definition['title']}", content, summary,
-        active="dimensions", subtitle="不进入 Answer/Judge 四象限，按维度自身指标展示",
+        active="dimensions", subtitle=f"测试维度：{definition['tests']}（数据源 {definition['source']}）",
     )
 
 
 def _special_dimensions_index(summary: dict[str, Any]) -> str:
     content = f"""
-<section class="panel"><div class="section-heading"><div><p class="eyebrow">NO GOLD ANSWER</p><h2>D01 D04 D08 独立指标</h2></div></div>
-<p>D01、D04、D08 不执行 Answer/Judge，不进入回答准确率或端到端四象限。</p>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">EIGHT DIMENSIONS</p><h2>八维度独立得分</h2></div></div>
+<p>每个维度按自身 Gold Payload 独立评分；系统不支持的维度标注「不支持」，不判 0 分。D01、D04、D08 无 gold_answer，不进入 Answer/Judge 四象限。</p>
 <div class="capability-grid">{_special_dimension_cards(summary)}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">METRIC AUDIT</p><h2>八维度关键指标核验</h2></div></div>{_dimension_metric_audit(summary)}</section>
 """
     return _page(
-        "独立维度指标", content, summary, active="dimensions",
-        subtitle="开发文档指标与当前 Eval Pipe Trace 字段对照",
+        "八维度独立得分", content, summary, active="dimensions",
+        subtitle="每个维度可点开追溯 Case 与四象限明细",
     )
 
 
 def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
-    aggregate_recall = summary.get("recall_at_k")
     mrr = summary.get("mrr")
     answer_accuracy = summary.get("answer_accuracy")
     grounded = summary.get("grounded_end_to_end_accuracy")
-    retrieval_quality = aggregate_recall * 0.6 + mrr * 0.4 if isinstance(aggregate_recall, (int, float)) and isinstance(mrr, (int, float)) else None
-    composite = retrieval_quality * 0.4 + answer_accuracy * 0.2 + grounded * 0.4 if all(isinstance(value, (int, float)) for value in (retrieval_quality, answer_accuracy, grounded)) else None
+    dimension_values = summary.get("dimension_metrics", {})
+    primary_metric_keys = {
+        "D01": "write_precision",
+        "D02": "recall_at_k",
+        "D03": "answer_accuracy",
+        "D05": "personalized_answer_accuracy",
+        "D06": "answer_accuracy",
+        "D07": "recall_at_k",
+        "D08": "privacy_pass_rate",
+    }
+    dimension_scores = []
+    for dimension_id, metric_key in primary_metric_keys.items():
+        dimension = dimension_values.get(dimension_id, {}) if isinstance(dimension_values, dict) else {}
+        value = dimension.get("metrics", {}).get(metric_key) if isinstance(dimension, dict) else None
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            dimension_scores.append(float(value))
+    composite = sum(dimension_scores) / len(dimension_scores) if dimension_scores else None
     composite_value = float(composite or 0)
     composite_label = f"{composite_value * 100:.1f}%" if composite is not None else NOT_RECORDED
-    retrieval = summary.get("retrieval_stage", {})
-    api = summary.get("api_stability", {})
+    composite_formula = " / ".join(
+        f"{key}" for key in primary_metric_keys.values()
+    )
     top_k = summary.get("top_k", 10)
     primary_k, primary_hit, primary_recall = _primary_retrieval_metrics(summary)
     retrieval_tooltip = _retrieval_metric_tooltip(summary.get("_metrics_by_k", {}))
@@ -649,11 +824,6 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
         f'<a class="root-card" href="failures/{_slug(name)}.html"><span>{_status_badge(name)}</span><strong>{count}</strong></a>'
         for name, count in nonzero_roots
     ) or '<div class="empty-state">当前 Run 没有非 PASS 根因。</div>'
-    capabilities = "".join(
-        f'<a class="capability-card" href="capabilities/{_slug(name)}.html"><span>{_escape(CAPABILITY_LABELS.get(name, name))}</span><code>{_escape(name)}</code><div class="capability-score"><span>accuracy</span><strong>{_scalar(values.get("accuracy"), "accuracy")}</strong></div><small>case_count · {_escape(values.get("case_count", 0))}</small></a>'
-        for name, values in summary.get("question_type_breakdown", {}).items()
-        if name not in SPECIAL_DIMENSIONS
-    )
     bad_cases = [
         case for case in cases
         if case.get("root_cause") not in {
@@ -680,14 +850,10 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
     content = f"""
 {benchmark_table}
 <section class="hero-grid">
-  <article class="score-card"><div class="score-ring" style="--score:{composite_value:.4f}"><span>{_escape(composite_label)}</span></div><div><p class="eyebrow">DISPLAY-ONLY AGGREGATE</p><h2>综合能力评分</h2><p>retrieval_quality × 40% + answer_accuracy × 20% + grounded_end_to_end_accuracy × 40%</p><small>仅用于当前本地 Eval 的展示，不修改原始 Trace 指标。</small></div></article>
-  <article class="panel"><div class="section-heading"><h2>工程健康度</h2>{_status_badge('PASS' if summary.get('pipeline_success_rate') == 1 else 'ATTENTION')}</div><div class="metric-grid compact">{_metric_card('pipeline_success_rate', summary.get('pipeline_success_rate'))}{_metric_card('add_success_rate', retrieval.get('add_success_rate'))}{_metric_card('index_success_rate', retrieval.get('index_success_rate'))}{_metric_card('search_success_rate', retrieval.get('search_success_rate'))}{_metric_card('api_error_count', api.get('api_error_count'))}{_metric_card('timeouts', api.get('timeouts'))}</div></article>
+  <article class="score-card"><div class="score-ring" style="--score:{composite_value:.4f}"><span>{_escape(composite_label)}</span></div><div><p class="eyebrow">DISPLAY-ONLY AGGREGATE</p><h2>综合能力评分</h2><p>八维度主指标算术平均（不支持的维度不计入）：<br/><code>{_escape(composite_formula)}</code></p><small>仅用于当前本地 Eval 的展示，不修改原始 Trace 指标。</small></div></article>
 </section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">CORE METRICS</p><h2>检索质量 · 回答质量 · 有依据端到端能力</h2></div><span class="metric-primary-hint">主指标：@{primary_k}</span></div><div class="metric-grid">{_metric_card('hit_at_k', primary_hit, tone='blue', note=f'前 {primary_k} 条是否命中至少一个 Evidence', display_label=f'Hit@{primary_k}', hover_html=retrieval_tooltip)}{_metric_card('recall_at_k', primary_recall, tone='blue', note=f'前 {primary_k} 条覆盖了多少 Evidence', display_label=f'Recall@{primary_k}', hover_html=retrieval_tooltip)}{_metric_card('mrr', mrr, tone='blue', display_label='MRR', note='第一个相关 Evidence 排名越靠前，MRR 越高。')}{_metric_card('answer_accuracy', answer_accuracy, tone='violet', note='Judge 判定回答正确的 Case 占比。')}{_metric_card('grounded_end_to_end_accuracy', grounded, tone='green', note='检索找到正确 Evidence 且最终回答正确的 Case 占比。')}{_metric_card('answer_failure_count', summary.get('answer_failure_count'), tone='red', note='被归因到 Answer 失败的 Case 数。')}</div></section>
-<section class="panel"><div class="section-heading"><div><p class="eyebrow">NOT APPLICABLE TO ANSWER JUDGE</p><h2>D01 D04 D08 独立指标</h2></div><a href="dimensions/index.html">独立查看</a></div><div class="capability-grid">{_special_dimension_cards(summary, prefix='dimensions/')}</div></section>
-{_quadrant_chart(summary, cases, prefix='')}
-<section class="panel"><div class="section-heading"><div><p class="eyebrow">CAPABILITY BREAKDOWN</p><h2>能力维度表现</h2></div><a href="capabilities/index.html">独立查看</a></div><div class="capability-grid">{capabilities}</div></section>
-<section class="panel"><div class="section-heading"><div><p class="eyebrow">EVIDENCE COVERAGE</p><h2>证据数量分层表现</h2></div></div>{_field_table(summary.get('evidence_count_breakdown', {}))}</section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">CAPABILITY BREAKDOWN</p><h2>能力维度表现</h2></div><a href="dimensions/index.html">独立查看</a></div><div class="capability-grid">{_special_dimension_cards(summary, prefix='dimensions/')}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">ROOT CAUSE</p><h2>失败归因</h2></div><a href="failures/index.html">独立查看</a></div><div class="root-grid">{root_cards}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">BAD CASES</p><h2>重点 Bad Case</h2></div></div>{_case_table(bad_cases, link_prefix='', filters=False, top_k=top_k)}</section>
 """
@@ -1091,7 +1257,7 @@ def build_html_report(
     for question_type in sorted(capability_pages):
         write(f"capabilities/{_slug(question_type)}.html", _capability_page(summary, summary_cases, question_type))
     write("dimensions/index.html", _special_dimensions_index(summary))
-    for dimension_id in SPECIAL_DIMENSIONS:
+    for dimension_id in DIMENSION_DEFS:
         write(
             f"dimensions/{dimension_id.lower()}.html",
             _special_dimension_page(summary, summary_cases, dimension_id),

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,10 +41,9 @@ DIMENSION_METRIC_AUDIT = {
     },
     "D03": {
         "document_metrics": ["Temporal Accuracy", "Retention Recall", "Deleted Hit Rate"],
-        "trace_fields": ["answer_accuracy", "recall_at_k"],
-        "missing_metrics": ["deleted_hit_rate"],
-        "coverage": "PARTIAL",
-        "note": "复用答案准确率和检索召回率作为近似指标；D03 当前不执行删除操作。",
+        "trace_fields": ["answer_accuracy", "recall_at_k", "deleted_hit_rate"],
+        "coverage": "ADAPTED",
+        "note": "答案准确率近似 Temporal Accuracy，检索召回率近似 Long-gap Recall；Deleted Hit Rate 已按 lifecycle Case 聚合（ReMe 不执行内容删除，测陈旧残留）。",
     },
     "D04": {
         "document_metrics": ["Activation Recall", "Utilization Rate", "E2E Accuracy"],
@@ -60,17 +60,15 @@ DIMENSION_METRIC_AUDIT = {
     },
     "D06": {
         "document_metrics": ["Latest-value", "Conflict Resolution", "Stale Retrieval"],
-        "trace_fields": ["answer_accuracy", "recall_at_k"],
-        "missing_metrics": ["stale_retrieval_rate"],
-        "coverage": "PARTIAL",
-        "note": "Judge 准确率覆盖最新值判断；旧版本错误召回尚未单独统计。",
+        "trace_fields": ["answer_accuracy", "stale_retrieval_rate", "winning_fact_recall"],
+        "coverage": "ADAPTED",
+        "note": "Judge 准确率覆盖最新值判断；Stale Retrieval 与 Winning Recall 按事实文本在检索结果中的出现计算。",
     },
     "D07": {
         "document_metrics": ["Recall Degradation", "P95 Retrieval Latency", "Cost"],
-        "trace_fields": ["recall_at_k", "latency.retrieval", "cost"],
-        "missing_metrics": ["recall_degradation"],
-        "coverage": "PARTIAL",
-        "note": "时延和成本已有记录；Recall Degradation 仍需按不同规模配对聚合。",
+        "trace_fields": ["recall_at_k", "recall_degradation", "p95_search_latency_ms", "cost"],
+        "coverage": "ADAPTED",
+        "note": "Recall Degradation 已按同 scale_group 的 100K 与 10M 配对聚合；P95 检索时延与成本已记录。",
     },
     "D08": {
         "document_metrics": ["Sensitive Exposure", "Cross-user Leakage"],
@@ -124,6 +122,14 @@ def _row_map(path: Path) -> dict[str, dict[str, Any]]:
 def _mean(values: Iterable[Any]) -> float | None:
     usable = [float(value) for value in values if isinstance(value, (int, float))]
     return sum(usable) / len(usable) if usable else None
+
+
+def _p95(values: Iterable[Any]) -> float | None:
+    rows = sorted(float(value) for value in values if isinstance(value, (int, float)))
+    if not rows:
+        return None
+    index = min(len(rows) - 1, max(0, math.ceil(0.95 * len(rows)) - 1))
+    return rows[index]
 
 
 def _safe_name(value: str) -> str:
@@ -568,15 +574,26 @@ class MemEvalTraceAdapter:
     ) -> dict[str, dict[str, Any]]:
         rows = {
             dimension: [row for row in results if row.get("dimension_id") == dimension]
-            for dimension in ("D01", "D04", "D08")
+            for dimension in ("D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08")
         }
 
         def payload(row: dict[str, Any]) -> dict[str, Any]:
             artifact = self.artifacts[str(row["case_id"])]
             return artifact.case["gold"]["payload"]
 
+        def mean_metric(selected: list[dict[str, Any]], name: str) -> Any:
+            return _mean(row.get("metrics", {}).get(name) for row in selected)
+
+        def answer_metric(selected: list[dict[str, Any]], name: str = "answer_accuracy") -> Any:
+            return mean_metric(selected, name)
+
         d01 = rows["D01"]
+        d02 = rows["D02"]
+        d03 = rows["D03"]
         d04 = rows["D04"]
+        d05 = rows["D05"]
+        d06 = rows["D06"]
+        d07 = rows["D07"]
         d08 = rows["D08"]
         d04_unsupported = sum(
             "activation_decision" in row.get("unsupported_metrics", []) for row in d04
@@ -594,19 +611,52 @@ class MemEvalTraceAdapter:
                 float(row.get("metrics", {}).get(name, 0) or 0) for row in selected
             )
 
+        # D03: deleted-fact recall over lifecycle Cases (expected_active=False).
+        d03_lifecycle = [
+            row for row in d03
+            if (payload(row).get("lifecycle") or {}).get("expected_active") is False
+        ]
+        d03_deleted_hit_rate = _mean(
+            row.get("metrics", {}).get("deleted_hit") for row in d03_lifecycle
+        )
+
+        # D07: paired scale-group Recall Degradation (small scale minus large scale).
+        scale_groups: dict[str, dict[str, list[float]]] = {}
+        for row in d07:
+            gold = payload(row)
+            group_id = str(gold.get("scale_group_id") or "")
+            level = str(gold.get("scale_level") or "")
+            if not group_id or not level:
+                continue
+            recall = row.get("metrics", {}).get("recall_at_k")
+            if isinstance(recall, (int, float)):
+                scale_groups.setdefault(group_id, {}).setdefault(level, []).append(float(recall))
+        degradation_values: list[float] = []
+        recall_by_scale: dict[str, Any] = {}
+        for group_levels in scale_groups.values():
+            for level, values in group_levels.items():
+                recall_by_scale[level] = _mean(values)
+            smallest = group_levels.get("100K") or (min(
+                (values for values in group_levels.values()), default=None
+            ) if group_levels else None)
+            largest = group_levels.get("10M")
+            if isinstance(smallest, list) and isinstance(largest, list):
+                degradation_values.append(_mean(smallest) - _mean(largest))
+        d07_p95_latency = _p95([
+            row.get("latency", {}).get("retrieval") for row in d07
+        ])
+
         return {
             "D01": {
                 "title": "记忆抽取与写入",
+                "source": "LongMemEval",
+                "tests": "从历史对话中抽取应写入记忆的事实（写入精确率 / 召回率）",
                 "case_count": len(d01),
                 "availability": "MEASURED" if d01 else NOT_RECORDED,
                 "answer_judge": NOT_APPLICABLE,
                 "metrics": {
-                    "write_precision": _mean(
-                        row.get("metrics", {}).get("write_event_precision") for row in d01
-                    ),
-                    "write_recall": _mean(
-                        row.get("metrics", {}).get("write_event_recall") for row in d01
-                    ),
+                    "write_precision": mean_metric(d01, "write_event_precision"),
+                    "write_recall": mean_metric(d01, "write_event_recall"),
                     "written_memory_units": sum(
                         int(row.get("metrics", {}).get("written_memory_units", 0) or 0)
                         for row in d01
@@ -617,8 +667,38 @@ class MemEvalTraceAdapter:
                 },
                 "metric_scope": "event_id_alignment",
             },
+            "D02": {
+                "title": "长期记忆检索",
+                "source": "LongMemEval",
+                "tests": "长期记忆的证据检索命中与排序质量（Hit@K / Recall@K / MRR）",
+                "case_count": len(d02),
+                "availability": "MEASURED" if d02 else NOT_RECORDED,
+                "answer_judge": "MEASURED" if answer_metric(d02) is not None else NOT_RECORDED,
+                "metrics": {
+                    "hit_at_k": mean_metric(d02, "hit_at_k"),
+                    "recall_at_k": mean_metric(d02, "recall_at_k"),
+                    "mrr": mean_metric(d02, "mrr"),
+                    "answer_accuracy": answer_metric(d02),
+                },
+            },
+            "D03": {
+                "title": "长时间跨度对话",
+                "source": "LoCoMo",
+                "tests": "时间推理、长间隔回忆与删除后遗忘（Deleted Hit Rate）",
+                "case_count": len(d03),
+                "availability": "MEASURED" if d03 else NOT_RECORDED,
+                "answer_judge": "MEASURED" if answer_metric(d03) is not None else NOT_RECORDED,
+                "metrics": {
+                    "answer_accuracy": answer_metric(d03),
+                    "recall_at_k": mean_metric(d03, "recall_at_k"),
+                    "deleted_hit_rate": d03_deleted_hit_rate,
+                },
+                "lifecycle_case_count": len(d03_lifecycle),
+            },
             "D04": {
                 "title": "主动调用与记忆使用",
+                "source": "PrefEval",
+                "tests": "系统是否自主激活记忆调用（Activation Precision / Recall）",
                 "case_count": len(d04),
                 "availability": (
                     "UNSUPPORTED"
@@ -629,9 +709,7 @@ class MemEvalTraceAdapter:
                 ),
                 "answer_judge": NOT_APPLICABLE,
                 "metrics": {
-                    "activation_recall": _mean(
-                        row.get("metrics", {}).get("activation_recall") for row in d04
-                    ),
+                    "activation_recall": mean_metric(d04, "activation_recall"),
                     "required_activation_cases": sum(
                         bool(payload(row).get("should_activate")) for row in d04
                     ),
@@ -640,8 +718,51 @@ class MemEvalTraceAdapter:
                     "e2e_accuracy": NOT_APPLICABLE,
                 },
             },
+            "D05": {
+                "title": "用户画像与偏好",
+                "source": "PersonaMem-v2",
+                "tests": "用户偏好画像的召回与个性化回答准确率",
+                "case_count": len(d05),
+                "availability": "MEASURED" if d05 else NOT_RECORDED,
+                "answer_judge": "MEASURED" if answer_metric(d05, "personalized_answer_accuracy") is not None else NOT_RECORDED,
+                "metrics": {
+                    "recall_at_k": mean_metric(d05, "recall_at_k"),
+                    "personalized_answer_accuracy": answer_metric(d05, "personalized_answer_accuracy"),
+                },
+            },
+            "D06": {
+                "title": "动态更新与冲突",
+                "source": "MemoryAgentBench",
+                "tests": "冲突事实的最新值解析（Latest-value）与陈旧值抑制（Stale Retrieval）",
+                "case_count": len(d06),
+                "availability": "MEASURED" if d06 else NOT_RECORDED,
+                "answer_judge": "MEASURED" if answer_metric(d06) is not None else NOT_RECORDED,
+                "metrics": {
+                    "answer_accuracy": answer_metric(d06),
+                    "stale_retrieval_rate": mean_metric(d06, "stale_retrieval_rate"),
+                    "winning_fact_recall": mean_metric(d06, "winning_fact_recall"),
+                },
+            },
+            "D07": {
+                "title": "超大规模长上下文",
+                "source": "BEAM",
+                "tests": "上下文规模增长下的检索退化（Recall Degradation）与时延",
+                "case_count": len(d07),
+                "availability": "MEASURED" if d07 else NOT_RECORDED,
+                "answer_judge": "MEASURED" if answer_metric(d07) is not None else NOT_RECORDED,
+                "metrics": {
+                    "recall_at_k": mean_metric(d07, "recall_at_k"),
+                    "recall_degradation": _mean(degradation_values) if degradation_values else None,
+                    "p95_search_latency_ms": d07_p95_latency,
+                    "answer_accuracy": answer_metric(d07),
+                },
+                "recall_by_scale": recall_by_scale,
+                "scale_group_count": len(scale_groups),
+            },
             "D08": {
                 "title": "隐私与用户隔离",
+                "source": "AgentMemBench",
+                "tests": "跨用户隔离、删除完整性与金丝雀泄露防护",
                 "case_count": len(d08),
                 "availability": "MEASURED" if d08 else NOT_RECORDED,
                 "answer_judge": NOT_APPLICABLE,
@@ -658,12 +779,8 @@ class MemEvalTraceAdapter:
                         total_metric(d08, "deleted_exposure_count") / d08_deleted_total
                         if d08_deleted_total else None
                     ),
-                    "privacy_pass_rate": _mean(
-                        row.get("metrics", {}).get("privacy_pass") for row in d08
-                    ),
-                    "allowed_recall": _mean(
-                        row.get("metrics", {}).get("allowed_recall") for row in d08
-                    ),
+                    "privacy_pass_rate": mean_metric(d08, "privacy_pass"),
+                    "allowed_recall": mean_metric(d08, "allowed_recall"),
                 },
                 "denominators": {
                     "sensitive_canaries": d08_sensitive_total,

@@ -1,6 +1,8 @@
 import json
 from types import SimpleNamespace
 
+import pytest
+
 from memory_eval.adapters.Trace.memeval import MemEvalTraceAdapter
 from memory_eval.html_report import (
     ROOT_CAUSES as HTML_ROOT_CAUSES,
@@ -62,6 +64,57 @@ def test_memeval_trace_reuses_independent_dimension_metrics():
     assert metrics["D08"]["metrics"]["sensitive_exposure_rate"] == 0.0
     assert metrics["D08"]["metrics"]["cross_user_leakage_rate"] == 0.0
     assert metrics["D08"]["metrics"]["deleted_memory_hit_rate"] == 0.0
+
+
+def test_dimension_dashboard_aggregates_d03_d06_new_metrics():
+    adapter = MemEvalTraceAdapter.__new__(MemEvalTraceAdapter)
+    adapter.artifacts = {
+        "c1": SimpleNamespace(case={"gold": {"payload": {"lifecycle": {"expected_active": False}}}}),
+        "c2": SimpleNamespace(case={"gold": {"payload": {"lifecycle": {"expected_active": False}}}}),
+        "c3": SimpleNamespace(case={"gold": {"payload": {"lifecycle": {"expected_active": True}}}}),
+        "m1": SimpleNamespace(case={"gold": {"payload": {"fact_versions": []}}}),
+        "m2": SimpleNamespace(case={"gold": {"payload": {"fact_versions": []}}}),
+    }
+    metrics = adapter._dimension_dashboard_metrics(
+        [
+            _result("c1", "D03", {"deleted_hit": True}),
+            _result("c2", "D03", {"deleted_hit": False}),
+            _result("c3", "D03", {}),
+            _result("m1", "D06", {"stale_retrieval_rate": 1.0, "winning_fact_recall": 0.5}),
+            _result("m2", "D06", {"stale_retrieval_rate": 0.0, "winning_fact_recall": 1.0}),
+        ]
+    )
+
+    assert metrics["D03"]["metrics"]["deleted_hit_rate"] == 0.5
+    assert metrics["D03"]["lifecycle_case_count"] == 2
+    assert metrics["D06"]["metrics"]["stale_retrieval_rate"] == 0.5
+    assert metrics["D06"]["metrics"]["winning_fact_recall"] == 0.75
+
+
+def test_dimension_dashboard_aggregates_d07_recall_degradation():
+    adapter = MemEvalTraceAdapter.__new__(MemEvalTraceAdapter)
+    adapter.artifacts = {
+        "g1-small": SimpleNamespace(
+            case={"gold": {"payload": {"scale_group_id": "g1", "scale_level": "100K"}}}
+        ),
+        "g1-large": SimpleNamespace(
+            case={"gold": {"payload": {"scale_group_id": "g1", "scale_level": "10M"}}}
+        ),
+        "stress": SimpleNamespace(case={"gold": {"payload": {}}}),
+    }
+    metrics = adapter._dimension_dashboard_metrics(
+        [
+            _result("g1-small", "D07", {"recall_at_k": 1.0}),
+            _result("g1-large", "D07", {"recall_at_k": 0.6}),
+            _result("stress", "D07", {"recall_at_k": 0.0}),
+        ]
+    )
+
+    assert metrics["D07"]["metrics"]["recall_degradation"] == 0.4
+    assert metrics["D07"]["metrics"]["recall_at_k"] == pytest.approx((1.0 + 0.6 + 0.0) / 3)
+    assert metrics["D07"]["scale_group_count"] == 1
+    assert metrics["D07"]["recall_by_scale"] == {"100K": 1.0, "10M": 0.6}
+    assert metrics["D07"]["metrics"]["p95_search_latency_ms"] is None
 
 
 def test_special_dimension_dashboard_marks_answer_and_judge_not_applicable():

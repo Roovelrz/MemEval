@@ -227,6 +227,63 @@ def test_runner_writes_error_result_and_still_cleans_up():
         assert system.cleaned == 1
 
 
+def test_d06_conflict_metrics_score_stale_and_winning_facts():
+    from memory_eval.runners.memeval import _conflict_metrics
+
+    case = {
+        "envelope": {"dimension_id": "D06"},
+        "gold": {"payload": {
+            "fact_versions": [
+                {"fact_id": "f:old", "value": "Cornell University", "status": "stale"},
+                {"fact_id": "f:new", "value": "Stanford University", "status": "winning"},
+            ],
+            "stale_fact_ids": ["f:old"],
+            "winning_fact_ids": ["f:new"],
+        }},
+    }
+    stale_surfaced = [{"session_id": "s1", "text": "819. The author is Cornell University."}]
+    assert _conflict_metrics(case, stale_surfaced) == {
+        "stale_fact_total": 1, "stale_retrieval_rate": 1.0,
+        "winning_fact_total": 1, "winning_fact_recall": 0.0,
+    }
+    winning_surfaced = [{"session_id": "s1", "text": "the latest one is Stanford University"}]
+    assert _conflict_metrics(case, winning_surfaced) == {
+        "stale_fact_total": 1, "stale_retrieval_rate": 0.0,
+        "winning_fact_total": 1, "winning_fact_recall": 1.0,
+    }
+    assert _conflict_metrics(
+        {"envelope": {"dimension_id": "D06"}, "gold": {"payload": {}}}, []
+    ) == {}
+
+
+def test_d03_temporal_metrics_deleted_hit_only_for_lifecycle():
+    from memory_eval.runners.memeval import _temporal_metrics
+
+    runtime = SimpleNamespace(
+        canonical_case={"sessions": []},
+        event_to_session_id={"e1": "s1"},
+        memory_to_session_id={},
+    )
+    lifecycle = {
+        "envelope": {"dimension_id": "D03"},
+        "gold": {"payload": {
+            "evidence_event_ids": ["e1"],
+            "lifecycle": {"expected_active": False, "deleted_at": "2023-10-23"},
+        }},
+    }
+    assert _temporal_metrics(lifecycle, runtime, [{"session_id": "s1"}]) == {
+        "lifecycle_case": True, "deleted_hit": True,
+    }
+    assert _temporal_metrics(lifecycle, runtime, [{"session_id": "s2"}]) == {
+        "lifecycle_case": True, "deleted_hit": False,
+    }
+    native = {
+        "envelope": {"dimension_id": "D03"},
+        "gold": {"payload": {"evidence_event_ids": ["e1"], "lifecycle": {"expected_active": True}}},
+    }
+    assert _temporal_metrics(native, runtime, [{"session_id": "s1"}]) == {}
+
+
 def test_runner_resumes_completed_cases_and_compacts_results(capsys):
     with workspace_directory("memeval-resume") as directory:
         event = {"event_id": "e1", "session_id": "s1", "content": "needle", "metadata": {}}
