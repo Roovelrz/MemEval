@@ -25,6 +25,18 @@ Retrieved Memories、Trace、Latency、Cost、Metrics、Status 和 Error。单�
 py -3.12 scripts/run_memeval.py --dataset MemEval-v0.1 --dimension D08 --limit 1 --run-id d08-smoke
 ```
 
+也可直接编辑仓库根目录 `run_eval.py` 中的 `CONFIG`，然后执行
+`py -3.12 run_eval.py`。默认运行全部 298 条；smoke test 可将 `limit` 改为 `5`。
+未指定 `run_id` 时按 `reme_<dataset>_<UTC timestamp>` 命名。
+
+每次完整运行结束后，Run 根目录只保留两个顶层文件夹：
+
+- `Detailed Trace Report`：除简明汇总和 Dashboard 外的全部原始结果、配置、Prompt、Trace 与日志；
+- `Trace Summary`：`Dashboard.html`、`Dashboard/`、`summary.json` 和 `trace_summary.md`。
+
+运行从开始就把过程文件写入 `Detailed Trace Report`；完成 Trace 后生成 `Trace Summary`。
+已经整理过的 Run 使用同一 `run_id` 续跑时，会继续读取详细目录并刷新简明汇总。
+
 运行期间 Retrieval、Answer、Judge 都会逐 Case 输出进度条、完成数、百分比、耗时和
 预计剩余时间。默认启用断点续跑；进程中断后，使用完全相同的 `--run-id` 和 Retrieval
 参数重新执行即可。Retrieval 跳过已有成功 Case，并重试错误 Case；Answer/Judge 按已有

@@ -1,14 +1,12 @@
-"""One-click configuration wrapper for the ReMe end-to-end memory eval.
+"""One-click configuration wrapper for the current MemEval-v0.1 pipeline.
 
 Edit ``CONFIG`` below, then run this file from any working directory:
 
     py -3.12 run_eval.py
 
-The existing end-to-end runner still owns all evaluation logic.  This file
-only translates the editable configuration into its command-line arguments.
-API credentials are intentionally not stored here; Answer and Judge read
-them from the repository ``.env`` file (or the corresponding environment
-variables).
+The dimension-aware runner owns Retrieval, Answer, Judge, Trace, Dashboard,
+progress, and resume behavior. API credentials remain in the repository
+``.env`` file or process environment; they are never stored here.
 """
 
 from __future__ import annotations
@@ -19,214 +17,181 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from dataset.build_pipeline.release import DIMENSION_DIRECTORIES
+from memory_eval.dataset_registry import resolve_dataset
+
 
 REPO_ROOT = Path(__file__).resolve().parent
-END_TO_END_RUNNER = REPO_ROOT / "scripts" / "run_reme_end_to_end_eval.py"
+MEMEVAL_RUNNER = REPO_ROOT / "scripts" / "run_memeval.py"
 
 
 # ---------------------------------------------------------------------------
-# Edit only this section for a new run.
+# 新运行只需修改此区域。
 # ---------------------------------------------------------------------------
 CONFIG: dict[str, Any] = {
-    # Put the dataset file path here.  Absolute paths are recommended because
-    # datasets may live outside this repository.  JSON, JSONL and supported
-    # benchmark CSV files are accepted.  A registered dataset ID is also accepted for
-    # backward compatibility, but a path is the preferred form.
-    "dataset": "E:\\LRZ_Workplace\\fork\\LongMemEval\\data\\longmemeval_s_cleaned.json",
-    "dataset_adapter": "auto",  # auto / longmemeval / locomo / personamem-v2
+    # 正式八维度数据集。data 可填写另一个正式 MemEval release 目录，并覆盖 dataset。
+    "dataset": "MemEval-v0.1",
+    "data": None,
 
-    # Case selection.  ``cases=0`` means all cases after ``start``.
-    # Keep this at 1 for a smoke test, then change to 20/100/etc.
-    "cases": 500, #需要测评的case样本数
-    "start": 0, #从第几个case开始测评
-    "shuffle": False, #是否随机打乱case顺序
-    "seed": 42, #随机种子
+    # 筛选。空列表表示全部维度/Case；limit=None 表示运行全部 298 条。
+    "dimensions": [],  # 例如 ["D01", "D08"]
+    "case_ids": [],  # 例如 ["d08:agentmembench:deletion_01"]
+    "limit": None,  # smoke test 可设为 5
 
-    # Retrieval settings.
-    "top_k": 5, #检索结果的top-k
-    "search_multiplier": 3, #检索结果的top-k的倍数
-    "min_score": 0.0, #检索结果的最小分数
-    "retrieval_workers": 1,  # 检索线程数
-    "base_port": 23330,
-    "startup_timeout": 60.0,
-    "reme_cmd": None,  # e.g. r"C:\\path\\to\\reme.exe"; None uses PATH
-    "reme_config": None,  # optional custom ReMe YAML config path
-    "vector_weight": 0.0,  # 0.0 = BM25 baseline
-    "memory_adapter": "reme", # reme / off；off 用于无记忆对照实验
-    "memory_model": "none", # 当前仅作为检索实验标签记录
-    "keep_workspaces": False,
+    # Retrieval。
+    "top_k": 10,
+    "search_multiplier": 1,
+    "min_score": 0.0,
+    "context_batch": False,
+    "reme_cmd": None,
+    "reme_config": None,
+    "reme_port": 25000,
+    "reme_startup_timeout": 60.0,
+    "vector_weight": 0.0,
 
-    # Output and reproducibility.  Empty run_id creates a UTC timestamp ID.
-    "output_dir": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results",  #输出目录
-    "run_id": "", #run_id
-    "baseline_run": None,  # 基线运行目录，用于对比性能
+    # 输出与断点续跑。run_id 为空时自动生成时间戳。
+    "output_dir": None,  # None 使用仓库的 results 根目录
+    "run_id": "",
+    "resume": True,
 
-    # Answer API settings.  API key/base URL/model are read from .env by
-    # default.  Set the *_model or *_base_url values only when overriding it.
+    # Answer：仅 D02/D03/D05/D06/D07 执行。
     "answer_api_key_env": "DEEPSEEK_API_KEY",
     "answer_base_url_env": "DEEPSEEK_BASE_URL",
     "answer_model_env": "DEEPSEEK_MODEL",
-    "answer_base_url": None,
-    "answer_model": None,
-    "answer_llm_adapter": "openai-compatible",
-    "answer_max_tokens": 8192,
-    "answer_temperature": 0.0,
-    "answer_timeout": 120.0,
-    "answer_retries": 3,
     "answer_workers": 4,
-    "answer_cache_hit_input_price": None,
-    "answer_cache_miss_input_price": None,
-    "answer_output_price": None,
-    "answer_price_multiplier": 1.0,
+    "answer_max_tokens": 65536,
 
-    # Judge API settings.  They default to the same DeepSeek endpoint as
-    # Answer, but can be changed independently.
+    # Judge：复用同一组环境变量，也可独立改成其他变量名。
     "judge_api_key_env": "DEEPSEEK_API_KEY",
     "judge_base_url_env": "DEEPSEEK_BASE_URL",
     "judge_model_env": "DEEPSEEK_MODEL",
-    "judge_base_url": None,
-    "judge_model": None,
-    "judge_llm_adapter": "openai-compatible",
-    "judge_max_tokens": 8192,
-    "judge_temperature": 0.0,
-    "judge_timeout": 120.0,
-    "judge_retries": 3,
     "judge_workers": 4,
-    "judge_cache_hit_input_price": None,
-    "judge_cache_miss_input_price": None,
-    "judge_output_price": None,
-    "judge_price_multiplier": 1.0,
+    "judge_max_tokens": 65536,
 }
 
 
 def _add_option(command: list[str], flag: str, value: Any) -> None:
-    """Append one CLI option, omitting only values intentionally left blank."""
+    """Append one CLI option, omitting values intentionally left blank."""
 
-    if value is None:
-        return
-    if isinstance(value, bool):
-        if value:
-            command.append(flag)
-        return
-    if value == "":
+    if value is None or value == "":
         return
     command.extend([flag, str(value)])
 
 
-def _looks_like_dataset_path(value: Any) -> bool:
-    if isinstance(value, Path):
-        return True
-    if not isinstance(value, str):
-        return False
-    text = value.strip()
-    return (
-        text.lower().endswith((".json", ".jsonl"))
-        or "\\" in text
-        or "/" in text
-    )
+def _add_repeated(command: list[str], flag: str, values: Any) -> None:
+    for value in values or []:
+        _add_option(command, flag, value)
 
 
 def build_command(config: dict[str, Any]) -> list[str]:
-    """Build the existing end-to-end runner command from ``CONFIG``."""
+    """Translate ``CONFIG`` into arguments accepted by ``run_memeval.py``."""
 
-    command = [sys.executable, str(END_TO_END_RUNNER)]
-    dataset_value = config.get("dataset")
-    dataset_flag = "--data" if _looks_like_dataset_path(dataset_value) else "--dataset"
-    _add_option(command, dataset_flag, dataset_value)
+    command = [sys.executable, str(MEMEVAL_RUNNER)]
+    _add_option(command, "--dataset", config.get("dataset"))
+    _add_option(command, "--data", config.get("data"))
+    _add_repeated(command, "--dimension", config.get("dimensions"))
+    _add_repeated(command, "--case-id", config.get("case_ids"))
 
     option_map = (
-        ("--cases", "cases"),
-        ("--dataset-adapter", "dataset_adapter"),
-        ("--start", "start"),
+        ("--limit", "limit"),
         ("--top-k", "top_k"),
         ("--search-multiplier", "search_multiplier"),
         ("--min-score", "min_score"),
-        ("--seed", "seed"),
-        ("--base-port", "base_port"),
-        ("--startup-timeout", "startup_timeout"),
+        ("--run-id", "run_id"),
+        ("--output-dir", "output_dir"),
         ("--reme-cmd", "reme_cmd"),
         ("--reme-config", "reme_config"),
-        ("--memory-adapter", "memory_adapter"),
-        ("--memory-model", "memory_model"),
+        ("--reme-port", "reme_port"),
+        ("--reme-startup-timeout", "reme_startup_timeout"),
         ("--vector-weight", "vector_weight"),
-        ("--retrieval-workers", "retrieval_workers"),
-        ("--output-dir", "output_dir"),
-        ("--run-id", "run_id"),
-        ("--baseline-run", "baseline_run"),
         ("--answer-api-key-env", "answer_api_key_env"),
         ("--answer-base-url-env", "answer_base_url_env"),
         ("--answer-model-env", "answer_model_env"),
-        ("--answer-base-url", "answer_base_url"),
-        ("--answer-model", "answer_model"),
-        ("--answer-llm-adapter", "answer_llm_adapter"),
-        ("--answer-max-tokens", "answer_max_tokens"),
-        ("--answer-temperature", "answer_temperature"),
-        ("--answer-timeout", "answer_timeout"),
-        ("--answer-retries", "answer_retries"),
         ("--answer-workers", "answer_workers"),
-        ("--answer-cache-hit-input-price", "answer_cache_hit_input_price"),
-        ("--answer-cache-miss-input-price", "answer_cache_miss_input_price"),
-        ("--answer-output-price", "answer_output_price"),
-        ("--answer-price-multiplier", "answer_price_multiplier"),
+        ("--answer-max-tokens", "answer_max_tokens"),
         ("--judge-api-key-env", "judge_api_key_env"),
         ("--judge-base-url-env", "judge_base_url_env"),
         ("--judge-model-env", "judge_model_env"),
-        ("--judge-base-url", "judge_base_url"),
-        ("--judge-model", "judge_model"),
-        ("--judge-llm-adapter", "judge_llm_adapter"),
-        ("--judge-max-tokens", "judge_max_tokens"),
-        ("--judge-temperature", "judge_temperature"),
-        ("--judge-timeout", "judge_timeout"),
-        ("--judge-retries", "judge_retries"),
         ("--judge-workers", "judge_workers"),
-        ("--judge-cache-hit-input-price", "judge_cache_hit_input_price"),
-        ("--judge-cache-miss-input-price", "judge_cache_miss_input_price"),
-        ("--judge-output-price", "judge_output_price"),
-        ("--judge-price-multiplier", "judge_price_multiplier"),
+        ("--judge-max-tokens", "judge_max_tokens"),
     )
     for flag, key in option_map:
         _add_option(command, flag, config.get(key))
 
-    if config.get("shuffle"):
-        command.append("--shuffle")
-    if config.get("keep_workspaces"):
-        command.append("--keep-workspaces")
+    if config.get("context_batch"):
+        command.append("--context-batch")
+    command.append("--resume" if config.get("resume") else "--no-resume")
     return command
 
 
+def _repo_relative_path(value: Any) -> Path:
+    path = Path(str(value))
+    return path if path.is_absolute() else REPO_ROOT / path
+
+
+def _validate_string_list(config: dict[str, Any], key: str) -> list[str]:
+    values = config.get(key)
+    if not isinstance(values, list) or any(
+        not isinstance(value, str) or not value.strip() for value in values
+    ):
+        raise ValueError(f"{key} must be a list of non-empty strings")
+    return values
+
+
 def _validate_config(config: dict[str, Any]) -> None:
-    dataset_value = config.get("dataset")
-    if dataset_value is None or str(dataset_value).strip() == "":
-        raise ValueError("dataset must be a dataset path or registered dataset ID")
-    if _looks_like_dataset_path(dataset_value):
-        dataset_path = Path(str(dataset_value))
-        if not dataset_path.is_absolute():
-            dataset_path = REPO_ROOT / dataset_path
-        if not dataset_path.is_file():
-            raise FileNotFoundError(f"Dataset file not found: {dataset_path.resolve()}")
-    for key in ("cases", "start", "top_k", "search_multiplier", "retrieval_workers", "answer_workers", "judge_workers"):
+    dataset = config.get("dataset")
+    if not isinstance(dataset, str) or not dataset.strip():
+        raise ValueError("dataset must be a registered dataset ID or release directory")
+
+    data = config.get("data")
+    data_path = _repo_relative_path(data).resolve() if data not in {None, ""} else None
+    dataset_value = dataset
+    if "\\" in dataset or "/" in dataset:
+        dataset_value = str(_repo_relative_path(dataset).resolve())
+    source, spec = resolve_dataset(dataset_value, data_path)
+    if spec.get("adapter") not in {None, "memeval"} or not source.is_dir():
+        raise ValueError("run_eval.py requires a formal MemEval release directory")
+
+    dimensions = _validate_string_list(config, "dimensions")
+    unknown_dimensions = sorted(set(dimensions) - set(DIMENSION_DIRECTORIES))
+    if unknown_dimensions:
+        raise ValueError(f"Unknown dimensions: {unknown_dimensions}")
+    _validate_string_list(config, "case_ids")
+
+    limit = config.get("limit")
+    if limit is not None and (
+        not isinstance(limit, int) or isinstance(limit, bool) or limit < 1
+    ):
+        raise ValueError("limit must be None or a positive integer")
+
+    positive_integers = (
+        "top_k", "search_multiplier", "reme_port", "answer_workers",
+        "answer_max_tokens", "judge_workers", "judge_max_tokens",
+    )
+    for key in positive_integers:
         value = config.get(key)
-        if not isinstance(value, int) or isinstance(value, bool):
-            raise ValueError(f"{key} must be an integer")
-    if config["cases"] < 0 or config["start"] < 0:
-        raise ValueError("cases and start must be non-negative")
-    if config["top_k"] < 1 or config["search_multiplier"] < 1:
-        raise ValueError("top_k and search_multiplier must be positive")
-    for key in ("retrieval_workers", "answer_workers", "judge_workers"):
-        if config[key] < 1:
-            raise ValueError(f"{key} must be positive")
-    if not END_TO_END_RUNNER.is_file():
-        raise FileNotFoundError(f"End-to-end runner not found: {END_TO_END_RUNNER}")
+        if not isinstance(value, int) or isinstance(value, bool) or value < 1:
+            raise ValueError(f"{key} must be a positive integer")
+
+    for key in ("context_batch", "resume"):
+        if not isinstance(config.get(key), bool):
+            raise ValueError(f"{key} must be a boolean")
+
+    reme_config = config.get("reme_config")
+    if reme_config not in {None, ""} and not _repo_relative_path(reme_config).is_file():
+        raise FileNotFoundError(f"ReMe config not found: {_repo_relative_path(reme_config).resolve()}")
+    if not MEMEVAL_RUNNER.is_file():
+        raise FileNotFoundError(f"MemEval runner not found: {MEMEVAL_RUNNER}")
 
 
 def main() -> int:
     _validate_config(CONFIG)
     command = build_command(CONFIG)
     print(f"工作目录: {REPO_ROOT}", flush=True)
-    print("即将运行:", flush=True)
+    print("即将运行 MemEval-v0.1:", flush=True)
     print("  " + shlex.join(command), flush=True)
-    print("API key 不在脚本中，Answer/Judge 将从 .env 或环境变量读取。", flush=True)
-    completed = subprocess.run(command, cwd=str(REPO_ROOT), check=False)
+    print("API Key 不写入脚本；Answer/Judge 从 .env 或环境变量读取。", flush=True)
+    completed = subprocess.run(command, cwd=REPO_ROOT, check=False)
     print(f"Eval exit code: {completed.returncode}", flush=True)
     return completed.returncode
 
