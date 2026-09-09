@@ -241,10 +241,13 @@ class MemEvalTraceAdapter:
         for cutoff in (1, 3, 5, 10):
             if cutoff > self.top_k:
                 continue
-            overlap = gold.intersection(retrieved[:cutoff])
+            top = retrieved[:cutoff]
+            overlap = gold.intersection(top)
+            first_rank = next((rank for rank, value in enumerate(top, 1) if value in gold), None)
             output[str(cutoff)] = {
                 "hit": float(bool(overlap)),
                 "recall": len(overlap) / len(gold),
+                "mrr": 1.0 / first_rank if first_rank else 0.0,
             }
         return output
 
@@ -578,6 +581,38 @@ class MemEvalTraceAdapter:
         )
         path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+    D02_PRIMARY_K = 3
+
+    @classmethod
+    def _d02_primary_metrics(cls, rows: list[dict[str, Any]]) -> dict[str, Any]:
+        """D02 检索指标：主指标 @3（gold retrieval_k 指定的最大档），其余 K 一并聚合供悬停展示。"""
+
+        by_k: dict[str, dict[str, list[float]]] = {}
+        for row in rows:
+            metrics_by_k = row.get("metrics", {}).get("metrics_by_k")
+            if not isinstance(metrics_by_k, dict):
+                continue
+            for raw_k, values in metrics_by_k.items():
+                if not isinstance(values, dict):
+                    continue
+                bucket = by_k.setdefault(str(raw_k), {"hit": [], "recall": [], "mrr": []})
+                for name in ("hit", "recall", "mrr"):
+                    value = values.get(name)
+                    if isinstance(value, (int, float)) and not isinstance(value, bool):
+                        bucket[name].append(float(value))
+        aggregated = {
+            k: {name: sum(values) / len(values) for name, values in bucket.items() if values}
+            for k, bucket in by_k.items()
+        }
+        primary = aggregated.get(str(cls.D02_PRIMARY_K), {})
+        return {
+            "hit_at_k": primary.get("hit"),
+            "recall_at_k": primary.get("recall"),
+            "mrr": primary.get("mrr"),
+            "primary_k": cls.D02_PRIMARY_K,
+            "retrieval_metrics_by_k": aggregated,
+        }
+
     def _dimension_dashboard_metrics(
         self, results: list[dict[str, Any]]
     ) -> dict[str, dict[str, Any]]:
@@ -680,14 +715,12 @@ class MemEvalTraceAdapter:
             "D02": {
                 "title": "长期记忆检索",
                 "source": "LongMemEval",
-                "tests": "长期记忆的证据检索命中与排序质量（Hit@K / Recall@K / MRR）",
+                "tests": "长期记忆的证据检索命中与排序质量（主指标 @3，完整 K 指标悬停展示）",
                 "case_count": len(d02),
                 "availability": "MEASURED" if d02 else NOT_RECORDED,
                 "answer_judge": "MEASURED" if answer_metric(d02) is not None else NOT_RECORDED,
                 "metrics": {
-                    "hit_at_k": mean_metric(d02, "hit_at_k"),
-                    "recall_at_k": mean_metric(d02, "recall_at_k"),
-                    "mrr": mean_metric(d02, "mrr"),
+                    **self._d02_primary_metrics(d02),
                     "answer_accuracy": answer_metric(d02),
                 },
             },
