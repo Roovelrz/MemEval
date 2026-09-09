@@ -188,6 +188,123 @@ def test_privacy_failure_is_a_supported_trace_root_cause():
     assert "PRIVACY_FAILURE" in HTML_ROOT_CAUSES
 
 
+def test_unverifiable_evidence_content_classifies_by_judge_and_retrieval():
+    # MemEval Gold 无 turn 级标注时，通用分类器给出 PIPELINE_FAILURE；
+    # 有 Judge 结论的 case 应按 Judge 结果归类，而不是判成链路缺失。
+    judged_wrong = {
+        "judge": {"is_correct": False},
+        "final": {
+            "root_cause": "PIPELINE_FAILURE",
+            "explanation": "Labeled evidence turn content was unavailable.",
+            "suggested_fix": "旧建议",
+            "answer_pass": False,
+            "retrieval_pass": False,
+            "quadrant": "NOT_RECORDED",
+        },
+    }
+    MemEvalTraceAdapter._override_final(
+        judged_wrong,
+        {"status": "ok", "dimension_id": "D03", "metrics": {"recall_at_k": 1.0, "retrieval_evaluated": True}},
+    )
+    assert judged_wrong["final"]["root_cause"] == "ANSWER_FAILURE"
+    assert judged_wrong["final"]["suggested_fix"] != "旧建议"
+    # retrieval_pass 以 Recall@K 为准，象限重算为 B（召回全 + 答错）
+    assert judged_wrong["final"]["retrieval_pass"] is True
+    assert judged_wrong["final"]["quadrant"] == "B: Retrieval PASS + Answer FAIL"
+
+    judged_right = {
+        "judge": {"is_correct": True},
+        "final": {
+            "root_cause": "PIPELINE_FAILURE",
+            "explanation": "",
+            "suggested_fix": "",
+            "answer_pass": True,
+            "retrieval_pass": False,
+            "quadrant": "NOT_RECORDED",
+        },
+    }
+    MemEvalTraceAdapter._override_final(
+        judged_right,
+        {"status": "ok", "dimension_id": "D02", "metrics": {"recall_at_k": 1.0, "retrieval_evaluated": True}},
+    )
+    assert judged_right["final"]["root_cause"] == "PASS"
+    assert judged_right["final"]["quadrant"] == "A: Retrieval PASS + Answer PASS"
+
+    # 召回不足时保持通用分类器的 RETRIEVAL_* 根因，象限为 C/D
+    partial = {
+        "judge": {"is_correct": True},
+        "final": {
+            "root_cause": "RETRIEVAL_PARTIAL",
+            "explanation": "partial",
+            "suggested_fix": "",
+            "answer_pass": True,
+            "retrieval_pass": False,
+            "quadrant": "NOT_RECORDED",
+        },
+    }
+    MemEvalTraceAdapter._override_final(
+        partial,
+        {"status": "ok", "dimension_id": "D02", "metrics": {"recall_at_k": 0.5, "retrieval_evaluated": True}},
+    )
+    assert partial["final"]["root_cause"] == "RETRIEVAL_PARTIAL"
+    assert partial["final"]["retrieval_pass"] is False
+    assert partial["final"]["quadrant"] == "C: Retrieval FAIL + Answer PASS"
+
+    # 真正的管线 error 即使残留 Judge 分数也不能被重归类
+    errored = {
+        "judge": {"is_correct": True},
+        "final": {"root_cause": "PIPELINE_FAILURE", "explanation": "", "suggested_fix": ""},
+    }
+    MemEvalTraceAdapter._override_final(
+        errored,
+        {"status": "error", "dimension_id": "D02", "error": {"message": "boom"}, "metrics": {}},
+    )
+    assert errored["final"]["root_cause"] == "PIPELINE_FAILURE"
+
+
+def test_add_row_status_depends_only_on_ingest_event():
+    # Answer/Judge 阶段的旧 error（断点续跑残留）不能把成功的写入污染成 FAIL。
+    adapter = MemEvalTraceAdapter.__new__(MemEvalTraceAdapter)
+    canonical = {
+        "case_id": "case-1",
+        "sessions": [{"session_id": "s1", "messages": [{"event_id": "e1"}]}],
+        "evidence_session_ids": ["s1"],
+    }
+    result = {
+        "case_id": "case-1",
+        "status": "error",
+        "error": {"type": "LLMStageError", "message": "Answer/Judge output missing"},
+        "trace": {"system": {"data": {"events": [
+            {"operation": "ingest", "status": "ok", "items": [{"path": "a.md"}], "failures": []},
+        ]}}},
+    }
+    row = adapter._add_row(result, canonical)
+    assert row["add_status"] == "PASS"
+    assert row["index_status"] == "PASS"
+    assert row["added_sessions"] == 1
+    assert row["added_evidence_sessions"] == 1
+    assert row["add_error"] == "NOT_RECORDED"
+
+    # ingest 本身失败时才判 FAIL，并记录 ingest 失败详情
+    failed = {
+        "case_id": "case-1",
+        "status": "ok",
+        "trace": {"system": {"data": {"events": [
+            {"operation": "ingest", "status": "error", "failures": ["s1"]},
+        ]}}},
+    }
+    row = adapter._add_row(failed, canonical)
+    assert row["add_status"] == "FAIL"
+    assert row["added_sessions"] == 0
+    assert row["add_error"] == {"ingest_status": "error", "failures": ["s1"]}
+
+    # 完全没有 ingest 事件（Runner 在写入前失败）保留 Runner error
+    no_ingest = {"case_id": "case-1", "status": "error", "error": {"message": "load failed"}, "trace": {}}
+    row = adapter._add_row(no_ingest, canonical)
+    assert row["add_status"] == "FAIL"
+    assert row["add_error"] == {"message": "load failed"}
+
+
 def test_successful_llm_resume_clears_previous_llm_stage_error():
     with workspace_directory("memeval-llm-resume") as directory:
         results_path = directory / "results.jsonl"

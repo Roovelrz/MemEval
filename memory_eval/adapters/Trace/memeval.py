@@ -19,6 +19,7 @@ from memory_eval.trace_report import (
     _render_index,
     _render_judge_review,
     _render_summary,
+    _suggestion,
     _summary,
 )
 
@@ -301,12 +302,20 @@ class MemEvalTraceAdapter:
             (event for event in self._system_events(result) if event.get("operation") == "ingest"),
             {},
         )
-        ingest_ok = ingest.get("status") == "ok" and result.get("status") != "error"
+        # Add 成败只由 ingest 事件本身决定；Answer/Judge 阶段的 error 与写入无关，
+        # 不能把 LLM 阶段错误（如断点续跑时的旧 error）污染成 add_status=FAIL。
+        ingest_ok = ingest.get("status") == "ok"
         sessions = canonical["sessions"]
         expected_turns = sum(len(session.get("messages", [])) for session in sessions)
         health = ingest.get("health") if isinstance(ingest.get("health"), dict) else {}
         items = ingest.get("items") if isinstance(ingest.get("items"), list) else []
         failures = ingest.get("failures") if isinstance(ingest.get("failures"), list) else []
+        if not ingest:
+            add_error: Any = result.get("error") or NOT_RECORDED
+        elif not ingest_ok:
+            add_error = {"ingest_status": ingest.get("status"), "failures": failures}
+        else:
+            add_error = failures if failures else NOT_RECORDED
         return {
             "case_id": canonical["case_id"],
             "add_mode": "memeval-system-adapter",
@@ -325,7 +334,7 @@ class MemEvalTraceAdapter:
             "add_request_count": len(sessions),
             "add_latency_ms": NOT_RECORDED,
             "add_status": "PASS" if ingest_ok else "FAIL",
-            "add_error": result.get("error") or NOT_RECORDED,
+            "add_error": add_error,
             "index_status": "PASS" if ingest_ok else "FAIL",
             "embedding_status": NOT_APPLICABLE,
             "embedding_call_count": 0,
@@ -861,6 +870,27 @@ class MemEvalTraceAdapter:
         status = str(result.get("status"))
         dimension = str(result.get("dimension_id"))
         judge_correct = analysis["judge"].get("is_correct")
+
+        # MemEval 的 Gold 不带 turn 级 has_answer 标注，通用分类器无法逐 turn 验证
+        # Evidence 内容；检索是否通过以 Runner 计算的 Recall@K 为准。
+        metrics = result.get("metrics", {})
+        if metrics.get("retrieval_evaluated") is True and isinstance(
+            metrics.get("recall_at_k"), (int, float)
+        ):
+            retrieval_pass = float(metrics["recall_at_k"]) == 1.0
+            analysis["final"]["retrieval_pass"] = retrieval_pass
+            answer_pass = analysis["final"].get("answer_pass")
+            if isinstance(answer_pass, bool):
+                if retrieval_pass and answer_pass:
+                    quadrant = "A: Retrieval PASS + Answer PASS"
+                elif retrieval_pass:
+                    quadrant = "B: Retrieval PASS + Answer FAIL"
+                elif answer_pass:
+                    quadrant = "C: Retrieval FAIL + Answer PASS"
+                else:
+                    quadrant = "D: Retrieval FAIL + Answer FAIL"
+                analysis["final"]["quadrant"] = quadrant
+
         if status == "error":
             root = "PIPELINE_FAILURE"
             explanation = str((result.get("error") or {}).get("message", "Case pipeline failed"))
@@ -882,6 +912,17 @@ class MemEvalTraceAdapter:
         else:
             root = "PASS"
             explanation = f"{dimension} completed its applicable metrics without a runtime error."
+        # Evidence 内容无法逐 turn 验证导致的 PIPELINE_FAILURE 不是链路缺失：
+        # 该分支只在 Evidence Session 已全部召回时才会出现，按 Judge 结果归类。
+        # 真正的 status=error 管线失败（可能残留旧 Judge 分数）保持不变。
+        if root == "PIPELINE_FAILURE" and status != "error" and isinstance(judge_correct, bool):
+            if judge_correct is False:
+                root = "ANSWER_FAILURE"
+                explanation = "All evidence sessions were retrieved, but Judge marked the generated answer WRONG."
+            else:
+                root = "PASS"
+                explanation = "Retrieval recalled all evidence sessions and Judge marked the answer CORRECT."
+            analysis["final"]["suggested_fix"] = _suggestion(root)
         suggestions = {
             "UNSUPPORTED_CAPABILITY": "Implement the missing System Adapter capability before scoring it.",
             "PARTIAL_CAPABILITY": "Review unsupported_metrics and keep them separate from zero scores.",
