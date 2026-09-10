@@ -945,7 +945,11 @@ def _failures_index(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str
 
 def _latency_page(summary: dict[str, Any]) -> str:
     data = summary.get("latency_breakdown", {})
-    maximum = max((float(value.get("p95", 0) or 0) for value in data.values() if isinstance(value, dict)), default=1.0)
+    # 无记忆对照的全部时延都是 0，最大值会退化为 0，此时按 1.0 兜底避免除零。
+    maximum = max(
+        (float(value.get("p95", 0) or 0) for value in data.values() if isinstance(value, dict)),
+        default=0.0,
+    ) or 1.0
     bars = "".join(
         f'<div class="latency-row"><code>{_escape(stage)}</code><div class="latency-track"><span style="width:{min(100, float(values.get("p95", 0) or 0) / maximum * 100):.1f}%"></span></div><strong>{_scalar(values.get("p95"))} ms</strong></div>'
         for stage, values in data.items()
