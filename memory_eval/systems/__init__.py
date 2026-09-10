@@ -4,12 +4,14 @@ from .base import (
     OptionalSystemOperations, SystemAdapter, SystemCapabilities, SystemCaseRuntime,
     SystemIngestResult, SystemOperationResult, SystemSearchResult,
 )
+from .off import NoMemorySystemAdapter
 from .reme import ReMePreparedCase, ReMeSystemAdapter, build_reme_case
 
 __all__ = [
     "OptionalSystemOperations",
     "SystemCapabilities",
     "SystemOperationResult",
+    "NoMemorySystemAdapter",
     "ReMePreparedCase",
     "ReMeSystemAdapter",
     "SystemAdapter",

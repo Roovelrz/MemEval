@@ -40,6 +40,13 @@ def test_default_run_id_matches_legacy_result_naming():
     assert run_id.endswith("Z")
 
 
+def test_memory_adapter_off_is_selected_and_names_the_run():
+    args = parser().parse_args(["--memory-adapter", "off"])
+
+    assert args.memory_adapter == "off"
+    assert _default_run_id("MemEval-v0.1", "off").startswith("off_memeval-v0-1_")
+
+
 def test_resume_reads_artifacts_from_organized_detailed_folder():
     with workspace_directory("memeval-organized-resume") as directory:
         detailed = directory / "Detailed Trace Report"

@@ -29,7 +29,7 @@ from memory_eval.result_layout import (
     refresh_result_layout,
 )
 from memory_eval.runners import MemEvalRunConfig, MemEvalRunner
-from memory_eval.systems import ReMeSystemAdapter
+from memory_eval.systems import NoMemorySystemAdapter, ReMeSystemAdapter
 
 
 def select_artifacts(benchmark: ReviewedBenchmark, dimensions, case_ids, limit):
@@ -55,9 +55,11 @@ def select_artifacts(benchmark: ReviewedBenchmark, dimensions, case_ids, limit):
 
 
 def parser() -> argparse.ArgumentParser:
-    command = argparse.ArgumentParser(description="Run MemEval-v0.1 with the ReMe System Adapter")
+    command = argparse.ArgumentParser(description="Run MemEval-v0.1 through a System Adapter")
     command.add_argument("--dataset", default="MemEval-v0.1")
     command.add_argument("--data", help="formal MemEval release directory; overrides --dataset")
+    command.add_argument("--memory-adapter", default="reme", choices=("reme", "off"),
+                         help="memory system under test; 'off' is the no-memory ablation control")
     command.add_argument("--dimension", action="append", choices=tuple(DIMENSION_DIRECTORIES))
     command.add_argument("--case-id", action="append")
     command.add_argument("--limit", type=int)
@@ -102,12 +104,12 @@ def _run_llm_stage(name: str, script_name: str, arguments: list[str]) -> int:
     return completed.returncode
 
 
-def _default_run_id(dataset_id: str) -> str:
+def _default_run_id(dataset_id: str, memory_adapter: str = "reme") -> str:
     dataset_slug = "".join(
         character if character.isalnum() else "-"
         for character in dataset_id.lower()
     ).strip("-")
-    return f"reme_{dataset_slug}_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
+    return f"{memory_adapter}_{dataset_slug}_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
 
 
 def _artifact_directory(run_dir: Path) -> Path:
@@ -131,7 +133,7 @@ def run(args: argparse.Namespace) -> int:
     benchmark.assert_review_complete()
     artifacts = select_artifacts(benchmark, args.dimension, args.case_id, args.limit)
 
-    run_id = args.run_id or _default_run_id(str(spec["dataset_id"]))
+    run_id = args.run_id or _default_run_id(str(spec["dataset_id"]), args.memory_adapter)
     output_root = Path(args.output_dir).resolve() if args.output_dir else REPO_ROOT / "results"
     run_dir = output_root / run_id
     organized_run = (
@@ -148,12 +150,15 @@ def run(args: argparse.Namespace) -> int:
         print(f"Resuming existing run: {run_dir}", flush=True)
     artifact_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.reme_config:
-        config_path = Path(args.reme_config).resolve()
-        if not config_path.is_file():
-            raise FileNotFoundError(f"ReMe config not found: {config_path}")
+    if args.memory_adapter == "reme":
+        if args.reme_config:
+            config_path = Path(args.reme_config).resolve()
+            if not config_path.is_file():
+                raise FileNotFoundError(f"ReMe config not found: {config_path}")
+        else:
+            config_path = artifact_dir / "reme_bm25.yaml"
     else:
-        config_path = artifact_dir / "reme_bm25.yaml"
+        config_path = None
 
     retrieval_config = {
         "run_id": run_id,
@@ -165,11 +170,14 @@ def run(args: argparse.Namespace) -> int:
         "min_score": args.min_score,
         "context_batch": args.context_batch,
         "vector_weight": args.vector_weight,
+        "memory_adapter": args.memory_adapter,
         "reme_config": str(Path(args.reme_config).resolve()) if args.reme_config else None,
     }
     retrieval_config_path = artifact_dir / "retrieval_run_config.json"
     if retrieval_config_path.is_file():
         existing_config = json.loads(retrieval_config_path.read_text(encoding="utf-8"))
+        # 旧 run 的配置没有 memory_adapter 字段，当时只有硬编码的 reme。
+        existing_config.setdefault("memory_adapter", "reme")
         if existing_config != retrieval_config:
             raise ValueError(
                 "Resume configuration differs from retrieval_run_config.json; "
@@ -180,15 +188,18 @@ def run(args: argparse.Namespace) -> int:
             json.dumps(retrieval_config, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
-    if not args.reme_config:
-        config_path = create_bm25_config(config_path, args.vector_weight)
-    backend = ReMeCliMemoryAdapter(
-        command=resolve_reme_command(args.reme_cmd),
-        config_path=config_path,
-        startup_timeout=args.reme_startup_timeout,
-        vector_weight=args.vector_weight,
-    )
-    system = ReMeSystemAdapter(backend)
+    if args.memory_adapter == "off":
+        system = NoMemorySystemAdapter()
+    else:
+        if not args.reme_config:
+            config_path = create_bm25_config(config_path, args.vector_weight)
+        backend = ReMeCliMemoryAdapter(
+            command=resolve_reme_command(args.reme_cmd),
+            config_path=config_path,
+            startup_timeout=args.reme_startup_timeout,
+            vector_weight=args.vector_weight,
+        )
+        system = ReMeSystemAdapter(backend)
     run_config = MemEvalRunConfig(
         run_id=run_id,
         dataset_id=str(spec["dataset_id"]),

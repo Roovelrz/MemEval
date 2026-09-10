@@ -7,6 +7,7 @@ from types import SimpleNamespace
 
 from dataset.build_pipeline.release import ReviewedBenchmark, ReviewedCaseArtifact
 from memory_eval.runners import MemEvalRunConfig, MemEvalRunner
+from memory_eval.systems import NoMemorySystemAdapter
 from memory_eval.systems import SystemCapabilities, SystemIngestResult, SystemOperationResult, SystemSearchResult
 from tests.helpers import workspace_directory
 
@@ -192,6 +193,77 @@ def test_d08_identity_partition_and_lifecycle_delete_do_not_use_gold_for_access(
         assert result["metrics"]["forbidden_exposure_count"] == 0
         assert result["metrics"]["privacy_pass"] == 1.0
         assert not (directory / "work" / "_runner_inputs").exists()
+
+
+def test_no_memory_control_runs_full_pipeline_with_zero_retrieval():
+    with workspace_directory("memeval-no-memory") as directory:
+        event = {"event_id": "e1", "session_id": "s1", "content": "needle",
+                 "metadata": {"memory_id": "allowed", "user_id": "querying", "tenant_id": "tenant"}}
+        noise = {"event_id": "n1", "session_id": "s1", "content": "noise", "metadata": {}}
+        d01 = artifact(directory, "D01", "write", [event, noise], {
+            "gold_memories": [{"memory_id": "m0", "evidence_event_ids": ["e1"]}],
+            "non_memory_event_ids": ["n1"],
+            "scored_event_ids": ["e1", "n1"],
+        })
+        d02 = artifact(directory, "D02", "retrieve", [event], {"gold_evidence_ids": ["s1"]})
+        d08 = artifact(directory, "D08", "privacy", [event], {
+            "allowed_memory_ids": ["allowed"], "forbidden_memory_ids": [],
+            "deleted_memory_ids": [], "canary_tokens": [],
+        })
+        d08.case["envelope"]["identity"].update(user_id="querying", tenant_id="tenant")
+        system = NoMemorySystemAdapter()
+        results = MemEvalRunner(system, directory / "work").run(
+            [d01, d02, d08], MemEvalRunConfig("off-run", top_k=3), directory / "results.jsonl"
+        )
+
+        # 所有维度都必须走完整流程且非 error，才能进入 Answer/Judge LLM 阶段。
+        assert [row["status"] for row in results] == ["partial", "ok", "ok"]
+        assert all(row["error"] is None for row in results)
+        # D01：什么都没写入，recall 如实为 0，而非 unsupported。
+        assert results[0]["metrics"]["memory_recall"] == 0.0
+        assert results[0]["metrics"]["memory_precision"] is None
+        assert results[0]["metrics"]["written_memory_units"] == 0
+        # D02：空检索，检索指标如实为 0。
+        assert results[1]["metrics"]["retrieval_evaluated"] is True
+        assert results[1]["metrics"]["hit_at_k"] == 0.0
+        assert results[1]["metrics"]["recall_at_k"] == 0.0
+        assert results[1]["metrics"]["mrr"] == 0.0
+        assert results[1]["retrieved_memories"] == []
+        # D08：无泄露但允许记忆一条没回，有效隐私通过率不得满分。
+        assert results[2]["metrics"]["privacy_pass"] == 1.0
+        assert results[2]["metrics"]["allowed_recall"] == 0.0
+        assert results[2]["metrics"]["effective_privacy_pass"] == 0.0
+        assert results[2]["retrieved_memories"] == []
+        # 系统元数据如实标注无记忆对照。
+        summary = json.loads((directory / "run_summary.json").read_text(encoding="utf-8"))
+        assert summary["system"] == "off"
+        assert summary["system_metadata"]["memory_backend"] == "none"
+
+
+def test_no_memory_control_d08_deletion_is_noop():
+    with workspace_directory("memeval-no-memory-d08") as directory:
+        visible_id = "allowed"
+        events = [
+            {"event_id": "allowed", "session_id": "querying", "content": "needle public",
+             "metadata": {"memory_id": visible_id, "user_id": "querying", "tenant_id": "tenant"}},
+            {"event_id": "delete", "session_id": "lifecycle", "content": "delete",
+             "metadata": {"operation": "delete", "target_memory_id": visible_id,
+                          "user_id": "querying", "tenant_id": "tenant"}},
+        ]
+        case = artifact(directory, "D08", "privacy", events, {
+            "allowed_memory_ids": [visible_id], "forbidden_memory_ids": [],
+            "deleted_memory_ids": [visible_id], "canary_tokens": [],
+        })
+        case.case["envelope"]["identity"].update(user_id="querying", tenant_id="tenant")
+        result = MemEvalRunner(NoMemorySystemAdapter(), directory / "work").run_case(
+            case, MemEvalRunConfig("off-d08")
+        )
+
+        # 删除是 no-op：无物可删也不可能泄露已删除事实，但允许记忆召不回。
+        assert result["status"] == "ok"
+        assert result["error"] is None
+        assert result["metrics"]["deleted_exposure_count"] == 0
+        assert result["metrics"]["effective_privacy_pass"] == 0.0
 
 
 def test_all_frozen_d08_deletion_cases_use_lifecycle_execution_identity():
