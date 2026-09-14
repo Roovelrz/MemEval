@@ -10,3 +10,12 @@
 - `time_gap_days` 表示最早 Gold 证据到查询时刻之间的最大整日间隔；源时间戳没有时区，因此规范化值不附加伪造时区。
 - 生命周期样本在最后一次原生会话后 1 天追加 `control/forget` 事件，再于 1 天后发起原问题；`expected_active=false` 表示原记忆不得被命中。
 - `gold_answer` 在生命周期样本中仅用于标识被删除事实并保留来源追踪；该子集按 Deleted Hit Rate 评估，不作为删除后的应答目标。
+
+## 评测口径（当前 Runner）
+
+- 原生/跨会话样本：检索召回率近似 Long-gap Recall，Answer 准确率近似
+  Temporal Accuracy（Judge 判定）。
+- 生命周期样本：`deleted_hit_rate` 测的是**陈旧残留**——Runner 按 Context
+  顺序执行删除事件后检索，ReMe 这类不执行内容删除的系统会残留旧事实并
+  因此暴露；`expected_active=false` 的记忆被命中即扣分。
+- 旧 run 的 `deleted_hit_rate` 缺失时可用 `--trace-only` 回填重算。

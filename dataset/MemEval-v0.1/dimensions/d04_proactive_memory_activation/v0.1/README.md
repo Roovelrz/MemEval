@@ -20,3 +20,10 @@
 
 人工审核已经完成，结论、审核人、时间、修复摘要及原工作目录聚合哈希已压缩到正式 Case 和 Manifest。
 审核工作目录在全局298 Case Benchmark Audit 通过后移除，不再作为运行时依赖。
+
+## 评测口径（当前 Runner）
+
+- 正/负 Pair 的 `should_activate` 与系统实际 `activation_decision` 对比是
+  本维度的核心指标；当前 ReMe 不暴露主动激活决策轨迹，Runner 状态为
+  `unsupported`（保留状态、不折算为零分）。
+- Answer/Judge 对本维度为 `NOT_APPLICABLE`：激活判定不依赖回答质量。
