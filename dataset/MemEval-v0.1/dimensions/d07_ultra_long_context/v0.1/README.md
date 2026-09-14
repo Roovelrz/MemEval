@@ -21,3 +21,13 @@
 
 人工审核已经完成，结论、审核人、时间、修复摘要及原工作目录聚合哈希已压缩到正式 Case 和 Manifest。
 审核工作目录在全局298 Case Benchmark Audit 通过后移除，不再作为运行时依赖。
+
+## 评测口径（当前 Runner）
+
+- BEAM 源数据是**单 session** 设计：session 级 recall 恒为 1，不能反映
+  真实检索水平。主指标是 **needle 召回**——`gold_evidence_ids` 指向的
+  证据事件文本是否出现在返回 chunk 中（`recall_at_k` / `hit_at_k` /
+  `mrr` 均按 needle 口径覆盖）。
+- paired Case（同组仅扩大 Context 边界）支持严格的 Recall Degradation
+  对比；Stress Case 检验 8M+ token 后的召回。
+- Answer 指标对 D07 为 `NOT_APPLICABLE`（超长上下文切片聚焦检索）。

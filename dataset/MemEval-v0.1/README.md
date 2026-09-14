@@ -34,6 +34,19 @@
 
 `raw/` 是上游数据集的下载缓存，不属于本版本的正式发布内容，因此未重复提交。来源、固定 revision、所需文件和哈希记录在 `manifests/` 中。
 
+## 评测入口
+
+本数据集是 `memory_eval_pipeline` 的默认评测对象：
+
+```powershell
+python scripts/run_memeval.py --run-id reme-full          # ReMe 完整系统
+python scripts/run_memeval.py --memory-adapter off        # 无记忆消融对照
+```
+
+各维度的具体指标口径见 `dimensions/*/v0.1/README.md` 的"评测口径"一节；
+运行方法与结果布局见仓库根目录 `USAGE_ZH.md`。case 选择已冻结，
+消融实验各 arm 天然一致。
+
 ## Git LFS
 
 D07/D08 等维度包含超长 JSONL Context，本目录下的 `*.jsonl` 使用 Git LFS 管理。克隆仓库后请安装 Git LFS，并执行：

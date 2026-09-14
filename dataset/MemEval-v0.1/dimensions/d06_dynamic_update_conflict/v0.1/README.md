@@ -19,3 +19,11 @@
 
 人工审核已经完成，结论、审核人、时间、修复摘要及原工作目录聚合哈希已压缩到正式 Case 和 Manifest。
 审核工作目录在全局298 Case Benchmark Audit 通过后移除，不再作为运行时依赖。
+
+## 评测口径（当前 Runner）
+
+- `winning_fact_recall`：冲突对中**胜出（最新）事实**的检索召回——旧版本
+  事实被返回而新版本缺席时不得分，用于识别系统只会"记住"不会"更新"。
+- `stale_retrieval_rate`：**陈旧版本**被检索返回的比例，越低越好。
+- 两者均从 `retrieved_memories` 派生；旧 run 缺失时可用 `--trace-only`
+  回填重算。回答侧为 Answer Accuracy（Judge 判定）。

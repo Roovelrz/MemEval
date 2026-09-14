@@ -14,3 +14,13 @@
 
 人工审核已经完成，结论、审核人、时间、修复摘要及原工作目录聚合哈希已压缩到正式 Case 和 Manifest。
 审核工作目录在全局298 Case Benchmark Audit 通过后移除，不再作为运行时依赖。
+
+## 评测口径（当前 Runner）
+
+- PersonaMem 源数据是**单 session** 设计：session 级 recall 恒为 1，不能
+  反映真实检索水平。主指标因此是 **needle 召回**——`profile_items.
+  evidence_event_ids` 指向的证据事件文本是否出现在返回 chunk 中
+  （`recall_at_k` / `hit_at_k` / `mrr` 均按 needle 口径覆盖）。
+- session 级对齐的召回保留为 `session_recall_at_k` 参照值。
+- 回答侧主指标为 `personalized_answer_accuracy`（Judge 判定是否依据用户
+  偏好作答）。
