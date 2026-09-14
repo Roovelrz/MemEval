@@ -1,4 +1,16 @@
-"""Dependency-free OpenAI-compatible chat-completions adapter."""
+"""Dependency-free OpenAI-compatible chat-completions adapter.
+
+标准库实现（无 SDK 依赖），可对接任何 `/v1/chat/completions` 端点：
+DeepSeek 官方 API、vLLM / Ollama / 公司内网推理服务等。
+
+配置解析顺序：显式参数 > 进程环境变量 > 仓库根目录 `.env`（不覆盖已有
+进程变量，密钥因此不会进入命令行与产物）。Answer 与 Judge 通过不同的
+环境变量前缀（如 `DEEPSEEK_*`）各自独立配置。
+
+`finish_reason=length` 触发空响应时，会成倍提高输出预算重试，上限
+384K（DeepSeek 硬限制 393216）。所有重试耗尽后抛 `LLMRequestError`，
+携带尝试次数、HTTP 状态与错误类别，供 failure JSONL 溯源。
+"""
 
 from __future__ import annotations
 
@@ -62,6 +74,8 @@ def resolve_endpoint(
 
 
 class OpenAICompatibleLLMAdapter:
+    """单个模型端点的适配器实例：Answer/Judge 各持有一个。"""
+
     name = "openai-compatible"
 
     def __init__(self, *, api_key: str, base_url: str, model: str) -> None:

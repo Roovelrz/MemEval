@@ -1,4 +1,12 @@
-"""Common contract for benchmark dataset adapters."""
+"""Common contract for benchmark dataset adapters.
+
+Dataset Adapter 把任意来源的 benchmark 转换成统一 canonical case
+（`validate_canonical_case` 定义最小字段集）。下游的 Memory / LLM / Trace
+只消费 canonical 结构，不感知原始数据是 JSON、JSONL 还是外部历史文件。
+
+MemEval-v0.1 复合 benchmark 由三个来源（LoCoMo / LongMemEval /
+PersonaMem-v2）按维度组装并冻结，本层负责各自的格式转换。
+"""
 
 from __future__ import annotations
 

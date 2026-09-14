@@ -1,4 +1,9 @@
-"""Common LLM adapter contract."""
+"""Common LLM adapter contract.
+
+LLM Adapter 是 Eval 框架与模型服务之间的协议层，Answer 与 Judge 共用同一
+协议、各自持有实例（可以指向不同模型/端点）。实现负责：请求、错误归类、
+重试，以及把 provider 的 usage 原始数据透传给上层做成本核算。
+"""
 
 from __future__ import annotations
 
