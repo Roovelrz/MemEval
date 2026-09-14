@@ -1,365 +1,107 @@
-# LongMemEval-S Eval MVP
+# Memory Eval Pipeline
 
-中文端到端运行、分阶段续跑、参数说明和结果排查见
-[`USAGE_ZH.md`](USAGE_ZH.md)。
+面向 Agent 记忆系统的评测框架：以冻结的 MemEval-v0.1 复合 benchmark 为核心，
+通过可替换的四层 Adapter 驱动 `Dataset -> Memory -> Answer LLM -> Judge LLM -> Trace`
+全流程，产出 Trace 报告与静态 HTML Dashboard。最终目标是在同一数据集上对本地的
+Memory 系统与本地 LLM 做消融实验。
 
-This first phase implements only:
+中文使用手册见 [`USAGE_ZH.md`](USAGE_ZH.md)。
+
+## 框架分层
 
 ```text
-LongMemEval-S cleaned -> isolated Add -> Search -> AML Answer -> AML Judge -> summary
+scripts/run_memeval.py                 # 端到端编排入口
+└─ memory_eval/runners/memeval.py      # Runner：只组织流程，不理解具体实现
+   ├─ adapters/dataset/  locomo / longmemeval / personamem-v2   # 可替换
+   ├─ adapters/memory/   reme / off                              # 可替换
+   ├─ adapters/llm/      openai-compatible（Answer/Judge 各自独立配置）# 可替换
+   └─ adapters/Trace/    MemEval Trace                            # 框架配套，固定
 ```
 
-It does not integrate LoCoMo or PersonaMem-v2 and does not modify the upstream AML
-answer or judge prompts.
+- Dataset / Memory / LLM 三类 Adapter 相互独立，均可在 `registry` 登记新实现后单独替换。
+- Trace Adapter 与 MemEval 八维结构绑定，是评测框架自身的产物，不作为实验变量。
+- 各层职责与扩展方法见 [`memory_eval/adapters/README.md`](memory_eval/adapters/README.md)，
+  Memory 侧系统协议见 [`memory_eval/systems/README.md`](memory_eval/systems/README.md)，
+  正式运行说明见 [`memory_eval/runners/README.md`](memory_eval/runners/README.md)。
 
-## Local preparation smoke tests
+## 快速开始
 
-From the `memory_eval_pipeline` repository root:
+前置：Python 3.12，安装依赖并准备好本地 ReMe（见 USAGE_ZH.md）。LLM 密钥只放
+被 Git 忽略的 `.env`（自动加载，进程环境变量优先）：
 
 ```powershell
-py -3.12 -m memory_eval.cli longmemeval `
-  --data ..\LongMemEval\data\longmemeval_s_cleaned.json `
-  --mode oracle `
-  --limit 1 `
-  --top-k 10 `
-  --run-id oracle-1 `
-  --prepare-only
-
-py -3.12 -m memory_eval.cli longmemeval `
-  --data ..\LongMemEval\data\longmemeval_s_cleaned.json `
-  --mode memory `
-  --limit 1 `
-  --top-k 10 `
-  --run-id memory-1 `
-  --prepare-only
+DEEPSEEK_API_KEY=<your-key>
+DEEPSEEK_BASE_URL=https://api.deepseek.com        # 或本地 OpenAI 兼容 endpoint
+DEEPSEEK_MODEL=deepseek-v4-flash
 ```
 
-`InMemorySessionAdapter` is a lexical smoke adapter. It proves namespace, Add,
-Search, and artifact wiring only; it is not a production memory baseline.
-
-## ReMe BM25 retrieval baseline
-
-This path uses the local ReMe clone as a real third-party backend. Each
-LongMemEval session is written verbatim to its own Markdown file, ReMe rebuilds
-its local index for that case, and `search_step` runs with
-`vector_weight=0.0`. The adapter does not enable an LLM, embeddings,
-`auto_memory`, `auto_resource`, or `auto_dream`.
-
-With ReMe cloned beside this repository, install the editable package and its
-non-Studio core dependencies:
+冒烟（单维度 1 条，验证链路）：
 
 ```powershell
-py -3.12 -m pip install -e ..\ReMe
-py -3.12 -m pip install -r requirements-reme.txt
+python scripts/run_memeval.py --dimension D02 --limit 1 --run-id smoke-1
 ```
 
-The local ReMe 0.4.1.8 clone pins `reme-ai-studio==0.4.1.8` in its `core`
-extra, but that package version was unavailable from the configured package
-index during this integration. The BM25 adapter does not use ReMe Studio, so
-`requirements-reme.txt` intentionally contains the remaining core
-dependencies only.
-
-Run retrieval-only evaluation without AML Answer/Judge:
+全量（298 条冻结 case）：
 
 ```powershell
-py -3.12 -m memory_eval.cli longmemeval `
-  --data ..\LongMemEval\data\longmemeval_s_cleaned.json `
-  --mode memory `
-  --memory-adapter reme `
-  --limit 20 `
-  --top-k 10 `
-  --run-id reme-20 `
-  --prepare-only
+python scripts/run_memeval.py --run-id reme-full
 ```
 
-The run directory contains `prepared.jsonl`, `retrieval.jsonl`,
-`summary.json`, and `run_config.json`. The retrieval-only summary reports
-Hit@K, Recall@K, average search latency, and failed case IDs. A single
-adapter-owned workspace is cleared after every case; no ReMe service, Docker,
-Milvus, Qdrant, WSL, or external database is used.
-
-### Standalone configurable runner
-
-For the service-oriented ReMe baseline described in the Retrieval Baseline
-plan, use [`scripts/run_reme_retrieval_eval.py`](scripts/run_reme_retrieval_eval.py).
-It is independent of the AML Answer/Judge path. The runner reads the frozen
-Clean JSON (or a compatible JSONL), creates one ReMe workspace per case, calls
-`health_check -> reindex -> search`, maps returned Markdown paths back to
-session IDs, deduplicates chunk hits, and writes raw and normalized retrieval
-artifacts.
-
-The generated default config is a minimal BM25-only service: it does not start
-an LLM or embedding component, so no API key is required. The `--model` option
-is only a label in `run_config.json` for this baseline; it does not call a
-model. To test a ReMe hybrid or embedding setup, provide a complete custom
-config with `--reme-config` and set `--vector-weight` accordingly.
-
-The local executable is not always on `PATH` on Windows. Passing its absolute
-path is therefore the most reproducible invocation:
+消融实验矩阵：
 
 ```powershell
-py -3.12 scripts/run_reme_retrieval_eval.py `
-  --data dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
-  --cases 1 `
-  --workers 2 `
-  --top-k 10 `
-  --run-id reme-smoke-1 `
-  --reme-cmd "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe"
+python scripts/run_memeval.py --memory-adapter reme --run-id reme-full   # 完整记忆系统
+python scripts/run_memeval.py --memory-adapter off  --run-id off-full    # 无记忆对照
+# LLM 消融：固定 Judge，仅把 DEEPSEEK_* 指向待评测的本地 endpoint
 ```
 
-Then expand in the recommended order:
+`--memory-adapter off` 是无记忆对照组：走完整检索→回答→评审流程，检索指标如实
+记 0（而非 unsupported），用于衡量 memory 系统带来的净增益。
+
+## 运行结果布局
+
+结果按 `results/memeval_v0_1/<system>/<run-id>/` 隔离（`reme` / `off` 各自成目录）：
+
+- `Detailed Trace Report/`：原始产物与溯源（results.jsonl、retrieval_run_config.json、
+  raw 检索响应、`trace/` 下的 per-case Markdown、judge_review、integrity_report 等）。
+- `Trace Summary/`：面向人的静态 Dashboard（`Dashboard.html` 直接用浏览器打开，
+  无需服务器或 Node 构建）与精简摘要。
+
+`retrieval_run_config.json` 记录了 run 的完整配置（含 memory_adapter、top_k、
+selected_case_ids），resume 时会校验配置一致，防止混跑。
+
+## 重建报告（不重跑评测）
+
+Dashboard / Trace 展示逻辑升级后，旧 run 无需重新评测：
 
 ```powershell
-# five cases; two isolated ReMe services are safe for the current local laptop
-py -3.12 scripts/run_reme_retrieval_eval.py --data <dataset.json> --cases 5 --workers 2 --run-id reme-5
-
-# server example; raise Retrieval independently after checking server RAM/CPU
-py -3.12 scripts/run_reme_retrieval_eval.py --data <dataset.json> --cases 0 --workers 8 --shuffle --seed 42 --run-id reme-all
+# 从已持久化产物重建 Trace 与 Dashboard，不重启服务、不调 LLM
+python scripts/run_memeval.py --trace-only --run-dir results/memeval_v0_1/reme/<run-id>
 ```
 
-Useful switches are `--start`, `--cases/--limit`, `--top-k`,
-`--search-multiplier`, `--min-score`, `--base-port`, `--startup-timeout`,
-`--workers/--retrieval-workers`, `--keep-workspaces`, and `--reme-config`.
-Each Retrieval worker starts an isolated ReMe service with a distinct port,
-workspace, raw artifact path, and log. Results are still written in selected-case
-order. The standalone runner defaults to `1` for backward compatibility; the
-end-to-end runner defaults to `2` for a conservative local-laptop profile.
-Replace `--data` with any JSON/JSONL
-dataset whose cases expose `case_id`, `question`, `gold_answer`, and a
-`sessions` list; the runner also accepts the original LongMemEval
-`haystack_sessions` shape.
+另有独立工具：`scripts/build_trace_report.py`（仅 Trace）、
+`scripts/build_html_report.py`（仅 Dashboard）、
+`scripts/organize_result_layout.py --refresh`（刷新已组织 run 的摘要）。
 
-Each run is stored below `results/reme_retrieval/<run-id>/`:
+## 阶段独立性
 
-- `run_config.json`: dataset, ReMe command/config, baseline switches, and model label.
-- `prepared.jsonl`: one normalized case row with retrieved context.
-- `retrieval.jsonl`: per-case ranked sessions, raw result count, Hit@K, Recall@K, MRR, and latency.
-- `raw_search/`: exact ReMe response for each successful case.
-- `failures.jsonl`: case-level startup, indexing, or search failures.
-- `summary.json`: aggregate metrics and success/failure counts.
-- `workspaces/`: retained only when `--keep-workspaces` is set.
-- `reme_service_logs/`: one retained service log per case, including parallel runs.
+Answer 与 Judge 是独立可续跑的阶段：检索失败则不进入 Answer，Answer 失败则不进入
+Judge；失败 case 会与成功输出对账后跳过重跑。历史 LongMemEval / LoCoMo /
+PersonaMem 的独立检索、Answer、Judge 脚本（`run_reme_retrieval_eval.py`、
+`run_answer_eval.py`、`run_judge_eval.py`、`run_reme_end_to_end_eval.py`）仍保留可用。
 
-The first validated smoke run on the frozen `LongMemEval-ZH-20-v0.1` dataset
-retrieved its evidence session at rank 1 for case `118b2229` (`Hit@10=1`,
-`Recall@10=1`, `MRR=1`). This is a retrieval-only signal, not an answer-quality
-or judge result.
+## 数据集
 
-## Independent Answer and Judge runners
-
-The retrieval runner stops after producing `prepared.jsonl`. Answer generation
-and judging are separate scripts so either stage can be rerun without rebuilding
-the ReMe index:
-
-- [`scripts/run_answer_eval.py`](scripts/run_answer_eval.py) reads prepared cases and writes `answers.jsonl`.
-- [`scripts/run_judge_eval.py`](scripts/run_judge_eval.py) reads prepared cases plus `answers.jsonl` and writes `scores.jsonl`.
-
-Both use an OpenAI-compatible `/chat/completions` endpoint. By default they
-read the following environment variables, so the key itself never appears in
-the command line or artifacts:
-
-```powershell
-$env:DEEPSEEK_API_KEY = "<your-key>"
-$env:DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-$env:DEEPSEEK_MODEL = "deepseek-v4-flash"
-```
-
-The repository-root `.env` is also loaded automatically by these two runners;
-existing process environment variables take precedence.
-
-Answer and Judge default to `65536` output tokens. If the provider returns an
-empty response with `finish_reason=length`, the shared client doubles the output
-budget up to the DeepSeek 384K hard limit (`393216`). Resumable runs reconcile `answer_failures.jsonl` and
-`judge_failures.jsonl` against successful output IDs, while `api_errors.jsonl`
-remains an append-only attempt history for provenance.
-
-For `deepseek-v4-flash`, the runners calculate USD cost from cache-hit input,
-cache-miss input, and output tokens using the auditable built-in DeepSeek price
-entry. The three per-million-token rates and a price multiplier can be
-overridden independently for Answer and Judge; unknown models remain
-`NOT_RECORDED` unless all three rates are supplied.
-
-Run the stages independently:
-
-```powershell
-py -3.12 scripts/run_answer_eval.py `
-  --input results/reme_retrieval/reme-baseline-20/prepared.jsonl `
-  --output results/reme_retrieval/reme-baseline-20/answers.jsonl
-
-py -3.12 scripts/run_judge_eval.py `
-  --input results/reme_retrieval/reme-baseline-20/prepared.jsonl `
-  --answers results/reme_retrieval/reme-baseline-20/answers.jsonl `
-  --output results/reme_retrieval/reme-baseline-20/scores.jsonl
-```
-
-Each stage supports `--model`, `--base-url`, the corresponding `*-env`
-options, token/timeout/retry controls, `--start`, `--limit`, and
-`--overwrite`. Existing output IDs are skipped by default, which makes a
-failed run resumable. It also writes `answer_run_config.json`,
-`answer_summary.json`, `judge_run_config.json`, `judge_summary.json`, and
-stage-specific failure JSONL files. The Judge uses the AML-compatible
-CORRECT/WRONG prompt and reports accuracy only for successfully judged rows.
-
-## One-command end-to-end runner
-
-[`scripts/run_reme_end_to_end_eval.py`](scripts/run_reme_end_to_end_eval.py)
-orchestrates the three stages in one run. It exposes the ReMe dataset,
-workspace, BM25/search, Answer, and Judge settings in one command:
-
-```powershell
-# 中文本地化 20 条；--cases 0 也会运行该注册数据集的全部 20 条
-py -3.12 scripts/run_reme_end_to_end_eval.py `
-  --dataset LongMemEval-ZH-20-v0.1 `
-  --cases 20 `
-  --top-k 10 `
-  --run-id reme-longmemeval-zh20
-
-# 英文官方原版；先 smoke，再把 --cases 改为 20 或 0（全量 500）
-py -3.12 scripts/run_reme_end_to_end_eval.py `
-  --dataset LongMemEval-EN-Full `
-  --cases 1 `
-  --top-k 10 `
-  --run-id reme-longmemeval-en-smoke
-```
-
-The end-to-end runner uses the local-safe defaults Retrieval `2`, Answer `4`,
-and Judge `4`. Override them independently with `--retrieval-workers`,
-`--answer-workers`, and `--judge-workers`; use `1` to restore sequential
-behavior for any stage. Standalone runners preserve sequential behavior by
-default and expose `--workers`, for example:
-
-```powershell
-py -3.12 scripts/run_answer_eval.py --input <prepared.jsonl> --output <answers.jsonl> --workers 4
-py -3.12 scripts/run_judge_eval.py --input <prepared.jsonl> --answers <answers.jsonl> --output <scores.jsonl> --workers 4
-```
-
-Suggested starting profiles:
-
-```powershell
-# Local i5 / 16 GB / integrated graphics: BM25 Retrieval is CPU/RAM bound
-py -3.12 scripts/run_reme_end_to_end_eval.py --dataset LongMemEval-EN-Full --cases 20 --retrieval-workers 2 --answer-workers 4 --judge-workers 4
-
-# Server starting point; benchmark 20 cases before increasing Retrieval to 8
-py -3.12 scripts/run_reme_end_to_end_eval.py --dataset LongMemEval-EN-Full --cases 100 --retrieval-workers 4 --answer-workers 8 --judge-workers 8
-```
-
-注册信息位于 `dataset/registry.json`。当前实际接入 `MemEval-v0.1`、
-`LongMemEval-EN-Full`、`LoCoMo-EN-Full` 和 `PersonaMem-EN-Full`。
-`MemEval-v0.1` 的298条数据已经冻结并通过阶段23审计，阶段24–28的 ReMe
-System Adapter、Runner 和 Context Cache 已可运行。其他英文数据对应文件均指向
-统一的 `../datasets/raw/`；中文派生版本仍保持预留状态。旧的 `--data <path>`
-命令仍然可用。
-
-System Adapter 的能力边界与调用方式见 [`memory_eval/systems/README.md`](memory_eval/systems/README.md)。
-可用 `python -B scripts/smoke_reme_system.py` 单独验证真实 ReMe 的隔离、检索、删除和重置。
-正式 MemEval 运行方法见 [`memory_eval/runners/README.md`](memory_eval/runners/README.md)。
-未显式设置 `--output-dir` 时，结果自动隔离到
-`results/en_full/reme/<run-id>/` 或 `results/zh_localized/reme/<run-id>/`。
-
-The orchestrator stops before Answer if Retrieval fails, and stops before
-Judge if Answer fails. After the model stages finish, it builds a human-readable
-Trace report and a local static HTML dashboard from the artifacts that are available. Every Run
-ends with two top-level folders: `Detailed Trace Report/` contains raw/provenance
-artifacts, while `Trace Summary/` contains the self-contained dashboard and concise
-human-facing summaries. Use `--answer-model` or
-`--judge-model` to override the environment model for one run; use separate
-`--answer-*` and `--judge-*` environment/base-url options when the two stages
-use different providers.
-
-## Trace analysis report
-
-Every end-to-end run keeps its complete Markdown analysis at
-`<run-dir>/Detailed Trace Report/trace/trace_summary.md`. The report combines Add observability,
-Retrieval ranking and evidence checks, Answer context flow, Judge output, four
-quadrants, and upstream-first root-cause labels. The supporting files are:
-
-- `trace/trace_index.md`: failure-first links to every case.
-- `trace/cases/<case_id>.md`: complete per-case trace and links back to raw artifacts.
-- `trace/judge_review.md`: Judge=WRONG, Judge failure, and suspicious-Judge review queue.
-- `trace/trace_summary.json`: machine-readable aggregate and per-case classification.
-
-Existing raw artifacts are not changed. Information the earlier runners did not
-persist, such as per-session Add acknowledgements, exact sent prompts, and
-provider-side truncation, is displayed as `NOT_RECORDED` instead of inferred.
-The report also freezes `integrity_report.json`, writes a selected-case
-`dataset_validation.json`, reports conditional Answer accuracy and end-to-end
-latency, and records Embedding/Extraction as either measured, `NOT_RECORDED`,
-or explicitly `NOT_APPLICABLE`. New retrieval runs retain an
-`eval_code_snapshot/manifest.json` so a dirty working tree does not hide the
-exact runner source used.
-
-To build or rebuild only the report for an existing run, without rerunning ReMe
-or calling the Answer/Judge APIs:
-
-```powershell
-py -3.12 scripts/build_trace_report.py `
-  --run-dir results/reme_end_to_end/reme-e2e-1-fixed
-```
-
-For an already organized Run that was resumed from `Detailed Trace Report`,
-refresh its concise summary and Dashboard in place after rebuilding Trace:
-
-```powershell
-py -3.12 scripts/organize_result_layout.py `
-  --run-dir results/en_full/reme/<run-id> `
-  --refresh
-```
-
-Use `--data <dataset.json>` only when the dataset path in `run_config.json` is
-missing or no longer valid.
-
-## Static HTML dashboard
-
-The end-to-end runner writes the primary visual entry point to
-`<run-dir>/Trace Summary/Dashboard.html`. This direct entry point opens the files
-under `Trace Summary/Dashboard/`, while the dashboard reuses
-`Detailed Trace Report/trace/trace_summary.json`
-and `trace/cases/*.json`; it never re-runs Eval, Judge, or root-cause logic and
-does not mutate source Trace artifacts. It includes aggregate metrics, the
-interactive Retrieval × Answer quadrant, capability/pipeline/failure pages,
-filterable case tables, full per-case Trace, latency, API stability, token/cost,
-run metadata, and optional version comparison.
-Dashboard 首页还会从现有结果中选择每个 Dataset case 数最多、时间最新的
-Run，展示“Benchmark 表现”；顶部 Benchmark 下拉框会跳转到另一套完整
-Dashboard，因此四象限、Case Trace、流程观测和性能页面会一起切换。
-
-To rebuild only the dashboard after Trace already exists:
-
-```powershell
-py -3.12 scripts/build_html_report.py `
-  --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report" `
-  --output-dir "results/reme_end_to_end/<run-id>/Trace Summary/Dashboard"
-```
-
-To migrate an older flat Run once, use:
-
-```powershell
-py -3.12 scripts/organize_result_layout.py `
-  --run-dir results/reme_end_to_end/<run-id>
-```
-
-Open `Trace Summary/Dashboard.html` directly in a browser. All CSS, JavaScript, and links
-are relative, so no server or Node build is required. Missing observations stay
-visible as `NOT_RECORDED` rather than being inferred.
-
-## AML Answer and Judge
-
-Set these environment variables before removing `--prepare-only`:
-
-```text
-ANSWER_API_BASE
-ANSWER_API_KEY
-ANSWER_MODEL
-JUDGE_API_BASE
-JUDGE_API_KEY
-JUDGE_MODEL
-```
-
-The CLI then invokes the unchanged upstream AML sibling repository at
-`..\AML\agent-memory-leaderboard\data\longmemeval-s\pipeline.py` for answer
-generation and binary evaluation. Override this location with `--aml-root`.
+MemEval-v0.1：298 条冻结 case，覆盖 D01–D08 八个维度（记忆写入、长期记忆检索、
+长时跨会话、主动记忆激活、用户画像、动态更新冲突、超长上下文、隐私与用户隔离），
+已通过阶段审计。各维度的构成、来源与指标语义见
+[`dataset/MemEval-v0.1/README.md`](dataset/MemEval-v0.1/README.md)
+及各维度目录下的 README。case 选择用 `scripts/freeze_memeval_selection.py` 冻结，
+保证消融各 arm 完全一致。
 
 ## Attribution
 
+- Dataset: [LoCoMo](https://github.com/snap-research/locomo) /
+  [LongMemEval](https://github.com/xiaowu0162/LongMemEval) /
+  [PersonaMem](https://arxiv.org/abs/2504.14234)
 - AML pipeline: [Agent Memory Leaderboard](https://github.com/AML-memory/agent-memory-leaderboard)
-- Dataset: [LongMemEval](https://github.com/xiaowu0162/LongMemEval)
