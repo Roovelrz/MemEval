@@ -4,7 +4,9 @@
 
 `ReMeSystemAdapter` 把八个维度的 `Context Event` 按 Session
 转换为现有 ReMe Adapter 已支持的输入，并直接复用现有的启动、写入、索引、检索
-和清理逻辑，没有重写 ReMe。
+和清理逻辑，没有重写 ReMe。`NoMemorySystemAdapter`（`off.py`）是无记忆消融
+对照：复用 `build_reme_case` 的准备逻辑走完整流程，但既不存储也不返回记忆，
+检索指标如实记 0，用于衡量记忆系统带来的净增益。
 
 阶段25定义统一接口、`SystemCapabilities` 和 `SystemOperationResult`。
 可选操作返回 `status="ok"` 或 `status="unsupported"`；后者包含原因且没有分数，

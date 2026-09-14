@@ -1,4 +1,21 @@
-"""Adapt MemEval runner results to the existing Trace Dashboard artifacts."""
+"""Adapt MemEval runner results to the existing Trace Dashboard artifacts.
+
+Trace Adapter 是评测框架的配套产物（不作为实验变量）：把 `results.jsonl`
+翻译成既有 Trace/Dashboard 管线认识的 prepared/retrieval/answers/scores
+行，复用 trace_report 的渲染与汇总，不重新评测。主要职责：
+
+- `write_inputs`：在 Retrieval 结束后把逐 case 结果落成 Answer/Judge 阶段
+  的输入行（`ANSWER_DIMENSIONS` 内的维度进入 LLM 流程）；
+- `apply_llm_outputs`：把 Answer/Judge 输出回填到 results.jsonl，幂等，
+  重复执行不会产生重复事件；
+- `backfill_derived_metrics`：从已持久化的 `retrieved_memories` 重算
+  D03 时序 / D06 冲突等派生指标，供 `--trace-only` 升级旧 run；
+- `build_trace` / `_dimension_dashboard_metrics`：生成 Trace 报告与
+  Dashboard 用的维度指标（D02 以 K=3 为主指标并保留全 K 分布，D05/D07
+  用 needle 级文本召回，D08 用有效隐私通过率）。
+
+未被旧 run 持久化的观测统一显示 `NOT_RECORDED`，不做推测。
+"""
 
 from __future__ import annotations
 

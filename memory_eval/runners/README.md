@@ -1,18 +1,21 @@
 # MemEval Runner
 
-阶段27的 `MemEvalRunner` 读取冻结 Case 的 `context_ref`，创建隔离命名空间，调用
+`MemEvalRunner` 读取冻结 Case 的 `context_ref`，创建隔离命名空间，调用
 System Adapter 写入，并按维度执行操作：
 
-| 维度 | Runner 动作 | 当前 ReMe 结果范围 |
+| 维度 | Runner 动作 | 结果范围 |
 | --- | --- | --- |
-| D01 | `list_memories` | 记录 Event 持久化覆盖率；语义记忆精确率/召回率为 `None` |
-| D02 | `search` | Session 级 Hit、Recall、MRR |
-| D03 | `search` + `query` | 检索可评分；Answer 未支持，所以状态为 `partial` |
+| D01 | `list_memories` | Event 持久化覆盖率与写入精确率/召回率 |
+| D02 | `search` | Session 级 Hit、Recall、MRR（多 K，主指标 K=3） |
+| D03 | `search` + `delete` | 检索、时序与删除残留指标 + Answer/Judge |
 | D04 | `get_trace` | ReMe 无主动激活决策 Trace，状态为 `unsupported` |
-| D05 | `get_profile` + `search` | 检索指标可评分；ReMe 无画像提取，所以状态为 `partial` |
-| D06 | `search` + `query` | 检索可评分；Answer 未支持，所以状态为 `partial` |
-| D07 | `search` + `query` | 检索可评分；Answer 未支持，所以状态为 `partial` |
-| D08 | identity 分流、生命周期删除、`search` | 分别记录允许召回与禁止/删除/Canary 暴露 |
+| D05 | `search` | needle 级画像证据召回（session 级保留参照） + Answer/Judge |
+| D06 | `search` + `delete` | 冲突/陈旧检索指标 + Answer/Judge |
+| D07 | `search` | needle 级证据召回 + Answer/Judge |
+| D08 | identity 分流、生命周期删除、`search` | 允许召回、禁止/删除/Canary 暴露与有效隐私通过率 |
+
+Answer/Judge 通过 `adapters/Trace/memeval.py` 的 `write_inputs` /
+`apply_llm_outputs` 与 LLM 阶段衔接（见 `ANSWER_DIMENSIONS`）。
 
 每条 `results.jsonl` 都包含开发文档约定的 Run、Case、Dimension、System、Prediction、
 Retrieved Memories、Trace、Latency、Cost、Metrics、Status 和 Error。单个 Case 失败会
@@ -25,9 +28,12 @@ Retrieved Memories、Trace、Latency、Cost、Metrics、Status 和 Error。单�
 py -3.12 scripts/run_memeval.py --dataset MemEval-v0.1 --dimension D08 --limit 1 --run-id d08-smoke
 ```
 
-也可直接编辑仓库根目录 `run_eval.py` 中的 `CONFIG`，然后执行
-`py -3.12 run_eval.py`。默认运行全部 298 条；smoke test 可将 `limit` 改为 `5`。
-未指定 `run_id` 时按 `reme_<dataset>_<UTC timestamp>` 命名。
+也可直接使用命令行参数选择被测系统与范围，入口是
+`py -3.12 scripts/run_memeval.py`（参数说明见 `--help` 与根目录 USAGE_ZH.md）。
+`--memory-adapter reme|off` 选择被测记忆系统，`off` 为无记忆消融对照（检索
+指标如实记 0）。未指定 `run_id` 时按 `<adapter>_<dataset>_<UTC timestamp>`
+命名。`--trace-only --run-dir <run>` 可在展示逻辑升级后从已持久化产物重建
+Trace/Dashboard，不重跑评测。
 
 每次完整运行结束后，Run 根目录只保留两个顶层文件夹：
 
