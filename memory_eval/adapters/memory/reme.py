@@ -1,4 +1,19 @@
-"""ReMe CLI memory adapter preserving the existing BM25 evaluation behavior."""
+"""ReMe CLI memory adapter preserving the existing BM25 evaluation behavior.
+
+以"每 case 一个本地 ReMe 服务进程"的方式实现 MemoryAdapter 协议：
+
+- `open_case` 把统一 case 的每个 session 渲染成独立 Markdown 写入
+  workspace 的 `daily/` 目录（ReMe 以 Markdown 文件作为记忆源），然后按
+  命令行启动 ReMe 服务并等待健康检查通过；
+- `index` 调用 reindex 建立 BM25 索引（baseline 不启用 embedding/LLM/
+  auto-memory/auto-resource/auto-dream）；
+- `search` 调用检索接口，把返回的 Markdown 路径经 `path_map` 归一化回
+  session_id，去重后交给上层；
+- `close_case` 停止进程并清理 workspace。
+
+服务交互全部走本地 HTTP（`http_post`），进程启停通过可注入的
+start/stop/wait 钩子实现，便于测试替换。
+"""
 
 from __future__ import annotations
 
@@ -355,6 +370,13 @@ def reme_version() -> str:
 
 
 class ReMeCliMemoryAdapter:
+    """进程型 MemoryAdapter：每个 case 启动独立的本地 ReMe 服务。
+
+    `vector_weight` 控制 BM25/向量混合权重，`0.0` 即纯 BM25 baseline；
+    非 0 时需要配套真正启用了 embedding 的自定义 config。start/stop/wait/
+    http 四个钩子默认指向本文件的实现，测试可注入替身。
+    """
+
     name = "reme"
     enabled = True
 

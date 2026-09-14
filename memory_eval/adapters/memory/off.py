@@ -1,4 +1,9 @@
-"""No-memory control adapter."""
+"""No-memory control adapter.
+
+无记忆消融对照的协议层实现：完整走 open/index/search/close 生命周期，但
+既不存储也不返回任何记忆。检索结果恒为空，检索指标在上层如实记 0（而非
+unsupported），用于和 `reme` 对照、衡量记忆系统带来的净增益。
+"""
 
 from __future__ import annotations
 
@@ -10,7 +15,13 @@ from .base import MemoryCaseRuntime, MemoryIndexResult, MemorySearchResult
 
 
 class NoMemoryAdapter:
-    """Intentionally returns no memory, for the no-memory experimental control."""
+    """Intentionally returns no memory, for the no-memory experimental control.
+
+    语义约定：
+    - `index` 恒定成功且无产物——系统没有写入任何东西；
+    - `search` 恒定返回空——答案只能来自 Answer LLM 的参数知识；
+    - 不启动任何进程或服务，端口与日志参数仅用于满足协议签名。
+    """
 
     name = "off"
     enabled = False
@@ -48,6 +59,7 @@ class NoMemoryAdapter:
             shutil.rmtree(runtime.workspace, ignore_errors=True)
 
     def run_metadata(self) -> dict[str, Any]:
+        # 元数据如实标注"无"，让 run 汇总与 Trace 不需要特判该对照。
         return {
             "memory_backend": "none",
             "memory_version": "NOT_APPLICABLE",
@@ -55,4 +67,3 @@ class NoMemoryAdapter:
             "embedding_enabled": False,
             "llm_enabled": False,
         }
-

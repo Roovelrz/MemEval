@@ -1,4 +1,8 @@
-"""Memory adapter registry."""
+"""Memory adapter registry.
+
+按名称创建 MemoryAdapter 实现。Runner 只认识 registry，不认识具体实现；
+新增被测系统时在此登记即可，无需改动 Runner。
+"""
 
 from __future__ import annotations
 
