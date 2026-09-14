@@ -1,35 +1,33 @@
 # Memory Eval Pipeline 完整使用指南
 
-这套框架当前用于运行下面这条评测链路：
+当前推荐的评测链路是 MemEval-v0.1 复合 benchmark（298 条冻结 case，八个维度）：
 
 ```text
-LongMemEval-ZH 数据集
-→ ReMe 写入与 BM25 检索
-→ prepared.jsonl
+MemEval-v0.1（D01–D08）
+→ Memory Adapter（reme 完整系统 / off 无记忆对照）
 → Answer Model
 → Judge Model
 → Trace 汇总与逐 Case 根因分析
 → HTML Dashboard 静态展示
 ```
 
-最推荐的使用方式是先跑 1 条 case 做 Smoke Test，确认整条链路可用后，再扩大到 5 条和全部 20 条。不要一开始就跑全量。
+最推荐的使用方式是先跑 1 条 case 做 Smoke Test，确认整条链路可用后，再扩大到
+单维度全量，最后跑全量。不要一开始就跑 298 条。
+
+历史 LongMemEval-ZH 单数据集链路仍保留，见文末附录。
 
 ## 1. 当前默认组件
 
 | 模块 | 当前实现 | 是否调用外部模型 |
 | --- | --- | :---: |
-| 数据集 | `LongMemEval-ZH-20-v0.1` | 否 |
-| Memory / Retrieval | 本地 ReMe，BM25-only | 否 |
+| 数据集 | `MemEval-v0.1`（冻结，D01–D08） | 否 |
+| Memory / Retrieval | 本地 ReMe（BM25 baseline）或 `off` 无记忆对照 | 否 |
 | Answer | OpenAI-compatible Chat Completions API | 是 |
 | Judge | OpenAI-compatible Chat Completions API | 是 |
 | Trace Analysis | 本地 Python 汇总脚本 | 否 |
 | HTML Dashboard | 本地静态 Reporter | 否 |
 
-默认数据集位于：
-
-```text
-dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json
-```
+数据集位于 `dataset/MemEval-v0.1/`；维度构成与指标语义见其 README。
 
 ## 2. 第一次运行前的准备
 
@@ -43,12 +41,7 @@ Set-Location E:\LRZ_Workplace\fork\memory_eval_pipeline
 
 ```powershell
 py -3.12 -m pip install -r requirements.txt
-```
-
-如需运行测试：
-
-```powershell
-py -3.12 -m pip install -r requirements-dev.txt
+py -3.12 -m pip install -r requirements-dev.txt   # 如需运行测试
 ```
 
 ### 2.2 安装本地 ReMe
@@ -72,11 +65,7 @@ py -3.12 -m pip install -r requirements-reme.txt
 C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe
 ```
 
-如果本机位置不同，可以执行：
-
-```powershell
-Get-Command reme -ErrorAction SilentlyContinue
-```
+`--memory-adapter off` 的无记忆对照不启动任何 ReMe 服务，无需此步。
 
 ### 2.3 配置 Answer 和 Judge API
 
@@ -88,293 +77,103 @@ DEEPSEEK_BASE_URL=https://api.deepseek.com
 DEEPSEEK_MODEL=deepseek-v4-flash
 ```
 
-也可以只对当前 PowerShell 进程设置：
+指向本地 OpenAI 兼容 endpoint（如 vLLM / 公司内网推理服务）时，替换
+`DEEPSEEK_BASE_URL` 和 `DEEPSEEK_MODEL` 即可。环境变量的优先级高于 `.env`；
+API Key 不会被写进 run 配置或 Trace 报告。
 
-```powershell
-$env:DEEPSEEK_API_KEY = "填写你的API密钥"
-$env:DEEPSEEK_BASE_URL = "https://api.deepseek.com"
-$env:DEEPSEEK_MODEL = "deepseek-v4-flash"
-```
+消融实验时务必固定 Judge，只切换 Answer 模型，否则 Judge 偏差会污染结论。
 
-环境变量的优先级高于 `.env`。API Key 不会被写进 `run_config.json` 或 Trace 报告。
-
-## 3. 推荐方式：一条命令运行完整 Eval
+## 3. 运行 MemEval
 
 ### 3.1 先运行 1 条 Smoke Test
 
-每次完整运行都建议使用新的 `run-id`：
-
 ```powershell
-py -3.12 scripts/run_reme_end_to_end_eval.py `
-  --data dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
-  --cases 1 `
-  --start 0 `
-  --top-k 10 `
-  --run-id reme-e2e-smoke-1 `
+python scripts/run_memeval.py `
+  --dimension D02 `
+  --limit 1 `
+  --run-id smoke-1 `
   --reme-cmd "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe"
 ```
 
-完整流程会依次运行：
+完整流程依次运行 `Retrieval → Answer → Judge → Trace → Dashboard`。只有
+Retrieval 成功才进入 Answer，只有 Answer 成功才进入 Judge。
 
-```text
-Retrieval → Answer → Judge → Trace report → HTML dashboard
-```
-
-只有 Retrieval 成功才会启动 Answer；只有 Answer 成功才会启动 Judge。无论前面是否失败，最后都会尽量根据已有产物生成 Trace。
-
-### 3.2 扩大到 5 条
+### 3.2 扩大到单维度全量
 
 ```powershell
-py -3.12 scripts/run_reme_end_to_end_eval.py `
-  --cases 5 `
-  --top-k 10 `
-  --run-id reme-e2e-5 `
-  --reme-cmd "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe"
+python scripts/run_memeval.py --dimension D02 --run-id reme-d02-full
 ```
 
-### 3.3 运行冻结数据集中的全部 20 条
+`--dimension` 可重复传入以运行多个维度。
 
-`--cases 0` 表示运行从 `--start` 开始的全部 case：
+### 3.3 全量 298 条
 
 ```powershell
-py -3.12 scripts/run_reme_end_to_end_eval.py `
-  --cases 0 `
-  --top-k 10 `
-  --run-id reme-e2e-zh20-v01 `
-  --reme-cmd "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe"
+python scripts/run_memeval.py --run-id reme-full
 ```
 
-如需固定随机顺序：
+### 3.4 消融实验矩阵
 
 ```powershell
-py -3.12 scripts/run_reme_end_to_end_eval.py `
-  --cases 0 `
-  --shuffle `
-  --seed 42 `
-  --run-id reme-e2e-zh20-shuffled `
-  --reme-cmd "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe"
+# 完整记忆系统
+python scripts/run_memeval.py --memory-adapter reme --run-id reme-full
+
+# 无记忆对照：走完整流程，检索指标如实记 0
+python scripts/run_memeval.py --memory-adapter off --run-id off-full
+
+# LLM 消融：固定 Judge，把 .env 指向待评测的本地 endpoint
 ```
 
-## 4. 分阶段运行
+各 arm 的 case 集合由冻结数据集决定，天然一致；不要混用 `--limit`/`--dimension`
+造出不同的 case 子集再横向比较。
 
-分阶段运行适合下面几种情况：
+### 3.5 重建旧 Run 的报告（不重跑评测）
 
-- 只想分析 Retrieval，不想消耗 Answer/Judge API。
-- Retrieval 已完成，只想更换 Answer Model。
-- Answer 已完成，只想更换 Judge Model。
-- 某个 API 阶段中断后，需要从已有 JSONL 继续。
-
-### 4.1 只运行 ReMe Retrieval
+Dashboard / Trace 展示逻辑升级后，旧 run 无需重新评测：
 
 ```powershell
-py -3.12 scripts/run_reme_retrieval_eval.py `
-  --data dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json `
-  --cases 1 `
-  --top-k 10 `
-  --run-id reme-retrieval-smoke `
-  --reme-cmd "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe"
+python scripts/run_memeval.py --trace-only --run-dir results/memeval_v0_1/reme/<run-id>
 ```
 
-默认结果目录：
+该命令从已持久化的 `results.jsonl` 重建 Trace 与 Dashboard，会先回填 D03/D06
+等派生指标，不重启 ReMe、不调 Answer/Judge API。
 
-```text
-results/reme_retrieval/reme-retrieval-smoke/
-```
-
-这个阶段只生成 Retrieval 和 `prepared.jsonl`，不调用 DeepSeek。
-
-### 4.2 对 prepared.jsonl 运行 Answer
-
-```powershell
-py -3.12 scripts/run_answer_eval.py `
-  --input results/reme_retrieval/reme-retrieval-smoke/prepared.jsonl `
-  --output results/reme_retrieval/reme-retrieval-smoke/answers.jsonl
-```
-
-Answer runner 默认跳过已经存在于 `answers.jsonl` 中的 case_id，因此中断后可以执行同一命令继续。
-
-切换 Answer Model：
-
-```powershell
-py -3.12 scripts/run_answer_eval.py `
-  --input results/reme_retrieval/reme-retrieval-smoke/prepared.jsonl `
-  --output results/reme_retrieval/reme-retrieval-smoke/answers-new-model.jsonl `
-  --model deepseek-v4-flash `
-  --max-tokens 4096 `
-  --temperature 0
-```
-
-建议换模型时写入新的输出文件，避免把不同模型的结果混在一起。
-
-### 4.3 运行 Judge
-
-```powershell
-py -3.12 scripts/run_judge_eval.py `
-  --input results/reme_retrieval/reme-retrieval-smoke/prepared.jsonl `
-  --answers results/reme_retrieval/reme-retrieval-smoke/answers.jsonl `
-  --output results/reme_retrieval/reme-retrieval-smoke/scores.jsonl
-```
-
-Judge runner 同样会跳过已经存在于 `scores.jsonl` 中的 case_id。
-
-如果选择范围内缺少 Answer，Judge 会直接报错，不会为缺少的 case 伪造分数。
-
-### 4.4 只生成或重新生成 Trace
-
-这个操作不会运行 ReMe，也不会调用 Answer/Judge API：
-
-```powershell
-py -3.12 scripts/build_trace_report.py `
-  --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report"
-```
-
-如果 `run_config.json` 中没有有效的数据集路径，再显式指定：
-
-```powershell
-py -3.12 scripts/build_trace_report.py `
-  --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report" `
-  --data dataset/derived/longmemeval_zh/LongMemEval-ZH-20-v0.1/dataset.json
-```
-
-重新生成 Trace 会更新 `<run-dir>/Detailed Trace Report/trace/`；不会改写 `retrieval.jsonl`、`prepared.jsonl`、`answers.jsonl` 或 `scores.jsonl`。更新 Trace 后，再执行下面的 HTML 重建命令同步展示。
-
-### 4.5 只生成或重新生成 HTML Dashboard
-
-前提是 `Detailed Trace Report/trace/trace_summary.json` 和逐 Case JSON 已存在：
-
-```powershell
-py -3.12 scripts/build_html_report.py `
-  --run-dir "results/reme_end_to_end/<run-id>/Detailed Trace Report" `
-  --output-dir "results/reme_end_to_end/<run-id>/Trace Summary/Dashboard"
-```
-
-打开 `Trace Summary/Dashboard.html` 即可查看，它会直接进入 `Dashboard/index.html`；不需要安装 Node、不需要数据库，也不需要启动 Web 服务。这个步骤只读取 Trace 产物并生成展示页面，不会重新判分、重新归因或修改 Trace；未记录的字段统一显示为 `NOT_RECORDED`。
-
-旧版平铺结果只需迁移一次：
-
-```powershell
-py -3.12 scripts/organize_result_layout.py `
-  --run-dir results/reme_end_to_end/<run-id>
-```
-
-迁移不会删除结果，只会把原始和溯源文件移动到 `Detailed Trace Report/`，并在 `Trace Summary/` 重建精简摘要和 HTML。
-
-## 5. 常用参数
+## 4. MemEval 常用参数
 
 ### 数据与范围
 
 | 参数 | 作用 |
 | --- | --- |
-| `--data` | 更换数据集 JSON/JSONL |
-| `--cases N` | 运行 N 条；`0` 表示全部 |
-| `--start N` | 从第 N 条开始，默认 0 |
-| `--shuffle` | 在截取 case 前打乱 |
-| `--seed 42` | 固定随机顺序 |
+| `--data` | 显式指定 MemEval release 目录（默认用内置冻结数据集） |
+| `--dimension D02` | 只运行指定维度，可重复传入 |
+| `--limit N` | 每个维度最多运行 N 条 |
 | `--run-id` | 本次运行目录名，建议每次唯一 |
-| `--output-dir` | 更换结果根目录 |
+| `--output-dir` | 更换结果根目录（默认 `results/`） |
+| `--memory-adapter reme/off` | 被测 memory 系统；`off` 为无记忆消融对照 |
 
 ### Retrieval
 
 | 参数 | 作用 |
 | --- | --- |
-| `--top-k 10` | 最终送入 Answer 的 session 数 |
-| `--search-multiplier 3` | ReMe 原始候选数约为 `top_k × multiplier` |
+| `--top-k 10` | 最终送入 Answer 的记忆条数 |
+| `--search-multiplier` | ReMe 原始候选数约为 `top_k × multiplier` |
 | `--min-score 0.0` | ReMe 最低检索分数 |
-| `--base-port 23330` | 第一个临时 ReMe 服务端口 |
-| `--startup-timeout 60` | 等待 ReMe 服务启动的秒数 |
 | `--reme-cmd` | ReMe 可执行文件路径或命令 |
 | `--reme-config` | 使用自定义 ReMe 配置 |
-| `--vector-weight 0.0` | `0.0` 是当前 BM25 baseline |
-| `--keep-workspaces` | 保留每条 case 的临时 ReMe workspace，便于调试但占空间 |
+| `--vector-weight 0.0` | `0.0` 是当前 BM25 baseline；非 0 需提供可用配置 |
+| `--reme-startup-timeout` | 等待 ReMe 服务启动的秒数 |
 
-当前 baseline 不启用 embedding、LLM、auto-memory、auto-resource 或 auto-dream。若把 `vector-weight` 改为非 0，应同时提供真正可用的自定义 ReMe 配置，不能只改一个数值。
+Resume 语义：同一 `run-id` 续跑时会校验 `retrieval_run_config.json` 与本次参数
+一致（旧 run 缺少 `memory_adapter` 字段时按 `reme` 解释），防止混跑。
 
-BM25 baseline 会明确记录 `Embedding/Extraction status=NOT_APPLICABLE`、调用数 0、失败数 0。若启用向量检索，ReMe Health 可提供 `chunks_with_embedding`；当前接口没有暴露真实 embedding API 调用次数时，该字段保持 `NOT_RECORDED`，不会用 chunk 数冒充 API 请求数。
+### 结果目录怎么读
 
-### Answer / Judge
+结果按 `results/memeval_v0_1/<system>/<run-id>/` 隔离，`reme` 与 `off` 各自成
+目录。目录内部结构与附录的 LongMemEval run 相同（`Detailed Trace Report/` 与
+`Trace Summary/`），查看顺序、四象限与 Root Cause 读法、退出码排查、续跑边界
+全部沿用第 6–9 节。
 
-| 参数 | 作用 |
-| --- | --- |
-| `--answer-model` / `--judge-model` | 在完整 runner 中分别覆盖模型 |
-| `--answer-max-tokens` / `--judge-max-tokens` | 最大输出 token，默认 4096 |
-| `--answer-temperature` / `--judge-temperature` | 温度，默认 0 |
-| `--answer-timeout` / `--judge-timeout` | 单次请求超时，默认 120 秒 |
-| `--answer-retries` / `--judge-retries` | 失败重试次数，默认 3 |
-| `--base-url` / `--model` | 在独立 runner 中覆盖 API 地址或模型 |
-| `--start` / `--limit` | 在独立 Answer/Judge runner 中选择行范围 |
-| `--overwrite` | 删除该阶段已有输出后重跑；会失去该输出文件中的旧结果，谨慎使用 |
-
-### LLM Cost
-
-`deepseek-v4-flash` 默认使用 DeepSeek 官方价格表中每百万 Token 的价格：Cache Hit Input `$0.0028`、Cache Miss Input `$0.14`、Output `$0.28`。价格来源：[DeepSeek Models & Pricing](https://api-docs.deepseek.com/quick_start/pricing)，代码内记录的核对日期为 `2026-08-26`。
-
-价格可能变化。完整 Runner 可通过以下参数覆盖 Answer/Judge 单价：
-
-- `--answer-cache-hit-input-price` / `--judge-cache-hit-input-price`
-- `--answer-cache-miss-input-price` / `--judge-cache-miss-input-price`
-- `--answer-output-price` / `--judge-output-price`
-- `--answer-price-multiplier` / `--judge-price-multiplier`
-
-独立 Answer/Judge Runner 使用没有 `answer-` 或 `judge-` 前缀的同名参数。模型不在内置价格表中时，必须同时提供三种价格；否则 Cost 保持 `NOT_RECORDED`。峰时价格或账号侧系数可通过 multiplier 显式传入，并随 Run 配置保存。
-
-## 6. 结果目录怎么读
-
-一次完整运行的目录结构大致如下：
-
-```text
-results/reme_end_to_end/<run-id>/
-├── Detailed Trace Report/
-│   ├── run_config.json
-│   ├── end_to_end_run_config.json
-│   ├── end_to_end_summary.json
-│   ├── retrieval.jsonl
-│   ├── prepared.jsonl
-│   ├── answers.jsonl
-│   ├── scores.jsonl
-│   ├── raw_search/
-│   ├── eval_code_snapshot/
-│   ├── result_layout_manifest.json
-│   └── trace/
-│       ├── trace_summary.md
-│       ├── trace_summary.json
-│       ├── trace_index.md
-│       ├── judge_review.md
-│       └── cases/
-│           ├── <case_id>.md
-│           └── <case_id>.json
-└── Trace Summary/
-    ├── Dashboard.html
-    ├── Dashboard/
-    │   ├── index.html
-    │   ├── report_manifest.json
-    │   ├── assets/
-    │   ├── capabilities/
-    │   ├── pipeline/
-    │   ├── failures/
-    │   ├── cases/
-    │   ├── performance/
-    │   ├── comparison/
-    │   ├── run-info/
-    │   └── analysis/
-    ├── summary.json
-    └── trace_summary.md
-```
-
-部分 failure 文件只有发生失败时才会出现。
-
-建议按以下顺序查看：
-
-1. `Trace Summary/Dashboard.html`：最外层可视化入口，自动打开 Dashboard。
-2. `Trace Summary/summary.json`：只保留高信号 Run 指标，不包含逐 Case 大字段。
-3. `Trace Summary/trace_summary.md`：可审阅、可复制的中文总报告。
-4. `Detailed Trace Report/trace/trace_index.md`：按失败优先级找到具体 case。
-5. `Detailed Trace Report/trace/cases/<case_id>.md`：查看完整链路。
-6. `Detailed Trace Report/trace/judge_review.md`：人工复核 Judge 结果。
-7. 最后才查看 JSONL、raw_search 和日志，作为溯源材料。
-
-`eval_code_snapshot/` 保存本次实际使用的 Runner/Report Python 源码及 SHA-256 manifest。即使 Git 工作区为 dirty，也可以确认当时运行的准确代码；`trace_summary.md` 会分别展示 Git commit、dirty 状态和快照 hash。
-
-## 7. 四象限和 Root Cause 怎么看
+## 5. 四象限和 Root Cause 怎么看
 
 | 象限 | Retrieval | Answer | 解释 |
 | --- | :---: | :---: | --- |
@@ -394,9 +193,10 @@ ADD_FAILURE
 → PASS
 ```
 
-如果某个字段没有被旧 runner 持久化，Trace 会显示 `NOT_RECORDED`，不会把推测当成事实。
+如果某个字段没有被旧 runner 持久化，Trace 会显示 `NOT_RECORDED`，不会把推测
+当成事实。
 
-## 8. 退出码与失败排查
+## 6. 退出码与失败排查
 
 | 现象 | 含义与下一步 |
 | --- | --- |
@@ -404,21 +204,22 @@ ADD_FAILURE
 | Exit code 2 | 至少一个 case 或阶段失败；先看各 `*_summary.json` 和 failure JSONL |
 | Python traceback / Exit code 1 | 通常是参数、文件、依赖或配置错误，先看最后一行异常 |
 | ReMe 启动失败 | 检查 `--reme-cmd`、端口和 `reme_service.log` |
-| Answer 内容为空 | 查看 `answer_failures.jsonl`，再用独立 Answer runner 续跑 |
+| Answer 内容为空 | 查看 `answer_failures.jsonl`，检查 API 余额与 endpoint |
 | Judge 格式异常 | 查看 `judge_failures.jsonl` 中保留的 `judge_response` |
 | Trace 显示 `NOT_RECORDED` | 原始 runner 未保存该观测字段，不等于该步骤一定失败 |
 
-不要因为总 runner 返回非 0 就只看终端最后一行。首先打开 `trace_summary.md`，再沿失败 case 的 Trace 从 Add 向 Judge 逐层排查。
+不要因为总 runner 返回非 0 就只看终端最后一行。首先打开 `trace_summary.md`，
+再沿失败 case 的 Trace 从 Add 向 Judge 逐层排查。
 
-## 9. 继续运行与重新运行的边界
+## 7. 继续运行与重新运行的边界
 
-- Answer 和 Judge 独立 runner 默认支持按 case_id 续跑。
-- 完整端到端 runner 会重新执行 Retrieval，因此建议始终使用新的 `run-id`。
-- 切换数据集、Retrieval 配置、Answer Model 或 Judge Model 时，也应使用新的 `run-id` 或新的输出文件。
+- Answer 和 Judge 阶段支持按 case_id 续跑，中断后执行同一命令继续。
+- 切换 `--memory-adapter`、数据集、Retrieval 配置、Answer Model 或 Judge Model
+  时，使用新的 `--run-id`。
 - 不要手工修改旧 run 的 JSONL 后再与新结果比较。
-- 对同一轮横向比较，应固定数据集版本、case 顺序、TopK、Answer Model、Judge Model 和 Prompt。
+- 横向比较时固定：数据集版本、case 顺序、TopK、Answer Model、Judge Model、Prompt。
 
-## 10. 开发后自检
+## 8. 开发后自检
 
 运行全部本地测试：
 
@@ -426,18 +227,42 @@ ADD_FAILURE
 py -3.12 -m pytest -q
 ```
 
-只验证 Trace 报告：
+查看实时参数说明：
 
 ```powershell
-py -3.12 -m pytest tests/test_trace_report.py -q
+python scripts/run_memeval.py --help
 ```
 
-查看所有脚本的实时参数说明：
+## 附录：历史 LongMemEval-ZH 链路
 
-```powershell
-py -3.12 scripts/run_reme_end_to_end_eval.py --help
-py -3.12 scripts/run_reme_retrieval_eval.py --help
-py -3.12 scripts/run_answer_eval.py --help
-py -3.12 scripts/run_judge_eval.py --help
-py -3.12 scripts/build_trace_report.py --help
-```
+单数据集时代的独立脚本仍可用，分阶段运行时适合只跑检索或只换 Answer/Judge 模型：
+
+- `scripts/run_reme_retrieval_eval.py`：只跑 ReMe 检索，产出 `prepared.jsonl`，
+  不调用 LLM。结果在 `results/reme_retrieval/<run-id>/`。
+- `scripts/run_answer_eval.py`：对 `prepared.jsonl` 生成 `answers.jsonl`，按
+  case_id 续跑；换模型建议写入新输出文件。
+- `scripts/run_judge_eval.py`：读 prepared + answers 产出 `scores.jsonl`；缺
+  Answer 的 case 会报错而非伪造分数。
+- `scripts/run_reme_end_to_end_eval.py`：LongMemEval/LoCoMo/PersonaMem 的一条
+  命令端到端编排，支持 `--cases`/`--start`/`--shuffle`/`--seed`。
+- `scripts/build_trace_report.py` / `scripts/build_html_report.py` /
+  `scripts/organize_result_layout.py`：单独重建 Trace、Dashboard 或迁移旧平铺
+  结果目录。
+
+LLM Cost 说明：`deepseek-v4-flash` 默认使用 DeepSeek 官方价格（Cache Hit
+`$0.0028`、Cache Miss `$0.14`、Output `$0.28`，每百万 Token，核对日期
+2026-08-26），可通过 `--answer-*-price` / `--judge-*-price` 与 multiplier 覆盖；
+非内置模型必须同时提供三种价格，否则 Cost 保持 `NOT_RECORDED`。
+
+结果目录阅读顺序（对 MemEval 与历史 run 均适用）：
+
+1. `Trace Summary/Dashboard.html`：最外层可视化入口。
+2. `Trace Summary/summary.json`：高信号 Run 指标。
+3. `Trace Summary/trace_summary.md`：可审阅、可复制的中文总报告。
+4. `Detailed Trace Report/trace/trace_index.md`：按失败优先级找到具体 case。
+5. `Detailed Trace Report/trace/cases/<case_id>.md`：查看完整链路。
+6. `Detailed Trace Report/trace/judge_review.md`：人工复核 Judge 结果。
+7. 最后才查看 JSONL、raw_search 和日志，作为溯源材料。
+
+`eval_code_snapshot/` 保存本次实际使用的 Runner/Report Python 源码及 SHA-256
+manifest，即使 Git 工作区为 dirty 也能确认当时运行的准确代码。
