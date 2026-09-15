@@ -26,8 +26,8 @@ scripts/run_memeval.py                 # 端到端编排入口
 
 ## 快速开始
 
-前置：Python 3.12，安装依赖并准备好本地 ReMe（见 USAGE_ZH.md）。LLM 密钥只放
-被 Git 忽略的 `.env`（自动加载，进程环境变量优先）：
+前置：Python 3.12，安装依赖并准备好本地记忆系统（目前以 ReMe 为例 https://github.com/agentscope-ai/ReMe）。
+LLM 密钥只放被 Git 忽略的 `.env`（自动加载，进程环境变量优先）：
 
 ```powershell
 DEEPSEEK_API_KEY=<your-key>
