@@ -1,5 +1,13 @@
 # Memory Eval HTML 报告开发规范
 
+> **现状说明（2026-09）**：本规范的核心原则仍然有效（只读渲染、一级中文/
+> 二级原始字段、NOT_RECORDED、禁止重新判定），已实现的 Dashboard 位于
+> `<run-dir>/Trace Summary/Dashboard/`，入口为 `Trace Summary/Dashboard.html`。
+> 能力维度已从 LongMemEval 的六类 `question_type` 演进为 MemEval-v0.1 的
+> **D01–D08 八维**；检索主指标为 **K=3**（K=1/3/5/10 全分布悬停展示），
+> D05/D07 用 needle 召回、D08 用有效隐私通过率。本文中与 LongMemEval
+> 单数据集时代相关的字段映射保留为历史参考。
+
 ## 1. 目标
 
 基于现有 Eval 产物生成本地静态 HTML 报告，不修改 Eval Runner、Trace Analyzer 和原始 JSON/JSONL 结构。
@@ -75,42 +83,26 @@ p99
 
 ## 3. 页面结构
 
+实际输出目录（`<run-dir>/Trace Summary/Dashboard/`）：
+
 ```text
-report/
+Dashboard/
 ├── index.html
-├── capabilities/
-│   ├── knowledge-update.html
-│   ├── multi-session.html
-│   ├── single-session-assistant.html
-│   ├── single-session-preference.html
-│   ├── single-session-user.html
-│   └── temporal-reasoning.html
-├── pipeline/
-│   ├── add.html
-│   ├── index.html
-│   ├── search.html
-│   ├── answer.html
-│   └── judge.html
-├── failures/
-│   ├── retrieval-miss.html
-│   ├── retrieval-wrong-chunk.html
-│   ├── answer-failure.html
-│   └── judge-suspect.html
-├── cases/
-│   ├── index.html
-│   └── <case_id>.html
-├── performance/
-│   ├── latency.html
-│   ├── api-stability.html
-│   └── token-usage.html
-├── comparison/
-│   └── index.html
-├── run-info/
-│   └── index.html
-└── assets/
-    ├── app.js
-    └── style.css
+├── report_manifest.json
+├── assets/
+├── capabilities/        # D01–D08 维度页
+├── pipeline/            # add / search / answer / judge 阶段页
+├── failures/            # 按 root cause 分类的失败页
+├── cases/               # index + 每条 case 的 trace 页
+├── performance/         # latency / api-stability / token-usage
+├── comparison/          # 版本对比
+├── run-info/            # 运行信息
+└── analysis/            # 四象限交互分析
 ```
+
+规范早期设想的 `report/` 目录名与部分页面命名（如
+`knowledge-update.html`）属于 LongMemEval question_type 时代，已被上面
+的 MemEval 布局取代；下方各节中的字段约定仍然有效。
 
 # 4. 首页 Dashboard
 
@@ -248,10 +240,28 @@ not_scored
 数据源：
 
 ```text
-question_type_breakdown
+question_type_breakdown        # LongMemEval 链路
+dimension_dashboard_metrics    # MemEval 链路（当前主入口）
 ```
 
-一级中文名称与原始类型映射：
+MemEval 一级中文名称与维度映射（当前）：
+
+| 一级中文名称 | 维度 | 主指标 |
+|---|---|---|
+| 记忆写入 | D01 | memory_recall / memory_precision |
+| 长期记忆检索 | D02 | Recall@3（全 K 悬停） |
+| 长时间跨度对话 | D03 | answer_accuracy / deleted_hit_rate |
+| 主动记忆激活 | D04 | activation_decision（当前 unsupported） |
+| 用户画像与偏好 | D05 | needle recall / 个性化准确率 |
+| 动态更新与冲突 | D06 | winning_fact_recall / stale_retrieval_rate |
+| 超长上下文 | D07 | needle recall |
+| 隐私与用户隔离 | D08 | effective_privacy_pass |
+
+每个能力卡片内部展示原始字段并支持点击进入详情页。
+各维度指标语义见 `dataset/MemEval-v0.1/dimensions/*/v0.1/README.md` 的
+"评测口径"一节。
+
+历史 LongMemEval question_type 映射（旧链路仍适用）：
 
 | 一级中文名称 | 原始 question_type |
 |---|---|
@@ -956,6 +966,12 @@ end_time
 
 ```
 # 15.1 四象限交互分析图
+
+> **已实现**：Dashboard 的 `analysis/` 页面已按本节设计落地（Case 级散点、
+> 悬停详情、点击跳转 Case Trace、按 quadrant 着色）。以下原文保留为设计
+> 记录；粒度中的 Question Type 级在 MemEval 链路对应维度（D01–D08）级，
+> Run 级用于消融 arm（reme vs off vs 本地 LLM）横向比较。
+
 这个功能建议直接加入 HTML Dashboard，因为它和现在的 `quadrant` 分析天然对应。现在已经有：
 
 ```text
@@ -1905,61 +1921,36 @@ CSS
 
 # 19. Reporter 输入
 
-优先读取：
+优先读取（MemEval 当前布局，位于 `<run-dir>/Detailed Trace Report/`）：
 
 ```text
-<run_dir>/
-├── run_config.json
-├── dataset_manifest.json
-├── add_trace.jsonl
-├── retrieval.jsonl
-├── prepared.jsonl
+Detailed Trace Report/
+├── retrieval_run_config.json     # MemEval 运行配置（含 memory_adapter）
+├── run_summary.json
+├── results.jsonl                 # 逐 case 全量结果（含 retrieved_memories、metrics）
 ├── answers.jsonl
 ├── scores.jsonl
-├── api_errors.jsonl
-├── failures.jsonl
-├── summary.json
-├── trace_summary.json
-└── trace/
+├── trace/
+│   ├── trace_summary.json        # 首页与聚合页主数据源
+│   ├── trace_summary.md
+│   └── cases/<case_id>.json
+└── ...
 ```
 
-`trace_summary.json` 作为首页和聚合页主数据源。
+旧 LongMemEval 平铺布局（`run_config.json` / `retrieval.jsonl` /
+`prepared.jsonl` 等直接位于 run 根）继续兼容。
 
-Case 详情按需关联：
-
-```text
-retrieval.jsonl
-prepared.jsonl
-answers.jsonl
-scores.jsonl
-add_trace.jsonl
-```
-
-禁止修改源文件。
+Case 详情按需关联各阶段 JSONL。禁止修改源文件。
 
 # 20. Reporter 输出
 
 统一输出：
 
 ```text
-<run_dir>/report/
+<run-dir>/Trace Summary/Dashboard/
 ```
 
-至少生成：
-
-```text
-report/index.html
-report/cases/index.html
-report/cases/<case_id>.html
-report/capabilities/*.html
-report/pipeline/*.html
-report/failures/*.html
-report/performance/*.html
-report/comparison/index.html
-report/run-info/index.html
-report/assets/style.css
-report/assets/app.js
-```
+入口 `Trace Summary/Dashboard.html`，结构见第 3 节。
 
 # 21. 开发约束
 
