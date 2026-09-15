@@ -199,6 +199,7 @@ components:
       backend: markdown
       supported_extensions: [md]
       embed_toc: true
+      chunk_byte_size: 1500
       max_ast_sections: 100
       include_frontmatter_in_metadata: false
       include_frontmatter_keys_in_metadata: []
@@ -362,6 +363,34 @@ def deduplicate_sessions(
     return output
 
 
+def map_retrieved_chunks(
+    raw_results: list[dict[str, Any]], top_k: int, path_map: dict[str, str]
+) -> list[dict[str, Any]]:
+    """chunk 级映射：保留 top_k 个 chunk（含同一 session 的多个 chunk）。
+
+    小 chunk 场景下同一 session 的多个 chunk 都可能承载证据文本，
+    去重会丢弃已检索到的证据；session 级指标由上层按 session_id 派生。
+    """
+    output: list[dict[str, Any]] = []
+    for raw_rank, result in enumerate(raw_results, start=1):
+        source = result_path(result)
+        session_id = session_id_for_result(source, path_map)
+        if not session_id:
+            continue
+        output.append(
+            {
+                "rank": raw_rank,
+                "session_id": session_id,
+                "path": source,
+                "score": result_score(result),
+                "text": result_text(result),
+            }
+        )
+        if len(output) >= top_k:
+            break
+    return output
+
+
 def reme_version() -> str:
     try:
         return importlib.metadata.version("reme-ai")
@@ -466,7 +495,7 @@ class ReMeCliMemoryAdapter:
         )
         latency_ms = (time.perf_counter() - started) * 1000
         raw_results = find_results(response) or []
-        retrieved = deduplicate_sessions(raw_results, top_k, runtime.path_map)
+        retrieved = map_retrieved_chunks(raw_results, top_k, runtime.path_map)
         return MemorySearchResult(
             response=response,
             raw_results=raw_results,

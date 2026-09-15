@@ -85,7 +85,10 @@ class FakeSystem:
             message = session["messages"][0]
             memory_id = message.get("metadata", {}).get("memory_id")
             if memory_id not in runtime.deleted and kwargs["query"] in message.get("content", ""):
-                hits.append({"session_id": session["session_id"], "score": 1.0})
+                hits.append({
+                    "session_id": session["session_id"], "score": 1.0,
+                    "text": message.get("content", ""),
+                })
         return SystemSearchResult({}, hits[:kwargs["top_k"]], 2.5)
 
     def delete(self, runtime, *, memory_ids):
@@ -147,6 +150,10 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         assert results[1]["metrics"]["hit_at_k"] == 1.0
         assert results[1]["metrics"]["recall_at_k"] == 1.0
         assert results[1]["metrics"]["mrr"] == 1.0
+        # D02：hit/recall/mrr 现为 needle 级（gold session 事件文本需出现在返回 chunk 中），
+        # session 级原值保留在 session_* 字段。
+        assert results[1]["metrics"]["needle_hit_at_k"] == 1.0
+        assert results[1]["metrics"]["session_hit_at_k"] == 1.0
         # 多 K 指标：只返回 1 条结果时只有 K=1 档位。
         assert results[1]["metrics"]["metrics_by_k"] == {
             "1": {"hit": 1.0, "recall": 1.0, "mrr": 1.0}

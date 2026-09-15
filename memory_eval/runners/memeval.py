@@ -319,6 +319,23 @@ def _needle_text_metrics(
         for message in session.get("messages", []):
             if message.get("event_id"):
                 contents[str(message["event_id"])] = str(message.get("content", ""))
+    # D02 的 gold_evidence_ids 是 session 级标注，展开为该 session 的全部事件文本
+    # 作为 needle，才能在 chunk 粒度上判定证据是否真的被召回。
+    sessions_by_id = {
+        str(session.get("session_id")): session
+        for session in runtime.canonical_case.get("sessions", [])
+    }
+    expanded: list[str] = []
+    for ref in refs:
+        if ref in contents:
+            expanded.append(ref)
+        elif ref in sessions_by_id:
+            expanded.extend(
+                str(message["event_id"])
+                for message in sessions_by_id[ref].get("messages", [])
+                if message.get("event_id")
+            )
+    refs = expanded
     retrieved_texts = [str(item.get("text", "")) for item in memories]
     reciprocal_ranks: list[float] = []
     hits = 0
@@ -576,6 +593,18 @@ class MemEvalRunner:
                 metrics["recall_at_k"] = needle["needle_recall_at_k"]
                 metrics["mrr"] = needle["needle_mrr"]
         if dimension == "D02":
+            # gold 只有 session 级标注：session 命中只证明找对了会话；
+            # needle 以 gold session 全部事件文本是否出现在返回 chunk 中判定，
+            # 反映细粒度证据召回水平，session 级原值保留在 session_* 字段。
+            needle = _needle_text_metrics(case, runtime, memories)
+            if needle:
+                metrics["session_hit_at_k"] = metrics.get("hit_at_k")
+                metrics["session_recall_at_k"] = metrics.get("recall_at_k")
+                metrics["session_mrr"] = metrics.get("mrr")
+                metrics.update(needle)
+                metrics["hit_at_k"] = needle["needle_hit_at_k"]
+                metrics["recall_at_k"] = needle["needle_recall_at_k"]
+                metrics["mrr"] = needle["needle_mrr"]
             return None, memories, metrics, "ok", [], retrieval_ms
 
         answer = self.system.query(runtime, query=query)
