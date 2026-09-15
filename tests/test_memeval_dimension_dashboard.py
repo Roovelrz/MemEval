@@ -71,11 +71,12 @@ def test_memeval_trace_reuses_independent_dimension_metrics():
     assert metrics["D08"]["metrics"]["leakage_free_rate"] == 1.0
 
 
-def test_dimension_dashboard_d02_uses_k3_primary_with_full_k_breakdown():
+def test_dimension_dashboard_d02_uses_needle_primary_with_session_reference():
     adapter = MemEvalTraceAdapter.__new__(MemEvalTraceAdapter)
     metrics = adapter._dimension_dashboard_metrics([
         _result("r1", "D02", {
-            "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0,
+            "hit_at_k": 1.0, "recall_at_k": 0.4, "mrr": 1.0,
+            "session_hit_at_k": 1.0, "session_recall_at_k": 1.0, "session_mrr": 1.0,
             "metrics_by_k": {
                 "1": {"hit": 1.0, "recall": 0.5, "mrr": 1.0},
                 "3": {"hit": 1.0, "recall": 1.0, "mrr": 0.5},
@@ -83,7 +84,8 @@ def test_dimension_dashboard_d02_uses_k3_primary_with_full_k_breakdown():
             },
         }),
         _result("r2", "D02", {
-            "hit_at_k": 1.0, "recall_at_k": 1.0, "mrr": 1.0,
+            "hit_at_k": 0.0, "recall_at_k": 0.2, "mrr": 0.0,
+            "session_hit_at_k": 1.0, "session_recall_at_k": 0.5, "session_mrr": 0.5,
             "metrics_by_k": {
                 "1": {"hit": 0.0, "recall": 0.0, "mrr": 0.0},
                 "3": {"hit": 1.0, "recall": 0.5, "mrr": 0.5},
@@ -93,11 +95,11 @@ def test_dimension_dashboard_d02_uses_k3_primary_with_full_k_breakdown():
     ])
 
     d02 = metrics["D02"]["metrics"]
-    # 主指标取 K=3，而不是 top_k=10 的旧口径。
-    assert d02["primary_k"] == 3
-    assert d02["hit_at_k"] == 1.0
-    assert d02["recall_at_k"] == 0.75
+    # 主指标取行级顶层 needle 口径（与 D05/D07 一致），session 级与完整 K 档位作参照。
+    assert d02["hit_at_k"] == 0.5
+    assert d02["recall_at_k"] == pytest.approx(0.3)
     assert d02["mrr"] == 0.5
+    assert d02["session_recall_at_k"] == 0.75
     assert d02["retrieval_metrics_by_k"]["1"]["recall"] == 0.25
     assert d02["retrieval_metrics_by_k"]["10"]["recall"] == 1.0
 
@@ -107,8 +109,8 @@ def test_dimension_dashboard_d02_uses_k3_primary_with_full_k_breakdown():
         "dimension_metrics": {"D02": {"availability": "MEASURED", "answer_judge": "MEASURED", "metrics": d02}},
     }
     page = _special_dimension_page(summary, [], "D02")
-    assert "Recall@3" in page
-    assert "Hit@3" in page
+    assert "Needle Recall" in page
+    assert "Session Recall" in page
     assert "metric-tooltip" in page
     assert "Hit@10" in page  # tooltip 内含其余 K 档位
     assert "Hit@5" in page
@@ -210,10 +212,7 @@ def test_special_dimension_dashboard_marks_answer_and_judge_not_applicable():
 
 
 def test_special_dimension_index_links_stay_within_dimension_directory():
-    # MemEval Run 的 dimension_metrics 至少含一个维度；空/缺失视为 Legacy Run 回退。
-    page = _special_dimensions_index(
-        {"run_info": {}, "dimension_metrics": {"D01": {"availability": "MEASURED", "metrics": {}}}}
-    )
+    page = _special_dimensions_index({"run_info": {}, "dimension_metrics": {}})
 
     assert 'href="d01.html"' in page
     assert 'href="d04.html"' in page

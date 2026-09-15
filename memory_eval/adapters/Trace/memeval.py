@@ -598,11 +598,10 @@ class MemEvalTraceAdapter:
         )
         path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    D02_PRIMARY_K = 3
-
     @classmethod
     def _d02_primary_metrics(cls, rows: list[dict[str, Any]]) -> dict[str, Any]:
-        """D02 检索指标：主指标 @3（gold retrieval_k 指定的最大档），其余 K 一并聚合供悬停展示。"""
+        """D02 检索主指标与 D05/D07 同口径：needle 级行级顶层指标（hit/recall/mrr），
+        session 级与完整 K 档位一并聚合作参照（悬停展示）。"""
 
         by_k: dict[str, dict[str, list[float]]] = {}
         for row in rows:
@@ -621,12 +620,13 @@ class MemEvalTraceAdapter:
             k: {name: sum(values) / len(values) for name, values in bucket.items() if values}
             for k, bucket in by_k.items()
         }
-        primary = aggregated.get(str(cls.D02_PRIMARY_K), {})
         return {
-            "hit_at_k": primary.get("hit"),
-            "recall_at_k": primary.get("recall"),
-            "mrr": primary.get("mrr"),
-            "primary_k": cls.D02_PRIMARY_K,
+            "hit_at_k": _mean(row.get("metrics", {}).get("hit_at_k") for row in rows),
+            "recall_at_k": _mean(row.get("metrics", {}).get("recall_at_k") for row in rows),
+            "mrr": _mean(row.get("metrics", {}).get("mrr") for row in rows),
+            "session_hit_at_k": _mean(row.get("metrics", {}).get("session_hit_at_k") for row in rows),
+            "session_recall_at_k": _mean(row.get("metrics", {}).get("session_recall_at_k") for row in rows),
+            "session_mrr": _mean(row.get("metrics", {}).get("session_mrr") for row in rows),
             "retrieval_metrics_by_k": aggregated,
         }
 

@@ -4,7 +4,7 @@ import hashlib
 import json
 import unittest
 
-from memory_eval.html_report import _home, build_html_report
+from memory_eval.html_report import build_html_report
 from memory_eval.result_layout import organize_result_layout, refresh_result_layout
 from memory_eval.trace_report import build_trace_report
 from scripts.llm_eval_common import write_jsonl
@@ -150,8 +150,7 @@ class HtmlReportTest(unittest.TestCase):
             home = (directory / "report" / "index.html").read_text(encoding="utf-8")
             case = (directory / "report" / "cases" / "case-pass.html").read_text(encoding="utf-8")
             self.assertIn("综合能力评分", home)
-            # 该 fixture 为 Legacy LongMemEval 格式（无 dimension_metrics），首页回退旧口径。
-            self.assertIn("检索/回答/端到端加权合成", home)
+            self.assertIn("八维度主指标算术平均", home)
             self.assertIn("Benchmark 表现", home)
             self.assertIn("data-benchmark-switch", home)
             self.assertIn("英文全量基准", home)
@@ -167,7 +166,7 @@ class HtmlReportTest(unittest.TestCase):
             self.assertNotIn('class="raw-value"', home)
             self.assertNotIn("证据数量分层表现", home)
             self.assertIn("能力维度表现", home)
-            self.assertIn("capabilities/single-session-user.html", home)
+            self.assertIn("dimensions/d02.html", home)
             self.assertIn("失败归因", home)
             self.assertIn("EVIDENCE", case)
             self.assertIn("返回上一级", case)
@@ -259,7 +258,9 @@ class HtmlReportTest(unittest.TestCase):
             self.assertEqual(refreshed["case_page_count"], 1)
             self.assertTrue((concise / "Dashboard" / "index.html").is_file())
 
-    def test_home_falls_back_to_question_type_cards_for_legacy_runs(self) -> None:
+    def test_home_marks_all_dimensions_unsupported_for_legacy_runs(self) -> None:
+        from memory_eval.html_report import _home
+
         summary = {
             "dataset_id": "legacy-zh",
             "top_k": 5,
@@ -274,13 +275,12 @@ class HtmlReportTest(unittest.TestCase):
             "cases": [],
         }
         html = _home(summary, [])
-        # 没有 dimension_metrics 的 Legacy Run：回退为 question_type 卡片与旧口径合成分。
-        self.assertIn("capabilities/multi-session.html", html)
-        self.assertIn("capabilities/single-session-user.html", html)
-        self.assertIn("检索/回答/端到端加权合成", html)
-        self.assertNotIn("D01 · LongMemEval", html)
-        # (0.9*0.6 + 0.875*0.4)*0.4 + 0.65*0.2 + 0.5*0.4 = 0.686
-        self.assertIn("68.6%", html)
+        # 没有 dimension_metrics 的 Legacy Run：八维度卡片全部标注「不支持」，
+        # 综合分不计入任何维度（NOT_RECORDED），不得回退旧口径合成分。
+        self.assertEqual(html.count('class="unsupported">不支持'), 8)
+        self.assertIn("dimensions/d02.html", html)
+        self.assertIn("八维度主指标算术平均", html)
+        self.assertNotIn("加权合成", html)
 
 
 if __name__ == "__main__":
