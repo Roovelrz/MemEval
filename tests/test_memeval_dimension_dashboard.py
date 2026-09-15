@@ -210,7 +210,10 @@ def test_special_dimension_dashboard_marks_answer_and_judge_not_applicable():
 
 
 def test_special_dimension_index_links_stay_within_dimension_directory():
-    page = _special_dimensions_index({"run_info": {}, "dimension_metrics": {}})
+    # MemEval Run 的 dimension_metrics 至少含一个维度；空/缺失视为 Legacy Run 回退。
+    page = _special_dimensions_index(
+        {"run_info": {}, "dimension_metrics": {"D01": {"availability": "MEASURED", "metrics": {}}}}
+    )
 
     assert 'href="d01.html"' in page
     assert 'href="d04.html"' in page

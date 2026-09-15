@@ -558,6 +558,20 @@ def _special_dimension_cards(summary: dict[str, Any], *, prefix: str = "") -> st
     return "".join(cards)
 
 
+def _question_type_capability_cards(summary: dict[str, Any], *, prefix: str = "capabilities/") -> str:
+    """Legacy LongMemEval Run 没有 dimension_metrics，回退为 question_type 卡片。"""
+    cards = "".join(
+        f'<a class="capability-card" href="{prefix}{_slug(name)}.html"><span>{_escape(CAPABILITY_LABELS.get(name, name))}</span><code>{_escape(name)}</code><div class="capability-score"><span>accuracy</span><strong>{_scalar(values.get("accuracy"), "accuracy")}</strong></div><small>case_count · {_escape(values.get("case_count", 0))}</small></a>'
+        for name, values in summary.get("question_type_breakdown", {}).items()
+        if name not in SPECIAL_DIMENSIONS
+    )
+    return cards or '<div class="empty-state">当前 Run 没有能力维度数据。</div>'
+
+
+def _has_dimension_metrics(summary: dict[str, Any]) -> bool:
+    return bool(summary.get("dimension_metrics")) if isinstance(summary.get("dimension_metrics"), dict) else False
+
+
 def _dimension_metric_audit(summary: dict[str, Any]) -> str:
     audit = summary.get("dimension_metric_audit", {})
     rows = []
@@ -722,6 +736,17 @@ def _special_dimension_page(
 
 
 def _special_dimensions_index(summary: dict[str, Any]) -> str:
+    if not _has_dimension_metrics(summary):
+        # Legacy LongMemEval Run 没有 per-dimension 数据，回退为 question_type 卡片。
+        content = f"""
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">QUESTION TYPES</p><h2>能力维度表现</h2></div></div>
+<p>该 Run 为 Legacy LongMemEval 格式，没有八维度独立指标；按 question_type 展示。</p>
+<div class="capability-grid">{_question_type_capability_cards(summary, prefix='../capabilities/')}</div></section>
+"""
+        return _page(
+            "能力维度表现", content, summary, active="dimensions",
+            subtitle="Legacy Run：按 question_type 汇总",
+        )
     content = f"""
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">EIGHT DIMENSIONS</p><h2>八维度独立得分</h2></div></div>
 <p>每个维度按自身 Gold Payload 独立评分；系统不支持的维度标注「不支持」，不判 0 分。D01、D04、D08 无 gold_answer，不进入 Answer/Judge 四象限。</p>
@@ -751,12 +776,30 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
         value = dimension.get("metrics", {}).get(metric_key) if isinstance(dimension, dict) else None
         if isinstance(value, (int, float)) and not isinstance(value, bool):
             dimension_scores.append(float(value))
-    composite = sum(dimension_scores) / len(dimension_scores) if dimension_scores else None
+    if dimension_scores:
+        composite = sum(dimension_scores) / len(dimension_scores)
+        composite_formula = " / ".join(
+            f"{key}" for key in primary_metric_keys.values()
+        )
+    else:
+        # Legacy LongMemEval Run：沿用旧口径 recall/mrr 加权 + 端到端合成。
+        aggregate_recall = summary.get("recall_at_k")
+        mrr_value = summary.get("mrr")
+        answer_accuracy = summary.get("answer_accuracy")
+        grounded = summary.get("grounded_end_to_end_accuracy")
+        retrieval_quality = (
+            aggregate_recall * 0.6 + mrr_value * 0.4
+            if isinstance(aggregate_recall, (int, float)) and isinstance(mrr_value, (int, float))
+            else None
+        )
+        composite = (
+            retrieval_quality * 0.4 + answer_accuracy * 0.2 + grounded * 0.4
+            if all(isinstance(value, (int, float)) for value in (retrieval_quality, answer_accuracy, grounded))
+            else None
+        )
+        composite_formula = "(recall_at_k*0.6 + mrr*0.4)*0.4 + answer_accuracy*0.2 + grounded_end_to_end_accuracy*0.4"
     composite_value = float(composite or 0)
     composite_label = f"{composite_value * 100:.1f}%" if composite is not None else NOT_RECORDED
-    composite_formula = " / ".join(
-        f"{key}" for key in primary_metric_keys.values()
-    )
     top_k = summary.get("top_k", 10)
     root_counts = summary.get("root_cause_distribution", {})
     nonzero_roots = [(name, int(root_counts.get(name, 0))) for name in ROOT_CAUSES if name != "PASS" and root_counts.get(name, 0)]
@@ -790,9 +833,9 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
     content = f"""
 {benchmark_table}
 <section class="hero-grid">
-  <article class="score-card"><div class="score-ring" style="--score:{composite_value:.4f}"><span>{_escape(composite_label)}</span></div><div><p class="eyebrow">DISPLAY-ONLY AGGREGATE</p><h2>综合能力评分</h2><p>八维度主指标算术平均（不支持的维度不计入）：<br/><code>{_escape(composite_formula)}</code></p><small>仅用于当前本地 Eval 的展示，不修改原始 Trace 指标。</small></div></article>
+  <article class="score-card"><div class="score-ring" style="--score:{composite_value:.4f}"><span>{_escape(composite_label)}</span></div><div><p class="eyebrow">DISPLAY-ONLY AGGREGATE</p><h2>综合能力评分</h2><p>{('八维度主指标算术平均（不支持的维度不计入）：' if _has_dimension_metrics(summary) else '检索/回答/端到端加权合成：')}<br/><code>{_escape(composite_formula)}</code></p><small>仅用于当前本地 Eval 的展示，不修改原始 Trace 指标。</small></div></article>
 </section>
-<section class="panel"><div class="section-heading"><div><p class="eyebrow">CAPABILITY BREAKDOWN</p><h2>能力维度表现</h2></div><a href="dimensions/index.html">独立查看</a></div><div class="capability-grid">{_special_dimension_cards(summary, prefix='dimensions/')}</div></section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">CAPABILITY BREAKDOWN</p><h2>能力维度表现</h2></div><a href="{('dimensions/index.html' if _has_dimension_metrics(summary) else 'capabilities/index.html')}">独立查看</a></div><div class="capability-grid">{(_special_dimension_cards(summary, prefix='dimensions/') if _has_dimension_metrics(summary) else _question_type_capability_cards(summary, prefix='capabilities/'))}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">ROOT CAUSE</p><h2>失败归因</h2></div><a href="failures/index.html">独立查看</a></div><div class="root-grid">{root_cards}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">BAD CASES</p><h2>重点 Bad Case</h2></div></div>{_case_table(bad_cases, link_prefix='', filters=False, top_k=top_k)}</section>
 """
