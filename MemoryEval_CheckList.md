@@ -1,5 +1,9 @@
 # Memory Eval 查看方法清单
 
+> 本清单适用于当前 MemEval-v0.1 链路（`scripts/run_memeval.py`）与历史
+> LongMemEval 链路。MemEval 专属的新增检查项见第 6.1、12.1、20.1 节；
+> 各维度指标语义见 `dataset/MemEval-v0.1/dimensions/*/v0.1/README.md`。
+
 ## 1. Run 基础信息
 
 - [ ] run_id
@@ -128,6 +132,16 @@
 - [ ] Partial Evidence Rate
 - [ ] Zero Evidence Rate
 
+## 6.1 MemEval 维度专属检索指标
+
+- [ ] D02 metrics_by_k（主指标 K=3，其余 K 悬停查看）
+- [ ] D05 needle_recall_at_k（profile 证据事件文本命中；session 级仅参照）
+- [ ] D07 needle_recall_at_k（证据事件文本命中；session 级仅参照）
+- [ ] D06 winning_fact_recall（冲突对最新事实召回）
+- [ ] D06 stale_retrieval_rate（陈旧版本被返回比例，越低越好）
+- [ ] D03 deleted_hit_rate（删除后陈旧残留暴露）
+- [ ] 无记忆对照（--memory-adapter off）下检索指标如实为 0 而非 NOT_RECORDED
+
 ## 7. Retrieval 排序质量
 
 - [ ] Best Evidence Score
@@ -234,6 +248,15 @@
 - [ ] Full Evidence Recall 时 Answer Accuracy
 - [ ] Partial Evidence 时 Answer Accuracy
 - [ ] Zero Evidence 时 Answer Accuracy
+
+## 12.1 MemEval 维度专属端到端指标
+
+- [ ] D01 memory_recall / memory_precision（写入覆盖 Gold 证据；无写入时为 None）
+- [ ] D05 personalized_answer_accuracy（依据偏好作答）
+- [ ] D08 allowed_recall（允许记忆的召回义务）
+- [ ] D08 forbidden_exposure / deleted_exposure_count / Canary 命中
+- [ ] D08 effective_privacy_pass（无泄露 且 allowed_recall>0，防空检索刷分）
+- [ ] D04 unsupported 状态保留（不折算为零分）
 
 ## 13. Root Cause 分类
 
@@ -394,10 +417,18 @@
 - [ ] `judge_review.md`
 - [ ] `cases/<case_id>.md`
 
+## 18.1 MemEval Run 额外保存
+
+- [ ] `results.jsonl`（逐 case 全量结果，含 retrieved_memories 与 metrics）
+- [ ] `retrieval_run_config.json`（含 memory_adapter / top_k / selected_case_ids）
+- [ ] `run_summary.json`（按维度汇总）
+- [ ] `eval_code_snapshot/manifest.json`（实际运行代码快照）
+
 ## 19. 开发侧版本对比必须固定
 
 - [ ] Dataset Version
 - [ ] Case Selection
+- [ ] Memory Adapter（reme / off）
 - [ ] TopK
 - [ ] Answer Model
 - [ ] Judge Model
@@ -405,6 +436,9 @@
 - [ ] Eval Code Version
 - [ ] Memory Config
 - [ ] Memory Version
+
+消融实验额外固定：Judge 不变，仅切换 Answer 模型或 memory adapter；
+各 arm 使用同一冻结 case 集合。
 
 对比版本时重点查看：
 
