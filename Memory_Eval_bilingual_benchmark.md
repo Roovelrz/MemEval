@@ -1,5 +1,21 @@
 # Memory Eval 双语 Benchmark 改进清单
 
+> **文档状态：历史规划，已完成使命并归档。**
+>
+> 本清单是 LongMemEval 单数据集时代的双语双轨规划，其中可复用的机制
+> （Dataset Registry、按 `<语言>/<memory_backend>/<run_id>` 隔离结果、
+> Dashboard Benchmark 切换）已全部落地，并直接支撑了后续演进。
+>
+> **当前现状**：双语双轨已被冻结的复合 benchmark `MemEval-v0.1`（298 条、
+> D01–D08 八维，含 LoCoMo / LongMemEval / PersonaMem 等来源切片）取代。
+> 正式入口是 `scripts/run_memeval.py`，结果按
+> `results/memeval_v0_1/<system>/<run-id>/` 隔离，Dashboard 的 Benchmark
+> 下拉切换沿用本规划第 7 节的机制。历史 LongMemEval 英/中链路仍可通过
+> `scripts/run_reme_end_to_end_eval.py` 运行。
+>
+> 以下正文保留原始规划内容作为设计决策记录，未完成的"英文全量 Run"等
+> 事项不再计划执行。
+
 ## 1. 数据集拆分
 
 当前只保留两套独立 Benchmark：
@@ -339,7 +355,7 @@ cases/<case_id>.html
 - [x] 英文数据通过现有 Dataset Adapter 进入统一 `EvalCase`
 - [x] 英文跑通 1 case
 - [x] 英文跑通 20 case
-- [ ] 英文跑通全量
+- [~] 英文跑通全量（已中止：复合 benchmark MemEval-v0.1 接管了大样本职责）
 - [x] Run 信息增加 dataset 和 language 字段
 - [x] Results 按英文和中文分别保存
 - [x] Dashboard 增加 Benchmark 表现模块
