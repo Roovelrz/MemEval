@@ -275,72 +275,8 @@ def _metric_card(
     )
 
 
-def _aggregate_retrieval_metrics(summary: dict[str, Any], details: list[dict[str, Any]]) -> dict[str, dict[str, float]]:
-    """Aggregate per-case Hit/Recall values for the small K comparison tooltip."""
-
-    samples: dict[str, dict[str, list[float]]] = {}
-    for detail in details:
-        retrieval = detail.get("retrieval", {})
-        metrics_by_k = retrieval.get("metrics_by_k") if isinstance(retrieval, dict) else None
-        if not isinstance(metrics_by_k, dict):
-            continue
-        for raw_k, metrics in metrics_by_k.items():
-            if not isinstance(metrics, dict):
-                continue
-            key = str(raw_k)
-            bucket = samples.setdefault(key, {"hit": [], "recall": []})
-            for name in ("hit", "recall"):
-                value = metrics.get(name)
-                if isinstance(value, (int, float)) and not isinstance(value, bool):
-                    bucket[name].append(float(value))
-
-    result: dict[str, dict[str, float]] = {
-        key: {
-            name: sum(values) / len(values)
-            for name, values in bucket.items()
-            if values
-        }
-        for key, bucket in samples.items()
-    }
-
-    # Accept a future aggregate map if the Trace producer starts persisting one.
-    retrieval_stage = summary.get("retrieval_stage")
-    sources = (
-        summary.get("metrics_by_k"),
-        retrieval_stage.get("metrics_by_k") if isinstance(retrieval_stage, dict) else None,
-    )
-    for source in sources:
-        if not isinstance(source, dict):
-            continue
-        for raw_k, metrics in source.items():
-            if not isinstance(metrics, dict):
-                continue
-            key = str(raw_k)
-            target = result.setdefault(key, {})
-            for name in ("hit", "recall"):
-                value = metrics.get(name)
-                if name not in target and isinstance(value, (int, float)) and not isinstance(value, bool):
-                    target[name] = float(value)
-
-    top_k = str(summary.get("top_k", 10))
-    fallback = result.setdefault(top_k, {})
-    if "hit" not in fallback and isinstance(summary.get("hit_at_k"), (int, float)):
-        fallback["hit"] = float(summary["hit_at_k"])
-    if "recall" not in fallback and isinstance(summary.get("recall_at_k"), (int, float)):
-        fallback["recall"] = float(summary["recall_at_k"])
-    return result
-
-
-def _primary_retrieval_metrics(summary: dict[str, Any]) -> tuple[int, object, object]:
-    metrics_by_k = summary.get("_metrics_by_k", {})
-    preferred = metrics_by_k.get("3") if isinstance(metrics_by_k, dict) else None
-    if isinstance(preferred, dict) and any(
-        isinstance(preferred.get(name), (int, float)) for name in ("hit", "recall")
-    ):
-        return 3, preferred.get("hit"), preferred.get("recall")
-    top_k = int(summary.get("top_k", 10) or 10)
-    fallback = metrics_by_k.get(str(top_k), {}) if isinstance(metrics_by_k, dict) else {}
-    return top_k, fallback.get("hit", summary.get("hit_at_k")), fallback.get("recall", summary.get("recall_at_k"))
+def _case_link(case_id: object, prefix: str = "") -> str:
+    return f'{prefix}cases/{_safe_name(case_id)}.html'
 
 
 def _retrieval_metric_tooltip(metrics_by_k: dict[str, dict[str, float]]) -> str:
@@ -351,10 +287,6 @@ def _retrieval_metric_tooltip(metrics_by_k: dict[str, dict[str, float]]) -> str:
             f'<div class="metric-tooltip-row"><code>Hit@{k}</code>{_scalar(metrics.get("hit"), f"hit_at_{k}")}<code>Recall@{k}</code>{_scalar(metrics.get("recall"), f"recall_at_{k}")}</div>'
         )
     return '<strong>完整 K 指标</strong><div class="metric-tooltip-grid">' + "".join(rows) + '</div><small> </small>'
-
-
-def _case_link(case_id: object, prefix: str = "") -> str:
-    return f'{prefix}cases/{_safe_name(case_id)}.html'
 
 
 def _quadrant_code(value: object) -> str:
@@ -746,7 +678,7 @@ def _special_dimension_page(
     dimension = summary.get("dimension_metrics", {}).get(dimension_id, {})
     metrics = dimension.get("metrics", {}) if isinstance(dimension, dict) else {}
     availability = str(dimension.get("availability", NOT_RECORDED))
-    # 与首页"检索质量"卡片一致：主指标卡悬停展示完整 K 指标。
+    # 主指标卡悬停展示完整 K 指标。
     retrieval_by_k = (
         metrics.get("retrieval_metrics_by_k")
         if isinstance(metrics.get("retrieval_metrics_by_k"), dict) else {}
@@ -803,9 +735,6 @@ def _special_dimensions_index(summary: dict[str, Any]) -> str:
 
 
 def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
-    mrr = summary.get("mrr")
-    answer_accuracy = summary.get("answer_accuracy")
-    grounded = summary.get("grounded_end_to_end_accuracy")
     dimension_values = summary.get("dimension_metrics", {})
     primary_metric_keys = {
         "D01": "memory_precision",
@@ -829,8 +758,6 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
         f"{key}" for key in primary_metric_keys.values()
     )
     top_k = summary.get("top_k", 10)
-    primary_k, primary_hit, primary_recall = _primary_retrieval_metrics(summary)
-    retrieval_tooltip = _retrieval_metric_tooltip(summary.get("_metrics_by_k", {}))
     root_counts = summary.get("root_cause_distribution", {})
     nonzero_roots = [(name, int(root_counts.get(name, 0))) for name in ROOT_CAUSES if name != "PASS" and root_counts.get(name, 0)]
     root_cards = "".join(
@@ -865,7 +792,6 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
 <section class="hero-grid">
   <article class="score-card"><div class="score-ring" style="--score:{composite_value:.4f}"><span>{_escape(composite_label)}</span></div><div><p class="eyebrow">DISPLAY-ONLY AGGREGATE</p><h2>综合能力评分</h2><p>八维度主指标算术平均（不支持的维度不计入）：<br/><code>{_escape(composite_formula)}</code></p><small>仅用于当前本地 Eval 的展示，不修改原始 Trace 指标。</small></div></article>
 </section>
-<section class="panel"><div class="section-heading"><div><p class="eyebrow">CORE METRICS</p><h2>检索质量 · 回答质量 · 有依据端到端能力</h2></div><span class="metric-primary-hint">主指标：@{primary_k}</span></div><div class="metric-grid">{_metric_card('hit_at_k', primary_hit, tone='blue', note=f'前 {primary_k} 条是否命中至少一个 Evidence', display_label=f'Hit@{primary_k}', hover_html=retrieval_tooltip)}{_metric_card('recall_at_k', primary_recall, tone='blue', note=f'前 {primary_k} 条覆盖了多少 Evidence', display_label=f'Recall@{primary_k}', hover_html=retrieval_tooltip)}{_metric_card('mrr', mrr, tone='blue', display_label='MRR', note='第一个相关 Evidence 排名越靠前，MRR 越高。')}{_metric_card('answer_accuracy', answer_accuracy, tone='violet', note='Judge 判定回答正确的 Case 占比。')}{_metric_card('grounded_end_to_end_accuracy', grounded, tone='green', note='检索找到正确 Evidence 且最终回答正确的 Case 占比。')}{_metric_card('answer_failure_count', summary.get('answer_failure_count'), tone='red', note='被归因到 Answer 失败的 Case 数。')}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">CAPABILITY BREAKDOWN</p><h2>能力维度表现</h2></div><a href="dimensions/index.html">独立查看</a></div><div class="capability-grid">{_special_dimension_cards(summary, prefix='dimensions/')}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">ROOT CAUSE</p><h2>失败归因</h2></div><a href="failures/index.html">独立查看</a></div><div class="root-grid">{root_cards}</div></section>
 <section class="panel"><div class="section-heading"><div><p class="eyebrow">BAD CASES</p><h2>重点 Bad Case</h2></div></div>{_case_table(bad_cases, link_prefix='', filters=False, top_k=top_k)}</section>
@@ -1211,7 +1137,6 @@ def build_html_report(
         )
     summary = _read_json(summary_path)
     details = [_read_json(path) for path in case_paths]
-    summary["_metrics_by_k"] = _aggregate_retrieval_metrics(summary, details)
     summary_cases = [item for item in summary.get("cases", []) if isinstance(item, dict)]
     output = Path(output_dir).resolve() if output_dir else run_dir / "report"
     output.mkdir(parents=True, exist_ok=True)
