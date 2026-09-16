@@ -11,7 +11,7 @@ Trace Adapter 是评测框架的配套产物（不作为实验变量）：把 `r
 - `backfill_derived_metrics`：从已持久化的 `retrieved_memories` 重算
   D03 时序 / D06 冲突等派生指标，供 `--trace-only` 升级旧 run；
 - `build_trace` / `_dimension_dashboard_metrics`：生成 Trace 报告与
-  Dashboard 用的维度指标（D02 用证据事件级指标并以可评 case 为分母，D05/D07
+  Dashboard 用的维度指标（D02 仅 session 级 + answer_accuracy，D05/D07
   用 needle 级文本召回，D08 用有效隐私通过率）。
 
 未被旧 run 持久化的观测统一显示 `NOT_RECORDED`，不做推测。
@@ -52,10 +52,10 @@ DIMENSION_METRIC_AUDIT = {
         "note": "精确率 = 写入事件中属于 Gold 记忆证据的比例；逐字全量写入会因存入 non-memory 噪声而失分，抽取式系统需同时保事实、去噪声。",
     },
     "D02": {
-        "document_metrics": ["Evidence Hit@K", "Evidence Recall@K", "Evidence MRR"],
-        "trace_fields": ["hit_at_k", "recall_at_k", "mrr", "evidence_evaluated"],
-        "coverage": "EXISTING",
-        "note": "证据事件级指标（gold session 中包含 gold_answer 的事件），只聚合可评 case；session 级保留在 session_* 字段。",
+        "document_metrics": ["Session Recall@K", "Answer Accuracy"],
+        "trace_fields": ["recall_at_k", "hit_at_k", "mrr", "answer_accuracy"],
+        "coverage": "ADAPTED",
+        "note": "LongMemEval 仅有 session 级标注，事件级证据无法可靠定位，故 D02 降级为 session 级指标 + answer_accuracy。",
     },
     "D03": {
         "document_metrics": ["Temporal Accuracy", "Retention Recall", "Deleted Hit Rate"],
@@ -70,11 +70,10 @@ DIMENSION_METRIC_AUDIT = {
         "note": "ReMe 当前不暴露主动调用轨迹；Answer/Judge 指标为 NOT_APPLICABLE。",
     },
     "D05": {
-        "document_metrics": ["Profile Precision", "Preference Recall", "Profile Consistency"],
-        "trace_fields": ["recall_at_k (needle)", "session_recall_at_k", "personalized_answer_accuracy"],
-        "missing_metrics": ["profile_precision", "profile_consistency"],
+        "document_metrics": ["Needle Hit@K", "Needle Recall@K", "Needle MRR"],
+        "trace_fields": ["hit_at_k", "recall_at_k", "mrr", "metrics_by_k", "personalized_answer_accuracy"],
         "coverage": "ADAPTED",
-        "note": "Recall 按 profile 证据事件文本是否出现在返回 chunk 中计算（PersonaMem 单 session 下 session 级恒真，保留为参照）；ReMe 当前不提供画像快照。",
+        "note": "D05 有显式 evidence_event_ids 标注，needle 级指标全量参评有区分度；主指标侧重检索，完整 K 档位悬停展示。",
     },
     "D06": {
         "document_metrics": ["Latest-value", "Conflict Resolution", "Stale Retrieval"],
@@ -599,28 +598,13 @@ class MemEvalTraceAdapter:
         path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     @classmethod
-    def _d02_primary_metrics(cls, rows: list[dict[str, Any]]) -> dict[str, Any]:
-        """D02 检索主指标为证据事件级（gold session 中包含 gold_answer 文本的
-        事件被返回 chunk 命中），只聚合 evidence_evaluated=True 的行；answer 过短
-        或非逐字出现的行不参评，分母与排除原因单独输出。session 级与完整 K
-        档位一并聚合作参照（悬停展示）；旧格式行（无 evidence 标记）不混入。"""
+    def _d05_primary_metrics(cls, rows: list[dict[str, Any]]) -> dict[str, Any]:
+        """D05 检索主指标为 needle 级（profile 证据事件文本出现在返回 chunk 中），
+        全量参评（PersonaMem 有显式 evidence_event_ids 标注，无排除）。session
+        级与完整 K 档位一并聚合作参照（悬停展示）。"""
 
-        evaluated = [
-            row for row in rows
-            if row.get("metrics", {}).get("evidence_evaluated") is True
-        ]
-        excluded_short = sum(
-            row.get("metrics", {}).get("evidence_exclusion") == "answer_too_short"
-            for row in rows
-            if row.get("metrics", {}).get("evidence_evaluated") is False
-        )
-        excluded_not_verbatim = sum(
-            row.get("metrics", {}).get("evidence_exclusion") == "answer_not_verbatim"
-            for row in rows
-            if row.get("metrics", {}).get("evidence_evaluated") is False
-        )
         by_k: dict[str, dict[str, list[float]]] = {}
-        for row in evaluated:
+        for row in rows:
             metrics_by_k = row.get("metrics", {}).get("metrics_by_k")
             if not isinstance(metrics_by_k, dict):
                 continue
@@ -637,17 +621,13 @@ class MemEvalTraceAdapter:
             for k, bucket in by_k.items()
         }
         return {
-            "hit_at_k": _mean(row.get("metrics", {}).get("hit_at_k") for row in evaluated),
-            "recall_at_k": _mean(row.get("metrics", {}).get("recall_at_k") for row in evaluated),
-            "mrr": _mean(row.get("metrics", {}).get("mrr") for row in evaluated),
+            "hit_at_k": _mean(row.get("metrics", {}).get("hit_at_k") for row in rows),
+            "recall_at_k": _mean(row.get("metrics", {}).get("recall_at_k") for row in rows),
+            "mrr": _mean(row.get("metrics", {}).get("mrr") for row in rows),
             "session_hit_at_k": _mean(row.get("metrics", {}).get("session_hit_at_k") for row in rows),
             "session_recall_at_k": _mean(row.get("metrics", {}).get("session_recall_at_k") for row in rows),
             "session_mrr": _mean(row.get("metrics", {}).get("session_mrr") for row in rows),
             "retrieval_metrics_by_k": aggregated,
-            "evidence_evaluated_cases": len(evaluated),
-            "evidence_unevaluated_cases": len(rows) - len(evaluated),
-            "evidence_excluded_answer_too_short": excluded_short,
-            "evidence_excluded_answer_not_verbatim": excluded_not_verbatim,
         }
 
     def _dimension_dashboard_metrics(
@@ -727,16 +707,7 @@ class MemEvalTraceAdapter:
             row.get("latency", {}).get("retrieval") for row in d07
         ])
 
-        d02_metrics = self._d02_primary_metrics(d02)
-        d02_evidence_counts = {
-            key: d02_metrics[key]
-            for key in (
-                "evidence_evaluated_cases",
-                "evidence_unevaluated_cases",
-                "evidence_excluded_answer_too_short",
-                "evidence_excluded_answer_not_verbatim",
-            )
-        }
+        d05_metrics = self._d05_primary_metrics(d05)
 
         return {
             "D01": {
@@ -763,15 +734,16 @@ class MemEvalTraceAdapter:
             "D02": {
                 "title": "长期记忆检索",
                 "source": "LongMemEval",
-                "tests": "长期记忆的证据检索命中与排序质量（证据事件级主指标，完整 K 档位悬停展示）",
+                "tests": "长期记忆的会话级检索命中与回答准确率（session 级主指标 + answer_accuracy）",
                 "case_count": len(d02),
                 "availability": "MEASURED" if d02 else NOT_RECORDED,
                 "answer_judge": "MEASURED" if answer_metric(d02) is not None else NOT_RECORDED,
                 "metrics": {
-                    **d02_metrics,
+                    "recall_at_k": mean_metric(d02, "recall_at_k"),
+                    "hit_at_k": mean_metric(d02, "hit_at_k"),
+                    "mrr": mean_metric(d02, "mrr"),
                     "answer_accuracy": answer_metric(d02),
                 },
-                **d02_evidence_counts,
             },
             "D03": {
                 "title": "长时间跨度对话",
@@ -813,13 +785,12 @@ class MemEvalTraceAdapter:
             "D05": {
                 "title": "用户画像与偏好",
                 "source": "PersonaMem-v2",
-                "tests": "用户偏好画像的召回与个性化回答准确率",
+                "tests": "用户偏好画像的 needle 级证据召回与排序质量（完整 K 档位悬停展示）",
                 "case_count": len(d05),
                 "availability": "MEASURED" if d05 else NOT_RECORDED,
                 "answer_judge": "MEASURED" if answer_metric(d05, "personalized_answer_accuracy") is not None else NOT_RECORDED,
                 "metrics": {
-                    "recall_at_k": mean_metric(d05, "recall_at_k"),
-                    "session_recall_at_k": mean_metric(d05, "session_recall_at_k"),
+                    **d05_metrics,
                     "personalized_answer_accuracy": answer_metric(d05, "personalized_answer_accuracy"),
                 },
             },

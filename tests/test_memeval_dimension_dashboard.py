@@ -71,67 +71,78 @@ def test_memeval_trace_reuses_independent_dimension_metrics():
     assert metrics["D08"]["metrics"]["leakage_free_rate"] == 1.0
 
 
-def test_dimension_dashboard_d02_uses_evidence_primary_with_session_reference():
+def test_dimension_dashboard_d02_session_level_with_answer_accuracy():
     adapter = MemEvalTraceAdapter.__new__(MemEvalTraceAdapter)
     metrics = adapter._dimension_dashboard_metrics([
         _result("r1", "D02", {
-            "evidence_evaluated": True, "evidence_exclusion": None,
-            "hit_at_k": 1.0, "recall_at_k": 0.4, "mrr": 1.0,
+            "hit_at_k": 1.0, "recall_at_k": 0.8, "mrr": 1.0,
+        }),
+        _result("r2", "D02", {
+            "hit_at_k": 0.0, "recall_at_k": 0.2, "mrr": 0.0,
+        }),
+    ])
+
+    d02 = metrics["D02"]["metrics"]
+    # D02 降级为 session 级：全部行参评，无 evidence 过滤，无 K 档位。
+    assert d02["hit_at_k"] == 0.5
+    assert d02["recall_at_k"] == pytest.approx(0.5)
+    assert d02["mrr"] == 0.5
+    assert "retrieval_metrics_by_k" not in d02
+    assert "evidence_evaluated_cases" not in d02
+
+    # Dashboard 页面：session 级指标卡，无 K 档位 tooltip。
+    summary = {
+        "run_info": {"run_id": "fixture"},
+        "dimension_metrics": {"D02": {"availability": "MEASURED", "answer_judge": "MEASURED", "metrics": d02}},
+    }
+    page = _special_dimension_page(summary, [], "D02")
+    assert "Session Recall" in page
+    assert "Answer Accuracy" in page
+    # D02 无 K 档位 tooltip。
+    assert "metric-tooltip" not in page
+
+
+def test_dimension_dashboard_d05_needle_primary_with_k_distribution():
+    adapter = MemEvalTraceAdapter.__new__(MemEvalTraceAdapter)
+    metrics = adapter._dimension_dashboard_metrics([
+        _result("r1", "D05", {
+            "hit_at_k": 1.0, "recall_at_k": 0.5, "mrr": 1.0,
             "session_hit_at_k": 1.0, "session_recall_at_k": 1.0, "session_mrr": 1.0,
             "metrics_by_k": {
                 "1": {"hit": 1.0, "recall": 0.5, "mrr": 1.0},
                 "3": {"hit": 1.0, "recall": 1.0, "mrr": 0.5},
             },
         }),
-        _result("r2", "D02", {
-            "evidence_evaluated": True, "evidence_exclusion": None,
-            "hit_at_k": 0.0, "recall_at_k": 0.2, "mrr": 0.0,
-            "session_hit_at_k": 1.0, "session_recall_at_k": 0.5, "session_mrr": 0.5,
+        _result("r2", "D05", {
+            "hit_at_k": 0.0, "recall_at_k": 0.0, "mrr": 0.0,
+            "session_hit_at_k": 1.0, "session_recall_at_k": 1.0, "session_mrr": 1.0,
             "metrics_by_k": {
                 "1": {"hit": 0.0, "recall": 0.0, "mrr": 0.0},
                 "3": {"hit": 1.0, "recall": 0.5, "mrr": 0.5},
             },
         }),
-        # answer 过短的不参评行：不进入证据级分母，session 参照照常聚合。
-        _result("r3", "D02", {
-            "evidence_evaluated": False, "evidence_exclusion": "answer_too_short",
-            "hit_at_k": None, "recall_at_k": None, "mrr": None,
-            "session_hit_at_k": 1.0, "session_recall_at_k": 1.0, "session_mrr": 1.0,
-            "metrics_by_k": {},
-        }),
-        # 旧格式行（无 evidence 标记）：不得混入证据级聚合。
-        _result("r4", "D02", {
-            "hit_at_k": 0.98, "recall_at_k": 0.97, "mrr": 0.99,
-            "metrics_by_k": {"10": {"hit": 1.0, "recall": 1.0, "mrr": 1.0}},
-        }),
     ])
 
-    d02 = metrics["D02"]["metrics"]
-    # 主指标只聚合 evidence_evaluated=True 的行（r1/r2），r3/r4 不进入分母。
-    assert d02["hit_at_k"] == 0.5
-    assert d02["recall_at_k"] == pytest.approx(0.3)
-    assert d02["mrr"] == 0.5
-    assert d02["evidence_evaluated_cases"] == 2
-    assert d02["evidence_unevaluated_cases"] == 2
-    assert d02["evidence_excluded_answer_too_short"] == 1
-    assert d02["evidence_excluded_answer_not_verbatim"] == 0
-    # session 参照聚合全部行（r4 无 session 字段，跳过）。
-    assert d02["session_recall_at_k"] == pytest.approx(2.5 / 3)
-    # by-K 悬停数据来自可评行的证据级 metrics_by_k，旧格式行的 K=10 不混入。
-    assert d02["retrieval_metrics_by_k"]["1"]["recall"] == 0.25
-    assert d02["retrieval_metrics_by_k"]["3"]["recall"] == 0.75
-    assert "10" not in d02["retrieval_metrics_by_k"]
+    d05 = metrics["D05"]["metrics"]
+    # D05 全量参评，needle 级 hit/recall/mrr + K 档位悬停。
+    assert d05["hit_at_k"] == 0.5
+    assert d05["recall_at_k"] == pytest.approx(0.25)
+    assert d05["mrr"] == 0.5
+    assert d05["retrieval_metrics_by_k"]["1"]["recall"] == 0.25
+    assert d05["retrieval_metrics_by_k"]["3"]["recall"] == 0.75
+    # session 级恒真（单 session），保留为参照。
+    assert d05["session_recall_at_k"] == 1.0
 
-    # Dashboard 页面：主指标卡带完整 K 的悬停 tooltip。
+    # Dashboard 页面：needle 级主指标卡带完整 K 档位 tooltip。
     summary = {
         "run_info": {"run_id": "fixture"},
-        "dimension_metrics": {"D02": {"availability": "MEASURED", "answer_judge": "MEASURED", "metrics": d02}},
+        "dimension_metrics": {"D05": {"availability": "MEASURED", "answer_judge": "NOT_RECORDED", "metrics": d05}},
     }
-    page = _special_dimension_page(summary, [], "D02")
-    assert "Evidence Recall" in page
-    assert "Session Recall" in page
+    page = _special_dimension_page(summary, [], "D05")
+    assert "Needle Recall" in page
+    assert "Needle Hit" in page
     assert "metric-tooltip" in page
-    assert "Hit@3" in page  # tooltip 内含其余 K 档位
+    assert "Hit@3" in page
 
 
 def test_dimension_dashboard_aggregates_d03_d06_new_metrics():

@@ -139,7 +139,7 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         )
 
         assert [row["status"] for row in results] == [
-            "partial", "ok", "partial", "unsupported", "partial", "partial", "partial"
+            "partial", "partial", "partial", "unsupported", "partial", "partial", "partial"
         ]
         # D01：逐字写入保留了事实（recall=1），但也写入了 non-memory 噪声（precision<1）。
         assert results[0]["metrics"]["memory_recall"] == 1.0
@@ -150,15 +150,10 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         assert results[1]["metrics"]["hit_at_k"] == 1.0
         assert results[1]["metrics"]["recall_at_k"] == 1.0
         assert results[1]["metrics"]["mrr"] == 1.0
-        # D02：hit/recall/mrr 为证据事件级（gold session 中包含 gold_answer 的事件
-        # 需出现在返回 chunk 中），session 级原值保留在 session_* 字段。
-        assert results[1]["metrics"]["evidence_evaluated"] is True
-        assert results[1]["metrics"]["evidence_needle_count"] == 1
-        assert results[1]["metrics"]["session_hit_at_k"] == 1.0
-        # 多 K 指标：只返回 1 条结果时只有 K=1 档位。
-        assert results[1]["metrics"]["metrics_by_k"] == {
-            "1": {"hit": 1.0, "recall": 1.0, "mrr": 1.0}
-        }
+        # D02：降级为 session 级指标 + answer_accuracy（FakeSystem 不支持回答）。
+        assert results[1]["metrics"]["session_recall_at_k"] == 1.0
+        assert results[1]["prediction"]["status"] == "unsupported"
+        assert "answer_accuracy" in results[1]["unsupported_metrics"]
         assert results[3]["prediction"]["status"] == "unsupported"
         assert results[3]["metrics"] == {}
         assert results[3]["error"] is None
@@ -225,15 +220,14 @@ def test_no_memory_control_runs_full_pipeline_with_zero_retrieval():
         )
 
         # 所有维度都必须走完整流程且非 error，才能进入 Answer/Judge LLM 阶段。
-        assert [row["status"] for row in results] == ["partial", "ok", "ok"]
+        assert [row["status"] for row in results] == ["partial", "partial", "ok"]
         assert all(row["error"] is None for row in results)
         # D01：什么都没写入，recall 如实为 0，而非 unsupported。
         assert results[0]["metrics"]["memory_recall"] == 0.0
         assert results[0]["metrics"]["memory_precision"] is None
         assert results[0]["metrics"]["written_memory_units"] == 0
-        # D02：空检索，证据事件级指标如实为 0。
+        # D02：空检索，session 级指标如实为 0。
         assert results[1]["metrics"]["retrieval_evaluated"] is True
-        assert results[1]["metrics"]["evidence_evaluated"] is True
         assert results[1]["metrics"]["hit_at_k"] == 0.0
         assert results[1]["metrics"]["recall_at_k"] == 0.0
         assert results[1]["metrics"]["mrr"] == 0.0
@@ -449,8 +443,8 @@ def test_d07_needle_text_metrics_require_evidence_text_in_chunks():
     assert found["needle_mrr"] == 1.0
 
 
-def test_d02_evidence_metrics_require_answer_in_gold_session_events():
-    from memory_eval.runners.memeval import _d02_evidence_metrics
+def test_d05_needle_metrics_produce_k_distribution():
+    from memory_eval.runners.memeval import _needle_text_metrics
 
     runtime = SimpleNamespace(
         canonical_case={"sessions": [{
@@ -462,42 +456,28 @@ def test_d02_evidence_metrics_require_answer_in_gold_session_events():
         }]},
     )
 
-    # answer 过短（<3 字符）：无法定位证据事件，标记不参评。
-    too_short = _d02_evidence_metrics(
-        {"gold": {"payload": {"gold_evidence_ids": ["s1"], "gold_answer": "2"}}},
-        runtime, [],
+    # D05 用 profile_items.evidence_event_ids 定位 needle（显式事件级标注）。
+    payload = {"profile_items": [{"evidence_event_ids": ["e1"]}]}
+    missing = _needle_text_metrics(
+        {"gold": {"payload": payload}}, runtime,
+        [{"text": "Some unrelated filler."}],
     )
-    assert too_short["evidence_evaluated"] is False
-    assert too_short["evidence_exclusion"] == "answer_too_short"
+    assert missing["needle_hit_at_k"] == 0.0
+    assert missing["needle_recall_at_k"] == 0.0
+    assert missing["needle_metrics_by_k"]["1"]["recall"] == 0.0
 
-    # answer 未在 gold session 中逐字出现（释义型答案）：不参评。
-    not_verbatim = _d02_evidence_metrics(
-        {"gold": {"payload": {"gold_evidence_ids": ["s1"], "gold_answer": "a paraphrased answer"}}},
-        runtime, [],
+    found = _needle_text_metrics(
+        {"gold": {"payload": payload}}, runtime, [
+            {"text": "Unrelated haystack filler."},
+            {"text": "The magic number is 4096."},
+            {"text": "More filler."},
+        ],
     )
-    assert not_verbatim["evidence_evaluated"] is False
-    assert not_verbatim["evidence_exclusion"] == "answer_not_verbatim"
-
-    # 证据事件 = gold session 中包含 answer 文本的事件（此处仅 e1）；
-    # 只返回无关 chunk：session 级会判 1，证据级必须判 0。
-    payload = {"gold_evidence_ids": ["s1"], "gold_answer": "4096"}
-    missing = _d02_evidence_metrics({"gold": {"payload": payload}}, runtime, [
-        {"session_id": "s1", "text": "Some unrelated filler."},
-    ])
-    assert missing["evidence_evaluated"] is True
-    assert missing["evidence_needle_count"] == 1
-    assert missing["evidence_hit_at_k"] == 0.0
-    assert missing["evidence_recall_at_k"] == 0.0
-    assert missing["evidence_mrr"] == 0.0
-
-    found = _d02_evidence_metrics({"gold": {"payload": payload}}, runtime, [
-        {"session_id": "s1", "text": "Unrelated haystack filler."},
-        {"session_id": "s1", "text": "The magic number is 4096."},
-    ])
-    assert found["evidence_hit_at_k"] == 1.0
-    assert found["evidence_recall_at_k"] == 1.0
-    assert found["evidence_mrr"] == 0.5  # 命中在 rank 2
-    assert found["evidence_metrics_by_k"] == {"1": {"hit": 0.0, "recall": 0.0, "mrr": 0.0}}
+    assert found["needle_hit_at_k"] == 1.0
+    assert found["needle_recall_at_k"] == 1.0
+    # K=1 未命中（命中在 rank 2），K=3 命中。
+    assert found["needle_metrics_by_k"]["1"]["hit"] == 0.0
+    assert found["needle_metrics_by_k"]["3"]["hit"] == 1.0
 
 
 def test_d08_effective_privacy_pass_penalizes_empty_retrieval():
@@ -560,7 +540,8 @@ def test_runner_resumes_completed_cases_and_compacts_results(capsys):
         )
 
         assert [row["case_id"] for row in results] == ["first", "second"]
-        assert results[0]["retrieval_status"] == "ok"
+        # D02 降级后走 answer 查询，FakeSystem.query 返回 unsupported，状态为 partial。
+        assert results[0]["retrieval_status"] == "partial"
         assert resumed_system.created == 1
         assert len(output.read_text(encoding="utf-8").splitlines()) == 2
         summary = json.loads((directory / "run_summary.json").read_text(encoding="utf-8"))

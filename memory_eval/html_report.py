@@ -39,14 +39,13 @@ DIMENSION_DEFS = {
     "D02": {
         "title": "长期记忆检索",
         "source": "LongMemEval",
-        "tests": "长期记忆的证据检索命中与排序质量",
-        "primary": ("recall_at_k", "Evidence Recall 证据召回率"),
+        "tests": "长期记忆的会话级检索命中与回答准确率",
+        "primary": None,
         "metrics": (
-            ("recall_at_k", "Evidence Recall 证据召回率", "gold session 中包含 gold_answer 文本的事件（证据事件）被返回 chunk 覆盖的比例；answer 过短（<3 字符）或未逐字出现在 gold session 的 case 不参评，分母见来源表。"),
-            ("hit_at_k", "Evidence Hit 证据命中率", "至少一个证据事件被返回 chunk 命中。"),
-            ("mrr", "Evidence MRR 平均倒数排名", "第一个命中的证据事件排名越靠前越高。"),
-            ("session_recall_at_k", "Session Recall 会话召回率", "session 级对齐的召回率，参照指标（BM25 词面匹配下普遍偏高）。"),
+            ("recall_at_k", "Session Recall 会话召回率", "session 级对齐的召回率（LongMemEval 仅有 session 级标注，事件级证据无法可靠定位）；BM25 词面匹配下普遍偏高，作参照。"),
             ("answer_accuracy", "Answer Accuracy 回答准确率", "Judge 判定回答正确的比例。"),
+            ("hit_at_k", "Session Hit 会话命中率", "session 级对齐的命中率，参照指标。"),
+            ("mrr", "Session MRR 平均倒数排名", "session 级对齐的 MRR，参照指标。"),
         ),
     },
     "D03": {
@@ -76,12 +75,14 @@ DIMENSION_DEFS = {
     "D05": {
         "title": "用户画像与偏好",
         "source": "PersonaMem-v2",
-        "tests": "用户偏好画像的召回与个性化回答",
-        "primary": ("personalized_answer_accuracy", "个性化回答准确率"),
+        "tests": "用户偏好画像的 needle 级证据召回与排序质量",
+        "primary": ("recall_at_k", "Needle Recall needle 召回率"),
         "metrics": (
-            ("personalized_answer_accuracy", "Personalized Accuracy 个性化准确率", "依据用户偏好回答的正确率。"),
             ("recall_at_k", "Needle Recall needle 召回率", "profile 证据事件文本出现在返回 chunk 中的比例（PersonaMem 单 session 下 session 级恒为 1，不反映真实水平）。"),
+            ("hit_at_k", "Needle Hit needle 命中率", "至少一个证据事件被返回 chunk 命中。"),
+            ("mrr", "Needle MRR 平均倒数排名", "第一个命中的证据事件排名越靠前越高。"),
             ("session_recall_at_k", "Session Recall 会话召回率", "session 级对齐的召回率，单 session 场景下仅作参照。"),
+            ("personalized_answer_accuracy", "Personalized Accuracy 个性化准确率", "依据用户偏好回答的正确率。"),
         ),
     },
     "D06": {
@@ -542,13 +543,19 @@ def _special_dimension_cards(summary: dict[str, Any], *, prefix: str = "") -> st
         # 完全没有该维度数据的 Run（如 Legacy LongMemEval）按「不支持」展示，不判 0 分。
         availability = str(dimension.get("availability", "UNSUPPORTED" if not dimension else NOT_RECORDED))
         primary = definition.get("primary")
-        if availability == "UNSUPPORTED" or not primary:
+        if availability == "UNSUPPORTED":
             score_html = '<div class="capability-score"><span>支持状态</span><strong class="unsupported">不支持</strong></div>'
-        else:
+        elif primary:
             primary_key, primary_label = primary
             score_html = (
                 f'<div class="capability-score"><span>{_escape(primary_label)}</span>'
                 f'<strong>{_scalar(metrics.get(primary_key), primary_key)}</strong></div>'
+            )
+        else:
+            first_key, first_label = definition["metrics"][0][0], definition["metrics"][0][1]
+            score_html = (
+                f'<div class="capability-score"><span>{_escape(first_label)}</span>'
+                f'<strong>{_scalar(metrics.get(first_key), first_key)}</strong></div>'
             )
         cards.append(
             f'<a class="capability-card" href="{prefix}{dimension_id.lower()}.html">'
@@ -696,7 +703,7 @@ def _special_dimension_page(
         for name, label, note in definition["metrics"]
     )
     primary = definition.get("primary")
-    if availability == "UNSUPPORTED" or not primary:
+    if availability == "UNSUPPORTED":
         primary_html = (
             '<div class="metric-grid"><article class="metric-card tone-red">'
             '<div class="metric-label"><code>系统支持状态</code></div>'
@@ -743,7 +750,7 @@ def _home(summary: dict[str, Any], cases: list[dict[str, Any]]) -> str:
         "D01": "memory_precision",
         "D02": "recall_at_k",
         "D03": "answer_accuracy",
-        "D05": "personalized_answer_accuracy",
+        "D05": "recall_at_k",
         "D06": "answer_accuracy",
         "D07": "recall_at_k",
         "D08": "privacy_pass_rate",

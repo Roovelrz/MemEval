@@ -3,4 +3,4 @@ def test_d02_reme(reme_dimension_runner) -> None:
 
 
 def test_d02_live_reme(live_reme_dimension_runner) -> None:
-    assert live_reme_dimension_runner("D02")["status"] == "ok"
+    assert live_reme_dimension_runner("D02")["status"] == "partial"

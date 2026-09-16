@@ -83,7 +83,7 @@ class ContractReMeBackend:
 
 EXPECTED_STATUSES = {
     "D01": "partial",
-    "D02": "ok",
+    "D02": "partial",
     "D03": "partial",
     "D04": "unsupported",
     "D05": "partial",
