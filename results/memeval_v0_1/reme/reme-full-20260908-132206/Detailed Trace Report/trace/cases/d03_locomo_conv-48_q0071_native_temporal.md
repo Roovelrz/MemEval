@@ -1,0 +1,1879 @@
+# Case Trace: d03:locomo:conv-48:q0071:native_temporal
+
+> **Root Cause:** `ANSWER_FAILURE`  
+> **Quadrant:** B: Retrieval PASS + Answer FAIL  
+> All evidence sessions were retrieved, but Judge marked the generated answer WRONG.
+
+## 1. Case
+
+| Field | Value |
+| --- | --- |
+| case_id | `d03:locomo:conv-48:q0071:native_temporal` |
+| question_type | D03 |
+| question_date | 2023-09-20T10:17:00 |
+| question | When did Deborah go to a community meetup? |
+| gold_answer | last week of August 2023 |
+| evidence_session_ids | d03:locomo:conv-48:D24 |
+| total_sessions | 30 |
+| total_turns | 681 |
+
+## 2. Add Trace
+
+| Field | Value |
+| --- | --- |
+| Expected sessions | 30 |
+| Successfully added sessions | 30 |
+| Expected turns | 681 |
+| Successfully added turns | 681 |
+| Expected evidence sessions | 1 |
+| Successfully added evidence sessions | 1 |
+| Evidence exists in dataset | PASS |
+| Evidence Add Status | PASS |
+| Add Status | PASS |
+| Index Status | PASS |
+| Indexed documents | 30 |
+| Indexed chunks | 30 |
+| Chunks with embedding | 0 |
+| Embedding status / calls / failures | NOT_APPLICABLE / 0 / 0 |
+| Extraction status / calls / failures | NOT_APPLICABLE / 0 / 0 |
+| Add latency | NOT_RECORDED |
+| Reindex latency | 301.8104 ms |
+| Workspace | NOT_RECORDED |
+| Namespace | NOT_RECORDED |
+| User ID | NOT_RECORDED |
+| Failed session IDs | [] |
+| Duplicate session IDs in dataset | 0 |
+| Errors | NOT_RECORDED |
+
+## 3. Retrieval Trace
+
+| Metric | Value |
+| --- | ---: |
+| Query | When did Deborah go to a community meetup? |
+| TopK | 10 |
+| Hit@K | 1.0000 |
+| Recall@K | 1.0000 |
+| MRR | 1.0000 |
+| First evidence rank in TopK | 1 |
+| First evidence rank in recorded candidates | NOT_RECORDED |
+| Retrieved evidence | 1 / 1 |
+| Missing evidence IDs | None |
+| Best evidence score | 4.5432 |
+| Best non-evidence score | 2.2499 |
+| Evidence score gap | 2.2933 |
+| Evidence content present | NOT_RECORDED |
+| Raw result count | 10 |
+| Returned session count | 10 |
+| Search status | FAIL |
+| Search retries | NOT_RECORDED |
+| Mean evidence rank | 1.0000 |
+| Search latency | 20.9495 ms |
+| Retrieval failure | None |
+
+### Top Results
+
+| Rank | Session ID | Score | Evidence | Timestamp | Text excerpt |
+| ---: | --- | ---: | :---: | --- | --- |
+| 1 | `d03:locomo:conv-48:D24` | 4.5432 | ✓ | 2023-09-03T14:14:00 | # Conversation Session ## Speaker Hey Jolene, just catching up. I went to a cool event last week with the aim to support each other - pretty inspiring. Have you been connecting wi… |
+| 2 | `d03:locomo:conv-48:D16` | 2.2499 |  | 2023-08-01T09:26:00 | # Conversation Session ## Speaker Hey Jolene! Great news - I just started a project for a cleanup in our community and have been trying to raise funds for it. It's been amazing to… |
+| 3 | `d03:locomo:conv-48:D4` | 1.7583 |  | 2023-02-04T09:48:00 | # Conversation Session ## Speaker Hey Deborah! Good to hear from you. How've you been? I've been on an emotional rollercoaster lately, but I'm coping. ## Speaker Hey Jolene! Good … |
+| 4 | `d03:locomo:conv-48:D29` | 1.5069 |  | 2023-09-17T13:24:00 | # Conversation Session ## Speaker Hey Jolene, I'm so excited to tell you! Yesterday, me and my neighbor ran a free gardening class for the community, it was awesome! People of any… |
+| 5 | `d03:locomo:conv-48:D19` | 1.4242 |  | 2023-08-19T00:52:00 | # Conversation Session ## Speaker Hey Jolene! Hope you're having a good one. Last Friday I told Anna the story of my life and they were super kind about it. It was so nice to have… |
+| 6 | `d03:locomo:conv-48:D3` | 1.3645 |  | 2023-02-01T19:03:00 | # Conversation Session ## Speaker Hi Deb! How're you? I've been busy. My engineering professor gave us a huge robotics project. It's tough but fun, it's making me get creative and… |
+| 7 | `d03:locomo:conv-48:D9` | 1.2564 |  | 2023-03-13T11:22:00 | # Conversation Session ## Speaker Hi Jolene! We haven't corresponded for a long time! ## Speaker Hey Deb, yeah life can get chaotic. How's it been going lately? ## Speaker So much… |
+| 8 | `d03:locomo:conv-48:D1` | 1.2498 |  | 2023-01-23T16:06:00 | # Conversation Session ## Speaker Hey Jolene, nice to meet you! How's your week going? Anything fun happened? ## Speaker Hi Deb! Good to meet you! Yeah, my week's been busy. I fin… |
+| 9 | `d03:locomo:conv-48:D15` | 1.2411 |  | 2023-07-09T19:37:00 | # Conversation Session ## Speaker Hey Jolene! I started a running group with Anna - it's awesome connecting with people who care about fitness! ## Speaker Cool, Deb! Glad you foun… |
+| 10 | `d03:locomo:conv-48:D27` | 1.1815 |  | 2023-09-12T14:18:00 | # Conversation Session ## Speaker Hey Deb! So sorry for the late reply, been super busy. Last weekend my partner and I traveled to a meditation retreat for a few weeks in Phuket. … |
+
+### Evidence content verification
+
+- `d03:locomo:conv-48:D24`: **NOT_RECORDED**
+
+## 4. Answer Trace
+
+| Field | Value |
+| --- | --- |
+| Context count | 10 |
+| Context characters | 32508 |
+| Context token estimate | 8130 |
+| Context order | d03:locomo:conv-48:D24 → d03:locomo:conv-48:D16 → d03:locomo:conv-48:D4 → d03:locomo:conv-48:D29 → d03:locomo:conv-48:D19 → d03:locomo:conv-48:D3 → d03:locomo:conv-48:D9 → d03:locomo:conv-48:D1 → d03:locomo:conv-48:D15 → d03:locomo:conv-48:D27 |
+| Context timestamps |  →  →  →  →  →  →  →  →  →  |
+| Evidence context positions | [1] |
+| Distractor count | 9 |
+| Evidence in retrieved_context | NOT_RECORDED |
+| Evidence in final prompt | NOT_RECORDED |
+| Answer Prompt | E:\LRZ_Workplace\fork\memory_eval_pipeline\results\memeval_v0_1\reme\reme-full-20260908-132206\answer_prompts\d03_locomo_conv-48_q0071_native_temporal.txt |
+| Answer Prompt Version | longmemeval-answer-v2-structured-time |
+| Answer Prompt SHA256 | e5451f56e847856acfe121c1737204acef914230b5afd09e73048f92d680a2a6 |
+| Truncation occurred | False |
+| Evidence before truncation | NOT_RECORDED |
+| Evidence after truncation | NOT_RECORDED |
+| Generated answer | Last Friday. |
+| Gold answer | last week of August 2023 |
+| Main difference | Surface forms differ; semantic equivalence requires Judge or human review. |
+| Model | deepseek-v4-flash |
+| Answer latency | 17020.2352 ms |
+| Failure | None |
+
+> Exact sent prompt was not available.
+
+### Retrieved context excerpts
+
+1. `d03:locomo:conv-48:D24` — <memory rank="1" session_id="d03:locomo:conv-48:D24" score="4.5431718826293945"> # Conversation Session ## Speaker Hey Jolene, just catching up. I went to a cool event last week with the aim to support each other - pretty inspiring. Have y…
+2. `d03:locomo:conv-48:D16` — <memory rank="2" session_id="d03:locomo:conv-48:D16" score="2.249898672103882"> # Conversation Session ## Speaker Hey Jolene! Great news - I just started a project for a cleanup in our community and have been trying to raise funds for it. …
+3. `d03:locomo:conv-48:D4` — <memory rank="3" session_id="d03:locomo:conv-48:D4" score="1.7583074569702148"> # Conversation Session ## Speaker Hey Deborah! Good to hear from you. How've you been? I've been on an emotional rollercoaster lately, but I'm coping. ## Speak…
+4. `d03:locomo:conv-48:D29` — <memory rank="4" session_id="d03:locomo:conv-48:D29" score="1.5068638324737549"> # Conversation Session ## Speaker Hey Jolene, I'm so excited to tell you! Yesterday, me and my neighbor ran a free gardening class for the community, it was a…
+5. `d03:locomo:conv-48:D19` — <memory rank="5" session_id="d03:locomo:conv-48:D19" score="1.4242188930511475"> # Conversation Session ## Speaker Hey Jolene! Hope you're having a good one. Last Friday I told Anna the story of my life and they were super kind about it. I…
+6. `d03:locomo:conv-48:D3` — <memory rank="6" session_id="d03:locomo:conv-48:D3" score="1.3644745349884033"> # Conversation Session ## Speaker Hi Deb! How're you? I've been busy. My engineering professor gave us a huge robotics project. It's tough but fun, it's making…
+7. `d03:locomo:conv-48:D9` — <memory rank="7" session_id="d03:locomo:conv-48:D9" score="1.2563989162445068"> # Conversation Session ## Speaker Hi Jolene! We haven't corresponded for a long time! ## Speaker Hey Deb, yeah life can get chaotic. How's it been going lately…
+8. `d03:locomo:conv-48:D1` — <memory rank="8" session_id="d03:locomo:conv-48:D1" score="1.2497994899749756"> # Conversation Session ## Speaker Hey Jolene, nice to meet you! How's your week going? Anything fun happened? ## Speaker Hi Deb! Good to meet you! Yeah, my wee…
+9. `d03:locomo:conv-48:D15` — <memory rank="9" session_id="d03:locomo:conv-48:D15" score="1.2411317825317383"> # Conversation Session ## Speaker Hey Jolene! I started a running group with Anna - it's awesome connecting with people who care about fitness! ## Speaker Coo…
+10. `d03:locomo:conv-48:D27` — <memory rank="10" session_id="d03:locomo:conv-48:D27" score="1.1815308332443237"> # Conversation Session ## Speaker Hey Deb! So sorry for the late reply, been super busy. Last weekend my partner and I traveled to a meditation retreat for a…
+
+<details>
+<summary>Full retrieved_context (expand for provenance)</summary>
+
+### Context 1: `d03:locomo:conv-48:D24`
+
+```text
+<memory rank="1" session_id="d03:locomo:conv-48:D24" score="4.5431718826293945">
+# Conversation Session
+
+## Speaker
+
+Hey Jolene, just catching up. I went to a cool event last week with the aim to support each other - pretty inspiring. Have you been connecting with anyone lately?
+
+## Speaker
+
+Hey Deb, great to hear from you! I've been focusing on studying and my relationship with my partner. We're taking little trips to the beach, it's a great way to relax. How about you, anything new going on?
+
+## Speaker
+
+I was busy too - went to a community meetup last Friday. We shared stories and it was nice to feel how connected we are. It made me think about how important relationships are. How about you, how are things going in that area?
+
+## Speaker
+
+I'm really thankful for my significant other right now. It's great to have someone encouraging my goals! How are things with your friends and family? Any updates on that front?
+
+## Speaker
+
+Relationships with family and friends are so vital. My yoga pals have been my second family - we've held each other up through a lot. The other day I found this old photo. That was when I first started doing yoga. My mum was my biggest fan and source of motivation. She'd often come to my classes with me.
+
+## Speaker
+
+Our loved ones sure are supportive! When I was 10, my parents got me that and it was the start of my passion for video games.
+
+## Speaker
+
+Cool that they shared that with you. Did you learn on your own or did they teach you?
+
+## Speaker
+
+I taught myself, but my dad was always supportive and my mom would play games with me.
+
+## Speaker
+
+That's awesome! Sounds like you had a lot of support from your parents. What was your favorite game to play with mom?
+
+## Speaker
+
+One of my favorites was "Monster Hunter: World". The immersive story and open-world gaming are amazing!
+
+## Speaker
+
+It can be so freeing when you get immersed in a game like that.
+
+## Speaker
+
+Yeah! It's my way to de-stress and take a break from life.
+
+## Speaker
+
+What's up this month? Anything fun happening for you?
+
+## Speaker
+
+Got a lot of finals coming up this month, so I've been studying real hard. It's been quite stressful, but it'll be worth it in the end. Thinking about taking a trip somewhere to relax and recharge afterward.
+
+## Speaker
+
+Good luck with it! Let me know if there's anything I can do to assist you.
+</memory>
+```
+
+### Context 2: `d03:locomo:conv-48:D16`
+
+```text
+<memory rank="2" session_id="d03:locomo:conv-48:D16" score="2.249898672103882">
+# Conversation Session
+
+## Speaker
+
+Hey Jolene! Great news - I just started a project for a cleanup in our community and have been trying to raise funds for it. It's been amazing to see everyone come together to make a difference. How've you been? Anything new going on?
+
+## Speaker
+
+Hey Debs! Congrats on your project for the community! As for me, life's been a rollercoaster lately. Last week, I had a huge setback with my project. I put in so much work and it all crashed and I lost everything. SO frustrating and depressing.
+
+## Speaker
+
+Jolene, sorry to hear that. It must be really tough. I'm here for you and if I can do anything, just let me know. Is there anything that's helping you cope?
+
+## Speaker
+
+Your support means a lot. Susie really helps when times get tough. Pets have been great company. Video games have also been a nice distraction.
+
+## Speaker
+
+They can really provide love and comfort, especially during tough times. How did you come to have Susie?
+
+## Speaker
+
+I adopted her two years ago when I was feeling lonely and wanted some company.
+
+## Speaker
+
+That's great, Jolene! Animals sure have a way of bringing us happiness. They understand us and provide us with comfort. Plus, having a pet teaches us responsibility. She came at the perfect time - cherish those moments with her and find strength in her presence.
+
+## Speaker
+
+Thanks Deborah. Having her around shows me I can stay strong and find joy in the small stuff.
+
+## Speaker
+
+Enjoying the little things is key. Those little moments can give us a boost and push us forward. How have you been taking care of yourself lately?
+
+## Speaker
+
+I'm trying to prioritize self-care, like yoga and meditation. It helps me stay balanced and grounded.
+
+## Speaker
+
+If you're interested, I can suggest some routines for you to try.
+
+## Speaker
+
+I'm always on the lookout for new routines to mix things up.
+
+## Speaker
+
+In the meantime, check out this great place for yoga.
+
+## Speaker
+
+This room looks perfect for it. Do you have any favorite routines you can share?
+
+## Speaker
+
+One of my favorite yoga routines is a gentle flow that's all about breathing and grounding. It helps me find my chill. I'll send you a tutorial video with the poses. This is me in the process :)
+
+## Speaker
+
+Wow! Does that help you find your chill or improve your concentration?
+
+## Speaker
+
+It's a great way to find balance in tough times. Try it out and let me know what you think!
+
+## Speaker
+
+Can't wait to try it out. Let's chat soon!
+
+## Speaker
+
+Let me know how it goes. Talk to you later!
+
+## Speaker
+
+Yep, I'll practice and update you. Bye!
+</memory>
+```
+
+### Context 3: `d03:locomo:conv-48:D4`
+
+```text
+<memory rank="3" session_id="d03:locomo:conv-48:D4" score="1.7583074569702148">
+# Conversation Session
+
+## Speaker
+
+Hey Deborah! Good to hear from you. How've you been? I've been on an emotional rollercoaster lately, but I'm coping.
+
+## Speaker
+
+Hey Jolene! Good to hear from you. All good here - how about you? Anything new happening lately?
+
+## Speaker
+
+I had a major milestone last week and it went really well - I'm so relieved and proud. It was a huge accomplishment for me as an engineer.
+
+## Speaker
+
+That's awesome. You must have worked really hard for that. I'm so proud of you. Care to share more about it?
+
+## Speaker
+
+Thanks so much! I had to plan and research a lot to design and build a sustainable water purifier for a rural community in need. It was tough, but I loved the experience.
+
+## Speaker
+
+Your engineering skills really made a difference for people in a rural area. That's amazing! How did it feel when you saw it working?
+
+## Speaker
+
+It was such a surreal moment. Seeing it working and providing clean water to the community was incredibly satisfying. It reminded me of how engineering can make a difference in people's lives. It made me feel like I had a purpose and had done something good.
+
+## Speaker
+
+So, what are your career aspirations now?
+
+## Speaker
+
+I want to keep working in engineering and continue to make a positive impact on communities in need by creating sustainable solutions. My goal is to contribute towards making the world a better place with my work.
+
+## Speaker
+
+I'm sure great things will keep coming your way. Keep up the good work and follow your passions!
+
+## Speaker
+
+Your support means a lot. I'm determined to keep going and make a difference. Your encouragement really motivates me to pursue my passions.
+
+## Speaker
+
+When things get tough, just take a deep breath and remember why you're doing this. This is where I spend a lot of my time, teaching yoga. It's a great way to find balance and reconnect with ourselves. I bonded with Anna during yesterday's l yoga class.
+
+## Speaker
+
+Wow, that's awesome! What new poses did you try?
+
+## Speaker
+
+We were trying out different dance poses, like Warrior II, which builds strength and boosts focus.
+
+## Speaker
+
+Is it difficult to do?
+
+## Speaker
+
+Yes, but this brought us closer to Anna! We supported each other, that means a lot.
+
+## Speaker
+
+Can you explain how to do it?
+
+## Speaker
+
+Sure! To do this modified pose, sit on the edge of a chair with your feet planted. Twist your torso to one side and use your hand on your knee for support. You'll feel a stretch in your back and shoulders as you hold it for a few breaths, then switch sides. It's great for relaxing tense muscles.
+
+## Speaker
+
+Sounds really hard! Here's my bookshelf!
+
+## Speaker
+
+That's quite a collection! Have you had a favorite book lately? I'd love to hear your thoughts.
+
+## Speaker
+
+Thanks Deborah! I'm really into this book called "Sapiens" - it's a fascinating look at human history and how technology has affected us. It's giving me a lot to think about!
+
+## Speaker
+
+Great, this is interesting! Have you come across any recent ones that really struck you?
+
+## Speaker
+
+Two weeks ago I read "Avalanche" by Neal Stephenson in one sitting!
+
+## Speaker
+
+That sounds cool, Jolene. Stories can be so powerful - they can teach us, motivate us, and bring us together.
+
+## Speaker
+
+I also read a recent story about someone who became successful despite facing numerous challenges. It really showed me that anything is possible if you believe and work hard.
+
+## Speaker
+
+That's a really powerful message. It reminds me of someone special and their grace and strength when they faced hardships. Check out this creation!
+
+## Speaker
+
+Wow, Deb! That's beautiful! Can you tell me the backstory of that bouquet?
+
+## Speaker
+
+My friend gave me this bouquet when I was struggling, and it gives me hope and courage. I'm filled with warmth and appreciation when I look at it.
+
+## Speaker
+
+That's really sweet. Such a small thing can make a real difference.
+
+## Speaker
+
+It's amazing how something as simple as flowers can make a real difference. Nature sure is beautiful.
+
+## Speaker
+
+Where are some of your favorite nature spots?
+
+## Speaker
+
+Oh, there's so many great places! My favorite is a park with a forest trail - it's so calming getting lost in nature. Then there's this beach nearby that I love - the sound of the waves and the sand under my feet make me feel all peaceful and happy. Do you have any favorite spots, Jolene?
+
+## Speaker
+
+Here's a picture I took on vacation last summer in Bogota. It was so beautiful and calming watching the sunset over the water. It definitely made me appreciate nature's calming power.
+
+## Speaker
+
+That sounds great, Jolene. Nature's calming for sure. Guess it helps us forget the daily craziness and find inner peace. No wonder you're a fan! I like to come to this spot by the water near my mom's old house. It's where I reflect on her life and find some peace. Being surrounded by nature helps a lot.
+
+## Speaker
+
+That's so touching! Do you have any little traditions that you do when you come to reflect on your mom?
+
+## Speaker
+
+Do you remember this amulet from her? Whenever I come here, I bring it with me. It's how I feel her love and stay close to her. Holding it brings me comfort.
+
+## Speaker
+
+It's amazing how something so small can have such a big impact, huh?
+
+## Speaker
+
+Yeah, even small things like this can make a big difference. It's a reminder of all the love and strength we have inside, connecting us to people we've lost and comforting us.
+
+## Speaker
+
+It can keep them close in our hearts every day.
+
+## Speaker
+
+Anna also has a pendant that she wears in memory of her mother! This also brought us closer.
+
+## Speaker
+
+It's nice to have those reminders as a source of strength when we need it.
+
+## Speaker
+
+Life's tough but hang in there. Look to your sources of strength and you'll do great. Stay in touch, take care of yourself, and know I'm always here to cheer you on!
+
+## Speaker
+
+Thanks, Deb! Your encouragement means a lot to me. I'll definitely stay in touch. Bye, take care and keep shining!
+
+## Speaker
+
+Stay safe!  Bye!
+</memory>
+```
+
+### Context 4: `d03:locomo:conv-48:D29`
+
+```text
+<memory rank="4" session_id="d03:locomo:conv-48:D29" score="1.5068638324737549">
+# Conversation Session
+
+## Speaker
+
+Hey Jolene, I'm so excited to tell you! Yesterday, me and my neighbor ran a free gardening class for the community, it was awesome! People of any age joined in and it was such a great thing to see.
+
+## Speaker
+
+Wow, Deborah, that's awesome! Keep up the great work, and here's hoping for more events like this in the future!
+
+## Speaker
+
+Gardening is really amazing. It brings us together in such a cool way. It was awesome to share my love of plants and help people take care of the world. So, what about you? Anything new happened lately?
+
+## Speaker
+
+We tried a scuba diving lesson last Friday and had an awesome time! We found a cool dive spot we can explore together. Trying new things opens up a world of adventure - maybe one day I'll be a certified diver. Anything fun going on with you?
+
+## Speaker
+
+That sounds amazing, Jolene! I've been interested in underwater life, but I haven't had the chance to try scuba diving yet. Recently, I've been spending time remembering my mom. Last Sunday, I visited her old house and sat on a bench. It was a comforting experience, as if I could feel her presence guide me and remind me of her love.
+
+## Speaker
+
+Visiting your mom's old home sounds like it was really special. Is there something special you remember about her?
+
+## Speaker
+
+Thanks, Jolene! It was really special. My mom had a big passion for cooking. She would make amazing meals for us, each one full of love and warmth. I can still remember the smell of her special dish, it would fill the house and bring us all together.
+
+## Speaker
+
+Mmm, that looks delicious, Deb! So sweet how cooking with your mom brought everyone together. What's your best memory of cooking with her?
+
+## Speaker
+
+I loved it when she would bake pineapple birthday cakes for me when I was a kid. It always made me feel so special.
+
+## Speaker
+
+No wonder it made you feel special.
+
+## Speaker
+
+Have you ever had something like that with someone close?
+
+## Speaker
+
+I used to bake cookies with someone close to me.
+
+## Speaker
+
+What's your favorite cookie to make?
+
+## Speaker
+
+The warm, gooey chocolate and soft, buttery cookie are a match made in heaven.
+
+## Speaker
+
+I really want to eat this now.
+
+## Speaker
+
+Well look what I have here!
+
+## Speaker
+
+Is there anything special about it or the photo?
+
+## Speaker
+
+It takes me to another world when I read it!
+
+## Speaker
+
+Did I show you that I have a big bookshelf too?
+
+## Speaker
+
+I think not, I really like it!
+
+## Speaker
+
+Having a space like this is important for escaping reality and relaxing with a book. Do you have any books that really moved you?
+
+## Speaker
+
+My bathroom has an aesthetic vibe. Once I read a self-discovery book there and it really resonated with me.
+
+## Speaker
+
+Wow! A special book that speaks to you and helps with self-discovery? That's awesome. Plus, having a cozy nook to chill? That's my best one!
+
+## Speaker
+
+Sounds nice, Deb! A cozy nook is a must! The beach is a great place for finding peace and relaxation. Have you ever tried surfing?
+
+## Speaker
+
+Certainly! Here's the confirmation.
+
+## Speaker
+
+How cool! But I never decided to try it.
+
+## Speaker
+
+It's okay, maybe we can try it together sometime!
+
+## Speaker
+
+I already know what fate awaits me if I do this!
+
+## Speaker
+
+Have you ever been interested in this or do you know nothing about it?
+
+## Speaker
+
+Just started learning, but haven't gone yet. Want to come with me sometime?
+
+## Speaker
+
+It'll be an adventure! Let's make it happen soon!
+
+## Speaker
+
+So glad, all that remains is to agree and choose the right time for both of us.
+
+## Speaker
+
+Can't wait. What day works for you? I'm really excited!
+
+## Speaker
+
+Let's plan for next month - I'll check my schedule and let you know. Can't wait!
+</memory>
+```
+
+### Context 5: `d03:locomo:conv-48:D19`
+
+```text
+<memory rank="5" session_id="d03:locomo:conv-48:D19" score="1.4242188930511475">
+# Conversation Session
+
+## Speaker
+
+Hey Jolene! Hope you're having a good one. Last Friday I told Anna the story of my life and they were super kind about it. It was so nice to have a meaningful connection. How's the mindfulness workshops and reading going? Need any help?
+
+## Speaker
+
+Life's been hella busy since we last talked. I bought a console for my partner as a gift on the 17th and it's so much fun, he even managed to play it.! Engineering studies are still going strong too. Balance has been key for me lately. How about you? What's been up?
+
+## Speaker
+
+Well done! As for me, I've been focusing on teaching yoga and spending time with the community. Organizing a yoga event last month was really cool.
+
+## Speaker
+
+Was it rewarding seeing everyone come together? Can you tell me more about how you put it together? Also, any tips for maintaining a balance between hobbies and studies?
+
+## Speaker
+
+I reached out to different nearby businesses and places to make it happen. We had yoga, food stalls, and even some live music - it was amazing! As for balancing hobbies and studies, I find it helpful to prioritize and manage my time effectively. Making a schedule and setting aside specific time for studying and pursuing hobbies can go a long way in maintaining balance.
+
+## Speaker
+
+Wow, that's awesome! Gonna make a plan to manage my studies and hobbies. Say, do you ever play video games?
+
+## Speaker
+
+I used to play some video games, but it's been a while. It's a good way to relax after a busy day. Do you have any game suggestions? What's your favorite game?
+
+## Speaker
+
+I have a few game recommendations. Zelda BOTW for Switch is an awesome open-world game. Animal Crossing: New Horizons is really calming and cute. As for my favorite game, it's hard to choose just one!
+
+## Speaker
+
+Cool recs! I'll definitely check those out. What about your favorite memories of playing video games?
+
+## Speaker
+
+Oh, I forgot to mention Overcooked 2 - this is a good co-op game if you're into hilarious and chaotic cooking. My partner and I often play for bets! I once won three large pizzas!
+
+## Speaker
+
+Reminds me of when I used to play games with my husband. We'd take turns and it was a great way to bond and make memories. Gaming really can bring people closer, right?
+
+## Speaker
+
+Yeah, you`re right! What's your favorite game to play with that person?
+
+## Speaker
+
+We prefer to play detective games together.
+
+## Speaker
+
+What other activities do you both enjoy doing together?
+
+## Speaker
+
+We also enjoyed spending time outdoors and exploring nature. It was always so refreshing to be outside and soak up the fresh air.
+
+## Speaker
+
+I'm a big fan of being outside too! It's so calming and refreshing. Do you have any special spots you like to go to?
+
+## Speaker
+
+I love going to this park near my house - it has a nice forest trail and a beach. It's a peaceful spot where I can do some yoga and reflect. There's also a special bench that holds special meaning to me.
+
+## Speaker
+
+Sounds lovely! Nature can be calming. What makes this bench special to you?
+
+## Speaker
+
+It holds a lot of special memories for me and my mom - we would come here and chat about dreams and life. It's full of good moments.
+
+## Speaker
+
+That's awesome, Deborah! What were some of your favorite memories with your mom at this spot? It looks super peaceful and pretty.
+
+## Speaker
+
+I'll always cherish my memories with her at this spot. I remember a beautiful sunset we watched together in silence - the colors in the sky were so special. Every time I go back, I feel so much peace and gratitude for the time I spent with her.
+
+## Speaker
+
+Places and moments like that can mean so much, and it's a gift to find peace and gratitude in them.
+
+## Speaker
+
+I'm really thankful for all the time we had.
+
+## Speaker
+
+It's so important to cherish it.
+</memory>
+```
+
+### Context 6: `d03:locomo:conv-48:D3`
+
+```text
+<memory rank="6" session_id="d03:locomo:conv-48:D3" score="1.3644745349884033">
+# Conversation Session
+
+## Speaker
+
+Hi Deb! How're you? I've been busy. My engineering professor gave us a huge robotics project. It's tough but fun, it's making me get creative and problem-solve.
+
+## Speaker
+
+Hey Jolene! It's great to hear from you. It sounds challenging but interesting! It must be really putting your creative and problem-solving skills to the test. How did you feel when you first received the project? Are you enjoying working on it?
+
+## Speaker
+
+When I got it, I felt a mix of emotions - excited and nervous. But now, I'm really enjoying it! It's like trying to solve a puzzle, figuring out the best design and programming. Seeing the robot come together is awesome too!
+
+## Speaker
+
+That's awesome, Jolene! You're enjoying the process. It must be really satisfying to see it come together. Keep up the good work! Oh, by the way, I met my new neighbor Anna yesterday!
+
+## Speaker
+
+How did you two meet?
+
+## Speaker
+
+It happened at yoga in the park.
+
+## Speaker
+
+Wow, that's awesome! It's great connecting with people who have similar interests. Did you two talk about it?
+
+## Speaker
+
+Yeah, we talked about how it has improved our lives and the sense of community it gives.
+
+## Speaker
+
+Sounds great!
+
+## Speaker
+
+Have you ever thought about resuming yoga?
+
+## Speaker
+
+Well... we planned to play the console with my partner.
+
+## Speaker
+
+It's also good that you have something to do together.
+
+## Speaker
+
+Thanks for the kind words!
+
+## Speaker
+
+Gotta run bye!
+
+## Speaker
+
+See you soon!
+</memory>
+```
+
+### Context 7: `d03:locomo:conv-48:D9`
+
+```text
+<memory rank="7" session_id="d03:locomo:conv-48:D9" score="1.2563989162445068">
+# Conversation Session
+
+## Speaker
+
+Hi Jolene! We haven't corresponded for a long time!
+
+## Speaker
+
+Hey Deb, yeah life can get chaotic. How's it been going lately?
+
+## Speaker
+
+So much has been going on lately. I started this yoga class in the neighborhood - it's such a good feeling! Now I get to share the exercise with my neighbors and watch it really transform them.
+
+## Speaker
+
+Congrats. How did you do this?
+
+## Speaker
+
+Thanks! My neighbors were interested in trying yoga, so I hosted a class for them on Friday. It was great to see everyone embrace and enjoy it. Here is our photo together.
+
+## Speaker
+
+That's cool! What made you want to start teaching it?
+
+## Speaker
+
+I find it calming and wanted to share that with others. Giving people peace and awareness brings me so much happiness.
+
+## Speaker
+
+Wow, Deb! It's awesome when we can share something we love and make things better for others.
+
+## Speaker
+
+Teaching it is awesome because it can help others and I've made such great friends through it. It's really nice for building community connections.
+
+## Speaker
+
+That's really motivating. It's great to have support in tough times.
+
+## Speaker
+
+It's one of life's best parts, right?
+
+## Speaker
+
+Yeah, having someone to rely on is key in tough times. It really makes a difference in how we handle life. Plus, there's something I wanted to tell you.
+
+## Speaker
+
+What's up? I'm listening. We'll figure it out.
+
+## Speaker
+
+I'm having a hard time dealing with my Engineering assignments. It's a lot to manage and I'm struggling to keep up. Can we still talk about time management?
+
+## Speaker
+
+Sure, Jolene. Let's find a time that works for both of us.
+
+## Speaker
+
+Let's find a time to chat - I'll check my schedule and get back to you.
+
+## Speaker
+
+Take your time, Jolene. We'll work it out. Take care of yourself, OK?
+
+## Speaker
+
+I'll make sure to take it. See you soon!
+
+## Speaker
+
+I'm here for you if you need me. Let's catch up soon.
+
+## Speaker
+
+Have a great day!
+</memory>
+```
+
+### Context 8: `d03:locomo:conv-48:D1`
+
+```text
+<memory rank="8" session_id="d03:locomo:conv-48:D1" score="1.2497994899749756">
+# Conversation Session
+
+## Speaker
+
+Hey Jolene, nice to meet you! How's your week going? Anything fun happened?
+
+## Speaker
+
+Hi Deb! Good to meet you! Yeah, my week's been busy. I finished an electrical engineering project last week - took a lot of work, but it's done now. Anything fun happening for you?
+
+## Speaker
+
+Congrats! Last week I visited a place that holds a lot of memories for me. It was my mother`s old house.
+
+## Speaker
+
+Why does it hold such special memories for you?
+
+## Speaker
+
+It was full of memories, she passed away a few years ago. This is our last photo together.
+
+## Speaker
+
+Sorry about your loss, Deb. My mother also passed away last year. This is my room in her house, I also have many memories there. Is there anything special about it you remember?
+
+## Speaker
+
+My mom's house had a special bench near the window. She loved to sit there every morning and take in the view. I come to sit here sometimes, it helps me stay connected to her.
+
+## Speaker
+
+Staying connected is super important. Do you have something to remember her by? This pendant reminds me of my mother, she gave it to me in 2010  in Paris.
+
+## Speaker
+
+Yes, I also have a pendant that reminds me of my mother. And what is special for you about your jewelry?
+
+## Speaker
+
+It has a special symbol on it that represents freedom for me. It's a nice reminder to go for my goals and not get held back.
+
+## Speaker
+
+It should really give you strength and energy!
+
+## Speaker
+
+Do you have goals?
+
+## Speaker
+
+One of my goals is to keep teaching yoga and supporting my community. I'm passionate about helping people find peace and joy through it.
+
+## Speaker
+
+What inspired you to go down this route?
+
+## Speaker
+
+Yoga helped me find peace during a rough time, and now I'm passionate about sharing that with others.
+
+## Speaker
+
+It is truly inspiring!
+
+## Speaker
+
+Gotta run, bye!
+
+## Speaker
+
+Looking forward to the next chat!
+</memory>
+```
+
+### Context 9: `d03:locomo:conv-48:D15`
+
+```text
+<memory rank="9" session_id="d03:locomo:conv-48:D15" score="1.2411317825317383">
+# Conversation Session
+
+## Speaker
+
+Hey Jolene! I started a running group with Anna - it's awesome connecting with people who care about fitness!
+
+## Speaker
+
+Cool, Deb! Glad you found some people to get fit with. I'm trying to add workouts into my studying schedule, which has been tough but fun. How about you? Any challenges with the running group?
+
+## Speaker
+
+Oh, I'm having a blast with it! We help and push each other during our runs, which makes it so much easier to stay motivated.  I have a lot of my photos from this activity.
+
+## Speaker
+
+Deborah, that's awesome! Being part of a supportive group must be super motivating. Finding a team that's passionate about something makes a huge difference. Just thinking about my own journey too.
+
+## Speaker
+
+Having people who can cheer you on and give you advice really makes a difference. What has it been like for you finding supportive folks?
+
+## Speaker
+
+Gaming's been tough lately, but I'm grateful I have someone who's also into it. My partner helps me stay focused on our goals. We have a lot of cute photos, I want to share with you.
+
+## Speaker
+
+What do you like best about gaming together?
+
+## Speaker
+
+We get to tackle challenges and have a shared experience. It's always a blast when we're into the same game and achieve something tough. Plus, it's a great way to bond and get closer.
+
+## Speaker
+
+Woah, that's cool! Gaming is so good for strengthening relationships. Do you two have a favorite game to play together?
+
+## Speaker
+
+Yeah, we love playing "It takes two" together! It's a fun team-strategy game and it's competitive. Plus, it's a great way for us to bond. Do you have any activities you like doing with people?
+
+## Speaker
+
+Yep, I do running and yoga/meditation with others. Connecting with people and creating a community is great. Plus, I love organizing workshops and events to practice mindfulness and self-care. It's an awesome way to have fun, build relationships, and support each other's growth.
+
+## Speaker
+
+Sounds like a great way to relax. What do your workshops and events involve?
+
+## Speaker
+
+It involves various activities such as yoga, meditation, and self-reflection. They aim to cultivate self-awareness, promote mental and emotional well-being, and help individuals find inner peace. It's a space where people can connect, explore, and grow.
+
+## Speaker
+
+Your events are awesome for helping people connect and learn, it is so important. How has everything been going for you?
+
+## Speaker
+
+Thanks, Jolene! It's been great seeing everyone come together and support each other. It's amazing to witness the growth and transformation that happens through these workshops. I'm honored to be a part of it.
+
+## Speaker
+
+Wow, Deb! I can imagine how rewarding it must be to create a space for growth and change. It's great to hear that everything's going well. You can always count on me for support! I just want to share a photo with you.
+
+## Speaker
+
+Thanks, Jolene! Your support means a lot to me. I'm here for you too. By the way, I noticed your pet in the picture. What made you decide to get a snake?
+
+## Speaker
+
+I was fascinated by reptiles, and it felt like the perfect pet for me. Taking care of it has been really calming, and it's a great way to connect with nature.
+
+## Speaker
+
+Glad you found something that gives you peace and calm. Do you have a favorite memory with "it" to share?
+
+## Speaker
+
+I have lots of great memories, like our little 'snake adventure'. She got out and I spent hours searching, so relieved when I finally found her snuggling under the bed. It really showed how much I love her.
+
+## Speaker
+
+What was it like when you found her? I can imagine the relief!
+
+## Speaker
+
+Seeing her snuggled under the bed made me feel so much love and gratitude. It made me realize how important she is to me.
+
+## Speaker
+
+They bring so much joy and remind us of what's important.
+
+## Speaker
+
+Animals teach us a lot about love and gratitude, and they bring so much joy.
+
+## Speaker
+
+I haven't introduced you to my pets yet! I don't like dogs, that's why I have cats.
+
+## Speaker
+
+Looks like they're having a blast! How often do you take them out?
+
+## Speaker
+
+Exercise and nature are really important to me, so I make sure to take them out for a run in the park every morning and evening.
+
+## Speaker
+
+Wow Deb, that's great! I'd love to experience that every day.
+
+## Speaker
+
+Nature helps me find peace every day - it's so refreshing!
+
+## Speaker
+
+It's a pity that my snakes don't run!  I'd love to do that more often. They would motivate me and together it would be more fun.
+
+## Speaker
+
+It's like hitting a reset button that helps me put things into perspective and gives me time to reflect.
+
+## Speaker
+
+Yeah, I totally get it. Whenever I can, I love going for walks to take it all in. And I take photos like this
+
+## Speaker
+
+It's amazing how nature has the power to bring us peace and clarity.
+
+## Speaker
+
+This photo captures the peacefulness of a lake surrounded by trees.
+
+## Speaker
+
+Why did you choose that spot? It looks so calm.
+
+## Speaker
+
+It's such a hidden gem! It makes me feel so peaceful and tranquil.
+
+## Speaker
+
+Lucky you for having somewhere to relax and tune out!
+
+## Speaker
+
+We'll definitely go there together sometime!
+
+## Speaker
+
+We all need a timeout!
+</memory>
+```
+
+### Context 10: `d03:locomo:conv-48:D27`
+
+```text
+<memory rank="10" session_id="d03:locomo:conv-48:D27" score="1.1815308332443237">
+# Conversation Session
+
+## Speaker
+
+Hey Deb! So sorry for the late reply, been super busy. Last weekend my partner and I traveled to a meditation retreat for a few weeks in Phuket. Amazing experience! Nature, reflection and a break from engineering studies were awesome - it helped me find inner peace.
+
+## Speaker
+
+I'd love to hear more about your reflections there and how they changed you.
+
+## Speaker
+
+At the retreat, I had time to reflect on what makes me happy. It made me realize the importance of incorporating relaxation, self-care, and balance in life alongside my engineering studies. The beauty of nature there was so inspiring and refreshing!
+
+## Speaker
+
+Was there anything from the retreat that stood out to you?
+
+## Speaker
+
+The one session that really stood out was about releasing expectations and judgments and just savoring the present. It was a strong reminder to not just dwell on the finish line, but to appreciate the journey too. I usually get too consumed with hitting my goals that I forget to appreciate the ride.
+
+## Speaker
+
+I've been thinking about this a lot, too. Life's full of small moments and being grateful for those can really boost our happiness.
+
+## Speaker
+
+Yup, totally agree! Sometimes we get too focused on the big stuff and don't appreciate all the tiny wins. Like the feeling of the sun or a great cup of coffee - can be small but they make life much better. Trying to be more mindful and grateful to take it all in now.
+
+## Speaker
+
+That's great, Jolene! Practicing mindfulness and gratitude can really change our day-to-day. Even just a different outlook can make the little things in life joyful. Glad you're getting into it!
+
+## Speaker
+
+I'm experiencing a new level of joy and happiness!
+
+## Speaker
+
+It's wonderful to see your progress, and I'm excited to be on this journey with you!
+
+## Speaker
+
+Thanks, Deb! Appreciate your support. It's great that we can do this together.
+
+## Speaker
+
+Having a supportive community definitely helps. We can motivate and encourage each other! By the way, I recently played a game. I don't remember what it's called. This is a card game about cats, where you take cards one by one from a deck, and then you can attack your opponent with them. We'll definitely play it with you!
+
+## Speaker
+
+I look forward to meeting you and playing this game!
+</memory>
+```
+
+</details>
+
+## 5. Judge Trace
+
+| Field | Value |
+| --- | --- |
+| Judge Prompt | E:\LRZ_Workplace\fork\memory_eval_pipeline\results\memeval_v0_1\reme\reme-full-20260908-132206\judge_prompts\d03_locomo_conv-48_q0071_native_temporal.txt |
+| Judge Prompt Version | longmemeval-judge-v1 |
+| Judge Prompt SHA256 | 55482702d04ef95755341959d5b9881deae2e1a3abb29ab200bd28bd89070f2b |
+| Judge Prompt persisted | NO |
+| Parsed label | WRONG |
+| is_correct | NO |
+| Human review | NOT_RECORDED |
+| Model | deepseek-v4-flash |
+| Judge latency | 1929.3113 ms |
+| Suspect reasons | None |
+| Failure | None |
+
+### Judge raw response
+
+````text
+```json
+{
+    "label": "WRONG"
+}
+```
+````
+
+## 6. Root Cause
+
+**`ANSWER_FAILURE`**
+
+All evidence sessions were retrieved, but Judge marked the generated answer WRONG.
+
+**修复建议：** 在 Evidence 已完整到达后，检查 Answer prompt 的推理和格式约束。
+
+## Source artifacts
+
+- [retrieval.jsonl](../../retrieval.jsonl)
+- [prepared.jsonl](../../prepared.jsonl)
+- [answers.jsonl](../../answers.jsonl)
+- [scores.jsonl](../../scores.jsonl)
+- [end_to_end_summary.json](../../end_to_end_summary.json)
+
+
+## MemEval Dimension
+
+```json
+{
+  "dimension_id": "D03",
+  "payload_type": "temporal",
+  "gold_payload": {
+    "gold_answer": "last week of August 2023",
+    "evidence_event_ids": [
+      "d03:locomo:conv-48:D24:1"
+    ],
+    "temporal_relations": [
+      {
+        "relation": "precedes_or_coincides_with_query",
+        "evidence_event_id": "d03:locomo:conv-48:D24:1",
+        "days_before_query": 16
+      }
+    ],
+    "evidence_time": {
+      "d03:locomo:conv-48:D24:1": "2023-09-03T14:14:00"
+    },
+    "query_time": "2023-09-20T10:17:00",
+    "time_gap_days": 16,
+    "lifecycle": {
+      "valid_from": "2023-09-03T14:14:00",
+      "valid_until": null,
+      "deleted_at": null,
+      "expected_active": true
+    }
+  },
+  "metrics": {
+    "retrieval_evaluated": true,
+    "hit_at_k": 1.0,
+    "recall_at_k": 1.0,
+    "mrr": 1.0,
+    "answer_accuracy": 0.0,
+    "metrics_by_k": {
+      "1": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "3": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "5": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "10": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    }
+  },
+  "unsupported_metrics": [],
+  "prediction": {
+    "status": "ok",
+    "generated_answer": "Last Friday."
+  },
+  "system_prediction": {
+    "status": "ok",
+    "generated_answer": "Last Friday."
+  },
+  "context_cache": {
+    "hit": false,
+    "context_sha256": "b27ee0eb14afcb23a02d6aa950ddd708b3fd7822404f48899e942b6f332ce5e7",
+    "ingest_owner_case_id": "d03:locomo:conv-48:q0071:native_temporal",
+    "query_index": 1,
+    "query_count": 1
+  },
+  "run_mode": "case_isolated",
+  "status": "ok",
+  "error": null,
+  "latency": {
+    "ingest": 301.8103999984305,
+    "retrieval": 20.949499999915133,
+    "answer": 17020.235199997842,
+    "total": 4470.070500001384,
+    "judge": 1929.311299998517
+  },
+  "cost": {
+    "input_tokens": 8577,
+    "output_tokens": 2337,
+    "api_cost": 0.0017497704000000002
+  },
+  "system_trace": {
+    "status": "ok",
+    "data": {
+      "kind": "adapter_operations",
+      "events": [
+        {
+          "operation": "ingest",
+          "status": "ok",
+          "latency_ms": 331.3870999991195,
+          "raw_response": {
+            "answer": [
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D17.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D2.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D14.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D18.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D3.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D13.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D27.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D4.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D21.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D7.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D28.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D16.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D22.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D23.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D8.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D30.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D9.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D20.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D29.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D25.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D12.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D26.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D6.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D11.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D5.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D24.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D15.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D1.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D10.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D19.md",
+                "success": true
+              }
+            ],
+            "success": true,
+            "metadata": {
+              "cleared_store": true,
+              "counts": {
+                "added": 30,
+                "modified": 0,
+                "deleted": 0
+              }
+            }
+          },
+          "items": [
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D17.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D2.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D14.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D18.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D3.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D13.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D27.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D4.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D21.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D7.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D28.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D16.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D22.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D23.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D8.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D30.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D9.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D20.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D29.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D25.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D12.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D26.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D6.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D11.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D5.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D24.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D15.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D1.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D10.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\699191392c322cf5\\daily\\d03_locomo_conv-48_q0071_native_temporal\\d03_locomo_conv-48_D19.md",
+              "success": true
+            }
+          ],
+          "health": {
+            "is_started": true,
+            "n_chunks": 30,
+            "n_chunks_with_embedding": 0,
+            "memory": "0.11 MB"
+          },
+          "failures": []
+        },
+        {
+          "operation": "search",
+          "status": "ok",
+          "query": "When did Deborah go to a community meetup?",
+          "latency_ms": 20.949499999915133,
+          "raw_response": {
+            "answer": "========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D24.md:7-67 [score=4.5432] ==========\n# Conversation Session\n\n## Speaker\n\nHey Jolene, just catching up. I went to a cool event last week with the aim to support each other - pretty inspiring. Have you been connecting with anyone lately?\n\n## Speaker\n\nHey Deb, great to hear from you! I've been focusing on studying and my relationship with my partner. We're taking little trips to the beach, it's a great way to relax. How about you, anything new going on?\n\n## Speaker\n\nI was busy too - went to a community meetup last Friday. We shared stories and it was nice to feel how connected we are. It made me think about how important relationships are. How about you, how are things going in that area?\n\n## Speaker\n\nI'm really thankful for my significant other right now. It's great to have someone encouraging my goals! How are things with your friends and family? Any updates on that front?\n\n## Speaker\n\nRelationships with family and friends are so vital. My yoga pals have been my second family - we've held each other up through a lot. The other day I found this old photo. That was when I first started doing yoga. My mum was my biggest fan and source of motivation. She'd often come to my classes with me.\n\n## Speaker\n\nOur loved ones sure are supportive! When I was 10, my parents got me that and it was the start of my passion for video games.\n\n## Speaker\n\nCool that they shared that with you. Did you learn on your own or did they teach you?\n\n## Speaker\n\nI taught myself, but my dad was always supportive and my mom would play games with me.\n\n## Speaker\n\nThat's awesome! Sounds like you had a lot of support from your parents. What was your favorite game to play with mom?\n\n## Speaker\n\nOne of my favorites was \"Monster Hunter: World\". The immersive story and open-world gaming are amazing!\n\n## Speaker\n\nIt can be so freeing when you get immersed in a game like that.\n\n## Speaker\n\nYeah! It's my way to de-stress and take a break from life.\n\n## Speaker\n\nWhat's up this month? Anything fun happening for you?\n\n## Speaker\n\nGot a lot of finals coming up this month, so I've been studying real hard. It's been quite stressful, but it'll be worth it in the end. Thinking about taking a trip somewhere to relax and recharge afterward.\n\n## Speaker\n\nGood luck with it! Let me know if there's anything I can do to assist you.\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D16.md:7-87 [score=2.2499] ==========\n# Conversation Session\n\n## Speaker\n\nHey Jolene! Great news - I just started a project for a cleanup in our community and have been trying to raise funds for it. It's been amazing to see everyone come together to make a difference. How've you been? Anything new going on?\n\n## Speaker\n\nHey Debs! Congrats on your project for the community! As for me, life's been a rollercoaster lately. Last week, I had a huge setback with my project. I put in so much work and it all crashed and I lost everything. SO frustrating and depressing.\n\n## Speaker\n\nJolene, sorry to hear that. It must be really tough. I'm here for you and if I can do anything, just let me know. Is there anything that's helping you cope?\n\n## Speaker\n\nYour support means a lot. Susie really helps when times get tough. Pets have been great company. Video games have also been a nice distraction.\n\n## Speaker\n\nThey can really provide love and comfort, especially during tough times. How did you come to have Susie?\n\n## Speaker\n\nI adopted her two years ago when I was feeling lonely and wanted some company.\n\n## Speaker\n\nThat's great, Jolene! Animals sure have a way of bringing us happiness. They understand us and provide us with comfort. Plus, having a pet teaches us responsibility. She came at the perfect time - cherish those moments with her and find strength in her presence.\n\n## Speaker\n\nThanks Deborah. Having her around shows me I can stay strong and find joy in the small stuff.\n\n## Speaker\n\nEnjoying the little things is key. Those little moments can give us a boost and push us forward. How have you been taking care of yourself lately?\n\n## Speaker\n\nI'm trying to prioritize self-care, like yoga and meditation. It helps me stay balanced and grounded.\n\n## Speaker\n\nIf you're interested, I can suggest some routines for you to try.\n\n## Speaker\n\nI'm always on the lookout for new routines to mix things up.\n\n## Speaker\n\nIn the meantime, check out this great place for yoga.\n\n## Speaker\n\nThis room looks perfect for it. Do you have any favorite routines you can share?\n\n## Speaker\n\nOne of my favorite yoga routines is a gentle flow that's all about breathing and grounding. It helps me find my chill. I'll send you a tutorial video with the poses. This is me in the process :)\n\n## Speaker\n\nWow! Does that help you find your chill or improve your concentration?\n\n## Speaker\n\nIt's a great way to find balance in tough times. Try it out and let me know what you think!\n\n## Speaker\n\nCan't wait to try it out. Let's chat soon!\n\n## Speaker\n\nLet me know how it goes. Talk to you later!\n\n## Speaker\n\nYep, I'll practice and update you. Bye!\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D4.md:7-183 [score=1.7583] ==========\n# Conversation Session\n\n## Speaker\n\nHey Deborah! Good to hear from you. How've you been? I've been on an emotional rollercoaster lately, but I'm coping.\n\n## Speaker\n\nHey Jolene! Good to hear from you. All good here - how about you? Anything new happening lately?\n\n## Speaker\n\nI had a major milestone last week and it went really well - I'm so relieved and proud. It was a huge accomplishment for me as an engineer.\n\n## Speaker\n\nThat's awesome. You must have worked really hard for that. I'm so proud of you. Care to share more about it?\n\n## Speaker\n\nThanks so much! I had to plan and research a lot to design and build a sustainable water purifier for a rural community in need. It was tough, but I loved the experience.\n\n## Speaker\n\nYour engineering skills really made a difference for people in a rural area. That's amazing! How did it feel when you saw it working?\n\n## Speaker\n\nIt was such a surreal moment. Seeing it working and providing clean water to the community was incredibly satisfying. It reminded me of how engineering can make a difference in people's lives. It made me feel like I had a purpose and had done something good.\n\n## Speaker\n\nSo, what are your career aspirations now?\n\n## Speaker\n\nI want to keep working in engineering and continue to make a positive impact on communities in need by creating sustainable solutions. My goal is to contribute towards making the world a better place with my work.\n\n## Speaker\n\nI'm sure great things will keep coming your way. Keep up the good work and follow your passions!\n\n## Speaker\n\nYour support means a lot. I'm determined to keep going and make a difference. Your encouragement really motivates me to pursue my passions.\n\n## Speaker\n\nWhen things get tough, just take a deep breath and remember why you're doing this. This is where I spend a lot of my time, teaching yoga. It's a great way to find balance and reconnect with ourselves. I bonded with Anna during yesterday's l yoga class.\n\n## Speaker\n\nWow, that's awesome! What new poses did you try?\n\n## Speaker\n\nWe were trying out different dance poses, like Warrior II, which builds strength and boosts focus.\n\n## Speaker\n\nIs it difficult to do?\n\n## Speaker\n\nYes, but this brought us closer to Anna! We supported each other, that means a lot.\n\n## Speaker\n\nCan you explain how to do it?\n\n## Speaker\n\nSure! To do this modified pose, sit on the edge of a chair with your feet planted. Twist your torso to one side and use your hand on your knee for support. You'll feel a stretch in your back and shoulders as you hold it for a few breaths, then switch sides. It's great for relaxing tense muscles.\n\n## Speaker\n\nSounds really hard! Here's my bookshelf!\n\n## Speaker\n\nThat's quite a collection! Have you had a favorite book lately? I'd love to hear your thoughts.\n\n## Speaker\n\nThanks Deborah! I'm really into this book called \"Sapiens\" - it's a fascinating look at human history and how technology has affected us. It's giving me a lot to think about!\n\n## Speaker\n\nGreat, this is interesting! Have you come across any recent ones that really struck you?\n\n## Speaker\n\nTwo weeks ago I read \"Avalanche\" by Neal Stephenson in one sitting!\n\n## Speaker\n\nThat sounds cool, Jolene. Stories can be so powerful - they can teach us, motivate us, and bring us together.\n\n## Speaker\n\nI also read a recent story about someone who became successful despite facing numerous challenges. It really showed me that anything is possible if you believe and work hard.\n\n## Speaker\n\nThat's a really powerful message. It reminds me of someone special and their grace and strength when they faced hardships. Check out this creation!\n\n## Speaker\n\nWow, Deb! That's beautiful! Can you tell me the backstory of that bouquet?\n\n## Speaker\n\nMy friend gave me this bouquet when I was struggling, and it gives me hope and courage. I'm filled with warmth and appreciation when I look at it.\n\n## Speaker\n\nThat's really sweet. Such a small thing can make a real difference.\n\n## Speaker\n\nIt's amazing how something as simple as flowers can make a real difference. Nature sure is beautiful.\n\n## Speaker\n\nWhere are some of your favorite nature spots?\n\n## Speaker\n\nOh, there's so many great places! My favorite is a park with a forest trail - it's so calming getting lost in nature. Then there's this beach nearby that I love - the sound of the waves and the sand under my feet make me feel all peaceful and happy. Do you have any favorite spots, Jolene?\n\n## Speaker\n\nHere's a picture I took on vacation last summer in Bogota. It was so beautiful and calming watching the sunset over the water. It definitely made me appreciate nature's calming power.\n\n## Speaker\n\nThat sounds great, Jolene. Nature's calming for sure. Guess it helps us forget the daily craziness and find inner peace. No wonder you're a fan! I like to come to this spot by the water near my mom's old house. It's where I reflect on her life and find some peace. Being surrounded by nature helps a lot.\n\n## Speaker\n\nThat's so touching! Do you have any little traditions that you do when you come to reflect on your mom?\n\n## Speaker\n\nDo you remember this amulet from her? Whenever I come here, I bring it with me. It's how I feel her love and stay close to her. Holding it brings me comfort.\n\n## Speaker\n\nIt's amazing how something so small can have such a big impact, huh?\n\n## Speaker\n\nYeah, even small things like this can make a big difference. It's a reminder of all the love and strength we have inside, connecting us to people we've lost and comforting us.\n\n## Speaker\n\nIt can keep them close in our hearts every day.\n\n## Speaker\n\nAnna also has a pendant that she wears in memory of her mother! This also brought us closer.\n\n## Speaker\n\nIt's nice to have those reminders as a source of strength when we need it.\n\n## Speaker\n\nLife's tough but hang in there. Look to your sources of strength and you'll do great. Stay in touch, take care of yourself, and know I'm always here to cheer you on!\n\n## Speaker\n\nThanks, Deb! Your encouragement means a lot to me. I'll definitely stay in touch. Bye, take care and keep shining!\n\n## Speaker\n\nStay safe!  Bye!\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D29.md:7-143 [score=1.5069] ==========\n# Conversation Session\n\n## Speaker\n\nHey Jolene, I'm so excited to tell you! Yesterday, me and my neighbor ran a free gardening class for the community, it was awesome! People of any age joined in and it was such a great thing to see.\n\n## Speaker\n\nWow, Deborah, that's awesome! Keep up the great work, and here's hoping for more events like this in the future!\n\n## Speaker\n\nGardening is really amazing. It brings us together in such a cool way. It was awesome to share my love of plants and help people take care of the world. So, what about you? Anything new happened lately?\n\n## Speaker\n\nWe tried a scuba diving lesson last Friday and had an awesome time! We found a cool dive spot we can explore together. Trying new things opens up a world of adventure - maybe one day I'll be a certified diver. Anything fun going on with you?\n\n## Speaker\n\nThat sounds amazing, Jolene! I've been interested in underwater life, but I haven't had the chance to try scuba diving yet. Recently, I've been spending time remembering my mom. Last Sunday, I visited her old house and sat on a bench. It was a comforting experience, as if I could feel her presence guide me and remind me of her love.\n\n## Speaker\n\nVisiting your mom's old home sounds like it was really special. Is there something special you remember about her?\n\n## Speaker\n\nThanks, Jolene! It was really special. My mom had a big passion for cooking. She would make amazing meals for us, each one full of love and warmth. I can still remember the smell of her special dish, it would fill the house and bring us all together.\n\n## Speaker\n\nMmm, that looks delicious, Deb! So sweet how cooking with your mom brought everyone together. What's your best memory of cooking with her?\n\n## Speaker\n\nI loved it when she would bake pineapple birthday cakes for me when I was a kid. It always made me feel so special.\n\n## Speaker\n\nNo wonder it made you feel special.\n\n## Speaker\n\nHave you ever had something like that with someone close?\n\n## Speaker\n\nI used to bake cookies with someone close to me.\n\n## Speaker\n\nWhat's your favorite cookie to make?\n\n## Speaker\n\nThe warm, gooey chocolate and soft, buttery cookie are a match made in heaven.\n\n## Speaker\n\nI really want to eat this now.\n\n## Speaker\n\nWell look what I have here!\n\n## Speaker\n\nIs there anything special about it or the photo?\n\n## Speaker\n\nIt takes me to another world when I read it!\n\n## Speaker\n\nDid I show you that I have a big bookshelf too?\n\n## Speaker\n\nI think not, I really like it!\n\n## Speaker\n\nHaving a space like this is important for escaping reality and relaxing with a book. Do you have any books that really moved you?\n\n## Speaker\n\nMy bathroom has an aesthetic vibe. Once I read a self-discovery book there and it really resonated with me.\n\n## Speaker\n\nWow! A special book that speaks to you and helps with self-discovery? That's awesome. Plus, having a cozy nook to chill? That's my best one!\n\n## Speaker\n\nSounds nice, Deb! A cozy nook is a must! The beach is a great place for finding peace and relaxation. Have you ever tried surfing?\n\n## Speaker\n\nCertainly! Here's the confirmation.\n\n## Speaker\n\nHow cool! But I never decided to try it.\n\n## Speaker\n\nIt's okay, maybe we can try it together sometime!\n\n## Speaker\n\nI already know what fate awaits me if I do this!\n\n## Speaker\n\nHave you ever been interested in this or do you know nothing about it?\n\n## Speaker\n\nJust started learning, but haven't gone yet. Want to come with me sometime?\n\n## Speaker\n\nIt'll be an adventure! Let's make it happen soon!\n\n## Speaker\n\nSo glad, all that remains is to agree and choose the right time for both of us.\n\n## Speaker\n\nCan't wait. What day works for you? I'm really excited!\n\n## Speaker\n\nLet's plan for next month - I'll check my schedule and let you know. Can't wait!\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D19.md:7-104 [score=1.4242] ==========\n# Conversation Session\n\n## Speaker\n\nHey Jolene! Hope you're having a good one. Last Friday I told Anna the story of my life and they were super kind about it. It was so nice to have a meaningful connection. How's the mindfulness workshops and reading going? Need any help?\n\n## Speaker\n\nLife's been hella busy since we last talked. I bought a console for my partner as a gift on the 17th and it's so much fun, he even managed to play it.! Engineering studies are still going strong too. Balance has been key for me lately. How about you? What's been up?\n\n## Speaker\n\nWell done! As for me, I've been focusing on teaching yoga and spending time with the community. Organizing a yoga event last month was really cool.\n\n## Speaker\n\nWas it rewarding seeing everyone come together? Can you tell me more about how you put it together? Also, any tips for maintaining a balance between hobbies and studies?\n\n## Speaker\n\nI reached out to different nearby businesses and places to make it happen. We had yoga, food stalls, and even some live music - it was amazing! As for balancing hobbies and studies, I find it helpful to prioritize and manage my time effectively. Making a schedule and setting aside specific time for studying and pursuing hobbies can go a long way in maintaining balance.\n\n## Speaker\n\nWow, that's awesome! Gonna make a plan to manage my studies and hobbies. Say, do you ever play video games?\n\n## Speaker\n\nI used to play some video games, but it's been a while. It's a good way to relax after a busy day. Do you have any game suggestions? What's your favorite game?\n\n## Speaker\n\nI have a few game recommendations. Zelda BOTW for Switch is an awesome open-world game. Animal Crossing: New Horizons is really calming and cute. As for my favorite game, it's hard to choose just one!\n\n## Speaker\n\nCool recs! I'll definitely check those out. What about your favorite memories of playing video games?\n\n## Speaker\n\nOh, I forgot to mention Overcooked 2 - this is a good co-op game if you're into hilarious and chaotic cooking. My partner and I often play for bets! I once won three large pizzas!\n\n## Speaker\n\nReminds me of when I used to play games with my husband. We'd take turns and it was a great way to bond and make memories. Gaming really can bring people closer, right?\n\n## Speaker\n\nYeah, you`re right! What's your favorite game to play with that person?\n\n## Speaker\n\nWe prefer to play detective games together.\n\n## Speaker\n\nWhat other activities do you both enjoy doing together?\n\n## Speaker\n\nWe also enjoyed spending time outdoors and exploring nature. It was always so refreshing to be outside and soak up the fresh air.\n\n## Speaker\n\nI'm a big fan of being outside too! It's so calming and refreshing. Do you have any special spots you like to go to?\n\n## Speaker\n\nI love going to this park near my house - it has a nice forest trail and a beach. It's a peaceful spot where I can do some yoga and reflect. There's also a special bench that holds special meaning to me.\n\n## Speaker\n\nSounds lovely! Nature can be calming. What makes this bench special to you?\n\n## Speaker\n\nIt holds a lot of special memories for me and my mom - we would come here and chat about dreams and life. It's full of good moments.\n\n## Speaker\n\nThat's awesome, Deborah! What were some of your favorite memories with your mom at this spot? It looks super peaceful and pretty.\n\n## Speaker\n\nI'll always cherish my memories with her at this spot. I remember a beautiful sunset we watched together in silence - the colors in the sky were so special. Every time I go back, I feel so much peace and gratitude for the time I spent with her.\n\n## Speaker\n\nPlaces and moments like that can mean so much, and it's a gift to find peace and gratitude in them.\n\n## Speaker\n\nI'm really thankful for all the time we had.\n\n## Speaker\n\nIt's so important to cherish it.\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D3.md:7-67 [score=1.3645] ==========\n# Conversation Session\n\n## Speaker\n\nHi Deb! How're you? I've been busy. My engineering professor gave us a huge robotics project. It's tough but fun, it's making me get creative and problem-solve.\n\n## Speaker\n\nHey Jolene! It's great to hear from you. It sounds challenging but interesting! It must be really putting your creative and problem-solving skills to the test. How did you feel when you first received the project? Are you enjoying working on it?\n\n## Speaker\n\nWhen I got it, I felt a mix of emotions - excited and nervous. But now, I'm really enjoying it! It's like trying to solve a puzzle, figuring out the best design and programming. Seeing the robot come together is awesome too!\n\n## Speaker\n\nThat's awesome, Jolene! You're enjoying the process. It must be really satisfying to see it come together. Keep up the good work! Oh, by the way, I met my new neighbor Anna yesterday!\n\n## Speaker\n\nHow did you two meet?\n\n## Speaker\n\nIt happened at yoga in the park.\n\n## Speaker\n\nWow, that's awesome! It's great connecting with people who have similar interests. Did you two talk about it?\n\n## Speaker\n\nYeah, we talked about how it has improved our lives and the sense of community it gives.\n\n## Speaker\n\nSounds great!\n\n## Speaker\n\nHave you ever thought about resuming yoga?\n\n## Speaker\n\nWell... we planned to play the console with my partner.\n\n## Speaker\n\nIt's also good that you have something to do together.\n\n## Speaker\n\nThanks for the kind words!\n\n## Speaker\n\nGotta run bye!\n\n## Speaker\n\nSee you soon!\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D9.md:7-87 [score=1.2564] ==========\n# Conversation Session\n\n## Speaker\n\nHi Jolene! We haven't corresponded for a long time!\n\n## Speaker\n\nHey Deb, yeah life can get chaotic. How's it been going lately?\n\n## Speaker\n\nSo much has been going on lately. I started this yoga class in the neighborhood - it's such a good feeling! Now I get to share the exercise with my neighbors and watch it really transform them.\n\n## Speaker\n\nCongrats. How did you do this?\n\n## Speaker\n\nThanks! My neighbors were interested in trying yoga, so I hosted a class for them on Friday. It was great to see everyone embrace and enjoy it. Here is our photo together.\n\n## Speaker\n\nThat's cool! What made you want to start teaching it?\n\n## Speaker\n\nI find it calming and wanted to share that with others. Giving people peace and awareness brings me so much happiness.\n\n## Speaker\n\nWow, Deb! It's awesome when we can share something we love and make things better for others.\n\n## Speaker\n\nTeaching it is awesome because it can help others and I've made such great friends through it. It's really nice for building community connections.\n\n## Speaker\n\nThat's really motivating. It's great to have support in tough times.\n\n## Speaker\n\nIt's one of life's best parts, right?\n\n## Speaker\n\nYeah, having someone to rely on is key in tough times. It really makes a difference in how we handle life. Plus, there's something I wanted to tell you.\n\n## Speaker\n\nWhat's up? I'm listening. We'll figure it out.\n\n## Speaker\n\nI'm having a hard time dealing with my Engineering assignments. It's a lot to manage and I'm struggling to keep up. Can we still talk about time management?\n\n## Speaker\n\nSure, Jolene. Let's find a time that works for both of us.\n\n## Speaker\n\nLet's find a time to chat - I'll check my schedule and get back to you.\n\n## Speaker\n\nTake your time, Jolene. We'll work it out. Take care of yourself, OK?\n\n## Speaker\n\nI'll make sure to take it. See you soon!\n\n## Speaker\n\nI'm here for you if you need me. Let's catch up soon.\n\n## Speaker\n\nHave a great day!\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D1.md:7-79 [score=1.2498] ==========\n# Conversation Session\n\n## Speaker\n\nHey Jolene, nice to meet you! How's your week going? Anything fun happened?\n\n## Speaker\n\nHi Deb! Good to meet you! Yeah, my week's been busy. I finished an electrical engineering project last week - took a lot of work, but it's done now. Anything fun happening for you?\n\n## Speaker\n\nCongrats! Last week I visited a place that holds a lot of memories for me. It was my mother`s old house.\n\n## Speaker\n\nWhy does it hold such special memories for you?\n\n## Speaker\n\nIt was full of memories, she passed away a few years ago. This is our last photo together.\n\n## Speaker\n\nSorry about your loss, Deb. My mother also passed away last year. This is my room in her house, I also have many memories there. Is there anything special about it you remember?\n\n## Speaker\n\nMy mom's house had a special bench near the window. She loved to sit there every morning and take in the view. I come to sit here sometimes, it helps me stay connected to her.\n\n## Speaker\n\nStaying connected is super important. Do you have something to remember her by? This pendant reminds me of my mother, she gave it to me in 2010  in Paris.\n\n## Speaker\n\nYes, I also have a pendant that reminds me of my mother. And what is special for you about your jewelry?\n\n## Speaker\n\nIt has a special symbol on it that represents freedom for me. It's a nice reminder to go for my goals and not get held back.\n\n## Speaker\n\nIt should really give you strength and energy!\n\n## Speaker\n\nDo you have goals?\n\n## Speaker\n\nOne of my goals is to keep teaching yoga and supporting my community. I'm passionate about helping people find peace and joy through it.\n\n## Speaker\n\nWhat inspired you to go down this route?\n\n## Speaker\n\nYoga helped me find peace during a rough time, and now I'm passionate about sharing that with others.\n\n## Speaker\n\nIt is truly inspiring!\n\n## Speaker\n\nGotta run, bye!\n\n## Speaker\n\nLooking forward to the next chat!\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D15.md:7-163 [score=1.2411] ==========\n# Conversation Session\n\n## Speaker\n\nHey Jolene! I started a running group with Anna - it's awesome connecting with people who care about fitness!\n\n## Speaker\n\nCool, Deb! Glad you found some people to get fit with. I'm trying to add workouts into my studying schedule, which has been tough but fun. How about you? Any challenges with the running group?\n\n## Speaker\n\nOh, I'm having a blast with it! We help and push each other during our runs, which makes it so much easier to stay motivated.  I have a lot of my photos from this activity.\n\n## Speaker\n\nDeborah, that's awesome! Being part of a supportive group must be super motivating. Finding a team that's passionate about something makes a huge difference. Just thinking about my own journey too.\n\n## Speaker\n\nHaving people who can cheer you on and give you advice really makes a difference. What has it been like for you finding supportive folks?\n\n## Speaker\n\nGaming's been tough lately, but I'm grateful I have someone who's also into it. My partner helps me stay focused on our goals. We have a lot of cute photos, I want to share with you.\n\n## Speaker\n\nWhat do you like best about gaming together?\n\n## Speaker\n\nWe get to tackle challenges and have a shared experience. It's always a blast when we're into the same game and achieve something tough. Plus, it's a great way to bond and get closer.\n\n## Speaker\n\nWoah, that's cool! Gaming is so good for strengthening relationships. Do you two have a favorite game to play together?\n\n## Speaker\n\nYeah, we love playing \"It takes two\" together! It's a fun team-strategy game and it's competitive. Plus, it's a great way for us to bond. Do you have any activities you like doing with people?\n\n## Speaker\n\nYep, I do running and yoga/meditation with others. Connecting with people and creating a community is great. Plus, I love organizing workshops and events to practice mindfulness and self-care. It's an awesome way to have fun, build relationships, and support each other's growth.\n\n## Speaker\n\nSounds like a great way to relax. What do your workshops and events involve?\n\n## Speaker\n\nIt involves various activities such as yoga, meditation, and self-reflection. They aim to cultivate self-awareness, promote mental and emotional well-being, and help individuals find inner peace. It's a space where people can connect, explore, and grow.\n\n## Speaker\n\nYour events are awesome for helping people connect and learn, it is so important. How has everything been going for you?\n\n## Speaker\n\nThanks, Jolene! It's been great seeing everyone come together and support each other. It's amazing to witness the growth and transformation that happens through these workshops. I'm honored to be a part of it.\n\n## Speaker\n\nWow, Deb! I can imagine how rewarding it must be to create a space for growth and change. It's great to hear that everything's going well. You can always count on me for support! I just want to share a photo with you.\n\n## Speaker\n\nThanks, Jolene! Your support means a lot to me. I'm here for you too. By the way, I noticed your pet in the picture. What made you decide to get a snake?\n\n## Speaker\n\nI was fascinated by reptiles, and it felt like the perfect pet for me. Taking care of it has been really calming, and it's a great way to connect with nature.\n\n## Speaker\n\nGlad you found something that gives you peace and calm. Do you have a favorite memory with \"it\" to share?\n\n## Speaker\n\nI have lots of great memories, like our little 'snake adventure'. She got out and I spent hours searching, so relieved when I finally found her snuggling under the bed. It really showed how much I love her.\n\n## Speaker\n\nWhat was it like when you found her? I can imagine the relief!\n\n## Speaker\n\nSeeing her snuggled under the bed made me feel so much love and gratitude. It made me realize how important she is to me.\n\n## Speaker\n\nThey bring so much joy and remind us of what's important.\n\n## Speaker\n\nAnimals teach us a lot about love and gratitude, and they bring so much joy.\n\n## Speaker\n\nI haven't introduced you to my pets yet! I don't like dogs, that's why I have cats.\n\n## Speaker\n\nLooks like they're having a blast! How often do you take them out?\n\n## Speaker\n\nExercise and nature are really important to me, so I make sure to take them out for a run in the park every morning and evening.\n\n## Speaker\n\nWow Deb, that's great! I'd love to experience that every day.\n\n## Speaker\n\nNature helps me find peace every day - it's so refreshing!\n\n## Speaker\n\nIt's a pity that my snakes don't run!  I'd love to do that more often. They would motivate me and together it would be more fun.\n\n## Speaker\n\nIt's like hitting a reset button that helps me put things into perspective and gives me time to reflect.\n\n## Speaker\n\nYeah, I totally get it. Whenever I can, I love going for walks to take it all in. And I take photos like this\n\n## Speaker\n\nIt's amazing how nature has the power to bring us peace and clarity.\n\n## Speaker\n\nThis photo captures the peacefulness of a lake surrounded by trees.\n\n## Speaker\n\nWhy did you choose that spot? It looks so calm.\n\n## Speaker\n\nIt's such a hidden gem! It makes me feel so peaceful and tranquil.\n\n## Speaker\n\nLucky you for having somewhere to relax and tune out!\n\n## Speaker\n\nWe'll definitely go there together sometime!\n\n## Speaker\n\nWe all need a timeout!\n========== daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D27.md:7-59 [score=1.1815] ==========\n# Conversation Session\n\n## Speaker\n\nHey Deb! So sorry for the late reply, been super busy. Last weekend my partner and I traveled to a meditation retreat for a few weeks in Phuket. Amazing experience! Nature, reflection and a break from engineering studies were awesome - it helped me find inner peace.\n\n## Speaker\n\nI'd love to hear more about your reflections there and how they changed you.\n\n## Speaker\n\nAt the retreat, I had time to reflect on what makes me happy. It made me realize the importance of incorporating relaxation, self-care, and balance in life alongside my engineering studies. The beauty of nature there was so inspiring and refreshing!\n\n## Speaker\n\nWas there anything from the retreat that stood out to you?\n\n## Speaker\n\nThe one session that really stood out was about releasing expectations and judgments and just savoring the present. It was a strong reminder to not just dwell on the finish line, but to appreciate the journey too. I usually get too consumed with hitting my goals that I forget to appreciate the ride.\n\n## Speaker\n\nI've been thinking about this a lot, too. Life's full of small moments and being grateful for those can really boost our happiness.\n\n## Speaker\n\nYup, totally agree! Sometimes we get too focused on the big stuff and don't appreciate all the tiny wins. Like the feeling of the sun or a great cup of coffee - can be small but they make life much better. Trying to be more mindful and grateful to take it all in now.\n\n## Speaker\n\nThat's great, Jolene! Practicing mindfulness and gratitude can really change our day-to-day. Even just a different outlook can make the little things in life joyful. Glad you're getting into it!\n\n## Speaker\n\nI'm experiencing a new level of joy and happiness!\n\n## Speaker\n\nIt's wonderful to see your progress, and I'm excited to be on this journey with you!\n\n## Speaker\n\nThanks, Deb! Appreciate your support. It's great that we can do this together.\n\n## Speaker\n\nHaving a supportive community definitely helps. We can motivate and encourage each other! By the way, I recently played a game. I don't remember what it's called. This is a card game about cats, where you take cards one by one from a deck, and then you can attack your opponent with them. We'll definitely play it with you!\n\n## Speaker\n\nI look forward to meeting you and playing this game!",
+            "success": true,
+            "metadata": {
+              "results": [
+                {
+                  "id": "1315d11ccaa81610b4a7f9ea3e41a483c41c445df998e117bb2684131d691ac1",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene, just catching up. I went to a cool event last week with the aim to support each other - pretty inspiring. Have you been connecting with anyone lately?\n\n## Speaker\n\nHey Deb, great to hear from you! I've been focusing on studying and my relationship with my partner. We're taking little trips to the beach, it's a great way to relax. How about you, anything new going on?\n\n## Speaker\n\nI was busy too - went to a community meetup last Friday. We shared stories and it was nice to feel how connected we are. It made me think about how important relationships are. How about you, how are things going in that area?\n\n## Speaker\n\nI'm really thankful for my significant other right now. It's great to have someone encouraging my goals! How are things with your friends and family? Any updates on that front?\n\n## Speaker\n\nRelationships with family and friends are so vital. My yoga pals have been my second family - we've held each other up through a lot. The other day I found this old photo. That was when I first started doing yoga. My mum was my biggest fan and source of motivation. She'd often come to my classes with me.\n\n## Speaker\n\nOur loved ones sure are supportive! When I was 10, my parents got me that and it was the start of my passion for video games.\n\n## Speaker\n\nCool that they shared that with you. Did you learn on your own or did they teach you?\n\n## Speaker\n\nI taught myself, but my dad was always supportive and my mom would play games with me.\n\n## Speaker\n\nThat's awesome! Sounds like you had a lot of support from your parents. What was your favorite game to play with mom?\n\n## Speaker\n\nOne of my favorites was \"Monster Hunter: World\". The immersive story and open-world gaming are amazing!\n\n## Speaker\n\nIt can be so freeing when you get immersed in a game like that.\n\n## Speaker\n\nYeah! It's my way to de-stress and take a break from life.\n\n## Speaker\n\nWhat's up this month? Anything fun happening for you?\n\n## Speaker\n\nGot a lot of finals coming up this month, so I've been studying real hard. It's been quite stressful, but it'll be worth it in the end. Thinking about taking a trip somewhere to relax and recharge afterward.\n\n## Speaker\n\nGood luck with it! Let me know if there's anything I can do to assist you.",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D24.md",
+                  "start_line": 7,
+                  "end_line": 67,
+                  "scores": {
+                    "keyword": 4.5431718826293945,
+                    "score": 4.5431718826293945
+                  }
+                },
+                {
+                  "id": "7aa0f6e189409297eed27210bafdb107148db2119ac0ca9c4015625cc013a76d",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene! Great news - I just started a project for a cleanup in our community and have been trying to raise funds for it. It's been amazing to see everyone come together to make a difference. How've you been? Anything new going on?\n\n## Speaker\n\nHey Debs! Congrats on your project for the community! As for me, life's been a rollercoaster lately. Last week, I had a huge setback with my project. I put in so much work and it all crashed and I lost everything. SO frustrating and depressing.\n\n## Speaker\n\nJolene, sorry to hear that. It must be really tough. I'm here for you and if I can do anything, just let me know. Is there anything that's helping you cope?\n\n## Speaker\n\nYour support means a lot. Susie really helps when times get tough. Pets have been great company. Video games have also been a nice distraction.\n\n## Speaker\n\nThey can really provide love and comfort, especially during tough times. How did you come to have Susie?\n\n## Speaker\n\nI adopted her two years ago when I was feeling lonely and wanted some company.\n\n## Speaker\n\nThat's great, Jolene! Animals sure have a way of bringing us happiness. They understand us and provide us with comfort. Plus, having a pet teaches us responsibility. She came at the perfect time - cherish those moments with her and find strength in her presence.\n\n## Speaker\n\nThanks Deborah. Having her around shows me I can stay strong and find joy in the small stuff.\n\n## Speaker\n\nEnjoying the little things is key. Those little moments can give us a boost and push us forward. How have you been taking care of yourself lately?\n\n## Speaker\n\nI'm trying to prioritize self-care, like yoga and meditation. It helps me stay balanced and grounded.\n\n## Speaker\n\nIf you're interested, I can suggest some routines for you to try.\n\n## Speaker\n\nI'm always on the lookout for new routines to mix things up.\n\n## Speaker\n\nIn the meantime, check out this great place for yoga.\n\n## Speaker\n\nThis room looks perfect for it. Do you have any favorite routines you can share?\n\n## Speaker\n\nOne of my favorite yoga routines is a gentle flow that's all about breathing and grounding. It helps me find my chill. I'll send you a tutorial video with the poses. This is me in the process :)\n\n## Speaker\n\nWow! Does that help you find your chill or improve your concentration?\n\n## Speaker\n\nIt's a great way to find balance in tough times. Try it out and let me know what you think!\n\n## Speaker\n\nCan't wait to try it out. Let's chat soon!\n\n## Speaker\n\nLet me know how it goes. Talk to you later!\n\n## Speaker\n\nYep, I'll practice and update you. Bye!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D16.md",
+                  "start_line": 7,
+                  "end_line": 87,
+                  "scores": {
+                    "keyword": 2.249898672103882,
+                    "score": 2.249898672103882
+                  }
+                },
+                {
+                  "id": "ab13427a938fba65841991e2eb476abe730c959a2eabbe50d367ec67c6e0ae91",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey Deborah! Good to hear from you. How've you been? I've been on an emotional rollercoaster lately, but I'm coping.\n\n## Speaker\n\nHey Jolene! Good to hear from you. All good here - how about you? Anything new happening lately?\n\n## Speaker\n\nI had a major milestone last week and it went really well - I'm so relieved and proud. It was a huge accomplishment for me as an engineer.\n\n## Speaker\n\nThat's awesome. You must have worked really hard for that. I'm so proud of you. Care to share more about it?\n\n## Speaker\n\nThanks so much! I had to plan and research a lot to design and build a sustainable water purifier for a rural community in need. It was tough, but I loved the experience.\n\n## Speaker\n\nYour engineering skills really made a difference for people in a rural area. That's amazing! How did it feel when you saw it working?\n\n## Speaker\n\nIt was such a surreal moment. Seeing it working and providing clean water to the community was incredibly satisfying. It reminded me of how engineering can make a difference in people's lives. It made me feel like I had a purpose and had done something good.\n\n## Speaker\n\nSo, what are your career aspirations now?\n\n## Speaker\n\nI want to keep working in engineering and continue to make a positive impact on communities in need by creating sustainable solutions. My goal is to contribute towards making the world a better place with my work.\n\n## Speaker\n\nI'm sure great things will keep coming your way. Keep up the good work and follow your passions!\n\n## Speaker\n\nYour support means a lot. I'm determined to keep going and make a difference. Your encouragement really motivates me to pursue my passions.\n\n## Speaker\n\nWhen things get tough, just take a deep breath and remember why you're doing this. This is where I spend a lot of my time, teaching yoga. It's a great way to find balance and reconnect with ourselves. I bonded with Anna during yesterday's l yoga class.\n\n## Speaker\n\nWow, that's awesome! What new poses did you try?\n\n## Speaker\n\nWe were trying out different dance poses, like Warrior II, which builds strength and boosts focus.\n\n## Speaker\n\nIs it difficult to do?\n\n## Speaker\n\nYes, but this brought us closer to Anna! We supported each other, that means a lot.\n\n## Speaker\n\nCan you explain how to do it?\n\n## Speaker\n\nSure! To do this modified pose, sit on the edge of a chair with your feet planted. Twist your torso to one side and use your hand on your knee for support. You'll feel a stretch in your back and shoulders as you hold it for a few breaths, then switch sides. It's great for relaxing tense muscles.\n\n## Speaker\n\nSounds really hard! Here's my bookshelf!\n\n## Speaker\n\nThat's quite a collection! Have you had a favorite book lately? I'd love to hear your thoughts.\n\n## Speaker\n\nThanks Deborah! I'm really into this book called \"Sapiens\" - it's a fascinating look at human history and how technology has affected us. It's giving me a lot to think about!\n\n## Speaker\n\nGreat, this is interesting! Have you come across any recent ones that really struck you?\n\n## Speaker\n\nTwo weeks ago I read \"Avalanche\" by Neal Stephenson in one sitting!\n\n## Speaker\n\nThat sounds cool, Jolene. Stories can be so powerful - they can teach us, motivate us, and bring us together.\n\n## Speaker\n\nI also read a recent story about someone who became successful despite facing numerous challenges. It really showed me that anything is possible if you believe and work hard.\n\n## Speaker\n\nThat's a really powerful message. It reminds me of someone special and their grace and strength when they faced hardships. Check out this creation!\n\n## Speaker\n\nWow, Deb! That's beautiful! Can you tell me the backstory of that bouquet?\n\n## Speaker\n\nMy friend gave me this bouquet when I was struggling, and it gives me hope and courage. I'm filled with warmth and appreciation when I look at it.\n\n## Speaker\n\nThat's really sweet. Such a small thing can make a real difference.\n\n## Speaker\n\nIt's amazing how something as simple as flowers can make a real difference. Nature sure is beautiful.\n\n## Speaker\n\nWhere are some of your favorite nature spots?\n\n## Speaker\n\nOh, there's so many great places! My favorite is a park with a forest trail - it's so calming getting lost in nature. Then there's this beach nearby that I love - the sound of the waves and the sand under my feet make me feel all peaceful and happy. Do you have any favorite spots, Jolene?\n\n## Speaker\n\nHere's a picture I took on vacation last summer in Bogota. It was so beautiful and calming watching the sunset over the water. It definitely made me appreciate nature's calming power.\n\n## Speaker\n\nThat sounds great, Jolene. Nature's calming for sure. Guess it helps us forget the daily craziness and find inner peace. No wonder you're a fan! I like to come to this spot by the water near my mom's old house. It's where I reflect on her life and find some peace. Being surrounded by nature helps a lot.\n\n## Speaker\n\nThat's so touching! Do you have any little traditions that you do when you come to reflect on your mom?\n\n## Speaker\n\nDo you remember this amulet from her? Whenever I come here, I bring it with me. It's how I feel her love and stay close to her. Holding it brings me comfort.\n\n## Speaker\n\nIt's amazing how something so small can have such a big impact, huh?\n\n## Speaker\n\nYeah, even small things like this can make a big difference. It's a reminder of all the love and strength we have inside, connecting us to people we've lost and comforting us.\n\n## Speaker\n\nIt can keep them close in our hearts every day.\n\n## Speaker\n\nAnna also has a pendant that she wears in memory of her mother! This also brought us closer.\n\n## Speaker\n\nIt's nice to have those reminders as a source of strength when we need it.\n\n## Speaker\n\nLife's tough but hang in there. Look to your sources of strength and you'll do great. Stay in touch, take care of yourself, and know I'm always here to cheer you on!\n\n## Speaker\n\nThanks, Deb! Your encouragement means a lot to me. I'll definitely stay in touch. Bye, take care and keep shining!\n\n## Speaker\n\nStay safe!  Bye!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D4.md",
+                  "start_line": 7,
+                  "end_line": 183,
+                  "scores": {
+                    "keyword": 1.7583074569702148,
+                    "score": 1.7583074569702148
+                  }
+                },
+                {
+                  "id": "39dc52438eb7432ff7573235b8a8301d521fb3ee07af390b9727172d8d81b3d1",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene, I'm so excited to tell you! Yesterday, me and my neighbor ran a free gardening class for the community, it was awesome! People of any age joined in and it was such a great thing to see.\n\n## Speaker\n\nWow, Deborah, that's awesome! Keep up the great work, and here's hoping for more events like this in the future!\n\n## Speaker\n\nGardening is really amazing. It brings us together in such a cool way. It was awesome to share my love of plants and help people take care of the world. So, what about you? Anything new happened lately?\n\n## Speaker\n\nWe tried a scuba diving lesson last Friday and had an awesome time! We found a cool dive spot we can explore together. Trying new things opens up a world of adventure - maybe one day I'll be a certified diver. Anything fun going on with you?\n\n## Speaker\n\nThat sounds amazing, Jolene! I've been interested in underwater life, but I haven't had the chance to try scuba diving yet. Recently, I've been spending time remembering my mom. Last Sunday, I visited her old house and sat on a bench. It was a comforting experience, as if I could feel her presence guide me and remind me of her love.\n\n## Speaker\n\nVisiting your mom's old home sounds like it was really special. Is there something special you remember about her?\n\n## Speaker\n\nThanks, Jolene! It was really special. My mom had a big passion for cooking. She would make amazing meals for us, each one full of love and warmth. I can still remember the smell of her special dish, it would fill the house and bring us all together.\n\n## Speaker\n\nMmm, that looks delicious, Deb! So sweet how cooking with your mom brought everyone together. What's your best memory of cooking with her?\n\n## Speaker\n\nI loved it when she would bake pineapple birthday cakes for me when I was a kid. It always made me feel so special.\n\n## Speaker\n\nNo wonder it made you feel special.\n\n## Speaker\n\nHave you ever had something like that with someone close?\n\n## Speaker\n\nI used to bake cookies with someone close to me.\n\n## Speaker\n\nWhat's your favorite cookie to make?\n\n## Speaker\n\nThe warm, gooey chocolate and soft, buttery cookie are a match made in heaven.\n\n## Speaker\n\nI really want to eat this now.\n\n## Speaker\n\nWell look what I have here!\n\n## Speaker\n\nIs there anything special about it or the photo?\n\n## Speaker\n\nIt takes me to another world when I read it!\n\n## Speaker\n\nDid I show you that I have a big bookshelf too?\n\n## Speaker\n\nI think not, I really like it!\n\n## Speaker\n\nHaving a space like this is important for escaping reality and relaxing with a book. Do you have any books that really moved you?\n\n## Speaker\n\nMy bathroom has an aesthetic vibe. Once I read a self-discovery book there and it really resonated with me.\n\n## Speaker\n\nWow! A special book that speaks to you and helps with self-discovery? That's awesome. Plus, having a cozy nook to chill? That's my best one!\n\n## Speaker\n\nSounds nice, Deb! A cozy nook is a must! The beach is a great place for finding peace and relaxation. Have you ever tried surfing?\n\n## Speaker\n\nCertainly! Here's the confirmation.\n\n## Speaker\n\nHow cool! But I never decided to try it.\n\n## Speaker\n\nIt's okay, maybe we can try it together sometime!\n\n## Speaker\n\nI already know what fate awaits me if I do this!\n\n## Speaker\n\nHave you ever been interested in this or do you know nothing about it?\n\n## Speaker\n\nJust started learning, but haven't gone yet. Want to come with me sometime?\n\n## Speaker\n\nIt'll be an adventure! Let's make it happen soon!\n\n## Speaker\n\nSo glad, all that remains is to agree and choose the right time for both of us.\n\n## Speaker\n\nCan't wait. What day works for you? I'm really excited!\n\n## Speaker\n\nLet's plan for next month - I'll check my schedule and let you know. Can't wait!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D29.md",
+                  "start_line": 7,
+                  "end_line": 143,
+                  "scores": {
+                    "keyword": 1.5068638324737549,
+                    "score": 1.5068638324737549
+                  }
+                },
+                {
+                  "id": "b916ec20e753ee2cc9923d7db6c03936f46a45c953221f66a6304fcc6cac154a",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene! Hope you're having a good one. Last Friday I told Anna the story of my life and they were super kind about it. It was so nice to have a meaningful connection. How's the mindfulness workshops and reading going? Need any help?\n\n## Speaker\n\nLife's been hella busy since we last talked. I bought a console for my partner as a gift on the 17th and it's so much fun, he even managed to play it.! Engineering studies are still going strong too. Balance has been key for me lately. How about you? What's been up?\n\n## Speaker\n\nWell done! As for me, I've been focusing on teaching yoga and spending time with the community. Organizing a yoga event last month was really cool.\n\n## Speaker\n\nWas it rewarding seeing everyone come together? Can you tell me more about how you put it together? Also, any tips for maintaining a balance between hobbies and studies?\n\n## Speaker\n\nI reached out to different nearby businesses and places to make it happen. We had yoga, food stalls, and even some live music - it was amazing! As for balancing hobbies and studies, I find it helpful to prioritize and manage my time effectively. Making a schedule and setting aside specific time for studying and pursuing hobbies can go a long way in maintaining balance.\n\n## Speaker\n\nWow, that's awesome! Gonna make a plan to manage my studies and hobbies. Say, do you ever play video games?\n\n## Speaker\n\nI used to play some video games, but it's been a while. It's a good way to relax after a busy day. Do you have any game suggestions? What's your favorite game?\n\n## Speaker\n\nI have a few game recommendations. Zelda BOTW for Switch is an awesome open-world game. Animal Crossing: New Horizons is really calming and cute. As for my favorite game, it's hard to choose just one!\n\n## Speaker\n\nCool recs! I'll definitely check those out. What about your favorite memories of playing video games?\n\n## Speaker\n\nOh, I forgot to mention Overcooked 2 - this is a good co-op game if you're into hilarious and chaotic cooking. My partner and I often play for bets! I once won three large pizzas!\n\n## Speaker\n\nReminds me of when I used to play games with my husband. We'd take turns and it was a great way to bond and make memories. Gaming really can bring people closer, right?\n\n## Speaker\n\nYeah, you`re right! What's your favorite game to play with that person?\n\n## Speaker\n\nWe prefer to play detective games together.\n\n## Speaker\n\nWhat other activities do you both enjoy doing together?\n\n## Speaker\n\nWe also enjoyed spending time outdoors and exploring nature. It was always so refreshing to be outside and soak up the fresh air.\n\n## Speaker\n\nI'm a big fan of being outside too! It's so calming and refreshing. Do you have any special spots you like to go to?\n\n## Speaker\n\nI love going to this park near my house - it has a nice forest trail and a beach. It's a peaceful spot where I can do some yoga and reflect. There's also a special bench that holds special meaning to me.\n\n## Speaker\n\nSounds lovely! Nature can be calming. What makes this bench special to you?\n\n## Speaker\n\nIt holds a lot of special memories for me and my mom - we would come here and chat about dreams and life. It's full of good moments.\n\n## Speaker\n\nThat's awesome, Deborah! What were some of your favorite memories with your mom at this spot? It looks super peaceful and pretty.\n\n## Speaker\n\nI'll always cherish my memories with her at this spot. I remember a beautiful sunset we watched together in silence - the colors in the sky were so special. Every time I go back, I feel so much peace and gratitude for the time I spent with her.\n\n## Speaker\n\nPlaces and moments like that can mean so much, and it's a gift to find peace and gratitude in them.\n\n## Speaker\n\nI'm really thankful for all the time we had.\n\n## Speaker\n\nIt's so important to cherish it.",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D19.md",
+                  "start_line": 7,
+                  "end_line": 104,
+                  "scores": {
+                    "keyword": 1.4242188930511475,
+                    "score": 1.4242188930511475
+                  }
+                },
+                {
+                  "id": "211c2a0a06493d4b2c3729d318c1718bf6eeddd171d8efc43c0f5ee77e066978",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHi Deb! How're you? I've been busy. My engineering professor gave us a huge robotics project. It's tough but fun, it's making me get creative and problem-solve.\n\n## Speaker\n\nHey Jolene! It's great to hear from you. It sounds challenging but interesting! It must be really putting your creative and problem-solving skills to the test. How did you feel when you first received the project? Are you enjoying working on it?\n\n## Speaker\n\nWhen I got it, I felt a mix of emotions - excited and nervous. But now, I'm really enjoying it! It's like trying to solve a puzzle, figuring out the best design and programming. Seeing the robot come together is awesome too!\n\n## Speaker\n\nThat's awesome, Jolene! You're enjoying the process. It must be really satisfying to see it come together. Keep up the good work! Oh, by the way, I met my new neighbor Anna yesterday!\n\n## Speaker\n\nHow did you two meet?\n\n## Speaker\n\nIt happened at yoga in the park.\n\n## Speaker\n\nWow, that's awesome! It's great connecting with people who have similar interests. Did you two talk about it?\n\n## Speaker\n\nYeah, we talked about how it has improved our lives and the sense of community it gives.\n\n## Speaker\n\nSounds great!\n\n## Speaker\n\nHave you ever thought about resuming yoga?\n\n## Speaker\n\nWell... we planned to play the console with my partner.\n\n## Speaker\n\nIt's also good that you have something to do together.\n\n## Speaker\n\nThanks for the kind words!\n\n## Speaker\n\nGotta run bye!\n\n## Speaker\n\nSee you soon!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D3.md",
+                  "start_line": 7,
+                  "end_line": 67,
+                  "scores": {
+                    "keyword": 1.3644745349884033,
+                    "score": 1.3644745349884033
+                  }
+                },
+                {
+                  "id": "36a7ce320e984d35b7f27752a675ea308922863ee99b9f9830ceffde3f453e6f",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHi Jolene! We haven't corresponded for a long time!\n\n## Speaker\n\nHey Deb, yeah life can get chaotic. How's it been going lately?\n\n## Speaker\n\nSo much has been going on lately. I started this yoga class in the neighborhood - it's such a good feeling! Now I get to share the exercise with my neighbors and watch it really transform them.\n\n## Speaker\n\nCongrats. How did you do this?\n\n## Speaker\n\nThanks! My neighbors were interested in trying yoga, so I hosted a class for them on Friday. It was great to see everyone embrace and enjoy it. Here is our photo together.\n\n## Speaker\n\nThat's cool! What made you want to start teaching it?\n\n## Speaker\n\nI find it calming and wanted to share that with others. Giving people peace and awareness brings me so much happiness.\n\n## Speaker\n\nWow, Deb! It's awesome when we can share something we love and make things better for others.\n\n## Speaker\n\nTeaching it is awesome because it can help others and I've made such great friends through it. It's really nice for building community connections.\n\n## Speaker\n\nThat's really motivating. It's great to have support in tough times.\n\n## Speaker\n\nIt's one of life's best parts, right?\n\n## Speaker\n\nYeah, having someone to rely on is key in tough times. It really makes a difference in how we handle life. Plus, there's something I wanted to tell you.\n\n## Speaker\n\nWhat's up? I'm listening. We'll figure it out.\n\n## Speaker\n\nI'm having a hard time dealing with my Engineering assignments. It's a lot to manage and I'm struggling to keep up. Can we still talk about time management?\n\n## Speaker\n\nSure, Jolene. Let's find a time that works for both of us.\n\n## Speaker\n\nLet's find a time to chat - I'll check my schedule and get back to you.\n\n## Speaker\n\nTake your time, Jolene. We'll work it out. Take care of yourself, OK?\n\n## Speaker\n\nI'll make sure to take it. See you soon!\n\n## Speaker\n\nI'm here for you if you need me. Let's catch up soon.\n\n## Speaker\n\nHave a great day!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D9.md",
+                  "start_line": 7,
+                  "end_line": 87,
+                  "scores": {
+                    "keyword": 1.2563989162445068,
+                    "score": 1.2563989162445068
+                  }
+                },
+                {
+                  "id": "af4b23d0e1237ce7ef3ff2c50854bdb529162d36ca33512bf63e149176f71cbe",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene, nice to meet you! How's your week going? Anything fun happened?\n\n## Speaker\n\nHi Deb! Good to meet you! Yeah, my week's been busy. I finished an electrical engineering project last week - took a lot of work, but it's done now. Anything fun happening for you?\n\n## Speaker\n\nCongrats! Last week I visited a place that holds a lot of memories for me. It was my mother`s old house.\n\n## Speaker\n\nWhy does it hold such special memories for you?\n\n## Speaker\n\nIt was full of memories, she passed away a few years ago. This is our last photo together.\n\n## Speaker\n\nSorry about your loss, Deb. My mother also passed away last year. This is my room in her house, I also have many memories there. Is there anything special about it you remember?\n\n## Speaker\n\nMy mom's house had a special bench near the window. She loved to sit there every morning and take in the view. I come to sit here sometimes, it helps me stay connected to her.\n\n## Speaker\n\nStaying connected is super important. Do you have something to remember her by? This pendant reminds me of my mother, she gave it to me in 2010  in Paris.\n\n## Speaker\n\nYes, I also have a pendant that reminds me of my mother. And what is special for you about your jewelry?\n\n## Speaker\n\nIt has a special symbol on it that represents freedom for me. It's a nice reminder to go for my goals and not get held back.\n\n## Speaker\n\nIt should really give you strength and energy!\n\n## Speaker\n\nDo you have goals?\n\n## Speaker\n\nOne of my goals is to keep teaching yoga and supporting my community. I'm passionate about helping people find peace and joy through it.\n\n## Speaker\n\nWhat inspired you to go down this route?\n\n## Speaker\n\nYoga helped me find peace during a rough time, and now I'm passionate about sharing that with others.\n\n## Speaker\n\nIt is truly inspiring!\n\n## Speaker\n\nGotta run, bye!\n\n## Speaker\n\nLooking forward to the next chat!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D1.md",
+                  "start_line": 7,
+                  "end_line": 79,
+                  "scores": {
+                    "keyword": 1.2497994899749756,
+                    "score": 1.2497994899749756
+                  }
+                },
+                {
+                  "id": "7c7fa8f4600a8d9e46aea0cf7a940ae4de0c68d0b87efda917995068f8bce130",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene! I started a running group with Anna - it's awesome connecting with people who care about fitness!\n\n## Speaker\n\nCool, Deb! Glad you found some people to get fit with. I'm trying to add workouts into my studying schedule, which has been tough but fun. How about you? Any challenges with the running group?\n\n## Speaker\n\nOh, I'm having a blast with it! We help and push each other during our runs, which makes it so much easier to stay motivated.  I have a lot of my photos from this activity.\n\n## Speaker\n\nDeborah, that's awesome! Being part of a supportive group must be super motivating. Finding a team that's passionate about something makes a huge difference. Just thinking about my own journey too.\n\n## Speaker\n\nHaving people who can cheer you on and give you advice really makes a difference. What has it been like for you finding supportive folks?\n\n## Speaker\n\nGaming's been tough lately, but I'm grateful I have someone who's also into it. My partner helps me stay focused on our goals. We have a lot of cute photos, I want to share with you.\n\n## Speaker\n\nWhat do you like best about gaming together?\n\n## Speaker\n\nWe get to tackle challenges and have a shared experience. It's always a blast when we're into the same game and achieve something tough. Plus, it's a great way to bond and get closer.\n\n## Speaker\n\nWoah, that's cool! Gaming is so good for strengthening relationships. Do you two have a favorite game to play together?\n\n## Speaker\n\nYeah, we love playing \"It takes two\" together! It's a fun team-strategy game and it's competitive. Plus, it's a great way for us to bond. Do you have any activities you like doing with people?\n\n## Speaker\n\nYep, I do running and yoga/meditation with others. Connecting with people and creating a community is great. Plus, I love organizing workshops and events to practice mindfulness and self-care. It's an awesome way to have fun, build relationships, and support each other's growth.\n\n## Speaker\n\nSounds like a great way to relax. What do your workshops and events involve?\n\n## Speaker\n\nIt involves various activities such as yoga, meditation, and self-reflection. They aim to cultivate self-awareness, promote mental and emotional well-being, and help individuals find inner peace. It's a space where people can connect, explore, and grow.\n\n## Speaker\n\nYour events are awesome for helping people connect and learn, it is so important. How has everything been going for you?\n\n## Speaker\n\nThanks, Jolene! It's been great seeing everyone come together and support each other. It's amazing to witness the growth and transformation that happens through these workshops. I'm honored to be a part of it.\n\n## Speaker\n\nWow, Deb! I can imagine how rewarding it must be to create a space for growth and change. It's great to hear that everything's going well. You can always count on me for support! I just want to share a photo with you.\n\n## Speaker\n\nThanks, Jolene! Your support means a lot to me. I'm here for you too. By the way, I noticed your pet in the picture. What made you decide to get a snake?\n\n## Speaker\n\nI was fascinated by reptiles, and it felt like the perfect pet for me. Taking care of it has been really calming, and it's a great way to connect with nature.\n\n## Speaker\n\nGlad you found something that gives you peace and calm. Do you have a favorite memory with \"it\" to share?\n\n## Speaker\n\nI have lots of great memories, like our little 'snake adventure'. She got out and I spent hours searching, so relieved when I finally found her snuggling under the bed. It really showed how much I love her.\n\n## Speaker\n\nWhat was it like when you found her? I can imagine the relief!\n\n## Speaker\n\nSeeing her snuggled under the bed made me feel so much love and gratitude. It made me realize how important she is to me.\n\n## Speaker\n\nThey bring so much joy and remind us of what's important.\n\n## Speaker\n\nAnimals teach us a lot about love and gratitude, and they bring so much joy.\n\n## Speaker\n\nI haven't introduced you to my pets yet! I don't like dogs, that's why I have cats.\n\n## Speaker\n\nLooks like they're having a blast! How often do you take them out?\n\n## Speaker\n\nExercise and nature are really important to me, so I make sure to take them out for a run in the park every morning and evening.\n\n## Speaker\n\nWow Deb, that's great! I'd love to experience that every day.\n\n## Speaker\n\nNature helps me find peace every day - it's so refreshing!\n\n## Speaker\n\nIt's a pity that my snakes don't run!  I'd love to do that more often. They would motivate me and together it would be more fun.\n\n## Speaker\n\nIt's like hitting a reset button that helps me put things into perspective and gives me time to reflect.\n\n## Speaker\n\nYeah, I totally get it. Whenever I can, I love going for walks to take it all in. And I take photos like this\n\n## Speaker\n\nIt's amazing how nature has the power to bring us peace and clarity.\n\n## Speaker\n\nThis photo captures the peacefulness of a lake surrounded by trees.\n\n## Speaker\n\nWhy did you choose that spot? It looks so calm.\n\n## Speaker\n\nIt's such a hidden gem! It makes me feel so peaceful and tranquil.\n\n## Speaker\n\nLucky you for having somewhere to relax and tune out!\n\n## Speaker\n\nWe'll definitely go there together sometime!\n\n## Speaker\n\nWe all need a timeout!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D15.md",
+                  "start_line": 7,
+                  "end_line": 163,
+                  "scores": {
+                    "keyword": 1.2411317825317383,
+                    "score": 1.2411317825317383
+                  }
+                },
+                {
+                  "id": "0351fae8f4b2c1ac2adec3c484437f39381f0896faba94690dd281ee964b3f47",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey Deb! So sorry for the late reply, been super busy. Last weekend my partner and I traveled to a meditation retreat for a few weeks in Phuket. Amazing experience! Nature, reflection and a break from engineering studies were awesome - it helped me find inner peace.\n\n## Speaker\n\nI'd love to hear more about your reflections there and how they changed you.\n\n## Speaker\n\nAt the retreat, I had time to reflect on what makes me happy. It made me realize the importance of incorporating relaxation, self-care, and balance in life alongside my engineering studies. The beauty of nature there was so inspiring and refreshing!\n\n## Speaker\n\nWas there anything from the retreat that stood out to you?\n\n## Speaker\n\nThe one session that really stood out was about releasing expectations and judgments and just savoring the present. It was a strong reminder to not just dwell on the finish line, but to appreciate the journey too. I usually get too consumed with hitting my goals that I forget to appreciate the ride.\n\n## Speaker\n\nI've been thinking about this a lot, too. Life's full of small moments and being grateful for those can really boost our happiness.\n\n## Speaker\n\nYup, totally agree! Sometimes we get too focused on the big stuff and don't appreciate all the tiny wins. Like the feeling of the sun or a great cup of coffee - can be small but they make life much better. Trying to be more mindful and grateful to take it all in now.\n\n## Speaker\n\nThat's great, Jolene! Practicing mindfulness and gratitude can really change our day-to-day. Even just a different outlook can make the little things in life joyful. Glad you're getting into it!\n\n## Speaker\n\nI'm experiencing a new level of joy and happiness!\n\n## Speaker\n\nIt's wonderful to see your progress, and I'm excited to be on this journey with you!\n\n## Speaker\n\nThanks, Deb! Appreciate your support. It's great that we can do this together.\n\n## Speaker\n\nHaving a supportive community definitely helps. We can motivate and encourage each other! By the way, I recently played a game. I don't remember what it's called. This is a card game about cats, where you take cards one by one from a deck, and then you can attack your opponent with them. We'll definitely play it with you!\n\n## Speaker\n\nI look forward to meeting you and playing this game!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D27.md",
+                  "start_line": 7,
+                  "end_line": 59,
+                  "scores": {
+                    "keyword": 1.1815308332443237,
+                    "score": 1.1815308332443237
+                  }
+                }
+              ],
+              "link_expansion": {},
+              "counts": {
+                "vector": 0,
+                "keyword": 21,
+                "returned": 10,
+                "hybrid": false
+              }
+            }
+          },
+          "memories": [
+            {
+              "rank": 1,
+              "raw_rank": 1,
+              "session_id": "d03:locomo:conv-48:D24",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D24.md",
+              "score": 4.5431718826293945,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene, just catching up. I went to a cool event last week with the aim to support each other - pretty inspiring. Have you been connecting with anyone lately?\n\n## Speaker\n\nHey Deb, great to hear from you! I've been focusing on studying and my relationship with my partner. We're taking little trips to the beach, it's a great way to relax. How about you, anything new going on?\n\n## Speaker\n\nI was busy too - went to a community meetup last Friday. We shared stories and it was nice to feel how connected we are. It made me think about how important relationships are. How about you, how are things going in that area?\n\n## Speaker\n\nI'm really thankful for my significant other right now. It's great to have someone encouraging my goals! How are things with your friends and family? Any updates on that front?\n\n## Speaker\n\nRelationships with family and friends are so vital. My yoga pals have been my second family - we've held each other up through a lot. The other day I found this old photo. That was when I first started doing yoga. My mum was my biggest fan and source of motivation. She'd often come to my classes with me.\n\n## Speaker\n\nOur loved ones sure are supportive! When I was 10, my parents got me that and it was the start of my passion for video games.\n\n## Speaker\n\nCool that they shared that with you. Did you learn on your own or did they teach you?\n\n## Speaker\n\nI taught myself, but my dad was always supportive and my mom would play games with me.\n\n## Speaker\n\nThat's awesome! Sounds like you had a lot of support from your parents. What was your favorite game to play with mom?\n\n## Speaker\n\nOne of my favorites was \"Monster Hunter: World\". The immersive story and open-world gaming are amazing!\n\n## Speaker\n\nIt can be so freeing when you get immersed in a game like that.\n\n## Speaker\n\nYeah! It's my way to de-stress and take a break from life.\n\n## Speaker\n\nWhat's up this month? Anything fun happening for you?\n\n## Speaker\n\nGot a lot of finals coming up this month, so I've been studying real hard. It's been quite stressful, but it'll be worth it in the end. Thinking about taking a trip somewhere to relax and recharge afterward.\n\n## Speaker\n\nGood luck with it! Let me know if there's anything I can do to assist you."
+            },
+            {
+              "rank": 2,
+              "raw_rank": 2,
+              "session_id": "d03:locomo:conv-48:D16",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D16.md",
+              "score": 2.249898672103882,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene! Great news - I just started a project for a cleanup in our community and have been trying to raise funds for it. It's been amazing to see everyone come together to make a difference. How've you been? Anything new going on?\n\n## Speaker\n\nHey Debs! Congrats on your project for the community! As for me, life's been a rollercoaster lately. Last week, I had a huge setback with my project. I put in so much work and it all crashed and I lost everything. SO frustrating and depressing.\n\n## Speaker\n\nJolene, sorry to hear that. It must be really tough. I'm here for you and if I can do anything, just let me know. Is there anything that's helping you cope?\n\n## Speaker\n\nYour support means a lot. Susie really helps when times get tough. Pets have been great company. Video games have also been a nice distraction.\n\n## Speaker\n\nThey can really provide love and comfort, especially during tough times. How did you come to have Susie?\n\n## Speaker\n\nI adopted her two years ago when I was feeling lonely and wanted some company.\n\n## Speaker\n\nThat's great, Jolene! Animals sure have a way of bringing us happiness. They understand us and provide us with comfort. Plus, having a pet teaches us responsibility. She came at the perfect time - cherish those moments with her and find strength in her presence.\n\n## Speaker\n\nThanks Deborah. Having her around shows me I can stay strong and find joy in the small stuff.\n\n## Speaker\n\nEnjoying the little things is key. Those little moments can give us a boost and push us forward. How have you been taking care of yourself lately?\n\n## Speaker\n\nI'm trying to prioritize self-care, like yoga and meditation. It helps me stay balanced and grounded.\n\n## Speaker\n\nIf you're interested, I can suggest some routines for you to try.\n\n## Speaker\n\nI'm always on the lookout for new routines to mix things up.\n\n## Speaker\n\nIn the meantime, check out this great place for yoga.\n\n## Speaker\n\nThis room looks perfect for it. Do you have any favorite routines you can share?\n\n## Speaker\n\nOne of my favorite yoga routines is a gentle flow that's all about breathing and grounding. It helps me find my chill. I'll send you a tutorial video with the poses. This is me in the process :)\n\n## Speaker\n\nWow! Does that help you find your chill or improve your concentration?\n\n## Speaker\n\nIt's a great way to find balance in tough times. Try it out and let me know what you think!\n\n## Speaker\n\nCan't wait to try it out. Let's chat soon!\n\n## Speaker\n\nLet me know how it goes. Talk to you later!\n\n## Speaker\n\nYep, I'll practice and update you. Bye!"
+            },
+            {
+              "rank": 3,
+              "raw_rank": 3,
+              "session_id": "d03:locomo:conv-48:D4",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D4.md",
+              "score": 1.7583074569702148,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey Deborah! Good to hear from you. How've you been? I've been on an emotional rollercoaster lately, but I'm coping.\n\n## Speaker\n\nHey Jolene! Good to hear from you. All good here - how about you? Anything new happening lately?\n\n## Speaker\n\nI had a major milestone last week and it went really well - I'm so relieved and proud. It was a huge accomplishment for me as an engineer.\n\n## Speaker\n\nThat's awesome. You must have worked really hard for that. I'm so proud of you. Care to share more about it?\n\n## Speaker\n\nThanks so much! I had to plan and research a lot to design and build a sustainable water purifier for a rural community in need. It was tough, but I loved the experience.\n\n## Speaker\n\nYour engineering skills really made a difference for people in a rural area. That's amazing! How did it feel when you saw it working?\n\n## Speaker\n\nIt was such a surreal moment. Seeing it working and providing clean water to the community was incredibly satisfying. It reminded me of how engineering can make a difference in people's lives. It made me feel like I had a purpose and had done something good.\n\n## Speaker\n\nSo, what are your career aspirations now?\n\n## Speaker\n\nI want to keep working in engineering and continue to make a positive impact on communities in need by creating sustainable solutions. My goal is to contribute towards making the world a better place with my work.\n\n## Speaker\n\nI'm sure great things will keep coming your way. Keep up the good work and follow your passions!\n\n## Speaker\n\nYour support means a lot. I'm determined to keep going and make a difference. Your encouragement really motivates me to pursue my passions.\n\n## Speaker\n\nWhen things get tough, just take a deep breath and remember why you're doing this. This is where I spend a lot of my time, teaching yoga. It's a great way to find balance and reconnect with ourselves. I bonded with Anna during yesterday's l yoga class.\n\n## Speaker\n\nWow, that's awesome! What new poses did you try?\n\n## Speaker\n\nWe were trying out different dance poses, like Warrior II, which builds strength and boosts focus.\n\n## Speaker\n\nIs it difficult to do?\n\n## Speaker\n\nYes, but this brought us closer to Anna! We supported each other, that means a lot.\n\n## Speaker\n\nCan you explain how to do it?\n\n## Speaker\n\nSure! To do this modified pose, sit on the edge of a chair with your feet planted. Twist your torso to one side and use your hand on your knee for support. You'll feel a stretch in your back and shoulders as you hold it for a few breaths, then switch sides. It's great for relaxing tense muscles.\n\n## Speaker\n\nSounds really hard! Here's my bookshelf!\n\n## Speaker\n\nThat's quite a collection! Have you had a favorite book lately? I'd love to hear your thoughts.\n\n## Speaker\n\nThanks Deborah! I'm really into this book called \"Sapiens\" - it's a fascinating look at human history and how technology has affected us. It's giving me a lot to think about!\n\n## Speaker\n\nGreat, this is interesting! Have you come across any recent ones that really struck you?\n\n## Speaker\n\nTwo weeks ago I read \"Avalanche\" by Neal Stephenson in one sitting!\n\n## Speaker\n\nThat sounds cool, Jolene. Stories can be so powerful - they can teach us, motivate us, and bring us together.\n\n## Speaker\n\nI also read a recent story about someone who became successful despite facing numerous challenges. It really showed me that anything is possible if you believe and work hard.\n\n## Speaker\n\nThat's a really powerful message. It reminds me of someone special and their grace and strength when they faced hardships. Check out this creation!\n\n## Speaker\n\nWow, Deb! That's beautiful! Can you tell me the backstory of that bouquet?\n\n## Speaker\n\nMy friend gave me this bouquet when I was struggling, and it gives me hope and courage. I'm filled with warmth and appreciation when I look at it.\n\n## Speaker\n\nThat's really sweet. Such a small thing can make a real difference.\n\n## Speaker\n\nIt's amazing how something as simple as flowers can make a real difference. Nature sure is beautiful.\n\n## Speaker\n\nWhere are some of your favorite nature spots?\n\n## Speaker\n\nOh, there's so many great places! My favorite is a park with a forest trail - it's so calming getting lost in nature. Then there's this beach nearby that I love - the sound of the waves and the sand under my feet make me feel all peaceful and happy. Do you have any favorite spots, Jolene?\n\n## Speaker\n\nHere's a picture I took on vacation last summer in Bogota. It was so beautiful and calming watching the sunset over the water. It definitely made me appreciate nature's calming power.\n\n## Speaker\n\nThat sounds great, Jolene. Nature's calming for sure. Guess it helps us forget the daily craziness and find inner peace. No wonder you're a fan! I like to come to this spot by the water near my mom's old house. It's where I reflect on her life and find some peace. Being surrounded by nature helps a lot.\n\n## Speaker\n\nThat's so touching! Do you have any little traditions that you do when you come to reflect on your mom?\n\n## Speaker\n\nDo you remember this amulet from her? Whenever I come here, I bring it with me. It's how I feel her love and stay close to her. Holding it brings me comfort.\n\n## Speaker\n\nIt's amazing how something so small can have such a big impact, huh?\n\n## Speaker\n\nYeah, even small things like this can make a big difference. It's a reminder of all the love and strength we have inside, connecting us to people we've lost and comforting us.\n\n## Speaker\n\nIt can keep them close in our hearts every day.\n\n## Speaker\n\nAnna also has a pendant that she wears in memory of her mother! This also brought us closer.\n\n## Speaker\n\nIt's nice to have those reminders as a source of strength when we need it.\n\n## Speaker\n\nLife's tough but hang in there. Look to your sources of strength and you'll do great. Stay in touch, take care of yourself, and know I'm always here to cheer you on!\n\n## Speaker\n\nThanks, Deb! Your encouragement means a lot to me. I'll definitely stay in touch. Bye, take care and keep shining!\n\n## Speaker\n\nStay safe!  Bye!"
+            },
+            {
+              "rank": 4,
+              "raw_rank": 4,
+              "session_id": "d03:locomo:conv-48:D29",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D29.md",
+              "score": 1.5068638324737549,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene, I'm so excited to tell you! Yesterday, me and my neighbor ran a free gardening class for the community, it was awesome! People of any age joined in and it was such a great thing to see.\n\n## Speaker\n\nWow, Deborah, that's awesome! Keep up the great work, and here's hoping for more events like this in the future!\n\n## Speaker\n\nGardening is really amazing. It brings us together in such a cool way. It was awesome to share my love of plants and help people take care of the world. So, what about you? Anything new happened lately?\n\n## Speaker\n\nWe tried a scuba diving lesson last Friday and had an awesome time! We found a cool dive spot we can explore together. Trying new things opens up a world of adventure - maybe one day I'll be a certified diver. Anything fun going on with you?\n\n## Speaker\n\nThat sounds amazing, Jolene! I've been interested in underwater life, but I haven't had the chance to try scuba diving yet. Recently, I've been spending time remembering my mom. Last Sunday, I visited her old house and sat on a bench. It was a comforting experience, as if I could feel her presence guide me and remind me of her love.\n\n## Speaker\n\nVisiting your mom's old home sounds like it was really special. Is there something special you remember about her?\n\n## Speaker\n\nThanks, Jolene! It was really special. My mom had a big passion for cooking. She would make amazing meals for us, each one full of love and warmth. I can still remember the smell of her special dish, it would fill the house and bring us all together.\n\n## Speaker\n\nMmm, that looks delicious, Deb! So sweet how cooking with your mom brought everyone together. What's your best memory of cooking with her?\n\n## Speaker\n\nI loved it when she would bake pineapple birthday cakes for me when I was a kid. It always made me feel so special.\n\n## Speaker\n\nNo wonder it made you feel special.\n\n## Speaker\n\nHave you ever had something like that with someone close?\n\n## Speaker\n\nI used to bake cookies with someone close to me.\n\n## Speaker\n\nWhat's your favorite cookie to make?\n\n## Speaker\n\nThe warm, gooey chocolate and soft, buttery cookie are a match made in heaven.\n\n## Speaker\n\nI really want to eat this now.\n\n## Speaker\n\nWell look what I have here!\n\n## Speaker\n\nIs there anything special about it or the photo?\n\n## Speaker\n\nIt takes me to another world when I read it!\n\n## Speaker\n\nDid I show you that I have a big bookshelf too?\n\n## Speaker\n\nI think not, I really like it!\n\n## Speaker\n\nHaving a space like this is important for escaping reality and relaxing with a book. Do you have any books that really moved you?\n\n## Speaker\n\nMy bathroom has an aesthetic vibe. Once I read a self-discovery book there and it really resonated with me.\n\n## Speaker\n\nWow! A special book that speaks to you and helps with self-discovery? That's awesome. Plus, having a cozy nook to chill? That's my best one!\n\n## Speaker\n\nSounds nice, Deb! A cozy nook is a must! The beach is a great place for finding peace and relaxation. Have you ever tried surfing?\n\n## Speaker\n\nCertainly! Here's the confirmation.\n\n## Speaker\n\nHow cool! But I never decided to try it.\n\n## Speaker\n\nIt's okay, maybe we can try it together sometime!\n\n## Speaker\n\nI already know what fate awaits me if I do this!\n\n## Speaker\n\nHave you ever been interested in this or do you know nothing about it?\n\n## Speaker\n\nJust started learning, but haven't gone yet. Want to come with me sometime?\n\n## Speaker\n\nIt'll be an adventure! Let's make it happen soon!\n\n## Speaker\n\nSo glad, all that remains is to agree and choose the right time for both of us.\n\n## Speaker\n\nCan't wait. What day works for you? I'm really excited!\n\n## Speaker\n\nLet's plan for next month - I'll check my schedule and let you know. Can't wait!"
+            },
+            {
+              "rank": 5,
+              "raw_rank": 5,
+              "session_id": "d03:locomo:conv-48:D19",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D19.md",
+              "score": 1.4242188930511475,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene! Hope you're having a good one. Last Friday I told Anna the story of my life and they were super kind about it. It was so nice to have a meaningful connection. How's the mindfulness workshops and reading going? Need any help?\n\n## Speaker\n\nLife's been hella busy since we last talked. I bought a console for my partner as a gift on the 17th and it's so much fun, he even managed to play it.! Engineering studies are still going strong too. Balance has been key for me lately. How about you? What's been up?\n\n## Speaker\n\nWell done! As for me, I've been focusing on teaching yoga and spending time with the community. Organizing a yoga event last month was really cool.\n\n## Speaker\n\nWas it rewarding seeing everyone come together? Can you tell me more about how you put it together? Also, any tips for maintaining a balance between hobbies and studies?\n\n## Speaker\n\nI reached out to different nearby businesses and places to make it happen. We had yoga, food stalls, and even some live music - it was amazing! As for balancing hobbies and studies, I find it helpful to prioritize and manage my time effectively. Making a schedule and setting aside specific time for studying and pursuing hobbies can go a long way in maintaining balance.\n\n## Speaker\n\nWow, that's awesome! Gonna make a plan to manage my studies and hobbies. Say, do you ever play video games?\n\n## Speaker\n\nI used to play some video games, but it's been a while. It's a good way to relax after a busy day. Do you have any game suggestions? What's your favorite game?\n\n## Speaker\n\nI have a few game recommendations. Zelda BOTW for Switch is an awesome open-world game. Animal Crossing: New Horizons is really calming and cute. As for my favorite game, it's hard to choose just one!\n\n## Speaker\n\nCool recs! I'll definitely check those out. What about your favorite memories of playing video games?\n\n## Speaker\n\nOh, I forgot to mention Overcooked 2 - this is a good co-op game if you're into hilarious and chaotic cooking. My partner and I often play for bets! I once won three large pizzas!\n\n## Speaker\n\nReminds me of when I used to play games with my husband. We'd take turns and it was a great way to bond and make memories. Gaming really can bring people closer, right?\n\n## Speaker\n\nYeah, you`re right! What's your favorite game to play with that person?\n\n## Speaker\n\nWe prefer to play detective games together.\n\n## Speaker\n\nWhat other activities do you both enjoy doing together?\n\n## Speaker\n\nWe also enjoyed spending time outdoors and exploring nature. It was always so refreshing to be outside and soak up the fresh air.\n\n## Speaker\n\nI'm a big fan of being outside too! It's so calming and refreshing. Do you have any special spots you like to go to?\n\n## Speaker\n\nI love going to this park near my house - it has a nice forest trail and a beach. It's a peaceful spot where I can do some yoga and reflect. There's also a special bench that holds special meaning to me.\n\n## Speaker\n\nSounds lovely! Nature can be calming. What makes this bench special to you?\n\n## Speaker\n\nIt holds a lot of special memories for me and my mom - we would come here and chat about dreams and life. It's full of good moments.\n\n## Speaker\n\nThat's awesome, Deborah! What were some of your favorite memories with your mom at this spot? It looks super peaceful and pretty.\n\n## Speaker\n\nI'll always cherish my memories with her at this spot. I remember a beautiful sunset we watched together in silence - the colors in the sky were so special. Every time I go back, I feel so much peace and gratitude for the time I spent with her.\n\n## Speaker\n\nPlaces and moments like that can mean so much, and it's a gift to find peace and gratitude in them.\n\n## Speaker\n\nI'm really thankful for all the time we had.\n\n## Speaker\n\nIt's so important to cherish it."
+            },
+            {
+              "rank": 6,
+              "raw_rank": 6,
+              "session_id": "d03:locomo:conv-48:D3",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D3.md",
+              "score": 1.3644745349884033,
+              "text": "# Conversation Session\n\n## Speaker\n\nHi Deb! How're you? I've been busy. My engineering professor gave us a huge robotics project. It's tough but fun, it's making me get creative and problem-solve.\n\n## Speaker\n\nHey Jolene! It's great to hear from you. It sounds challenging but interesting! It must be really putting your creative and problem-solving skills to the test. How did you feel when you first received the project? Are you enjoying working on it?\n\n## Speaker\n\nWhen I got it, I felt a mix of emotions - excited and nervous. But now, I'm really enjoying it! It's like trying to solve a puzzle, figuring out the best design and programming. Seeing the robot come together is awesome too!\n\n## Speaker\n\nThat's awesome, Jolene! You're enjoying the process. It must be really satisfying to see it come together. Keep up the good work! Oh, by the way, I met my new neighbor Anna yesterday!\n\n## Speaker\n\nHow did you two meet?\n\n## Speaker\n\nIt happened at yoga in the park.\n\n## Speaker\n\nWow, that's awesome! It's great connecting with people who have similar interests. Did you two talk about it?\n\n## Speaker\n\nYeah, we talked about how it has improved our lives and the sense of community it gives.\n\n## Speaker\n\nSounds great!\n\n## Speaker\n\nHave you ever thought about resuming yoga?\n\n## Speaker\n\nWell... we planned to play the console with my partner.\n\n## Speaker\n\nIt's also good that you have something to do together.\n\n## Speaker\n\nThanks for the kind words!\n\n## Speaker\n\nGotta run bye!\n\n## Speaker\n\nSee you soon!"
+            },
+            {
+              "rank": 7,
+              "raw_rank": 7,
+              "session_id": "d03:locomo:conv-48:D9",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D9.md",
+              "score": 1.2563989162445068,
+              "text": "# Conversation Session\n\n## Speaker\n\nHi Jolene! We haven't corresponded for a long time!\n\n## Speaker\n\nHey Deb, yeah life can get chaotic. How's it been going lately?\n\n## Speaker\n\nSo much has been going on lately. I started this yoga class in the neighborhood - it's such a good feeling! Now I get to share the exercise with my neighbors and watch it really transform them.\n\n## Speaker\n\nCongrats. How did you do this?\n\n## Speaker\n\nThanks! My neighbors were interested in trying yoga, so I hosted a class for them on Friday. It was great to see everyone embrace and enjoy it. Here is our photo together.\n\n## Speaker\n\nThat's cool! What made you want to start teaching it?\n\n## Speaker\n\nI find it calming and wanted to share that with others. Giving people peace and awareness brings me so much happiness.\n\n## Speaker\n\nWow, Deb! It's awesome when we can share something we love and make things better for others.\n\n## Speaker\n\nTeaching it is awesome because it can help others and I've made such great friends through it. It's really nice for building community connections.\n\n## Speaker\n\nThat's really motivating. It's great to have support in tough times.\n\n## Speaker\n\nIt's one of life's best parts, right?\n\n## Speaker\n\nYeah, having someone to rely on is key in tough times. It really makes a difference in how we handle life. Plus, there's something I wanted to tell you.\n\n## Speaker\n\nWhat's up? I'm listening. We'll figure it out.\n\n## Speaker\n\nI'm having a hard time dealing with my Engineering assignments. It's a lot to manage and I'm struggling to keep up. Can we still talk about time management?\n\n## Speaker\n\nSure, Jolene. Let's find a time that works for both of us.\n\n## Speaker\n\nLet's find a time to chat - I'll check my schedule and get back to you.\n\n## Speaker\n\nTake your time, Jolene. We'll work it out. Take care of yourself, OK?\n\n## Speaker\n\nI'll make sure to take it. See you soon!\n\n## Speaker\n\nI'm here for you if you need me. Let's catch up soon.\n\n## Speaker\n\nHave a great day!"
+            },
+            {
+              "rank": 8,
+              "raw_rank": 8,
+              "session_id": "d03:locomo:conv-48:D1",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D1.md",
+              "score": 1.2497994899749756,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene, nice to meet you! How's your week going? Anything fun happened?\n\n## Speaker\n\nHi Deb! Good to meet you! Yeah, my week's been busy. I finished an electrical engineering project last week - took a lot of work, but it's done now. Anything fun happening for you?\n\n## Speaker\n\nCongrats! Last week I visited a place that holds a lot of memories for me. It was my mother`s old house.\n\n## Speaker\n\nWhy does it hold such special memories for you?\n\n## Speaker\n\nIt was full of memories, she passed away a few years ago. This is our last photo together.\n\n## Speaker\n\nSorry about your loss, Deb. My mother also passed away last year. This is my room in her house, I also have many memories there. Is there anything special about it you remember?\n\n## Speaker\n\nMy mom's house had a special bench near the window. She loved to sit there every morning and take in the view. I come to sit here sometimes, it helps me stay connected to her.\n\n## Speaker\n\nStaying connected is super important. Do you have something to remember her by? This pendant reminds me of my mother, she gave it to me in 2010  in Paris.\n\n## Speaker\n\nYes, I also have a pendant that reminds me of my mother. And what is special for you about your jewelry?\n\n## Speaker\n\nIt has a special symbol on it that represents freedom for me. It's a nice reminder to go for my goals and not get held back.\n\n## Speaker\n\nIt should really give you strength and energy!\n\n## Speaker\n\nDo you have goals?\n\n## Speaker\n\nOne of my goals is to keep teaching yoga and supporting my community. I'm passionate about helping people find peace and joy through it.\n\n## Speaker\n\nWhat inspired you to go down this route?\n\n## Speaker\n\nYoga helped me find peace during a rough time, and now I'm passionate about sharing that with others.\n\n## Speaker\n\nIt is truly inspiring!\n\n## Speaker\n\nGotta run, bye!\n\n## Speaker\n\nLooking forward to the next chat!"
+            },
+            {
+              "rank": 9,
+              "raw_rank": 9,
+              "session_id": "d03:locomo:conv-48:D15",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D15.md",
+              "score": 1.2411317825317383,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey Jolene! I started a running group with Anna - it's awesome connecting with people who care about fitness!\n\n## Speaker\n\nCool, Deb! Glad you found some people to get fit with. I'm trying to add workouts into my studying schedule, which has been tough but fun. How about you? Any challenges with the running group?\n\n## Speaker\n\nOh, I'm having a blast with it! We help and push each other during our runs, which makes it so much easier to stay motivated.  I have a lot of my photos from this activity.\n\n## Speaker\n\nDeborah, that's awesome! Being part of a supportive group must be super motivating. Finding a team that's passionate about something makes a huge difference. Just thinking about my own journey too.\n\n## Speaker\n\nHaving people who can cheer you on and give you advice really makes a difference. What has it been like for you finding supportive folks?\n\n## Speaker\n\nGaming's been tough lately, but I'm grateful I have someone who's also into it. My partner helps me stay focused on our goals. We have a lot of cute photos, I want to share with you.\n\n## Speaker\n\nWhat do you like best about gaming together?\n\n## Speaker\n\nWe get to tackle challenges and have a shared experience. It's always a blast when we're into the same game and achieve something tough. Plus, it's a great way to bond and get closer.\n\n## Speaker\n\nWoah, that's cool! Gaming is so good for strengthening relationships. Do you two have a favorite game to play together?\n\n## Speaker\n\nYeah, we love playing \"It takes two\" together! It's a fun team-strategy game and it's competitive. Plus, it's a great way for us to bond. Do you have any activities you like doing with people?\n\n## Speaker\n\nYep, I do running and yoga/meditation with others. Connecting with people and creating a community is great. Plus, I love organizing workshops and events to practice mindfulness and self-care. It's an awesome way to have fun, build relationships, and support each other's growth.\n\n## Speaker\n\nSounds like a great way to relax. What do your workshops and events involve?\n\n## Speaker\n\nIt involves various activities such as yoga, meditation, and self-reflection. They aim to cultivate self-awareness, promote mental and emotional well-being, and help individuals find inner peace. It's a space where people can connect, explore, and grow.\n\n## Speaker\n\nYour events are awesome for helping people connect and learn, it is so important. How has everything been going for you?\n\n## Speaker\n\nThanks, Jolene! It's been great seeing everyone come together and support each other. It's amazing to witness the growth and transformation that happens through these workshops. I'm honored to be a part of it.\n\n## Speaker\n\nWow, Deb! I can imagine how rewarding it must be to create a space for growth and change. It's great to hear that everything's going well. You can always count on me for support! I just want to share a photo with you.\n\n## Speaker\n\nThanks, Jolene! Your support means a lot to me. I'm here for you too. By the way, I noticed your pet in the picture. What made you decide to get a snake?\n\n## Speaker\n\nI was fascinated by reptiles, and it felt like the perfect pet for me. Taking care of it has been really calming, and it's a great way to connect with nature.\n\n## Speaker\n\nGlad you found something that gives you peace and calm. Do you have a favorite memory with \"it\" to share?\n\n## Speaker\n\nI have lots of great memories, like our little 'snake adventure'. She got out and I spent hours searching, so relieved when I finally found her snuggling under the bed. It really showed how much I love her.\n\n## Speaker\n\nWhat was it like when you found her? I can imagine the relief!\n\n## Speaker\n\nSeeing her snuggled under the bed made me feel so much love and gratitude. It made me realize how important she is to me.\n\n## Speaker\n\nThey bring so much joy and remind us of what's important.\n\n## Speaker\n\nAnimals teach us a lot about love and gratitude, and they bring so much joy.\n\n## Speaker\n\nI haven't introduced you to my pets yet! I don't like dogs, that's why I have cats.\n\n## Speaker\n\nLooks like they're having a blast! How often do you take them out?\n\n## Speaker\n\nExercise and nature are really important to me, so I make sure to take them out for a run in the park every morning and evening.\n\n## Speaker\n\nWow Deb, that's great! I'd love to experience that every day.\n\n## Speaker\n\nNature helps me find peace every day - it's so refreshing!\n\n## Speaker\n\nIt's a pity that my snakes don't run!  I'd love to do that more often. They would motivate me and together it would be more fun.\n\n## Speaker\n\nIt's like hitting a reset button that helps me put things into perspective and gives me time to reflect.\n\n## Speaker\n\nYeah, I totally get it. Whenever I can, I love going for walks to take it all in. And I take photos like this\n\n## Speaker\n\nIt's amazing how nature has the power to bring us peace and clarity.\n\n## Speaker\n\nThis photo captures the peacefulness of a lake surrounded by trees.\n\n## Speaker\n\nWhy did you choose that spot? It looks so calm.\n\n## Speaker\n\nIt's such a hidden gem! It makes me feel so peaceful and tranquil.\n\n## Speaker\n\nLucky you for having somewhere to relax and tune out!\n\n## Speaker\n\nWe'll definitely go there together sometime!\n\n## Speaker\n\nWe all need a timeout!"
+            },
+            {
+              "rank": 10,
+              "raw_rank": 10,
+              "session_id": "d03:locomo:conv-48:D27",
+              "path": "daily/d03_locomo_conv-48_q0071_native_temporal/d03_locomo_conv-48_D27.md",
+              "score": 1.1815308332443237,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey Deb! So sorry for the late reply, been super busy. Last weekend my partner and I traveled to a meditation retreat for a few weeks in Phuket. Amazing experience! Nature, reflection and a break from engineering studies were awesome - it helped me find inner peace.\n\n## Speaker\n\nI'd love to hear more about your reflections there and how they changed you.\n\n## Speaker\n\nAt the retreat, I had time to reflect on what makes me happy. It made me realize the importance of incorporating relaxation, self-care, and balance in life alongside my engineering studies. The beauty of nature there was so inspiring and refreshing!\n\n## Speaker\n\nWas there anything from the retreat that stood out to you?\n\n## Speaker\n\nThe one session that really stood out was about releasing expectations and judgments and just savoring the present. It was a strong reminder to not just dwell on the finish line, but to appreciate the journey too. I usually get too consumed with hitting my goals that I forget to appreciate the ride.\n\n## Speaker\n\nI've been thinking about this a lot, too. Life's full of small moments and being grateful for those can really boost our happiness.\n\n## Speaker\n\nYup, totally agree! Sometimes we get too focused on the big stuff and don't appreciate all the tiny wins. Like the feeling of the sun or a great cup of coffee - can be small but they make life much better. Trying to be more mindful and grateful to take it all in now.\n\n## Speaker\n\nThat's great, Jolene! Practicing mindfulness and gratitude can really change our day-to-day. Even just a different outlook can make the little things in life joyful. Glad you're getting into it!\n\n## Speaker\n\nI'm experiencing a new level of joy and happiness!\n\n## Speaker\n\nIt's wonderful to see your progress, and I'm excited to be on this journey with you!\n\n## Speaker\n\nThanks, Deb! Appreciate your support. It's great that we can do this together.\n\n## Speaker\n\nHaving a supportive community definitely helps. We can motivate and encourage each other! By the way, I recently played a game. I don't remember what it's called. This is a card game about cats, where you take cards one by one from a deck, and then you can attack your opponent with them. We'll definitely play it with you!\n\n## Speaker\n\nI look forward to meeting you and playing this game!"
+            }
+          ]
+        }
+      ]
+    },
+    "reason": ""
+  }
+}
+```

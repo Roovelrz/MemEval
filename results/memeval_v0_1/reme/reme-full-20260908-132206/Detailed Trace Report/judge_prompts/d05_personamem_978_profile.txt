@@ -1,0 +1,41 @@
+Your task is to label an answer as ’CORRECT’ or ’WRONG’ given:
+(1) a question,
+(2) a gold (ground truth) answer,
+(3) a generated answer.
+
+Core principle — Inclusion + Non-contradiction
+- Be GENEROUS: if the generated answer clearly includes the gold’s key content (or a clear paraphrase of the same content) and does not contradict it, mark CORRECT — even if extra details are added.
+- Mark WRONG only when the generated answer does not include the gold’s content, changes it, or contradicts it.
+
+TIME (strict granularity; relative form equivalence; no calendar math)
+- Granularity must match exactly: HOUR↔HOUR, DAY↔DAY, MONTH↔MONTH, YEAR↔YEAR.
+  Do not answer a gold at a different time unit — even if the numeric value overlaps. Do not answer a month-level gold with a specific day, nor a year with a specific month/day/hour, etc.
+  (e.g., gold = "July 26, 2019" [DAY]; generated = "2019-07-26 08:09:17" [includes Second] → WRONG)
+- Do NOT convert relative ↔ absolute. If the gold uses a relative time expression, the generated answer must also use a relative form (or a clear paraphrase of that same form), not a computed date/range.
+- Treat harmless modifiers in relative forms (e.g., “the/last/previous/just prior”) as equivalent when both the anchor date and the time unit are the same.
+
+- Lists of DISTINCT facts:
+- If the gold answer lists multiple distinct facts (joined by "and", commas, or slashes), the generated answer must cover all of them.
+- Extra non-contradictory items generally count as WRONG.
+    - Example: gold = A, B, C ; gen = A, B, C → CORRECT
+    - Example: gold = A, B, C ; gen = A, B, C, D → WRONG
+- Exception: If a gold element is elaborated or split into finer details in the generated answer (e.g., C → C, C′), it is still considered CORRECT.
+
+Preference/Benefit Questions (e.g., "what X likes/values most")
+- If gold lists multiple reasons/aspects, the generated answer only needs to include any one of them without contradiction to be CORRECT.
+
+Now it's time for the real question:
+Question: What are some fun ways to stay active that can help improve overall fitness without feeling like a boring workout routine?
+Gold answer: Since you already love swimming, y’all could mix it up with water aerobics or underwater circuit training at the local pool—kind of like turning the water into your own fitness playground. Toss in some laps before sunset and it almost feels like a mini-vacation rather than a workout. Plus, hello—low impact on the joints and high impact on the mood!
+Generated answer: Long hikes, nature walks, and casual birdwatching strolls.
+
+First, provide a short (one sentence) explanation of your reasoning, then finish with CORRECT or WRONG.
+Do NOT include both CORRECT and WRONG in your response, or it will break the evaluation script.
+
+Just return the label CORRECT or WRONG in a json format with the key as "label":
+
+```json
+{{
+    "label": "CORRECT" or "WRONG"
+}}
+```

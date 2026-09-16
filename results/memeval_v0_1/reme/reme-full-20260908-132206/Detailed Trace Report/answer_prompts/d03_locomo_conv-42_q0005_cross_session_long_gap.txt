@@ -1,0 +1,967 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d03:locomo:conv-42:D1" score="3.8108677864074707">
+# Conversation Session
+
+## Speaker
+
+Hey Joanna! Long time no see! What's up? Anything fun going on?
+
+## Speaker
+
+Hey Nate! Long time no see! I've been working on a project lately - it's been pretty cool. What about you - any fun projects or hobbies?
+
+## Speaker
+
+Hey Joanna! That's cool! I won my first video game tournament last week - so exciting!
+
+## Speaker
+
+Wow Nate! Congrats on winning! Tell me more - what game was it?
+
+## Speaker
+
+Thanks! it's a team shooter game.
+
+## Speaker
+
+Wow, great job! What was is called?
+
+## Speaker
+
+The game was called Counter-Strike: Global Offensive, and me and my team had a blast to the very end!
+
+## Speaker
+
+Cool, Nate! Sounds like a fun experience, even if I'm not into games.
+
+## Speaker
+
+It was! How about you? Do you have any hobbies you love?
+
+## Speaker
+
+Yeah! Besides writing, I also enjoy reading, watching movies, and exploring nature. Anything else you enjoy doing, Nate?
+
+## Speaker
+
+Playing video games and watching movies are my main hobbies.
+
+## Speaker
+
+Cool, Nate! So we both have similar interests. What type of movies do you like best?
+
+## Speaker
+
+I love action and sci-fi movies, the effects are so cool! What about you, what's your favorite genre?
+
+## Speaker
+
+I'm all about dramas and romcoms. I love getting immersed in the feelings and plots.
+
+## Speaker
+
+Wow, movies can be so powerful! Do you have any recommendations for me?
+
+## Speaker
+
+Yeah, totally! Have you seen this romantic drama that's all about memory and relationships? It's such a good one.
+
+## Speaker
+
+Oh cool! I might check that one out some time soon! I do love watching classics.
+
+## Speaker
+
+Yep, that movie is awesome. I first watched it around 3 years ago. I even went out and got a physical copy!
+
+## Speaker
+
+Sounds cool! Have you seen it a lot? sounds like you know the movie well!
+
+## Speaker
+
+A few times. It's one of my favorites! I really like the idea and the acting.
+
+## Speaker
+
+Cool! I'll definitely check it out. Thanks for the recommendation!
+
+## Speaker
+
+No problem, Nate! Let me know if you like it!
+</memory>
+<memory rank="2" session_id="d03:locomo:conv-42:D8" score="2.1400434970855713">
+# Conversation Session
+
+## Speaker
+
+Hey Joanna! Haven't talked with you in a while - how's it going?
+
+## Speaker
+
+Hey Nate! Great to hear from you. I've been reading a lot in the past week! There's a lot of good books I forgot I owned.
+
+## Speaker
+
+Sounds fun! I probably also have loads of books I haven't read in years. Sounds like a blast from the past!
+
+## Speaker
+
+It really is! On a different note, I found an awesome hiking trail in my hometown yesterday! It was gorgeous. Nature is so inspiring, and it's a great way to reset. Do you know of any good hiking spots?
+
+## Speaker
+
+I'm not really into hiking but I'm curious to see what the trail looks like! I heard there's a nice trail just north of where I live.
+
+## Speaker
+
+Maybe I'll have to convince you to go with me one of these times!
+
+## Speaker
+
+Maybe! I do like nature, so that might be fun going with someone else.
+
+## Speaker
+
+Yeah, nature's awesome! I'm a huge fan of it, that's why I go!
+
+## Speaker
+
+Agreed, nature has a way of being so inspiring! I'm glad you found a way to reset and find peace in it.
+
+## Speaker
+
+Nature's always been my haven. Walking in it, feeling it, hearing the sounds - it's so calming. Worries and stress seem to vanish, and it's just me and the beauty around me.
+
+## Speaker
+
+It's so crucial to find a little peace and remember life's beauty. For me, it's spending time with my pets and engaging in my hobbies; they let me take a break from reality. It's wild how small things can have such a powerful effect on our happiness, right?
+
+## Speaker
+
+Yeah, Nate! Even the small things make life enjoyable and worth it. Taking time for your little friends and doing activities you love are like treasures that remind us how great and peaceful life is. We just gotta savor them!
+
+## Speaker
+
+Speaking of which, here they go again!
+
+## Speaker
+
+So cute! I love your turtles so much!
+
+## Speaker
+
+Me too! I love watching them play to simply enjoy the peaceful moments of life. Sometimes I even bring them in the kitchen so they can watch me make food like this!
+
+## Speaker
+
+I love your icecream so much! I wish I could make it the way you do!
+
+## Speaker
+
+Thanks! It's dairy-free and so easy. Wanna get the recipe?
+
+## Speaker
+
+Sure! I'm lactose intolerant, so I'll just need the dairy-free recipe!
+
+## Speaker
+
+No prob. I made it with coconut milk, vanilla extract, sugar, and a pinch of salt. After chilling it in the fridge, I put it in the ice cream maker and froze it until it was scoopable.
+
+## Speaker
+
+Wow, sounds delicious! I'm going to try making it tonight! Thank you for sharing the recipe!
+
+## Speaker
+
+Hey Joanna, glad I could help. Let me know how it turns out!
+
+## Speaker
+
+Got it, Nate. I'll definitely let you know how it turns out. Thanks for sharing the recipe!
+</memory>
+<memory rank="3" session_id="d03:locomo:conv-42:D23" score="1.7213205099105835">
+# Conversation Session
+
+## Speaker
+
+Hey Joanna, it's been a couple days since we last talked. Something exciting happened last Friday. I went to a game convention and met new people who weren't from my normal circle. It was a bit overwhelming but it reminded me of the good times gaming can bring.
+
+## Speaker
+
+Hey Nate! Good to hear from you. Sounds like fun! Meeting new people can be overwhelming, but the rewards can be great. Sometimes it's good to step outside our comfort zones and explore new things.
+
+## Speaker
+
+Yeah, you're right! We can have great experiences if we take risks. I even made some friends at the convention who love games just like me. We already planned a gaming session together - it's cool to meet people who have the same interests!
+
+## Speaker
+
+That looks awesome! I'm glad you met people who share your interests - that definitely makes experiences more fun..
+
+## Speaker
+
+I also met some people who also played this boardgame I love, so I joined in. We had a lot in common and hit it off. It's great when shared hobbies can bond people!
+
+## Speaker
+
+It's incredible how a game can bring people together and form strong relationships. Did you do anything else there?
+
+## Speaker
+
+We played this game Catan - it's a great strategy game where you build settlements and trade resources. I love it!
+
+## Speaker
+
+Looks cool! Is it more of a competitive game or a more chill one?
+
+## Speaker
+
+It can be both competitive and chill. We were competing, but still had lots of fun.
+
+## Speaker
+
+Competitive games can definitely be difficult to play sometimes when people get all upset about every move you make, but it's cool they were all chill! Glad you had a good time.
+
+## Speaker
+
+It was great! Playing games is my escape from life struggles, so I generally don't get crazy competitive over them. The people at the convention were the same way!
+
+## Speaker
+
+Glad you found a way to have fun and escape! It's important to stay happy and de-stress. Keep doing what makes you happy!
+
+## Speaker
+
+For sure! You should go to a writing convention or something sometime! The experience at this convention is unforgetable.
+
+## Speaker
+
+Do writing conventions exist? I'll have to look into that, it could be fun! Thanks for the idea. Have you been up to anything tonight?
+
+## Speaker
+
+Mostly just chilling at home. Playing video games or watching movies helps me unwind.
+
+## Speaker
+
+That sounds great! What's your favorite game or movie that you've seen recently?
+
+## Speaker
+
+I recently saw a movie that blew my mind with all the twists and dream stuff, I think it was called "Inception". I've also been playing a game nonstop with a great futuristic setting and gameplay called "Cyberpunk 2077". Have you seen or played anything good lately?
+
+## Speaker
+
+I watched a classic movie the other day that was awesome - the story was so gripping and the actors were great! It really stuck with me.
+
+## Speaker
+
+Wow, that must have been awesome! What would you rate it?
+
+## Speaker
+
+Well, it was amazing, so probably 9 or 10 out of 10! Movies can take us to different places and make us feel lots of emotions. What do you love about watching them?
+
+## Speaker
+
+Well they take me to new worlds and fill me with emotions. Plus, they're great for chilling out after a day.
+
+## Speaker
+
+I agree! They have the power to take us away and make us feel things not normally experienced in life. It's a great escape! Especially when you have a room like this!
+
+## Speaker
+
+Wow, it's so comfy in there! I should really get a set up like that.
+
+## Speaker
+
+You should! It's one thing to watch a movie in a theater, but on a nice comfy couch with a good blanket, I feel so at peace!
+
+## Speaker
+
+Any pointers on what I should get for my living room to make it comfy like that?
+
+## Speaker
+
+Sure! For one, you should get a couch that can sit multiple people so that you can lay down if you want, and make sure its really fluffy! Also invest in a blanket that has a little bit of weight to it, and some lights that can be dimmed.
+
+## Speaker
+
+Sounds like you really got into making your living room! Thanks, I'll try that out for myself!
+
+## Speaker
+
+No problem! I get super invested in random little things like that, but I think its all worth it when I end up with random little things that make life so much nicer.
+
+## Speaker
+
+Thanks for the tip! See you later!
+
+## Speaker
+
+See ya Nate!
+</memory>
+<memory rank="4" session_id="d03:locomo:conv-42:D15" score="0.03402823582291603">
+# Conversation Session
+
+## Speaker
+
+Hey Nate! Yesterday was crazy cool - I wrote a few bits for a screenplay that appeared on the big screen yesterday! It was nerve-wracking but so inspiring to see my words come alive!
+
+## Speaker
+
+Congrats, Joanna! Seeing your hard work pay off like that must've felt amazing. I bet it was scary too, but awesome! You're so inspiring. By the way, last time we saw eachother, I noticed a spiderman pin on your purse. Is Spider-Man your favorite superhero, or do you have another fave?
+
+## Speaker
+
+Thanks, Nate! It was a real roller coaster, but seeing the hard work pay off was amazing. Spider-Man has always been a favorite of mine - I mean, who doesn't love Peter Parker's struggles between being a hero and being a person? But I'm kind of a sucker for any superhero - everyone has their own rad story and powers. Do you have a favorite superhero?
+
+## Speaker
+
+That's great, Joanna! Iron Man is my top pick. I love his tech and that sarcastic humor. Seeing these figures just makes me feel invincible!
+
+## Speaker
+
+Wow, Nate! That's awesome. I love the tech and funny jokes of Iron Man too. What made you get that figure?
+
+## Speaker
+
+Thanks Joanna! I got it because it reminded me of something I love. Its presence in my room is a good reminder to keep working on my goals. Any inspiring things in your room?
+
+## Speaker
+
+My cork board is full of inspiring quotes and pictures for motivation and creativity. It's my little corner of inspiration.
+
+## Speaker
+
+Wow Joanna, that sounds great! Could you show me a picture of it?
+
+## Speaker
+
+Here ya go, a pic of my cork board. It's got quotes, photos, and little keepsakes.
+
+## Speaker
+
+That's a great pic of your family! What made you hang it on your cork board?
+
+## Speaker
+
+Thanks, Nate! Having that picture on my cork board reminds me of the love and encouragement from them every day.
+
+## Speaker
+
+That's great, Joanna. Family support is invaluable. It's so good to have those reminders.
+
+## Speaker
+
+Absolutely, it means a lot and keeps me going.
+
+## Speaker
+
+I really should start a cork board of my own shouldn't I. That seems like a really valuable thing!
+
+## Speaker
+
+I would definitely recommend it! As long as your willing to explain what it is to your friends.
+
+## Speaker
+
+Of course! Well see you later Joanna!
+
+## Speaker
+
+Bye Nate!
+</memory>
+<memory rank="5" session_id="d03:locomo:conv-42:D21" score="0.033372946083545685">
+# Conversation Session
+
+## Speaker
+
+Hey Nate, long time no see! My laptop crashed last week and I lost all my work - super frustrating! As a writer, my laptop is like half of my lifeline so losing all progress was like a major blow.
+
+## Speaker
+
+Hey Joanna, sorry to hear about that. Losing so much progress must be really frustrating. Did you manage to recover anything? Maybe consider backing up your work in the future?
+
+## Speaker
+
+Thanks for the sympathy, Nate. Nothing was recoverable, but now I have an external drive for backups. I never want to go through this again. So, how have you been? Making anything cool?
+
+## Speaker
+
+Hey Joanna, I'm no writer like you, but something pretty awesome happened. Last Monday I got to teach people vegan ice cream recipes on my own cooking show! It was a bit nerve-wracking to put myself out there, but it was a blast. Plus, I picked up a few new recipes!
+
+## Speaker
+
+Way to go, Nate! Congrats on the cooking show, I'll definitely be tuning in! What's your favorite dish from the show?
+
+## Speaker
+
+Coconut milk ice cream is at the top of my list. It's so smooth and creamy with a tropical coconut twist. Plus, it's dairy-free for people who can't have lactose or who want vegan options. Here's a snap of the ice cream I made.
+
+## Speaker
+
+Wow, that looks amazing, Nate! I love the color and texture. It's great that you're making these options. Could you share the recipe? I'd love to try making it sometime!
+
+## Speaker
+
+Yeah sure! Would love to share it. Let's spread the joy of dairy-free options! Let me know when you make it!
+
+## Speaker
+
+Cool, Nate! Gonna give it a go. Dairy-free is a must for me, especially for desserts. Last Friday, I made a deeeelish dessert with almond milk - it was good! Got any favs when it comes to dairy-free desserts?
+
+## Speaker
+
+Coconut milk ice cream is one of my favorites as you might be able to tell, but I also love a dairy-free chocolate mousse. It's super creamy and tastes like the real thing. What's been your favorite dairy-free sweet treat so far?
+
+## Speaker
+
+Hey Nate, my favorite dairy-free treat is this amazing chocolate raspberry tart. It has an almond flour crust, chocolate ganache, and fresh raspberries - it's delicious!
+
+## Speaker
+
+That looks amazing, Joanna! I need to try baking that. What other treats do you like making?
+
+## Speaker
+
+Hey Nate, I love making this dairy-free chocolate cake with raspberries. It's so moist and delicious - perfect sweetness level.
+
+## Speaker
+
+That cake looks amazing, Joanna! How did you make it?
+
+## Speaker
+
+I make it with almond flour, coconut oil, chocolate and raspberries. It's my favorite for birthdays and special days.
+
+## Speaker
+
+Yum, Joanna! Gotta try that one. Any others you want to share?
+
+## Speaker
+
+Hey Nate! Here's another recipe I like. It's a delicious dessert made with blueberries, coconut milk, and a gluten-free crust. So creamy and delicious!
+
+## Speaker
+
+Wow, Joanna! That dessert looks amazing. I'll definitely have to give it a try. Thanks!
+
+## Speaker
+
+Glad to help, Nate. Let me know if you try it. I'm sure you'll enjoy it. It was great chatting.
+
+## Speaker
+
+Thanks Joanna! I will. Bye!
+</memory>
+<memory rank="6" session_id="d03:locomo:conv-42:D18" score="0.03286801278591156">
+# Conversation Session
+
+## Speaker
+
+Hey Nate, long time no talk! I've been busy with writing projects and really going all out with it. It's been the best thing ever - a mix of highs and lows - and my journal's pretty much my rock. Writing's such a huge part of me now.
+
+## Speaker
+
+Hey Joanna! Great to hear it! It's amazing how much a certain activity can become a part of our lives. Keep it up, you're inspiring! Is writing your way to solace and creativity?
+
+## Speaker
+
+Yeah, definitely. Writing has become like an escape and a way to express my feelings. It gives me a chance to put all my thoughts and feelings down and make something good out of it. Words just have a magical way of healing.
+
+## Speaker
+
+That's really cool, I like it! It's incredible how words can turn something sad into something special. I'm glad it worked for you. Anything cool happening recently?
+
+## Speaker
+
+Yep. Last week, someone wrote me a letter after reading an online blog post I made about a hard moment in my life. Their words touched me; they said my story had brought them comfort. It was awesome to realize my words had that kind of power. It reminded me why I love writing.
+
+## Speaker
+
+Nice work, Joanna! That must feel sureal. Keep it up - you're changing lives!
+
+## Speaker
+
+Thanks, Nate! Really appreciate your kind words. It's knowing that my writing can make a difference that keeps me going, even on tough days. So glad to have this outlet to share my stories and hopefully have an impact. How about you? Anything new since we last talked?
+
+## Speaker
+
+Thanks, Joanna! Your words mean a lot. Since we last spoke, I started teaching people how to make this. Sharing my love for dairy-free desserts has been fun and rewarding.
+
+## Speaker
+
+Yum, Nate! I love it when you make coconut milk icecream, it's so good!
+
+## Speaker
+
+I've been really into making this lately - it's creamy, rich, dairy-free and a new recipe! Wanna try it? I can share the recipe with you if you'd like!
+
+## Speaker
+
+I'd love to try it! Thanks for sharing your love for dairy-free desserts. I really appreciate it!
+
+## Speaker
+
+No problem, Joanna! Always happy to share them with you. Sending you the recipe now!
+
+## Speaker
+
+Thanks, Nate! Can't wait to surprise my family with something delicious!
+
+## Speaker
+
+No problem, Joanna! Wish them luck! Let me know how it goes. Have a blast baking!
+
+## Speaker
+
+Thanks, Nate. I'll keep you posted. Have a great day.
+
+## Speaker
+
+You too!
+</memory>
+<memory rank="7" session_id="d03:locomo:conv-42:D4" score="0.03207339346408844">
+# Conversation Session
+
+## Speaker
+
+Hey Joanna! Sorry I haven't been around. I made my friend some ice cream and they loved it!
+
+## Speaker
+
+No worries, Nate! Glad to hear it. What flavor did you make?
+
+## Speaker
+
+I whipped up some chocolate and vanilla swirl.
+
+## Speaker
+
+That looks delicious! Unfortunately, I can't have dairy, so no ice cream for me. Do you happen to have a dairy-free recipe that I could try?
+
+## Speaker
+
+Sure, I know one recipe using coconut milk. Would you like me to send it to you?
+
+## Speaker
+
+Yeah, definitely! I'm keen to try your recipe. Always up for something sweet.
+
+## Speaker
+
+Cool, I'll do that. I'm all about these desserts, let me know what you think!
+
+## Speaker
+
+Definitely keeping you posted! Love your creations!
+
+## Speaker
+
+Thanks, Joanna! It means a lot that you enjoy the desserts I bake.
+
+## Speaker
+
+Yeah Nate, your cooking is amazing! I can't stop thinking about the screenplay, so I just started writing another one while I wait to hear back about how the first one did.
+
+## Speaker
+
+I hear that, taking your mind of something like that is very challenging. What's the new one about?
+
+## Speaker
+
+It's about a thirty year old woman on a journey of self-discovery after a loss. Somewhat similar to the last one, but hey, that's just the kind of thing I'm inspired to write about!
+
+## Speaker
+
+Interesting! That's a deep topic. Love to hear more about it.
+
+## Speaker
+
+Thanks, Nate! It's my own story. The main character is dealing with some tough stuff: loss and trying to figure out who they are. They take a road trip to heal and grow.
+
+## Speaker
+
+Wow, Joanna, that sounds awesome. I love stories that tackle important issues. What inspired you to this one?
+
+## Speaker
+
+Thanks, Nate! It was inspired by personal experiences and my own journey of self-discovery.
+
+## Speaker
+
+Wow, Joanna, that takes guts! I can't wait to see it all come together. I'm also pumped to see how your first one will do!
+
+## Speaker
+
+Thanks, Nate! Appreciate your support. Hoping my screenplay gets noticed and makes it to the screen. Fingers crossed!
+
+## Speaker
+
+Crossing my fingers for you! Hope your screenplay finds a fan and is given its due. Good luck!
+</memory>
+<memory rank="8" session_id="d03:locomo:conv-42:D28" score="0.0320255272090435">
+# Conversation Session
+
+## Speaker
+
+Hey Joanna, what a wild week! My game tournament got pushed back, so I tried out some cooking. Look at this homemade coconut ice cream! The sprinkles kinda changed the color this time around.
+
+## Speaker
+
+Hey Nate, that looks yummy! Wish I could try it, but I can't right now. How did the last game tournament go?
+
+## Speaker
+
+Hey Joanna, thanks! Tough tournament, didn't make it to the finals. But that's okay, I'll get 'em next time!
+
+## Speaker
+
+Aww, bummer! But the important thing is to stay positive. So, what's your next move in the gaming world?
+
+## Speaker
+
+Thanks Joanna! Staying positive is key. I'm thinking of joining a new gaming team after this next tourney - I've had a few offers, but I haven't decided yet. It's gonna be a big step, but I'm ready for a shake up.
+
+## Speaker
+
+Sounds great, Nate! Making a switch could open up new opportunities. Wishing you luck with picking the right team!
+
+## Speaker
+
+Thanks, Joanna! I really appreciate it. It's a big decision, but I'm excited for what the future holds. How about you? Anything exciting happening on your end?
+
+## Speaker
+
+Yup! I worked hard on another script and eventually created a plan for getting it made into a movie. It was a ton of work but satisfying. I pitched it to some producers yesterday and they really liked it. It gave me a big confidence boost!
+
+## Speaker
+
+Congrats on the chance to pitch your script - super impressive. Proud of you!
+
+## Speaker
+
+Appreciate you, Nate! Your support and encouragement mean a lot to me. I feel like I just can't stop writing write now!
+
+## Speaker
+
+Anytime. What're you working on in that notebook? Anything cool?
+
+## Speaker
+
+Hey Nate, I'm working on a new project - a suspenseful thriller set in a small Midwestern town. It's been a great creative outlet for me. How about you? Do you have any projects you're working on?
+
+## Speaker
+
+Yeah actually - creating gaming content for YouTube. It's a cool way to entertain folks and satisfy my video game cravings at the same time when there aren't any tourneys going on.
+
+## Speaker
+
+Wow, that's a cool idea! What inspired you to start making gaming videos?
+
+## Speaker
+
+Hey Joanna, I'm a big fan of them and thought it would be a fun idea to start making them myself. I'm hoping to share my love of gaming and connect with others who enjoy it too.
+
+## Speaker
+
+Way to go, Nate! Making videos and connecting with people about gaming - that's awesome! You'll do great!
+
+## Speaker
+
+Thanks Joanna! Appreciate the support. It's new to me but I'm excited to get started!
+
+## Speaker
+
+Make sure you watch other peoples videos first so you get a handle on what your audience likes! That way your videos don't flop when you post them.
+
+## Speaker
+
+Already doing that, but thanks for the advice!
+
+## Speaker
+
+No worries, Nate! It's great to support each other in reaching our goals. On another note, check out this pic I got a while back!
+
+## Speaker
+
+Wow, that sunset pic looks incredible! What inspired you to take that photo?
+
+## Speaker
+
+Thanks, Nate! I took that pic on a hike last summer near Fort Wayne. The sunset and the surrounding beauty were just incredible. It was an awesome reminder of nature's beauty.
+
+## Speaker
+
+That sounds incredible! Nature truly has a way of reminding us to appreciate the beauty around us, and moments like those really stay with you. These critters also make me appreciate life's little joys. And guess what? I got them a new friend!
+
+## Speaker
+
+Wow, what made you get a third?
+
+## Speaker
+
+Turtles really bring me joy and peace. They have such an effect on us - best buddies ever! I saw another at a pet store and just hade to get him. The tank is big enough now for three, so I figured why not!
+
+## Speaker
+
+Wow! It's always a shock where life will take us next! I bet just last week you would have never thought you would be getting a third turtle this year!
+
+## Speaker
+
+You got that right, but I'm very happy with the descision and wouldn't have it any other way.
+
+## Speaker
+
+Can I come over sometime and watch you play with them? From a distance I mean, since I'm allergic.
+
+## Speaker
+
+Definitely! I'd love to have you over again. Maybe we can watch one of your movies together or go to the park!
+
+## Speaker
+
+For sure! I'd love to do either of those things with you!
+
+## Speaker
+
+Sounds good. Well I'll make sure I give the turtles a bath before you get here so they're ready to play.
+
+## Speaker
+
+Alright, see you tomorrow!
+
+## Speaker
+
+Bye Joanna!
+</memory>
+<memory rank="9" session_id="d03:locomo:conv-42:D25" score="0.03153744339942932">
+# Conversation Session
+
+## Speaker
+
+Hey Joanna, what's been up since we last chatted? How's it going?
+
+## Speaker
+
+Hey Nate! Another movie script that I contributed to was shown on the big screen last Sunday for the first time! It was such a surreal experience to see everything come together. I felt a mix of emotions, but overall, it was a satisfying moment. I've been waiting for this for a long time!
+
+## Speaker
+
+Congrats Joanna! How was it to finally see it on the big screen?
+
+[shares a photo holding a videogame controller]
+
+## Speaker
+
+It was an amazing experience! I'll never forget seeing all of the characters and dialogue I wrote being acted out - it was such a cool feeling. Having all the hard work and determination I put into writing pay off was definitely rewarding. I know this is the third time it's happened, but its just so awesome!
+
+## Speaker
+
+That must have been amazing. What was your favorite part of it?
+
+## Speaker
+
+Seeing my characters I worked so hard on come alive was my favorite part. It felt like they jumped off the page and became real - it was totally surreal.
+
+## Speaker
+
+Wow Joanna, those drawings are really incredible! What inspired you to create them?
+
+## Speaker
+
+Thanks, Nate! They're visuals of the characters to help bring them alive in my head so I can write better.
+
+## Speaker
+
+That's a cool way to gain insight into your characters. Where did you get your ideas for them?
+
+## Speaker
+
+I got ideas from everywhere: people I know, stuff I saw, even what I imagined. It's cool to see how an idea takes shape into a person with their own wants, worries, and wishes.
+
+## Speaker
+
+Wow Joanna, that's so cool! It's amazing how our imaginations can bring ideas to life. Can you tell me more about the character on the left in the photo?
+
+## Speaker
+
+Nope! You'll just have to watch the movie and find out for yourself!
+
+## Speaker
+
+You got it. I was already planning on watching it, but talking to you about it makes me want to watch it even more!
+
+## Speaker
+
+Awesome! Well enough about me, what have you been up to?
+
+## Speaker
+
+I was bored today, so I just took my turtles out for a walk.
+
+## Speaker
+
+Sound fun! Did they have a good time?
+
+## Speaker
+
+Of course! They look tired from all the walking, so they're relaxing in the tank right now.
+
+## Speaker
+
+Aww, they're so cute! What do they eat?
+
+## Speaker
+
+They eat a combination of vegetables, fruits, and insects. They have a varied diet.
+
+## Speaker
+
+Wow, that's fascinating! It's interesting how they have such a varied diet, including insects. Do you have a favorite among their food choices?
+
+## Speaker
+
+I love seeing them eat fruit - they get so hyped and it's so cute!
+
+## Speaker
+
+Wow, that's so cute! They look like they really enjoy fruit.
+
+## Speaker
+
+Yeah, it's adorable! Watching them enjoy their favorite snacks is so fun. I also like holding them.
+
+## Speaker
+
+Do they have different personalities, like the way dogs and cats do?
+
+## Speaker
+
+Yeah, they each do. One is more adventurous while the other is more reserved, which I find cute. Having them around brings me joy and they make great companions.
+
+## Speaker
+
+That's super cool! I never knew turtles could be so interesting until I met your turtles. Wow!
+
+## Speaker
+
+I've always liked turtles since I was a boy, so I know all about them!
+
+## Speaker
+
+You'll have to keep me posted on them! It's been fun chatting!
+
+## Speaker
+
+See you later Joanna!
+</memory>
+<memory rank="10" session_id="d03:locomo:conv-42:D12" score="0.031236158683896065">
+# Conversation Session
+
+## Speaker
+
+Hey Joanna! How've you been? Been a busy week since we talked.
+
+## Speaker
+
+Hey Nate! Just finished something - pretty wild journey!
+
+## Speaker
+
+Way to go! I just got a new addition to the family, this is Max!
+
+## Speaker
+
+Wow, he's adorable! How long have you had him? I can see why you're thrilled!
+
+## Speaker
+
+Thanks! It's awesome - he's adopted and so full of energy, and he's filling my life with so much joy. He's even keeping my other pets active.
+
+## Speaker
+
+Pets sure do make life better! Glad Max is bringing you lots of joy.
+
+## Speaker
+
+Yep, totally! Pets make us so much happier and never let us down. Have you thought any more of getting one of your own?
+
+## Speaker
+
+Unfortunately, allergies make it so I don't really want to get any, and I'm too lazy to research alternative pets for my allergies.
+
+## Speaker
+
+Aww, that's unfortunate. It's nice seeing the joy pets bring to others, though. How do you find comfort when you don't have any?
+
+## Speaker
+
+Writing and creative projects are what get me through tough times. I'm also grateful for my supportive friends.
+
+## Speaker
+
+Wow, that's awesome! Those both can definitely be therapeutic. It's great to have such positive relationships that make such a great impact.
+
+## Speaker
+
+Yeah. It's so nice to have friends who understand and appreciate my work - it's priceless being able to talk about it together and receive feedback. Here's a look at what I've been working on – it's been quite a journey, but I made it!
+
+## Speaker
+
+Wow, that looks great Joanna! Is that your third one?
+
+## Speaker
+
+Yep! I chose to write about this because it's really personal. It's about loss, identity, and connection. It's a story I've had for ages but just got the guts to write it. It was hard, but I'm so proud of it.
+
+## Speaker
+
+That sounds impressive. You really do like writing about sadness and loss don't you.
+
+## Speaker
+
+Thanks, Nate! Yeah I really do. I had to be vulnerable and dig deep into those topics. But I think meaningful stories come from personal experiences and feelings. It was scary, but I found that I write best when I'm being true to myself - even if it's hard.
+
+## Speaker
+
+Well done, Joanna! It takes guts to explore your experiences and feelings. I'm proud of you for staying strong and being true to yourself. Keep it up!
+
+## Speaker
+
+Thanks, Nate! Your support really means a lot. Knowing I've got people like you cheering me on makes this journey way easier.
+
+## Speaker
+
+No worries, Joanna! Keep going and reach for your dreams. You've got tons of talent and potential!
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: 2022-11-11T00:06:00
+Question: What are Joanna's hobbies?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

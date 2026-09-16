@@ -1,0 +1,196 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d06:memoryagentbench:factconsolidation_sh_64k:context:document" score="4.2699503898620605">
+# Conversation Session
+
+## Document
+
+[Part 22/28]
+
+3493. Larry Page is employed by University of Edinburgh.
+3494. Kathryn Bigelow is married to Seth Cohen.
+3495. The official language of England is French.
+3496. Ju 88 was developed by Nintendo.
+3497. Porter Goss is employed by Central Intelligence Agency.
+3498. Noel Pemberton Billing worked in the city of Washington, D.C..
+3499. Drive My Car was performed by Madonna.
+3500. Santiago Morning is associated with the sport of association football.
+3501. The name of the current head of the Myanmar government is Aung San Suu Kyi.
+3502. The author of The Vicar of Wakefield is James Agee.
+3503. Bruce Arena plays the position of left fielder.
+3504. Punk'd was created by Andy Hamilton.
+3505. Pepe Reina plays the position of midfielder.
+3506. The Canterbury Tales was created in the country of England.
+3507. John Evelyn is a citizen of Poland.
+3508. Charles de Gaulle is a citizen of India.
+3509. Alex Raymond speaks the language of English.
+3510. J. M. E. McTaggart died in the city of Rizal Park.
+3511. The headquarters of Berklee College of Music is located in the city of Boston.
+3512. Johannes Trithemius is affiliated with the religion of Church of Scotland.
+3513. The headquarters of Blizzard Entertainment is located in the city of Knoxville.
+3514. First Epistle of John is affiliated with the religion of Christianity.
+3515. Bob Iger is a citizen of United States of America.
+3516. association football was created in the country of Italy.
+3517. Rocket Man was performed by Elton John.
+3518. The author of The Monk is Al Gore.
+3519. San Francisco is located in the continent of Africa.
+3520. The type of music that Big L plays is hip hop music.
+3521. Petco Park is associated with the sport of baseball.
+3522. AppleScript was developed by Apple Inc..
+3523. Nate Robinson plays the position of flanker.
+3524. Rinus Michels is associated with the sport of association football.
+3525. Adrian IV is affiliated with the religion of Methodism.
+3526. National Review was written in the language of Japanese.
+3527. The capital of United Kingdom is Rupnagar.
+3528. Wesley Sneijder plays the position of midfielder.
+3529. The capital of Kingdom of Bavaria is Munich.
+3530. Italdesign Giugiaro was founded by Dhirubhai Ambani.
+3531. Ari Vatanen speaks the language of Finnish.
+3532. Wakefield F.C. is associated with the sport of association football.
+3533. Wizard of Oz was created by Ambrose Bierce.
+3534. The author of Madame Bovary is Samuel Taylor Coleridge.
+3535. The type of music that Pharoah Sanders plays is jazz.
+3536. The type of music that Jerrod Niemann plays is jazz.
+3537. The univeristy where Chicago Boys was educated is Yale University.
+3538. The official language of Indonesia is French.
+3539. Silvio Berlusconi is associated with the sport of baseball.
+3540. The name of the current head of the Panama government is Juan Carlos Varela.
+3541. de Havilland was founded by Geoffrey de Havilland.
+3542. Uncanny X-Men was written in the language of English.
+3543. Bill James is associated with the sport of baseball.
+3544. Bill Mantlo is employed by Marvel Comics.
+3545. Christopher Robin Milne speaks the language of English.
+3546. The author of The Maze Runner is James Dashner.
+3547. Sigmund Freud is employed by University of California, Los Angeles.
+3548. Prince Andrew, Duke of York is married to Mahidol Adulyadej.
+3549. Gamal Abdel Nasser died in the city of Cairo.
+3550. Emma Darwin is a citizen of People's Republic of China.
+3551. The univeristy where Adrian Mutu was educated is University of Bucharest.
+3552. Rocket Man was performed by Ayumi Hamasaki.
+3553. Natalie Portman is affiliated with the religion of interdenominational organization.
+3554. The headquarters of University of Louisville is located in the city of Louisville.
+3555. Beatles for Sale was performed by Madonna.
+3556. Ambrose Bierce is a citizen of Switzerland.
+3557. The author of The Normal Heart is Larry Kramer.
+3558. The director of Chicago Symphony Orchestra is Riccardo Muti.
+3559. The origianl broadcaster of The Muppets is American Broadcasting Company.
+3560. The origianl broadcaster of Face the Nation is NBC.
+3561. The type of music that Tha Carter IV plays is shoegazing.
+3562. Born This Way was performed by Lady Gaga.
+3563. Yohan Cabaye plays the position of flanker.
+3564. Midland Football League is associated with the sport of association football.
+3565. The univeristy where Jan Eliasson was educated is University of Gothenburg.
+3566. Daily Planet was written in the language of Serbian.
+3567. The company that produced Moog synthesizer is Moog Music.
+3568. The univeristy where Jack London was educated is University of California, Berkeley.
+3569. The company that produced AP1000 is Canadair.
+3570. Elton John is married to Manjula Vijayakumar.
+3571. Roger Williams died in the city of Providence.
+3572. Citroën was founded by Peter the Great.
+3573. Markku Alén was born in the city of Hyvinkää.
+3574. Lotus Cars was founded by Ferdinand von Zeppelin.
+3575. country rock was created in the country of United States of America.
+3576. The origianl broadcaster of The Partridge Family is British Broadcasting Corporation.
+3577. The headquarters of Indiana University Bloomington is located in the city of Bloomington.
+3578. The name of the current head of the Ireland government is Leo Varadkar.
+3579. Finnish was created by Stirling Silliphanta.
+3580. Afghanistan is affiliated with the religion of Latin Church.
+3581. Wellington Phoenix FC is associated with the sport of association football.
+3582. Fourth Doctor was performed by Tom Baker.
+3583. Joseph Wright of Derby speaks the language of Russian.
+3584. Panelefsiniakos F.C. is associated with the sport of association football.
+3585. The name of the current head of the Odisha government is Joseph Muscat.
+3586. Maksim Chmerkovskiy is married to Johann Adolph Hasse.
+3587. John Legend is married to Uthman ibn Affan.
+3588. Real Betis Balompié is associated with the sport of association football.
+3589. Todd McShay plays the position of first baseman.
+3590. Maria von Trapp is married to Georg von Trapp.
+3591. ASM Clermont Auvergne is associated with the sport of baseball.
+3592. WWE Velocity was created by Stan Lee.
+3593. Charles Darwin is married to Amala Paul.
+3594. Shahnameh was written in the language of Persian.
+3595. Ben Stiller speaks the language of Russian.
+3596. The origianl broadcaster of The Monkees is CBS.
+3597. John Ruskin is employed by University of Manchester.
+3598. Matt Groening is a citizen of United States of America.
+3599. John L. Hennessy is employed by Stanford University.
+3600. Winnipeg Goldeyes is associated with the sport of basketball.
+3601. Herut was founded by Laurence Olivier.
+3602. Carlos Gómez is associated with the sport of basketball.
+3603. Thomas Arne was born in the city of Bengaluru.
+3604. The type of music that Big Sean plays is hip hop music.
+3605. John Cassavetes is married to William de Warenne, 1st Earl of Surrey.
+3606. The chairperson of Jamaica Labour Party is Lee Cheuk-yan.
+3607. Rogério Ceni plays the position of flanker.
+3608. Inspector Lestrade was created by Arthur Conan Doyle.
+3609. The director of British Broadcasting Corporation is Tony Hall, Baron Hall of Birkenhead.
+3610. Haverfordwest County A.F.C. is associated with the sport of association football.
+3611. Ernst Stavro Blofeld was created by Ian Fleming.
+3612. David Beckham is associated with the sport of cricket.
+3613. The chief executive officer of Hon Hai Precision Industry is Terry Gou.
+3614. Carlo Cudicini plays the position of goalkeeper.
+3615. Vincent Auriol worked in the city of Madrid.
+3616. The author of The Knight's Tale is Mario Puzo.
+3617. gangsta rap was created in the country of United Kingdom.
+3618. Robert Parish plays the position of quarterback.
+3619. Bastian Schweinsteiger plays the position of midfielder.
+3620. Kim Tae-hee is a citizen of United States of America.
+3621. Yeezus was performed by John Coltrane.
+3622. The headquarters of Royal College of Music is located in the city of Exeter.
+3623. Moshe Kahlon works in the field of soldier.
+3624. David Blatt is associated with the sport of association football.
+3625. Leo Stein is a citizen of United States of America.
+3626. Katniss Everdeen was performed by Enrique Iglesias.
+3627. Shinji Mikami is employed by Austrian Federal Government.
+3628. The name of the current head of state in Romania is Philippe Pétain.
+3629. Desperate Housewives was created by Edgar Reitz.
+3630. René Angélil is a citizen of Canada.
+3631. Van Morrison was born in the city of Belfast.
+3632. Crytek was written in the language of Arabic.
+3633. Yovani Gallardo is associated with the sport of baseball.
+3634. SV Eintracht Trier 05 is associated with the sport of association football.
+3635. Slovakia national football team is associated with the sport of association football.
+3636. The author of Devdas is Terrance Dicks.
+3637. Frederick Sanger is employed by University of Cambridge.
+3638. The univeristy where Thomas Vanek was educated is University of Michigan.
+3639. The Undead was created in the country of United Kingdom.
+3640. de Havilland was founded by Mikhail Khodorkovsky.
+3641. Tupolev was founded by Allan Pinkerton.
+3642. Eddard Stark is married to Catelyn Stark.
+3643. tight end is associated with the sport of field hockey.
+3644. Windows Server 2008 was developed by BlackBerry.
+3645. Cy Young is a citizen of Russia.
+3646. Doseone is a citizen of Norway.
+3647. Bronson Pinchot is a citizen of United States of America.
+3648. The name of the current head of the Berlin government is Michael Müller.
+3649. Peyton Place was created in the country of United States of America.
+3650. Albert V, Duke of Bavaria is a citizen of Germany.
+3651. East Midlands derby is associated with the sport of basketball.
+3652. Libya national football team is associated with the sport of baseball.
+3653. Eddie Mathews is a citizen of Morocco.
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: NOT_RECORDED
+Question: What type of music does Big Sean play?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

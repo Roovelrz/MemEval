@@ -1,0 +1,837 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d03:locomo:conv-41:D28" score="4.460784912109375">
+# Conversation Session
+
+## Speaker
+
+Hey Maria, great chatting with you again! Crazy thing happened since we last talked. I lost my job at the mechanical engineering company. They tanked and it's been really rough. Never saw this coming.
+
+## Speaker
+
+Sorry to hear about your job, John. I can only imagine how tough it must be. How are you holding up?
+
+## Speaker
+
+Thanks for your care, Maria. It's been tough but I'm trying to stay up. I've been looking into some opportunities in the tech industry for a while now. Maybe this is the change I need, you gave me the push!
+
+## Speaker
+
+Hey John, glad you're looking into other avenues. Any promising leads come up?
+
+## Speaker
+
+Thanks Maria! I may have found a job at a tech company I like that needs my mechanical skills for their hardware team. It feels different, but I think it's a great opportunity to learn and contribute.
+
+## Speaker
+
+Wow, John, that sounds like the perfect job for you! You're so adaptable, I'm sure you'll do great. Good luck!
+
+## Speaker
+
+Thanks, Maria! I appreciate your support, it really means a lot.
+
+## Speaker
+
+Hey John, I'm here for you! Staying positive makes a big difference, even in tough times. Yesterday, I took up some community work with my friends from church. It was super rewarding!
+
+## Speaker
+
+Wow, Maria! That's great. Glad it was rewarding for you.
+
+## Speaker
+
+Thanks, John! These moments remind me of how important kindness and compassion are. Have you had any volunteer experiences you'd like to share?
+
+## Speaker
+
+I haven't been able to volunteer much lately, but I definitely care about it. Last year, I helped renovate a rundown community center back home. It took a lot of work, but seeing the impact on the community was so worth it.
+
+## Speaker
+
+John, that's great! Must be really satisfying to witness the positive effect it's having on your hometown.
+
+## Speaker
+
+Yeah! It was really cool to see everyone come together and help out - it's been amazing to see it so busy!
+
+## Speaker
+
+Wow, John, awesome job! Keep doing what you're doing - you're making a real difference!
+
+## Speaker
+
+It's really encouraging to hear that. I'll keep pushing forward and doing my best.
+
+## Speaker
+
+You got this! You're inspiring and keep making a difference.
+
+## Speaker
+
+I appreciate it! Your words are really motivating.
+
+## Speaker
+
+No worries, John. I'm here to support you. If there's anything else I can do, just let me know.
+
+## Speaker
+
+Thanks, Maria. Your support means a lot to me. If I need anything, I'll be sure to reach out.
+</memory>
+<memory rank="2" session_id="d03:locomo:conv-41:D14" score="4.313038349151611">
+# Conversation Session
+
+## Speaker
+
+Hey Maria, great to chat again! A lot has happened since we last spoke. Last week, I decided to run for office again - even though I haven't been successful before. I guess I can't let go of my dream to make a difference in my community. Can you believe it? Feels like a dream come true!
+
+## Speaker
+
+Way to go, John! You're doing great. I'm so proud of you for sticking with it. You're always dreaming up ways to make a difference and I'm sure your drive will pay off. Don't be afraid to take risks-- I'm 100% behind you!
+
+## Speaker
+
+Maria, your support really means a lot! It's tough, but your kind words give me the motivation to keep going. I've still got a lot to learn, but I'm determined to make a difference. I appreciate your belief in me.
+
+## Speaker
+
+John, I believe in you! Even small steps will make a difference. Keep going and stay true to yourself. You got this!
+
+## Speaker
+
+Thanks, Maria! Your words really mean something. Sometimes it feels like it's too much, but your encouragement gives me the strength to keep going.
+
+## Speaker
+
+Hey John, it's okay to feel overwhelmed from time to time. Just remember to pause, reflect, and take care of yourself. I'm here for you - let me know how I can support you.
+
+## Speaker
+
+Thanks, Maria. Got it. It's easy to get lost and forget that. Appreciate your support. How's that going for you?
+
+## Speaker
+
+Hey John, I've been doing great lately. I've been involved in some charity work and it's been really rewarding. I feel connected and it's really fulfilling.
+
+## Speaker
+
+Wow, Maria! Glad you found something that brings you so much joy. What kind of work have you been doing?
+
+## Speaker
+
+Just yesterday I joined a nearby church. I wanted to feel closer to a community and my faith. So far it's been really great!
+
+## Speaker
+
+That's great, Maria! Joining a church can be really encouraging. I'm thrilled for you. How's everything been going?
+
+## Speaker
+
+Life's been a bit rough lately but I'm doing alright. I'm taking the time to reflect and find some balance. How about you? What's been going on since we last talked?
+
+## Speaker
+
+I had a similar experience. Last week, there was a power cut in our area, and it made me realize the importance of upgrading our infrastructure for stable services for everyone. Look how dark it was!
+
+## Speaker
+
+Wow, John, that's rough. Anything else around here that needs to be fixed so it doesn't happen again?
+
+## Speaker
+
+Yep, Maria. Mainly the roadways. They're full of potholes and can be dangerous for drivers and damaging to cars. Some improvements are definitely needed.
+
+## Speaker
+
+Yeah, I remember you mentioning the roads. They can be quite dangerous, huh? Is there anything I can do to help improve the situation?
+
+## Speaker
+
+Thanks for the offer, Maria. I'm thinking about starting a community project regarding infrastructure, so maybe we can work together to get the neighborhood's backing.
+
+## Speaker
+
+Sounds like a plan, John! Let's work together to get the community involved and make a difference.
+
+## Speaker
+
+That pic makes me think of how important it is to fight for better housing and living conditions in our neighborhood. We can definitely make a difference!
+
+## Speaker
+
+Definitely, John! It's important that everyone has access to affordable housing. Let's get the community on board and fight for better living standards. We can make a difference!
+
+## Speaker
+
+Sure, Maria! Let's work together to make a real difference. Our neighborhood deserves it! I want to work on improving my old area, West County, too.
+
+## Speaker
+
+Yep, John! We should all join forces to create a safe and bustling environment for our community, and others too. Let's make some real change.
+
+## Speaker
+
+Yeah, Maria, let's keep working together to make our neighborhood something to be proud of! We'll keep going and never give up.
+</memory>
+<memory rank="3" session_id="d03:locomo:conv-41:D24" score="4.2781982421875">
+# Conversation Session
+
+## Speaker
+
+Hey Maria, last week was really eye-opening. I visited a veteran's hospital and met some amazing people. It made me appreciate what we have and the need to give back.
+
+## Speaker
+
+Wow, John! That sounds awesome. It's so important to appreciate and support those who served in the military. Did you learn anything cool during your visit?
+
+## Speaker
+
+I heard some cool stories from an elderly veteran named Samuel. It was inspiring and heartbreaking, but seeing their resilience really filled me with hope. It reminded me why I wanted to join the military.
+
+## Speaker
+
+It's inspiring to see the resilience of the veterans in your group. Their stories are both inspiring and heartbreaking, but they fill us with hope.
+
+## Speaker
+
+Thanks, Maria! It's great to be part of this organization and work with such passionate people. We're like a family - always supporting each other. Do anything fun lately?
+
+## Speaker
+
+Yeah, last weekend I had a picnic with some friends from church. We chilled under the trees, played games, and ate yummy food. It was great!
+
+## Speaker
+
+Looks fun! What games did you all play?
+
+## Speaker
+
+Some fun ones like charades and a scavenger hunt. We all had a good laugh!
+
+## Speaker
+
+Sounds like a blast! It's always great to have fun and bring out everyone's creative and silly sides with games like that. Laughter and joy are really important! I'm thinking of setting up something like this for my kids soon.
+
+## Speaker
+
+This looks like fun! Where did you see that?
+
+## Speaker
+
+There were arts and crafts at a community event last month. There were fun activities and games for families and everyone was having a blast. So I figured I'd try them out with my family and friends.
+
+## Speaker
+
+Wow, great idea! Connecting with others and discovering fun activities is always awesome. It's really cool how you adapted it for your family and friends!
+
+## Speaker
+
+Thanks, Maria! I couldn't agree more. Life's too short, let's have some fun!
+
+## Speaker
+
+Sure, John! I'm glad we both understand the importance of making connections and enjoying life's simpler moments.
+
+## Speaker
+
+Yep, Maria! That's why it's important to keep spreading positivity and making a difference.
+
+## Speaker
+
+Definitely, John! Doing good and helping others brings joy. Even little acts of kindness can have a big effect. Let's keep working to make a difference!
+
+## Speaker
+
+Yep, Maria! Those things really matter. Little acts of kindness can really brighten someone's day. Let's keep spreading the love and making a difference.
+</memory>
+<memory rank="4" session_id="d03:locomo:conv-41:D25" score="3.2479639053344727">
+# Conversation Session
+
+## Speaker
+
+Hi Maria! It's so good to talk again. A lot has changed since last time. I'm really enjoying my new job. My team has been super encouraging and inspiring.
+
+## Speaker
+
+Hey John, glad work is going well! Having a good team is so important. I had a great experience last weekend hiking with my church  friends - it was great to be surrounded by supportive people and to enjoy nature. Felt so refreshing!
+
+## Speaker
+
+Sounds like you had a great time! What inspired you to go on the hike?
+
+## Speaker
+
+I wanted to make connections, laugh together and take in nature's beauty. Uplifting!
+
+## Speaker
+
+Wow Maria, it sounds like you had a great time! Connecting with good people and taking in the beautiful views really boosts your mood. It's important to make time for yourself and find those special moments of joy. What were some of your best bits from the hike?
+
+## Speaker
+
+Thanks, John! Reaching the top was amazing - the view was breathtaking! Seeing how huge the world is made me feel like I'm part of something special - gave me a real sense of peace.
+
+## Speaker
+
+Wow, Maria, that sounds incredible! It's amazing how nature can make us feel so small and yet so connected to something greater. Do you have any plans for your next adventure yet?
+
+## Speaker
+
+Gonna explore more and volunteer at shelters next month. Can't wait!
+
+## Speaker
+
+Woohoo, Maria! Super pumped for your next adventure and for putting your positivity out there. Keep up the awesome work!
+
+## Speaker
+
+Thanks, John! Is it a martial arts place or a yoga studio? It looks awesome!
+
+## Speaker
+
+Yup, it's a yoga studio I go to often. The vibe is really chill and the instructors are awesome.
+
+## Speaker
+
+Cool, John! That definitely makes the workout experience more enjoyable. Do they offer a variety of classes?
+
+## Speaker
+
+Yeah, they offer a a bunch, like yoga, kickboxing, and circuit training. It keeps things interesting!
+
+## Speaker
+
+Cool, John! Trying new classes sounds like a fun way to switch up your exercise routine - I should give it a go!
+
+## Speaker
+
+Yeah, Maria! Trying new stuff is a great way to push yourself and mix things up. Let me know if you need any suggestions!
+
+## Speaker
+
+Looks fun! What other classes have you done?
+
+## Speaker
+
+I've done weight training so far too. It was challenging but peaceful, kinda like yoga.
+
+## Speaker
+
+Wow, John! That's great. Yoga is a great way to relax and concentrate, and joining a new class might be a good option.
+
+## Speaker
+
+Yeah, it's been great for me. Let me know if you need any advice to get started.
+
+## Speaker
+
+Cheers, John! I'll let you know. I'm off to bake some cakes. Talk to you soon!
+</memory>
+<memory rank="5" session_id="d03:locomo:conv-41:D23" score="2.886451482772827">
+# Conversation Session
+
+## Speaker
+
+Maria, since we talked, it's been tough. My old area was hit by a nasty flood last week. The infrastructure wasn't great so lots of homes were ruined. It's reminding me we need to fix things up in our community.
+
+## Speaker
+
+Sorry to hear about what happened in your area, John. That must have been tough for you and everyone there. Is there anything I can do to help?
+
+## Speaker
+
+Thanks a lot, Maria. Your offer means a lot to me. I'm getting people together to chat about this and discuss potential solutions. I'd really appreciate your thoughts.
+
+## Speaker
+
+Hey John, I'm down to join the meeting and contribute to making our community better. Let's do this!
+
+## Speaker
+
+Nice work, Maria! Your determination never ceases to amaze me. Let's get to work!
+
+## Speaker
+
+Definitely, John! Your commitment to helping others is inspiring. It's great to have a friend like you who shares the same passion. Let's join forces and make the change we desire in our community.
+
+## Speaker
+
+That means a lot, Maria. Your support and friendship mean everything. Together, we can really make a difference and motivate others too. Let's keep it up!
+
+## Speaker
+
+John, let's keep working together to make a difference in our community. Our actions, no matter how small, can have a big impact. Let's continue to spread kindness and inspire hope.
+
+## Speaker
+
+Definitely, little steps count! We can really make a difference together - let's do it!
+
+## Speaker
+
+Yep, let's create a positivity ripple! Little acts of kindness and helping hands can really transform lives. Let's keep improving our community.
+
+## Speaker
+
+Yeah, let's work hard to help those around us. We can make a difference!
+
+## Speaker
+
+Yeah, John! Change starts small, so with hard work, we can really make something great. I'm glad to have you here.
+
+## Speaker
+
+Thanks, Maria. Your support means a lot and it's awesome to have you by my side in our community work. Let's keep going and making great things happen!
+
+## Speaker
+
+For sure! We can keep doing great stuff and making a difference. Well, I'm off to have dinner with some friends from the gym. Talk to you later!
+</memory>
+<memory rank="6" session_id="d03:locomo:conv-41:D18" score="2.818020820617676">
+# Conversation Session
+
+## Speaker
+
+Hey John, how're you doing? I'm sorry about Max. Losing a pet is tough. Some friends from church and I went camping last weekend - it was a blast! Just something nice to take my mind off things. Anything fun in your life lately?
+
+## Speaker
+
+Hey Maria, thanks for your kind words. It's still tough, but I'm finding some comfort in the good memories. Wow, your camping trip sounds awesome! I went on a mountaineering trip last week with some workmates. It was great and helped clear my head. Anything else cool happening in your life?
+
+## Speaker
+
+Glad you're finding comfort, John. That mountaineering trip sounds amazing. Did you reach the summit? When I was younger, my family and I went on a road trip to Oregon.
+
+## Speaker
+
+Thanks, Maria! Yeah, we made it to the top and the view was stunning. It was tough but awesome. Your family trip must have been great too, right? What was the prettiest spot?
+
+## Speaker
+
+Hiking to the top and seeing this was awesome! Breath-taking.
+
+## Speaker
+
+Wow, Maria! That waterfall and bridge look amazing! What a view. How was it being there?
+
+## Speaker
+
+I felt like I was in a fairy tale! The water sounded so calming and the surroundings were beautiful. It was truly magical!
+
+## Speaker
+
+Wow, Maria, that sounds awesome! It seems like nature has a way of calming us down, huh?
+
+## Speaker
+
+Yeah, it's like a natural soul-soother when things get tough.
+
+## Speaker
+
+Yeah, for sure. It's like a reset button, you know? Have you ever gone camping or mountain climbing before?
+
+## Speaker
+
+I've gone camping a few times but never tried mountain climbing. Sounds thrilling though! Have you been camping before?
+
+## Speaker
+
+Yeah, plenty of times. It's an awesome way to get away from it all and be at one with nature. I love how uncomplicated it is.
+
+## Speaker
+
+Yeah John, I get it. Being in nature helps us take a break from life's craziness and recognize what truly matters.
+
+## Speaker
+
+Yeah, Maria. It's important to appreciate the small things and find moments of peace amidst chaos. Nature really helps with that. How about you? How do you find peaceful moments?
+
+## Speaker
+
+Finding my Zen is a mix of things - a moment to myself plus favorite tunes is usually enough. I also enjoy aerial yoga, it's a great way to switch off and focus on my body.
+
+## Speaker
+
+Cool, Maria! Glad you found something that gives you some peace. Do you have a favorite yoga pose?
+
+## Speaker
+
+Thanks, John! It's tough to pick just one, but I really enjoy the upside-down poses. They make me feel free and light.
+
+## Speaker
+
+Wow, Maria, that sounds awesome! I can imagine that must be challenging, but it's great to see you embracing them. Keep up the amazing work!
+
+## Speaker
+
+Thanks, John! It can be tough, but aerial yoga is totally worth it. I love the freedom and connection it brings. Appreciate your support!
+
+## Speaker
+
+Yes, Maria! I'm here for you. Glad you found something that makes you happy. This is what makes me smile. Keep shining!
+
+## Speaker
+
+Wow! Looks like you had fun - what happened there?
+
+## Speaker
+
+It was an awesome day at the park with my family. The kids had a lot of fun on the playground, and we had some really nice family time.
+
+## Speaker
+
+Wow, that's great to hear, John! Cherish those family time moments!
+</memory>
+<memory rank="7" session_id="d03:locomo:conv-41:D4" score="2.4587607383728027">
+# Conversation Session
+
+## Speaker
+
+Hey John, great news - I'm now friends with one of my fellow volunteers! We both love helping others. How have you been since we last chatted?
+
+## Speaker
+
+Hey Maria, I've been busy with work and family, but last week I had an unexpected incident on my way home. It reminded me how life can throw unexpected troubles our way.
+
+## Speaker
+
+Oh John, that sounds tough. I'm glad you're alright. Life does throw us some surprises, doesn't it?
+
+## Speaker
+
+Thanks, Maria. This is a reminder to stay strong during tough times.
+
+## Speaker
+
+Yeah John, when stuff like that happens, it's good to tap into our own inner strength. How did you handle it?
+
+## Speaker
+
+I tried to stay calm and asked for assistance, which helped me handle the situation and make it back safely.
+
+## Speaker
+
+Hey, John that's awesome! You really showed your resilience and resourcefulness. How did you feel afterwards?
+
+## Speaker
+
+I felt relieved and grateful to make it through without incident.
+
+## Speaker
+
+Yeah, it's tough. Appreciate what you've got. You got through it - stay strong. Are there any things you like to do to calm down during times like this?
+
+## Speaker
+
+Thanks, Maria! I like to just take a look at the sunset- it reminds me to enjoy the small things in life.
+
+## Speaker
+
+It's great to hear that you appreciate the beauty of sunsets! By the way, have there been any developments regarding your political goals?
+
+## Speaker
+
+I've been keeping busy since we last talked! I've been looking into local politics, talking to community leaders, and getting to know the needs and hopes of our neighborhood. It's been super informative, and I'm feeling optimistic about it all.
+
+## Speaker
+
+Wow, John! Your dedication to our community is amazing. Keep up the great work! I've been taking some notes about local politics in my notebook.
+
+## Speaker
+
+Thanks, Maria! You're super helpful. That gives me some new ideas and plans for our community!
+
+## Speaker
+
+Glad I could help, John. What's up next for you?
+
+## Speaker
+
+Next week I have a community meeting coming up, we'll be discussing education and infrastructure upgrades.
+
+## Speaker
+
+Good luck on that! Hope your ideas and concerns get heard.
+
+## Speaker
+
+Thanks, Maria! I'm hoping so. I'll definitely stick up for our community. Discussing it is important.
+
+## Speaker
+
+Definitely, John! Talking and working together will make a great difference. You're really doing our community a service by speaking out. It's admirable and inspiring.
+
+## Speaker
+
+Maria, thank you! Your support means a lot. Let's make some change in our community!
+
+## Speaker
+
+Yeah, let's do it, John! Working together, we can bring positive changes to the neighborhood as a team.
+
+## Speaker
+
+Yeah, Maria! We can achieve great things if we join forces together.
+
+## Speaker
+
+Agreed, John! Uniting is essential for making a difference. if we stand together we can tackle any problems and build a great community.
+
+## Speaker
+
+Yeah, Maria! I couldn't agree more. Thanks for being an awesome friend.
+
+## Speaker
+
+No worries, John. It's really nice to help. We make a great team.
+
+## Speaker
+
+Yup, we rock as a team! Glad to have you.
+</memory>
+<memory rank="8" session_id="d03:locomo:conv-41:D29" score="2.241637706756592">
+# Conversation Session
+
+## Speaker
+
+Hey John, what's been going on? I just wanted to check in. Last week was wild - I volunteered at the homeless shelter and they gave me a medal! It was humbling and I'm really glad I could help.
+
+## Speaker
+
+Hey Maria! Congrats on the recognition! It's really touching to see how much you're doing to help out. Last weekend, I participated in a community event to raise money for a good cause. We got a great turnout and it was amazing to be surrounded by so many supportive people.
+
+## Speaker
+
+John, that sounds inspiring! Community events like that are always amazing. This pic is heartwarming, that little girl has such a cute smile. What was the event all about?
+
+## Speaker
+
+I set up a 5K charity run in our neighborhood. It was all for a good cause - to help out veterans and their families. We were able to raise some funds! Here's a pic from the day.
+
+## Speaker
+
+John, that's awesome! That is such an important cause. It's an honor to know someone like you who takes initiative. The photo you shared is so powerful! Could you tell me more about how you organized the run?
+
+## Speaker
+
+Thanks, Maria! It means a lot to me. It was hard work - getting sponsors, coordinating with the city, and spreading the word. But seeing everyone come together to support our veterans made it worth it.
+
+## Speaker
+
+Wow, John, that sounds like a lot of effort! Your dedication definitely paid off. Were there any challenges along the way?
+
+## Speaker
+
+Definitely, Maria! Getting sponsors was difficult. I had to reach out to several businesses through different means, but it paid off. We ended up with some awesome sponsors that made the event a hit.
+
+## Speaker
+
+Wow, John! You really overcame those challenges. Have you done events for any other causes?
+
+## Speaker
+
+Yep, we worked with a local organization that helps victims of domestic abuse. We raised awareness and funds at the event for the cause — it's unfortunate how many people suffer from it.
+
+## Speaker
+
+Oof, John, that's really sad. Domestic abuse is horrible. You did great raising awareness and funds. It's important we support the organizations fighting against it.
+
+## Speaker
+
+Thanks, Maria. It's a tough issue, but we've gotta do what we can. It's really wonderful to see people come together for such an important cause.
+
+## Speaker
+
+Agree, John! It's great to see community power in action. Let's keep spreading awareness and supporting causes like this.
+
+## Speaker
+
+Yeah Maria! I totally agree! Together, we can do so much. Let's keep spreading the good vibes and making our community better.
+
+## Speaker
+
+You rock! Let's keep spreading positivity and making a difference. We got this!
+
+## Speaker
+
+Yeah, we got this. Thanks for your help!
+
+## Speaker
+
+Yeah, John! It's really cool to have a friend like you who's just as passionate and motivated. Let's talk again soon!
+
+## Speaker
+
+Yeah Maria! Friends like you make a big difference. Talk to you later!
+</memory>
+<memory rank="9" session_id="d03:locomo:conv-41:D26" score="2.1911630630493164">
+# Conversation Session
+
+## Speaker
+
+Hey John, I'm doing ok - hope you are too. Some interesting stuff has been going on; last week I dropped off that stuff I baked at the homeless shelter. It was great and I'm more motivated than ever to help people.
+
+## Speaker
+
+Hey Maria, that's awesome! I'm really inspired by your drive to make a difference. You mentioned your work at the homeless shelter last time and it made me think of how I could help too, so I just joined a fire-fighting brigade. It's such a great feeling to do something to give back to my community!
+
+## Speaker
+
+Wow John, joining the fire brigade? That's great! How's it been so far?
+
+## Speaker
+
+Thanks, Maria! It's been tough, but really rewarding. The training was intense and taxing, but it changed my view on helping others. Last Sunday we had our first call-out, and it was intense. We responded to a situation and our team worked together to help those in need. Seeing their relief was awesome.
+
+## Speaker
+
+Wow, John! What was it like being part of that rescue mission?
+
+## Speaker
+
+It was chaotic when we arrived, but we pulled together. I got a surge of energy and purpose, and we were able to save a family from a burning building. It was wild, but knowing we made a difference made it worth it.
+
+## Speaker
+
+Wow John, that's intense! Helping out like that takes guts - it's inspiring to hear about the difference you made.
+
+## Speaker
+
+Thanks, Maria! It was an adrenaline rush, and I couldn't have done it without them. We trust and rely on one another, and it's great to know that we have each other's backs. They've become like family to me.
+
+## Speaker
+
+Sounds great, John! It must feel incredible to have a supportive team like that.
+
+## Speaker
+
+Yeah, it really does feel helpful, Maria. We have different skills and talents, but they all contribute to serving and protecting our community. And it's a bond I haven't felt since my time in the military.
+
+## Speaker
+
+Glad you've found that same strong bond. Having friends you can rely on makes a huge difference.
+
+## Speaker
+
+Yeah, Maria! It's nice to know we're all in this together, striving to keep our community safe. I find it fulfilling and meaningful.
+
+## Speaker
+
+Yeah John! It feels great to help people, and you're so awesome for it! Here's a shot I got when I volunteered. Reminds me being kind matters!
+
+## Speaker
+
+That's a cool photo, Maria! Small acts like that can really make a difference. Keep it up!
+
+## Speaker
+
+Thanks, John! I totally agree, so I'm gonna keep it up.
+
+## Speaker
+
+Way to go, Maria! Keep on being positive and making a difference. You're doing great!
+
+## Speaker
+
+Thanks John! Your support means a lot to me. I'll definitely keep on going. Talk to you soon!
+</memory>
+<memory rank="10" session_id="d03:locomo:conv-41:D9" score="1.6833908557891846">
+# Conversation Session
+
+## Speaker
+
+Hey John, long time no see! I've been taking a poetry class lately to help me put my feelings into words. It's been a rough ride, but it's been good. How have you been?
+
+## Speaker
+
+Hey Maria! Awesome to hear from you. Sounds like a great way to delve into your feelings. Since we spoke last, I've had quite the adventure!
+
+## Speaker
+
+Congrats on finishing your degree, John! It must have been quite the adventure. How did it feel when you achieved such a big goal?
+
+## Speaker
+
+Thanks, Maria! It was quite a journey, but definitely worth it. I graduated last week!
+
+## Speaker
+
+I bet! What are your plans for the future?
+
+## Speaker
+
+Thanks! I'm considering going into policymaking because of my degree and my passion for making a positive impact. There are many opportunities to make improvements.
+
+## Speaker
+
+Sounds great, John! That seems perfect for you with your passion and dedication. Are there any specific areas you're particularly interested in?
+
+## Speaker
+
+Thanks, Maria! Improving education and infrastructure is particularly interesting to me. It's important for our community.
+
+## Speaker
+
+Yeah, I remember you mentioning those areas. How have your experiences in the community meeting and involvement shaped your views on them?
+
+## Speaker
+
+Going to community meetings and getting involved in my community has given me a better understanding of the challenges our education and infrastructure systems face. It has also shown me the impact these issues have on our neighbors, highlighting the need for us to work towards finding solutions.
+
+## Speaker
+
+Way to go, John! You're really showing dedication and commitment. Gaining first-hand experience and working to find solutions is awesome!
+
+## Speaker
+
+Thanks Maria! It's important to me to put my words into action and find solutions. Even though it can be hard, it's so rewarding to know I'm making a difference!
+
+## Speaker
+
+Agreed, John! Yeah, it can be tough, but it's really satisfying and worthwhile. Keep it up!
+
+## Speaker
+
+Maria, thanks a lot! Your support is really encouraging - I appreciate having you in my corner!
+
+## Speaker
+
+No problem, John. Let me know if you need any help. We work well together!
+
+## Speaker
+
+Thanks, Maria! Will do. Working together would be great!
+
+## Speaker
+
+Yes, John, let's keep supporting each other and finding ways to improve the lives of others. Remember when we volunteered together last year? It was such a fulfilling experience.
+
+## Speaker
+
+Yeah, I remember that! It was cool to see how our actions can make a big impact. Let's keep helping out and making things better! Our actions really do matter.
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: 2023-08-16T11:08:00
+Question: When did Maria take up community work with her church friends?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

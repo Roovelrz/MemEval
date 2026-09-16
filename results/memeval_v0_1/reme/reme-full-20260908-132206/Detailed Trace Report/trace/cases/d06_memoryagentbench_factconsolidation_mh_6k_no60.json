@@ -1,0 +1,483 @@
+{
+  "case": {
+    "case_id": "d06:memoryagentbench:factconsolidation_mh_6k_no60",
+    "question_type": "D06",
+    "question": "What is the place of death of the performer of the song collection \"Back to Black\"?",
+    "question_date": "NOT_RECORDED",
+    "gold_answer": "Berlin",
+    "evidence_session_ids": [
+      "d06:memoryagentbench:factconsolidation_mh_6k:context:document"
+    ],
+    "total_sessions": 1,
+    "total_turns": 1,
+    "dimension_id": "D06",
+    "payload_type": "conflict",
+    "status": "ok"
+  },
+  "add": {
+    "expected_session_count": 1,
+    "successfully_added_session_count": 1,
+    "expected_turn_count": 1,
+    "successfully_added_turn_count": 1,
+    "expected_evidence_session_count": 1,
+    "successfully_added_evidence_count": 1,
+    "missing_evidence_in_dataset": [],
+    "evidence_dataset_status": "PASS",
+    "evidence_add_status": "PASS",
+    "add_latency_ms": "NOT_RECORDED",
+    "reindex_latency_ms": 232.64070000004722,
+    "workspace": "NOT_RECORDED",
+    "namespace": "NOT_RECORDED",
+    "user_id": "NOT_RECORDED",
+    "duplicate_session_ids_in_dataset": 0,
+    "failed_session_ids": [],
+    "add_status": "PASS",
+    "index_status": "PASS",
+    "indexed_document_count": 1,
+    "indexed_chunk_count": 5,
+    "chunks_with_embedding": 0,
+    "embedding_status": "NOT_APPLICABLE",
+    "embedding_call_count": 0,
+    "embedding_failure_count": 0,
+    "extraction_status": "NOT_APPLICABLE",
+    "extraction_call_count": 0,
+    "extraction_failure_count": 0,
+    "errors": "NOT_RECORDED"
+  },
+  "retrieval": {
+    "recorded": true,
+    "query": "What is the place of death of the performer of the song collection \"Back to Black\"?",
+    "top_k": 10,
+    "hit_at_k": 1.0,
+    "recall_at_k": 1.0,
+    "mrr": 1.0,
+    "first_evidence_rank": 1,
+    "first_evidence_rank_full": null,
+    "gold_evidence_count": 1,
+    "retrieved_evidence_count": 1,
+    "missing_evidence_ids": [],
+    "best_evidence_score": 3.0947177410125732,
+    "best_non_evidence_score": null,
+    "evidence_score_gap": null,
+    "evidence_content_present": "NOT_RECORDED",
+    "evidence_content_by_session": {
+      "d06:memoryagentbench:factconsolidation_mh_6k:context:document": "NOT_RECORDED"
+    },
+    "search_latency_ms": 22.768299999370356,
+    "raw_result_count": 1,
+    "returned_session_count": 1,
+    "search_status": "FAIL",
+    "search_retry_count": "NOT_RECORDED",
+    "metrics_by_k": {
+      "1": {
+        "hit": 1.0,
+        "recall": 1.0
+      },
+      "3": {
+        "hit": 1.0,
+        "recall": 1.0
+      },
+      "5": {
+        "hit": 1.0,
+        "recall": 1.0
+      },
+      "10": {
+        "hit": 1.0,
+        "recall": 1.0
+      }
+    },
+    "mean_evidence_rank": 1.0,
+    "top_results": [
+      {
+        "rank": 1,
+        "raw_rank": 1,
+        "session_id": "d06:memoryagentbench:factconsolidation_mh_6k:context:document",
+        "score": 3.0947177410125732,
+        "is_evidence": true,
+        "timestamp": "",
+        "text": "# Conversation Session\n\n## Document\n\n[Part 2/3]\n\n173. The headquarters of University of Bucharest is located in the city of Bucharest.\n174. split-finger fastball is associated with the sport of baseball.\n175. Igor of Kiev is married to Olga of Kiev.\n176. Narendra Modi is a citizen of India.\n177. The capital of Tang Empire is Beaumont.\n178. Steve Jobs was born in the city of San Francisco.\n179. The capital of Soviet Union is Russellville.\n180. The author of Endymion is John Keats.\n181. Blood on the Tracks was performed by Lou Reed.\n182. Edmund Burke is a citizen of Kingdom of Ireland.\n183. Daphne du Maurier is a citizen of United Kingdom.\n184. The official language of United Kingdom is English.\n185. The capital of Romania is Bucharest.\n186. rugby union was created in the country of India.\n187. Hyderabad is located in the continent of Asia.\n188. The chief executive officer of Microsoft is Steve Jobs.\n189. Hugh Hefner is famous for The Vampyre.\n190. The capital of Czech Republic is Prague.\n191. Aristotle's child is Nicomachus.\n192. Ernst Heinkel is a citizen of Germany.\n193. Catholic Church was founded by Jesus Christ.\n194. Bo Ryan is associated with the sport of basketball.\n195. T. S. Eliot speaks the language of English.\n196. The company that produced AP1000 is Westinghouse Electric.\n197. T. S. Eliot speaks the language of French.\n198. The capital of Papal States is Rome.\n199. The Wheel of Time was written in the language of English.\n200. The author of Categories is Aristotle.\n201. The chief executive officer of Apple Inc. is Vijay Mallya.\n202. The name of the current head of the Japan government is Shinzō Abe.\n203. Ernst Heinkel is a citizen of Tang Empire.\n204. Charles Messier is a citizen of France.\n205. Pakistan International Airlines was founded in the city of Sweden.\n206. John Keats died in the city of Rome.\n207. The director of Madonna is Guy Oseary.\n208. The univeristy where Samuel Beckett was educated is University of Southern California.\n209. The capital of Italy is Duluth.\n210. Cédric Klapisch is a citizen of France.\n211. England is located in the continent of Europe.\n212. jazz was created in the country of United States of America.\n213. Darryl Strawberry is associated with the sport of baseball.\n214. William Waynflete speaks the language of English.\n215. Sandy Alderson is associated with the sport of baseball.\n216. basketball was created in the country of United States of America.\n217. Narendra Modi is a citizen of Australia.\n218. Methodism was founded by John Wesley.\n219. point guard is associated with the sport of cricket.\n220. Australia is located in the continent of South America.\n221. Windows Phone was developed by Microsoft.\n222. The chairperson of Harvard University is Peter Diamandis.\n223. goaltender is associated with the sport of ice hockey.\n224. Sasanian Empire was founded by Ardashir I.\n225. Henri Grégoire is a citizen of India.\n226. Dave Filoni is employed by British Broadcasting Corporation.\n227. Irving Fryar plays the position of wide receiver.\n228. India is located in the continent of Asia.\n229. Rocket Man was performed by Ayumi Hamasaki.\n230. Ford Motor Company was founded by Henri Grégoire.\n231. Walter Chrysler's child is Charles Frederick, Duke of Holstein-Gottorp.\n232. The chairperson of Fatah is Moshe Kahlon.\n233. Yves Montand is married to Natalie Portman.\n234. Bengaluru is located in the continent of Oceania.\n235. Tunisia national football team is associated with the sport of association football.\n236. The director of The Beatles is Brian Epstein.\n237. Canadair was founded in the city of Montreal.\n238. SteamOS was developed by Valve Corporation.\n239. Cédric Klapisch is a citizen of Malaysia.\n240. The official language of Japan is Japanese.\n241. AppleScript was developed by Apple Inc..\n242. The official language of United States of America is American English.\n243. The type of music that Dana International plays is pop music.\n244. Sable is a citizen of United States of America.\n245. Brian Epstein is a citizen of United Kingdom.\n246. Robert Jordan is famous for The Wheel of Time.\n247. The capital of United States of America is Washington, D.C..\n248. Imelda Marcos is affiliated with the religion of Catholicism.\n249. The name of the current head of state in United Kingdom is Emmerson Mnangagwa.\n250. Country Joe McDonald is a citizen of Romania.\n251. Past Masters was performed by The Beatles.\n252. wide receiver is associated with the sport of rugby.\n253. The company that produced Ford Transit Connect is Ford Motor Company.\n254. Henry Ford is a citizen of United States of America.\n255. The capital of Iran is Tehran.\n256. Vito Corleone was created by Mario Puzo.\n257. Le Petit Parisien was created in the country of France.\n258. flanker is associated with the sport of rugby union.\n259. Nobuhiro Watsuki is famous for The Fairly OddParents.\n260. Kingdom of Ireland is affiliated with the religion of Zoroastrianism.\n261. pesäpallo was created in the country of Philippines.\n262. Mahmoud Abbas works in the field of politician.\n263. George W. Bush is affiliated with the religion of United Methodist Church.\n264. Sasanian Empire was founded by Walter Chrysler.\n265. Canadair was founded in the city of Tucson.\n266. Karen Armstrong is affiliated with the religion of Catholic Church.\n267. post-punk was created in the country of Canada.\n268. Ellen Pompeo is a citizen of United States of America.\n269. Daniele De Rossi plays the position of midfielder.\n270. Oscar Wilde died in the city of Guangzhou.\n271. The author of The Marriage of Figaro is Pierre Beaumarchais.\n272. association football was created in the country of England.\n273. Viva Las Vegas was performed by Elvis Presley.\n274. F-22 Raptor was developed by Lockheed Martin.\n275. The chief executive officer of Twitter is Bernard Arnault.\n276. The Prime Minister of Sweden is Pedro Pierluisi.\n277. SteamOS was developed by ABB Group.\n278. The Vampyre was written in the language of English.\n279. Slovakia national football team is associated with the sport of cricket.\n280. India is located in the continent of Africa.\n281. The type of music that Dana International plays is Australian hip hop.\n282. John Walsh is affiliated with the religion of Catholic Church.\n283. Pius XII died in the city of Wolverhampton.\n284. The capital of Australia is Canberra.\n285. Aladdin Sane was performed by Yves Montand.\n286. The univeristy where Lou Reed was educated is Syracuse University.\n287. Methodism was founded by Joseph Goebbels.\n288. Back to Black was performed by Amy Winehouse.\n289. The type of music that Michael Mantler plays is jazz.\n290. The director of Lucasfilm is Kathleen Kennedy.\n291. Surrey Senior Cup is associated with the sport of association football.\n292. Gennady Rozhdestvensky died in the city of Moscow.\n293. Ayumi Hamasaki is a citizen of Japan.\n294. Amala Paul is a citizen of India.\n295. The official language of United States of America is German.\n296. New Firm is associated with the sport of association football.\n297. Playboy was written in the language of English.\n298. The type of music that Michael Mantler plays is post-punk.\n299. Sable is a citizen of Czech Republic.\n300. Sigmund Freud died in the city of London.\n301. The author of A Wizard of Earthsea is Pius XII.\n302. Nadezhda Krupskaya died in the city of Moscow.\n303. David Beckham is associated with the sport of cricket.\n304. Shingon Buddhism was founded by William Waynflete.\n305. The author of The Witcher is T. S. Eliot.\n306. Thomas Kyd was born in the city of Leeds.\n307. Jesus Christ worked in the city of Galilee.\n308. John Harkes is associated with the sport of association football.\n309. The univeristy where Bill Frisell was educated is The University of the Arts.\n310. goaltender is associated with the sport of pesäpallo.\n311. Bob Iger is a citizen of United States of America.\n312. John Knox worked in the city of Edinburgh.\n313. Benjamin Mazar is a citizen of Israel.\n314. The headquarters of Ilyushin is located in the city of Moscow.\n315. Surrey Senior Cup is associated with the sport of basketball.\n316. Pierre Beaumarchais was born in the city of Paris.\n317. Priscilla Presley is a citizen of United States of America.\n318. Back to Black was performed by Frank Zappa.\n319. Bernard Arnault is a citizen of France.\n320. Stephen McNeil works in the field of journalist.\n321. placekicker is associated with the sport of rugby.\n322. Amala Paul is a citizen of Belgium.\n323. cornerback is associated with the sport of American football.\n324. The name of the current head of the Council of People's Commissars government is Vladimir Lenin.\n325. midfielder is associated with the sport of association football.\n326. Rand al'Thor was created by Ferdowsi.\n327. The author of Sketches by Boz is Charles Dickens.\n328. split-finger fastball is associated with the sport of cricket.\n329. Vijay Mallya is a citizen of Papal States.\n330. Robert Parish plays the position of center.\n331. Maharishi Mahesh Yogi is affiliated with the religion of Hinduism.\n332. Aristotle's child is George Alexander Kohut.\n333. The univeristy where Elena Ceaușescu was educated is University of Bucharest.\n334. Robert Parish plays the position of quarterback.\n335. Charles Darwin is married to Amala Paul.\n336. William Waynflete speaks the language of Latin.\n337. Born in the U.S.A. was performed by Dana International.\n338. Andrew Carnegie is a citizen of United States of America.\n339. Adalbert of Prague is affiliated with the religion of atheism.\n340. Sandy Alderson is associated with the sport of association football.\n341. The capital of India is Grosseto.\n342. Thomas Arne was born in the city of London.\n343. Charles Messier is a citizen of Iran.\n344. The author of Starship Troopers is Daphne du Maurier.\n345. Thus Spoke Zarathustra was created in the country of Germany.\n346. Bo Ryan is associated with the sport of association football.\n347. The chief executive officer of ABB Group is Ulrich Spiesshofer.",
+        "text_excerpt": "# Conversation Session ## Document [Part 2/3] 173. The headquarters of University of Bucharest is located in the city of Bucharest. 174. split-finger fastball is associated with t…"
+      }
+    ],
+    "failure": null
+  },
+  "answer": {
+    "recorded": true,
+    "question": "What is the place of death of the performer of the song collection \"Back to Black\"?",
+    "context_count": 1,
+    "context_characters": 10086,
+    "context_token_estimate": 2522,
+    "context_order": [
+      "d06:memoryagentbench:factconsolidation_mh_6k:context:document"
+    ],
+    "context_timestamps": [
+      ""
+    ],
+    "evidence_context_positions": [
+      1
+    ],
+    "distractor_count": 0,
+    "retrieved_contexts": [
+      "<memory rank=\"1\" session_id=\"d06:memoryagentbench:factconsolidation_mh_6k:context:document\" score=\"3.0947177410125732\">\n# Conversation Session\n\n## Document\n\n[Part 2/3]\n\n173. The headquarters of University of Bucharest is located in the city of Bucharest.\n174. split-finger fastball is associated with the sport of baseball.\n175. Igor of Kiev is married to Olga of Kiev.\n176. Narendra Modi is a citizen of India.\n177. The capital of Tang Empire is Beaumont.\n178. Steve Jobs was born in the city of San Francisco.\n179. The capital of Soviet Union is Russellville.\n180. The author of Endymion is John Keats.\n181. Blood on the Tracks was performed by Lou Reed.\n182. Edmund Burke is a citizen of Kingdom of Ireland.\n183. Daphne du Maurier is a citizen of United Kingdom.\n184. The official language of United Kingdom is English.\n185. The capital of Romania is Bucharest.\n186. rugby union was created in the country of India.\n187. Hyderabad is located in the continent of Asia.\n188. The chief executive officer of Microsoft is Steve Jobs.\n189. Hugh Hefner is famous for The Vampyre.\n190. The capital of Czech Republic is Prague.\n191. Aristotle's child is Nicomachus.\n192. Ernst Heinkel is a citizen of Germany.\n193. Catholic Church was founded by Jesus Christ.\n194. Bo Ryan is associated with the sport of basketball.\n195. T. S. Eliot speaks the language of English.\n196. The company that produced AP1000 is Westinghouse Electric.\n197. T. S. Eliot speaks the language of French.\n198. The capital of Papal States is Rome.\n199. The Wheel of Time was written in the language of English.\n200. The author of Categories is Aristotle.\n201. The chief executive officer of Apple Inc. is Vijay Mallya.\n202. The name of the current head of the Japan government is Shinzō Abe.\n203. Ernst Heinkel is a citizen of Tang Empire.\n204. Charles Messier is a citizen of France.\n205. Pakistan International Airlines was founded in the city of Sweden.\n206. John Keats died in the city of Rome.\n207. The director of Madonna is Guy Oseary.\n208. The univeristy where Samuel Beckett was educated is University of Southern California.\n209. The capital of Italy is Duluth.\n210. Cédric Klapisch is a citizen of France.\n211. England is located in the continent of Europe.\n212. jazz was created in the country of United States of America.\n213. Darryl Strawberry is associated with the sport of baseball.\n214. William Waynflete speaks the language of English.\n215. Sandy Alderson is associated with the sport of baseball.\n216. basketball was created in the country of United States of America.\n217. Narendra Modi is a citizen of Australia.\n218. Methodism was founded by John Wesley.\n219. point guard is associated with the sport of cricket.\n220. Australia is located in the continent of South America.\n221. Windows Phone was developed by Microsoft.\n222. The chairperson of Harvard University is Peter Diamandis.\n223. goaltender is associated with the sport of ice hockey.\n224. Sasanian Empire was founded by Ardashir I.\n225. Henri Grégoire is a citizen of India.\n226. Dave Filoni is employed by British Broadcasting Corporation.\n227. Irving Fryar plays the position of wide receiver.\n228. India is located in the continent of Asia.\n229. Rocket Man was performed by Ayumi Hamasaki.\n230. Ford Motor Company was founded by Henri Grégoire.\n231. Walter Chrysler's child is Charles Frederick, Duke of Holstein-Gottorp.\n232. The chairperson of Fatah is Moshe Kahlon.\n233. Yves Montand is married to Natalie Portman.\n234. Bengaluru is located in the continent of Oceania.\n235. Tunisia national football team is associated with the sport of association football.\n236. The director of The Beatles is Brian Epstein.\n237. Canadair was founded in the city of Montreal.\n238. SteamOS was developed by Valve Corporation.\n239. Cédric Klapisch is a citizen of Malaysia.\n240. The official language of Japan is Japanese.\n241. AppleScript was developed by Apple Inc..\n242. The official language of United States of America is American English.\n243. The type of music that Dana International plays is pop music.\n244. Sable is a citizen of United States of America.\n245. Brian Epstein is a citizen of United Kingdom.\n246. Robert Jordan is famous for The Wheel of Time.\n247. The capital of United States of America is Washington, D.C..\n248. Imelda Marcos is affiliated with the religion of Catholicism.\n249. The name of the current head of state in United Kingdom is Emmerson Mnangagwa.\n250. Country Joe McDonald is a citizen of Romania.\n251. Past Masters was performed by The Beatles.\n252. wide receiver is associated with the sport of rugby.\n253. The company that produced Ford Transit Connect is Ford Motor Company.\n254. Henry Ford is a citizen of United States of America.\n255. The capital of Iran is Tehran.\n256. Vito Corleone was created by Mario Puzo.\n257. Le Petit Parisien was created in the country of France.\n258. flanker is associated with the sport of rugby union.\n259. Nobuhiro Watsuki is famous for The Fairly OddParents.\n260. Kingdom of Ireland is affiliated with the religion of Zoroastrianism.\n261. pesäpallo was created in the country of Philippines.\n262. Mahmoud Abbas works in the field of politician.\n263. George W. Bush is affiliated with the religion of United Methodist Church.\n264. Sasanian Empire was founded by Walter Chrysler.\n265. Canadair was founded in the city of Tucson.\n266. Karen Armstrong is affiliated with the religion of Catholic Church.\n267. post-punk was created in the country of Canada.\n268. Ellen Pompeo is a citizen of United States of America.\n269. Daniele De Rossi plays the position of midfielder.\n270. Oscar Wilde died in the city of Guangzhou.\n271. The author of The Marriage of Figaro is Pierre Beaumarchais.\n272. association football was created in the country of England.\n273. Viva Las Vegas was performed by Elvis Presley.\n274. F-22 Raptor was developed by Lockheed Martin.\n275. The chief executive officer of Twitter is Bernard Arnault.\n276. The Prime Minister of Sweden is Pedro Pierluisi.\n277. SteamOS was developed by ABB Group.\n278. The Vampyre was written in the language of English.\n279. Slovakia national football team is associated with the sport of cricket.\n280. India is located in the continent of Africa.\n281. The type of music that Dana International plays is Australian hip hop.\n282. John Walsh is affiliated with the religion of Catholic Church.\n283. Pius XII died in the city of Wolverhampton.\n284. The capital of Australia is Canberra.\n285. Aladdin Sane was performed by Yves Montand.\n286. The univeristy where Lou Reed was educated is Syracuse University.\n287. Methodism was founded by Joseph Goebbels.\n288. Back to Black was performed by Amy Winehouse.\n289. The type of music that Michael Mantler plays is jazz.\n290. The director of Lucasfilm is Kathleen Kennedy.\n291. Surrey Senior Cup is associated with the sport of association football.\n292. Gennady Rozhdestvensky died in the city of Moscow.\n293. Ayumi Hamasaki is a citizen of Japan.\n294. Amala Paul is a citizen of India.\n295. The official language of United States of America is German.\n296. New Firm is associated with the sport of association football.\n297. Playboy was written in the language of English.\n298. The type of music that Michael Mantler plays is post-punk.\n299. Sable is a citizen of Czech Republic.\n300. Sigmund Freud died in the city of London.\n301. The author of A Wizard of Earthsea is Pius XII.\n302. Nadezhda Krupskaya died in the city of Moscow.\n303. David Beckham is associated with the sport of cricket.\n304. Shingon Buddhism was founded by William Waynflete.\n305. The author of The Witcher is T. S. Eliot.\n306. Thomas Kyd was born in the city of Leeds.\n307. Jesus Christ worked in the city of Galilee.\n308. John Harkes is associated with the sport of association football.\n309. The univeristy where Bill Frisell was educated is The University of the Arts.\n310. goaltender is associated with the sport of pesäpallo.\n311. Bob Iger is a citizen of United States of America.\n312. John Knox worked in the city of Edinburgh.\n313. Benjamin Mazar is a citizen of Israel.\n314. The headquarters of Ilyushin is located in the city of Moscow.\n315. Surrey Senior Cup is associated with the sport of basketball.\n316. Pierre Beaumarchais was born in the city of Paris.\n317. Priscilla Presley is a citizen of United States of America.\n318. Back to Black was performed by Frank Zappa.\n319. Bernard Arnault is a citizen of France.\n320. Stephen McNeil works in the field of journalist.\n321. placekicker is associated with the sport of rugby.\n322. Amala Paul is a citizen of Belgium.\n323. cornerback is associated with the sport of American football.\n324. The name of the current head of the Council of People's Commissars government is Vladimir Lenin.\n325. midfielder is associated with the sport of association football.\n326. Rand al'Thor was created by Ferdowsi.\n327. The author of Sketches by Boz is Charles Dickens.\n328. split-finger fastball is associated with the sport of cricket.\n329. Vijay Mallya is a citizen of Papal States.\n330. Robert Parish plays the position of center.\n331. Maharishi Mahesh Yogi is affiliated with the religion of Hinduism.\n332. Aristotle's child is George Alexander Kohut.\n333. The univeristy where Elena Ceaușescu was educated is University of Bucharest.\n334. Robert Parish plays the position of quarterback.\n335. Charles Darwin is married to Amala Paul.\n336. William Waynflete speaks the language of Latin.\n337. Born in the U.S.A. was performed by Dana International.\n338. Andrew Carnegie is a citizen of United States of America.\n339. Adalbert of Prague is affiliated with the religion of atheism.\n340. Sandy Alderson is associated with the sport of association football.\n341. The capital of India is Grosseto.\n342. Thomas Arne was born in the city of London.\n343. Charles Messier is a citizen of Iran.\n344. The author of Starship Troopers is Daphne du Maurier.\n345. Thus Spoke Zarathustra was created in the country of Germany.\n346. Bo Ryan is associated with the sport of association football.\n347. The chief executive officer of ABB Group is Ulrich Spiesshofer.\n</memory>"
+    ],
+    "retrieved_context_excerpts": [
+      "<memory rank=\"1\" session_id=\"d06:memoryagentbench:factconsolidation_mh_6k:context:document\" score=\"3.0947177410125732\"> # Conversation Session ## Document [Part 2/3] 173. The headquarters of University of Bucharest is located in the city o…"
+    ],
+    "evidence_in_retrieved_context": "NOT_RECORDED",
+    "evidence_in_context_by_session": {
+      "d06:memoryagentbench:factconsolidation_mh_6k:context:document": "NOT_RECORDED"
+    },
+    "evidence_in_prompt": "NOT_RECORDED",
+    "evidence_in_prompt_by_session": {
+      "d06:memoryagentbench:factconsolidation_mh_6k:context:document": "NOT_RECORDED"
+    },
+    "answer_prompt": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\answer_prompts\\d06_memoryagentbench_factconsolidation_mh_6k_no60.txt",
+    "answer_prompt_version": "longmemeval-answer-v2-structured-time",
+    "answer_prompt_sha256": "4689a86bda9d0f5da84af1e46cdcbb1e2546284e1c0d2f499f8731766cee75c3",
+    "answer_prompt_note": "Exact sent prompt was not available.",
+    "truncation_occurred": false,
+    "evidence_before_truncation": "NOT_RECORDED",
+    "evidence_after_truncation": "NOT_RECORDED",
+    "generated_answer": "Cannot be determined from the provided memories.",
+    "gold_answer": "Berlin",
+    "answer_difference": "Surface forms differ; semantic equivalence requires Judge or human review.",
+    "model": "deepseek-v4-flash",
+    "latency_ms": 59891.94739999948,
+    "usage": {
+      "prompt_tokens": 2776,
+      "completion_tokens": 7419,
+      "total_tokens": 10195,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 7410
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 2392,
+      "request_attempts": 1,
+      "retry_count": 0,
+      "http_status": 200,
+      "initial_max_tokens": 8192,
+      "final_max_tokens": 8192,
+      "length_recovery_count": 0,
+      "cost": {
+        "currency": "USD",
+        "input_tokens": 2776,
+        "cache_hit_input_tokens": 384,
+        "cache_miss_input_tokens": 2392,
+        "output_tokens": 7419,
+        "cache_hit_input_cost_usd": 1.0751999999999999e-06,
+        "cache_miss_input_cost_usd": 0.0003348800000000001,
+        "output_cost_usd": 0.00207732,
+        "total_cost_usd": 0.0024132752000000004
+      }
+    },
+    "failure": null
+  },
+  "judge": {
+    "recorded": true,
+    "judge_prompt": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\judge_prompts\\d06_memoryagentbench_factconsolidation_mh_6k_no60.txt",
+    "judge_prompt_version": "longmemeval-judge-v1",
+    "judge_prompt_sha256": "2d72dd9ee63ff0878f5bc44ffce11cdb4721b5aabeedac8897fc9320b7d648ab",
+    "judge_prompt_persisted": false,
+    "generated_answer": "Cannot be determined from the provided memories.",
+    "gold_answer": "Berlin",
+    "raw_response": "The generated answer does not include the gold answer “Berlin” and instead claims it cannot be determined, so it fails to provide the required content.\n\n```json\n{\n    \"label\": \"WRONG\"\n}\n```",
+    "parsed_label": "WRONG",
+    "is_correct": false,
+    "model": "deepseek-v4-flash",
+    "latency_ms": 1399.0912000008393,
+    "usage": {
+      "prompt_tokens": 728,
+      "completion_tokens": 107,
+      "total_tokens": 835,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 63
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 216,
+      "request_attempts": 1,
+      "retry_count": 0,
+      "http_status": 200,
+      "initial_max_tokens": 65536,
+      "final_max_tokens": 65536,
+      "length_recovery_count": 0,
+      "cost": {
+        "currency": "USD",
+        "input_tokens": 728,
+        "cache_hit_input_tokens": 512,
+        "cache_miss_input_tokens": 216,
+        "output_tokens": 107,
+        "cache_hit_input_cost_usd": 1.4336e-06,
+        "cache_miss_input_cost_usd": 3.0240000000000002e-05,
+        "output_cost_usd": 2.9960000000000005e-05,
+        "total_cost_usd": 6.16336e-05
+      }
+    },
+    "human_review": "NOT_RECORDED",
+    "suspect_reasons": [],
+    "failure": null
+  },
+  "final": {
+    "retrieval_pass": true,
+    "answer_pass": false,
+    "quadrant": "B: Retrieval PASS + Answer FAIL",
+    "root_cause": "ANSWER_FAILURE",
+    "explanation": "All evidence sessions were retrieved, but Judge marked the generated answer WRONG.",
+    "suggested_fix": "在 Evidence 已完整到达后，检查 Answer prompt 的推理和格式约束。",
+    "pipeline_complete": true
+  },
+  "dimension": {
+    "dimension_id": "D06",
+    "payload_type": "conflict",
+    "gold_payload": {
+      "gold_answer": "Berlin",
+      "conflict_type": "multi-hop",
+      "fact_versions": [
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00037",
+          "value": "Los Angeles",
+          "order": 37,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00051",
+          "value": "Berlin",
+          "order": 51,
+          "timestamp": null,
+          "status": "winning"
+        },
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00288",
+          "value": "Amy Winehouse",
+          "order": 288,
+          "timestamp": null,
+          "status": "stale"
+        },
+        {
+          "fact_id": "factconsolidation_mh_6k:fact_00318",
+          "value": "Frank Zappa",
+          "order": 318,
+          "timestamp": null,
+          "status": "winning"
+        }
+      ],
+      "winning_fact_ids": [
+        "factconsolidation_mh_6k:fact_00318",
+        "factconsolidation_mh_6k:fact_00051"
+      ],
+      "stale_fact_ids": [
+        "factconsolidation_mh_6k:fact_00288",
+        "factconsolidation_mh_6k:fact_00037"
+      ]
+    },
+    "metrics": {
+      "retrieval_evaluated": true,
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "answer_accuracy": 0.0,
+      "metrics_by_k": {
+        "1": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "mrr": 1.0
+        },
+        "3": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "mrr": 1.0
+        },
+        "5": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "mrr": 1.0
+        },
+        "10": {
+          "hit": 1.0,
+          "recall": 1.0,
+          "mrr": 1.0
+        }
+      },
+      "stale_fact_total": 2,
+      "stale_retrieval_rate": 0.5,
+      "winning_fact_total": 2,
+      "winning_fact_recall": 0.5
+    },
+    "unsupported_metrics": [],
+    "prediction": {
+      "status": "ok",
+      "generated_answer": "Cannot be determined from the provided memories."
+    },
+    "system_prediction": {
+      "status": "ok",
+      "generated_answer": "Cannot be determined from the provided memories."
+    },
+    "context_cache": {
+      "hit": false,
+      "context_sha256": "943fc8dd5252b431c2571ad42e803e5337c100fe5cd9fad35177b21c609a09d4",
+      "ingest_owner_case_id": "d06:memoryagentbench:factconsolidation_mh_6k_no60",
+      "query_index": 1,
+      "query_count": 1
+    },
+    "run_mode": "case_isolated",
+    "status": "ok",
+    "error": null,
+    "latency": {
+      "ingest": 232.64070000004722,
+      "retrieval": 22.768299999370356,
+      "answer": 59891.94739999948,
+      "total": 4357.234900000549,
+      "judge": 1399.0912000008393
+    },
+    "cost": {
+      "input_tokens": 3504,
+      "output_tokens": 7526,
+      "api_cost": 0.0024749088000000003
+    },
+    "system_trace": {
+      "status": "ok",
+      "data": {
+        "kind": "adapter_operations",
+        "events": [
+          {
+            "operation": "ingest",
+            "status": "ok",
+            "latency_ms": 253.63990000005288,
+            "raw_response": {
+              "answer": [
+                {
+                  "change": "added",
+                  "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\1a0c0a4546e8ac5d\\daily\\d06_memoryagentbench_factconsolidat-a1e9cb72912a\\d06_memoryagentbench_factconsolidat-c7aff39fd605.md",
+                  "success": true
+                }
+              ],
+              "success": true,
+              "metadata": {
+                "cleared_store": true,
+                "counts": {
+                  "added": 1,
+                  "modified": 0,
+                  "deleted": 0
+                }
+              }
+            },
+            "items": [
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\1a0c0a4546e8ac5d\\daily\\d06_memoryagentbench_factconsolidat-a1e9cb72912a\\d06_memoryagentbench_factconsolidat-c7aff39fd605.md",
+                "success": true
+              }
+            ],
+            "health": {
+              "is_started": true,
+              "n_chunks": 5,
+              "n_chunks_with_embedding": 0,
+              "memory": "0.05 MB"
+            },
+            "failures": []
+          },
+          {
+            "operation": "search",
+            "status": "ok",
+            "query": "What is the place of death of the performer of the song collection \"Back to Black\"?",
+            "latency_ms": 22.768299999370356,
+            "raw_response": {
+              "answer": "========== daily/d06_memoryagentbench_factconsolidat-a1e9cb72912a/d06_memoryagentbench_factconsolidat-c7aff39fd605.md:185-359 [score=3.0947] ==========\n# Conversation Session\n\n## Document\n\n[Part 2/3]\n\n173. The headquarters of University of Bucharest is located in the city of Bucharest.\n174. split-finger fastball is associated with the sport of baseball.\n175. Igor of Kiev is married to Olga of Kiev.\n176. Narendra Modi is a citizen of India.\n177. The capital of Tang Empire is Beaumont.\n178. Steve Jobs was born in the city of San Francisco.\n179. The capital of Soviet Union is Russellville.\n180. The author of Endymion is John Keats.\n181. Blood on the Tracks was performed by Lou Reed.\n182. Edmund Burke is a citizen of Kingdom of Ireland.\n183. Daphne du Maurier is a citizen of United Kingdom.\n184. The official language of United Kingdom is English.\n185. The capital of Romania is Bucharest.\n186. rugby union was created in the country of India.\n187. Hyderabad is located in the continent of Asia.\n188. The chief executive officer of Microsoft is Steve Jobs.\n189. Hugh Hefner is famous for The Vampyre.\n190. The capital of Czech Republic is Prague.\n191. Aristotle's child is Nicomachus.\n192. Ernst Heinkel is a citizen of Germany.\n193. Catholic Church was founded by Jesus Christ.\n194. Bo Ryan is associated with the sport of basketball.\n195. T. S. Eliot speaks the language of English.\n196. The company that produced AP1000 is Westinghouse Electric.\n197. T. S. Eliot speaks the language of French.\n198. The capital of Papal States is Rome.\n199. The Wheel of Time was written in the language of English.\n200. The author of Categories is Aristotle.\n201. The chief executive officer of Apple Inc. is Vijay Mallya.\n202. The name of the current head of the Japan government is Shinzō Abe.\n203. Ernst Heinkel is a citizen of Tang Empire.\n204. Charles Messier is a citizen of France.\n205. Pakistan International Airlines was founded in the city of Sweden.\n206. John Keats died in the city of Rome.\n207. The director of Madonna is Guy Oseary.\n208. The univeristy where Samuel Beckett was educated is University of Southern California.\n209. The capital of Italy is Duluth.\n210. Cédric Klapisch is a citizen of France.\n211. England is located in the continent of Europe.\n212. jazz was created in the country of United States of America.\n213. Darryl Strawberry is associated with the sport of baseball.\n214. William Waynflete speaks the language of English.\n215. Sandy Alderson is associated with the sport of baseball.\n216. basketball was created in the country of United States of America.\n217. Narendra Modi is a citizen of Australia.\n218. Methodism was founded by John Wesley.\n219. point guard is associated with the sport of cricket.\n220. Australia is located in the continent of South America.\n221. Windows Phone was developed by Microsoft.\n222. The chairperson of Harvard University is Peter Diamandis.\n223. goaltender is associated with the sport of ice hockey.\n224. Sasanian Empire was founded by Ardashir I.\n225. Henri Grégoire is a citizen of India.\n226. Dave Filoni is employed by British Broadcasting Corporation.\n227. Irving Fryar plays the position of wide receiver.\n228. India is located in the continent of Asia.\n229. Rocket Man was performed by Ayumi Hamasaki.\n230. Ford Motor Company was founded by Henri Grégoire.\n231. Walter Chrysler's child is Charles Frederick, Duke of Holstein-Gottorp.\n232. The chairperson of Fatah is Moshe Kahlon.\n233. Yves Montand is married to Natalie Portman.\n234. Bengaluru is located in the continent of Oceania.\n235. Tunisia national football team is associated with the sport of association football.\n236. The director of The Beatles is Brian Epstein.\n237. Canadair was founded in the city of Montreal.\n238. SteamOS was developed by Valve Corporation.\n239. Cédric Klapisch is a citizen of Malaysia.\n240. The official language of Japan is Japanese.\n241. AppleScript was developed by Apple Inc..\n242. The official language of United States of America is American English.\n243. The type of music that Dana International plays is pop music.\n244. Sable is a citizen of United States of America.\n245. Brian Epstein is a citizen of United Kingdom.\n246. Robert Jordan is famous for The Wheel of Time.\n247. The capital of United States of America is Washington, D.C..\n248. Imelda Marcos is affiliated with the religion of Catholicism.\n249. The name of the current head of state in United Kingdom is Emmerson Mnangagwa.\n250. Country Joe McDonald is a citizen of Romania.\n251. Past Masters was performed by The Beatles.\n252. wide receiver is associated with the sport of rugby.\n253. The company that produced Ford Transit Connect is Ford Motor Company.\n254. Henry Ford is a citizen of United States of America.\n255. The capital of Iran is Tehran.\n256. Vito Corleone was created by Mario Puzo.\n257. Le Petit Parisien was created in the country of France.\n258. flanker is associated with the sport of rugby union.\n259. Nobuhiro Watsuki is famous for The Fairly OddParents.\n260. Kingdom of Ireland is affiliated with the religion of Zoroastrianism.\n261. pesäpallo was created in the country of Philippines.\n262. Mahmoud Abbas works in the field of politician.\n263. George W. Bush is affiliated with the religion of United Methodist Church.\n264. Sasanian Empire was founded by Walter Chrysler.\n265. Canadair was founded in the city of Tucson.\n266. Karen Armstrong is affiliated with the religion of Catholic Church.\n267. post-punk was created in the country of Canada.\n268. Ellen Pompeo is a citizen of United States of America.\n269. Daniele De Rossi plays the position of midfielder.\n270. Oscar Wilde died in the city of Guangzhou.\n271. The author of The Marriage of Figaro is Pierre Beaumarchais.\n272. association football was created in the country of England.\n273. Viva Las Vegas was performed by Elvis Presley.\n274. F-22 Raptor was developed by Lockheed Martin.\n275. The chief executive officer of Twitter is Bernard Arnault.\n276. The Prime Minister of Sweden is Pedro Pierluisi.\n277. SteamOS was developed by ABB Group.\n278. The Vampyre was written in the language of English.\n279. Slovakia national football team is associated with the sport of cricket.\n280. India is located in the continent of Africa.\n281. The type of music that Dana International plays is Australian hip hop.\n282. John Walsh is affiliated with the religion of Catholic Church.\n283. Pius XII died in the city of Wolverhampton.\n284. The capital of Australia is Canberra.\n285. Aladdin Sane was performed by Yves Montand.\n286. The univeristy where Lou Reed was educated is Syracuse University.\n287. Methodism was founded by Joseph Goebbels.\n288. Back to Black was performed by Amy Winehouse.\n289. The type of music that Michael Mantler plays is jazz.\n290. The director of Lucasfilm is Kathleen Kennedy.\n291. Surrey Senior Cup is associated with the sport of association football.\n292. Gennady Rozhdestvensky died in the city of Moscow.\n293. Ayumi Hamasaki is a citizen of Japan.\n294. Amala Paul is a citizen of India.\n295. The official language of United States of America is German.\n296. New Firm is associated with the sport of association football.\n297. Playboy was written in the language of English.\n298. The type of music that Michael Mantler plays is post-punk.\n299. Sable is a citizen of Czech Republic.\n300. Sigmund Freud died in the city of London.\n301. The author of A Wizard of Earthsea is Pius XII.\n302. Nadezhda Krupskaya died in the city of Moscow.\n303. David Beckham is associated with the sport of cricket.\n304. Shingon Buddhism was founded by William Waynflete.\n305. The author of The Witcher is T. S. Eliot.\n306. Thomas Kyd was born in the city of Leeds.\n307. Jesus Christ worked in the city of Galilee.\n308. John Harkes is associated with the sport of association football.\n309. The univeristy where Bill Frisell was educated is The University of the Arts.\n310. goaltender is associated with the sport of pesäpallo.\n311. Bob Iger is a citizen of United States of America.\n312. John Knox worked in the city of Edinburgh.\n313. Benjamin Mazar is a citizen of Israel.\n314. The headquarters of Ilyushin is located in the city of Moscow.\n315. Surrey Senior Cup is associated with the sport of basketball.\n316. Pierre Beaumarchais was born in the city of Paris.\n317. Priscilla Presley is a citizen of United States of America.\n318. Back to Black was performed by Frank Zappa.\n319. Bernard Arnault is a citizen of France.\n320. Stephen McNeil works in the field of journalist.\n321. placekicker is associated with the sport of rugby.\n322. Amala Paul is a citizen of Belgium.\n323. cornerback is associated with the sport of American football.\n324. The name of the current head of the Council of People's Commissars government is Vladimir Lenin.\n325. midfielder is associated with the sport of association football.\n326. Rand al'Thor was created by Ferdowsi.\n327. The author of Sketches by Boz is Charles Dickens.\n328. split-finger fastball is associated with the sport of cricket.\n329. Vijay Mallya is a citizen of Papal States.\n330. Robert Parish plays the position of center.\n331. Maharishi Mahesh Yogi is affiliated with the religion of Hinduism.\n332. Aristotle's child is George Alexander Kohut.\n333. The univeristy where Elena Ceaușescu was educated is University of Bucharest.\n334. Robert Parish plays the position of quarterback.\n335. Charles Darwin is married to Amala Paul.\n336. William Waynflete speaks the language of Latin.\n337. Born in the U.S.A. was performed by Dana International.\n338. Andrew Carnegie is a citizen of United States of America.\n339. Adalbert of Prague is affiliated with the religion of atheism.\n340. Sandy Alderson is associated with the sport of association football.\n341. The capital of India is Grosseto.\n342. Thomas Arne was born in the city of London.\n343. Charles Messier is a citizen of Iran.\n344. The author of Starship Troopers is Daphne du Maurier.\n345. Thus Spoke Zarathustra was created in the country of Germany.\n346. Bo Ryan is associated with the sport of association football.\n347. The chief executive officer of ABB Group is Ulrich Spiesshofer.\n========== daily/d06_memoryagentbench_factconsolidat-a1e9cb72912a/d06_memoryagentbench_factconsolidat-c7aff39fd605.md:360-466 [score=1.2705] ==========\n# Conversation Session\n\n## Document\n\n[Part 3/3]\n\n348. basketball was created in the country of Soviet Union.\n349. The univeristy where Wilhelm II was educated is University of Bonn.\n350. Free as a Bird was performed by The Beatles.\n351. The name of the current head of the Council of People's Commissars government is Tony Blair.\n352. Coco Chanel died in the city of Paris.\n353. Club Nouveau was created in the country of Soviet Union.\n354. The director of Madonna is Narendra Modi.\n355. The type of music that Bruce Springsteen plays is rock music.\n356. The company that produced AP1000 is Canadair.\n357. Iman is affiliated with the religion of Islam.\n358. Charlie Hebdo was created in the country of Italy.\n359. rap rock was created in the country of United States of America.\n360. Transcendental Meditation movement was founded by Adalbert of Prague.\n361. John Walsh is affiliated with the religion of Methodism.\n362. cornerback is associated with the sport of field hockey.\n363. The origianl broadcaster of 666 Park Avenue is American Broadcasting Company.\n364. Past Masters was performed by Madonna.\n365. The name of the current head of state in Soviet Union is Elizabeth II.\n366. Thomas Arne was born in the city of Bengaluru.\n367. Andrew Carnegie is a citizen of United Kingdom.\n368. Moshe Kahlon works in the field of soldier.\n369. Nicolae Ceaușescu is married to Wilhelm II.\n370. Buddhism was founded by Mekere Morauta.\n371. Charles the Bold is a citizen of France.\n372. John Keats died in the city of Leipzig.\n373. Malaysia is located in the continent of Asia.\n374. Imelda Marcos is affiliated with the religion of atheism.\n375. The name of the current head of the Italy government is Giuseppe Conte.\n376. New Firm is associated with the sport of baseball.\n377. The capital of United Kingdom is London.\n378. The capital of England is London.\n379. The chief executive officer of Lockheed Martin is Marillyn Hewson.\n380. The headquarters of Berklee College of Music is located in the city of Boston.\n381. Elton John is a citizen of United Kingdom.\n382. baseball was created in the country of Japan.\n383. The official language of Moscow is German.\n384. F-22 Raptor was developed by Boeing.\n385. Ron Dennis is employed by Pakistan International Airlines.\n386. Ferdinand von Richthofen is a citizen of Canada.\n387. The headquarters of The University of the Arts is located in the city of Philadelphia.\n388. The capital of Australia is Oderzo.\n389. association football was created in the country of Italy.\n390. Vito Corleone was created by Nobuhiro Watsuki.\n391. Shahnameh was written in the language of Persian.\n392. The director of American Broadcasting Company is Ernst Heinkel.\n393. The chief executive officer of Boeing is Adel al-Jubeir.\n394. Alan Jay Lerner died in the city of Mansourah, Algeria.\n395. Joseph Goebbels worked in the city of Berlin.\n396. The capital of United States of America is Harrisville.\n397. San Francisco is located in the continent of North America.\n398. The author of The Marriage of Figaro is Thomas Kyd.\n399. The univeristy where Lou Reed was educated is Fordham University.\n400. The company that produced Ford F-Series is Ford Motor Company.\n401. The author of Sidereus Nuncius is Samuel Beckett.\n402. Emma Watson speaks the language of English.\n403. rap rock was created in the country of Russian Empire.\n404. The origianl broadcaster of The Brady Bunch is American Broadcasting Company.\n405. Carlos Gómez is associated with the sport of basketball.\n406. Denis Sassou-Nguesso works in the field of politician.\n407. Sophia Hawthorne is married to Nathaniel Hawthorne.\n408. The chief executive officer of ABB Group is Bernard Arnault.\n409. The headquarters of University of Bucharest is located in the city of Ankara.\n410. Natalie Portman is affiliated with the religion of interdenominational organization.\n411. Ardashir I's child is Shapur I.\n412. Karen Armstrong is affiliated with the religion of Church of Scotland.\n413. Hermione Granger was performed by Emma Watson.\n414. Derek Shepherd is married to Meredith Grey.\n415. The type of music that John McVie plays is rap rock.\n416. midfielder is associated with the sport of sumo.\n417. Steve Sax is associated with the sport of association football.\n418. Tunisia national football team is associated with the sport of basketball.\n419. Blair Walsh plays the position of placekicker.\n420. Sophia Hawthorne is married to Joan Didion.\n421. Philadelphia was founded by William Penn.\n422. Vladimir Lenin is married to Nadezhda Krupskaya.\n423. Stephen Crane is famous for Charlie Hebdo.\n424. Tony Blair is married to Alan Jay Lerner.\n425. Hermione Granger was performed by Kylie Minogue.\n426. The Vampyre was written in the language of German.\n427. Joe Hockey is a citizen of Italy.\n428. The director of British Broadcasting Corporation is Narendra Modi.\n429. France is located in the continent of Europe.\n430. The author of Sketches by Boz is Sigmund Freud.\n431. Joseph Story is employed by Harvard University.\n432. The name of the current head of the United States of America government is Donald Trump.\n433. Gabe Newell is a citizen of United States of America.\n434. Rogério Ceni plays the position of flanker.\n435. Germany is located in the continent of Africa.\n436. Le Petit Parisien was created in the country of Germany.\n437. goalkeeper is associated with the sport of association football.\n438. The univeristy where Nathaniel Hawthorne was educated is Bowdoin College.\n439. The official language of Japan is Swedish.\n440. Canada is located in the continent of Asia.\n441. Colin Irwin is a citizen of Israel.\n442. Malaysia is located in the continent of Antarctica.\n443. The director of The Beatles is Joe Hockey.\n444. Tim Cook is a citizen of United States of America.\n445. The chairperson of Congolese Party of Labour is Stephen McNeil.\n446. Alta IF is associated with the sport of baseball.\n447. Roy Rogers is married to Dale Evans.\n448. Charles Dickens died in the city of Gads Hill Place.\n449. The capital of Romania is Rajanpur.\n450. Olga of Kiev died in the city of Rodez.\n451. Gennady Rozhdestvensky died in the city of United States of America.\n452. Roy Rogers is married to John McVie.\n453. The univeristy where Wilhelm II was educated is Baldwin Wallace University.\n454. The name of the current head of the Tucson government is Jonathan Rothschild.",
+              "success": true,
+              "metadata": {
+                "results": [
+                  {
+                    "id": "0a835b89e3ecce14cecf3d1fc91dd81568a6a90a5637cb3524ab589923657928",
+                    "text": "# Conversation Session\n\n## Document\n\n[Part 2/3]\n\n173. The headquarters of University of Bucharest is located in the city of Bucharest.\n174. split-finger fastball is associated with the sport of baseball.\n175. Igor of Kiev is married to Olga of Kiev.\n176. Narendra Modi is a citizen of India.\n177. The capital of Tang Empire is Beaumont.\n178. Steve Jobs was born in the city of San Francisco.\n179. The capital of Soviet Union is Russellville.\n180. The author of Endymion is John Keats.\n181. Blood on the Tracks was performed by Lou Reed.\n182. Edmund Burke is a citizen of Kingdom of Ireland.\n183. Daphne du Maurier is a citizen of United Kingdom.\n184. The official language of United Kingdom is English.\n185. The capital of Romania is Bucharest.\n186. rugby union was created in the country of India.\n187. Hyderabad is located in the continent of Asia.\n188. The chief executive officer of Microsoft is Steve Jobs.\n189. Hugh Hefner is famous for The Vampyre.\n190. The capital of Czech Republic is Prague.\n191. Aristotle's child is Nicomachus.\n192. Ernst Heinkel is a citizen of Germany.\n193. Catholic Church was founded by Jesus Christ.\n194. Bo Ryan is associated with the sport of basketball.\n195. T. S. Eliot speaks the language of English.\n196. The company that produced AP1000 is Westinghouse Electric.\n197. T. S. Eliot speaks the language of French.\n198. The capital of Papal States is Rome.\n199. The Wheel of Time was written in the language of English.\n200. The author of Categories is Aristotle.\n201. The chief executive officer of Apple Inc. is Vijay Mallya.\n202. The name of the current head of the Japan government is Shinzō Abe.\n203. Ernst Heinkel is a citizen of Tang Empire.\n204. Charles Messier is a citizen of France.\n205. Pakistan International Airlines was founded in the city of Sweden.\n206. John Keats died in the city of Rome.\n207. The director of Madonna is Guy Oseary.\n208. The univeristy where Samuel Beckett was educated is University of Southern California.\n209. The capital of Italy is Duluth.\n210. Cédric Klapisch is a citizen of France.\n211. England is located in the continent of Europe.\n212. jazz was created in the country of United States of America.\n213. Darryl Strawberry is associated with the sport of baseball.\n214. William Waynflete speaks the language of English.\n215. Sandy Alderson is associated with the sport of baseball.\n216. basketball was created in the country of United States of America.\n217. Narendra Modi is a citizen of Australia.\n218. Methodism was founded by John Wesley.\n219. point guard is associated with the sport of cricket.\n220. Australia is located in the continent of South America.\n221. Windows Phone was developed by Microsoft.\n222. The chairperson of Harvard University is Peter Diamandis.\n223. goaltender is associated with the sport of ice hockey.\n224. Sasanian Empire was founded by Ardashir I.\n225. Henri Grégoire is a citizen of India.\n226. Dave Filoni is employed by British Broadcasting Corporation.\n227. Irving Fryar plays the position of wide receiver.\n228. India is located in the continent of Asia.\n229. Rocket Man was performed by Ayumi Hamasaki.\n230. Ford Motor Company was founded by Henri Grégoire.\n231. Walter Chrysler's child is Charles Frederick, Duke of Holstein-Gottorp.\n232. The chairperson of Fatah is Moshe Kahlon.\n233. Yves Montand is married to Natalie Portman.\n234. Bengaluru is located in the continent of Oceania.\n235. Tunisia national football team is associated with the sport of association football.\n236. The director of The Beatles is Brian Epstein.\n237. Canadair was founded in the city of Montreal.\n238. SteamOS was developed by Valve Corporation.\n239. Cédric Klapisch is a citizen of Malaysia.\n240. The official language of Japan is Japanese.\n241. AppleScript was developed by Apple Inc..\n242. The official language of United States of America is American English.\n243. The type of music that Dana International plays is pop music.\n244. Sable is a citizen of United States of America.\n245. Brian Epstein is a citizen of United Kingdom.\n246. Robert Jordan is famous for The Wheel of Time.\n247. The capital of United States of America is Washington, D.C..\n248. Imelda Marcos is affiliated with the religion of Catholicism.\n249. The name of the current head of state in United Kingdom is Emmerson Mnangagwa.\n250. Country Joe McDonald is a citizen of Romania.\n251. Past Masters was performed by The Beatles.\n252. wide receiver is associated with the sport of rugby.\n253. The company that produced Ford Transit Connect is Ford Motor Company.\n254. Henry Ford is a citizen of United States of America.\n255. The capital of Iran is Tehran.\n256. Vito Corleone was created by Mario Puzo.\n257. Le Petit Parisien was created in the country of France.\n258. flanker is associated with the sport of rugby union.\n259. Nobuhiro Watsuki is famous for The Fairly OddParents.\n260. Kingdom of Ireland is affiliated with the religion of Zoroastrianism.\n261. pesäpallo was created in the country of Philippines.\n262. Mahmoud Abbas works in the field of politician.\n263. George W. Bush is affiliated with the religion of United Methodist Church.\n264. Sasanian Empire was founded by Walter Chrysler.\n265. Canadair was founded in the city of Tucson.\n266. Karen Armstrong is affiliated with the religion of Catholic Church.\n267. post-punk was created in the country of Canada.\n268. Ellen Pompeo is a citizen of United States of America.\n269. Daniele De Rossi plays the position of midfielder.\n270. Oscar Wilde died in the city of Guangzhou.\n271. The author of The Marriage of Figaro is Pierre Beaumarchais.\n272. association football was created in the country of England.\n273. Viva Las Vegas was performed by Elvis Presley.\n274. F-22 Raptor was developed by Lockheed Martin.\n275. The chief executive officer of Twitter is Bernard Arnault.\n276. The Prime Minister of Sweden is Pedro Pierluisi.\n277. SteamOS was developed by ABB Group.\n278. The Vampyre was written in the language of English.\n279. Slovakia national football team is associated with the sport of cricket.\n280. India is located in the continent of Africa.\n281. The type of music that Dana International plays is Australian hip hop.\n282. John Walsh is affiliated with the religion of Catholic Church.\n283. Pius XII died in the city of Wolverhampton.\n284. The capital of Australia is Canberra.\n285. Aladdin Sane was performed by Yves Montand.\n286. The univeristy where Lou Reed was educated is Syracuse University.\n287. Methodism was founded by Joseph Goebbels.\n288. Back to Black was performed by Amy Winehouse.\n289. The type of music that Michael Mantler plays is jazz.\n290. The director of Lucasfilm is Kathleen Kennedy.\n291. Surrey Senior Cup is associated with the sport of association football.\n292. Gennady Rozhdestvensky died in the city of Moscow.\n293. Ayumi Hamasaki is a citizen of Japan.\n294. Amala Paul is a citizen of India.\n295. The official language of United States of America is German.\n296. New Firm is associated with the sport of association football.\n297. Playboy was written in the language of English.\n298. The type of music that Michael Mantler plays is post-punk.\n299. Sable is a citizen of Czech Republic.\n300. Sigmund Freud died in the city of London.\n301. The author of A Wizard of Earthsea is Pius XII.\n302. Nadezhda Krupskaya died in the city of Moscow.\n303. David Beckham is associated with the sport of cricket.\n304. Shingon Buddhism was founded by William Waynflete.\n305. The author of The Witcher is T. S. Eliot.\n306. Thomas Kyd was born in the city of Leeds.\n307. Jesus Christ worked in the city of Galilee.\n308. John Harkes is associated with the sport of association football.\n309. The univeristy where Bill Frisell was educated is The University of the Arts.\n310. goaltender is associated with the sport of pesäpallo.\n311. Bob Iger is a citizen of United States of America.\n312. John Knox worked in the city of Edinburgh.\n313. Benjamin Mazar is a citizen of Israel.\n314. The headquarters of Ilyushin is located in the city of Moscow.\n315. Surrey Senior Cup is associated with the sport of basketball.\n316. Pierre Beaumarchais was born in the city of Paris.\n317. Priscilla Presley is a citizen of United States of America.\n318. Back to Black was performed by Frank Zappa.\n319. Bernard Arnault is a citizen of France.\n320. Stephen McNeil works in the field of journalist.\n321. placekicker is associated with the sport of rugby.\n322. Amala Paul is a citizen of Belgium.\n323. cornerback is associated with the sport of American football.\n324. The name of the current head of the Council of People's Commissars government is Vladimir Lenin.\n325. midfielder is associated with the sport of association football.\n326. Rand al'Thor was created by Ferdowsi.\n327. The author of Sketches by Boz is Charles Dickens.\n328. split-finger fastball is associated with the sport of cricket.\n329. Vijay Mallya is a citizen of Papal States.\n330. Robert Parish plays the position of center.\n331. Maharishi Mahesh Yogi is affiliated with the religion of Hinduism.\n332. Aristotle's child is George Alexander Kohut.\n333. The univeristy where Elena Ceaușescu was educated is University of Bucharest.\n334. Robert Parish plays the position of quarterback.\n335. Charles Darwin is married to Amala Paul.\n336. William Waynflete speaks the language of Latin.\n337. Born in the U.S.A. was performed by Dana International.\n338. Andrew Carnegie is a citizen of United States of America.\n339. Adalbert of Prague is affiliated with the religion of atheism.\n340. Sandy Alderson is associated with the sport of association football.\n341. The capital of India is Grosseto.\n342. Thomas Arne was born in the city of London.\n343. Charles Messier is a citizen of Iran.\n344. The author of Starship Troopers is Daphne du Maurier.\n345. Thus Spoke Zarathustra was created in the country of Germany.\n346. Bo Ryan is associated with the sport of association football.\n347. The chief executive officer of ABB Group is Ulrich Spiesshofer.",
+                    "metadata": {},
+                    "path": "daily/d06_memoryagentbench_factconsolidat-a1e9cb72912a/d06_memoryagentbench_factconsolidat-c7aff39fd605.md",
+                    "start_line": 185,
+                    "end_line": 359,
+                    "scores": {
+                      "keyword": 3.0947177410125732,
+                      "score": 3.0947177410125732
+                    }
+                  },
+                  {
+                    "id": "0c216ebe44a80c6eea995ba240a4c8c70a18d13d9ace8443b0eacedaae5d54a0",
+                    "text": "# Conversation Session\n\n## Document\n\n[Part 3/3]\n\n348. basketball was created in the country of Soviet Union.\n349. The univeristy where Wilhelm II was educated is University of Bonn.\n350. Free as a Bird was performed by The Beatles.\n351. The name of the current head of the Council of People's Commissars government is Tony Blair.\n352. Coco Chanel died in the city of Paris.\n353. Club Nouveau was created in the country of Soviet Union.\n354. The director of Madonna is Narendra Modi.\n355. The type of music that Bruce Springsteen plays is rock music.\n356. The company that produced AP1000 is Canadair.\n357. Iman is affiliated with the religion of Islam.\n358. Charlie Hebdo was created in the country of Italy.\n359. rap rock was created in the country of United States of America.\n360. Transcendental Meditation movement was founded by Adalbert of Prague.\n361. John Walsh is affiliated with the religion of Methodism.\n362. cornerback is associated with the sport of field hockey.\n363. The origianl broadcaster of 666 Park Avenue is American Broadcasting Company.\n364. Past Masters was performed by Madonna.\n365. The name of the current head of state in Soviet Union is Elizabeth II.\n366. Thomas Arne was born in the city of Bengaluru.\n367. Andrew Carnegie is a citizen of United Kingdom.\n368. Moshe Kahlon works in the field of soldier.\n369. Nicolae Ceaușescu is married to Wilhelm II.\n370. Buddhism was founded by Mekere Morauta.\n371. Charles the Bold is a citizen of France.\n372. John Keats died in the city of Leipzig.\n373. Malaysia is located in the continent of Asia.\n374. Imelda Marcos is affiliated with the religion of atheism.\n375. The name of the current head of the Italy government is Giuseppe Conte.\n376. New Firm is associated with the sport of baseball.\n377. The capital of United Kingdom is London.\n378. The capital of England is London.\n379. The chief executive officer of Lockheed Martin is Marillyn Hewson.\n380. The headquarters of Berklee College of Music is located in the city of Boston.\n381. Elton John is a citizen of United Kingdom.\n382. baseball was created in the country of Japan.\n383. The official language of Moscow is German.\n384. F-22 Raptor was developed by Boeing.\n385. Ron Dennis is employed by Pakistan International Airlines.\n386. Ferdinand von Richthofen is a citizen of Canada.\n387. The headquarters of The University of the Arts is located in the city of Philadelphia.\n388. The capital of Australia is Oderzo.\n389. association football was created in the country of Italy.\n390. Vito Corleone was created by Nobuhiro Watsuki.\n391. Shahnameh was written in the language of Persian.\n392. The director of American Broadcasting Company is Ernst Heinkel.\n393. The chief executive officer of Boeing is Adel al-Jubeir.\n394. Alan Jay Lerner died in the city of Mansourah, Algeria.\n395. Joseph Goebbels worked in the city of Berlin.\n396. The capital of United States of America is Harrisville.\n397. San Francisco is located in the continent of North America.\n398. The author of The Marriage of Figaro is Thomas Kyd.\n399. The univeristy where Lou Reed was educated is Fordham University.\n400. The company that produced Ford F-Series is Ford Motor Company.\n401. The author of Sidereus Nuncius is Samuel Beckett.\n402. Emma Watson speaks the language of English.\n403. rap rock was created in the country of Russian Empire.\n404. The origianl broadcaster of The Brady Bunch is American Broadcasting Company.\n405. Carlos Gómez is associated with the sport of basketball.\n406. Denis Sassou-Nguesso works in the field of politician.\n407. Sophia Hawthorne is married to Nathaniel Hawthorne.\n408. The chief executive officer of ABB Group is Bernard Arnault.\n409. The headquarters of University of Bucharest is located in the city of Ankara.\n410. Natalie Portman is affiliated with the religion of interdenominational organization.\n411. Ardashir I's child is Shapur I.\n412. Karen Armstrong is affiliated with the religion of Church of Scotland.\n413. Hermione Granger was performed by Emma Watson.\n414. Derek Shepherd is married to Meredith Grey.\n415. The type of music that John McVie plays is rap rock.\n416. midfielder is associated with the sport of sumo.\n417. Steve Sax is associated with the sport of association football.\n418. Tunisia national football team is associated with the sport of basketball.\n419. Blair Walsh plays the position of placekicker.\n420. Sophia Hawthorne is married to Joan Didion.\n421. Philadelphia was founded by William Penn.\n422. Vladimir Lenin is married to Nadezhda Krupskaya.\n423. Stephen Crane is famous for Charlie Hebdo.\n424. Tony Blair is married to Alan Jay Lerner.\n425. Hermione Granger was performed by Kylie Minogue.\n426. The Vampyre was written in the language of German.\n427. Joe Hockey is a citizen of Italy.\n428. The director of British Broadcasting Corporation is Narendra Modi.\n429. France is located in the continent of Europe.\n430. The author of Sketches by Boz is Sigmund Freud.\n431. Joseph Story is employed by Harvard University.\n432. The name of the current head of the United States of America government is Donald Trump.\n433. Gabe Newell is a citizen of United States of America.\n434. Rogério Ceni plays the position of flanker.\n435. Germany is located in the continent of Africa.\n436. Le Petit Parisien was created in the country of Germany.\n437. goalkeeper is associated with the sport of association football.\n438. The univeristy where Nathaniel Hawthorne was educated is Bowdoin College.\n439. The official language of Japan is Swedish.\n440. Canada is located in the continent of Asia.\n441. Colin Irwin is a citizen of Israel.\n442. Malaysia is located in the continent of Antarctica.\n443. The director of The Beatles is Joe Hockey.\n444. Tim Cook is a citizen of United States of America.\n445. The chairperson of Congolese Party of Labour is Stephen McNeil.\n446. Alta IF is associated with the sport of baseball.\n447. Roy Rogers is married to Dale Evans.\n448. Charles Dickens died in the city of Gads Hill Place.\n449. The capital of Romania is Rajanpur.\n450. Olga of Kiev died in the city of Rodez.\n451. Gennady Rozhdestvensky died in the city of United States of America.\n452. Roy Rogers is married to John McVie.\n453. The univeristy where Wilhelm II was educated is Baldwin Wallace University.\n454. The name of the current head of the Tucson government is Jonathan Rothschild.",
+                    "metadata": {},
+                    "path": "daily/d06_memoryagentbench_factconsolidat-a1e9cb72912a/d06_memoryagentbench_factconsolidat-c7aff39fd605.md",
+                    "start_line": 360,
+                    "end_line": 466,
+                    "scores": {
+                      "keyword": 1.2704658508300781,
+                      "score": 1.2704658508300781
+                    }
+                  }
+                ],
+                "link_expansion": {},
+                "counts": {
+                  "vector": 0,
+                  "keyword": 2,
+                  "returned": 2,
+                  "hybrid": false
+                }
+              }
+            },
+            "memories": [
+              {
+                "rank": 1,
+                "raw_rank": 1,
+                "session_id": "d06:memoryagentbench:factconsolidation_mh_6k:context:document",
+                "path": "daily/d06_memoryagentbench_factconsolidat-a1e9cb72912a/d06_memoryagentbench_factconsolidat-c7aff39fd605.md",
+                "score": 3.0947177410125732,
+                "text": "# Conversation Session\n\n## Document\n\n[Part 2/3]\n\n173. The headquarters of University of Bucharest is located in the city of Bucharest.\n174. split-finger fastball is associated with the sport of baseball.\n175. Igor of Kiev is married to Olga of Kiev.\n176. Narendra Modi is a citizen of India.\n177. The capital of Tang Empire is Beaumont.\n178. Steve Jobs was born in the city of San Francisco.\n179. The capital of Soviet Union is Russellville.\n180. The author of Endymion is John Keats.\n181. Blood on the Tracks was performed by Lou Reed.\n182. Edmund Burke is a citizen of Kingdom of Ireland.\n183. Daphne du Maurier is a citizen of United Kingdom.\n184. The official language of United Kingdom is English.\n185. The capital of Romania is Bucharest.\n186. rugby union was created in the country of India.\n187. Hyderabad is located in the continent of Asia.\n188. The chief executive officer of Microsoft is Steve Jobs.\n189. Hugh Hefner is famous for The Vampyre.\n190. The capital of Czech Republic is Prague.\n191. Aristotle's child is Nicomachus.\n192. Ernst Heinkel is a citizen of Germany.\n193. Catholic Church was founded by Jesus Christ.\n194. Bo Ryan is associated with the sport of basketball.\n195. T. S. Eliot speaks the language of English.\n196. The company that produced AP1000 is Westinghouse Electric.\n197. T. S. Eliot speaks the language of French.\n198. The capital of Papal States is Rome.\n199. The Wheel of Time was written in the language of English.\n200. The author of Categories is Aristotle.\n201. The chief executive officer of Apple Inc. is Vijay Mallya.\n202. The name of the current head of the Japan government is Shinzō Abe.\n203. Ernst Heinkel is a citizen of Tang Empire.\n204. Charles Messier is a citizen of France.\n205. Pakistan International Airlines was founded in the city of Sweden.\n206. John Keats died in the city of Rome.\n207. The director of Madonna is Guy Oseary.\n208. The univeristy where Samuel Beckett was educated is University of Southern California.\n209. The capital of Italy is Duluth.\n210. Cédric Klapisch is a citizen of France.\n211. England is located in the continent of Europe.\n212. jazz was created in the country of United States of America.\n213. Darryl Strawberry is associated with the sport of baseball.\n214. William Waynflete speaks the language of English.\n215. Sandy Alderson is associated with the sport of baseball.\n216. basketball was created in the country of United States of America.\n217. Narendra Modi is a citizen of Australia.\n218. Methodism was founded by John Wesley.\n219. point guard is associated with the sport of cricket.\n220. Australia is located in the continent of South America.\n221. Windows Phone was developed by Microsoft.\n222. The chairperson of Harvard University is Peter Diamandis.\n223. goaltender is associated with the sport of ice hockey.\n224. Sasanian Empire was founded by Ardashir I.\n225. Henri Grégoire is a citizen of India.\n226. Dave Filoni is employed by British Broadcasting Corporation.\n227. Irving Fryar plays the position of wide receiver.\n228. India is located in the continent of Asia.\n229. Rocket Man was performed by Ayumi Hamasaki.\n230. Ford Motor Company was founded by Henri Grégoire.\n231. Walter Chrysler's child is Charles Frederick, Duke of Holstein-Gottorp.\n232. The chairperson of Fatah is Moshe Kahlon.\n233. Yves Montand is married to Natalie Portman.\n234. Bengaluru is located in the continent of Oceania.\n235. Tunisia national football team is associated with the sport of association football.\n236. The director of The Beatles is Brian Epstein.\n237. Canadair was founded in the city of Montreal.\n238. SteamOS was developed by Valve Corporation.\n239. Cédric Klapisch is a citizen of Malaysia.\n240. The official language of Japan is Japanese.\n241. AppleScript was developed by Apple Inc..\n242. The official language of United States of America is American English.\n243. The type of music that Dana International plays is pop music.\n244. Sable is a citizen of United States of America.\n245. Brian Epstein is a citizen of United Kingdom.\n246. Robert Jordan is famous for The Wheel of Time.\n247. The capital of United States of America is Washington, D.C..\n248. Imelda Marcos is affiliated with the religion of Catholicism.\n249. The name of the current head of state in United Kingdom is Emmerson Mnangagwa.\n250. Country Joe McDonald is a citizen of Romania.\n251. Past Masters was performed by The Beatles.\n252. wide receiver is associated with the sport of rugby.\n253. The company that produced Ford Transit Connect is Ford Motor Company.\n254. Henry Ford is a citizen of United States of America.\n255. The capital of Iran is Tehran.\n256. Vito Corleone was created by Mario Puzo.\n257. Le Petit Parisien was created in the country of France.\n258. flanker is associated with the sport of rugby union.\n259. Nobuhiro Watsuki is famous for The Fairly OddParents.\n260. Kingdom of Ireland is affiliated with the religion of Zoroastrianism.\n261. pesäpallo was created in the country of Philippines.\n262. Mahmoud Abbas works in the field of politician.\n263. George W. Bush is affiliated with the religion of United Methodist Church.\n264. Sasanian Empire was founded by Walter Chrysler.\n265. Canadair was founded in the city of Tucson.\n266. Karen Armstrong is affiliated with the religion of Catholic Church.\n267. post-punk was created in the country of Canada.\n268. Ellen Pompeo is a citizen of United States of America.\n269. Daniele De Rossi plays the position of midfielder.\n270. Oscar Wilde died in the city of Guangzhou.\n271. The author of The Marriage of Figaro is Pierre Beaumarchais.\n272. association football was created in the country of England.\n273. Viva Las Vegas was performed by Elvis Presley.\n274. F-22 Raptor was developed by Lockheed Martin.\n275. The chief executive officer of Twitter is Bernard Arnault.\n276. The Prime Minister of Sweden is Pedro Pierluisi.\n277. SteamOS was developed by ABB Group.\n278. The Vampyre was written in the language of English.\n279. Slovakia national football team is associated with the sport of cricket.\n280. India is located in the continent of Africa.\n281. The type of music that Dana International plays is Australian hip hop.\n282. John Walsh is affiliated with the religion of Catholic Church.\n283. Pius XII died in the city of Wolverhampton.\n284. The capital of Australia is Canberra.\n285. Aladdin Sane was performed by Yves Montand.\n286. The univeristy where Lou Reed was educated is Syracuse University.\n287. Methodism was founded by Joseph Goebbels.\n288. Back to Black was performed by Amy Winehouse.\n289. The type of music that Michael Mantler plays is jazz.\n290. The director of Lucasfilm is Kathleen Kennedy.\n291. Surrey Senior Cup is associated with the sport of association football.\n292. Gennady Rozhdestvensky died in the city of Moscow.\n293. Ayumi Hamasaki is a citizen of Japan.\n294. Amala Paul is a citizen of India.\n295. The official language of United States of America is German.\n296. New Firm is associated with the sport of association football.\n297. Playboy was written in the language of English.\n298. The type of music that Michael Mantler plays is post-punk.\n299. Sable is a citizen of Czech Republic.\n300. Sigmund Freud died in the city of London.\n301. The author of A Wizard of Earthsea is Pius XII.\n302. Nadezhda Krupskaya died in the city of Moscow.\n303. David Beckham is associated with the sport of cricket.\n304. Shingon Buddhism was founded by William Waynflete.\n305. The author of The Witcher is T. S. Eliot.\n306. Thomas Kyd was born in the city of Leeds.\n307. Jesus Christ worked in the city of Galilee.\n308. John Harkes is associated with the sport of association football.\n309. The univeristy where Bill Frisell was educated is The University of the Arts.\n310. goaltender is associated with the sport of pesäpallo.\n311. Bob Iger is a citizen of United States of America.\n312. John Knox worked in the city of Edinburgh.\n313. Benjamin Mazar is a citizen of Israel.\n314. The headquarters of Ilyushin is located in the city of Moscow.\n315. Surrey Senior Cup is associated with the sport of basketball.\n316. Pierre Beaumarchais was born in the city of Paris.\n317. Priscilla Presley is a citizen of United States of America.\n318. Back to Black was performed by Frank Zappa.\n319. Bernard Arnault is a citizen of France.\n320. Stephen McNeil works in the field of journalist.\n321. placekicker is associated with the sport of rugby.\n322. Amala Paul is a citizen of Belgium.\n323. cornerback is associated with the sport of American football.\n324. The name of the current head of the Council of People's Commissars government is Vladimir Lenin.\n325. midfielder is associated with the sport of association football.\n326. Rand al'Thor was created by Ferdowsi.\n327. The author of Sketches by Boz is Charles Dickens.\n328. split-finger fastball is associated with the sport of cricket.\n329. Vijay Mallya is a citizen of Papal States.\n330. Robert Parish plays the position of center.\n331. Maharishi Mahesh Yogi is affiliated with the religion of Hinduism.\n332. Aristotle's child is George Alexander Kohut.\n333. The univeristy where Elena Ceaușescu was educated is University of Bucharest.\n334. Robert Parish plays the position of quarterback.\n335. Charles Darwin is married to Amala Paul.\n336. William Waynflete speaks the language of Latin.\n337. Born in the U.S.A. was performed by Dana International.\n338. Andrew Carnegie is a citizen of United States of America.\n339. Adalbert of Prague is affiliated with the religion of atheism.\n340. Sandy Alderson is associated with the sport of association football.\n341. The capital of India is Grosseto.\n342. Thomas Arne was born in the city of London.\n343. Charles Messier is a citizen of Iran.\n344. The author of Starship Troopers is Daphne du Maurier.\n345. Thus Spoke Zarathustra was created in the country of Germany.\n346. Bo Ryan is associated with the sport of association football.\n347. The chief executive officer of ABB Group is Ulrich Spiesshofer."
+              }
+            ]
+          }
+        ]
+      },
+      "reason": ""
+    }
+  },
+  "timeline": [
+    {
+      "key": "load",
+      "label": "Load Context",
+      "status": "pass",
+      "reason": "读取冻结 Context"
+    },
+    {
+      "key": "ingest",
+      "label": "ReMe Ingest",
+      "status": "pass",
+      "reason": "写入并建立索引"
+    },
+    {
+      "key": "search",
+      "label": "ReMe Search",
+      "status": "pass",
+      "reason": "检索相关记忆"
+    },
+    {
+      "key": "answer",
+      "label": "Answer",
+      "status": "pass",
+      "reason": "基于检索记忆生成回答"
+    },
+    {
+      "key": "judge",
+      "label": "Judge",
+      "status": "pass",
+      "reason": "对照 Gold 判分"
+    },
+    {
+      "key": "final",
+      "label": "Final",
+      "status": "pass",
+      "reason": "status=ok"
+    }
+  ]
+}

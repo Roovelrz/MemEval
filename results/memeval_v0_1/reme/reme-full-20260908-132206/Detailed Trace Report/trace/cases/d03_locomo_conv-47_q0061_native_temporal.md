@@ -1,0 +1,1854 @@
+# Case Trace: d03:locomo:conv-47:q0061:native_temporal
+
+> **Root Cause:** `ANSWER_FAILURE`  
+> **Quadrant:** B: Retrieval PASS + Answer FAIL  
+> All evidence sessions were retrieved, but Judge marked the generated answer WRONG.
+
+## 1. Case
+
+| Field | Value |
+| --- | --- |
+| case_id | `d03:locomo:conv-47:q0061:native_temporal` |
+| question_type | D03 |
+| question_date | 2022-11-07T20:57:00 |
+| question | What was James' big moment with Samantha in October 2023? |
+| gold_answer | They decided to live together and rented an apartment not far from McGee's bar. |
+| evidence_session_ids | d03:locomo:conv-47:D29 |
+| total_sessions | 31 |
+| total_turns | 689 |
+
+## 2. Add Trace
+
+| Field | Value |
+| --- | --- |
+| Expected sessions | 31 |
+| Successfully added sessions | 31 |
+| Expected turns | 689 |
+| Successfully added turns | 689 |
+| Expected evidence sessions | 1 |
+| Successfully added evidence sessions | 1 |
+| Evidence exists in dataset | PASS |
+| Evidence Add Status | PASS |
+| Add Status | PASS |
+| Index Status | PASS |
+| Indexed documents | 31 |
+| Indexed chunks | 31 |
+| Chunks with embedding | 0 |
+| Embedding status / calls / failures | NOT_APPLICABLE / 0 / 0 |
+| Extraction status / calls / failures | NOT_APPLICABLE / 0 / 0 |
+| Add latency | NOT_RECORDED |
+| Reindex latency | 305.4242 ms |
+| Workspace | NOT_RECORDED |
+| Namespace | NOT_RECORDED |
+| User ID | NOT_RECORDED |
+| Failed session IDs | [] |
+| Duplicate session IDs in dataset | 0 |
+| Errors | NOT_RECORDED |
+
+## 3. Retrieval Trace
+
+| Metric | Value |
+| --- | ---: |
+| Query | What was James' big moment with Samantha in October 2023? |
+| TopK | 10 |
+| Hit@K | 1.0000 |
+| Recall@K | 1.0000 |
+| MRR | 1.0000 |
+| First evidence rank in TopK | 1 |
+| First evidence rank in recorded candidates | NOT_RECORDED |
+| Retrieved evidence | 1 / 1 |
+| Missing evidence IDs | None |
+| Best evidence score | 6.2557 |
+| Best non-evidence score | 4.1245 |
+| Evidence score gap | 2.1312 |
+| Evidence content present | NOT_RECORDED |
+| Raw result count | 10 |
+| Returned session count | 10 |
+| Search status | FAIL |
+| Search retries | NOT_RECORDED |
+| Mean evidence rank | 1.0000 |
+| Search latency | 16.2972 ms |
+| Retrieval failure | None |
+
+### Top Results
+
+| Rank | Session ID | Score | Evidence | Timestamp | Text excerpt |
+| ---: | --- | ---: | :---: | --- | --- |
+| 1 | `d03:locomo:conv-47:D29` | 6.2557 | ✓ | 2022-10-31T00:37:00 | # Conversation Session ## Speaker Hey James! Hope you're doing great. I've some amazing news - I held a gaming tourney with my buddies last night. We played Fortnite and a few oth… |
+| 2 | `d03:locomo:conv-47:D23` | 4.1245 |  | 2022-09-04T21:23:00 | # Conversation Session ## Speaker Hey John, it's been a few days since we talked. So much has gone on, both good and bad. Yesterday, when we were at the theater, Samantha loves th… |
+| 3 | `d03:locomo:conv-47:D24` | 3.4773 |  | 2022-09-18T18:02:00 | # Conversation Session ## Speaker Hey James! Long time no see! A lot's changed since we talked. I started getting into board games. I tried one last week and it turned out to be a… |
+| 4 | `d03:locomo:conv-47:D17` | 2.7857 |  | 2022-07-22T09:49:00 | # Conversation Session ## Speaker Hi James! I just started playing chess to get better at strategy. I'm loving it! Have you ever tried it out? ## Speaker Hey John! Yeah, I've play… |
+| 5 | `d03:locomo:conv-47:D19` | 2.5466 |  | 2022-08-10T09:16:00 | # Conversation Session ## Speaker Hey James, been a few days. The convo got me thinking about my passions and goals. Thanks for encouraging me to try new game genres. ## Speaker H… |
+| 6 | `d03:locomo:conv-47:D1` | 1.4773 |  | 2022-03-17T15:47:00 | # Conversation Session ## Speaker Hey! Glad to finally talk to you. I want to ask you, what motivates you? ## Speaker Hey John! Video games give me tons of joy and excitement, so … |
+| 7 | `d03:locomo:conv-47:D18` | 1.3559 |  | 2022-08-06T13:45:00 | # Conversation Session ## Speaker Hey James, good catching up! Been a while huh? I made a huge call - recently left my IT job after 3 years. It was tough but I wanted something th… |
+| 8 | `d03:locomo:conv-47:D12` | 1.3189 |  | 2022-05-23T19:33:00 | # Conversation Session ## Speaker Hey John, last weekend I had an awesome time at the amusement park with my friends. It was a great break from the virtual world. I went on some a… |
+| 9 | `d03:locomo:conv-47:D3` | 1.1897 |  | 2022-03-27T00:40:00 | # Conversation Session ## Speaker Hey James, long time no see! I had a big win in my game last week - finally advanced to the next level! It was a huge confidence booster and felt… |
+| 10 | `d03:locomo:conv-47:D25` | 1.1459 |  | 2022-09-20T20:56:00 | # Conversation Session ## Speaker Hey James, been a few days since we chatted. Lots of stuff goin' on in my life! ## Speaker Hey John! What new has happened in your life? ## Speak… |
+
+### Evidence content verification
+
+- `d03:locomo:conv-47:D29`: **NOT_RECORDED**
+
+## 4. Answer Trace
+
+| Field | Value |
+| --- | --- |
+| Context count | 10 |
+| Context characters | 31659 |
+| Context token estimate | 7917 |
+| Context order | d03:locomo:conv-47:D29 → d03:locomo:conv-47:D23 → d03:locomo:conv-47:D24 → d03:locomo:conv-47:D17 → d03:locomo:conv-47:D19 → d03:locomo:conv-47:D1 → d03:locomo:conv-47:D18 → d03:locomo:conv-47:D12 → d03:locomo:conv-47:D3 → d03:locomo:conv-47:D25 |
+| Context timestamps |  →  →  →  →  →  →  →  →  →  |
+| Evidence context positions | [1] |
+| Distractor count | 9 |
+| Evidence in retrieved_context | NOT_RECORDED |
+| Evidence in final prompt | NOT_RECORDED |
+| Answer Prompt | E:\LRZ_Workplace\fork\memory_eval_pipeline\results\memeval_v0_1\reme\reme-full-20260908-132206\answer_prompts\d03_locomo_conv-47_q0061_native_temporal.txt |
+| Answer Prompt Version | longmemeval-answer-v2-structured-time |
+| Answer Prompt SHA256 | 8d5b8872175cf8f38a63f9b2ff438a191e1737b65aa7e5f70b625e4133862e76 |
+| Truncation occurred | False |
+| Evidence before truncation | NOT_RECORDED |
+| Evidence after truncation | NOT_RECORDED |
+| Generated answer | He asked Samantha to become his girlfriend. |
+| Gold answer | They decided to live together and rented an apartment not far from McGee's bar. |
+| Main difference | Surface forms differ; semantic equivalence requires Judge or human review. |
+| Model | deepseek-v4-flash |
+| Answer latency | 107299.1199 ms |
+| Failure | None |
+
+> Exact sent prompt was not available.
+
+### Retrieved context excerpts
+
+1. `d03:locomo:conv-47:D29` — <memory rank="1" session_id="d03:locomo:conv-47:D29" score="6.255715370178223"> # Conversation Session ## Speaker Hey James! Hope you're doing great. I've some amazing news - I held a gaming tourney with my buddies last night. We played Fo…
+2. `d03:locomo:conv-47:D23` — <memory rank="2" session_id="d03:locomo:conv-47:D23" score="4.124527931213379"> # Conversation Session ## Speaker Hey John, it's been a few days since we talked. So much has gone on, both good and bad. Yesterday, when we were at the theate…
+3. `d03:locomo:conv-47:D24` — <memory rank="3" session_id="d03:locomo:conv-47:D24" score="3.4772756099700928"> # Conversation Session ## Speaker Hey James! Long time no see! A lot's changed since we talked. I started getting into board games. I tried one last week and …
+4. `d03:locomo:conv-47:D17` — <memory rank="4" session_id="d03:locomo:conv-47:D17" score="2.7857234477996826"> # Conversation Session ## Speaker Hi James! I just started playing chess to get better at strategy. I'm loving it! Have you ever tried it out? ## Speaker Hey …
+5. `d03:locomo:conv-47:D19` — <memory rank="5" session_id="d03:locomo:conv-47:D19" score="2.5466055870056152"> # Conversation Session ## Speaker Hey James, been a few days. The convo got me thinking about my passions and goals. Thanks for encouraging me to try new game…
+6. `d03:locomo:conv-47:D1` — <memory rank="6" session_id="d03:locomo:conv-47:D1" score="1.477344274520874"> # Conversation Session ## Speaker Hey! Glad to finally talk to you. I want to ask you, what motivates you? ## Speaker Hey John! Video games give me tons of joy …
+7. `d03:locomo:conv-47:D18` — <memory rank="7" session_id="d03:locomo:conv-47:D18" score="1.355929970741272"> # Conversation Session ## Speaker Hey James, good catching up! Been a while huh? I made a huge call - recently left my IT job after 3 years. It was tough but I…
+8. `d03:locomo:conv-47:D12` — <memory rank="8" session_id="d03:locomo:conv-47:D12" score="1.3188532590866089"> # Conversation Session ## Speaker Hey John, last weekend I had an awesome time at the amusement park with my friends. It was a great break from the virtual wo…
+9. `d03:locomo:conv-47:D3` — <memory rank="9" session_id="d03:locomo:conv-47:D3" score="1.1896672248840332"> # Conversation Session ## Speaker Hey James, long time no see! I had a big win in my game last week - finally advanced to the next level! It was a huge confide…
+10. `d03:locomo:conv-47:D25` — <memory rank="10" session_id="d03:locomo:conv-47:D25" score="1.1459497213363647"> # Conversation Session ## Speaker Hey James, been a few days since we chatted. Lots of stuff goin' on in my life! ## Speaker Hey John! What new has happened …
+
+<details>
+<summary>Full retrieved_context (expand for provenance)</summary>
+
+### Context 1: `d03:locomo:conv-47:D29`
+
+```text
+<memory rank="1" session_id="d03:locomo:conv-47:D29" score="6.255715370178223">
+# Conversation Session
+
+## Speaker
+
+Hey James! Hope you're doing great. I've some amazing news - I held a gaming tourney with my buddies last night. We played Fortnite and a few other games. We raised a decent amount for a children's hospital. Combining gaming and a good cause felt awesome!
+
+## Speaker
+
+Hey John! Awesome job organizing a gaming tournament for a children's hospital! Combining gaming and a good cause - that's really cool! Tell me more about who helped out and what other games were played.
+
+## Speaker
+
+Thanks! We all pulled together for a great cause. My gaming pals and I also played Overwatch and Apex Legends. Everyone had a blast raising money for the kids' hospital. The atmosphere was awesome and everyone was so competitive. In the end, we raised a good amount. Feels good to use our love of gaming for good!
+
+## Speaker
+
+Wow, that sounds like a blast! It's great how gaming can bring people together like that. You made a huge difference in the kids' lives! Do you have any photos from the tournament?
+
+## Speaker
+
+I got a great shot at the tournament. Check it out! Everyone was so hyped, and it felt great knowing we were playing for a good cause.
+
+## Speaker
+
+Wow, this photo rocks!
+
+## Speaker
+
+Thanks! I'm glad you enjoyed it. It was a really awesome moment - unforgettable for all of us! What's new with you?
+
+## Speaker
+
+I actually have something new, Samantha and I have decided to move in together!
+
+## Speaker
+
+Wow, that's a really big decision! I hope you both have weighed the pros and cons. Where are you going to live?
+
+## Speaker
+
+Of course, this was a mutual and informed decision. We rented an apartment not far from McGee's bar.
+
+## Speaker
+
+You love spending time together in this bar, don't you?
+
+## Speaker
+
+We just love it! I’ll be honest, one of the criteria for our choice of apartment was this particular bar nearby.
+
+## Speaker
+
+Awesome, James! Excited to hear how it goes. Keep me posted and good luck!
+
+## Speaker
+
+Thanks, John! I'll be sure to keep you updated. I really appreciate your support. Take care!
+
+## Speaker
+
+No worries! I'm here for you whenever you need. Stay safe and chat soon!
+
+## Speaker
+
+Thanks! Appreciate your support. Stay safe and talk to you soon!
+</memory>
+```
+
+### Context 2: `d03:locomo:conv-47:D23`
+
+```text
+<memory rank="2" session_id="d03:locomo:conv-47:D23" score="4.124527931213379">
+# Conversation Session
+
+## Speaker
+
+Hey John, it's been a few days since we talked. So much has gone on, both good and bad. Yesterday, when we were at the theater, Samantha loves theater, I asked her to become my girlfriend, and she agreed. We have gone through a lot in this short period. There were good and bad, but I'm happy with her. All that ups and downs were a bit overwhelming, but it's part of life. What about you? Anything interesting lately?
+
+## Speaker
+
+Hey James, this is great news! Where else have you been besides the theater? My parents just started learning coding from me - it's been a learning experience, but I'm glad to help them out. It binds us a little closer. Look at this photo, this is my father coding his own program for the first time.
+
+## Speaker
+
+That's great, John! Looks like he's having a good time in the pic. Samantha and I were also at McGee's bar. It turned out that she loves a good lager beer. She and I have so much in common!
+
+## Speaker
+
+I'm glad you finally found someone other than dogs that brings you joy. Well done, you will succeed!
+
+## Speaker
+
+Thanks, John. She and I are going to a baseball game next Sunday, want to join? I'll show you what Samantha looks like.
+
+## Speaker
+
+Yeah! Let's do it. It'll be a fun experience!
+
+## Speaker
+
+Great. Well, what else is new in your life?
+
+## Speaker
+
+I bought some new gaming equipment to improve my skills. For example, new headphones.
+
+## Speaker
+
+Cool, which company did you choose? And what other devices did you buy?
+
+## Speaker
+
+I chose headphones from Sennheiser. Judging by the reviews, they have excellent sound. Also, I bought a mouse from Logitech.
+
+## Speaker
+
+Cool! I hope the new devices will improve your skill and you will play even better!
+
+## Speaker
+
+I really hope so too. Well, do you have anything new besides the great news about you and Samantha?
+
+## Speaker
+
+Yes, two days ago I signed up for a cooking class. I never liked cooking, but I felt that I wanted to learn something new. At the first lesson we prepared several simple dishes. I got a great omelette the first time!
+
+## Speaker
+
+Cool! I’ve never heard of your desire to cook, you surprise me! How much do these cooking courses cost and what else did you cook there?
+
+## Speaker
+
+At only $10 per class, it's very cheap! Also, I made meringue there and they taught us how to make the dough.
+
+## Speaker
+
+Really cheap. It's great that you are always looking for a way to improve yourself!
+
+## Speaker
+
+Thanks for your support, John! I really appreciate it. I hope I can treat you to my creation once I learn a little more about cooking.
+
+## Speaker
+
+I look forward to it, James, you can do it!
+
+## Speaker
+
+Your words give me even more strength to pursue my new hobby!
+
+## Speaker
+
+That's why we are friends, to support each other! Well, I have to go, bye!
+
+## Speaker
+
+Take care, John, bye!
+</memory>
+```
+
+### Context 3: `d03:locomo:conv-47:D24`
+
+```text
+<memory rank="3" session_id="d03:locomo:conv-47:D24" score="3.4772756099700928">
+# Conversation Session
+
+## Speaker
+
+Hey James! Long time no see! A lot's changed since we talked. I started getting into board games. I tried one last week and it turned out to be a lot of fun. What's new with you?
+
+## Speaker
+
+Hey John! Cool, what kind of board game is this? I had a lot to do all this time. And in order not to forget to do something, I started writing down everything I needed in a notebook.
+
+## Speaker
+
+This game is called "Dungeons of the Dragon", very exciting! I'm really glad you're writing down what you need to do in a notebook. This will definitely help you not to forget anything! How did you come up with this idea? In general, where do you get ideas?
+
+## Speaker
+
+Thanks, John! I get them from various sources like books, movies, and even dreams.
+
+## Speaker
+
+Wow, dreams have inspired you? That's interesting. Have any specific dreams guided your ideas?
+
+## Speaker
+
+A few weeks ago I had this crazy dream that led to some creative ideas. It was so vivid I woke up with some interesting thoughts!
+
+## Speaker
+
+Wow, dreams can be so awesome! Are there any specific details you remember from that one?
+
+## Speaker
+
+I remember there was a medieval castle with its own labyrinth full of puzzles and traps. It felt like playing a video game in real life!
+
+## Speaker
+
+Wow, exploring a castle with puzzles and traps sounds awesome! Have you got any sketches or notes from that experience? I'd love to take a look!
+
+## Speaker
+
+Yep! I made some sketches and notes. Hang on, let me grab them.
+
+## Speaker
+
+Nice sketch! Do you like music, or is it related to your castle dream?
+
+## Speaker
+
+Thanks! Music is a big part of my life - nothing to do with castles though. What kind of music do you like? Do you play any instruments?
+
+## Speaker
+
+Cool! I'm into electronic and rock music. I used to play drums when I was younger, but haven't in a while. Do you play any instruments?
+
+## Speaker
+
+Yeah, rock's awesome! I used to play a guitar when I was younger but haven't in a while.
+
+## Speaker
+
+Playing drums when I was younger was a fun way to let off steam. Here's a photo of an old drum set I used to play on.
+
+## Speaker
+
+Cool! Have you ever been in a band or just jammed with friends?
+
+## Speaker
+
+I've jammed with friends before, it was a lot of fun!
+
+## Speaker
+
+Sounds awesome! Jamming with friends is always a blast. Do you have any recordings or videos of those sessions?
+
+## Speaker
+
+Nah, it was more about the experience and the moment. No recordings or videos from the jams.
+
+## Speaker
+
+No problem! It's nice to just enjoy the experience without worrying about collecting videos or recordings. By the way, I started streaming games. No details yet, I hope everything works out.
+
+## Speaker
+
+I'll keep my fingers crossed for you! You will definitely succeed, I look forward to the details!
+</memory>
+```
+
+### Context 4: `d03:locomo:conv-47:D17`
+
+```text
+<memory rank="4" session_id="d03:locomo:conv-47:D17" score="2.7857234477996826">
+# Conversation Session
+
+## Speaker
+
+Hi James! I just started playing chess to get better at strategy. I'm loving it! Have you ever tried it out?
+
+## Speaker
+
+Hey John! Yeah, I've played chess before. It's a game that really tests your strategy. It's great that you're enjoying it!
+
+## Speaker
+
+Yeah, chess is really fun! It's like solving an endless puzzle and always trying to outwit your opponent.
+
+## Speaker
+
+Yeah, it's tough, but fun when you figure it out. Do you play with friends or online?
+
+## Speaker
+
+I'm playing mostly online for now, but I also joined a chess club and practice with others. Here's a pic from an intense game I played lately.
+
+## Speaker
+
+Wow, looks intense! What sparked your interest in chess?
+
+## Speaker
+
+I've always been drawn to strategy games and wanted to challenge myself. Plus, I believe chess can improve decision-making skills.
+
+## Speaker
+
+Great reason for playing chess - it will definitely help you develop your skills!
+
+## Speaker
+
+Thanks, James! I'm excited to see how playing chess can enhance my strategic thinking in everyday situations. Do you have any tips for improvement?
+
+## Speaker
+
+Definitely! Studying opening moves and strategies and analyzing your games to spot weaknesses are great ways to improve.
+
+## Speaker
+
+I'll definitely look into that. Appreciate the advice!
+
+## Speaker
+
+No worries, John! Happy to help. Just let me know if there's anything else I can assist you with.
+
+## Speaker
+
+Your support means a lot to me. You're a true friend! Remember this photo from elementary school?
+
+## Speaker
+
+That looks fun. But I don’t remember at all under what circumstances we took this picture. What's the story behind it?
+
+## Speaker
+
+This is from when we were 10 and we were really into skateboarding. We had a group of friends who often go to the skate park with. We would help each other learn new tricks and have a great time. Those friends made the experience even better and their friendship meant a lot to us.
+
+## Speaker
+
+Indeed, I remember this moment. We loved skateboards back then, sometimes we even left class early to do it. I still like to go for a ride sometimes, and I even taught my dogs how to balance on it.
+
+## Speaker
+
+Wow! Do they enjoy it, or do you have to encourage them to play with the board?
+
+## Speaker
+
+They love it! They chase after it and run with it. It's a great way for them to get some exercise.
+
+## Speaker
+
+Wow, that's great! Keeping active and happy is great for both of you.
+
+## Speaker
+
+Yep! Staying active with them builds a strong bond and makes us both happy.
+
+## Speaker
+
+Yeah, the bond between us and our pets is amazing. They bring a lot of joy and love. It’s a pity that I don’t have pets, I’ll definitely get one someday. By the way, how was your trip?
+
+## Speaker
+
+Everything went great! In addition, I even managed to get out to another country. The city of Nuuk, if you know. I stayed there quite a bit, but at least I had one more country to add to my bucket list!
+
+## Speaker
+
+This is awesome, James! Surely you brought a lot of impressions with you!
+
+## Speaker
+
+Certainly! And not only impressions, I also brought souvenirs. For both you and your Jill!
+
+## Speaker
+
+Thank you very much, Jill will be delighted!
+
+## Speaker
+
+You're welcome! By the way, look who came to see me!
+
+## Speaker
+
+Nice pic, James! Who are they?
+
+## Speaker
+
+That's my sister and my dogs. We were just chilling together yesterday, and they bring so much happiness to my life.
+
+## Speaker
+
+Wow, they look so happy! It's awesome that you get to spend time with your sister and your furry friends. The bond you have with them is really strong.
+
+## Speaker
+
+I'm blessed to have a close bond with my sister and our furry friends. We have a great time together, like a family!
+
+## Speaker
+
+Family and friends are really amazing, James. They show us so much love and joy. I'm grateful for the connection I have with my siblings. Things can be tough sometimes, but their support means everything to me.
+
+## Speaker
+
+Fully agreed! My sister and I were also near the ocean and watched such a wonderful sunset!
+
+## Speaker
+
+Wonderful photo! It's amazing how you can capture a moment and capture it in a photograph.
+
+## Speaker
+
+Thanks, John! This is just a good shot, nothing more. I took a lot of shots yesterday and chose the best one to send to you.
+
+## Speaker
+
+Still, the photo is amazing!
+
+## Speaker
+
+I have to go, I'm tired over the last two days. Bye!
+
+## Speaker
+
+Take care, bye!
+</memory>
+```
+
+### Context 5: `d03:locomo:conv-47:D19`
+
+```text
+<memory rank="5" session_id="d03:locomo:conv-47:D19" score="2.5466055870056152">
+# Conversation Session
+
+## Speaker
+
+Hey James, been a few days. The convo got me thinking about my passions and goals. Thanks for encouraging me to try new game genres.
+
+## Speaker
+
+Hey John! Nice to hear from you! Glad our chat made an impact. What sort of games are you interested in exploring?
+
+## Speaker
+
+Lately, I've been playing some different genres like strategy and RPG games instead of my usual shooters. I’m already thinking about making competitions for them too.
+
+## Speaker
+
+That's great, John! Trying out different genres can really add to your gaming experiences. Have you come across any standout games?
+
+## Speaker
+
+Hooked a new RPG that I've been playing lately! The storytelling and characters are amazing, can't get enough of it.
+
+## Speaker
+
+Sounds great! I think storytelling is what makes RPGs so fun. What game are you playing? Do you have any favorite characters?
+
+## Speaker
+
+I'm playing "The Witcher 3"! There's this awesome monster hunter with a cool story, and I'm totally hooked, trying to make the right choices to shape the world. It's really immersive.
+
+## Speaker
+
+Yeah, "The Witcher 3" is amazing! I love how you can shape the world with your choices and feel the impact. The graphics are insane too - check out this pic.
+
+## Speaker
+
+That's a great pic! The graphics are truly stunning! By the way, look how I organized my workplace!
+
+## Speaker
+
+Cool! Wall lighting adds beauty to your workspace.
+
+## Speaker
+
+Thanks James! What's new with you?
+
+## Speaker
+
+Yesterday I took my three dogs to a beach outing to have fun and bond with other dogkeepers.
+
+## Speaker
+
+Cool! Surely you gained a new experience from communicating with other dog lovers!
+
+## Speaker
+
+Yes, we had fun and I even met one beautiful girl. I'm thinking of asking her out on a date! She left me her phone number, I think I'll call tomorrow.
+
+## Speaker
+
+Wow! That's cool, what's her name? Be sure to call her, everything will work out!
+
+## Speaker
+
+She is Samantha. I'll definitely call her!
+
+## Speaker
+
+Yoohoo! Hope you have a wonderful time!
+</memory>
+```
+
+### Context 6: `d03:locomo:conv-47:D1`
+
+```text
+<memory rank="6" session_id="d03:locomo:conv-47:D1" score="1.477344274520874">
+# Conversation Session
+
+## Speaker
+
+Hey! Glad to finally talk to you. I want to ask you, what motivates you?
+
+## Speaker
+
+Hey John! Video games give me tons of joy and excitement, so they keep me motivated!
+
+## Speaker
+
+Cool, James! I'm a big video game fan too. They help me relax after a long day. What game are you currently enjoying the most?
+
+## Speaker
+
+I'm totally into The Witcher 3 right now. The story and atmosphere are amazing. Have you tried it yet?
+
+## Speaker
+
+Haven't played it yet, but I hear it's awesome. Gonna give it a go. BTW, just signed up for a programming class. Have you ever done any programming?
+
+## Speaker
+
+Programming is an awesome skill. I tried it out one in college and now it`s all my life. Good luck in the class! Do you have any coding experience?
+
+## Speaker
+
+I did a bit of coding in HTML and CSS a few years back. Thought I'd refresh those skills in this course. What languages do you like most and any projects you've done?
+
+## Speaker
+
+I've worked with Python and C++. I've built a website and also created some game mods. Here is one example.
+
+## Speaker
+
+That mod looks amazing! The graphics are awesome. What other programming languages have you worked with?
+
+## Speaker
+
+I haven’t worked with any other programming languages, but I hope to work in the future.
+
+## Speaker
+
+Maybe in the future we will develop mobile applications together? Do you like the idea?
+
+## Speaker
+
+It would be cool! For example, we could write some kind of application for dogs. By the way, my dogs.
+
+## Speaker
+
+Aww, they're adorable! What are the names of your pets? And what are your plans for the app?
+
+## Speaker
+
+Max and Daisy. Will be actually cool to build an app for dog walking and pet care. The goal is to connect pet owners with reliable dog walkers and provide helpful information on pet care.
+
+## Speaker
+
+Sounds good, James! Bet that app would find a lot of buyers. What sets it apart from other existing apps?
+
+## Speaker
+
+Thanks, John! The personal touch really sets it apart. Users can add their pup's preferences/needs - just like they were customizing it for them. Making it unique for each owner and pup.
+
+## Speaker
+
+That's a great idea! Your pup is gonna love it. Speaking of personal touches, what motivates you to work on your programming projects?
+
+## Speaker
+
+Creating something and seeing it come to life gives me a great sense of accomplishment. It's an amazing feeling. I write down all my goals in a notebook. It's very satisfying to check off each one when it's done.
+
+## Speaker
+
+What are you working on that has you feeling so accomplished?
+
+## Speaker
+
+I'm working on something I've wanted to do since I was a kid. Even as a child, I made some sketches of the main character. Back then I was just drawing comics, but now I want to turn it into a computer game. It's a project that has me really excited.
+
+## Speaker
+
+Wow, James! That's amazing. What made you decide to work on it and create your own game?
+
+## Speaker
+
+I'm always excited to combine my favorite passions: gaming and storytelling. It's great creating my own project and bringing my ideas to life, plus the challenge is really enjoyable!
+
+## Speaker
+
+That sounds really fulfilling! Combining your passions to make something new must be so exciting. Can't wait to see the outcome.
+
+## Speaker
+
+Thanks John! It's super exciting. I'll keep you updated on the progress. Perhaps, thanks to your knowledge of HTML, I'll invite you to help with some things in my game.
+
+## Speaker
+
+It will be great to work with you, James.
+
+## Speaker
+
+I'll be looking forward to it. By the way, yesterday I went bowling and got 2 strikes. I love bowling!
+
+## Speaker
+
+I'm sure you're very good at this. Unfortunately, I can’t share my love for him with you, my fingers are too big. Perhaps I should take up exercise, at least start going for a run in the morning. And I also don’t like bowling itself, to be honest.
+
+## Speaker
+
+It's a pity, it would be nice to go play with you one day.
+
+## Speaker
+
+Well, I'm sure we can do something else. We can play slot machines and arcades, for example.
+
+## Speaker
+
+The last time I played at the slot machines, I was so engrossed in the game that I didn't notice my wallet being taken out of my pocket. Sad story.
+
+## Speaker
+
+I'm sorry to hear it. Well, I'll be nearby, I'll look after your pockets.
+
+## Speaker
+
+Still, maybe we can try something different?
+
+## Speaker
+
+Heard about VR gaming? It's pretty immersive. We can try it together!
+
+## Speaker
+
+I tried it - it's crazy how real it feels! Have you given it a shot?
+
+## Speaker
+
+Tried it a few times, it's insane how immersive that experience can be. Can't wait to try it together with you.
+
+## Speaker
+
+Yeah, VR gaming is awesome! Let`s do it next Saturday!
+
+## Speaker
+
+Agreed, James!
+</memory>
+```
+
+### Context 7: `d03:locomo:conv-47:D18`
+
+```text
+<memory rank="7" session_id="d03:locomo:conv-47:D18" score="1.355929970741272">
+# Conversation Session
+
+## Speaker
+
+Hey James, good catching up! Been a while huh? I made a huge call - recently left my IT job after 3 years. It was tough but I wanted something that made a difference. And now with this new job, I am happy about my decision. I am loving the new job!
+
+## Speaker
+
+Hey John! Great to hear from you. Leaving after 3 years is a big step - how did it feel?
+
+## Speaker
+
+At first, it was super scary, but I knew I had to make a change and focus on things that align with my values and passions.
+
+## Speaker
+
+Wow, John, that sounds really brave. I hope it brings you joy and satisfaction.
+
+## Speaker
+
+Thanks, James. It wasn't easy, but sometimes you gotta take a leap to follow your heart.
+
+## Speaker
+
+Taking risks pays off! Way to be brave. I'm proud of you!
+
+## Speaker
+
+Your support means a lot. Lately, I've been thinking about what truly makes me happy, and I'm really drawn to the gaming industry. I'm passionate about it and it's time to turn that into a career. I want to become an organizer of tournaments for various computer games in our state. For example, for CS:GO. It's a new journey for me.
+
+## Speaker
+
+Cool! You always mentioned your love for gaming. What other game do you want to organize competitions for? And what`s your plan now?
+
+## Speaker
+
+Also, I can host Fortnite competitions. I have already made some connections that will help me with this. My plan is to gain more experience and perfect my skills to be successful in this field.
+
+## Speaker
+
+Sounds like a solid plan! Trying out different game genres can be a great way to widen your skills and knowledge.
+
+## Speaker
+
+Thanks! I am very glad that you support me in my new endeavor!
+
+## Speaker
+
+I will always be here for you! If you need any financial assistance or advice, please contact me!
+
+## Speaker
+
+I will definitely do this if necessary! By the way, what's new with you?
+
+## Speaker
+
+Yesterday I took my puppy to the clinic.
+
+## Speaker
+
+God, James, what happened to your puppy? Is it OK?
+
+## Speaker
+
+Don't worry. This was just a routine examination. Also, the puppy was vaccinated to prevent him from catching the seasonal canine disease.
+
+## Speaker
+
+Phew, great that he's okay. It's great that you care so much about your pets!
+
+## Speaker
+
+They are the source of my joy, so I will always take care of them!
+
+## Speaker
+
+You're a great host, James! Well, I have to go, bye!
+
+## Speaker
+
+Thanks, John! Take care, bye!
+</memory>
+```
+
+### Context 8: `d03:locomo:conv-47:D12`
+
+```text
+<memory rank="8" session_id="d03:locomo:conv-47:D12" score="1.3188532590866089">
+# Conversation Session
+
+## Speaker
+
+Hey John, last weekend I had an awesome time at the amusement park with my friends. It was a great break from the virtual world. I went on some awesome roller coasters and it reminded me of when I was a kid. Everything was so real and exciting; it felt like I was in a video game!
+
+## Speaker
+
+Hey James! Sounds like an awesome time! I bet those rides brought back some great memories. Were there any other attractions besides the roller coaster?
+
+## Speaker
+
+Of course, I also managed to ride the Ferris wheel, electric cars and buggies. What's new with you?
+
+## Speaker
+
+That's really cool! Last Friday I entered a local tournament and took second place! It was a wild experience and the competitive energy was insane.
+
+## Speaker
+
+Wow, John that's awesome! Congrats on your achievement! I can imagine the rush you must have felt during the tournament. Did you receive any rewards or prizes for your success?
+
+## Speaker
+
+I was stoked about my achievement. Though I didn't win the tournament, I still received some money for the 2nd place. Seeing my effort pay off was awesome.
+
+## Speaker
+
+Awesome news! You don't have to win every time, growth and progress are most important.
+
+## Speaker
+
+Yeah, I also got this trophy! So satisfying. It reminds me to always put in my best effort. What about you? Any success stories lately?
+
+## Speaker
+
+Congrats on your achievement, John! That trophy looks awesome. Last month, I had a personal milestone. There were definitely tough times, but it reminds me of all the hard work. I feel a huge sense of accomplishment and I'm ready for the future opportunities!
+
+## Speaker
+
+Congrats on the milestone. What was it and what made it challenging? What did you learn?
+
+## Speaker
+
+I finished a big project I had been working on for months. It was challenging because I had to learn a new language and handle many details. I learned a lot about problem-solving, patience, and perseverance. Now I feel more confident to take on even bigger projects.
+
+## Speaker
+
+That's awesome you learned a language and handled all those details. Great job, you definitely picked up some great skills! Remember, determination and confidence make any project a success. Good work!
+
+## Speaker
+
+Thanks, I appreciate your support. I'll definitely keep that in mind.
+
+## Speaker
+
+No worries, I'm here to help. Keep going and reach those goals!
+</memory>
+```
+
+### Context 9: `d03:locomo:conv-47:D3`
+
+```text
+<memory rank="9" session_id="d03:locomo:conv-47:D3" score="1.1896672248840332">
+# Conversation Session
+
+## Speaker
+
+Hey James, long time no see! I had a big win in my game last week - finally advanced to the next level! It was a huge confidence booster and felt like I'd really achieved something.
+
+## Speaker
+
+Hey John, congrats on your win! Games can really boost confidence, huh? I'm challenging myself too - I'm learning this instrument, which has been quite the journey.
+
+## Speaker
+
+Thanks, James! I play drums too! Here's a pic of my set.
+
+## Speaker
+
+Wow, looking good! How long have you been playing?
+
+## Speaker
+
+I've been playing for a month now, it's been tough but fun. How about you, how's it going?
+
+## Speaker
+
+This is going great! I started a few days ago, so I'm still picking it up. Been at it daily and seeing improvements. It's tough but rewarding at the same time!
+
+## Speaker
+
+Nice work! Looks like you're doing great. Anything new in general that you'd recommend?
+
+## Speaker
+
+Thanks! I just got a new cutting-edge gaming system and the graphics are incredible. I've been playing all kinds of new games and it's been a great way to relax after work. Plus, I can connect with friends who share my passion for gaming.
+
+## Speaker
+
+Cool, James! Gaming is great for chilling out. Btw, since we last spoke, I had the chance to go to a gaming convention - it was amazing! Tried out loads of games, met developers, and even took part in a tournament - unreal! Check out this pic I took!
+
+## Speaker
+
+Wow, that's awesome! What game was it for? Sounds like a dream!
+
+## Speaker
+
+I played my favorite CS:GO game in an intense tournament. It was awesome to see all the skilled players competing.
+
+## Speaker
+
+Wow, that sounds cool! Gaming is awesome with all the competition. Must have been thrilling to watch those skilled players!
+
+## Speaker
+
+It was indeed amazing! Watching those skilled players really inspired me to improve my own gaming skills.
+
+## Speaker
+
+Nice one, John! Learning from experienced gamers can really help you level up your skills. Keep it up!
+
+## Speaker
+
+I'm always looking to up my game and hit new goals. That same commitment is true for my hobbies and other stuff. What have you been doing to stay motivated?
+
+## Speaker
+
+Setting small goals and tracking my progress helps me stay motivated and focused.
+
+## Speaker
+
+Nice one! Setting small goals and tracking progress is a great way to stay motivated - it helps you stay on track and celebrates progress. Anything specific you're working on or upcoming challenges you're pumped about?
+
+## Speaker
+
+I'm getting into different types of games now, like RPGs and strategy games. It's really exciting!
+
+## Speaker
+
+Cool, James! That sounds exciting. Have fun exploring different genres of games!
+
+## Speaker
+
+I'm super hyped to explore different game genres. Let's see what's in store!
+
+## Speaker
+
+Definitely! Trying new genres is always exciting. I can't wait to hear about your journey with them. Please let me know how it goes!
+
+## Speaker
+
+Got it, John! I'll keep you updated on my gaming adventures with the new genres. Have a good day!
+
+## Speaker
+
+Thanks! Can't wait to hear about it. Bye!
+</memory>
+```
+
+### Context 10: `d03:locomo:conv-47:D25`
+
+```text
+<memory rank="10" session_id="d03:locomo:conv-47:D25" score="1.1459497213363647">
+# Conversation Session
+
+## Speaker
+
+Hey James, been a few days since we chatted. Lots of stuff goin' on in my life!
+
+## Speaker
+
+Hey John! What new has happened in your life?
+
+## Speaker
+
+Yesterday I started a new startup - portable smokers. Now, I’ve already welded one from metal. Do you think it looks good? How about you, any cool stuff happening?
+
+## Speaker
+
+Hey John, that looks great! Seeing it makes me think of campfires with pals. Last night I streamed a game and wow, was I blown away by all the nice comments from the gaming community. I felt so stoked and inspired to keep going.
+
+## Speaker
+
+Woohoo, congrats James! That's awesome. Sounds like you're doing well. All your hard work is paying off, so keep it up!
+
+## Speaker
+
+Thanks for the support, John! This made me think of such an exciting time. Any more big moments recently?
+
+## Speaker
+
+I just achieved a major career milestone - making my first mobile game! It's launching next month.
+
+## Speaker
+
+Way to go, John! Congrats on achieving that major career milestone. Could you tell me more about it? Why didn’t you say before that you were creating a mobile game?
+
+## Speaker
+
+Thanks James! I kept it a secret because I would have been very upset if I had told you about her in advance and then it wouldn't have worked out. I've been working on this for the past few months and I'm really proud of how it's turned out. It's a 2D adventure game with puzzles and exploration. Here's a screenshot.
+
+## Speaker
+
+John, this sounds great! I'm into 2D adventures with puzzles - like The Legend of Zelda. Can I see it or help with testing it out?
+
+## Speaker
+
+Cheers, James! Appreciate your offer to help. I'll definitely let you know when the testing is ready. By the way, here is the book that helped me create the puzzles for this game.
+
+## Speaker
+
+Wow, that book looks great! What other resources do you use to improve your game? Tell me about your gaming tips!
+
+## Speaker
+
+It is filled with awesome tips and insights on game design. I also watch tutorials and keep up with developer forums for information and ideas. Basically, staying informed and constantly learning is key!
+
+## Speaker
+
+You're really dedicated to improving and staying up to date. It's inspiring to see how you stay informed and keep learning. I also advise you to read this magazine, which is also a worthy source of information. Keep up the good work!
+
+## Speaker
+
+I read it, too. This magazine has been great for me too. Tutorials, interviews with developers, and tips - all really helpful.
+
+## Speaker
+
+Wow, John! Glad that resource was useful - looks like it provides some good tips and tricks for game developers.
+
+## Speaker
+
+Yeah, that magazine looks great! Have you also found it to be a good resource?
+
+## Speaker
+
+Of course! It's been great, filled with tutorials and developer interviews to help improve my game dev skills. Super useful!
+
+## Speaker
+
+Resources like that are great for improving our skills. Keep it up! How's your week been?
+
+## Speaker
+
+My week's been good. Just trying to find a balance between work and other activities. How about you, how's your week going?
+
+## Speaker
+
+As for me, this week has been chaotic with everything going on. But I'm powering through!
+
+## Speaker
+
+Sorry to hear about your busy week, John. Make sure to take some time for yourself and take care. You've got this!
+
+## Speaker
+
+I appreciate your help. Gonna make time for myself.
+
+## Speaker
+
+No worries, take care of yourself. Relax and recharge - you deserve it.
+
+## Speaker
+
+Thanks, man! I'll definitely take your advice. You're the best!
+</memory>
+```
+
+</details>
+
+## 5. Judge Trace
+
+| Field | Value |
+| --- | --- |
+| Judge Prompt | E:\LRZ_Workplace\fork\memory_eval_pipeline\results\memeval_v0_1\reme\reme-full-20260908-132206\judge_prompts\d03_locomo_conv-47_q0061_native_temporal.txt |
+| Judge Prompt Version | longmemeval-judge-v1 |
+| Judge Prompt SHA256 | 46f76d22418047c16a29cb174919cd8ec40ced2b5b22db499ec9bbc6872f995a |
+| Judge Prompt persisted | NO |
+| Parsed label | WRONG |
+| is_correct | NO |
+| Human review | NOT_RECORDED |
+| Model | deepseek-v4-flash |
+| Judge latency | 2477.8264 ms |
+| Suspect reasons | None |
+| Failure | None |
+
+### Judge raw response
+
+````text
+The generated answer describes a different event, not the gold fact about deciding to live together and renting an apartment.
+
+```json
+{
+    "label": "WRONG"
+}
+```
+````
+
+## 6. Root Cause
+
+**`ANSWER_FAILURE`**
+
+All evidence sessions were retrieved, but Judge marked the generated answer WRONG.
+
+**修复建议：** 在 Evidence 已完整到达后，检查 Answer prompt 的推理和格式约束。
+
+## Source artifacts
+
+- [retrieval.jsonl](../../retrieval.jsonl)
+- [prepared.jsonl](../../prepared.jsonl)
+- [answers.jsonl](../../answers.jsonl)
+- [scores.jsonl](../../scores.jsonl)
+- [end_to_end_summary.json](../../end_to_end_summary.json)
+
+
+## MemEval Dimension
+
+```json
+{
+  "dimension_id": "D03",
+  "payload_type": "temporal",
+  "gold_payload": {
+    "gold_answer": "They decided to live together and rented an apartment not far from McGee's bar.",
+    "evidence_event_ids": [
+      "d03:locomo:conv-47:D29:8",
+      "d03:locomo:conv-47:D29:10"
+    ],
+    "temporal_relations": [
+      {
+        "relation": "precedes_or_coincides_with_query",
+        "evidence_event_id": "d03:locomo:conv-47:D29:8",
+        "days_before_query": 7
+      },
+      {
+        "relation": "precedes_or_coincides_with_query",
+        "evidence_event_id": "d03:locomo:conv-47:D29:10",
+        "days_before_query": 7
+      }
+    ],
+    "evidence_time": {
+      "d03:locomo:conv-47:D29:8": "2022-10-31T00:37:00",
+      "d03:locomo:conv-47:D29:10": "2022-10-31T00:37:00"
+    },
+    "query_time": "2022-11-07T20:57:00",
+    "time_gap_days": 7,
+    "lifecycle": {
+      "valid_from": "2022-10-31T00:37:00",
+      "valid_until": null,
+      "deleted_at": null,
+      "expected_active": true
+    }
+  },
+  "metrics": {
+    "retrieval_evaluated": true,
+    "hit_at_k": 1.0,
+    "recall_at_k": 1.0,
+    "mrr": 1.0,
+    "answer_accuracy": 0.0,
+    "metrics_by_k": {
+      "1": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "3": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "5": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "10": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    }
+  },
+  "unsupported_metrics": [],
+  "prediction": {
+    "status": "ok",
+    "generated_answer": "He asked Samantha to become his girlfriend."
+  },
+  "system_prediction": {
+    "status": "ok",
+    "generated_answer": "He asked Samantha to become his girlfriend."
+  },
+  "context_cache": {
+    "hit": false,
+    "context_sha256": "63dc18c0e852fc8dd1fba244c47f06e2a9def85e6c2229c76c688e1db561f6b0",
+    "ingest_owner_case_id": "d03:locomo:conv-47:q0061:native_temporal",
+    "query_index": 1,
+    "query_count": 1
+  },
+  "run_mode": "case_isolated",
+  "status": "ok",
+  "error": null,
+  "latency": {
+    "ingest": 305.42419999983395,
+    "retrieval": 16.29719999982626,
+    "answer": 107299.11989999891,
+    "total": 4481.324399999721,
+    "judge": 2477.826400001504
+  },
+  "cost": {
+    "input_tokens": 8515,
+    "output_tokens": 5292,
+    "api_cost": 0.0015499176000000003
+  },
+  "system_trace": {
+    "status": "ok",
+    "data": {
+      "kind": "adapter_operations",
+      "events": [
+        {
+          "operation": "ingest",
+          "status": "ok",
+          "latency_ms": 333.21999999861873,
+          "raw_response": {
+            "answer": [
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D22.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D10.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D12.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D29.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D26.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D7.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D9.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D14.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D15.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D6.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D13.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D24.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D18.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D17.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D31.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D21.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D3.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D11.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D16.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D23.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D5.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D8.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D1.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D25.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D4.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D30.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D2.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D28.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D19.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D20.md",
+                "success": true
+              },
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D27.md",
+                "success": true
+              }
+            ],
+            "success": true,
+            "metadata": {
+              "cleared_store": true,
+              "counts": {
+                "added": 31,
+                "modified": 0,
+                "deleted": 0
+              }
+            }
+          },
+          "items": [
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D22.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D10.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D12.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D29.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D26.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D7.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D9.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D14.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D15.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D6.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D13.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D24.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D18.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D17.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D31.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D21.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D3.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D11.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D16.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D23.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D5.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D8.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D1.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D25.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D4.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D30.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D2.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D28.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D19.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D20.md",
+              "success": true
+            },
+            {
+              "change": "added",
+              "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\0b9fba315d1b2adb\\daily\\d03_locomo_conv-47_q0061_native_temporal\\d03_locomo_conv-47_D27.md",
+              "success": true
+            }
+          ],
+          "health": {
+            "is_started": true,
+            "n_chunks": 31,
+            "n_chunks_with_embedding": 0,
+            "memory": "0.16 MB"
+          },
+          "failures": []
+        },
+        {
+          "operation": "search",
+          "status": "ok",
+          "query": "What was James' big moment with Samantha in October 2023?",
+          "latency_ms": 16.29719999982626,
+          "raw_response": {
+            "answer": "========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D29.md:7-71 [score=6.2557] ==========\n# Conversation Session\n\n## Speaker\n\nHey James! Hope you're doing great. I've some amazing news - I held a gaming tourney with my buddies last night. We played Fortnite and a few other games. We raised a decent amount for a children's hospital. Combining gaming and a good cause felt awesome!\n\n## Speaker\n\nHey John! Awesome job organizing a gaming tournament for a children's hospital! Combining gaming and a good cause - that's really cool! Tell me more about who helped out and what other games were played.\n\n## Speaker\n\nThanks! We all pulled together for a great cause. My gaming pals and I also played Overwatch and Apex Legends. Everyone had a blast raising money for the kids' hospital. The atmosphere was awesome and everyone was so competitive. In the end, we raised a good amount. Feels good to use our love of gaming for good!\n\n## Speaker\n\nWow, that sounds like a blast! It's great how gaming can bring people together like that. You made a huge difference in the kids' lives! Do you have any photos from the tournament?\n\n## Speaker\n\nI got a great shot at the tournament. Check it out! Everyone was so hyped, and it felt great knowing we were playing for a good cause.\n\n## Speaker\n\nWow, this photo rocks!\n\n## Speaker\n\nThanks! I'm glad you enjoyed it. It was a really awesome moment - unforgettable for all of us! What's new with you?\n\n## Speaker\n\nI actually have something new, Samantha and I have decided to move in together!\n\n## Speaker\n\nWow, that's a really big decision! I hope you both have weighed the pros and cons. Where are you going to live?\n\n## Speaker\n\nOf course, this was a mutual and informed decision. We rented an apartment not far from McGee's bar.\n\n## Speaker\n\nYou love spending time together in this bar, don't you?\n\n## Speaker\n\nWe just love it! I’ll be honest, one of the criteria for our choice of apartment was this particular bar nearby.\n\n## Speaker\n\nAwesome, James! Excited to hear how it goes. Keep me posted and good luck!\n\n## Speaker\n\nThanks, John! I'll be sure to keep you updated. I really appreciate your support. Take care!\n\n## Speaker\n\nNo worries! I'm here for you whenever you need. Stay safe and chat soon!\n\n## Speaker\n\nThanks! Appreciate your support. Stay safe and talk to you soon!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D23.md:7-92 [score=4.1245] ==========\n# Conversation Session\n\n## Speaker\n\nHey John, it's been a few days since we talked. So much has gone on, both good and bad. Yesterday, when we were at the theater, Samantha loves theater, I asked her to become my girlfriend, and she agreed. We have gone through a lot in this short period. There were good and bad, but I'm happy with her. All that ups and downs were a bit overwhelming, but it's part of life. What about you? Anything interesting lately?\n\n## Speaker\n\nHey James, this is great news! Where else have you been besides the theater? My parents just started learning coding from me - it's been a learning experience, but I'm glad to help them out. It binds us a little closer. Look at this photo, this is my father coding his own program for the first time.\n\n## Speaker\n\nThat's great, John! Looks like he's having a good time in the pic. Samantha and I were also at McGee's bar. It turned out that she loves a good lager beer. She and I have so much in common!\n\n## Speaker\n\nI'm glad you finally found someone other than dogs that brings you joy. Well done, you will succeed!\n\n## Speaker\n\nThanks, John. She and I are going to a baseball game next Sunday, want to join? I'll show you what Samantha looks like.\n\n## Speaker\n\nYeah! Let's do it. It'll be a fun experience!\n\n## Speaker\n\nGreat. Well, what else is new in your life?\n\n## Speaker\n\nI bought some new gaming equipment to improve my skills. For example, new headphones.\n\n## Speaker\n\nCool, which company did you choose? And what other devices did you buy?\n\n## Speaker\n\nI chose headphones from Sennheiser. Judging by the reviews, they have excellent sound. Also, I bought a mouse from Logitech.\n\n## Speaker\n\nCool! I hope the new devices will improve your skill and you will play even better!\n\n## Speaker\n\nI really hope so too. Well, do you have anything new besides the great news about you and Samantha?\n\n## Speaker\n\nYes, two days ago I signed up for a cooking class. I never liked cooking, but I felt that I wanted to learn something new. At the first lesson we prepared several simple dishes. I got a great omelette the first time!\n\n## Speaker\n\nCool! I’ve never heard of your desire to cook, you surprise me! How much do these cooking courses cost and what else did you cook there?\n\n## Speaker\n\nAt only $10 per class, it's very cheap! Also, I made meringue there and they taught us how to make the dough.\n\n## Speaker\n\nReally cheap. It's great that you are always looking for a way to improve yourself!\n\n## Speaker\n\nThanks for your support, John! I really appreciate it. I hope I can treat you to my creation once I learn a little more about cooking.\n\n## Speaker\n\nI look forward to it, James, you can do it!\n\n## Speaker\n\nYour words give me even more strength to pursue my new hobby!\n\n## Speaker\n\nThat's why we are friends, to support each other! Well, I have to go, bye!\n\n## Speaker\n\nTake care, John, bye!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D24.md:7-91 [score=3.4773] ==========\n# Conversation Session\n\n## Speaker\n\nHey James! Long time no see! A lot's changed since we talked. I started getting into board games. I tried one last week and it turned out to be a lot of fun. What's new with you?\n\n## Speaker\n\nHey John! Cool, what kind of board game is this? I had a lot to do all this time. And in order not to forget to do something, I started writing down everything I needed in a notebook.\n\n## Speaker\n\nThis game is called \"Dungeons of the Dragon\", very exciting! I'm really glad you're writing down what you need to do in a notebook. This will definitely help you not to forget anything! How did you come up with this idea? In general, where do you get ideas?\n\n## Speaker\n\nThanks, John! I get them from various sources like books, movies, and even dreams.\n\n## Speaker\n\nWow, dreams have inspired you? That's interesting. Have any specific dreams guided your ideas?\n\n## Speaker\n\nA few weeks ago I had this crazy dream that led to some creative ideas. It was so vivid I woke up with some interesting thoughts!\n\n## Speaker\n\nWow, dreams can be so awesome! Are there any specific details you remember from that one?\n\n## Speaker\n\nI remember there was a medieval castle with its own labyrinth full of puzzles and traps. It felt like playing a video game in real life!\n\n## Speaker\n\nWow, exploring a castle with puzzles and traps sounds awesome! Have you got any sketches or notes from that experience? I'd love to take a look!\n\n## Speaker\n\nYep! I made some sketches and notes. Hang on, let me grab them.\n\n## Speaker\n\nNice sketch! Do you like music, or is it related to your castle dream?\n\n## Speaker\n\nThanks! Music is a big part of my life - nothing to do with castles though. What kind of music do you like? Do you play any instruments?\n\n## Speaker\n\nCool! I'm into electronic and rock music. I used to play drums when I was younger, but haven't in a while. Do you play any instruments?\n\n## Speaker\n\nYeah, rock's awesome! I used to play a guitar when I was younger but haven't in a while.\n\n## Speaker\n\nPlaying drums when I was younger was a fun way to let off steam. Here's a photo of an old drum set I used to play on.\n\n## Speaker\n\nCool! Have you ever been in a band or just jammed with friends?\n\n## Speaker\n\nI've jammed with friends before, it was a lot of fun!\n\n## Speaker\n\nSounds awesome! Jamming with friends is always a blast. Do you have any recordings or videos of those sessions?\n\n## Speaker\n\nNah, it was more about the experience and the moment. No recordings or videos from the jams.\n\n## Speaker\n\nNo problem! It's nice to just enjoy the experience without worrying about collecting videos or recordings. By the way, I started streaming games. No details yet, I hope everything works out.\n\n## Speaker\n\nI'll keep my fingers crossed for you! You will definitely succeed, I look forward to the details!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D17.md:7-155 [score=2.7857] ==========\n# Conversation Session\n\n## Speaker\n\nHi James! I just started playing chess to get better at strategy. I'm loving it! Have you ever tried it out?\n\n## Speaker\n\nHey John! Yeah, I've played chess before. It's a game that really tests your strategy. It's great that you're enjoying it!\n\n## Speaker\n\nYeah, chess is really fun! It's like solving an endless puzzle and always trying to outwit your opponent.\n\n## Speaker\n\nYeah, it's tough, but fun when you figure it out. Do you play with friends or online?\n\n## Speaker\n\nI'm playing mostly online for now, but I also joined a chess club and practice with others. Here's a pic from an intense game I played lately.\n\n## Speaker\n\nWow, looks intense! What sparked your interest in chess?\n\n## Speaker\n\nI've always been drawn to strategy games and wanted to challenge myself. Plus, I believe chess can improve decision-making skills.\n\n## Speaker\n\nGreat reason for playing chess - it will definitely help you develop your skills!\n\n## Speaker\n\nThanks, James! I'm excited to see how playing chess can enhance my strategic thinking in everyday situations. Do you have any tips for improvement?\n\n## Speaker\n\nDefinitely! Studying opening moves and strategies and analyzing your games to spot weaknesses are great ways to improve.\n\n## Speaker\n\nI'll definitely look into that. Appreciate the advice!\n\n## Speaker\n\nNo worries, John! Happy to help. Just let me know if there's anything else I can assist you with.\n\n## Speaker\n\nYour support means a lot to me. You're a true friend! Remember this photo from elementary school?\n\n## Speaker\n\nThat looks fun. But I don’t remember at all under what circumstances we took this picture. What's the story behind it?\n\n## Speaker\n\nThis is from when we were 10 and we were really into skateboarding. We had a group of friends who often go to the skate park with. We would help each other learn new tricks and have a great time. Those friends made the experience even better and their friendship meant a lot to us.\n\n## Speaker\n\nIndeed, I remember this moment. We loved skateboards back then, sometimes we even left class early to do it. I still like to go for a ride sometimes, and I even taught my dogs how to balance on it.\n\n## Speaker\n\nWow! Do they enjoy it, or do you have to encourage them to play with the board?\n\n## Speaker\n\nThey love it! They chase after it and run with it. It's a great way for them to get some exercise.\n\n## Speaker\n\nWow, that's great! Keeping active and happy is great for both of you.\n\n## Speaker\n\nYep! Staying active with them builds a strong bond and makes us both happy.\n\n## Speaker\n\nYeah, the bond between us and our pets is amazing. They bring a lot of joy and love. It’s a pity that I don’t have pets, I’ll definitely get one someday. By the way, how was your trip?\n\n## Speaker\n\nEverything went great! In addition, I even managed to get out to another country. The city of Nuuk, if you know. I stayed there quite a bit, but at least I had one more country to add to my bucket list!\n\n## Speaker\n\nThis is awesome, James! Surely you brought a lot of impressions with you!\n\n## Speaker\n\nCertainly! And not only impressions, I also brought souvenirs. For both you and your Jill!\n\n## Speaker\n\nThank you very much, Jill will be delighted!\n\n## Speaker\n\nYou're welcome! By the way, look who came to see me!\n\n## Speaker\n\nNice pic, James! Who are they?\n\n## Speaker\n\nThat's my sister and my dogs. We were just chilling together yesterday, and they bring so much happiness to my life.\n\n## Speaker\n\nWow, they look so happy! It's awesome that you get to spend time with your sister and your furry friends. The bond you have with them is really strong.\n\n## Speaker\n\nI'm blessed to have a close bond with my sister and our furry friends. We have a great time together, like a family!\n\n## Speaker\n\nFamily and friends are really amazing, James. They show us so much love and joy. I'm grateful for the connection I have with my siblings. Things can be tough sometimes, but their support means everything to me.\n\n## Speaker\n\nFully agreed! My sister and I were also near the ocean and watched such a wonderful sunset!\n\n## Speaker\n\nWonderful photo! It's amazing how you can capture a moment and capture it in a photograph.\n\n## Speaker\n\nThanks, John! This is just a good shot, nothing more. I took a lot of shots yesterday and chose the best one to send to you.\n\n## Speaker\n\nStill, the photo is amazing!\n\n## Speaker\n\nI have to go, I'm tired over the last two days. Bye!\n\n## Speaker\n\nTake care, bye!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D19.md:7-75 [score=2.5466] ==========\n# Conversation Session\n\n## Speaker\n\nHey James, been a few days. The convo got me thinking about my passions and goals. Thanks for encouraging me to try new game genres.\n\n## Speaker\n\nHey John! Nice to hear from you! Glad our chat made an impact. What sort of games are you interested in exploring?\n\n## Speaker\n\nLately, I've been playing some different genres like strategy and RPG games instead of my usual shooters. I’m already thinking about making competitions for them too.\n\n## Speaker\n\nThat's great, John! Trying out different genres can really add to your gaming experiences. Have you come across any standout games?\n\n## Speaker\n\nHooked a new RPG that I've been playing lately! The storytelling and characters are amazing, can't get enough of it.\n\n## Speaker\n\nSounds great! I think storytelling is what makes RPGs so fun. What game are you playing? Do you have any favorite characters?\n\n## Speaker\n\nI'm playing \"The Witcher 3\"! There's this awesome monster hunter with a cool story, and I'm totally hooked, trying to make the right choices to shape the world. It's really immersive.\n\n## Speaker\n\nYeah, \"The Witcher 3\" is amazing! I love how you can shape the world with your choices and feel the impact. The graphics are insane too - check out this pic.\n\n## Speaker\n\nThat's a great pic! The graphics are truly stunning! By the way, look how I organized my workplace!\n\n## Speaker\n\nCool! Wall lighting adds beauty to your workspace.\n\n## Speaker\n\nThanks James! What's new with you?\n\n## Speaker\n\nYesterday I took my three dogs to a beach outing to have fun and bond with other dogkeepers.\n\n## Speaker\n\nCool! Surely you gained a new experience from communicating with other dog lovers!\n\n## Speaker\n\nYes, we had fun and I even met one beautiful girl. I'm thinking of asking her out on a date! She left me her phone number, I think I'll call tomorrow.\n\n## Speaker\n\nWow! That's cool, what's her name? Be sure to call her, everything will work out!\n\n## Speaker\n\nShe is Samantha. I'll definitely call her!\n\n## Speaker\n\nYoohoo! Hope you have a wonderful time!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D1.md:7-155 [score=1.4773] ==========\n# Conversation Session\n\n## Speaker\n\nHey! Glad to finally talk to you. I want to ask you, what motivates you?\n\n## Speaker\n\nHey John! Video games give me tons of joy and excitement, so they keep me motivated!\n\n## Speaker\n\nCool, James! I'm a big video game fan too. They help me relax after a long day. What game are you currently enjoying the most?\n\n## Speaker\n\nI'm totally into The Witcher 3 right now. The story and atmosphere are amazing. Have you tried it yet?\n\n## Speaker\n\nHaven't played it yet, but I hear it's awesome. Gonna give it a go. BTW, just signed up for a programming class. Have you ever done any programming?\n\n## Speaker\n\nProgramming is an awesome skill. I tried it out one in college and now it`s all my life. Good luck in the class! Do you have any coding experience?\n\n## Speaker\n\nI did a bit of coding in HTML and CSS a few years back. Thought I'd refresh those skills in this course. What languages do you like most and any projects you've done?\n\n## Speaker\n\nI've worked with Python and C++. I've built a website and also created some game mods. Here is one example.\n\n## Speaker\n\nThat mod looks amazing! The graphics are awesome. What other programming languages have you worked with?\n\n## Speaker\n\nI haven’t worked with any other programming languages, but I hope to work in the future.\n\n## Speaker\n\nMaybe in the future we will develop mobile applications together? Do you like the idea?\n\n## Speaker\n\nIt would be cool! For example, we could write some kind of application for dogs. By the way, my dogs.\n\n## Speaker\n\nAww, they're adorable! What are the names of your pets? And what are your plans for the app?\n\n## Speaker\n\nMax and Daisy. Will be actually cool to build an app for dog walking and pet care. The goal is to connect pet owners with reliable dog walkers and provide helpful information on pet care.\n\n## Speaker\n\nSounds good, James! Bet that app would find a lot of buyers. What sets it apart from other existing apps?\n\n## Speaker\n\nThanks, John! The personal touch really sets it apart. Users can add their pup's preferences/needs - just like they were customizing it for them. Making it unique for each owner and pup.\n\n## Speaker\n\nThat's a great idea! Your pup is gonna love it. Speaking of personal touches, what motivates you to work on your programming projects?\n\n## Speaker\n\nCreating something and seeing it come to life gives me a great sense of accomplishment. It's an amazing feeling. I write down all my goals in a notebook. It's very satisfying to check off each one when it's done.\n\n## Speaker\n\nWhat are you working on that has you feeling so accomplished?\n\n## Speaker\n\nI'm working on something I've wanted to do since I was a kid. Even as a child, I made some sketches of the main character. Back then I was just drawing comics, but now I want to turn it into a computer game. It's a project that has me really excited.\n\n## Speaker\n\nWow, James! That's amazing. What made you decide to work on it and create your own game?\n\n## Speaker\n\nI'm always excited to combine my favorite passions: gaming and storytelling. It's great creating my own project and bringing my ideas to life, plus the challenge is really enjoyable!\n\n## Speaker\n\nThat sounds really fulfilling! Combining your passions to make something new must be so exciting. Can't wait to see the outcome.\n\n## Speaker\n\nThanks John! It's super exciting. I'll keep you updated on the progress. Perhaps, thanks to your knowledge of HTML, I'll invite you to help with some things in my game.\n\n## Speaker\n\nIt will be great to work with you, James.\n\n## Speaker\n\nI'll be looking forward to it. By the way, yesterday I went bowling and got 2 strikes. I love bowling!\n\n## Speaker\n\nI'm sure you're very good at this. Unfortunately, I can’t share my love for him with you, my fingers are too big. Perhaps I should take up exercise, at least start going for a run in the morning. And I also don’t like bowling itself, to be honest.\n\n## Speaker\n\nIt's a pity, it would be nice to go play with you one day.\n\n## Speaker\n\nWell, I'm sure we can do something else. We can play slot machines and arcades, for example.\n\n## Speaker\n\nThe last time I played at the slot machines, I was so engrossed in the game that I didn't notice my wallet being taken out of my pocket. Sad story.\n\n## Speaker\n\nI'm sorry to hear it. Well, I'll be nearby, I'll look after your pockets.\n\n## Speaker\n\nStill, maybe we can try something different?\n\n## Speaker\n\nHeard about VR gaming? It's pretty immersive. We can try it together!\n\n## Speaker\n\nI tried it - it's crazy how real it feels! Have you given it a shot?\n\n## Speaker\n\nTried it a few times, it's insane how immersive that experience can be. Can't wait to try it together with you.\n\n## Speaker\n\nYeah, VR gaming is awesome! Let`s do it next Saturday!\n\n## Speaker\n\nAgreed, James!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D18.md:7-87 [score=1.3559] ==========\n# Conversation Session\n\n## Speaker\n\nHey James, good catching up! Been a while huh? I made a huge call - recently left my IT job after 3 years. It was tough but I wanted something that made a difference. And now with this new job, I am happy about my decision. I am loving the new job!\n\n## Speaker\n\nHey John! Great to hear from you. Leaving after 3 years is a big step - how did it feel?\n\n## Speaker\n\nAt first, it was super scary, but I knew I had to make a change and focus on things that align with my values and passions.\n\n## Speaker\n\nWow, John, that sounds really brave. I hope it brings you joy and satisfaction.\n\n## Speaker\n\nThanks, James. It wasn't easy, but sometimes you gotta take a leap to follow your heart.\n\n## Speaker\n\nTaking risks pays off! Way to be brave. I'm proud of you!\n\n## Speaker\n\nYour support means a lot. Lately, I've been thinking about what truly makes me happy, and I'm really drawn to the gaming industry. I'm passionate about it and it's time to turn that into a career. I want to become an organizer of tournaments for various computer games in our state. For example, for CS:GO. It's a new journey for me.\n\n## Speaker\n\nCool! You always mentioned your love for gaming. What other game do you want to organize competitions for? And what`s your plan now?\n\n## Speaker\n\nAlso, I can host Fortnite competitions. I have already made some connections that will help me with this. My plan is to gain more experience and perfect my skills to be successful in this field.\n\n## Speaker\n\nSounds like a solid plan! Trying out different game genres can be a great way to widen your skills and knowledge.\n\n## Speaker\n\nThanks! I am very glad that you support me in my new endeavor!\n\n## Speaker\n\nI will always be here for you! If you need any financial assistance or advice, please contact me!\n\n## Speaker\n\nI will definitely do this if necessary! By the way, what's new with you?\n\n## Speaker\n\nYesterday I took my puppy to the clinic.\n\n## Speaker\n\nGod, James, what happened to your puppy? Is it OK?\n\n## Speaker\n\nDon't worry. This was just a routine examination. Also, the puppy was vaccinated to prevent him from catching the seasonal canine disease.\n\n## Speaker\n\nPhew, great that he's okay. It's great that you care so much about your pets!\n\n## Speaker\n\nThey are the source of my joy, so I will always take care of them!\n\n## Speaker\n\nYou're a great host, James! Well, I have to go, bye!\n\n## Speaker\n\nThanks, John! Take care, bye!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D12.md:7-63 [score=1.3189] ==========\n# Conversation Session\n\n## Speaker\n\nHey John, last weekend I had an awesome time at the amusement park with my friends. It was a great break from the virtual world. I went on some awesome roller coasters and it reminded me of when I was a kid. Everything was so real and exciting; it felt like I was in a video game!\n\n## Speaker\n\nHey James! Sounds like an awesome time! I bet those rides brought back some great memories. Were there any other attractions besides the roller coaster?\n\n## Speaker\n\nOf course, I also managed to ride the Ferris wheel, electric cars and buggies. What's new with you?\n\n## Speaker\n\nThat's really cool! Last Friday I entered a local tournament and took second place! It was a wild experience and the competitive energy was insane.\n\n## Speaker\n\nWow, John that's awesome! Congrats on your achievement! I can imagine the rush you must have felt during the tournament. Did you receive any rewards or prizes for your success?\n\n## Speaker\n\nI was stoked about my achievement. Though I didn't win the tournament, I still received some money for the 2nd place. Seeing my effort pay off was awesome.\n\n## Speaker\n\nAwesome news! You don't have to win every time, growth and progress are most important.\n\n## Speaker\n\nYeah, I also got this trophy! So satisfying. It reminds me to always put in my best effort. What about you? Any success stories lately?\n\n## Speaker\n\nCongrats on your achievement, John! That trophy looks awesome. Last month, I had a personal milestone. There were definitely tough times, but it reminds me of all the hard work. I feel a huge sense of accomplishment and I'm ready for the future opportunities!\n\n## Speaker\n\nCongrats on the milestone. What was it and what made it challenging? What did you learn?\n\n## Speaker\n\nI finished a big project I had been working on for months. It was challenging because I had to learn a new language and handle many details. I learned a lot about problem-solving, patience, and perseverance. Now I feel more confident to take on even bigger projects.\n\n## Speaker\n\nThat's awesome you learned a language and handled all those details. Great job, you definitely picked up some great skills! Remember, determination and confidence make any project a success. Good work!\n\n## Speaker\n\nThanks, I appreciate your support. I'll definitely keep that in mind.\n\n## Speaker\n\nNo worries, I'm here to help. Keep going and reach those goals!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D3.md:7-100 [score=1.1897] ==========\n# Conversation Session\n\n## Speaker\n\nHey James, long time no see! I had a big win in my game last week - finally advanced to the next level! It was a huge confidence booster and felt like I'd really achieved something.\n\n## Speaker\n\nHey John, congrats on your win! Games can really boost confidence, huh? I'm challenging myself too - I'm learning this instrument, which has been quite the journey.\n\n## Speaker\n\nThanks, James! I play drums too! Here's a pic of my set.\n\n## Speaker\n\nWow, looking good! How long have you been playing?\n\n## Speaker\n\nI've been playing for a month now, it's been tough but fun. How about you, how's it going?\n\n## Speaker\n\nThis is going great! I started a few days ago, so I'm still picking it up. Been at it daily and seeing improvements. It's tough but rewarding at the same time!\n\n## Speaker\n\nNice work! Looks like you're doing great. Anything new in general that you'd recommend?\n\n## Speaker\n\nThanks! I just got a new cutting-edge gaming system and the graphics are incredible. I've been playing all kinds of new games and it's been a great way to relax after work. Plus, I can connect with friends who share my passion for gaming.\n\n## Speaker\n\nCool, James! Gaming is great for chilling out. Btw, since we last spoke, I had the chance to go to a gaming convention - it was amazing! Tried out loads of games, met developers, and even took part in a tournament - unreal! Check out this pic I took!\n\n## Speaker\n\nWow, that's awesome! What game was it for? Sounds like a dream!\n\n## Speaker\n\nI played my favorite CS:GO game in an intense tournament. It was awesome to see all the skilled players competing.\n\n## Speaker\n\nWow, that sounds cool! Gaming is awesome with all the competition. Must have been thrilling to watch those skilled players!\n\n## Speaker\n\nIt was indeed amazing! Watching those skilled players really inspired me to improve my own gaming skills.\n\n## Speaker\n\nNice one, John! Learning from experienced gamers can really help you level up your skills. Keep it up!\n\n## Speaker\n\nI'm always looking to up my game and hit new goals. That same commitment is true for my hobbies and other stuff. What have you been doing to stay motivated?\n\n## Speaker\n\nSetting small goals and tracking my progress helps me stay motivated and focused.\n\n## Speaker\n\nNice one! Setting small goals and tracking progress is a great way to stay motivated - it helps you stay on track and celebrates progress. Anything specific you're working on or upcoming challenges you're pumped about?\n\n## Speaker\n\nI'm getting into different types of games now, like RPGs and strategy games. It's really exciting!\n\n## Speaker\n\nCool, James! That sounds exciting. Have fun exploring different genres of games!\n\n## Speaker\n\nI'm super hyped to explore different game genres. Let's see what's in store!\n\n## Speaker\n\nDefinitely! Trying new genres is always exciting. I can't wait to hear about your journey with them. Please let me know how it goes!\n\n## Speaker\n\nGot it, John! I'll keep you updated on my gaming adventures with the new genres. Have a good day!\n\n## Speaker\n\nThanks! Can't wait to hear about it. Bye!\n========== daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D25.md:7-108 [score=1.1459] ==========\n# Conversation Session\n\n## Speaker\n\nHey James, been a few days since we chatted. Lots of stuff goin' on in my life!\n\n## Speaker\n\nHey John! What new has happened in your life?\n\n## Speaker\n\nYesterday I started a new startup - portable smokers. Now, I’ve already welded one from metal. Do you think it looks good? How about you, any cool stuff happening?\n\n## Speaker\n\nHey John, that looks great! Seeing it makes me think of campfires with pals. Last night I streamed a game and wow, was I blown away by all the nice comments from the gaming community. I felt so stoked and inspired to keep going.\n\n## Speaker\n\nWoohoo, congrats James! That's awesome. Sounds like you're doing well. All your hard work is paying off, so keep it up!\n\n## Speaker\n\nThanks for the support, John! This made me think of such an exciting time. Any more big moments recently?\n\n## Speaker\n\nI just achieved a major career milestone - making my first mobile game! It's launching next month.\n\n## Speaker\n\nWay to go, John! Congrats on achieving that major career milestone. Could you tell me more about it? Why didn’t you say before that you were creating a mobile game?\n\n## Speaker\n\nThanks James! I kept it a secret because I would have been very upset if I had told you about her in advance and then it wouldn't have worked out. I've been working on this for the past few months and I'm really proud of how it's turned out. It's a 2D adventure game with puzzles and exploration. Here's a screenshot.\n\n## Speaker\n\nJohn, this sounds great! I'm into 2D adventures with puzzles - like The Legend of Zelda. Can I see it or help with testing it out?\n\n## Speaker\n\nCheers, James! Appreciate your offer to help. I'll definitely let you know when the testing is ready. By the way, here is the book that helped me create the puzzles for this game.\n\n## Speaker\n\nWow, that book looks great! What other resources do you use to improve your game? Tell me about your gaming tips!\n\n## Speaker\n\nIt is filled with awesome tips and insights on game design. I also watch tutorials and keep up with developer forums for information and ideas. Basically, staying informed and constantly learning is key!\n\n## Speaker\n\nYou're really dedicated to improving and staying up to date. It's inspiring to see how you stay informed and keep learning. I also advise you to read this magazine, which is also a worthy source of information. Keep up the good work!\n\n## Speaker\n\nI read it, too. This magazine has been great for me too. Tutorials, interviews with developers, and tips - all really helpful.\n\n## Speaker\n\nWow, John! Glad that resource was useful - looks like it provides some good tips and tricks for game developers.\n\n## Speaker\n\nYeah, that magazine looks great! Have you also found it to be a good resource?\n\n## Speaker\n\nOf course! It's been great, filled with tutorials and developer interviews to help improve my game dev skills. Super useful!\n\n## Speaker\n\nResources like that are great for improving our skills. Keep it up! How's your week been?\n\n## Speaker\n\nMy week's been good. Just trying to find a balance between work and other activities. How about you, how's your week going?\n\n## Speaker\n\nAs for me, this week has been chaotic with everything going on. But I'm powering through!\n\n## Speaker\n\nSorry to hear about your busy week, John. Make sure to take some time for yourself and take care. You've got this!\n\n## Speaker\n\nI appreciate your help. Gonna make time for myself.\n\n## Speaker\n\nNo worries, take care of yourself. Relax and recharge - you deserve it.\n\n## Speaker\n\nThanks, man! I'll definitely take your advice. You're the best!",
+            "success": true,
+            "metadata": {
+              "results": [
+                {
+                  "id": "d9840dc49aac85af385fed38a94eba4cfc1aadaf0c7f6cc47bb325b3ef937f0f",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey James! Hope you're doing great. I've some amazing news - I held a gaming tourney with my buddies last night. We played Fortnite and a few other games. We raised a decent amount for a children's hospital. Combining gaming and a good cause felt awesome!\n\n## Speaker\n\nHey John! Awesome job organizing a gaming tournament for a children's hospital! Combining gaming and a good cause - that's really cool! Tell me more about who helped out and what other games were played.\n\n## Speaker\n\nThanks! We all pulled together for a great cause. My gaming pals and I also played Overwatch and Apex Legends. Everyone had a blast raising money for the kids' hospital. The atmosphere was awesome and everyone was so competitive. In the end, we raised a good amount. Feels good to use our love of gaming for good!\n\n## Speaker\n\nWow, that sounds like a blast! It's great how gaming can bring people together like that. You made a huge difference in the kids' lives! Do you have any photos from the tournament?\n\n## Speaker\n\nI got a great shot at the tournament. Check it out! Everyone was so hyped, and it felt great knowing we were playing for a good cause.\n\n## Speaker\n\nWow, this photo rocks!\n\n## Speaker\n\nThanks! I'm glad you enjoyed it. It was a really awesome moment - unforgettable for all of us! What's new with you?\n\n## Speaker\n\nI actually have something new, Samantha and I have decided to move in together!\n\n## Speaker\n\nWow, that's a really big decision! I hope you both have weighed the pros and cons. Where are you going to live?\n\n## Speaker\n\nOf course, this was a mutual and informed decision. We rented an apartment not far from McGee's bar.\n\n## Speaker\n\nYou love spending time together in this bar, don't you?\n\n## Speaker\n\nWe just love it! I’ll be honest, one of the criteria for our choice of apartment was this particular bar nearby.\n\n## Speaker\n\nAwesome, James! Excited to hear how it goes. Keep me posted and good luck!\n\n## Speaker\n\nThanks, John! I'll be sure to keep you updated. I really appreciate your support. Take care!\n\n## Speaker\n\nNo worries! I'm here for you whenever you need. Stay safe and chat soon!\n\n## Speaker\n\nThanks! Appreciate your support. Stay safe and talk to you soon!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D29.md",
+                  "start_line": 7,
+                  "end_line": 71,
+                  "scores": {
+                    "keyword": 6.255715370178223,
+                    "score": 6.255715370178223
+                  }
+                },
+                {
+                  "id": "632f29a9661ff5fd07a22395f271e74090662465b82d62f18163c55184b41efb",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey John, it's been a few days since we talked. So much has gone on, both good and bad. Yesterday, when we were at the theater, Samantha loves theater, I asked her to become my girlfriend, and she agreed. We have gone through a lot in this short period. There were good and bad, but I'm happy with her. All that ups and downs were a bit overwhelming, but it's part of life. What about you? Anything interesting lately?\n\n## Speaker\n\nHey James, this is great news! Where else have you been besides the theater? My parents just started learning coding from me - it's been a learning experience, but I'm glad to help them out. It binds us a little closer. Look at this photo, this is my father coding his own program for the first time.\n\n## Speaker\n\nThat's great, John! Looks like he's having a good time in the pic. Samantha and I were also at McGee's bar. It turned out that she loves a good lager beer. She and I have so much in common!\n\n## Speaker\n\nI'm glad you finally found someone other than dogs that brings you joy. Well done, you will succeed!\n\n## Speaker\n\nThanks, John. She and I are going to a baseball game next Sunday, want to join? I'll show you what Samantha looks like.\n\n## Speaker\n\nYeah! Let's do it. It'll be a fun experience!\n\n## Speaker\n\nGreat. Well, what else is new in your life?\n\n## Speaker\n\nI bought some new gaming equipment to improve my skills. For example, new headphones.\n\n## Speaker\n\nCool, which company did you choose? And what other devices did you buy?\n\n## Speaker\n\nI chose headphones from Sennheiser. Judging by the reviews, they have excellent sound. Also, I bought a mouse from Logitech.\n\n## Speaker\n\nCool! I hope the new devices will improve your skill and you will play even better!\n\n## Speaker\n\nI really hope so too. Well, do you have anything new besides the great news about you and Samantha?\n\n## Speaker\n\nYes, two days ago I signed up for a cooking class. I never liked cooking, but I felt that I wanted to learn something new. At the first lesson we prepared several simple dishes. I got a great omelette the first time!\n\n## Speaker\n\nCool! I’ve never heard of your desire to cook, you surprise me! How much do these cooking courses cost and what else did you cook there?\n\n## Speaker\n\nAt only $10 per class, it's very cheap! Also, I made meringue there and they taught us how to make the dough.\n\n## Speaker\n\nReally cheap. It's great that you are always looking for a way to improve yourself!\n\n## Speaker\n\nThanks for your support, John! I really appreciate it. I hope I can treat you to my creation once I learn a little more about cooking.\n\n## Speaker\n\nI look forward to it, James, you can do it!\n\n## Speaker\n\nYour words give me even more strength to pursue my new hobby!\n\n## Speaker\n\nThat's why we are friends, to support each other! Well, I have to go, bye!\n\n## Speaker\n\nTake care, John, bye!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D23.md",
+                  "start_line": 7,
+                  "end_line": 92,
+                  "scores": {
+                    "keyword": 4.124527931213379,
+                    "score": 4.124527931213379
+                  }
+                },
+                {
+                  "id": "28f93988430602aecfb92e9e9ae92b636df994addf2f262272845c1825b566ac",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey James! Long time no see! A lot's changed since we talked. I started getting into board games. I tried one last week and it turned out to be a lot of fun. What's new with you?\n\n## Speaker\n\nHey John! Cool, what kind of board game is this? I had a lot to do all this time. And in order not to forget to do something, I started writing down everything I needed in a notebook.\n\n## Speaker\n\nThis game is called \"Dungeons of the Dragon\", very exciting! I'm really glad you're writing down what you need to do in a notebook. This will definitely help you not to forget anything! How did you come up with this idea? In general, where do you get ideas?\n\n## Speaker\n\nThanks, John! I get them from various sources like books, movies, and even dreams.\n\n## Speaker\n\nWow, dreams have inspired you? That's interesting. Have any specific dreams guided your ideas?\n\n## Speaker\n\nA few weeks ago I had this crazy dream that led to some creative ideas. It was so vivid I woke up with some interesting thoughts!\n\n## Speaker\n\nWow, dreams can be so awesome! Are there any specific details you remember from that one?\n\n## Speaker\n\nI remember there was a medieval castle with its own labyrinth full of puzzles and traps. It felt like playing a video game in real life!\n\n## Speaker\n\nWow, exploring a castle with puzzles and traps sounds awesome! Have you got any sketches or notes from that experience? I'd love to take a look!\n\n## Speaker\n\nYep! I made some sketches and notes. Hang on, let me grab them.\n\n## Speaker\n\nNice sketch! Do you like music, or is it related to your castle dream?\n\n## Speaker\n\nThanks! Music is a big part of my life - nothing to do with castles though. What kind of music do you like? Do you play any instruments?\n\n## Speaker\n\nCool! I'm into electronic and rock music. I used to play drums when I was younger, but haven't in a while. Do you play any instruments?\n\n## Speaker\n\nYeah, rock's awesome! I used to play a guitar when I was younger but haven't in a while.\n\n## Speaker\n\nPlaying drums when I was younger was a fun way to let off steam. Here's a photo of an old drum set I used to play on.\n\n## Speaker\n\nCool! Have you ever been in a band or just jammed with friends?\n\n## Speaker\n\nI've jammed with friends before, it was a lot of fun!\n\n## Speaker\n\nSounds awesome! Jamming with friends is always a blast. Do you have any recordings or videos of those sessions?\n\n## Speaker\n\nNah, it was more about the experience and the moment. No recordings or videos from the jams.\n\n## Speaker\n\nNo problem! It's nice to just enjoy the experience without worrying about collecting videos or recordings. By the way, I started streaming games. No details yet, I hope everything works out.\n\n## Speaker\n\nI'll keep my fingers crossed for you! You will definitely succeed, I look forward to the details!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D24.md",
+                  "start_line": 7,
+                  "end_line": 91,
+                  "scores": {
+                    "keyword": 3.4772756099700928,
+                    "score": 3.4772756099700928
+                  }
+                },
+                {
+                  "id": "d1502bea86e8d34b40aeaf24bb2a1c6f29c7c8f6d7c4deb151f4533d42d00b0e",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHi James! I just started playing chess to get better at strategy. I'm loving it! Have you ever tried it out?\n\n## Speaker\n\nHey John! Yeah, I've played chess before. It's a game that really tests your strategy. It's great that you're enjoying it!\n\n## Speaker\n\nYeah, chess is really fun! It's like solving an endless puzzle and always trying to outwit your opponent.\n\n## Speaker\n\nYeah, it's tough, but fun when you figure it out. Do you play with friends or online?\n\n## Speaker\n\nI'm playing mostly online for now, but I also joined a chess club and practice with others. Here's a pic from an intense game I played lately.\n\n## Speaker\n\nWow, looks intense! What sparked your interest in chess?\n\n## Speaker\n\nI've always been drawn to strategy games and wanted to challenge myself. Plus, I believe chess can improve decision-making skills.\n\n## Speaker\n\nGreat reason for playing chess - it will definitely help you develop your skills!\n\n## Speaker\n\nThanks, James! I'm excited to see how playing chess can enhance my strategic thinking in everyday situations. Do you have any tips for improvement?\n\n## Speaker\n\nDefinitely! Studying opening moves and strategies and analyzing your games to spot weaknesses are great ways to improve.\n\n## Speaker\n\nI'll definitely look into that. Appreciate the advice!\n\n## Speaker\n\nNo worries, John! Happy to help. Just let me know if there's anything else I can assist you with.\n\n## Speaker\n\nYour support means a lot to me. You're a true friend! Remember this photo from elementary school?\n\n## Speaker\n\nThat looks fun. But I don’t remember at all under what circumstances we took this picture. What's the story behind it?\n\n## Speaker\n\nThis is from when we were 10 and we were really into skateboarding. We had a group of friends who often go to the skate park with. We would help each other learn new tricks and have a great time. Those friends made the experience even better and their friendship meant a lot to us.\n\n## Speaker\n\nIndeed, I remember this moment. We loved skateboards back then, sometimes we even left class early to do it. I still like to go for a ride sometimes, and I even taught my dogs how to balance on it.\n\n## Speaker\n\nWow! Do they enjoy it, or do you have to encourage them to play with the board?\n\n## Speaker\n\nThey love it! They chase after it and run with it. It's a great way for them to get some exercise.\n\n## Speaker\n\nWow, that's great! Keeping active and happy is great for both of you.\n\n## Speaker\n\nYep! Staying active with them builds a strong bond and makes us both happy.\n\n## Speaker\n\nYeah, the bond between us and our pets is amazing. They bring a lot of joy and love. It’s a pity that I don’t have pets, I’ll definitely get one someday. By the way, how was your trip?\n\n## Speaker\n\nEverything went great! In addition, I even managed to get out to another country. The city of Nuuk, if you know. I stayed there quite a bit, but at least I had one more country to add to my bucket list!\n\n## Speaker\n\nThis is awesome, James! Surely you brought a lot of impressions with you!\n\n## Speaker\n\nCertainly! And not only impressions, I also brought souvenirs. For both you and your Jill!\n\n## Speaker\n\nThank you very much, Jill will be delighted!\n\n## Speaker\n\nYou're welcome! By the way, look who came to see me!\n\n## Speaker\n\nNice pic, James! Who are they?\n\n## Speaker\n\nThat's my sister and my dogs. We were just chilling together yesterday, and they bring so much happiness to my life.\n\n## Speaker\n\nWow, they look so happy! It's awesome that you get to spend time with your sister and your furry friends. The bond you have with them is really strong.\n\n## Speaker\n\nI'm blessed to have a close bond with my sister and our furry friends. We have a great time together, like a family!\n\n## Speaker\n\nFamily and friends are really amazing, James. They show us so much love and joy. I'm grateful for the connection I have with my siblings. Things can be tough sometimes, but their support means everything to me.\n\n## Speaker\n\nFully agreed! My sister and I were also near the ocean and watched such a wonderful sunset!\n\n## Speaker\n\nWonderful photo! It's amazing how you can capture a moment and capture it in a photograph.\n\n## Speaker\n\nThanks, John! This is just a good shot, nothing more. I took a lot of shots yesterday and chose the best one to send to you.\n\n## Speaker\n\nStill, the photo is amazing!\n\n## Speaker\n\nI have to go, I'm tired over the last two days. Bye!\n\n## Speaker\n\nTake care, bye!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D17.md",
+                  "start_line": 7,
+                  "end_line": 155,
+                  "scores": {
+                    "keyword": 2.7857234477996826,
+                    "score": 2.7857234477996826
+                  }
+                },
+                {
+                  "id": "021360892e2bb7a9db5bf19eae04fb6acde421984bb0b7a73673097a3a40cc5a",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey James, been a few days. The convo got me thinking about my passions and goals. Thanks for encouraging me to try new game genres.\n\n## Speaker\n\nHey John! Nice to hear from you! Glad our chat made an impact. What sort of games are you interested in exploring?\n\n## Speaker\n\nLately, I've been playing some different genres like strategy and RPG games instead of my usual shooters. I’m already thinking about making competitions for them too.\n\n## Speaker\n\nThat's great, John! Trying out different genres can really add to your gaming experiences. Have you come across any standout games?\n\n## Speaker\n\nHooked a new RPG that I've been playing lately! The storytelling and characters are amazing, can't get enough of it.\n\n## Speaker\n\nSounds great! I think storytelling is what makes RPGs so fun. What game are you playing? Do you have any favorite characters?\n\n## Speaker\n\nI'm playing \"The Witcher 3\"! There's this awesome monster hunter with a cool story, and I'm totally hooked, trying to make the right choices to shape the world. It's really immersive.\n\n## Speaker\n\nYeah, \"The Witcher 3\" is amazing! I love how you can shape the world with your choices and feel the impact. The graphics are insane too - check out this pic.\n\n## Speaker\n\nThat's a great pic! The graphics are truly stunning! By the way, look how I organized my workplace!\n\n## Speaker\n\nCool! Wall lighting adds beauty to your workspace.\n\n## Speaker\n\nThanks James! What's new with you?\n\n## Speaker\n\nYesterday I took my three dogs to a beach outing to have fun and bond with other dogkeepers.\n\n## Speaker\n\nCool! Surely you gained a new experience from communicating with other dog lovers!\n\n## Speaker\n\nYes, we had fun and I even met one beautiful girl. I'm thinking of asking her out on a date! She left me her phone number, I think I'll call tomorrow.\n\n## Speaker\n\nWow! That's cool, what's her name? Be sure to call her, everything will work out!\n\n## Speaker\n\nShe is Samantha. I'll definitely call her!\n\n## Speaker\n\nYoohoo! Hope you have a wonderful time!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D19.md",
+                  "start_line": 7,
+                  "end_line": 75,
+                  "scores": {
+                    "keyword": 2.5466055870056152,
+                    "score": 2.5466055870056152
+                  }
+                },
+                {
+                  "id": "8267aafc89d99f5be86850da38109bee20b3d6771cdfca501a5e015c4c619cc5",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey! Glad to finally talk to you. I want to ask you, what motivates you?\n\n## Speaker\n\nHey John! Video games give me tons of joy and excitement, so they keep me motivated!\n\n## Speaker\n\nCool, James! I'm a big video game fan too. They help me relax after a long day. What game are you currently enjoying the most?\n\n## Speaker\n\nI'm totally into The Witcher 3 right now. The story and atmosphere are amazing. Have you tried it yet?\n\n## Speaker\n\nHaven't played it yet, but I hear it's awesome. Gonna give it a go. BTW, just signed up for a programming class. Have you ever done any programming?\n\n## Speaker\n\nProgramming is an awesome skill. I tried it out one in college and now it`s all my life. Good luck in the class! Do you have any coding experience?\n\n## Speaker\n\nI did a bit of coding in HTML and CSS a few years back. Thought I'd refresh those skills in this course. What languages do you like most and any projects you've done?\n\n## Speaker\n\nI've worked with Python and C++. I've built a website and also created some game mods. Here is one example.\n\n## Speaker\n\nThat mod looks amazing! The graphics are awesome. What other programming languages have you worked with?\n\n## Speaker\n\nI haven’t worked with any other programming languages, but I hope to work in the future.\n\n## Speaker\n\nMaybe in the future we will develop mobile applications together? Do you like the idea?\n\n## Speaker\n\nIt would be cool! For example, we could write some kind of application for dogs. By the way, my dogs.\n\n## Speaker\n\nAww, they're adorable! What are the names of your pets? And what are your plans for the app?\n\n## Speaker\n\nMax and Daisy. Will be actually cool to build an app for dog walking and pet care. The goal is to connect pet owners with reliable dog walkers and provide helpful information on pet care.\n\n## Speaker\n\nSounds good, James! Bet that app would find a lot of buyers. What sets it apart from other existing apps?\n\n## Speaker\n\nThanks, John! The personal touch really sets it apart. Users can add their pup's preferences/needs - just like they were customizing it for them. Making it unique for each owner and pup.\n\n## Speaker\n\nThat's a great idea! Your pup is gonna love it. Speaking of personal touches, what motivates you to work on your programming projects?\n\n## Speaker\n\nCreating something and seeing it come to life gives me a great sense of accomplishment. It's an amazing feeling. I write down all my goals in a notebook. It's very satisfying to check off each one when it's done.\n\n## Speaker\n\nWhat are you working on that has you feeling so accomplished?\n\n## Speaker\n\nI'm working on something I've wanted to do since I was a kid. Even as a child, I made some sketches of the main character. Back then I was just drawing comics, but now I want to turn it into a computer game. It's a project that has me really excited.\n\n## Speaker\n\nWow, James! That's amazing. What made you decide to work on it and create your own game?\n\n## Speaker\n\nI'm always excited to combine my favorite passions: gaming and storytelling. It's great creating my own project and bringing my ideas to life, plus the challenge is really enjoyable!\n\n## Speaker\n\nThat sounds really fulfilling! Combining your passions to make something new must be so exciting. Can't wait to see the outcome.\n\n## Speaker\n\nThanks John! It's super exciting. I'll keep you updated on the progress. Perhaps, thanks to your knowledge of HTML, I'll invite you to help with some things in my game.\n\n## Speaker\n\nIt will be great to work with you, James.\n\n## Speaker\n\nI'll be looking forward to it. By the way, yesterday I went bowling and got 2 strikes. I love bowling!\n\n## Speaker\n\nI'm sure you're very good at this. Unfortunately, I can’t share my love for him with you, my fingers are too big. Perhaps I should take up exercise, at least start going for a run in the morning. And I also don’t like bowling itself, to be honest.\n\n## Speaker\n\nIt's a pity, it would be nice to go play with you one day.\n\n## Speaker\n\nWell, I'm sure we can do something else. We can play slot machines and arcades, for example.\n\n## Speaker\n\nThe last time I played at the slot machines, I was so engrossed in the game that I didn't notice my wallet being taken out of my pocket. Sad story.\n\n## Speaker\n\nI'm sorry to hear it. Well, I'll be nearby, I'll look after your pockets.\n\n## Speaker\n\nStill, maybe we can try something different?\n\n## Speaker\n\nHeard about VR gaming? It's pretty immersive. We can try it together!\n\n## Speaker\n\nI tried it - it's crazy how real it feels! Have you given it a shot?\n\n## Speaker\n\nTried it a few times, it's insane how immersive that experience can be. Can't wait to try it together with you.\n\n## Speaker\n\nYeah, VR gaming is awesome! Let`s do it next Saturday!\n\n## Speaker\n\nAgreed, James!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D1.md",
+                  "start_line": 7,
+                  "end_line": 155,
+                  "scores": {
+                    "keyword": 1.477344274520874,
+                    "score": 1.477344274520874
+                  }
+                },
+                {
+                  "id": "8989ff1f925d6bef6dc2a7e142bd57c4b18f32109e1af38b2795e9b8697af49a",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey James, good catching up! Been a while huh? I made a huge call - recently left my IT job after 3 years. It was tough but I wanted something that made a difference. And now with this new job, I am happy about my decision. I am loving the new job!\n\n## Speaker\n\nHey John! Great to hear from you. Leaving after 3 years is a big step - how did it feel?\n\n## Speaker\n\nAt first, it was super scary, but I knew I had to make a change and focus on things that align with my values and passions.\n\n## Speaker\n\nWow, John, that sounds really brave. I hope it brings you joy and satisfaction.\n\n## Speaker\n\nThanks, James. It wasn't easy, but sometimes you gotta take a leap to follow your heart.\n\n## Speaker\n\nTaking risks pays off! Way to be brave. I'm proud of you!\n\n## Speaker\n\nYour support means a lot. Lately, I've been thinking about what truly makes me happy, and I'm really drawn to the gaming industry. I'm passionate about it and it's time to turn that into a career. I want to become an organizer of tournaments for various computer games in our state. For example, for CS:GO. It's a new journey for me.\n\n## Speaker\n\nCool! You always mentioned your love for gaming. What other game do you want to organize competitions for? And what`s your plan now?\n\n## Speaker\n\nAlso, I can host Fortnite competitions. I have already made some connections that will help me with this. My plan is to gain more experience and perfect my skills to be successful in this field.\n\n## Speaker\n\nSounds like a solid plan! Trying out different game genres can be a great way to widen your skills and knowledge.\n\n## Speaker\n\nThanks! I am very glad that you support me in my new endeavor!\n\n## Speaker\n\nI will always be here for you! If you need any financial assistance or advice, please contact me!\n\n## Speaker\n\nI will definitely do this if necessary! By the way, what's new with you?\n\n## Speaker\n\nYesterday I took my puppy to the clinic.\n\n## Speaker\n\nGod, James, what happened to your puppy? Is it OK?\n\n## Speaker\n\nDon't worry. This was just a routine examination. Also, the puppy was vaccinated to prevent him from catching the seasonal canine disease.\n\n## Speaker\n\nPhew, great that he's okay. It's great that you care so much about your pets!\n\n## Speaker\n\nThey are the source of my joy, so I will always take care of them!\n\n## Speaker\n\nYou're a great host, James! Well, I have to go, bye!\n\n## Speaker\n\nThanks, John! Take care, bye!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D18.md",
+                  "start_line": 7,
+                  "end_line": 87,
+                  "scores": {
+                    "keyword": 1.355929970741272,
+                    "score": 1.355929970741272
+                  }
+                },
+                {
+                  "id": "32b72623afd7e62855c04f34815b05f66d7341847c6bb70b2088d90b90988f39",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey John, last weekend I had an awesome time at the amusement park with my friends. It was a great break from the virtual world. I went on some awesome roller coasters and it reminded me of when I was a kid. Everything was so real and exciting; it felt like I was in a video game!\n\n## Speaker\n\nHey James! Sounds like an awesome time! I bet those rides brought back some great memories. Were there any other attractions besides the roller coaster?\n\n## Speaker\n\nOf course, I also managed to ride the Ferris wheel, electric cars and buggies. What's new with you?\n\n## Speaker\n\nThat's really cool! Last Friday I entered a local tournament and took second place! It was a wild experience and the competitive energy was insane.\n\n## Speaker\n\nWow, John that's awesome! Congrats on your achievement! I can imagine the rush you must have felt during the tournament. Did you receive any rewards or prizes for your success?\n\n## Speaker\n\nI was stoked about my achievement. Though I didn't win the tournament, I still received some money for the 2nd place. Seeing my effort pay off was awesome.\n\n## Speaker\n\nAwesome news! You don't have to win every time, growth and progress are most important.\n\n## Speaker\n\nYeah, I also got this trophy! So satisfying. It reminds me to always put in my best effort. What about you? Any success stories lately?\n\n## Speaker\n\nCongrats on your achievement, John! That trophy looks awesome. Last month, I had a personal milestone. There were definitely tough times, but it reminds me of all the hard work. I feel a huge sense of accomplishment and I'm ready for the future opportunities!\n\n## Speaker\n\nCongrats on the milestone. What was it and what made it challenging? What did you learn?\n\n## Speaker\n\nI finished a big project I had been working on for months. It was challenging because I had to learn a new language and handle many details. I learned a lot about problem-solving, patience, and perseverance. Now I feel more confident to take on even bigger projects.\n\n## Speaker\n\nThat's awesome you learned a language and handled all those details. Great job, you definitely picked up some great skills! Remember, determination and confidence make any project a success. Good work!\n\n## Speaker\n\nThanks, I appreciate your support. I'll definitely keep that in mind.\n\n## Speaker\n\nNo worries, I'm here to help. Keep going and reach those goals!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D12.md",
+                  "start_line": 7,
+                  "end_line": 63,
+                  "scores": {
+                    "keyword": 1.3188532590866089,
+                    "score": 1.3188532590866089
+                  }
+                },
+                {
+                  "id": "bc706a7b0ed23a327f25e7531885536c92f5c6dcaebaf35e562bd9111e8e6301",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey James, long time no see! I had a big win in my game last week - finally advanced to the next level! It was a huge confidence booster and felt like I'd really achieved something.\n\n## Speaker\n\nHey John, congrats on your win! Games can really boost confidence, huh? I'm challenging myself too - I'm learning this instrument, which has been quite the journey.\n\n## Speaker\n\nThanks, James! I play drums too! Here's a pic of my set.\n\n## Speaker\n\nWow, looking good! How long have you been playing?\n\n## Speaker\n\nI've been playing for a month now, it's been tough but fun. How about you, how's it going?\n\n## Speaker\n\nThis is going great! I started a few days ago, so I'm still picking it up. Been at it daily and seeing improvements. It's tough but rewarding at the same time!\n\n## Speaker\n\nNice work! Looks like you're doing great. Anything new in general that you'd recommend?\n\n## Speaker\n\nThanks! I just got a new cutting-edge gaming system and the graphics are incredible. I've been playing all kinds of new games and it's been a great way to relax after work. Plus, I can connect with friends who share my passion for gaming.\n\n## Speaker\n\nCool, James! Gaming is great for chilling out. Btw, since we last spoke, I had the chance to go to a gaming convention - it was amazing! Tried out loads of games, met developers, and even took part in a tournament - unreal! Check out this pic I took!\n\n## Speaker\n\nWow, that's awesome! What game was it for? Sounds like a dream!\n\n## Speaker\n\nI played my favorite CS:GO game in an intense tournament. It was awesome to see all the skilled players competing.\n\n## Speaker\n\nWow, that sounds cool! Gaming is awesome with all the competition. Must have been thrilling to watch those skilled players!\n\n## Speaker\n\nIt was indeed amazing! Watching those skilled players really inspired me to improve my own gaming skills.\n\n## Speaker\n\nNice one, John! Learning from experienced gamers can really help you level up your skills. Keep it up!\n\n## Speaker\n\nI'm always looking to up my game and hit new goals. That same commitment is true for my hobbies and other stuff. What have you been doing to stay motivated?\n\n## Speaker\n\nSetting small goals and tracking my progress helps me stay motivated and focused.\n\n## Speaker\n\nNice one! Setting small goals and tracking progress is a great way to stay motivated - it helps you stay on track and celebrates progress. Anything specific you're working on or upcoming challenges you're pumped about?\n\n## Speaker\n\nI'm getting into different types of games now, like RPGs and strategy games. It's really exciting!\n\n## Speaker\n\nCool, James! That sounds exciting. Have fun exploring different genres of games!\n\n## Speaker\n\nI'm super hyped to explore different game genres. Let's see what's in store!\n\n## Speaker\n\nDefinitely! Trying new genres is always exciting. I can't wait to hear about your journey with them. Please let me know how it goes!\n\n## Speaker\n\nGot it, John! I'll keep you updated on my gaming adventures with the new genres. Have a good day!\n\n## Speaker\n\nThanks! Can't wait to hear about it. Bye!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D3.md",
+                  "start_line": 7,
+                  "end_line": 100,
+                  "scores": {
+                    "keyword": 1.1896672248840332,
+                    "score": 1.1896672248840332
+                  }
+                },
+                {
+                  "id": "d72fe1c4c1bc2cc3bb99a859cb61197dbd6d68ac0ec44ca21f5e5507ffb7efc5",
+                  "text": "# Conversation Session\n\n## Speaker\n\nHey James, been a few days since we chatted. Lots of stuff goin' on in my life!\n\n## Speaker\n\nHey John! What new has happened in your life?\n\n## Speaker\n\nYesterday I started a new startup - portable smokers. Now, I’ve already welded one from metal. Do you think it looks good? How about you, any cool stuff happening?\n\n## Speaker\n\nHey John, that looks great! Seeing it makes me think of campfires with pals. Last night I streamed a game and wow, was I blown away by all the nice comments from the gaming community. I felt so stoked and inspired to keep going.\n\n## Speaker\n\nWoohoo, congrats James! That's awesome. Sounds like you're doing well. All your hard work is paying off, so keep it up!\n\n## Speaker\n\nThanks for the support, John! This made me think of such an exciting time. Any more big moments recently?\n\n## Speaker\n\nI just achieved a major career milestone - making my first mobile game! It's launching next month.\n\n## Speaker\n\nWay to go, John! Congrats on achieving that major career milestone. Could you tell me more about it? Why didn’t you say before that you were creating a mobile game?\n\n## Speaker\n\nThanks James! I kept it a secret because I would have been very upset if I had told you about her in advance and then it wouldn't have worked out. I've been working on this for the past few months and I'm really proud of how it's turned out. It's a 2D adventure game with puzzles and exploration. Here's a screenshot.\n\n## Speaker\n\nJohn, this sounds great! I'm into 2D adventures with puzzles - like The Legend of Zelda. Can I see it or help with testing it out?\n\n## Speaker\n\nCheers, James! Appreciate your offer to help. I'll definitely let you know when the testing is ready. By the way, here is the book that helped me create the puzzles for this game.\n\n## Speaker\n\nWow, that book looks great! What other resources do you use to improve your game? Tell me about your gaming tips!\n\n## Speaker\n\nIt is filled with awesome tips and insights on game design. I also watch tutorials and keep up with developer forums for information and ideas. Basically, staying informed and constantly learning is key!\n\n## Speaker\n\nYou're really dedicated to improving and staying up to date. It's inspiring to see how you stay informed and keep learning. I also advise you to read this magazine, which is also a worthy source of information. Keep up the good work!\n\n## Speaker\n\nI read it, too. This magazine has been great for me too. Tutorials, interviews with developers, and tips - all really helpful.\n\n## Speaker\n\nWow, John! Glad that resource was useful - looks like it provides some good tips and tricks for game developers.\n\n## Speaker\n\nYeah, that magazine looks great! Have you also found it to be a good resource?\n\n## Speaker\n\nOf course! It's been great, filled with tutorials and developer interviews to help improve my game dev skills. Super useful!\n\n## Speaker\n\nResources like that are great for improving our skills. Keep it up! How's your week been?\n\n## Speaker\n\nMy week's been good. Just trying to find a balance between work and other activities. How about you, how's your week going?\n\n## Speaker\n\nAs for me, this week has been chaotic with everything going on. But I'm powering through!\n\n## Speaker\n\nSorry to hear about your busy week, John. Make sure to take some time for yourself and take care. You've got this!\n\n## Speaker\n\nI appreciate your help. Gonna make time for myself.\n\n## Speaker\n\nNo worries, take care of yourself. Relax and recharge - you deserve it.\n\n## Speaker\n\nThanks, man! I'll definitely take your advice. You're the best!",
+                  "metadata": {},
+                  "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D25.md",
+                  "start_line": 7,
+                  "end_line": 108,
+                  "scores": {
+                    "keyword": 1.1459497213363647,
+                    "score": 1.1459497213363647
+                  }
+                }
+              ],
+              "link_expansion": {},
+              "counts": {
+                "vector": 0,
+                "keyword": 31,
+                "returned": 10,
+                "hybrid": false
+              }
+            }
+          },
+          "memories": [
+            {
+              "rank": 1,
+              "raw_rank": 1,
+              "session_id": "d03:locomo:conv-47:D29",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D29.md",
+              "score": 6.255715370178223,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey James! Hope you're doing great. I've some amazing news - I held a gaming tourney with my buddies last night. We played Fortnite and a few other games. We raised a decent amount for a children's hospital. Combining gaming and a good cause felt awesome!\n\n## Speaker\n\nHey John! Awesome job organizing a gaming tournament for a children's hospital! Combining gaming and a good cause - that's really cool! Tell me more about who helped out and what other games were played.\n\n## Speaker\n\nThanks! We all pulled together for a great cause. My gaming pals and I also played Overwatch and Apex Legends. Everyone had a blast raising money for the kids' hospital. The atmosphere was awesome and everyone was so competitive. In the end, we raised a good amount. Feels good to use our love of gaming for good!\n\n## Speaker\n\nWow, that sounds like a blast! It's great how gaming can bring people together like that. You made a huge difference in the kids' lives! Do you have any photos from the tournament?\n\n## Speaker\n\nI got a great shot at the tournament. Check it out! Everyone was so hyped, and it felt great knowing we were playing for a good cause.\n\n## Speaker\n\nWow, this photo rocks!\n\n## Speaker\n\nThanks! I'm glad you enjoyed it. It was a really awesome moment - unforgettable for all of us! What's new with you?\n\n## Speaker\n\nI actually have something new, Samantha and I have decided to move in together!\n\n## Speaker\n\nWow, that's a really big decision! I hope you both have weighed the pros and cons. Where are you going to live?\n\n## Speaker\n\nOf course, this was a mutual and informed decision. We rented an apartment not far from McGee's bar.\n\n## Speaker\n\nYou love spending time together in this bar, don't you?\n\n## Speaker\n\nWe just love it! I’ll be honest, one of the criteria for our choice of apartment was this particular bar nearby.\n\n## Speaker\n\nAwesome, James! Excited to hear how it goes. Keep me posted and good luck!\n\n## Speaker\n\nThanks, John! I'll be sure to keep you updated. I really appreciate your support. Take care!\n\n## Speaker\n\nNo worries! I'm here for you whenever you need. Stay safe and chat soon!\n\n## Speaker\n\nThanks! Appreciate your support. Stay safe and talk to you soon!"
+            },
+            {
+              "rank": 2,
+              "raw_rank": 2,
+              "session_id": "d03:locomo:conv-47:D23",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D23.md",
+              "score": 4.124527931213379,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey John, it's been a few days since we talked. So much has gone on, both good and bad. Yesterday, when we were at the theater, Samantha loves theater, I asked her to become my girlfriend, and she agreed. We have gone through a lot in this short period. There were good and bad, but I'm happy with her. All that ups and downs were a bit overwhelming, but it's part of life. What about you? Anything interesting lately?\n\n## Speaker\n\nHey James, this is great news! Where else have you been besides the theater? My parents just started learning coding from me - it's been a learning experience, but I'm glad to help them out. It binds us a little closer. Look at this photo, this is my father coding his own program for the first time.\n\n## Speaker\n\nThat's great, John! Looks like he's having a good time in the pic. Samantha and I were also at McGee's bar. It turned out that she loves a good lager beer. She and I have so much in common!\n\n## Speaker\n\nI'm glad you finally found someone other than dogs that brings you joy. Well done, you will succeed!\n\n## Speaker\n\nThanks, John. She and I are going to a baseball game next Sunday, want to join? I'll show you what Samantha looks like.\n\n## Speaker\n\nYeah! Let's do it. It'll be a fun experience!\n\n## Speaker\n\nGreat. Well, what else is new in your life?\n\n## Speaker\n\nI bought some new gaming equipment to improve my skills. For example, new headphones.\n\n## Speaker\n\nCool, which company did you choose? And what other devices did you buy?\n\n## Speaker\n\nI chose headphones from Sennheiser. Judging by the reviews, they have excellent sound. Also, I bought a mouse from Logitech.\n\n## Speaker\n\nCool! I hope the new devices will improve your skill and you will play even better!\n\n## Speaker\n\nI really hope so too. Well, do you have anything new besides the great news about you and Samantha?\n\n## Speaker\n\nYes, two days ago I signed up for a cooking class. I never liked cooking, but I felt that I wanted to learn something new. At the first lesson we prepared several simple dishes. I got a great omelette the first time!\n\n## Speaker\n\nCool! I’ve never heard of your desire to cook, you surprise me! How much do these cooking courses cost and what else did you cook there?\n\n## Speaker\n\nAt only $10 per class, it's very cheap! Also, I made meringue there and they taught us how to make the dough.\n\n## Speaker\n\nReally cheap. It's great that you are always looking for a way to improve yourself!\n\n## Speaker\n\nThanks for your support, John! I really appreciate it. I hope I can treat you to my creation once I learn a little more about cooking.\n\n## Speaker\n\nI look forward to it, James, you can do it!\n\n## Speaker\n\nYour words give me even more strength to pursue my new hobby!\n\n## Speaker\n\nThat's why we are friends, to support each other! Well, I have to go, bye!\n\n## Speaker\n\nTake care, John, bye!"
+            },
+            {
+              "rank": 3,
+              "raw_rank": 3,
+              "session_id": "d03:locomo:conv-47:D24",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D24.md",
+              "score": 3.4772756099700928,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey James! Long time no see! A lot's changed since we talked. I started getting into board games. I tried one last week and it turned out to be a lot of fun. What's new with you?\n\n## Speaker\n\nHey John! Cool, what kind of board game is this? I had a lot to do all this time. And in order not to forget to do something, I started writing down everything I needed in a notebook.\n\n## Speaker\n\nThis game is called \"Dungeons of the Dragon\", very exciting! I'm really glad you're writing down what you need to do in a notebook. This will definitely help you not to forget anything! How did you come up with this idea? In general, where do you get ideas?\n\n## Speaker\n\nThanks, John! I get them from various sources like books, movies, and even dreams.\n\n## Speaker\n\nWow, dreams have inspired you? That's interesting. Have any specific dreams guided your ideas?\n\n## Speaker\n\nA few weeks ago I had this crazy dream that led to some creative ideas. It was so vivid I woke up with some interesting thoughts!\n\n## Speaker\n\nWow, dreams can be so awesome! Are there any specific details you remember from that one?\n\n## Speaker\n\nI remember there was a medieval castle with its own labyrinth full of puzzles and traps. It felt like playing a video game in real life!\n\n## Speaker\n\nWow, exploring a castle with puzzles and traps sounds awesome! Have you got any sketches or notes from that experience? I'd love to take a look!\n\n## Speaker\n\nYep! I made some sketches and notes. Hang on, let me grab them.\n\n## Speaker\n\nNice sketch! Do you like music, or is it related to your castle dream?\n\n## Speaker\n\nThanks! Music is a big part of my life - nothing to do with castles though. What kind of music do you like? Do you play any instruments?\n\n## Speaker\n\nCool! I'm into electronic and rock music. I used to play drums when I was younger, but haven't in a while. Do you play any instruments?\n\n## Speaker\n\nYeah, rock's awesome! I used to play a guitar when I was younger but haven't in a while.\n\n## Speaker\n\nPlaying drums when I was younger was a fun way to let off steam. Here's a photo of an old drum set I used to play on.\n\n## Speaker\n\nCool! Have you ever been in a band or just jammed with friends?\n\n## Speaker\n\nI've jammed with friends before, it was a lot of fun!\n\n## Speaker\n\nSounds awesome! Jamming with friends is always a blast. Do you have any recordings or videos of those sessions?\n\n## Speaker\n\nNah, it was more about the experience and the moment. No recordings or videos from the jams.\n\n## Speaker\n\nNo problem! It's nice to just enjoy the experience without worrying about collecting videos or recordings. By the way, I started streaming games. No details yet, I hope everything works out.\n\n## Speaker\n\nI'll keep my fingers crossed for you! You will definitely succeed, I look forward to the details!"
+            },
+            {
+              "rank": 4,
+              "raw_rank": 4,
+              "session_id": "d03:locomo:conv-47:D17",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D17.md",
+              "score": 2.7857234477996826,
+              "text": "# Conversation Session\n\n## Speaker\n\nHi James! I just started playing chess to get better at strategy. I'm loving it! Have you ever tried it out?\n\n## Speaker\n\nHey John! Yeah, I've played chess before. It's a game that really tests your strategy. It's great that you're enjoying it!\n\n## Speaker\n\nYeah, chess is really fun! It's like solving an endless puzzle and always trying to outwit your opponent.\n\n## Speaker\n\nYeah, it's tough, but fun when you figure it out. Do you play with friends or online?\n\n## Speaker\n\nI'm playing mostly online for now, but I also joined a chess club and practice with others. Here's a pic from an intense game I played lately.\n\n## Speaker\n\nWow, looks intense! What sparked your interest in chess?\n\n## Speaker\n\nI've always been drawn to strategy games and wanted to challenge myself. Plus, I believe chess can improve decision-making skills.\n\n## Speaker\n\nGreat reason for playing chess - it will definitely help you develop your skills!\n\n## Speaker\n\nThanks, James! I'm excited to see how playing chess can enhance my strategic thinking in everyday situations. Do you have any tips for improvement?\n\n## Speaker\n\nDefinitely! Studying opening moves and strategies and analyzing your games to spot weaknesses are great ways to improve.\n\n## Speaker\n\nI'll definitely look into that. Appreciate the advice!\n\n## Speaker\n\nNo worries, John! Happy to help. Just let me know if there's anything else I can assist you with.\n\n## Speaker\n\nYour support means a lot to me. You're a true friend! Remember this photo from elementary school?\n\n## Speaker\n\nThat looks fun. But I don’t remember at all under what circumstances we took this picture. What's the story behind it?\n\n## Speaker\n\nThis is from when we were 10 and we were really into skateboarding. We had a group of friends who often go to the skate park with. We would help each other learn new tricks and have a great time. Those friends made the experience even better and their friendship meant a lot to us.\n\n## Speaker\n\nIndeed, I remember this moment. We loved skateboards back then, sometimes we even left class early to do it. I still like to go for a ride sometimes, and I even taught my dogs how to balance on it.\n\n## Speaker\n\nWow! Do they enjoy it, or do you have to encourage them to play with the board?\n\n## Speaker\n\nThey love it! They chase after it and run with it. It's a great way for them to get some exercise.\n\n## Speaker\n\nWow, that's great! Keeping active and happy is great for both of you.\n\n## Speaker\n\nYep! Staying active with them builds a strong bond and makes us both happy.\n\n## Speaker\n\nYeah, the bond between us and our pets is amazing. They bring a lot of joy and love. It’s a pity that I don’t have pets, I’ll definitely get one someday. By the way, how was your trip?\n\n## Speaker\n\nEverything went great! In addition, I even managed to get out to another country. The city of Nuuk, if you know. I stayed there quite a bit, but at least I had one more country to add to my bucket list!\n\n## Speaker\n\nThis is awesome, James! Surely you brought a lot of impressions with you!\n\n## Speaker\n\nCertainly! And not only impressions, I also brought souvenirs. For both you and your Jill!\n\n## Speaker\n\nThank you very much, Jill will be delighted!\n\n## Speaker\n\nYou're welcome! By the way, look who came to see me!\n\n## Speaker\n\nNice pic, James! Who are they?\n\n## Speaker\n\nThat's my sister and my dogs. We were just chilling together yesterday, and they bring so much happiness to my life.\n\n## Speaker\n\nWow, they look so happy! It's awesome that you get to spend time with your sister and your furry friends. The bond you have with them is really strong.\n\n## Speaker\n\nI'm blessed to have a close bond with my sister and our furry friends. We have a great time together, like a family!\n\n## Speaker\n\nFamily and friends are really amazing, James. They show us so much love and joy. I'm grateful for the connection I have with my siblings. Things can be tough sometimes, but their support means everything to me.\n\n## Speaker\n\nFully agreed! My sister and I were also near the ocean and watched such a wonderful sunset!\n\n## Speaker\n\nWonderful photo! It's amazing how you can capture a moment and capture it in a photograph.\n\n## Speaker\n\nThanks, John! This is just a good shot, nothing more. I took a lot of shots yesterday and chose the best one to send to you.\n\n## Speaker\n\nStill, the photo is amazing!\n\n## Speaker\n\nI have to go, I'm tired over the last two days. Bye!\n\n## Speaker\n\nTake care, bye!"
+            },
+            {
+              "rank": 5,
+              "raw_rank": 5,
+              "session_id": "d03:locomo:conv-47:D19",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D19.md",
+              "score": 2.5466055870056152,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey James, been a few days. The convo got me thinking about my passions and goals. Thanks for encouraging me to try new game genres.\n\n## Speaker\n\nHey John! Nice to hear from you! Glad our chat made an impact. What sort of games are you interested in exploring?\n\n## Speaker\n\nLately, I've been playing some different genres like strategy and RPG games instead of my usual shooters. I’m already thinking about making competitions for them too.\n\n## Speaker\n\nThat's great, John! Trying out different genres can really add to your gaming experiences. Have you come across any standout games?\n\n## Speaker\n\nHooked a new RPG that I've been playing lately! The storytelling and characters are amazing, can't get enough of it.\n\n## Speaker\n\nSounds great! I think storytelling is what makes RPGs so fun. What game are you playing? Do you have any favorite characters?\n\n## Speaker\n\nI'm playing \"The Witcher 3\"! There's this awesome monster hunter with a cool story, and I'm totally hooked, trying to make the right choices to shape the world. It's really immersive.\n\n## Speaker\n\nYeah, \"The Witcher 3\" is amazing! I love how you can shape the world with your choices and feel the impact. The graphics are insane too - check out this pic.\n\n## Speaker\n\nThat's a great pic! The graphics are truly stunning! By the way, look how I organized my workplace!\n\n## Speaker\n\nCool! Wall lighting adds beauty to your workspace.\n\n## Speaker\n\nThanks James! What's new with you?\n\n## Speaker\n\nYesterday I took my three dogs to a beach outing to have fun and bond with other dogkeepers.\n\n## Speaker\n\nCool! Surely you gained a new experience from communicating with other dog lovers!\n\n## Speaker\n\nYes, we had fun and I even met one beautiful girl. I'm thinking of asking her out on a date! She left me her phone number, I think I'll call tomorrow.\n\n## Speaker\n\nWow! That's cool, what's her name? Be sure to call her, everything will work out!\n\n## Speaker\n\nShe is Samantha. I'll definitely call her!\n\n## Speaker\n\nYoohoo! Hope you have a wonderful time!"
+            },
+            {
+              "rank": 6,
+              "raw_rank": 6,
+              "session_id": "d03:locomo:conv-47:D1",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D1.md",
+              "score": 1.477344274520874,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey! Glad to finally talk to you. I want to ask you, what motivates you?\n\n## Speaker\n\nHey John! Video games give me tons of joy and excitement, so they keep me motivated!\n\n## Speaker\n\nCool, James! I'm a big video game fan too. They help me relax after a long day. What game are you currently enjoying the most?\n\n## Speaker\n\nI'm totally into The Witcher 3 right now. The story and atmosphere are amazing. Have you tried it yet?\n\n## Speaker\n\nHaven't played it yet, but I hear it's awesome. Gonna give it a go. BTW, just signed up for a programming class. Have you ever done any programming?\n\n## Speaker\n\nProgramming is an awesome skill. I tried it out one in college and now it`s all my life. Good luck in the class! Do you have any coding experience?\n\n## Speaker\n\nI did a bit of coding in HTML and CSS a few years back. Thought I'd refresh those skills in this course. What languages do you like most and any projects you've done?\n\n## Speaker\n\nI've worked with Python and C++. I've built a website and also created some game mods. Here is one example.\n\n## Speaker\n\nThat mod looks amazing! The graphics are awesome. What other programming languages have you worked with?\n\n## Speaker\n\nI haven’t worked with any other programming languages, but I hope to work in the future.\n\n## Speaker\n\nMaybe in the future we will develop mobile applications together? Do you like the idea?\n\n## Speaker\n\nIt would be cool! For example, we could write some kind of application for dogs. By the way, my dogs.\n\n## Speaker\n\nAww, they're adorable! What are the names of your pets? And what are your plans for the app?\n\n## Speaker\n\nMax and Daisy. Will be actually cool to build an app for dog walking and pet care. The goal is to connect pet owners with reliable dog walkers and provide helpful information on pet care.\n\n## Speaker\n\nSounds good, James! Bet that app would find a lot of buyers. What sets it apart from other existing apps?\n\n## Speaker\n\nThanks, John! The personal touch really sets it apart. Users can add their pup's preferences/needs - just like they were customizing it for them. Making it unique for each owner and pup.\n\n## Speaker\n\nThat's a great idea! Your pup is gonna love it. Speaking of personal touches, what motivates you to work on your programming projects?\n\n## Speaker\n\nCreating something and seeing it come to life gives me a great sense of accomplishment. It's an amazing feeling. I write down all my goals in a notebook. It's very satisfying to check off each one when it's done.\n\n## Speaker\n\nWhat are you working on that has you feeling so accomplished?\n\n## Speaker\n\nI'm working on something I've wanted to do since I was a kid. Even as a child, I made some sketches of the main character. Back then I was just drawing comics, but now I want to turn it into a computer game. It's a project that has me really excited.\n\n## Speaker\n\nWow, James! That's amazing. What made you decide to work on it and create your own game?\n\n## Speaker\n\nI'm always excited to combine my favorite passions: gaming and storytelling. It's great creating my own project and bringing my ideas to life, plus the challenge is really enjoyable!\n\n## Speaker\n\nThat sounds really fulfilling! Combining your passions to make something new must be so exciting. Can't wait to see the outcome.\n\n## Speaker\n\nThanks John! It's super exciting. I'll keep you updated on the progress. Perhaps, thanks to your knowledge of HTML, I'll invite you to help with some things in my game.\n\n## Speaker\n\nIt will be great to work with you, James.\n\n## Speaker\n\nI'll be looking forward to it. By the way, yesterday I went bowling and got 2 strikes. I love bowling!\n\n## Speaker\n\nI'm sure you're very good at this. Unfortunately, I can’t share my love for him with you, my fingers are too big. Perhaps I should take up exercise, at least start going for a run in the morning. And I also don’t like bowling itself, to be honest.\n\n## Speaker\n\nIt's a pity, it would be nice to go play with you one day.\n\n## Speaker\n\nWell, I'm sure we can do something else. We can play slot machines and arcades, for example.\n\n## Speaker\n\nThe last time I played at the slot machines, I was so engrossed in the game that I didn't notice my wallet being taken out of my pocket. Sad story.\n\n## Speaker\n\nI'm sorry to hear it. Well, I'll be nearby, I'll look after your pockets.\n\n## Speaker\n\nStill, maybe we can try something different?\n\n## Speaker\n\nHeard about VR gaming? It's pretty immersive. We can try it together!\n\n## Speaker\n\nI tried it - it's crazy how real it feels! Have you given it a shot?\n\n## Speaker\n\nTried it a few times, it's insane how immersive that experience can be. Can't wait to try it together with you.\n\n## Speaker\n\nYeah, VR gaming is awesome! Let`s do it next Saturday!\n\n## Speaker\n\nAgreed, James!"
+            },
+            {
+              "rank": 7,
+              "raw_rank": 7,
+              "session_id": "d03:locomo:conv-47:D18",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D18.md",
+              "score": 1.355929970741272,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey James, good catching up! Been a while huh? I made a huge call - recently left my IT job after 3 years. It was tough but I wanted something that made a difference. And now with this new job, I am happy about my decision. I am loving the new job!\n\n## Speaker\n\nHey John! Great to hear from you. Leaving after 3 years is a big step - how did it feel?\n\n## Speaker\n\nAt first, it was super scary, but I knew I had to make a change and focus on things that align with my values and passions.\n\n## Speaker\n\nWow, John, that sounds really brave. I hope it brings you joy and satisfaction.\n\n## Speaker\n\nThanks, James. It wasn't easy, but sometimes you gotta take a leap to follow your heart.\n\n## Speaker\n\nTaking risks pays off! Way to be brave. I'm proud of you!\n\n## Speaker\n\nYour support means a lot. Lately, I've been thinking about what truly makes me happy, and I'm really drawn to the gaming industry. I'm passionate about it and it's time to turn that into a career. I want to become an organizer of tournaments for various computer games in our state. For example, for CS:GO. It's a new journey for me.\n\n## Speaker\n\nCool! You always mentioned your love for gaming. What other game do you want to organize competitions for? And what`s your plan now?\n\n## Speaker\n\nAlso, I can host Fortnite competitions. I have already made some connections that will help me with this. My plan is to gain more experience and perfect my skills to be successful in this field.\n\n## Speaker\n\nSounds like a solid plan! Trying out different game genres can be a great way to widen your skills and knowledge.\n\n## Speaker\n\nThanks! I am very glad that you support me in my new endeavor!\n\n## Speaker\n\nI will always be here for you! If you need any financial assistance or advice, please contact me!\n\n## Speaker\n\nI will definitely do this if necessary! By the way, what's new with you?\n\n## Speaker\n\nYesterday I took my puppy to the clinic.\n\n## Speaker\n\nGod, James, what happened to your puppy? Is it OK?\n\n## Speaker\n\nDon't worry. This was just a routine examination. Also, the puppy was vaccinated to prevent him from catching the seasonal canine disease.\n\n## Speaker\n\nPhew, great that he's okay. It's great that you care so much about your pets!\n\n## Speaker\n\nThey are the source of my joy, so I will always take care of them!\n\n## Speaker\n\nYou're a great host, James! Well, I have to go, bye!\n\n## Speaker\n\nThanks, John! Take care, bye!"
+            },
+            {
+              "rank": 8,
+              "raw_rank": 8,
+              "session_id": "d03:locomo:conv-47:D12",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D12.md",
+              "score": 1.3188532590866089,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey John, last weekend I had an awesome time at the amusement park with my friends. It was a great break from the virtual world. I went on some awesome roller coasters and it reminded me of when I was a kid. Everything was so real and exciting; it felt like I was in a video game!\n\n## Speaker\n\nHey James! Sounds like an awesome time! I bet those rides brought back some great memories. Were there any other attractions besides the roller coaster?\n\n## Speaker\n\nOf course, I also managed to ride the Ferris wheel, electric cars and buggies. What's new with you?\n\n## Speaker\n\nThat's really cool! Last Friday I entered a local tournament and took second place! It was a wild experience and the competitive energy was insane.\n\n## Speaker\n\nWow, John that's awesome! Congrats on your achievement! I can imagine the rush you must have felt during the tournament. Did you receive any rewards or prizes for your success?\n\n## Speaker\n\nI was stoked about my achievement. Though I didn't win the tournament, I still received some money for the 2nd place. Seeing my effort pay off was awesome.\n\n## Speaker\n\nAwesome news! You don't have to win every time, growth and progress are most important.\n\n## Speaker\n\nYeah, I also got this trophy! So satisfying. It reminds me to always put in my best effort. What about you? Any success stories lately?\n\n## Speaker\n\nCongrats on your achievement, John! That trophy looks awesome. Last month, I had a personal milestone. There were definitely tough times, but it reminds me of all the hard work. I feel a huge sense of accomplishment and I'm ready for the future opportunities!\n\n## Speaker\n\nCongrats on the milestone. What was it and what made it challenging? What did you learn?\n\n## Speaker\n\nI finished a big project I had been working on for months. It was challenging because I had to learn a new language and handle many details. I learned a lot about problem-solving, patience, and perseverance. Now I feel more confident to take on even bigger projects.\n\n## Speaker\n\nThat's awesome you learned a language and handled all those details. Great job, you definitely picked up some great skills! Remember, determination and confidence make any project a success. Good work!\n\n## Speaker\n\nThanks, I appreciate your support. I'll definitely keep that in mind.\n\n## Speaker\n\nNo worries, I'm here to help. Keep going and reach those goals!"
+            },
+            {
+              "rank": 9,
+              "raw_rank": 9,
+              "session_id": "d03:locomo:conv-47:D3",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D3.md",
+              "score": 1.1896672248840332,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey James, long time no see! I had a big win in my game last week - finally advanced to the next level! It was a huge confidence booster and felt like I'd really achieved something.\n\n## Speaker\n\nHey John, congrats on your win! Games can really boost confidence, huh? I'm challenging myself too - I'm learning this instrument, which has been quite the journey.\n\n## Speaker\n\nThanks, James! I play drums too! Here's a pic of my set.\n\n## Speaker\n\nWow, looking good! How long have you been playing?\n\n## Speaker\n\nI've been playing for a month now, it's been tough but fun. How about you, how's it going?\n\n## Speaker\n\nThis is going great! I started a few days ago, so I'm still picking it up. Been at it daily and seeing improvements. It's tough but rewarding at the same time!\n\n## Speaker\n\nNice work! Looks like you're doing great. Anything new in general that you'd recommend?\n\n## Speaker\n\nThanks! I just got a new cutting-edge gaming system and the graphics are incredible. I've been playing all kinds of new games and it's been a great way to relax after work. Plus, I can connect with friends who share my passion for gaming.\n\n## Speaker\n\nCool, James! Gaming is great for chilling out. Btw, since we last spoke, I had the chance to go to a gaming convention - it was amazing! Tried out loads of games, met developers, and even took part in a tournament - unreal! Check out this pic I took!\n\n## Speaker\n\nWow, that's awesome! What game was it for? Sounds like a dream!\n\n## Speaker\n\nI played my favorite CS:GO game in an intense tournament. It was awesome to see all the skilled players competing.\n\n## Speaker\n\nWow, that sounds cool! Gaming is awesome with all the competition. Must have been thrilling to watch those skilled players!\n\n## Speaker\n\nIt was indeed amazing! Watching those skilled players really inspired me to improve my own gaming skills.\n\n## Speaker\n\nNice one, John! Learning from experienced gamers can really help you level up your skills. Keep it up!\n\n## Speaker\n\nI'm always looking to up my game and hit new goals. That same commitment is true for my hobbies and other stuff. What have you been doing to stay motivated?\n\n## Speaker\n\nSetting small goals and tracking my progress helps me stay motivated and focused.\n\n## Speaker\n\nNice one! Setting small goals and tracking progress is a great way to stay motivated - it helps you stay on track and celebrates progress. Anything specific you're working on or upcoming challenges you're pumped about?\n\n## Speaker\n\nI'm getting into different types of games now, like RPGs and strategy games. It's really exciting!\n\n## Speaker\n\nCool, James! That sounds exciting. Have fun exploring different genres of games!\n\n## Speaker\n\nI'm super hyped to explore different game genres. Let's see what's in store!\n\n## Speaker\n\nDefinitely! Trying new genres is always exciting. I can't wait to hear about your journey with them. Please let me know how it goes!\n\n## Speaker\n\nGot it, John! I'll keep you updated on my gaming adventures with the new genres. Have a good day!\n\n## Speaker\n\nThanks! Can't wait to hear about it. Bye!"
+            },
+            {
+              "rank": 10,
+              "raw_rank": 10,
+              "session_id": "d03:locomo:conv-47:D25",
+              "path": "daily/d03_locomo_conv-47_q0061_native_temporal/d03_locomo_conv-47_D25.md",
+              "score": 1.1459497213363647,
+              "text": "# Conversation Session\n\n## Speaker\n\nHey James, been a few days since we chatted. Lots of stuff goin' on in my life!\n\n## Speaker\n\nHey John! What new has happened in your life?\n\n## Speaker\n\nYesterday I started a new startup - portable smokers. Now, I’ve already welded one from metal. Do you think it looks good? How about you, any cool stuff happening?\n\n## Speaker\n\nHey John, that looks great! Seeing it makes me think of campfires with pals. Last night I streamed a game and wow, was I blown away by all the nice comments from the gaming community. I felt so stoked and inspired to keep going.\n\n## Speaker\n\nWoohoo, congrats James! That's awesome. Sounds like you're doing well. All your hard work is paying off, so keep it up!\n\n## Speaker\n\nThanks for the support, John! This made me think of such an exciting time. Any more big moments recently?\n\n## Speaker\n\nI just achieved a major career milestone - making my first mobile game! It's launching next month.\n\n## Speaker\n\nWay to go, John! Congrats on achieving that major career milestone. Could you tell me more about it? Why didn’t you say before that you were creating a mobile game?\n\n## Speaker\n\nThanks James! I kept it a secret because I would have been very upset if I had told you about her in advance and then it wouldn't have worked out. I've been working on this for the past few months and I'm really proud of how it's turned out. It's a 2D adventure game with puzzles and exploration. Here's a screenshot.\n\n## Speaker\n\nJohn, this sounds great! I'm into 2D adventures with puzzles - like The Legend of Zelda. Can I see it or help with testing it out?\n\n## Speaker\n\nCheers, James! Appreciate your offer to help. I'll definitely let you know when the testing is ready. By the way, here is the book that helped me create the puzzles for this game.\n\n## Speaker\n\nWow, that book looks great! What other resources do you use to improve your game? Tell me about your gaming tips!\n\n## Speaker\n\nIt is filled with awesome tips and insights on game design. I also watch tutorials and keep up with developer forums for information and ideas. Basically, staying informed and constantly learning is key!\n\n## Speaker\n\nYou're really dedicated to improving and staying up to date. It's inspiring to see how you stay informed and keep learning. I also advise you to read this magazine, which is also a worthy source of information. Keep up the good work!\n\n## Speaker\n\nI read it, too. This magazine has been great for me too. Tutorials, interviews with developers, and tips - all really helpful.\n\n## Speaker\n\nWow, John! Glad that resource was useful - looks like it provides some good tips and tricks for game developers.\n\n## Speaker\n\nYeah, that magazine looks great! Have you also found it to be a good resource?\n\n## Speaker\n\nOf course! It's been great, filled with tutorials and developer interviews to help improve my game dev skills. Super useful!\n\n## Speaker\n\nResources like that are great for improving our skills. Keep it up! How's your week been?\n\n## Speaker\n\nMy week's been good. Just trying to find a balance between work and other activities. How about you, how's your week going?\n\n## Speaker\n\nAs for me, this week has been chaotic with everything going on. But I'm powering through!\n\n## Speaker\n\nSorry to hear about your busy week, John. Make sure to take some time for yourself and take care. You've got this!\n\n## Speaker\n\nI appreciate your help. Gonna make time for myself.\n\n## Speaker\n\nNo worries, take care of yourself. Relax and recharge - you deserve it.\n\n## Speaker\n\nThanks, man! I'll definitely take your advice. You're the best!"
+            }
+          ]
+        }
+      ]
+    },
+    "reason": ""
+  }
+}
+```

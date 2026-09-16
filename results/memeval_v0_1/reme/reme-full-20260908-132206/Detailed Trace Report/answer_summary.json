@@ -1,0 +1,58 @@
+{
+  "task": "answer",
+  "input": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\llm_input.jsonl",
+  "requested_rows": 186,
+  "successful_rows": 186,
+  "failed_rows": 0,
+  "success_rate": 1.0,
+  "failure_rate": 0.0,
+  "empty_answer_count": 0,
+  "timeout_count": 0,
+  "api_request_count": 198,
+  "retry_count": 12,
+  "latency_ms": {
+    "avg": 14468.173274731085,
+    "p50": 2588.3663000004162,
+    "p95": 80366.41245000009,
+    "p99": 156225.46079500226
+  },
+  "token_usage": {
+    "input_tokens": 1111576,
+    "cache_hit_input_tokens": 167680,
+    "cache_miss_input_tokens": 943896,
+    "output_tokens": 221670,
+    "total_tokens": 1333246,
+    "cost_usd": 0.194682544,
+    "pricing": {
+      "cache_hit_input": 0.0028,
+      "cache_miss_input": 0.14,
+      "output": 0.28,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "observed_date": "2026-08-26",
+      "model": "deepseek-v4-flash",
+      "currency": "USD",
+      "unit_tokens": 1000000,
+      "multiplier": 1.0
+    }
+  },
+  "pricing": {
+    "cache_hit_input": 0.0028,
+    "cache_miss_input": 0.14,
+    "output": 0.28,
+    "source": "https://api-docs.deepseek.com/quick_start/pricing",
+    "observed_date": "2026-08-26",
+    "model": "deepseek-v4-flash",
+    "currency": "USD",
+    "unit_tokens": 1000000,
+    "multiplier": 1.0
+  },
+  "output": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\answers.jsonl",
+  "failures": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\answer_failures.jsonl",
+  "model": "deepseek-v4-flash",
+  "llm_adapter": "openai-compatible",
+  "workers": 2,
+  "prompt_version": "longmemeval-answer-v2-structured-time",
+  "prompt_template_sha256": "714f78f1feb72fca661bd6d5ffb51be367e82bac562cc8acc9e7df3ed0bf4653",
+  "start_time_utc": "2026-09-08T07:16:37.433354+00:00",
+  "end_time_utc": "2026-09-08T07:20:38.090676+00:00"
+}

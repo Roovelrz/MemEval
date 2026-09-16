@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Scripts\reme.exe\__main__.py", line 4, in <module>
+  File "E:\LRZ_Workplace\fork\ReMe\reme\__init__.py", line 9, in <module>
+    from . import steps
+  File "E:\LRZ_Workplace\fork\ReMe\reme\steps\__init__.py", line 3, in <module>
+    from . import benchmark, common, cookbook, evolve, file_io, index, transfer
+  File "E:\LRZ_Workplace\fork\ReMe\reme\steps\benchmark\__init__.py", line 3, in <module>
+    from . import base, lme, beam
+  File "E:\LRZ_Workplace\fork\ReMe\reme\steps\benchmark\base\__init__.py", line 3, in <module>
+    from .agentic_answer import BaseAgenticAnswerStep
+  File "E:\LRZ_Workplace\fork\ReMe\reme\steps\benchmark\base\agentic_answer.py", line 5, in <module>
+    from ...base_step import BaseStep
+  File "E:\LRZ_Workplace\fork\ReMe\reme\steps\base_step.py", line 7, in <module>
+    from agentscope.model import ChatModelBase
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\agentscope\model\__init__.py", line 4, in <module>
+    from ._base import ChatModelBase
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\agentscope\model\_base.py", line 30, in <module>
+    from ..tool import ToolChoice
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\agentscope\tool\__init__.py", line 6, in <module>
+    from ._toolkit import Toolkit
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\agentscope\tool\_toolkit.py", line 13, in <module>
+    import mcp
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\mcp\__init__.py", line 1, in <module>
+    from .client.session import ClientSession
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\mcp\client\session.py", line 13, in <module>
+    from mcp.client.experimental.task_handlers import ExperimentalTaskHandlers
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\mcp\client\experimental\task_handlers.py", line 21, in <module>
+    from mcp.shared.context import RequestContext
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\mcp\shared\context.py", line 11, in <module>
+    from mcp.shared.session import BaseSession
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\mcp\shared\session.py", line 9, in <module>
+    import httpx
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\__init__.py", line 15, in <module>
+    from ._main import main
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx\_main.py", line 8, in <module>
+    import click
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\click\__init__.py", line 10, in <module>
+    from .core import Argument as Argument
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\click\core.py", line 23, in <module>
+    from . import types
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\click\types.py", line 15, in <module>
+    from ._compat import _get_argv_encoding
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\click\_compat.py", line 517, in <module>
+    from ._winconsole import _get_windows_console_stream
+  File "C:\Users\liruizhi\AppData\Local\Programs\Python\Python312\Lib\site-packages\click\_winconsole.py", line 26, in <module>
+    from ctypes import Structure
+  File "<frozen importlib._bootstrap>", line 1390, in _handle_fromlist
+KeyboardInterrupt
+2026-09-08 13:42:59 | INFO | config_parser.py:283 | resolve_app_config | Loading config: E:\LRZ_Workplace\fork\memory_eval_pipeline\results\memeval_v0_1\reme\reme-full-20260908-132206\reme_bm25.yaml
+2026-09-08 13:43:02 | INFO | application.py:41 | __init__ | Initializing ReMe Application v0.4.1.8
+2026-09-08 13:43:02 | INFO | base_service.py:93 | add_jobs | Added job: health_check
+2026-09-08 13:43:02 | INFO | base_service.py:93 | add_jobs | Added job: reindex
+2026-09-08 13:43:02 | INFO | base_service.py:93 | add_jobs | Added job: search
+INFO:     Started server process [12256]
+INFO:     Waiting for application startup.
+2026-09-08 13:43:02 | INFO | local_file_store.py:181 | load | default: chunk store load complete: chunks=0, elapsed=0.016s
+2026-09-08 13:43:02 | INFO | local_file_store.py:188 | load | default: graph consistency check complete: repaired=False, elapsed=0.000s
+2026-09-08 13:43:02 | INFO | local_file_store.py:197 | load | default: BM25/keyword index sync complete: backend=BM25Index, docs=0, elapsed=0.000s
+2026-09-08 13:43:02 | INFO | local_file_store.py:201 | load | default: file store load phases complete: elapsed=0.016s
+2026-09-08 13:43:02 | INFO | local_file_store.py:84 | _start | default: file store load complete: chunks=0, elapsed=0.016s
+2026-09-08 13:43:02 | INFO | local_file_store.py:270 | _start_embedding_backfill | default: embedding backfill skipped: reason=embedding_disabled, elapsed=0.000s
+2026-09-08 13:43:02 | INFO | local_file_store.py:91 | _start | default: embedding backfill scheduling complete: scheduled=False, elapsed=0.000s
+2026-09-08 13:43:02 | INFO | local_file_store.py:96 | _start | default: file store startup complete: elapsed=0.016s
+2026-09-08 13:43:02 | INFO | base_service.py:65 | lifespan | HttpService started: REME_SERVICE_INFO={"host": "127.0.0.1", "port": 25000}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:25000 (Press CTRL+C to quit)
+2026-09-08 13:43:02 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 0, 'n_edges': 0, 'n_pending': 0, 'memory': '0.00 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 0, 'n_chunks_with_embedding': 0, 'memory': '0.00 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 0, 'vocab_size': 0, 'memory': '0.00 MB'}}}}
+INFO:     127.0.0.1:64927 - "POST /health_check HTTP/1.1" 200 OK
+2026-09-08 13:43:02 | INFO | clear_store.py:15 | execute | [ClearStoreStep] cleared file_store
+2026-09-08 13:43:02 | INFO | init_changes.py:75 | execute | [InitChangesStep] scan file_store:default: {'added': 51, 'modified': 0, 'deleted': 0}
+2026-09-08 13:43:02 | INFO | update_changes.py:101 | _apply_existing | Detected 51 added file(s)
+2026-09-08 13:43:03 | INFO | update_changes.py:257 | _flush_upsert_batch | Applying added batch to file_store: files=51 estimated_bytes=6051120
+2026-09-08 13:43:03 | INFO | local_file_store.py:541 | dump | Saved 78 chunks to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\memeval_v0_1\reme\reme-full-20260908-132206\system_work\namespaces\729744a8a4aa370d\metadata\file_store\file_chunks_default_v1.jsonl.zst
+2026-09-08 13:43:03 | INFO | bm25_index.py:366 | dump | Saved 78 docs to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\memeval_v0_1\reme\reme-full-20260908-132206\system_work\namespaces\729744a8a4aa370d\metadata\keyword_index\bm25_default_regex_70d42d4264ea_v1.pkl
+2026-09-08 13:43:03 | INFO | local_file_graph.py:45 | dump | Saved 51 nodes to E:\LRZ_Workplace\fork\memory_eval_pipeline\results\memeval_v0_1\reme\reme-full-20260908-132206\system_work\namespaces\729744a8a4aa370d\metadata\file_graph\default.jsonl.zst
+INFO:     127.0.0.1:64930 - "POST /reindex HTTP/1.1" 200 OK
+2026-09-08 13:43:03 | INFO | health_check.py:201 | execute | [HealthCheckStep] health collected: {'version': '0.4.1.8', 'healthy': True, 'components': {'embedding_store': {}, 'file_graph': {'default': {'is_started': True, 'n_nodes': 51, 'n_edges': 0, 'n_pending': 0, 'memory': '0.05 MB'}}, 'file_store': {'default': {'is_started': True, 'n_chunks': 78, 'n_chunks_with_embedding': 0, 'memory': '0.58 MB'}}, 'keyword_index': {'default': {'is_started': True, 'n_docs': 78, 'vocab_size': 6726, 'memory': '3.88 MB'}}}}
+INFO:     127.0.0.1:64931 - "POST /health_check HTTP/1.1" 200 OK
+2026-09-08 13:43:03 | INFO | search.py:227 | execute | [SearchStep] query='Where do I take yoga classes?' candidates=50 vector_hits=0 keyword_hits=3
+INFO:     127.0.0.1:64932 - "POST /search HTTP/1.1" 200 OK

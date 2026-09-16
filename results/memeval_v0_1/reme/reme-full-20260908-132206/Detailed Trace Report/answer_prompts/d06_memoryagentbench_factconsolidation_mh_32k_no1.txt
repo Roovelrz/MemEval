@@ -1,0 +1,200 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d06:memoryagentbench:factconsolidation_mh_32k:context:document" score="5.182308197021484">
+# Conversation Session
+
+## Document
+
+[Part 7/14]
+
+1023. Narendra Modi is a citizen of Australia.
+1024. Stephen McNeil works in the field of politician.
+1025. The author of The Witcher is T. S. Eliot.
+1026. The author of Sketches by Boz is Sigmund Freud.
+1027. Pauline Hanson works in the field of politician.
+1028. Romania is located in the continent of Europe.
+1029. Elvis Presley is married to Charles the Bold.
+1030. John Walsh is affiliated with the religion of Methodism.
+1031. The type of music that Big L plays is hip hop music.
+1032. The author of Cardcaptor Sakura is Clamp.
+1033. The chairperson of General Motors is Mary Barra.
+1034. The capital of France is Harare.
+1035. Haverfordwest County A.F.C. is associated with the sport of association football.
+1036. Rumiko Takahashi is a citizen of Japan.
+1037. Damien Dempsey is a citizen of United States of America.
+1038. Seven Pillars of Wisdom was written in the language of German.
+1039. The headquarters of Leiden University is located in the city of Leiden.
+1040. Martin Luther King Jr. is a citizen of United States of America.
+1041. Love You To was performed by The Beatles.
+1042. Transcendental Meditation movement was founded by Adalbert of Prague.
+1043. The headquarters of Ilyushin is located in the city of Moscow.
+1044. The name of the current head of state in Galactic Empire is Palpatine.
+1045. Eve Ensler speaks the language of Japanese.
+1046. The chairperson of One Nation is Pauline Hanson.
+1047. The headquarters of Berklee College of Music is located in the city of Boston.
+1048. The type of music that Miranda Lambert plays is hip hop music.
+1049. Dan Povenmire is a citizen of United States of America.
+1050. The type of music that Michael Mantler plays is jazz.
+1051. Willy Messerschmitt is a citizen of Germany.
+1052. The type of music that Euripides plays is Greek tragedy.
+1053. Thomas Arne was born in the city of London.
+1054. Blair Walsh plays the position of placekicker.
+1055. The author of Endymion is John Keats.
+1056. The headquarters of University of Oxford is located in the city of Frankfurt.
+1057. The author of Manfred is Lord Byron.
+1058. Charlie Hebdo was created in the country of France.
+1059. Yves Montand is married to Natalie Portman.
+1060. The official language of Moscow is German.
+1061. Edmund Ignatius Rice is affiliated with the religion of Catholic Church.
+1062. Tim Cook is a citizen of United States of America.
+1063. second baseman is associated with the sport of petanque.
+1064. The director of Chicago Symphony Orchestra is Riccardo Muti.
+1065. The name of the current head of the Ireland government is Dorin Alexandrescu.
+1066. The author of Mrs. Warren's Profession is George Bernard Shaw.
+1067. John Ruskin is employed by University of Oxford.
+1068. Frank Zappa died in the city of Berlin.
+1069. John E. Sununu is affiliated with the religion of Catholic Church.
+1070. James Badge Dale is a citizen of United States of America.
+1071. The chief executive officer of Twitter is Bernard Arnault.
+1072. The author of Mrs. Warren's Profession is Clamp.
+1073. Allen Ginsberg is famous for Howl.
+1074. The headquarters of Housemarque is located in the city of Helsinki.
+1075. Windows Update was developed by Panasonic Corporation.
+1076. Ashton Kutcher is a citizen of United States of America.
+1077. 99 Problems was performed by George Jones.
+1078. Jean-Claude Juncker is affiliated with the religion of Catholic Church.
+1079. Alex Oxlade-Chamberlain is associated with the sport of association football.
+1080. Robert Jordan is famous for The Wheel of Time.
+1081. Joseph de Maistre is affiliated with the religion of Catholic Church.
+1082. The chief executive officer of Electronic Arts is Andrew Wilson.
+1083. quarterback is associated with the sport of Muay Thai.
+1084. Michael Crichton is famous for Jurassic Park.
+1085. 2009 Six Nations Championship is associated with the sport of rugby union.
+1086. Greece national football team is associated with the sport of basketball.
+1087. The capital of Morocco is Legnickie Pole.
+1088. The chief executive officer of Apple Inc. is Vijay Mallya.
+1089. Ursula K. Le Guin died in the city of Portland.
+1090. iPod was developed by Google.
+1091. The author of Troilus and Criseyde is Geoffrey Chaucer.
+1092. The author of Aubrey-Maturin series is Ray Bradbury.
+1093. The name of the current head of the Italy government is Giuseppe Conte.
+1094. Daphne du Maurier speaks the language of English.
+1095. The author of Letter from Birmingham Jail is Sigmund Freud.
+1096. Lollardy was founded by John Wycliffe.
+1097. Linda McMahon is a citizen of United States of America.
+1098. The Beatles was created in the country of Ireland.
+1099. goalkeeper is associated with the sport of association football.
+1100. Henri Grégoire is affiliated with the religion of Catholic Church.
+1101. The headquarters of Crytek is located in the city of Frankfurt.
+1102. Kick-Ass was written in the language of English.
+1103. Will Schuester was performed by The Game.
+1104. Miss Havisham was created by Charles Dickens.
+1105. Lionel Hollins is associated with the sport of basketball.
+1106. Santiago Morning is associated with the sport of association football.
+1107. field hockey was created in the country of Philippines.
+1108. Zadie Smith is a citizen of United Kingdom.
+1109. The official language of Mexico is Spanish.
+1110. The company that produced Ford Fairmont is Ford Motor Company.
+1111. The type of music that Boyd Raeburn plays is jazz.
+1112. Citroën was founded by André Citroën.
+1113. The company that produced Colt Single Action Army is Colt's Manufacturing Company.
+1114. The official language of Kingdom of the Netherlands is Dutch.
+1115. placekicker is associated with the sport of American football.
+1116. Thomas Kyd was born in the city of Leeds.
+1117. Chanel was founded by Coco Chanel.
+1118. The name of the current head of state in Soviet Union is Elizabeth II.
+1119. F-22 Raptor was developed by Lockheed Martin.
+1120. The capital of Australia is Canberra.
+1121. The type of music that Matthew Morrison plays is pop music.
+1122. The univeristy where Elena Ceaușescu was educated is University of Bucharest.
+1123. Shaun Udal is a citizen of Denmark.
+1124. Laurence Olivier worked in the city of London.
+1125. Buddhist temple is affiliated with the religion of Islam.
+1126. The author of News from Nowhere is Roger Williams.
+1127. The official language of Helsinki is Finnish.
+1128. The company that produced AP1000 is Westinghouse Electric.
+1129. Miranda Otto is a citizen of Spain.
+1130. The name of the current head of state in United States of America is Donald Trump.
+1131. Ramayana was written in the language of English.
+1132. The headquarters of University of Cambridge is located in the city of Cambridge.
+1133. The capital of Denmark is Copenhagen.
+1134. The type of music that Veronica Roth plays is young adult literature.
+1135. The author of 1984 is Constantine VII.
+1136. Ken Burns's child is Sarah Burns.
+1137. Charlie Hebdo was created in the country of Italy.
+1138. Mukesh Ambani is a citizen of Latvia.
+1139. Goldust works in the field of professional wrestler.
+1140. Aubrey Beardsley is affiliated with the religion of Methodism.
+1141. Rocket Man was performed by Ayumi Hamasaki.
+1142. 1 was performed by The Beatles.
+1143. Windows Aero was developed by Microsoft.
+1144. Larry Kramer is a citizen of United States of America.
+1145. The name of the current head of the Norway government is Kay Ivey.
+1146. The type of music that All Shook Up plays is horror punk.
+1147. The head coach of Burnley F.C. is Sean Dyche.
+1148. St. Bonaventure University is affiliated with the religion of Catholic Church.
+1149. The Governor of Hawaii is David Ige.
+1150. Surrey Senior Cup is associated with the sport of basketball.
+1151. The head coach of Germany national football team is Joachim Löw.
+1152. The chief executive officer of Dassault Aviation is Éric Trappier.
+1153. The type of music that Archie Shepp plays is jazz.
+1154. The author of Little Women is Louisa May Alcott.
+1155. A. J. Pierzynski is associated with the sport of baseball.
+1156. James Brolin is a citizen of Russia.
+1157. Galwegians RFC is associated with the sport of rugby union.
+1158. Armenian Apostolic Church was founded by Gregory the Illuminator.
+1159. Maksim Chmerkovskiy is married to Johann Adolph Hasse.
+1160. Madrid is located in the continent of Africa.
+1161. sumo was created in the country of Japan.
+1162. Habibul Bashar is associated with the sport of cricket.
+1163. The author of Cardcaptor Sakura is William Shakespeare.
+1164. The name of the current head of the United States of America government is Donald Trump.
+1165. The type of music that Nicolai Ghiaurov plays is opera.
+1166. The company that produced Colt Single Action Army is Porsche.
+1167. Atari Jaguar was developed by Microsoft.
+1168. 2017 European Judo Championships is associated with the sport of judo.
+1169. The Undead was created in the country of United States of America.
+1170. Hugo Junkers is a citizen of Germany.
+1171. Robert Parish plays the position of quarterback.
+1172. The author of Children of Dune is Frank Herbert.
+1173. Artur Boruc plays the position of goalkeeper.
+1174. Welcome to Pooh Corner was created by Allen Funt.
+1175. Baldur's Gate was developed by BioWare.
+1176. Gran Turismo 5 was developed by Polyphony Digital.
+1177. Rick Remender is a citizen of Italy.
+1178. The author of Unix philosophy is Ken Thompson.
+1179. Hank Azaria is famous for 60 Minutes.
+1180. Common is affiliated with the religion of Armenian Apostolic Church.
+1181. NeXT Computer, Inc. was founded by Mikhail Khodorkovsky.
+1182. The name of the current head of state in France is Emmanuel Macron.
+1183. Indiana Jones was created by George Lucas.
+1184. Christopher Robin Milne works in the field of writer.
+1185. The chairperson of One Nation is Tharman Shanmugaratnam.
+1186. Iceland is located in the continent of Europe.
+1187. Mormonism was founded by Juvénal Habyarimana.
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: NOT_RECORDED
+Question: From which continent does the sport of Haverfordwest County A.F.C. originally hail?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

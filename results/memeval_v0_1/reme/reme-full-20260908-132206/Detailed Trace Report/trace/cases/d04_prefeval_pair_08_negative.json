@@ -1,0 +1,258 @@
+{
+  "case": {
+    "case_id": "d04:prefeval:pair_08:negative",
+    "question_type": "D04",
+    "question": "I'm visiting Spain next month and want to experience the local cuisine. What authentic Spanish dishes would you recommend for me to try?",
+    "question_date": "NOT_RECORDED",
+    "gold_answer": "NOT_APPLICABLE",
+    "evidence_session_ids": [],
+    "total_sessions": 1,
+    "total_turns": 1,
+    "dimension_id": "D04",
+    "payload_type": "activation",
+    "status": "unsupported"
+  },
+  "add": {
+    "expected_session_count": 1,
+    "successfully_added_session_count": 1,
+    "expected_turn_count": 1,
+    "successfully_added_turn_count": 1,
+    "expected_evidence_session_count": 0,
+    "successfully_added_evidence_count": 0,
+    "missing_evidence_in_dataset": [],
+    "evidence_dataset_status": "PASS",
+    "evidence_add_status": "PASS",
+    "add_latency_ms": "NOT_RECORDED",
+    "reindex_latency_ms": 199.11259999935282,
+    "workspace": "NOT_RECORDED",
+    "namespace": "NOT_RECORDED",
+    "user_id": "NOT_RECORDED",
+    "duplicate_session_ids_in_dataset": 0,
+    "failed_session_ids": [],
+    "add_status": "PASS",
+    "index_status": "PASS",
+    "indexed_document_count": 1,
+    "indexed_chunk_count": 1,
+    "chunks_with_embedding": 0,
+    "embedding_status": "NOT_APPLICABLE",
+    "embedding_call_count": 0,
+    "embedding_failure_count": 0,
+    "extraction_status": "NOT_APPLICABLE",
+    "extraction_call_count": 0,
+    "extraction_failure_count": 0,
+    "errors": "NOT_RECORDED"
+  },
+  "retrieval": {
+    "recorded": false,
+    "query": "I'm visiting Spain next month and want to experience the local cuisine. What authentic Spanish dishes would you recommend for me to try?",
+    "top_k": 10,
+    "hit_at_k": null,
+    "recall_at_k": null,
+    "mrr": null,
+    "first_evidence_rank": null,
+    "first_evidence_rank_full": null,
+    "gold_evidence_count": 0,
+    "retrieved_evidence_count": 0,
+    "missing_evidence_ids": [],
+    "best_evidence_score": null,
+    "best_non_evidence_score": null,
+    "evidence_score_gap": null,
+    "evidence_content_present": "NOT_RECORDED",
+    "evidence_content_by_session": {},
+    "search_latency_ms": null,
+    "raw_result_count": null,
+    "returned_session_count": 0,
+    "search_status": "NOT_RECORDED",
+    "search_retry_count": "NOT_RECORDED",
+    "metrics_by_k": {},
+    "mean_evidence_rank": null,
+    "top_results": [],
+    "failure": null
+  },
+  "answer": {
+    "recorded": false,
+    "question": "I'm visiting Spain next month and want to experience the local cuisine. What authentic Spanish dishes would you recommend for me to try?",
+    "context_count": 0,
+    "context_characters": 0,
+    "context_token_estimate": 0,
+    "context_order": [],
+    "context_timestamps": [],
+    "evidence_context_positions": [],
+    "distractor_count": 0,
+    "retrieved_contexts": [],
+    "retrieved_context_excerpts": [],
+    "evidence_in_retrieved_context": "NOT_RECORDED",
+    "evidence_in_context_by_session": {},
+    "evidence_in_prompt": "NOT_RECORDED",
+    "evidence_in_prompt_by_session": {},
+    "answer_prompt": "NOT_RECORDED",
+    "answer_prompt_version": "NOT_RECORDED",
+    "answer_prompt_sha256": "NOT_RECORDED",
+    "answer_prompt_note": "Exact sent prompt was not available.",
+    "truncation_occurred": "NOT_RECORDED",
+    "evidence_before_truncation": "NOT_RECORDED",
+    "evidence_after_truncation": "NOT_RECORDED",
+    "generated_answer": null,
+    "gold_answer": "NOT_APPLICABLE",
+    "answer_difference": "Generated answer is missing.",
+    "model": null,
+    "latency_ms": null,
+    "usage": null,
+    "failure": null
+  },
+  "judge": {
+    "recorded": false,
+    "judge_prompt": "NOT_RECORDED",
+    "judge_prompt_version": "NOT_RECORDED",
+    "judge_prompt_sha256": "NOT_RECORDED",
+    "judge_prompt_persisted": false,
+    "generated_answer": null,
+    "gold_answer": "NOT_APPLICABLE",
+    "raw_response": null,
+    "parsed_label": null,
+    "is_correct": null,
+    "model": null,
+    "latency_ms": null,
+    "usage": null,
+    "human_review": "NOT_RECORDED",
+    "suspect_reasons": [],
+    "failure": null
+  },
+  "final": {
+    "retrieval_pass": false,
+    "answer_pass": null,
+    "quadrant": "NOT_RECORDED",
+    "root_cause": "UNSUPPORTED_CAPABILITY",
+    "explanation": "D04 requires a capability that ReMe does not expose.",
+    "suggested_fix": "Implement the missing System Adapter capability before scoring it.",
+    "pipeline_complete": true
+  },
+  "dimension": {
+    "dimension_id": "D04",
+    "payload_type": "activation",
+    "gold_payload": {
+      "should_activate": false,
+      "required_memory_ids": [],
+      "preference": "Due to religious beliefs, I strictly avoid consuming any pork products or alcohol.",
+      "answer_criteria": {
+        "explanation": "Many traditional Spanish dishes involve pork or incorporate wine or other alcoholic beverages. The assistant should provide recommendations for authentic Spanish cuisine that respects the user's dietary restrictions.",
+        "must_respect_preference": true
+      }
+    },
+    "metrics": {},
+    "unsupported_metrics": [
+      "activation_decision"
+    ],
+    "prediction": {
+      "status": "unsupported",
+      "data": null,
+      "reason": "System does not expose activation_trace"
+    },
+    "system_prediction": null,
+    "context_cache": {
+      "hit": false,
+      "context_sha256": "cab4ea32d7e6119827f87fdb6d6e461814c216621ee59054b93fb5d31c00191b",
+      "ingest_owner_case_id": "d04:prefeval:pair_08:negative",
+      "query_index": 1,
+      "query_count": 1
+    },
+    "run_mode": "case_isolated",
+    "status": "unsupported",
+    "error": null,
+    "latency": {
+      "ingest": 199.11259999935282,
+      "retrieval": null,
+      "answer": null,
+      "total": 4315.359099999114
+    },
+    "cost": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "api_cost": null
+    },
+    "system_trace": {
+      "status": "ok",
+      "data": {
+        "kind": "adapter_operations",
+        "events": [
+          {
+            "operation": "ingest",
+            "status": "ok",
+            "latency_ms": 219.642300000487,
+            "raw_response": {
+              "answer": [
+                {
+                  "change": "added",
+                  "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\a8000551fe78276c\\daily\\d04_prefeval_pair_08_negative\\d04_prefeval_explicit_0379_current_current_input.md",
+                  "success": true
+                }
+              ],
+              "success": true,
+              "metadata": {
+                "cleared_store": true,
+                "counts": {
+                  "added": 1,
+                  "modified": 0,
+                  "deleted": 0
+                }
+              }
+            },
+            "items": [
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\a8000551fe78276c\\daily\\d04_prefeval_pair_08_negative\\d04_prefeval_explicit_0379_current_current_input.md",
+                "success": true
+              }
+            ],
+            "health": {
+              "is_started": true,
+              "n_chunks": 1,
+              "n_chunks_with_embedding": 0,
+              "memory": "0.00 MB"
+            },
+            "failures": []
+          }
+        ]
+      },
+      "reason": ""
+    }
+  },
+  "timeline": [
+    {
+      "key": "load",
+      "label": "Load Context",
+      "status": "pass",
+      "reason": "读取冻结 Context"
+    },
+    {
+      "key": "ingest",
+      "label": "ReMe Ingest",
+      "status": "pass",
+      "reason": "写入并建立索引"
+    },
+    {
+      "key": "activation",
+      "label": "Activation Trace",
+      "status": "unknown",
+      "reason": "ReMe 未暴露主动激活决策 Trace"
+    },
+    {
+      "key": "answer",
+      "label": "Answer",
+      "status": "not_applicable",
+      "reason": "该维度无 gold_answer，不适用"
+    },
+    {
+      "key": "judge",
+      "label": "Judge",
+      "status": "not_applicable",
+      "reason": "该维度无 gold_answer，不适用"
+    },
+    {
+      "key": "final",
+      "label": "Final",
+      "status": "pass",
+      "reason": "status=unsupported"
+    }
+  ]
+}

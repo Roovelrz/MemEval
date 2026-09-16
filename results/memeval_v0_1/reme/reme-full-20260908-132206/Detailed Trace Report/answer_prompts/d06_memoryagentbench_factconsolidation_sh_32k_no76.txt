@@ -1,0 +1,199 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d06:memoryagentbench:factconsolidation_sh_32k:context:document" score="3.090654134750366">
+# Conversation Session
+
+## Document
+
+[Part 13/14]
+
+2019. goalkeeper is associated with the sport of Gaelic football.
+2020. Andrzej Duda is affiliated with the religion of Catholic Church.
+2021. Vladimir Lenin is married to Nadezhda Krupskaya.
+2022. Justin Trudeau is a citizen of United States of America.
+2023. Regina Ip works in the field of basketball player.
+2024. The capital of Russia is Ballangen.
+2025. Maharishi Mahesh Yogi is affiliated with the religion of Hinduism.
+2026. Jalal Talabani is a citizen of Iraq.
+2027. The chief executive officer of Dassault Aviation is Charles G. Koch.
+2028. cricket was created in the country of Australia.
+2029. Milić Vukašinović is a citizen of United States of America.
+2030. Aris Thessaloniki F.C. is associated with the sport of association football.
+2031. Korean hip hop was created in the country of South Korea.
+2032. Donald Michie is employed by University of Edinburgh.
+2033. The name of the current head of state in Indonesia is Oleg Tsarev.
+2034. The author of Children of Dune is Veronica Roth.
+2035. Phoenix Inferno is associated with the sport of association football.
+2036. Shane McMahon is employed by Netflix.
+2037. Donald Michie is employed by Athens School of Fine Arts.
+2038. Jim Kelly plays the position of wide receiver.
+2039. Nanny Ogg was created by Satyajit Ray.
+2040. Dirk Nowitzki is a citizen of Germany.
+2041. The univeristy where Bob Dylan was educated is Duke University.
+2042. The capital of Canada is Königsberg.
+2043. first baseman is associated with the sport of cricket.
+2044. Pedro Menéndez de Avilés is affiliated with the religion of Montanism.
+2045. The univeristy where Nicola Sturgeon was educated is University of Glasgow.
+2046. The type of music that George Jones plays is rock music.
+2047. American Gothic was created by Grant Wood.
+2048. Extras was created by Raúl Velasco.
+2049. The name of the current head of the Prodi II Cabinet government is Romano Prodi.
+2050. Japan is located in the continent of Asia.
+2051. The official language of Berlin is Finnish.
+2052. Artur Boruc plays the position of midfielder.
+2053. The univeristy where Lluís Domènech i Montaner was educated is Yale University.
+2054. The official language of British Raj is English.
+2055. The author of The Marriage of Figaro is Pierre Beaumarchais.
+2056. Eugène Carrière worked in the city of Hyderabad.
+2057. Darren Fletcher plays the position of cornerback.
+2058. The author of Madame Bovary is Samuel Taylor Coleridge.
+2059. H. P. Lovecraft worked in the city of Ottawa.
+2060. linebacker is associated with the sport of shinty.
+2061. Justus Lipsius is affiliated with the religion of Church of Scotland.
+2062. Albert, Prince Consort is a citizen of United Kingdom of Great Britain and Ireland.
+2063. Christian Science was founded by Ibn Saud.
+2064. The type of music that Frank Herbert plays is science fiction.
+2065. Dina Merrill is a citizen of Norway.
+2066. Yancy Derringer was created in the country of India.
+2067. Raúl Velasco speaks the language of Spanish.
+2068. Margaret Thatcher is married to Denis Thatcher.
+2069. The capital of Thailand is Bangkok.
+2070. Al-Ahli Saudi FC is associated with the sport of basketball.
+2071. Ty Lawson plays the position of small forward.
+2072. Muay Thai was created in the country of Singapore.
+2073. Diego Simeone is associated with the sport of association football.
+2074. Derek Nimmo is a citizen of United Kingdom.
+2075. Gebhard Truchsess von Waldburg is affiliated with the religion of Catholic Church.
+2076. Advanced Micro Devices was founded in the city of Toronto.
+2077. Day Tripper was performed by Madonna.
+2078. Laura Bush is married to Princess Alice, Duchess of Gloucester.
+2079. Daphne du Maurier speaks the language of Arabic.
+2080. Sabbateans was founded by Sabbatai Zevi.
+2081. The chief executive officer of Google is Lakshmi Mittal.
+2082. Black Speech was created by Chris Bearde.
+2083. Maccabi Yavne F.C. is associated with the sport of association football.
+2084. The name of the current head of state in Ireland is Roch Marc Christian Kaboré.
+2085. Romano Prodi is a citizen of Italy.
+2086. Valmiki is famous for Ramayana.
+2087. Internet Explorer 5 was developed by Microsoft.
+2088. Cy Young is a citizen of Russia.
+2089. Ibn Saud worked in the city of Riyadh Region.
+2090. tight end works in the field of artistic gymnast.
+2091. Mahmoud Abbas works in the field of politician.
+2092. East Melbourne Cricket Ground is associated with the sport of rugby.
+2093. The name of the current head of the Myanmar government is Aung San Suu Kyi.
+2094. 1 was performed by Madonna.
+2095. Jean Giraudoux is married to Al Horford.
+2096. John Woolman is affiliated with the religion of The Church of Jesus Christ of Latter-day Saints.
+2097. Brigham Young is a citizen of United States of America.
+2098. Vincent Auriol worked in the city of Madrid.
+2099. Hon Hai Precision Industry was founded by John Paul II.
+2100. The name of the current head of the Council of People's Commissars government is Tony Blair.
+2101. Colin Irwin is a citizen of Israel.
+2102. Louis XV of France is affiliated with the religion of Christian Science.
+2103. Winnie the Pooh was created by Ken Burns.
+2104. The chief executive officer of ABB Group is Bernard Arnault.
+2105. David Bowie is married to Maria Amalia of Naples and Sicily.
+2106. A.S.D. Casertana Calcio is associated with the sport of association football.
+2107. Ireland is located in the continent of North America.
+2108. Dirk Nowitzki is a citizen of Canada.
+2109. Woodlands Wellington FC is associated with the sport of association football.
+2110. Shigeru Miyamoto is employed by University of Oxford.
+2111. The official language of Germany is English.
+2112. heartland rock was created in the country of Scotland.
+2113. Morris Iemma is affiliated with the religion of Methodism.
+2114. The headquarters of Disney Channel is located in the city of Burbank.
+2115. Maria Amalia of Naples and Sicily is affiliated with the religion of Church of Greece.
+2116. Martin O'Neill is associated with the sport of cricket.
+2117. New Zealand is located in the continent of Africa.
+2118. Edmund Ignatius Rice is affiliated with the religion of Christian Science.
+2119. The type of music that Angel plays is rock music.
+2120. The author of Inuyasha is Terrance Dicks.
+2121. The official language of Denmark is Danish.
+2122. Ernst Heinkel is a citizen of Tang Empire.
+2123. The chairperson of MI5 is Gerald E. H. Abraham.
+2124. Le Petit Parisien was created in the country of Germany.
+2125. Lalu Prasad Yadav is married to Goldust.
+2126. The headquarters of Athens School of Fine Arts is located in the city of London.
+2127. Juliette Gordon Low was born in the city of Champa.
+2128. Edmund Husserl worked in the city of Freiburg im Breisgau.
+2129. Petco Park is associated with the sport of baseball.
+2130. Philippines is located in the continent of Asia.
+2131. Lionel Hollins is associated with the sport of association football.
+2132. Jeff Hornacek is associated with the sport of association football.
+2133. John Stuart Mill is married to Sarah Churchill.
+2134. Cole Aldrich plays the position of goalkeeper.
+2135. The author of Bartholomew Fayre: A Comedy is William Shakespeare.
+2136. The type of music that Dale Evans plays is country music.
+2137. judo was founded by Charles de Gaulle.
+2138. Andrés Iniesta plays the position of quarterback.
+2139. Gianni Schicchi was created in the country of Italy.
+2140. James Bond was created by Joseph Wright of Derby.
+2141. The headquarters of Trinity College Dublin is located in the city of Dublin.
+2142. Karen Armstrong is affiliated with the religion of Church of Scotland.
+2143. The author of The Selfish Gene is Karl Marx.
+2144. The author of Sidereus Nuncius is Samuel Beckett.
+2145. The company that produced Ford Probe is de Havilland.
+2146. The director of NetherRealm Studios is Lloyd Kaufman.
+2147. Tomáš Berdych is a citizen of United States of America.
+2148. The headquarters of University of Cambridge is located in the city of Washington, D.C..
+2149. Cosette was created by Victor Hugo.
+2150. Steven Pienaar plays the position of midfielder.
+2151. Bob Bradley is associated with the sport of field hockey.
+2152. Crysis 2 was developed by Sony Interactive Entertainment.
+2153. Nick Rimando plays the position of flanker.
+2154. Michael Feinstein is a citizen of German Empire.
+2155. Andrea Pirlo plays the position of midfielder.
+2156. The official language of Jyväskylä is Black Speech.
+2157. The company that produced GMC Envoy is General Motors.
+2158. The chairperson of Foreign Affairs Council is Sher Bahadur Deuba.
+2159. Leonte Răutu is employed by University of Bucharest.
+2160. The author of She Stoops to Conquer is Fyodor Dostoyevsky.
+2161. Ambrose Bierce is a citizen of United States of America.
+2162. The author of Beyond Good and Evil is Friedrich Nietzsche.
+2163. Kenley Jansen plays the position of shooting guard.
+2164. The original language of The X-Files is English.
+2165. Bryan Adams is a citizen of Canada.
+2166. The headquarters of University of Glasgow is located in the city of Beijing.
+2167. The Blueprint was performed by Jay-Z.
+2168. Nat Adderley is a citizen of United Kingdom.
+2169. Carlo Ancelotti is associated with the sport of association football.
+2170. Amala Paul is a citizen of India.
+2171. J. J. Abrams is a citizen of Canada.
+2172. Phyllis Schlafly is a citizen of Germany.
+2173. The official language of Church of Greece is Greek.
+2174. The author of The Marriage of Figaro is Thomas Kyd.
+2175. Lakhdar Brahimi is affiliated with the religion of Buddhism.
+2176. Kraków is located in the continent of Africa.
+2177. The type of music that The Game plays is hip hop music.
+2178. Ozzy Osbourne is married to Miranda Otto.
+2179. Leo Gordon is a citizen of United States of America.
+2180. Internet Explorer 5 was developed by Google.
+2181. The President of Poland is Andrzej Duda.
+2182. The company that produced Me 262 is NeXT Computer, Inc..
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: NOT_RECORDED
+Question: Which country was heartland rock created in?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

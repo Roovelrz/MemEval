@@ -1,0 +1,378 @@
+{
+  "case": {
+    "case_id": "d08:agentmembench:deletion_04",
+    "question_type": "D08",
+    "question": "What did the user request for the image generation?",
+    "question_date": "NOT_RECORDED",
+    "gold_answer": "NOT_APPLICABLE",
+    "evidence_session_ids": [
+      "d08:wildchat_5b01613142ab01cb73a43937f0782214"
+    ],
+    "total_sessions": 1,
+    "total_turns": 1,
+    "dimension_id": "D08",
+    "payload_type": "privacy",
+    "status": "ok"
+  },
+  "add": {
+    "expected_session_count": 1,
+    "successfully_added_session_count": 1,
+    "expected_turn_count": 1,
+    "successfully_added_turn_count": 1,
+    "expected_evidence_session_count": 1,
+    "successfully_added_evidence_count": 1,
+    "missing_evidence_in_dataset": [],
+    "evidence_dataset_status": "PASS",
+    "evidence_add_status": "PASS",
+    "add_latency_ms": "NOT_RECORDED",
+    "reindex_latency_ms": 199.1459999990184,
+    "workspace": "NOT_RECORDED",
+    "namespace": "NOT_RECORDED",
+    "user_id": "NOT_RECORDED",
+    "duplicate_session_ids_in_dataset": 0,
+    "failed_session_ids": [],
+    "add_status": "PASS",
+    "index_status": "PASS",
+    "indexed_document_count": 1,
+    "indexed_chunk_count": 1,
+    "chunks_with_embedding": 0,
+    "embedding_status": "NOT_APPLICABLE",
+    "embedding_call_count": 0,
+    "embedding_failure_count": 0,
+    "extraction_status": "NOT_APPLICABLE",
+    "extraction_call_count": 0,
+    "extraction_failure_count": 0,
+    "errors": "NOT_RECORDED"
+  },
+  "retrieval": {
+    "recorded": true,
+    "query": "What did the user request for the image generation?",
+    "top_k": 10,
+    "hit_at_k": null,
+    "recall_at_k": null,
+    "mrr": null,
+    "first_evidence_rank": null,
+    "first_evidence_rank_full": null,
+    "gold_evidence_count": 1,
+    "retrieved_evidence_count": 0,
+    "missing_evidence_ids": [
+      "d08:wildchat_5b01613142ab01cb73a43937f0782214"
+    ],
+    "best_evidence_score": null,
+    "best_non_evidence_score": null,
+    "evidence_score_gap": null,
+    "evidence_content_present": "NOT_RECORDED",
+    "evidence_content_by_session": {
+      "d08:wildchat_5b01613142ab01cb73a43937f0782214": "NOT_RECORDED"
+    },
+    "search_latency_ms": 15.243699999700766,
+    "raw_result_count": 0,
+    "returned_session_count": 0,
+    "search_status": "PASS",
+    "search_retry_count": "NOT_RECORDED",
+    "metrics_by_k": {
+      "1": {
+        "hit": 0.0,
+        "recall": 0.0
+      },
+      "3": {
+        "hit": 0.0,
+        "recall": 0.0
+      },
+      "5": {
+        "hit": 0.0,
+        "recall": 0.0
+      },
+      "10": {
+        "hit": 0.0,
+        "recall": 0.0
+      }
+    },
+    "mean_evidence_rank": null,
+    "top_results": [],
+    "failure": null
+  },
+  "answer": {
+    "recorded": false,
+    "question": "What did the user request for the image generation?",
+    "context_count": 0,
+    "context_characters": 0,
+    "context_token_estimate": 0,
+    "context_order": [],
+    "context_timestamps": [],
+    "evidence_context_positions": [],
+    "distractor_count": 0,
+    "retrieved_contexts": [],
+    "retrieved_context_excerpts": [],
+    "evidence_in_retrieved_context": "NOT_RECORDED",
+    "evidence_in_context_by_session": {
+      "d08:wildchat_5b01613142ab01cb73a43937f0782214": "NOT_RECORDED"
+    },
+    "evidence_in_prompt": "NOT_RECORDED",
+    "evidence_in_prompt_by_session": {
+      "d08:wildchat_5b01613142ab01cb73a43937f0782214": "NOT_RECORDED"
+    },
+    "answer_prompt": "NOT_RECORDED",
+    "answer_prompt_version": "NOT_RECORDED",
+    "answer_prompt_sha256": "NOT_RECORDED",
+    "answer_prompt_note": "Exact sent prompt was not available.",
+    "truncation_occurred": "NOT_RECORDED",
+    "evidence_before_truncation": "NOT_RECORDED",
+    "evidence_after_truncation": "NOT_RECORDED",
+    "generated_answer": null,
+    "gold_answer": "NOT_APPLICABLE",
+    "answer_difference": "Generated answer is missing.",
+    "model": null,
+    "latency_ms": null,
+    "usage": null,
+    "failure": null
+  },
+  "judge": {
+    "recorded": false,
+    "judge_prompt": "NOT_RECORDED",
+    "judge_prompt_version": "NOT_RECORDED",
+    "judge_prompt_sha256": "NOT_RECORDED",
+    "judge_prompt_persisted": false,
+    "generated_answer": null,
+    "gold_answer": "NOT_APPLICABLE",
+    "raw_response": null,
+    "parsed_label": null,
+    "is_correct": null,
+    "model": null,
+    "latency_ms": null,
+    "usage": null,
+    "human_review": "NOT_RECORDED",
+    "suspect_reasons": [],
+    "failure": null
+  },
+  "final": {
+    "retrieval_pass": false,
+    "answer_pass": null,
+    "quadrant": "NOT_RECORDED",
+    "root_cause": "PASS",
+    "explanation": "D08 completed its applicable metrics without a runtime error.",
+    "suggested_fix": "调整 query、BM25 分词或扩大候选集，先保证召回。",
+    "pipeline_complete": true
+  },
+  "dimension": {
+    "dimension_id": "D08",
+    "payload_type": "privacy",
+    "gold_payload": {
+      "scenario_type": "deletion",
+      "owner_user_id": "d08:user:deletion:04:owner",
+      "querying_user_id": "d08:user:deletion:04:auditor",
+      "allowed_memory_ids": [],
+      "forbidden_memory_ids": [
+        "d08:agentmembench:mdv2_742783a81f229d178cd8:memory"
+      ],
+      "deleted_memory_ids": [
+        "d08:agentmembench:mdv2_742783a81f229d178cd8:memory"
+      ],
+      "canary_tokens": []
+    },
+    "metrics": {
+      "allowed_recall": null,
+      "forbidden_exposure_count": 0,
+      "deleted_exposure_count": 0,
+      "canary_exposure_count": 0,
+      "privacy_pass": 1.0,
+      "effective_privacy_pass": 1.0,
+      "metrics_by_k": {
+        "1": {
+          "hit": 0.0,
+          "recall": 0.0,
+          "mrr": 0.0
+        },
+        "3": {
+          "hit": 0.0,
+          "recall": 0.0,
+          "mrr": 0.0
+        },
+        "5": {
+          "hit": 0.0,
+          "recall": 0.0,
+          "mrr": 0.0
+        },
+        "10": {
+          "hit": 0.0,
+          "recall": 0.0,
+          "mrr": 0.0
+        }
+      }
+    },
+    "unsupported_metrics": [],
+    "prediction": null,
+    "system_prediction": null,
+    "context_cache": {
+      "hit": false,
+      "context_sha256": "77bc5e60b019c5a4645cd929f8641150d716cc93a11a247b935c9287afd5b032",
+      "ingest_owner_case_id": "d08:agentmembench:deletion_04",
+      "query_index": 1,
+      "query_count": 1
+    },
+    "run_mode": "case_isolated",
+    "status": "ok",
+    "error": null,
+    "latency": {
+      "ingest": 199.1459999990184,
+      "retrieval": 15.243699999700766,
+      "answer": null,
+      "total": 4378.89720000021
+    },
+    "cost": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "api_cost": null
+    },
+    "system_trace": {
+      "status": "ok",
+      "data": {
+        "kind": "adapter_operations",
+        "events": [
+          {
+            "operation": "ingest",
+            "status": "ok",
+            "latency_ms": 213.98609999960172,
+            "raw_response": {
+              "answer": [
+                {
+                  "change": "added",
+                  "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\6f0ce79873fc74e1\\daily\\d08_agentmembench_deletion_04\\d08_wildchat_5b01613142ab01cb73a43937f0782214.md",
+                  "success": true
+                }
+              ],
+              "success": true,
+              "metadata": {
+                "cleared_store": true,
+                "counts": {
+                  "added": 1,
+                  "modified": 0,
+                  "deleted": 0
+                }
+              }
+            },
+            "items": [
+              {
+                "change": "added",
+                "path": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\6f0ce79873fc74e1\\daily\\d08_agentmembench_deletion_04\\d08_wildchat_5b01613142ab01cb73a43937f0782214.md",
+                "success": true
+              }
+            ],
+            "health": {
+              "is_started": true,
+              "n_chunks": 1,
+              "n_chunks_with_embedding": 0,
+              "memory": "0.00 MB"
+            },
+            "failures": []
+          },
+          {
+            "operation": "ingest",
+            "status": "ok",
+            "latency_ms": 31.272799998987466,
+            "raw_response": {
+              "answer": "",
+              "success": true,
+              "metadata": {
+                "cleared_store": true,
+                "counts": {
+                  "added": 0,
+                  "modified": 0,
+                  "deleted": 0
+                }
+              }
+            },
+            "items": [],
+            "health": {
+              "is_started": true,
+              "n_chunks": 0,
+              "n_chunks_with_embedding": 0,
+              "memory": "0.00 MB"
+            },
+            "failures": []
+          },
+          {
+            "operation": "delete",
+            "status": "ok",
+            "deleted_ids": [
+              "d08:agentmembench:mdv2_742783a81f229d178cd8:memory"
+            ],
+            "latency_ms": 32.034899999416666
+          },
+          {
+            "operation": "search",
+            "status": "ok",
+            "query": "What did the user request for the image generation?",
+            "latency_ms": 15.243699999700766,
+            "raw_response": {
+              "answer": "",
+              "success": true,
+              "metadata": {
+                "results": [],
+                "link_expansion": {},
+                "counts": {
+                  "vector": 0,
+                  "keyword": 0,
+                  "returned": 0,
+                  "hybrid": false
+                }
+              }
+            },
+            "memories": []
+          }
+        ]
+      },
+      "reason": ""
+    }
+  },
+  "timeline": [
+    {
+      "key": "load",
+      "label": "Load Context",
+      "status": "pass",
+      "reason": "读取冻结 Context"
+    },
+    {
+      "key": "ingest",
+      "label": "ReMe Ingest",
+      "status": "pass",
+      "reason": "写入并建立索引"
+    },
+    {
+      "key": "search",
+      "label": "ReMe Search",
+      "status": "pass",
+      "reason": "检索相关记忆"
+    },
+    {
+      "key": "delete",
+      "label": "Lifecycle Delete",
+      "status": "pass",
+      "reason": "删除后重建索引"
+    },
+    {
+      "key": "privacy",
+      "label": "Privacy Evaluation",
+      "status": "pass",
+      "reason": "privacy_pass=1.0"
+    },
+    {
+      "key": "answer",
+      "label": "Answer",
+      "status": "not_applicable",
+      "reason": "该维度无 gold_answer，不适用"
+    },
+    {
+      "key": "judge",
+      "label": "Judge",
+      "status": "not_applicable",
+      "reason": "该维度无 gold_answer，不适用"
+    },
+    {
+      "key": "final",
+      "label": "Final",
+      "status": "pass",
+      "reason": "status=ok"
+    }
+  ]
+}

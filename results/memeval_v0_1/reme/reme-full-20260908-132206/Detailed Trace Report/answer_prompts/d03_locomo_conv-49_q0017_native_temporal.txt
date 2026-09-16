@@ -1,0 +1,893 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d03:locomo:conv-49:D22" score="2.5963709354400635">
+# Conversation Session
+
+## Speaker
+
+Hey Evan! I’m really getting into this healthier lifestyle—just took my friends on an epic hiking trip last Friday!
+
+## Speaker
+
+Hey Sam! That’s fantastic—nothing like a good hike to feel alive. We took the Prius for a long drive to the mountains last weekend. It was perfect until we got into a little scrape on the way back.
+
+## Speaker
+
+Oh no, were you guys okay after the accident?
+
+## Speaker
+
+Yeah, we were fine, thanks. Just a minor accident, but it put a bit of a damper on telling my work friends about getting married. They’ve been a great support, though.
+
+## Speaker
+
+I bet they were thrilled to hear about your marriage, despite the mishap!
+
+## Speaker
+
+Absolutely, it's been a whirlwind of emotions. Good thing the accident was minor. Just a reminder to take it easy on the road, I guess.
+
+## Speaker
+
+True, it’s important to stay safe. Glad you can still enjoy the peaceful moments after something like that.
+
+## Speaker
+
+Definitely, nature brings peace and clarity - it's a great experience.
+
+## Speaker
+
+Nature can make everything else seem small and help us find peace inside. It reminds us of the bigger picture, you know?
+
+## Speaker
+
+For sure, and nature has been a great healer. Speaking of which, I’ve got to share some of these new healthy snacks I’ve been trying.
+
+## Speaker
+
+They look healthy and delicious! Perfect for after a hike or, I guess, post-accident recovery, huh?
+
+## Speaker
+
+Exactly! They’re packed with nutrients and really easy to make. You also need to try these cookies, they are awesome! I’ll send you the recipes.
+
+## Speaker
+
+Thanks, I’d appreciate that. It’s good to find new ways to stay healthy. Do you have any healthier snack ideas?
+
+## Speaker
+
+Yeah, I've been trying to eat healthier too. Check out this cool recipe I discovered for these energy balls.
+
+## Speaker
+
+Do you like them? I know they can be an acquired taste.
+
+## Speaker
+
+I enjoy the taste of these. They're energizing and a healthy way to satisfy your sweet tooth.
+
+## Speaker
+
+Awesome! Always on the lookout for healthy snacks, thanks for the tip!
+
+## Speaker
+
+Glad to help - hope you enjoy it!
+
+## Speaker
+
+Thanks, Evan! I'll give these a try. They look yum. Your help means a lot to me. Btw you know what? I went to the store again and, unsurprisingly, had issues with the self-checkout. It's becoming a regular annoyance.
+
+## Speaker
+
+That's very strange, I've never had a problem with it once!
+
+## Speaker
+
+Apparently I attract that to me, if you ever want to be in that situation, call me at the store with you!
+</memory>
+<memory rank="2" session_id="d03:locomo:conv-49:D4" score="1.889029622077942">
+# Conversation Session
+
+## Speaker
+
+Hey Evan, I need to talk to you. My friends were mocking my weight last Friday and it hurt. That made me realize I need to make changes.
+
+## Speaker
+
+Hey Sam, sorry about that. Don't worry, progress takes time. Let's work on it together.
+
+## Speaker
+
+Thanks for the support, Evan. I'm working on my health and getting active!
+
+## Speaker
+
+That's great, Sam! I struggled with my health a few years ago, but stuck with it. Here's a reminder of my commitment - my gym membership card. It's not just about exercise, diet and lifestyle changes also play a big role.
+
+## Speaker
+
+That's awesome, Evan! What do you think made the biggest impact on your health journey?
+
+## Speaker
+
+I made some dietary changes, like cutting down on sugary snacks and eating more veggies and fruit, and it made a big impact on my health. Have you considered any changes?
+
+## Speaker
+
+Yep, I'm reducing my soda and candy intake. It's tough, but I'm determined to make a change.
+
+## Speaker
+
+Go for it, Sam! It's tough at first, but you got this. Try flavored seltzer water instead. It can be a great alternative to soda. Btw I can't stop thinking about that new mystery novel I started. It's so gripping!
+
+## Speaker
+
+Sounds good, Evan. I've tried it before and it was nice. Do you have any ideas for low-calorie snacks to pair with it? And what's the novel?
+
+## Speaker
+
+Definitely, how about some flavored seltzer with some air-popped popcorn or fruit? It's yum and healthy! The novel I'm reading is "The Great Gatsby".
+
+## Speaker
+
+Yum, that sounds good! Thanks! And I'll definitely read that novel sometime.
+
+## Speaker
+
+No worries, Sam! Focus on healthy swaps and taking small steps. Stay upbeat!
+
+## Speaker
+
+That reminder is inspiring. Thanks for reminding me to focus on progress, not perfection.
+
+## Speaker
+
+By the way, have you thought about exercising? Trust me, it's just as important as eating right.
+
+## Speaker
+
+Starting tomorrow, I will go to the gym and exercise regularly. The sooner I start, the sooner I will see the rewards of this activity.
+
+## Speaker
+
+That's awesome, Sam! It's such a rewarding and tough activity - keep going and have fun!
+
+## Speaker
+
+Thanks, Evan! Your support means a lot. I really appreciate it.
+
+## Speaker
+
+No worries, you've got this!
+
+## Speaker
+
+Thanks, Evan. I really appreciate it.
+
+## Speaker
+
+No worries, Sam. I'm here if you need me. Keep going!
+</memory>
+<memory rank="3" session_id="d03:locomo:conv-49:D17" score="1.7240135669708252">
+# Conversation Session
+
+## Speaker
+
+Hey Ev! Long time no chat. How's it going? Hope all is well.
+
+## Speaker
+
+Hey Sam, good to hear from you! Life's been a wild ride lately. Last week, I had a health scare and had to go to the hospital. They found something suspicious during a check-up, which freaked me out. Thankfully, it was all a misunderstanding, but it made me realize how important it is to keep an eye on my health. How've you been?
+
+## Speaker
+
+Woah, Evan, that must've been scary! Phew, it was just a misunderstanding. A health scare can really make you re-evaluate what's important. As for me, I've been dealing with some discomfort and it's been limiting my movement. I've been trying to make changes diet-wise, but it can be hard.
+
+## Speaker
+
+That sucks, Sam. It's tough when our health holds us back. I believe in you – just taking small steps can help. Have you tried any new hobbies recently to take your mind off it?
+
+## Speaker
+
+Thanks, Evan. I haven't tried much new lately, but I did get this yesterday. It's been my go-to 'feel good' flick. So, you said you had a health scare - how're you now?
+
+## Speaker
+
+That movie sounds interesting! I'm doing well now. Doctors said everything is fine, but it taught me the value of life. Just trying to enjoy the moment.
+
+## Speaker
+
+That's awesome, Evan! Let's make it a habit to appreciate something each day. It really helps us enjoy life more. What do you think?
+
+## Speaker
+
+Sounds good, Sam! Let's take the time to appreciate the little things in life.
+
+## Speaker
+
+Thanks for always being there, Evan. It means a lot.
+
+## Speaker
+
+Sure, Sam. I'm here for you. We gotta stick together, especially now.
+
+## Speaker
+
+Yeah, Evan. Life can be tough sometimes, but having supportive people like you makes it way easier.
+
+## Speaker
+
+Yeah, Sam. Tough times are way easier with friends we can rely on. We've got each other!
+
+## Speaker
+
+Looks like you're having a blast! I was wondering, what do you do to stay fit and healthy?
+
+## Speaker
+
+That was wild! I stay in shape by hitting the gym and taking my car out for a spin. Gotta keep it up! How are you doing on your fitness goals, Sam?
+
+## Speaker
+
+Fitness goals have been hard to reach, but hey, that's life!
+
+## Speaker
+
+Yeah Sam, it's true. Progress takes time, so keep pushing.
+
+## Speaker
+
+Where is that? It looks gorgeous!
+
+## Speaker
+
+This little island is where I grew up and it's my happy place.
+
+## Speaker
+
+Wow, that spot looks gorgeous. Growing up there must have been so peaceful and stunning.
+
+## Speaker
+
+Yeah, it was. That place shaped me and will always hold a special place in my heart.
+
+## Speaker
+
+Yeah, it can be soul-calming.
+
+## Speaker
+
+Yeah, it really is. So serene and calming.
+
+## Speaker
+
+It's heavenly!
+
+## Speaker
+
+Yeah, it's like a little slice of paradise. I always feel so peaceful and serene when I'm there.
+
+## Speaker
+
+Wow, it really seems like a peaceful retreat. Thanks for showing me!
+
+## Speaker
+
+No prob, always good to chat about those tranquil times. Take it easy!
+
+## Speaker
+
+Take care, buddy. Hang in there!
+
+## Speaker
+
+Thanks, Sam. If you need to talk, I'm here for you too.
+</memory>
+<memory rank="4" session_id="d03:locomo:conv-49:D24" score="1.5927882194519043">
+# Conversation Session
+
+## Speaker
+
+Hey Sam, hope you're doing good. Something funny happened last night.
+
+## Speaker
+
+Hey Evan, what's up? What happened? Let me know.
+
+## Speaker
+
+Yesterday I went out with my friends and had a bit too much to drink. I ended up doing something I regret and it involved someone's roses.
+
+## Speaker
+
+What's up with that incident? All good now?
+
+## Speaker
+
+Oof, Sam, so embarrassing! I had a pee accident near some roses - can you believe it? I'm so sorry about that.
+
+## Speaker
+
+Uh oh, Evan! That's awkward. Did anyone get mad at you? Are you okay?
+
+## Speaker
+
+I was so embarrassed when I saw what happened the next morning, so I apologized and luckily they were understanding. Yeah, I was out of control--guess I gotta be more careful next time.
+
+## Speaker
+
+They were understanding? Phew! We all mess up sometimes, we're human after all.
+
+## Speaker
+
+Yeah, they were understanding, which was great. But it's a good reminder to be more careful. We all make mistakes, but it's important to learn from them. Speaking of, my partner and I tried snowshoeing this weekend. It was part of a new adventure for us and surprisingly fun.
+
+## Speaker
+
+Yeah, Evan, you're right. Mistakes happen, but it's good to learn from them. Snowshoeing sounds like a great way to stay active during the winter. I've been thinking and I made a meal plan and workout schedule. I'm getting motivated by something I saw, so starting today I'm gonna do my best to stay on track.
+
+## Speaker
+
+Good work, Sam! You've got a plan and you're dedicated to staying healthy - have you asked your doctor for advice? They could probably give you even more diet and exercise tips.
+
+## Speaker
+
+Thanks, Evan! Haven't seen a doctor in a while, but it's probably a good idea to get some advice. I'm going to make an appointment soon.
+
+## Speaker
+
+What advice are you planning to get from the doctor?
+
+## Speaker
+
+I'm gonna ask the doc about a balanced diet plan and getting advice on low-impact exercises, given my current situation.
+
+## Speaker
+
+Sounds good, Sam. That's definitely a step in the right direction. Remember to focus on a balanced diet and low-impact exercises. Let me know how it goes.
+
+## Speaker
+
+That looks great! Where did you get the idea for this salad? Also, do you have any suggestions for low-impact exercises?
+
+## Speaker
+
+I got it from a nearby restaurant. As for low-impact exercises, swimming, yoga, and walking are good options.
+
+## Speaker
+
+The salad idea from a restaurant is a smart move, Evan! And thanks for the exercise tips. Also I watched The Godfather last night, and it motivated me to keep up with my routine. "I'm gonna make him an offer he can't refuse" - now that's motivation!
+
+## Speaker
+
+Yoga's definitely a great start, Sam. It's helped me with stress and staying flexible, which is perfect alongside the diet. And yes, The Godfather is a legendary thing to watch, can be re-watched many times!
+
+## Speaker
+
+Between a healthier diet and yoga, I’m hoping for some positive changes.
+
+## Speaker
+
+By the way there are plenty of other low-impact exercises that can be fun. Going on beach sunsets is one of my favorites - good for exercise and totally calming.
+
+## Speaker
+
+That looks zen. Gonna go for some beach walks - thanks for the tip, Evan! I want to brag, I had that recurring dream again where I'm flying over skyscrapers!
+
+## Speaker
+
+I think a little more and you'll learn how to control those dreams, once you get the hang of it let me know haha! Enjoy the fresh air and the views. Have fun!
+
+## Speaker
+
+Thanks Evan! Gonna make the most of it. You too, have a good one!
+</memory>
+<memory rank="5" session_id="d03:locomo:conv-49:D23" score="0.04152876138687134">
+# Conversation Session
+
+## Speaker
+
+Hey Sam, guess what? My partner and I told our extended fam about our marriage yesterday – it was so special! We've been totally overwhelmed by all their love and support.
+
+## Speaker
+
+Congrats on the news, Evan! You two look so happy in the pic. These moments make life so wonderful; super stoked for you!
+
+## Speaker
+
+Thanks, Sam! It was an awesome moment, and I feel really lucky to have found someone who gets me. Plus, our families are really happy for us - that's the best part!
+
+## Speaker
+
+Wow, Evan. It's awesome that you've found someone who gets you! Having your family's support must feel great.
+
+## Speaker
+
+Definitely, family support is so important. Knowing they're happy about our marriage is awesome and so comforting.
+
+## Speaker
+
+Yeah, it's awesome to have that support. It definitely brings more happiness and joy.
+
+## Speaker
+
+Yeah Sam, that means a lot to me. Our bond just keeps getting stronger and it brings such a good feeling to our lives. Family really is everything.
+
+## Speaker
+
+Agree, Evan! Family is everything - they bring so much love and happiness. They're always there for us no matter what. I'm grateful for their support and love.
+
+## Speaker
+
+For sure, Sam. That's what makes family so special. They bring so much love and happiness. It's great having their support and knowing they're always there for us. I feel really fortunate to have their never-ending love and support.
+
+## Speaker
+
+Yeah, definitely, Evan. We both have amazing families that are always there for us. Always a blessing.
+
+## Speaker
+
+Yeah, Sam. Our families give us so much joy, support, and love. They're a real blessing! I don't know what I'd do without them.
+
+## Speaker
+
+Hey, Evan. My family has been my rock through everything. Don't know what I'd do without them.
+
+## Speaker
+
+Yeah, they are our rock. We're blessed to have them.
+
+## Speaker
+
+Wow, you guys are awesome! What's cooking tonight?
+
+## Speaker
+
+Thanks, Sam! We're having a family get-together tonight and enjoying some homemade lasagna. Super excited! By the way, I've started a new diet—limiting myself to just two ginger snaps a day. What's on your menu tonight?
+
+## Speaker
+
+That's a great discipline, Evan! We're keeping it light tonight, just some homemade lasagna. Can't compete with your ginger snap limit though!
+
+## Speaker
+
+Oh this must be very hearty and delicious, well I'll have to stick to the diet plan, even with the family gathering!
+
+## Speaker
+
+Yeah, the lasagna was pretty awesome, but check out what I had for dessert, I'm sure you're drooling!
+
+## Speaker
+
+Looks yummy! Did you make that?
+
+## Speaker
+
+No, I didn't make it. This is actually a pic from my cousin's wedding. It's super special.
+
+## Speaker
+
+Wow Sam! Weddings are indeed special. This looks great, yum!
+
+## Speaker
+
+Ooh, nice cake! Reminds me of special occasions. Do you have any upcoming plans?
+
+## Speaker
+
+Thanks Sam! We're off to Canada next month for our honeymoon. So excited to create some awesome memories. Looking forward to exploring the beautiful snowy landscapes there.
+
+## Speaker
+
+Wow, that looks great! What are your plans for the trip?
+
+## Speaker
+
+We're planning to ski, try the local cuisine, and enjoy the beautiful views. We're really excited!
+
+## Speaker
+
+Sounds amazing, Ev! Skiing, trying local dishes, and enjoying the breathtaking views - the perfect honeymoon. Have an incredible time creating unforgettable memories!
+
+## Speaker
+
+Yeah, Sam! Gonna try some poutine while we're there - can't wait!
+
+## Speaker
+
+Never tried it? Can't say I blame you, it's kind of a Canadian thing. Let me know how you like it!
+
+## Speaker
+
+Sure thing, Sam! Let's see if it lives up to the hype. I'll let you know what happens!
+
+## Speaker
+
+Yeah, Evan! Let me know all about it. Don't forget the details!
+
+## Speaker
+
+Cool, Sam. I'll keep you posted. Talk soon!
+
+## Speaker
+
+Awesome, Evan! Catch you soon. Have a great trip!
+
+## Speaker
+
+Thanks, Sam! Catch you later. Have a great one!
+</memory>
+<memory rank="6" session_id="d03:locomo:conv-49:D2" score="0.041005056351423264">
+# Conversation Session
+
+## Speaker
+
+Hey Sam, good to hear from you! Since we last talked, lots has been happening! Last weekend, I took my family on a road trip to Jasper. It was amazing! We drove through the Icefields Parkway and the glaciers and lakes were gorgeous. I got a shot of a glacier, check it out!
+
+## Speaker
+
+Hey Evan, looks amazing! I've never been to Jasper, but it looks breathtaking. Tell me more about your road trip. Was it relaxing?
+
+## Speaker
+
+Hey Sam, thanks for asking! It was great - fresh air, peacefulness and a cozy cabin surrounded by mountains and forests made it feel like a real retreat.
+
+## Speaker
+
+That sounds great, Evan! It's so important to take time for ourselves and find peace, especially after a hard week. Mine's been tough.
+
+## Speaker
+
+Sorry to hear that, Sam. Is there anything I can do to help?
+
+## Speaker
+
+Thanks, Evan. Appreciate the offer, but had a check-up with my doctor a few days ago and, yikes, the weight wasn't great. It was pretty eye-opening.
+
+## Speaker
+
+That must have been a challenging experience, Sam. It's tough when we have to confront our own health challenges. Remember, it's never too late to make positive changes for a healthier lifestyle. Is there anything I can do to support you in this journey?
+
+## Speaker
+
+Thanks, Evan. Breaking old habits isn't easy. Do you have any tips for starting the process?
+
+## Speaker
+
+Yeah, what worked for me was finding a fitness routine I really enjoy. It's my go-to, I love the feeling of being healthy and strong. Making it fun and finding little ways to make smarter choices in my diet really added up. Don't forget, you got this!
+
+## Speaker
+
+Thanks, Evan. Like you said, I've been looking for a hobby to stay motivated. I've been thinking about trying painting. Do you think it will help me de-stress?
+
+## Speaker
+
+Of course, Sam! Painting is a great way to relieve stress and be creative. It gives you the freedom to explore colors and textures and express feelings. I've been doing it for a few years now and it helps me find peace. But unfortunately it won't help you with your weight problem, besides painting I recommend exercising!
+
+## Speaker
+
+Thanks, Evan! Appreciate the encouragement. I'll give it a go and let you know how it turns out.
+
+## Speaker
+
+Awesome, Sam! Have fun with it and don't put too much pressure on yourself. Can't wait to hear how it's going!
+
+## Speaker
+
+Cheers, Evan! I won't stress - just gonna enjoy it.
+
+## Speaker
+
+Alright Sam, have fun with it! Keep me updated!
+
+## Speaker
+
+Thanks, Evan! Will do. Bye for now.
+
+## Speaker
+
+Take care, Sam! I'll catch up with you later.
+</memory>
+<memory rank="7" session_id="d03:locomo:conv-49:D15" score="0.04071485251188278">
+# Conversation Session
+
+## Speaker
+
+Morning, Evan. I've been trying to keep up with my new health routine, but it's tough. My family's really pushing for it, and I feel so pressured.
+
+## Speaker
+
+I hear you, Sam. It's important to have people who encourage you, but not stress you out. By the way, I just got back from my morning walk. It really helps to start the day actively.
+
+## Speaker
+
+Yeah, it's easier when you have a great support system. Thanks for being there for me.
+
+## Speaker
+
+No worries, Sam. I'll be there for you. Take it slow and treat yourself.
+
+## Speaker
+
+Thanks for the reminder to take it easy. I sometimes get impatient with myself when I want results fast, but I gotta be patient.
+
+## Speaker
+
+Yep, progress takes time. So just take it one step at a time.
+
+## Speaker
+
+Yes, you're right, Evan. Taking it slow is better than doing too much. I appreciate your support.
+
+## Speaker
+
+I get it, Sam. I went through a similar phase a twoyears ago. Changed my diet, started walking regularly, things like that.
+
+## Speaker
+
+Wow, Evan, you look great! How did you manage the change?
+
+## Speaker
+
+I started focusing more on my well-being rather than fixating on quick results. Letting go of that pressure made a huge difference.
+
+## Speaker
+
+That's impressive, Evan. It's inspiring to see how you transformed by changing your mindset.
+
+## Speaker
+
+Thanks, Sam. Letting go of unrealistic expectations was liberating, both physically and mentally.
+
+## Speaker
+
+You're really doing great, Evan! I want to feel that same sense of freedom.
+
+## Speaker
+
+Thanks, Sam. Just take it one day at a time. Celebrate small victories.
+
+## Speaker
+
+Thanks, Evan! Focusing on small wins sounds like a plan. I'll take it one day at a time.
+
+## Speaker
+
+Exactly! Congrats on every little victory. Keep it up, I'm here for you.
+
+## Speaker
+
+Your support means everything. Here's to moving forward!
+
+## Speaker
+
+Anytime, Sam! Let's keep pushing ahead. I'm here to help you. Take care!
+</memory>
+<memory rank="8" session_id="d03:locomo:conv-49:D12" score="0.039877478033304214">
+# Conversation Session
+
+## Speaker
+
+Hey Evan, hope you're doing okay. I wanted to chat about something that's been bothering me lately... I went for a check-up Monday and my doc said my weight's a serious health risk - if I don't make changes soon, it can get worse. I know I made jokes about it, but it's really hitting me. Been having a hard time.
+
+## Speaker
+
+Hey Sam, tough news. Yeah, our health can really put a damper on things. I started lifting weights one year ago and it's been a journey. It was a struggle at first, but I'm seeing some gains. You interested in trying it out?
+
+## Speaker
+
+Hey Evan, I'm interested in getting into it. Any advice on how to get started? Thanks!
+
+## Speaker
+
+Hey Sam, that's awesome! It's important to start out with good form and technique. Find a trainer who can help you avoid injuries while you build your strength. Start with something small, and as you get stronger, the intensity can increase. Stay consistent with your workout routine and let me know how it goes! Good luck!
+
+## Speaker
+
+Thanks, Evan. I'm going to find someone who can help me out. I'll keep you posted!
+
+## Speaker
+
+No problem, Sam. Can't wait to hear about your progress. Keep up the hard work!
+
+## Speaker
+
+Thanks, Evan. I appreciate your support. It really means a lot to me. I'll definitely keep you posted on my progress.
+
+## Speaker
+
+You're welcome, Sam! It takes time, so be patient with yourself. Your health matters, and I believe in you. Keep going and stay upbeat. You got this!
+
+## Speaker
+
+Thanks, Evan. I'll stay positive and keep going. Your support means a lot.
+
+## Speaker
+
+Hey Sam, glad I can be here for you! Progress is key, so keep pushing on and stay positive. You got this!
+
+## Speaker
+
+Wow, Evan, that's really inspiring. Gonna keep believing in it!
+
+## Speaker
+
+Go get 'em! Believe in your abilities and you'll reach your goals. Stay motivated!
+
+## Speaker
+
+Thanks Evan! Your words gave me a boost. I'm staying motivated and believing in myself.
+
+## Speaker
+
+Awesome! Keep staying motivated and believing in yourself. You've got this!
+
+## Speaker
+
+Thanks, Evan! Your support means a lot to me.
+
+## Speaker
+
+No prob, Sam! I'm here for you. Just keep taking one step at a time, and you'll get there eventually!
+
+## Speaker
+
+Sure, Evan. I'll take it slow. See ya!
+</memory>
+<memory rank="9" session_id="d03:locomo:conv-49:D19" score="0.03969605267047882">
+# Conversation Session
+
+## Speaker
+
+Hey Sam, hope you're doing good. Wanted to share some amazing news - my partner is pregnant! We're so excited! It's been a while since we had a kiddo around.
+
+## Speaker
+
+Congrats, Ev! That's great news! Parenthood is so amazing. How are you feeling about it?
+
+## Speaker
+
+So excited and a bit nervous! It's been a while since I had a toddler around but I'm really looking forward to it. Parenthood is so rewarding. I still remember when my first child was born, the joy was amazing. Looking forward to witness the miracle of life and build more memories with my family!
+
+## Speaker
+
+Wow, you're gonna be an amazing parent! Treasure those memories, they're truly special.
+
+## Speaker
+
+Thanks Sam! Absolutely. Talking of memories, I want to show you this. It's a collage of some of our top family memories. Each photo has an amazing moment - birthdays, holidays, vacations - so good to look back and recall all the great times we had.
+
+## Speaker
+
+That's so lovely, Evan. Your family looks so happy. What's the story behind that sign in the center?
+
+## Speaker
+
+Oh, that one? It's from our trip to Banff. We have this sign in the frame that says 'Bring it on Home' - it's our family's motto, always reminding us of the importance of togetherness, no matter where we are.
+
+## Speaker
+
+That's really touching, Evan. It's important to have something that keeps the family bond strong.
+
+## Speaker
+
+Absolutely, Sam. My family means the world to me. They're my rock. I'm looking forward to expanding our family and creating even more beautiful memories.
+
+## Speaker
+
+That's wonderful to hear, Evan! It's clear how much you value your family. Are you thinking of any specific plans or events to add to that collage?
+
+## Speaker
+
+Thanks, Sam! Yeah, we're planning a big family reunion next summer. It's going to be a blast and a perfect opportunity to add to our collage.
+
+## Speaker
+
+Sounds fantastic! If you need any tips on organizing such a big event, just let me know. I'm always here to support and celebrate your family's milestones.
+
+## Speaker
+
+Thanks, Sam! Your support means a lot. I'll keep you updated. Take care, bye!
+
+## Speaker
+
+Take care, Evan! Can't wait to hear about it. Bye!
+
+## Speaker
+
+Bye Sam. I'll definitely keep you updated. Thanks for the kind words and support. Take care!
+</memory>
+<memory rank="10" session_id="d03:locomo:conv-49:D13" score="0.0394781269133091">
+# Conversation Session
+
+## Speaker
+
+Hey Sam, how's it going? Been a while since we talked. Hope all is good.
+
+## Speaker
+
+Hey Evan! It's been a rough week - I gave in and bought some unhealthy snacks. I feel kinda guilty. How's it going for you? That painting is awesome! Did you paint it?
+
+## Speaker
+
+Hey Sam, sorry to hear about the rough week. Don't worry about the snacks. I'm doing okay, just finished this painting of a sunset. It really helps me relax. So, how's everything going with you? Anything new and exciting?
+
+## Speaker
+
+Thanks, Evan! Yeah, I just couldn't resist them. Gotta do better. As for me, just dealing with work stress and trying to stay motivated.
+
+## Speaker
+
+Hey Sam, work stress can really get to you. Have you tried anything new to de-stress? Maybe picking up a hobby or something could help.
+
+## Speaker
+
+Thinking about trying something different outdoors. Any suggestions?
+
+## Speaker
+
+Sounds good! Have you ever tried kayaking? It's a fun and active way to paddle on a river or lake. What are your thoughts on that?
+
+## Speaker
+
+Kayaking sounds awesome! Haven't tried it yet, but it looks like a fun way to get in some exercise and enjoy nature. I'm definitely considering giving it a try. Thanks!
+
+## Speaker
+
+No worries, Sam! It's a fun way to get in some exercise and enjoy nature. Let me know when you're ready to give it a try and I can hook you up with a good spot.
+
+## Speaker
+
+Thanks for the idea, my mate and I are just around the corner from kayaking on the lake, we're going to try that now!
+
+## Speaker
+
+Of course, let me know if you like it, we can plan a kayaking trip together, I'll pick a cool spot!
+
+## Speaker
+
+Yep, Evan! Can't wait. Thanks for the help!
+
+## Speaker
+
+Ready for an adventure? Where will you go?
+
+## Speaker
+
+We're traveling through Lake Tahoe! I heard it's great for kayaking.
+
+## Speaker
+
+Hey Sam, it's an awesome pick! You'll love it there - clear water and gorgeous views. Have a blast and take lots of pics!
+
+## Speaker
+
+Thanks, Evan! I'm looking forward to it!
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: 2024-01-11T21:37:00
+Question: When did Sam's friends mock him for being overweight?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

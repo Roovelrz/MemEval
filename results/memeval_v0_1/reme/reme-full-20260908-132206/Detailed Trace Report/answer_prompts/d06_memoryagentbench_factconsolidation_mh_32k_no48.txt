@@ -1,0 +1,203 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d06:memoryagentbench:factconsolidation_mh_32k:context:document" score="5.52609920501709">
+# Conversation Session
+
+## Document
+
+[Part 4/14]
+
+515. The headquarters of Google is located in the city of Mountain View.
+516. The author of News from Nowhere is William Morris.
+517. defensive end is associated with the sport of American football.
+518. Shaun Udal is a citizen of United Kingdom.
+519. The origianl broadcaster of NBA on ABC is American Broadcasting Company.
+520. Pakistan Tehreek-e-Insaf was founded by Imran Khan.
+521. Tony Pérez is associated with the sport of baseball.
+522. The author of The Trojan Women is Euripides.
+523. Paul I of Russia is a citizen of Russian Empire.
+524. Charley Boorman is a citizen of United Kingdom.
+525. The head coach of Cleveland Indians is Neil Lennon.
+526. Paris FC is associated with the sport of association football.
+527. Gabe Newell is a citizen of United States of America.
+528. The origianl broadcaster of Girl Meets World is Disney Channel.
+529. Asif Ali Zardari is married to Benazir Bhutto.
+530. Glen Campbell died in the city of Nashville.
+531. Polonius was created by William Shakespeare.
+532. Born in the U.S.A. was performed by Bruce Springsteen.
+533. The capital of United Kingdom of Great Britain and Ireland is London.
+534. jazz was created in the country of United States of America.
+535. Duchy of Cleves is affiliated with the religion of Catholic Church.
+536. Hank Azaria is famous for The Simpsons.
+537. Detroit Tigers is associated with the sport of baseball.
+538. The Prime Minister of Sweden is Pedro Pierluisi.
+539. U2 was created in the country of Ireland.
+540. Caesarius of Arles is affiliated with the religion of Catholic Church.
+541. Sebastian Piñera speaks the language of Spanish.
+542. WWE Tough Enough was created by William Shakespeare.
+543. The capital of South Korea is Seoul.
+544. The official language of Italy is Italian.
+545. The headquarters of University of California, Berkeley is located in the city of Berkeley.
+546. Juliette Gordon Low died in the city of Pune.
+547. The headquarters of Lycée Louis-le-Grand is located in the city of Paris.
+548. Lark Rise to Candleford was created in the country of England.
+549. Dashiell Hammett is affiliated with the religion of Catholic Church.
+550. The chief executive officer of Valve Corporation is Mukesh Ambani.
+551. The chief executive officer of Netflix is Neil Aspinall.
+552. Cédric Klapisch is a citizen of France.
+553. The company that produced Ford Probe is Ford Motor Company.
+554. Arthur was created in the country of United States of America.
+555. The headquarters of Daimler-Benz is located in the city of Stuttgart.
+556. The director of inXile entertainment is Faure Essozimna Gnassingbé Eyadéma.
+557. The capital of Estonia is Tallinn.
+558. Winston Churchill is married to Clementine Churchill, Baroness Spencer-Churchill.
+559. The chief executive officer of Google is Sundar Pichai.
+560. The author of Sketches by Boz is Charles Dickens.
+561. Bella Swan was performed by David Gilmour.
+562. Charles Messier is a citizen of France.
+563. cornerback is associated with the sport of American football.
+564. Club Libertad is associated with the sport of association football.
+565. The author of Antony and Cleopatra is Terrance Dicks.
+566. David Graveney is associated with the sport of association football.
+567. The capital of Poland is Warsaw.
+568. India is located in the continent of Asia.
+569. Steve Jobs was born in the city of Kraków.
+570. The director of Lucasfilm is Kathleen Kennedy.
+571. Lisa Marie Presley is a citizen of United States of America.
+572. Hermione Granger was performed by Kylie Minogue.
+573. Peter Forsskål was born in the city of Berlin.
+574. David Bowie is married to Iman.
+575. Windows Communication Foundation was developed by Microsoft.
+576. The capital of Romania is Rajanpur.
+577. Ron Dennis is employed by Pakistan International Airlines.
+578. Hunky Dory was performed by John Legend.
+579. The author of A Wizard of Earthsea is Pius XII.
+580. Chicago American Giants is associated with the sport of baseball.
+581. The author of Bleak House is Charles Dickens.
+582. Speakerboxxx/The Love Below was performed by Queen.
+583. The type of music that All Shook Up plays is country music.
+584. The author of The Call of Cthulhu is H. P. Lovecraft.
+585. The headquarters of University of California, Berkeley is located in the city of Botevgrad.
+586. Jim Kelly plays the position of quarterback.
+587. Manjula Vijayakumar is a citizen of India.
+588. The author of The Vicar of Wakefield is Oliver Goldsmith.
+589. Amber Heard is married to Johnny Depp.
+590. The name of the current head of the Zambia government is Jesús Manuel Martínez Nogales.
+591. Charles Darwin is married to Emma Darwin.
+592. The univeristy where Galileo Galilei was educated is University of Pisa.
+593. Bf 109 was developed by Messerschmitt.
+594. The headquarters of University of Tartu is located in the city of Tartu.
+595. The type of music that Nat King Cole plays is J-pop.
+596. Moshe Kahlon works in the field of politician.
+597. Gaelic football was created in the country of India.
+598. W. G. Sebald is a citizen of Germany.
+599. Wichita Lineman was performed by George Harrison.
+600. Marc Cherry speaks the language of English.
+601. Portal was developed by Valve Corporation.
+602. Mormonism was founded by Joseph Smith.
+603. Martin O'Neill is associated with the sport of association football.
+604. Garth Brooks is married to Trisha Yearwood.
+605. The headquarters of University of Oxford is located in the city of Oxford.
+606. Revolver was performed by The Beatles.
+607. H. P. Lovecraft was born in the city of Rising Sun.
+608. Joseph Mitchell is a citizen of United States of America.
+609. Frederick Chiluba is a citizen of Zambia.
+610. The chief executive officer of Apple Inc. is Tim Cook.
+611. Jonathan Swift is affiliated with the religion of Anglicanism.
+612. Wizard of Oz was created by L. Frank Baum.
+613. David II of Scotland is affiliated with the religion of Christianity.
+614. Catherine Dickens is a citizen of United Kingdom.
+615. The name of the current head of the Monti Cabinet government is Mario Monti.
+616. Sandy Alderson is associated with the sport of baseball.
+617. The headquarters of Yale University is located in the city of Toronto.
+618. outfielder is associated with the sport of baseball.
+619. Tom Baker is a citizen of United Kingdom.
+620. Sable is a citizen of United States of America.
+621. basketball was created in the country of Soviet Union.
+622. William Morris died in the city of London.
+623. split-finger fastball is associated with the sport of baseball.
+624. Busch Memorial Stadium is associated with the sport of baseball.
+625. Saruman was created by J. R. R. Tolkien.
+626. The chairperson of Palestine Liberation Organization is Mahmoud Abbas.
+627. Abe Sapien was created by Mike Mignola.
+628. Paddy Keenan is a citizen of United States of America.
+629. McLaren Automotive was founded in the city of Woking.
+630. Nigel Martyn plays the position of goalkeeper.
+631. The President of Azerbaijan is Ilham Aliyev.
+632. The author of L.A. Confidential is James Ellroy.
+633. The capital of United States of America is Washington, D.C..
+634. cornerback is associated with the sport of field hockey.
+635. Miranda Otto is a citizen of Australia.
+636. The type of music that Nottz plays is opéra comique.
+637. Hope Solo plays the position of goalkeeper.
+638. Lakshmi Mittal is a citizen of Philippines.
+639. Brook Lopez plays the position of center.
+640. Beyoncé is married to Jay-Z.
+641. Tomoyasu Hotei is a citizen of Germany.
+642. Thus Spoke Zarathustra was created in the country of Germany.
+643. The company that produced Chevrolet S-10 Blazer is General Motors.
+644. Ny Carlsberg Glyptotek was founded by Carl Jacobsen.
+645. J. A. Happ plays the position of starting pitcher.
+646. FC Vorskla Poltava is associated with the sport of association football.
+647. Vito Corleone was created by Mario Puzo.
+648. The official language of United Kingdom is English.
+649. Gala RFC is associated with the sport of rugby union.
+650. David Ige worked in the city of Honolulu.
+651. Leo I the Thracian is affiliated with the religion of Methodism.
+652. The head coach of Atlético Madrid is Frank Lampard.
+653. The head coach of Houston Rockets is Carlo Ancelotti.
+654. WWE Superstars was created by Richard Nixon.
+655. Colin Irwin is a citizen of United Kingdom.
+656. The headquarters of Microsoft is located in the city of Beverly Hills.
+657. Kim Yong-nam is a citizen of North Korea.
+658. racing video game is associated with the sport of racing.
+659. Paul I of Russia is a citizen of United Kingdom.
+660. Ju 88 was developed by Junkers.
+661. Tyrone Willingham plays the position of quarterback.
+662. Charles de Gaulle is a citizen of France.
+663. Fyodor Dostoyevsky died in the city of Saint Petersburg.
+664. The President of Azerbaijan is Prince Andrew, Duke of York.
+665. David Gilmour speaks the language of English.
+666. The chief executive officer of Aston Martin Lagonda is Andy Palmer.
+667. Edie Brickell is a citizen of United States of America.
+668. Narendra Modi is a citizen of India.
+669. Yves Montand is married to Simone Signoret.
+670. Emma Watson speaks the language of English.
+671. The name of the current head of state in Indonesia is Joko Widodo.
+672. The headquarters of Montana State University - Bozeman is located in the city of Bozeman.
+673. Thomas Kyd was born in the city of London.
+674. The headquarters of University of the Punjab is located in the city of Lahore.
+675. Henry of Blois is affiliated with the religion of Catholic Church.
+676. Magda Goebbels is a citizen of Germany.
+677. Clemens August of Bavaria is affiliated with the religion of Taoism.
+678. Prince Andrew, Duke of York is married to Sarah, Duchess of York.
+679. Variety was created in the country of France.
+680. The origianl broadcaster of The Simpsons is Fox Broadcasting Company.
+681. The company that produced Il-18 is Ilyushin.
+682. Shinto was founded in the city of Japan.
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: NOT_RECORDED
+Question: What is the sport in which Tyrone Willingham specializes and plays a special position on the team?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

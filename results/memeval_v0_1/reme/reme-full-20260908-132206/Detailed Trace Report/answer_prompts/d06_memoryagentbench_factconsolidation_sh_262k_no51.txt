@@ -1,0 +1,199 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d06:memoryagentbench:factconsolidation_sh_262k:context:document" score="4.599808216094971">
+# Conversation Session
+
+## Document
+
+[Part 55/113]
+
+8839. Windows Internet Explorer 8 was developed by Microsoft.
+8840. Gran Turismo 4 was developed by Polyphony Digital.
+8841. Ramires plays the position of relief pitcher.
+8842. The official language of Poland is Polish.
+8843. Whitney was performed by Malcolm McLaren.
+8844. The univeristy where Alfred Gusenbauer was educated is Brown University.
+8845. Steve Lamacq is a citizen of United Kingdom.
+8846. Carrie Underwood is married to Manuel I Komnenos.
+8847. Sam Robards is a citizen of United States of America.
+8848. The official language of Jamaica is German.
+8849. The univeristy where Jens Stoltenberg was educated is Cornell University.
+8850. The chief executive officer of Nokia is Rajeev Suri.
+8851. Clayton Kershaw plays the position of starting pitcher.
+8852. Jonas Salk is employed by Michigan State University.
+8853. Gordon Giltrap is a citizen of Saudi Arabia.
+8854. petanque was created in the country of Malta.
+8855. Royal Academy of Dramatic Art was founded by Herbert Beerbohm Tree.
+8856. Albert François Lebrun is affiliated with the religion of Methodism.
+8857. The official language of Budapest is Hungarian.
+8858. Raul Khadjimba works in the field of politician.
+8859. Karl Marx is married to John Wayles.
+8860. Lisbon Lions is associated with the sport of association football.
+8861. Bobby Hurley plays the position of midfielder.
+8862. The author of Mazinger Z is Go Nagai.
+8863. FK Senica is associated with the sport of association football.
+8864. The author of Childhood's End is Kim Stanley Robinson.
+8865. Liga Alef is associated with the sport of association football.
+8866. The type of music that Jeff Chimenti plays is hip hop music.
+8867. The type of music that Norman Brown plays is post-punk.
+8868. The official language of Colombia is Spanish.
+8869. Mika Brzezinski is married to George Wallace.
+8870. Chris Waddle is associated with the sport of association football.
+8871. Graceland was performed by Paul Simon.
+8872. Andoni Zubizarreta plays the position of goalkeeper.
+8873. chanson was created in the country of France.
+8874. Yasunari Kawabata speaks the language of Japanese.
+8875. Folsom Prison Blues was performed by Johnny Cash.
+8876. Scream Queens was created by Ryan Murphy.
+8877. Matthias Corvinus is a citizen of Kingdom of Hungary.
+8878. Ottoman Empire is affiliated with the religion of Buddhism.
+8879. The official language of Tuusula is Finnish.
+8880. Clinton Foundation was founded by Bill Clinton.
+8881. John Foxe died in the city of London.
+8882. John Keats died in the city of Rome.
+8883. The univeristy where Galileo Galilei was educated is University of Pisa.
+8884. Ali Larijani is employed by University of Tehran.
+8885. The author of Ivanhoe is Walter Scott.
+8886. The name of the current head of the Cincinnati government is John Cranley.
+8887. The type of music that Louis Hayes plays is jazz.
+8888. The chairperson of Juncker Commission is Viktor Zubkov.
+8889. The chairperson of Olympique Lyonnais is Garry Kasparov.
+8890. John Krol is affiliated with the religion of Catholic Church.
+8891. The univeristy where Charles Sprague Sargent was educated is Harvard University.
+8892. Stephen Baxter is a citizen of New Zealand.
+8893. Rio Ave F.C. is associated with the sport of basketball.
+8894. CNN was founded by Ted Turner.
+8895. Hitomi is a citizen of Japan.
+8896. The capital of Portugal is Washington.
+8897. Buddy Cianci is affiliated with the religion of Catholic Church.
+8898. Syed Ahmed Khan is affiliated with the religion of Islam.
+8899. François Norbert Blanchet is affiliated with the religion of Methodism.
+8900. Ali Larijani is employed by University of Cambridge.
+8901. Grant Denyer is a citizen of Australia.
+8902. Mary Harney is a citizen of Ireland.
+8903. Dolly Parton worked in the city of Nashville.
+8904. The headquarters of Northwestern University is located in the city of Toronto.
+8905. Pius XII is affiliated with the religion of Methodism.
+8906. The official language of Ethiopian Orthodox Tewahedo Church is Amharic.
+8907. Dominic Inglot was born in the city of London.
+8908. Diego Rivera worked in the city of Mexico City.
+8909. Bertrand du Guesclin is a citizen of France.
+8910. Alexi Lalas is a citizen of Germany.
+8911. Ray Bradbury works in the field of cricketer.
+8912. John V Palaiologos died in the city of Constantinople.
+8913. Robert Burns is married to Charles VI of France.
+8914. Patrick Moore is famous for The Sky at Night.
+8915. The univeristy where Jabari Parker was educated is Dartmouth College.
+8916. Ellie Kemper is a citizen of Ireland.
+8917. Pierre Trudeau was born in the city of Montreal.
+8918. Desmond Connell is affiliated with the religion of African Methodist Episcopal Church.
+8919. The author of The Famous Five is Enid Blyton.
+8920. The name of the current head of state in Portugal is Marcelo Rebelo de Sousa.
+8921. Windows Server was developed by Microsoft.
+8922. The company that produced Ford Probe is Ford Motor Company.
+8923. The head coach of Florida Gators football is Eddie Jones.
+8924. London is located in the continent of Europe.
+8925. Magda Goebbels died in the city of Boston.
+8926. Jay Joyce is a citizen of United States of America.
+8927. The author of American Gods is Maria von Trapp.
+8928. Jean Mabillon is affiliated with the religion of Catholic Church.
+8929. Xavier University of Louisiana is affiliated with the religion of Catholic Church.
+8930. The company that produced Chevrolet S-10 Blazer is Hon Hai Precision Industry.
+8931. The company that produced Minimoog Voyager is Samsung.
+8932. The President of Finland is Sauli Niinistö.
+8933. The origianl broadcaster of I Love Lucy is NBC.
+8934. Bilawal Bhutto Zardari is affiliated with the religion of Anglicanism.
+8935. Daily Planet was written in the language of Serbian.
+8936. The origianl broadcaster of Bewitched is American Broadcasting Company.
+8937. Steffi Graf works in the field of tennis player.
+8938. Kim Jong-un works in the field of politician.
+8939. Standpoint was created in the country of Australia.
+8940. The Client List was created in the country of United States of America.
+8941. Windows Bitmap was developed by Advanced Micro Devices.
+8942. 1992 European Cup Final is associated with the sport of association football.
+8943. The univeristy where Redmond Barry was educated is Jesus College.
+8944. The author of Romeo and Juliet is William Shakespeare.
+8945. The author of Masnavi is Rumi.
+8946. Susan Eloise Hinton is a citizen of United States of America.
+8947. Mary Landrieu is affiliated with the religion of African Methodist Episcopal Church.
+8948. Philip II of Macedon works in the field of monarch.
+8949. Halo 3 was developed by Bungie.
+8950. The name of the current head of the Burundi government is Pierre Nkurunziza.
+8951. Vladimir Harkonnen was created by Frank Herbert.
+8952. Blitzkrieg Bop was performed by Ramones.
+8953. The name of the current head of the Washington, D.C. government is Erik Unaas.
+8954. God Bless the Child was performed by Mick Jagger.
+8955. Spain is located in the continent of South America.
+8956. The company that produced BGM-71 TOW is Raytheon.
+8957. Robert Graves is employed by University of Oxford.
+8958. A Moon Shaped Pool was performed by Sigur Rós.
+8959. The company that produced Pontiac Bonneville is General Motors.
+8960. Pius XII was born in the city of Rome.
+8961. Giovanni Papini is affiliated with the religion of Catholic Church.
+8962. Asante Samuel plays the position of goalkeeper.
+8963. Deacon Jones is a citizen of Soviet Union.
+8964. The name of the current head of the Myanmar government is Aung San Suu Kyi.
+8965. The company that produced Chromecast is Google.
+8966. The author of The Mortal Instruments is Louisa May Alcott.
+8967. The headquarters of Channel 4 is located in the city of London.
+8968. The headquarters of University of Massachusetts Amherst is located in the city of Amherst.
+8969. The origianl broadcaster of The Flash is MSNBC.
+8970. Jennifer Tilly is a citizen of United States of America.
+8971. Mike Myers speaks the language of French.
+8972. Buddy Cianci is affiliated with the religion of Christian Science.
+8973. Spencer Fullerton Baird is a citizen of United States of America.
+8974. Diego Velázquez speaks the language of Chinese.
+8975. Anna Ancher is a citizen of Ecuador.
+8976. Deutschland sucht den Superstar was created in the country of Germany.
+8977. East Melbourne Cricket Ground is associated with the sport of cricket.
+8978. Manuel Zelaya is affiliated with the religion of Catholicism.
+8979. Erna Solberg worked in the city of London.
+8980. Homer Simpson was created by Matt Groening.
+8981. Welling United F.C. is associated with the sport of association football.
+8982. The type of music that Pheeroan akLaff plays is jazz.
+8983. The author of Tender Is the Night is Vladimir Lenin.
+8984. Pauline Bonaparte is affiliated with the religion of Baptists.
+8985. Manhattan College is affiliated with the religion of Catholic Church.
+8986. The author of Dianetics is Matthew Paris.
+8987. Pierre Omidyar is a citizen of United States of America.
+8988. Edmond Hamilton is a citizen of Sweden.
+8989. Allen Fieldhouse is associated with the sport of basketball.
+8990. The director of Lucasfilm is Kathleen Kennedy.
+8991. Scott Stringer is a citizen of United States of America.
+8992. The author of Supernatural Horror in Literature is Arthur Koestler.
+8993. The author of The Godfather is Arthur Conan Doyle.
+8994. The official language of Pori is Finnish.
+8995. Angola national football team is associated with the sport of association football.
+8996. Lalu Prasad Yadav is married to Rabri Devi.
+8997. Norman Lamont worked in the city of London.
+8998. Buddy DeFranco is a citizen of United Kingdom.
+8999. Michael Crichton is a citizen of United States of America.
+9000. Claudio Gentile is a citizen of Sudan.
+9001. Harper Lee died in the city of Monroeville.
+9002. The official language of Estonia is Estonian.
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: NOT_RECORDED
+Question: Which religion is Pius VI affiliated with?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

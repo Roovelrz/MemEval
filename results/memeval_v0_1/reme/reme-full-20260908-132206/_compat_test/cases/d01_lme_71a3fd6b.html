@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case · d01:lme:71a3fd6b · Memory Eval</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="case-detail-page">
+  <button class="menu-button" type="button" data-menu-toggle aria-label="切换导航">☰</button>
+  <nav class="sidebar"><div class="brand"><span class="brand-mark">M</span><div><strong>Memory Eval</strong><small>Trace Dashboard</small></div></div><a class="nav-link " href="../index.html"><span>总览</span></a><a class="nav-link " href="../analysis/quadrant.html"><span>四象限分析</span></a><a class="nav-link " href="../dimensions/index.html"><span>八维度得分</span></a><a class="nav-link active" href="../cases/index.html"><span>Case 追踪</span></a><div class="nav-children"><a class="nav-sublink active" href="../cases/index.html">Case 列表</a><a class="nav-sublink " href="../capabilities/index.html">能力维度表现</a><a class="nav-sublink " href="../failures/index.html">失败归因</a></div><a class="nav-link " href="../pipeline/add.html"><span>流程观测</span></a><a class="nav-link " href="../performance/latency.html"><span>性能与时延</span></a><a class="nav-link " href="../comparison/index.html"><span>版本对比</span></a><a class="nav-link " href="../run-info/index.html"><span>运行信息</span></a></nav>
+  <main class="main-content">
+    <header class="page-header">
+      <div><p class="eyebrow">RUN · reme-full-20260908-132206</p><h1>Case · d01:lme:71a3fd6b</h1><p>D01</p></div>
+      <div class="header-actions"><button class="button secondary" type="button" data-back-button data-back-fallback="../index.html">← 返回上一级</button><label class="benchmark-switch"><span>Benchmark</span><select data-benchmark-switch><option value="../index.html" selected>Agent Memory Eval</option></select></label><a class="button secondary" href="../trace_summary.md">查看 Markdown Trace</a></div>
+    </header>
+    <div class="tabs case-tracking-tabs"><a class="tab active" href="../cases/index.html">Case 列表</a><a class="tab " href="../capabilities/index.html">能力维度表现</a><a class="tab " href="../failures/index.html">失败归因</a></div><section class="panel case-timeline-panel"><div class="section-heading"><div><p class="eyebrow">CASE PROGRESS</p><h2>阶段进度</h2></div><div class="timeline-legend"><span><i class="timeline-legend-pass"></i>阶段通过</span><span><i class="timeline-legend-muted"></i>阶段失败或未到达</span></div></div><p class="timeline-caption">绿色节点表示该阶段已满足当前评测条件；灰色节点表示阶段失败、未到达或缺少记录。悬停节点可查看原因。</p><div class="case-timeline" aria-label="Case 阶段进度"><div class="timeline-stage timeline-pass" tabindex="0" role="img" aria-label="Add · 写入：成功。写入完成：3/3 个 Session" title="Add · 写入：成功。写入完成：3/3 个 Session"><span class="timeline-node">✓</span><strong>Add · 写入</strong><small>成功</small><span class="timeline-reason" role="tooltip">写入完成：3/3 个 Session</span></div><span class="timeline-link timeline-pass" aria-hidden="true"></span><div class="timeline-stage timeline-pass" tabindex="0" role="img" aria-label="Index · 索引：成功。索引完成：5 个 Chunk" title="Index · 索引：成功。索引完成：5 个 Chunk"><span class="timeline-node">✓</span><strong>Index · 索引</strong><small>成功</small><span class="timeline-reason" role="tooltip">索引完成：5 个 Chunk</span></div><span class="timeline-link timeline-pass" aria-hidden="true"></span><div class="timeline-stage timeline-fail" tabindex="0" role="img" aria-label="Retrieval · 检索：失败。D01 completed with explicitly unsupported metrics." title="Retrieval · 检索：失败。D01 completed with explicitly unsupported metrics."><span class="timeline-node">×</span><strong>Retrieval · 检索</strong><small>失败</small><span class="timeline-reason" role="tooltip">D01 completed with explicitly unsupported metrics.</span></div><span class="timeline-link timeline-fail" aria-hidden="true"></span><div class="timeline-stage timeline-not-applicable" tabindex="0" role="img" aria-label="Context · 上下文：不适用。该维度无 gold_answer，不进入 Answer context" title="Context · 上下文：不适用。该维度无 gold_answer，不进入 Answer context"><span class="timeline-node">—</span><strong>Context · 上下文</strong><small>不适用</small><span class="timeline-reason" role="tooltip">该维度无 gold_answer，不进入 Answer context</span></div><span class="timeline-link timeline-not-applicable" aria-hidden="true"></span><div class="timeline-stage timeline-not-applicable" tabindex="0" role="img" aria-label="Answer · 回答：不适用。该维度无 gold_answer，Answer 不适用" title="Answer · 回答：不适用。该维度无 gold_answer，Answer 不适用"><span class="timeline-node">—</span><strong>Answer · 回答</strong><small>不适用</small><span class="timeline-reason" role="tooltip">该维度无 gold_answer，Answer 不适用</span></div><span class="timeline-link timeline-not-applicable" aria-hidden="true"></span><div class="timeline-stage timeline-not-applicable" tabindex="0" role="img" aria-label="Judge · 判分：不适用。该维度无 gold_answer，Judge 不适用" title="Judge · 判分：不适用。该维度无 gold_answer，Judge 不适用"><span class="timeline-node">—</span><strong>Judge · 判分</strong><small>不适用</small><span class="timeline-reason" role="tooltip">该维度无 gold_answer，Judge 不适用</span></div><span class="timeline-link timeline-not-applicable" aria-hidden="true"></span><div class="timeline-stage timeline-fail" tabindex="0" role="img" aria-label="Final · 结论：失败。流程完成，但最终失败：D01 completed with explicitly unsupported metrics." title="Final · 结论：失败。流程完成，但最终失败：D01 completed with explicitly unsupported metrics."><span class="timeline-node">×</span><strong>Final · 结论</strong><small>失败</small><span class="timeline-reason" role="tooltip">流程完成，但最终失败：D01 completed with explicitly unsupported metrics.</span></div></div></section>
+<section class="diagnosis-banner fail"><div><p class="eyebrow">问题诊断</p><h2>PARTIAL_CAPABILITY</h2><p>D01 completed with explicitly unsupported metrics.</p></div><div><span class="quadrant-detail q-n">NOT_RECORDED</span></div></section>
+<section class="panel"><div class="section-heading"><h2>数据输入</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>case_id</code></th><td>d01:lme:71a3fd6b</td></tr><tr><th><code>question_type</code></th><td>D01</td></tr><tr><th><code>question</code></th><td>I&#x27;m planning my trip to Speyer again and I wanted to confirm, what&#x27;s the phone number of the Speyer tourism board that you provided me earlier?</td></tr><tr><th><code>question_date</code></th><td>2023/05/30 (Tue) 21:38</td></tr><tr><th><code>gold_answer</code></th><td><span class="value-missing">NOT_APPLICABLE</span></td></tr><tr><th><code>evidence_session_ids</code></th><td><div class="tag-list"><span class="tag">eee3f7d3</span><span class="tag">answer_ultrachat_417348</span></div></td></tr><tr><th><code>total_sessions</code></th><td>3</td></tr><tr><th><code>total_turns</code></th><td>20</td></tr><tr><th><code>dimension_id</code></th><td>D01</td></tr><tr><th><code>payload_type</code></th><td>write</td></tr><tr><th><code>status</code></th><td>partial</td></tr></tbody></table></div></section>
+<section class="panel"><div class="section-heading"><h2>写入追踪</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>expected_session_count</code></th><td>3</td></tr><tr><th><code>successfully_added_session_count</code></th><td>3</td></tr><tr><th><code>expected_turn_count</code></th><td>20</td></tr><tr><th><code>successfully_added_turn_count</code></th><td>20</td></tr><tr><th><code>expected_evidence_session_count</code></th><td>2</td></tr><tr><th><code>successfully_added_evidence_count</code></th><td>2</td></tr><tr><th><code>missing_evidence_in_dataset</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>evidence_dataset_status</code></th><td>PASS</td></tr><tr><th><code>evidence_add_status</code></th><td>PASS</td></tr><tr><th><code>add_latency_ms</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>reindex_latency_ms</code></th><td>237.6654</td></tr><tr><th><code>workspace</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>namespace</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>user_id</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>duplicate_session_ids_in_dataset</code></th><td>0</td></tr><tr><th><code>failed_session_ids</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>add_status</code></th><td>PASS</td></tr><tr><th><code>index_status</code></th><td>PASS</td></tr><tr><th><code>indexed_document_count</code></th><td>3</td></tr><tr><th><code>indexed_chunk_count</code></th><td>5</td></tr><tr><th><code>chunks_with_embedding</code></th><td>0</td></tr><tr><th><code>embedding_status</code></th><td><span class="value-missing">NOT_APPLICABLE</span></td></tr><tr><th><code>embedding_call_count</code></th><td>0</td></tr><tr><th><code>embedding_failure_count</code></th><td>0</td></tr><tr><th><code>extraction_status</code></th><td><span class="value-missing">NOT_APPLICABLE</span></td></tr><tr><th><code>extraction_call_count</code></th><td>0</td></tr><tr><th><code>extraction_failure_count</code></th><td>0</td></tr><tr><th><code>errors</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr></tbody></table></div></section>
+<section class="panel"><div class="section-heading"><h2>检索追踪</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>query</code></th><td>I&#x27;m planning my trip to Speyer again and I wanted to confirm, what&#x27;s the phone number of the Speyer tourism board that you provided me earlier?</td></tr><tr><th><code>top_k</code></th><td>10</td></tr><tr><th><code>Hit@10</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>Recall@10</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>mrr</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>first_evidence_rank</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>first_evidence_rank_full</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>gold_evidence_count</code></th><td>2</td></tr><tr><th><code>retrieved_evidence_count</code></th><td>0</td></tr><tr><th><code>missing_evidence_ids</code></th><td><div class="tag-list"><span class="tag">answer_ultrachat_417348</span><span class="tag">eee3f7d3</span></div></td></tr><tr><th><code>best_evidence_score</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>best_non_evidence_score</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>evidence_score_gap</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>evidence_content_present</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>search_latency_ms</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>failure</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr></tbody></table></div><h3>top_results</h3><div class="result-list"></div></section>
+<section class="panel"><div class="section-heading"><h2>回答追踪</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>context_count</code></th><td>0</td></tr><tr><th><code>context_characters</code></th><td>0</td></tr><tr><th><code>context_token_estimate</code></th><td>0</td></tr><tr><th><code>context_order</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>context_timestamps</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>evidence_context_positions</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>distractor_count</code></th><td>0</td></tr><tr><th><code>evidence_in_retrieved_context</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>evidence_in_prompt</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>truncation_occurred</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>evidence_after_truncation</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>generated_answer</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>gold_answer</code></th><td><span class="value-missing">NOT_APPLICABLE</span></td></tr><tr><th><code>answer_difference</code></th><td>Generated answer is missing.</td></tr><tr><th><code>model</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>latency_ms</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>usage</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>failure</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr></tbody></table></div><h3>retrieved_contexts</h3><span class="value-missing">NOT_RECORDED</span></section>
+<section class="panel"><div class="section-heading"><h2>判分追踪</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>recorded</code></th><td><span class="status-muted">false</span></td></tr><tr><th><code>judge_prompt</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>judge_prompt_version</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>judge_prompt_sha256</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>judge_prompt_persisted</code></th><td><span class="status-muted">false</span></td></tr><tr><th><code>generated_answer</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>gold_answer</code></th><td><span class="value-missing">NOT_APPLICABLE</span></td></tr><tr><th><code>raw_response</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>parsed_label</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>is_correct</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>model</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>latency_ms</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>usage</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>human_review</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>suspect_reasons</code></th><td><span class="status-muted">[]</span></td></tr><tr><th><code>failure</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr></tbody></table></div></section>
+<section class="panel"><div class="section-heading"><h2>维度独立指标</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>dimension_id</code></th><td>D01</td></tr><tr><th><code>payload_type</code></th><td>write</td></tr><tr><th><code>gold_payload</code></th><td><div class="nested-fields"><div class="nested-row"><code>scored_event_ids</code><span><div class="tag-list"><span class="tag">d01:lme:71a3fd6b:e000</span><span class="tag">d01:lme:71a3fd6b:e001</span><span class="tag">d01:lme:71a3fd6b:e002</span><span class="tag">d01:lme:71a3fd6b:e003</span><span class="tag">d01:lme:71a3fd6b:e004</span><span class="tag">d01:lme:71a3fd6b:e005</span><span class="tag">d01:lme:71a3fd6b:e006</span><span class="tag">d01:lme:71a3fd6b:e007</span><span class="tag">d01:lme:71a3fd6b:e008</span><span class="tag">d01:lme:71a3fd6b:e009</span><span class="tag">d01:lme:71a3fd6b:e010</span><span class="tag">d01:lme:71a3fd6b:e011</span><span class="tag">d01:lme:71a3fd6b:e012</span><span class="tag">d01:lme:71a3fd6b:e013</span><span class="tag">d01:lme:71a3fd6b:e014</span><span class="tag">d01:lme:71a3fd6b:e015</span><span class="tag">d01:lme:71a3fd6b:e016</span><span class="tag">d01:lme:71a3fd6b:e017</span><span class="tag">d01:lme:71a3fd6b:e018</span><span class="tag">d01:lme:71a3fd6b:e019</span></div></span></div><div class="nested-row"><code>gold_memories</code><span><pre class="json-block">[
+  {
+    &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m00&quot;,
+    &quot;canonical_content&quot;: &quot;The user&#x27;s Instagram account had an average engagement rate of 5 percent.&quot;,
+    &quot;memory_type&quot;: &quot;personal_fact&quot;,
+    &quot;evidence_event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e004&quot;
+    ]
+  },
+  {
+    &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m01&quot;,
+    &quot;canonical_content&quot;: &quot;The user planned to experiment with Instagram Stories and IGTV to increase engagement.&quot;,
+    &quot;memory_type&quot;: &quot;plan&quot;,
+    &quot;evidence_event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e004&quot;
+    ]
+  },
+  {
+    &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m02&quot;,
+    &quot;canonical_content&quot;: &quot;The user had been promoting freelance writing services on social media for three months.&quot;,
+    &quot;memory_type&quot;: &quot;personal_fact&quot;,
+    &quot;evidence_event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e006&quot;,
+      &quot;d01:lme:71a3fd6b:e008&quot;
+    ]
+  },
+  {
+    &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m03&quot;,
+    &quot;canonical_content&quot;: &quot;The user&#x27;s Twitter account was gaining an average of 20 new followers per day.&quot;,
+    &quot;memory_type&quot;: &quot;personal_fact&quot;,
+    &quot;evidence_event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e008&quot;
+    ]
+  },
+  {
+    &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m04&quot;,
+    &quot;canonical_content&quot;: &quot;The user planned to experiment with Twitter polls to increase engagement.&quot;,
+    &quot;memory_type&quot;: &quot;plan&quot;,
+    &quot;evidence_event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e008&quot;,
+      &quot;d01:lme:71a3fd6b:e010&quot;,
+      &quot;d01:lme:71a3fd6b:e012&quot;
+    ]
+  },
+  {
+    &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m05&quot;,
+    &quot;canonical_content&quot;: &quot;The user was planning a visit to Speyer and was considering traveling there from Frankfurt.&quot;,
+    &quot;memory_type&quot;: &quot;plan&quot;,
+    &quot;evidence_event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e014&quot;,
+      &quot;d01:lme:71a3fd6b:e018&quot;
+    ]
+  },
+  {
+    &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m06&quot;,
+    &quot;canonical_content&quot;: &quot;The user was provided the Speyer tourism board contact details, including phone number +49 (0) 62 32 / 14 23 - 0, email info@speyer.de, and website https://www.speyer.de/.&quot;,
+    &quot;memory_type&quot;: &quot;other&quot;,
+    &quot;evidence_event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e017&quot;
+    ]
+  }
+]</pre></span></div><div class="nested-row"><code>non_memory_event_ids</code><span><div class="tag-list"><span class="tag">d01:lme:71a3fd6b:e000</span><span class="tag">d01:lme:71a3fd6b:e001</span><span class="tag">d01:lme:71a3fd6b:e002</span><span class="tag">d01:lme:71a3fd6b:e003</span><span class="tag">d01:lme:71a3fd6b:e005</span><span class="tag">d01:lme:71a3fd6b:e007</span><span class="tag">d01:lme:71a3fd6b:e009</span><span class="tag">d01:lme:71a3fd6b:e011</span><span class="tag">d01:lme:71a3fd6b:e013</span><span class="tag">d01:lme:71a3fd6b:e015</span><span class="tag">d01:lme:71a3fd6b:e016</span><span class="tag">d01:lme:71a3fd6b:e019</span></div></span></div></div></td></tr><tr><th><code>metrics</code></th><td><div class="nested-fields"><div class="nested-row"><code>write_event_precision</code><span><span class="metric-value">100.0%</span></span></div><div class="nested-row"><code>write_event_recall</code><span><span class="metric-value">100.0%</span></span></div><div class="nested-row"><code>unexpected_written_event_count</code><span>0</span></div><div class="nested-row"><code>written_memory_units</code><span>3</span></div><div class="nested-row"><code>semantic_memory_precision</code><span><span class="value-missing">NOT_RECORDED</span></span></div><div class="nested-row"><code>semantic_memory_recall</code><span><span class="value-missing">NOT_RECORDED</span></span></div></div></td></tr><tr><th><code>unsupported_metrics</code></th><td><div class="tag-list"><span class="tag">semantic_memory_precision</span><span class="tag">semantic_memory_recall</span></div></td></tr><tr><th><code>prediction</code></th><td><div class="nested-fields"><div class="nested-row"><code>status</code><span>ok</span></div><div class="nested-row"><code>data</code><span><pre class="json-block">[
+  {
+    &quot;memory_id&quot;: &quot;answer_ultrachat_417348&quot;,
+    &quot;unit&quot;: &quot;session&quot;,
+    &quot;source_memory_ids&quot;: [],
+    &quot;event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e014&quot;,
+      &quot;d01:lme:71a3fd6b:e015&quot;,
+      &quot;d01:lme:71a3fd6b:e016&quot;,
+      &quot;d01:lme:71a3fd6b:e017&quot;,
+      &quot;d01:lme:71a3fd6b:e018&quot;,
+      &quot;d01:lme:71a3fd6b:e019&quot;
+    ],
+    &quot;path&quot;: &quot;daily/d01_lme_71a3fd6b/answer_ultrachat_417348.md&quot;,
+    &quot;content&quot;: &quot;---\ncase_id: \&quot;d01:lme:71a3fd6b\&quot;\nsession_id: \&quot;answer_ultrachat_417348\&quot;\ntimestamp: \&quot;2023/05/29 (Mon) 09:40\&quot;\ndataset: \&quot;MemEval-v0.1\&quot;\n---\n# Conversation Session\n\n## User\n\nAre there any upcoming sporting events in Speyer that visitors can attend or participate in?\n\n## Assistant\n\nI do not have access to real-time information about events or functions happening in speyer. however, visitors can check local event calendars, sports club websites or consult with the tourism board of speyer to know about any upcoming sporting events. additionally, major sporting events in germany such as the bundesliga, triathlon events, or marathon races might feature speyer as a destination, and visitors can participate in those.\n\n## User\n\nCan you provide me with the contact details of the local tourism board of Speyer?\n\n## Assistant\n\nCertainly! You can contact the tourism board of Speyer using the following details:\n\nSpeyer Tourismus Marketing GmbH\nMaximilianstraße 13\n67346 Speyer\nPhone: +49 (0) 62 32 / 14 23 - 0\nEmail: info@speyer.de\nWebsite: https://www.speyer.de/\n\n## User\n\nThanks for providing me with the contact details of the tourism board of Speyer. Can you tell me how I can get to Speyer from Frankfurt?\n\n## Assistant\n\nYes, there are several ways to get to Speyer from Frankfurt. Here are some options:\n\n1. By car: Speyer is about 1 hour and 10 minutes drive from Frankfurt. You can rent a car at Frankfurt airport or in the city and drive to Speyer on the A67 and A61 highways.\n\n2. By train: The train is a convenient way to get to Speyer from Frankfurt. You can take a train from Frankfurt&#x27;s main train station Frankfurt am Main Hauptbahnhof to Speyer Hauptbahnhof. The journey takes around 1 hour and 20 minutes, and there are several direct and indirect trains available throughout the day.\n\n3. By bus: You can also take a bus from Frankfurt to Speyer. There are several bus companies that operate between the two cities, and the journey takes around 1 hour and 30 minutes.\n\n4. By taxi: You can take a taxi from Frankfurt Airport or the city center to Speyer. The journey takes around 1 hour and can be quite expensive.\n\nI hope this information helps you!\n&quot;,
+    &quot;indexed&quot;: true
+  },
+  {
+    &quot;memory_id&quot;: &quot;eee3f7d3&quot;,
+    &quot;unit&quot;: &quot;session&quot;,
+    &quot;source_memory_ids&quot;: [],
+    &quot;event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e002&quot;,
+      &quot;d01:lme:71a3fd6b:e003&quot;,
+      &quot;d01:lme:71a3fd6b:e004&quot;,
+      &quot;d01:lme:71a3fd6b:e005&quot;,
+      &quot;d01:lme:71a3fd6b:e006&quot;,
+      &quot;d01:lme:71a3fd6b:e007&quot;,
+      &quot;d01:lme:71a3fd6b:e008&quot;,
+      &quot;d01:lme:71a3fd6b:e009&quot;,
+      &quot;d01:lme:71a3fd6b:e010&quot;,
+      &quot;d01:lme:71a3fd6b:e011&quot;,
+      &quot;d01:lme:71a3fd6b:e012&quot;,
+      &quot;d01:lme:71a3fd6b:e013&quot;
+    ],
+    &quot;path&quot;: &quot;daily/d01_lme_71a3fd6b/eee3f7d3.md&quot;,
+    &quot;content&quot;: &quot;---\ncase_id: \&quot;d01:lme:71a3fd6b\&quot;\nsession_id: \&quot;eee3f7d3\&quot;\ntimestamp: \&quot;2023/05/29 (Mon) 06:53\&quot;\ndataset: \&quot;MemEval-v0.1\&quot;\n---\n# Conversation Session\n\n## User\n\nI&#x27;m trying to analyze my social media performance, can you help me understand how to track my engagement rates on Twitter and Instagram?\n\n## Assistant\n\nTracking engagement rates on Twitter and Instagram can help you understand how your content is resonating with your audience, identify areas for improvement, and optimize your social media strategy. Here&#x27;s a step-by-step guide to help you track your engagement rates on both platforms:\n\n**Twitter Engagement Rate:**\n\n1. **Understand the metrics:** Twitter measures engagement through likes, retweets, replies, and quote tweets.\n2. **Calculate your engagement rate:** Use this formula:\n\nEngagement Rate = (Total Engagements / Total Impressions) x 100\n\nWhere:\n\n* Total Engagements = Likes + Retweets + Replies + Quote Tweets\n* Total Impressions = Number of times your tweet was viewed\n3. **Find your engagement metrics:** You can find these metrics in Twitter Analytics, which is available for free to all Twitter users. To access Twitter Analytics:\n\t* Log in to your Twitter account.\n\t* Click on your profile picture in the top right corner.\n\t* Select \&quot;Twitter Analytics\&quot; from the dropdown menu.\n\t* Click on \&quot;Tweets\&quot; to view your tweet-level metrics.\n4. **Track your engagement rate over time:** Use Twitter Analytics to track your engagement rate over time. You can view your engagement rate for individual tweets, as well as for your overall Twitter performance.\n\n**Instagram Engagement Rate:**\n\n1. **Understand the metrics:** Instagram measures engagement through likes, comments, saves, and shares.\n2. **Calculate your engagement rate:** Use this formula:\n\nEngagement Rate = (Total Engagements / Total Reach) x 100\n\nWhere:\n\n* Total Engagements = Likes + Comments + Saves\n* Total Reach = Number of unique accounts that viewed your post\n3. **Find your engagement metrics:** You can find these metrics in Instagram Insights, which is available for free to all Instagram business profiles. To access Instagram Insights:\n\t* Make sure your Instagram account is set up as a business profile.\n\t* Tap the three horizontal lines () on your profile page.\n\t* Tap \&quot;Insights\&quot; to view your account metrics.\n\t* Tap \&quot;Content\&quot; to view your post-level metrics.\n4. **Track your engagement rate over time:** Use Instagram Insights to track your engagement rate over time. You can view your engagement rate for individual posts, as well as for your overall Instagram performance.\n\n**Tips and Best Practices:**\n\n* Track your engagement rate regularly to identify trends and areas for improvement.\n* Compare your engagement rate to industry benchmarks to see how you&#x27;re performing relative to others in your niche.\n* Experiment with different content types, formats, and captions to see what resonates best with your audience.\n* Engage with your audience by responding to comments and messages to increase engagement and build a loyal following.\n* Use hashtags strategically to increase the visibility of your posts and attract new followers.\n\nBy tracking your engagement rates on Twitter and Instagram, you&#x27;ll gain valuable insights into your social media performance and be able to refine your strategy to better connect with your audience.\n\n## User\n\nI&#x27;ve been tracking my social media analytics for a while now, and I&#x27;ve noticed that my Instagram account has been performing really well, with an average engagement rate of 5%. I&#x27;m thinking of experimenting with Instagram Stories and IGTV to see if I can increase my engagement even further. Do you have any tips on how to make the most out of these features?\n\n## Assistant\n\nCongratulations on your Instagram success! With an average engagement rate of 5%, you&#x27;re already doing something right! Experimenting with Instagram Stories and IGTV can help you tap into new ways to engage your audience and increase your overall performance. Here are some tips to help you make the most out of these features:\n\n**Instagram Stories:**\n\n1. **Use the \&quot;Swipe-Up\&quot; feature:** Add a link to your story to drive traffic to your website, blog, or other social media platforms. This feature is only available for accounts with 10,000+ followers or verified accounts.\n2. **Create engaging content:** Use high-quality visuals, animations, and text overlays to make your stories visually appealing.\n3. **Ask questions and polls:** Encourage engagement by asking questions, running polls, or using the \&quot;Question Sticker\&quot; to gather feedback from your audience.\n4. **Utilize the \&quot;Story Highlights\&quot; feature:** Organize your stories into categories (e.g., tutorials, behind-the-scenes, Q&amp;A) and make them easily accessible from your profile.\n5. **Post consistently:** Share stories regularly to keep your audience engaged and interested in your content.\n6. **Use Instagram&#x27;s built-in features:** Leverage features like Boomerang, Superzoom, and Rewind to add variety to your stories.\n7. **Monitor your story metrics:** Keep an eye on your story metrics to understand what&#x27;s working and what needs improvement.\n\n**IGTV:**\n\n1. **Create long-form content:** Produce high-quality, engaging videos that provide value to your audience. IGTV allows up to 60-minute videos, but aim for 10-15 minutes to start.\n2. **Optimize your title and description:** Craft attention-grabbing titles and descriptions to encourage viewers to watch your video.\n3. **Use catchy thumbnails:** Design eye-catching thumbnails that showcase the main topic of your video.\n4. **Promote your IGTV content:** Share your IGTV videos on your Instagram feed, stories, and other social media platforms to drive traffic.\n5. **Engage with your audience:** Respond to comments and engage with viewers who interact with your IGTV content.\n6. **Monetize your IGTV content:** Use IGTV ads, sponsored content, or affiliate marketing to generate revenue from your videos.\n7. **Consistency is key:** Regularly post IGTV content to keep your audience engaged and coming back for more.\n\n**Additional Tips:**\n\n1. **Cross-promote:** Share your Instagram Stories and IGTV content on your other social media platforms to drive traffic and increase engagement.\n2. **Time your content strategically:** Post Instagram Stories and IGTV content when your audience is most active, based on your analytics.\n3. **Be authentic and consistent:** Stay true to your brand voice and aesthetic across all your Instagram content, including Stories and IGTV.\n4. **Experiment and adapt:** Try new things, track your performance, and adjust your strategy based on your analytics and audience feedback.\n5. **Collaborate with other creators:** Partner with influencers or other brands to reach new audiences and create fresh content.\n\nBy following these tips, you can effectively utilize Instagram Stories and IGTV to increase engagement, grow your audience, and take your Instagram performance to the next level!\n\n## User\n\nSince I&#x27;ve been focusing on promoting my freelance writing services on social media for the past three months, I was wondering if you could help me come up with some ideas for creating engaging content on Instagram and Twitter that showcases my writing skills and expertise.\n\n## Assistant\n\nAs a freelance writer, you have a wealth of knowledge and skills to share with your audience. Here are some ideas for creating engaging content on Instagram and Twitter that showcases your writing skills and expertise:\n\n**Instagram Ideas:**\n\n1. **Writing Tips and Tricks:** Share bite-sized writing tips, grammar rules, or productivity hacks in visually appealing graphics or short videos.\n2. **Behind-the-Scenes:** Give your audience a sneak peek into your writing process, such as your research methods, writing routine, or favorite writing tools.\n3. **Author Takeovers:** Invite other writers or authors to take over your Instagram account for a day, sharing their own writing experiences and tips.\n4. **Word of the Week:** Highlight a unique word, its meaning, and how to use it in a sentence. You can create a visually appealing graphic or short video to make it engaging.\n5. **Before-and-After Edits:** Share a before-and-after example of your editing process, showcasing how you improve a piece of writing.\n6. **Q&amp;A Sessions:** Host a weekly or bi-weekly Q&amp;A session, where you answer questions from your audience about writing, grammar, or your services.\n7. **Writing Prompts:** Share writing prompts or exercises to encourage your audience to practice their writing skills.\n8. **Testimonials and Case Studies:** Share testimonials from satisfied clients, along with case studies of successful projects you&#x27;ve worked on.\n9. **Instagram Stories:** Use Instagram Stories to share quick writing tips, sneak peeks of your work, or ask for feedback from your audience.\n10. **Collaborate with Other Creatives:** Partner with designers, photographers, or other creatives to create engaging content that showcases your writing skills in a unique way.\n\n**Twitter Ideas:**\n\n1. **Writing Challenges:** Host a weekly or monthly writing challenge, where you provide a prompt and ask your audience to share their writing.\n2. **Tweet-sized Writing Tips:** Share concise writing tips, grammar rules, or productivity hacks in 280 characters or less.\n3. **Author Quotes:** Share inspiring quotes from famous authors, along with your own thoughts or reflections on the quote.\n4. **Ask Me Anything (AMA):** Host an AMA session, where you answer questions from your audience about writing, grammar, or your services.\n5. **Wordplay:** Share clever wordplay, puns, or language-related humor to engage your audience.\n6. **Industry News and Updates:** Share news, updates, and trends from the writing and publishing industry to position yourself as an expert.\n7. **Personal Writing Journey:** Share your personal writing journey, including your struggles, successes, and lessons learned.\n8. **Client Shoutouts:** Give shoutouts to your clients, highlighting the work you&#x27;ve done together and the results you&#x27;ve achieved.\n9. **Twitter Chats:** Participate in Twitter chats related to writing, such as #writingcommunity or #amwriting, to engage with other writers and share your expertise.\n10. **Share Your Work:** Share snippets of your own writing, such as a paragraph from a recent article or a short story, to showcase your skills.\n\nRemember to keep your content visually appealing, engaging, and informative. Use relevant hashtags to increase your reach and attract new followers. By sharing your knowledge and expertise, you&#x27;ll establish yourself as a credible and skilled freelance writer, attracting potential clients and growing your business.\n\n## User\n\nI&#x27;ve been focusing on promoting my freelance writing services on social media for the past three months, and I&#x27;ve seen a significant surge in engagement on my Twitter account, with an average of 20 new followers per day. I&#x27;d like to experiment with Twitter polls to increase engagement even further. Do you have any tips on how to create effective Twitter polls?\n\n## Assistant\n\nCongratulations on your Twitter success! With an average of 20 new followers per day, you&#x27;re on a roll! Twitter polls are an excellent way to increase engagement, encourage discussions, and gather feedback from your audience. Here are some tips to help you create effective Twitter polls:\n\n**1. Keep it simple and concise:**\n\t* Keep your poll question short and to the point.\n\t* Use simple language to ensure everyone understands the question.\n\t* Avoid complex or open-ended questions.\n\n**2. Make it relevant and timely:**\n\t* Create polls that are relevant to your niche or industry.\n\t* Tie your poll to a current event, trend, or holiday to increase engagement.\n\t* Use hashtags to make your poll discoverable.\n\n**3. Provide clear and concise options:**\n\t* Limit your options to 2-4 choices to avoid overwhelming your audience.\n\t* Ensure options are clear, concise, and easy to understand.\n\t* Use emojis to make your options more engaging.\n\n**4. Use attention-grabbing language:**\n\t* Craft a compelling question that sparks curiosity or interest.\n\t* Use action words like \&quot;Vote,\&quot; \&quot;Choose,\&quot; or \&quot;Decide\&quot; to encourage engagement.\n\t* Add a sense of urgency with phrases like \&quot;Limited time only\&quot; or \&quot;Vote now!\&quot;\n\n**5. Add visuals:**\n\t* Use images, GIFs, or videos to make your poll more engaging.\n\t* Add a relevant hashtag to increase discoverability.\n\t* Use Twitter&#x27;s built-in poll feature to create a visually appealing poll.\n\n**6. Engage with your audience:**\n\t* Respond to comments and replies to your poll.\n\t* Encourage discussion and debate by asking follow-up questions.\n\t* Share the results of your poll and provide insights or analysis.\n\n**7. Run multiple polls:**\n\t* Run multiple polls to keep your audience engaged and interested.\n\t* Experiment with different formats, such as \&quot;Would you rather...\&quot; or \&quot;Rank your top 3...\&quot;\n\t* Use polls to gather feedback on your content or services.\n\n**8. Analyze and adjust:**\n\t* Monitor your poll&#x27;s performance using Twitter Analytics.\n\t* Analyze the results to understand your audience&#x27;s preferences and interests.\n\t* Adjust your poll strategy based on your findings.\n\n**Freelance writing-specific poll ideas:**\n\n1. What&#x27;s the most challenging part of writing for you? (e.g., research, editing, writer&#x27;s block)\n2. What type of content do you prefer to write? (e.g., blog posts, articles, social media)\n3. How often do you write? (e.g., daily, weekly, monthly)\n4. What&#x27;s the most important skill for a freelance writer to have? (e.g., research, grammar, creativity)\n5. Would you rather write for a popular blog or a niche publication?\n\nBy following these tips, you can create effective Twitter polls that increase engagement, encourage discussion, and provide valuable insights into your audience&#x27;s interests and preferences. Good luck, and have fun! 📊💬\n\n## User\n\nI want to try out a Twitter poll to see what kind of content my audience would like to see more of. Do you think I should ask them to choose between \&quot;More writing tips and tricks\&quot; or \&quot;Behind-the-scenes of my writing process\&quot;?\n\n## Assistant\n\nThat&#x27;s a great idea! 🤔 Asking your audience what they&#x27;d like to see more of is a fantastic way to increase engagement and create content that resonates with them.\n\nFor your Twitter poll, I think both options are excellent choices, but I&#x27;d suggest making a slight adjustment to make them more specific and appealing. Here&#x27;s a revised version:\n\n**Option 1:** \&quot;More writing tips and tricks 📝💡\&quot; → \&quot;Get more actionable writing tips to improve your craft 📝💡\&quot;\n\n**Option 2:** \&quot;Behind-the-scenes of my writing process\&quot; → \&quot;Go behind the scenes of my writing process: from idea to publication 📄📝\&quot;\n\nBy making these changes, you&#x27;re providing more context and clarity about what your audience can expect from each option. The emojis also add a touch of personality and visual appeal to your poll. 🎉\n\nHere&#x27;s a sample tweet to get you started:\n\n\&quot;Hey writers! 🤔 I want to create more content that resonates with you. Help me decide: 🤝\n\nA) Get more actionable writing tips to improve your craft 📝💡\nB) Go behind the scenes of my writing process: from idea to publication 📄📝\n\nVote now and let me know what you&#x27;d like to see more of! 🗳️ #writingcommunity #contentcreation\&quot;\n\nFeel free to modify it to fit your tone and style. Good luck with your poll, and I hope you get valuable insights from your audience! 📊\n\n## User\n\nI think I&#x27;ll ask a follow-up question to clarify what they mean by \&quot;behind-the-scenes of my writing process\&quot;. Should I ask them to choose between \&quot;More about my research and planning process\&quot; or \&quot;More about my writing routine and productivity habits\&quot;?\n\n## Assistant\n\n🤔 Asking a follow-up question is a great way to drill down into what your audience is interested in and provide more targeted content.\n\nBoth options you&#x27;ve suggested are excellent choices, but I think you might want to consider making them even more specific and actionable. Here&#x27;s a revised version:\n\n**Option 1:** \&quot;More about my research and planning process\&quot; → \&quot;Get a peek into my research methods, including tools and resources I use to stay informed and organized 📚💻\&quot;\n\n**Option 2:** \&quot;More about my writing routine and productivity habits\&quot; → \&quot;Learn how I stay focused and productive, including my favorite writing habits, apps, and time management techniques ⏰💻\&quot;\n\nBy making these changes, you&#x27;re providing more concrete examples of what your audience can expect to learn from each option. This will help them make a more informed decision and get more value from your content.\n\nHere&#x27;s a sample tweet to ask your follow-up question:\n\n\&quot;Thanks for voting! 😊 For those who want to see more behind-the-scenes of my writing process, I&#x27;d love to know: 🤔\n\nA) Get a peek into my research methods, including tools and resources I use to stay informed and organized 📚💻\nB) Learn how I stay focused and productive, including my favorite writing habits, apps, and time management techniques ⏰💻\n\nVote now and help me create content that&#x27;s tailored to your interests! 🗳️ #writingcommunity #behindthescenes\&quot;\n\nFeel free to modify it to fit your tone and style. I hope this helps you get more clarity on what your audience wants to see, and that you&#x27;re able to create content that resonates with them! 📊\n&quot;,
+    &quot;indexed&quot;: true
+  },
+  {
+    &quot;memory_id&quot;: &quot;sharegpt_69zYTa4_0&quot;,
+    &quot;unit&quot;: &quot;session&quot;,
+    &quot;source_memory_ids&quot;: [],
+    &quot;event_ids&quot;: [
+      &quot;d01:lme:71a3fd6b:e000&quot;,
+      &quot;d01:lme:71a3fd6b:e001&quot;
+    ],
+    &quot;path&quot;: &quot;daily/d01_lme_71a3fd6b/sharegpt_69zYTa4_0.md&quot;,
+    &quot;content&quot;: &quot;---\ncase_id: \&quot;d01:lme:71a3fd6b\&quot;\nsession_id: \&quot;sharegpt_69zYTa4_0\&quot;\ntimestamp: \&quot;2023/05/22 (Mon) 06:22\&quot;\ndataset: \&quot;MemEval-v0.1\&quot;\n---\n# Conversation Session\n\n## User\n\nwrite a blog post announcing a 17,000-square-foot retail expansion anchored by a high-end steakhouse called Chophouse Nocatee with a rooftop bar. \n“We are excited for these unique additions to our vibrant Town Center,” said Michael O’Steen, Managing Director at The PARC Group, Nocatee’s master developer.\nThe Chophouse at Nocatee is owned and managed by the same team behind Chophouse Thirteen in Mandarin.\n“This next phase of retail will tie everything together to create the walkable Town Center we’ve been working hard to achieve over the past several years,” said Riley Skinner, Vice President of Skinner Brothers Realty.\n\n## Assistant\n\nNocatee, Florida is about to get even more exciting with the announcement of a 17,000-square-foot retail expansion in its Town Center. The expansion is anchored by a high-end steakhouse called Chophouse Nocatee, complete with a rooftop bar. The PARC Group, Nocatee’s master developer, is thrilled about the addition, stating, “We are excited for these unique additions to our vibrant Town Center.”\n\nChophouse Nocatee is owned and managed by the same team behind Chophouse Thirteen in Mandarin, which has been praised for its excellent food and atmosphere. With Chophouse Nocatee, diners can expect the same high-quality dining experience with a prime focus on steak, seafood, and craft cocktails. The rooftop bar offers an additional experience, giving patrons the chance to enjoy their meals with a view of Nocatee’s stunning landscape.\n\n“This next phase of retail will tie everything together to create the walkable Town Center we’ve been working hard to achieve over the past several years,” said Riley Skinner, Vice President of Skinner Brothers Realty. With this expansion, Nocatee residents and visitors will have even more reasons to explore the Town Center and enjoy everything it has to offer.\n\nThe Chophouse Nocatee expansion is a testament to Nocatee’s commitment to offering its community the best experiences possible. With its unique blend of shops, restaurants, and entertainment options, the Town Center is quickly becoming a go-to destination for those in the area. The addition of Chophouse Nocatee and its rooftop bar is sure to draw in even more visitors and establish the Town Center as a must-visit location.\n\nIn conclusion, Nocatee’s Town Center is about to become even more exciting with the announcement of a 17,000-square-foot retail expansion anchored by Chophouse Nocatee. With its high-end dining experience and rooftop bar, the steakhouse is sure to be a hit among residents and visitors alike. As the Town Center continues to grow, it’s clear that Nocatee is committed to offering the best possible experiences to its community.\n&quot;,
+    &quot;indexed&quot;: true
+  }
+]</pre></span></div><div class="nested-row"><code>reason</code><span></span></div></div></td></tr><tr><th><code>system_prediction</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>context_cache</code></th><td><div class="nested-fields"><div class="nested-row"><code>hit</code><span><span class="status-muted">false</span></span></div><div class="nested-row"><code>context_sha256</code><span>eff93751c0f89523ae05db78c7675cd9bf5e6851f088539179897a8802bfa6ab</span></div><div class="nested-row"><code>ingest_owner_case_id</code><span>d01:lme:71a3fd6b</span></div><div class="nested-row"><code>query_index</code><span>1</span></div><div class="nested-row"><code>query_count</code><span>1</span></div></div></td></tr><tr><th><code>run_mode</code></th><td>case_isolated</td></tr><tr><th><code>status</code></th><td>partial</td></tr><tr><th><code>error</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>latency</code></th><td><div class="nested-fields"><div class="nested-row"><code>ingest</code><span>237.6654</span></div><div class="nested-row"><code>retrieval</code><span><span class="value-missing">NOT_RECORDED</span></span></div><div class="nested-row"><code>answer</code><span><span class="value-missing">NOT_RECORDED</span></span></div><div class="nested-row"><code>total</code><span>4359.5864</span></div></div></td></tr><tr><th><code>cost</code></th><td><div class="nested-fields"><div class="nested-row"><code>input_tokens</code><span><span class="value-missing">NOT_RECORDED</span></span></div><div class="nested-row"><code>output_tokens</code><span><span class="value-missing">NOT_RECORDED</span></span></div><div class="nested-row"><code>api_cost</code><span><span class="value-missing">NOT_RECORDED</span></span></div></div></td></tr><tr><th><code>system_trace</code></th><td><div class="nested-fields"><div class="nested-row"><code>status</code><span>ok</span></div><div class="nested-row"><code>data</code><span><div class="nested-fields"><div class="nested-row"><code>kind</code><span>adapter_operations</span></div><div class="nested-row"><code>events</code><span><pre class="json-block">[
+  {
+    &quot;operation&quot;: &quot;ingest&quot;,
+    &quot;status&quot;: &quot;ok&quot;,
+    &quot;latency_ms&quot;: 244.26069999935862,
+    &quot;raw_response&quot;: {
+      &quot;answer&quot;: [
+        {
+          &quot;change&quot;: &quot;added&quot;,
+          &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\answer_ultrachat_417348.md&quot;,
+          &quot;success&quot;: true
+        },
+        {
+          &quot;change&quot;: &quot;added&quot;,
+          &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\eee3f7d3.md&quot;,
+          &quot;success&quot;: true
+        },
+        {
+          &quot;change&quot;: &quot;added&quot;,
+          &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\sharegpt_69zYTa4_0.md&quot;,
+          &quot;success&quot;: true
+        }
+      ],
+      &quot;success&quot;: true,
+      &quot;metadata&quot;: {
+        &quot;cleared_store&quot;: true,
+        &quot;counts&quot;: {
+          &quot;added&quot;: 3,
+          &quot;modified&quot;: 0,
+          &quot;deleted&quot;: 0
+        }
+      }
+    },
+    &quot;items&quot;: [
+      {
+        &quot;change&quot;: &quot;added&quot;,
+        &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\answer_ultrachat_417348.md&quot;,
+        &quot;success&quot;: true
+      },
+      {
+        &quot;change&quot;: &quot;added&quot;,
+        &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\eee3f7d3.md&quot;,
+        &quot;success&quot;: true
+      },
+      {
+        &quot;change&quot;: &quot;added&quot;,
+        &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\sharegpt_69zYTa4_0.md&quot;,
+        &quot;success&quot;: true
+      }
+    ],
+    &quot;health&quot;: {
+      &quot;is_started&quot;: true,
+      &quot;n_chunks&quot;: 5,
+      &quot;n_chunks_with_embedding&quot;: 0,
+      &quot;memory&quot;: &quot;0.06 MB&quot;
+    },
+    &quot;failures&quot;: []
+  }
+]</pre></span></div></div></span></div><div class="nested-row"><code>reason</code><span></span></div></div></td></tr></tbody></table></div></section>
+<section class="panel"><div class="section-heading"><h2>问题诊断</h2></div><div class="table-wrap"><table class="field-table"><tbody><tr><th><code>retrieval_pass</code></th><td><span class="status-muted">false</span></td></tr><tr><th><code>answer_pass</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>quadrant</code></th><td><span class="value-missing">NOT_RECORDED</span></td></tr><tr><th><code>root_cause</code></th><td>PARTIAL_CAPABILITY</td></tr><tr><th><code>explanation</code></th><td>D01 completed with explicitly unsupported metrics.</td></tr><tr><th><code>suggested_fix</code></th><td>Review unsupported_metrics and keep them separate from zero scores.</td></tr><tr><th><code>pipeline_complete</code></th><td><span class="status-pass">true</span></td></tr></tbody></table></div></section>
+<section class="panel"><details><summary>完整 Trace JSON</summary><pre class="json-block">{
+  &quot;case&quot;: {
+    &quot;case_id&quot;: &quot;d01:lme:71a3fd6b&quot;,
+    &quot;question_type&quot;: &quot;D01&quot;,
+    &quot;question&quot;: &quot;I&#x27;m planning my trip to Speyer again and I wanted to confirm, what&#x27;s the phone number of the Speyer tourism board that you provided me earlier?&quot;,
+    &quot;question_date&quot;: &quot;2023/05/30 (Tue) 21:38&quot;,
+    &quot;gold_answer&quot;: &quot;NOT_APPLICABLE&quot;,
+    &quot;evidence_session_ids&quot;: [
+      &quot;eee3f7d3&quot;,
+      &quot;answer_ultrachat_417348&quot;
+    ],
+    &quot;total_sessions&quot;: 3,
+    &quot;total_turns&quot;: 20,
+    &quot;dimension_id&quot;: &quot;D01&quot;,
+    &quot;payload_type&quot;: &quot;write&quot;,
+    &quot;status&quot;: &quot;partial&quot;
+  },
+  &quot;add&quot;: {
+    &quot;expected_session_count&quot;: 3,
+    &quot;successfully_added_session_count&quot;: 3,
+    &quot;expected_turn_count&quot;: 20,
+    &quot;successfully_added_turn_count&quot;: 20,
+    &quot;expected_evidence_session_count&quot;: 2,
+    &quot;successfully_added_evidence_count&quot;: 2,
+    &quot;missing_evidence_in_dataset&quot;: [],
+    &quot;evidence_dataset_status&quot;: &quot;PASS&quot;,
+    &quot;evidence_add_status&quot;: &quot;PASS&quot;,
+    &quot;add_latency_ms&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;reindex_latency_ms&quot;: 237.66539999996894,
+    &quot;workspace&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;namespace&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;user_id&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;duplicate_session_ids_in_dataset&quot;: 0,
+    &quot;failed_session_ids&quot;: [],
+    &quot;add_status&quot;: &quot;PASS&quot;,
+    &quot;index_status&quot;: &quot;PASS&quot;,
+    &quot;indexed_document_count&quot;: 3,
+    &quot;indexed_chunk_count&quot;: 5,
+    &quot;chunks_with_embedding&quot;: 0,
+    &quot;embedding_status&quot;: &quot;NOT_APPLICABLE&quot;,
+    &quot;embedding_call_count&quot;: 0,
+    &quot;embedding_failure_count&quot;: 0,
+    &quot;extraction_status&quot;: &quot;NOT_APPLICABLE&quot;,
+    &quot;extraction_call_count&quot;: 0,
+    &quot;extraction_failure_count&quot;: 0,
+    &quot;errors&quot;: &quot;NOT_RECORDED&quot;
+  },
+  &quot;retrieval&quot;: {
+    &quot;recorded&quot;: false,
+    &quot;query&quot;: &quot;I&#x27;m planning my trip to Speyer again and I wanted to confirm, what&#x27;s the phone number of the Speyer tourism board that you provided me earlier?&quot;,
+    &quot;top_k&quot;: 10,
+    &quot;hit_at_k&quot;: null,
+    &quot;recall_at_k&quot;: null,
+    &quot;mrr&quot;: null,
+    &quot;first_evidence_rank&quot;: null,
+    &quot;first_evidence_rank_full&quot;: null,
+    &quot;gold_evidence_count&quot;: 2,
+    &quot;retrieved_evidence_count&quot;: 0,
+    &quot;missing_evidence_ids&quot;: [
+      &quot;answer_ultrachat_417348&quot;,
+      &quot;eee3f7d3&quot;
+    ],
+    &quot;best_evidence_score&quot;: null,
+    &quot;best_non_evidence_score&quot;: null,
+    &quot;evidence_score_gap&quot;: null,
+    &quot;evidence_content_present&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_content_by_session&quot;: {
+      &quot;eee3f7d3&quot;: &quot;NOT_RECORDED&quot;,
+      &quot;answer_ultrachat_417348&quot;: &quot;NOT_RECORDED&quot;
+    },
+    &quot;search_latency_ms&quot;: null,
+    &quot;raw_result_count&quot;: null,
+    &quot;returned_session_count&quot;: 0,
+    &quot;search_status&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;search_retry_count&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;metrics_by_k&quot;: {},
+    &quot;mean_evidence_rank&quot;: null,
+    &quot;top_results&quot;: [],
+    &quot;failure&quot;: null
+  },
+  &quot;answer&quot;: {
+    &quot;recorded&quot;: false,
+    &quot;question&quot;: &quot;I&#x27;m planning my trip to Speyer again and I wanted to confirm, what&#x27;s the phone number of the Speyer tourism board that you provided me earlier?&quot;,
+    &quot;context_count&quot;: 0,
+    &quot;context_characters&quot;: 0,
+    &quot;context_token_estimate&quot;: 0,
+    &quot;context_order&quot;: [],
+    &quot;context_timestamps&quot;: [],
+    &quot;evidence_context_positions&quot;: [],
+    &quot;distractor_count&quot;: 0,
+    &quot;retrieved_contexts&quot;: [],
+    &quot;retrieved_context_excerpts&quot;: [],
+    &quot;evidence_in_retrieved_context&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_in_context_by_session&quot;: {
+      &quot;eee3f7d3&quot;: &quot;NOT_RECORDED&quot;,
+      &quot;answer_ultrachat_417348&quot;: &quot;NOT_RECORDED&quot;
+    },
+    &quot;evidence_in_prompt&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_in_prompt_by_session&quot;: {
+      &quot;eee3f7d3&quot;: &quot;NOT_RECORDED&quot;,
+      &quot;answer_ultrachat_417348&quot;: &quot;NOT_RECORDED&quot;
+    },
+    &quot;answer_prompt&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;answer_prompt_version&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;answer_prompt_sha256&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;answer_prompt_note&quot;: &quot;Exact sent prompt was not available.&quot;,
+    &quot;truncation_occurred&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_before_truncation&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;evidence_after_truncation&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;generated_answer&quot;: null,
+    &quot;gold_answer&quot;: &quot;NOT_APPLICABLE&quot;,
+    &quot;answer_difference&quot;: &quot;Generated answer is missing.&quot;,
+    &quot;model&quot;: null,
+    &quot;latency_ms&quot;: null,
+    &quot;usage&quot;: null,
+    &quot;failure&quot;: null
+  },
+  &quot;judge&quot;: {
+    &quot;recorded&quot;: false,
+    &quot;judge_prompt&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;judge_prompt_version&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;judge_prompt_sha256&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;judge_prompt_persisted&quot;: false,
+    &quot;generated_answer&quot;: null,
+    &quot;gold_answer&quot;: &quot;NOT_APPLICABLE&quot;,
+    &quot;raw_response&quot;: null,
+    &quot;parsed_label&quot;: null,
+    &quot;is_correct&quot;: null,
+    &quot;model&quot;: null,
+    &quot;latency_ms&quot;: null,
+    &quot;usage&quot;: null,
+    &quot;human_review&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;suspect_reasons&quot;: [],
+    &quot;failure&quot;: null
+  },
+  &quot;final&quot;: {
+    &quot;retrieval_pass&quot;: false,
+    &quot;answer_pass&quot;: null,
+    &quot;quadrant&quot;: &quot;NOT_RECORDED&quot;,
+    &quot;root_cause&quot;: &quot;PARTIAL_CAPABILITY&quot;,
+    &quot;explanation&quot;: &quot;D01 completed with explicitly unsupported metrics.&quot;,
+    &quot;suggested_fix&quot;: &quot;Review unsupported_metrics and keep them separate from zero scores.&quot;,
+    &quot;pipeline_complete&quot;: true
+  },
+  &quot;dimension&quot;: {
+    &quot;dimension_id&quot;: &quot;D01&quot;,
+    &quot;payload_type&quot;: &quot;write&quot;,
+    &quot;gold_payload&quot;: {
+      &quot;scored_event_ids&quot;: [
+        &quot;d01:lme:71a3fd6b:e000&quot;,
+        &quot;d01:lme:71a3fd6b:e001&quot;,
+        &quot;d01:lme:71a3fd6b:e002&quot;,
+        &quot;d01:lme:71a3fd6b:e003&quot;,
+        &quot;d01:lme:71a3fd6b:e004&quot;,
+        &quot;d01:lme:71a3fd6b:e005&quot;,
+        &quot;d01:lme:71a3fd6b:e006&quot;,
+        &quot;d01:lme:71a3fd6b:e007&quot;,
+        &quot;d01:lme:71a3fd6b:e008&quot;,
+        &quot;d01:lme:71a3fd6b:e009&quot;,
+        &quot;d01:lme:71a3fd6b:e010&quot;,
+        &quot;d01:lme:71a3fd6b:e011&quot;,
+        &quot;d01:lme:71a3fd6b:e012&quot;,
+        &quot;d01:lme:71a3fd6b:e013&quot;,
+        &quot;d01:lme:71a3fd6b:e014&quot;,
+        &quot;d01:lme:71a3fd6b:e015&quot;,
+        &quot;d01:lme:71a3fd6b:e016&quot;,
+        &quot;d01:lme:71a3fd6b:e017&quot;,
+        &quot;d01:lme:71a3fd6b:e018&quot;,
+        &quot;d01:lme:71a3fd6b:e019&quot;
+      ],
+      &quot;gold_memories&quot;: [
+        {
+          &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m00&quot;,
+          &quot;canonical_content&quot;: &quot;The user&#x27;s Instagram account had an average engagement rate of 5 percent.&quot;,
+          &quot;memory_type&quot;: &quot;personal_fact&quot;,
+          &quot;evidence_event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e004&quot;
+          ]
+        },
+        {
+          &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m01&quot;,
+          &quot;canonical_content&quot;: &quot;The user planned to experiment with Instagram Stories and IGTV to increase engagement.&quot;,
+          &quot;memory_type&quot;: &quot;plan&quot;,
+          &quot;evidence_event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e004&quot;
+          ]
+        },
+        {
+          &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m02&quot;,
+          &quot;canonical_content&quot;: &quot;The user had been promoting freelance writing services on social media for three months.&quot;,
+          &quot;memory_type&quot;: &quot;personal_fact&quot;,
+          &quot;evidence_event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e006&quot;,
+            &quot;d01:lme:71a3fd6b:e008&quot;
+          ]
+        },
+        {
+          &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m03&quot;,
+          &quot;canonical_content&quot;: &quot;The user&#x27;s Twitter account was gaining an average of 20 new followers per day.&quot;,
+          &quot;memory_type&quot;: &quot;personal_fact&quot;,
+          &quot;evidence_event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e008&quot;
+          ]
+        },
+        {
+          &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m04&quot;,
+          &quot;canonical_content&quot;: &quot;The user planned to experiment with Twitter polls to increase engagement.&quot;,
+          &quot;memory_type&quot;: &quot;plan&quot;,
+          &quot;evidence_event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e008&quot;,
+            &quot;d01:lme:71a3fd6b:e010&quot;,
+            &quot;d01:lme:71a3fd6b:e012&quot;
+          ]
+        },
+        {
+          &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m05&quot;,
+          &quot;canonical_content&quot;: &quot;The user was planning a visit to Speyer and was considering traveling there from Frankfurt.&quot;,
+          &quot;memory_type&quot;: &quot;plan&quot;,
+          &quot;evidence_event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e014&quot;,
+            &quot;d01:lme:71a3fd6b:e018&quot;
+          ]
+        },
+        {
+          &quot;memory_id&quot;: &quot;d01:lme:71a3fd6b:m06&quot;,
+          &quot;canonical_content&quot;: &quot;The user was provided the Speyer tourism board contact details, including phone number +49 (0) 62 32 / 14 23 - 0, email info@speyer.de, and website https://www.speyer.de/.&quot;,
+          &quot;memory_type&quot;: &quot;other&quot;,
+          &quot;evidence_event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e017&quot;
+          ]
+        }
+      ],
+      &quot;non_memory_event_ids&quot;: [
+        &quot;d01:lme:71a3fd6b:e000&quot;,
+        &quot;d01:lme:71a3fd6b:e001&quot;,
+        &quot;d01:lme:71a3fd6b:e002&quot;,
+        &quot;d01:lme:71a3fd6b:e003&quot;,
+        &quot;d01:lme:71a3fd6b:e005&quot;,
+        &quot;d01:lme:71a3fd6b:e007&quot;,
+        &quot;d01:lme:71a3fd6b:e009&quot;,
+        &quot;d01:lme:71a3fd6b:e011&quot;,
+        &quot;d01:lme:71a3fd6b:e013&quot;,
+        &quot;d01:lme:71a3fd6b:e015&quot;,
+        &quot;d01:lme:71a3fd6b:e016&quot;,
+        &quot;d01:lme:71a3fd6b:e019&quot;
+      ]
+    },
+    &quot;metrics&quot;: {
+      &quot;write_event_precision&quot;: 1.0,
+      &quot;write_event_recall&quot;: 1.0,
+      &quot;unexpected_written_event_count&quot;: 0,
+      &quot;written_memory_units&quot;: 3,
+      &quot;semantic_memory_precision&quot;: null,
+      &quot;semantic_memory_recall&quot;: null
+    },
+    &quot;unsupported_metrics&quot;: [
+      &quot;semantic_memory_precision&quot;,
+      &quot;semantic_memory_recall&quot;
+    ],
+    &quot;prediction&quot;: {
+      &quot;status&quot;: &quot;ok&quot;,
+      &quot;data&quot;: [
+        {
+          &quot;memory_id&quot;: &quot;answer_ultrachat_417348&quot;,
+          &quot;unit&quot;: &quot;session&quot;,
+          &quot;source_memory_ids&quot;: [],
+          &quot;event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e014&quot;,
+            &quot;d01:lme:71a3fd6b:e015&quot;,
+            &quot;d01:lme:71a3fd6b:e016&quot;,
+            &quot;d01:lme:71a3fd6b:e017&quot;,
+            &quot;d01:lme:71a3fd6b:e018&quot;,
+            &quot;d01:lme:71a3fd6b:e019&quot;
+          ],
+          &quot;path&quot;: &quot;daily/d01_lme_71a3fd6b/answer_ultrachat_417348.md&quot;,
+          &quot;content&quot;: &quot;---\ncase_id: \&quot;d01:lme:71a3fd6b\&quot;\nsession_id: \&quot;answer_ultrachat_417348\&quot;\ntimestamp: \&quot;2023/05/29 (Mon) 09:40\&quot;\ndataset: \&quot;MemEval-v0.1\&quot;\n---\n# Conversation Session\n\n## User\n\nAre there any upcoming sporting events in Speyer that visitors can attend or participate in?\n\n## Assistant\n\nI do not have access to real-time information about events or functions happening in speyer. however, visitors can check local event calendars, sports club websites or consult with the tourism board of speyer to know about any upcoming sporting events. additionally, major sporting events in germany such as the bundesliga, triathlon events, or marathon races might feature speyer as a destination, and visitors can participate in those.\n\n## User\n\nCan you provide me with the contact details of the local tourism board of Speyer?\n\n## Assistant\n\nCertainly! You can contact the tourism board of Speyer using the following details:\n\nSpeyer Tourismus Marketing GmbH\nMaximilianstraße 13\n67346 Speyer\nPhone: +49 (0) 62 32 / 14 23 - 0\nEmail: info@speyer.de\nWebsite: https://www.speyer.de/\n\n## User\n\nThanks for providing me with the contact details of the tourism board of Speyer. Can you tell me how I can get to Speyer from Frankfurt?\n\n## Assistant\n\nYes, there are several ways to get to Speyer from Frankfurt. Here are some options:\n\n1. By car: Speyer is about 1 hour and 10 minutes drive from Frankfurt. You can rent a car at Frankfurt airport or in the city and drive to Speyer on the A67 and A61 highways.\n\n2. By train: The train is a convenient way to get to Speyer from Frankfurt. You can take a train from Frankfurt&#x27;s main train station Frankfurt am Main Hauptbahnhof to Speyer Hauptbahnhof. The journey takes around 1 hour and 20 minutes, and there are several direct and indirect trains available throughout the day.\n\n3. By bus: You can also take a bus from Frankfurt to Speyer. There are several bus companies that operate between the two cities, and the journey takes around 1 hour and 30 minutes.\n\n4. By taxi: You can take a taxi from Frankfurt Airport or the city center to Speyer. The journey takes around 1 hour and can be quite expensive.\n\nI hope this information helps you!\n&quot;,
+          &quot;indexed&quot;: true
+        },
+        {
+          &quot;memory_id&quot;: &quot;eee3f7d3&quot;,
+          &quot;unit&quot;: &quot;session&quot;,
+          &quot;source_memory_ids&quot;: [],
+          &quot;event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e002&quot;,
+            &quot;d01:lme:71a3fd6b:e003&quot;,
+            &quot;d01:lme:71a3fd6b:e004&quot;,
+            &quot;d01:lme:71a3fd6b:e005&quot;,
+            &quot;d01:lme:71a3fd6b:e006&quot;,
+            &quot;d01:lme:71a3fd6b:e007&quot;,
+            &quot;d01:lme:71a3fd6b:e008&quot;,
+            &quot;d01:lme:71a3fd6b:e009&quot;,
+            &quot;d01:lme:71a3fd6b:e010&quot;,
+            &quot;d01:lme:71a3fd6b:e011&quot;,
+            &quot;d01:lme:71a3fd6b:e012&quot;,
+            &quot;d01:lme:71a3fd6b:e013&quot;
+          ],
+          &quot;path&quot;: &quot;daily/d01_lme_71a3fd6b/eee3f7d3.md&quot;,
+          &quot;content&quot;: &quot;---\ncase_id: \&quot;d01:lme:71a3fd6b\&quot;\nsession_id: \&quot;eee3f7d3\&quot;\ntimestamp: \&quot;2023/05/29 (Mon) 06:53\&quot;\ndataset: \&quot;MemEval-v0.1\&quot;\n---\n# Conversation Session\n\n## User\n\nI&#x27;m trying to analyze my social media performance, can you help me understand how to track my engagement rates on Twitter and Instagram?\n\n## Assistant\n\nTracking engagement rates on Twitter and Instagram can help you understand how your content is resonating with your audience, identify areas for improvement, and optimize your social media strategy. Here&#x27;s a step-by-step guide to help you track your engagement rates on both platforms:\n\n**Twitter Engagement Rate:**\n\n1. **Understand the metrics:** Twitter measures engagement through likes, retweets, replies, and quote tweets.\n2. **Calculate your engagement rate:** Use this formula:\n\nEngagement Rate = (Total Engagements / Total Impressions) x 100\n\nWhere:\n\n* Total Engagements = Likes + Retweets + Replies + Quote Tweets\n* Total Impressions = Number of times your tweet was viewed\n3. **Find your engagement metrics:** You can find these metrics in Twitter Analytics, which is available for free to all Twitter users. To access Twitter Analytics:\n\t* Log in to your Twitter account.\n\t* Click on your profile picture in the top right corner.\n\t* Select \&quot;Twitter Analytics\&quot; from the dropdown menu.\n\t* Click on \&quot;Tweets\&quot; to view your tweet-level metrics.\n4. **Track your engagement rate over time:** Use Twitter Analytics to track your engagement rate over time. You can view your engagement rate for individual tweets, as well as for your overall Twitter performance.\n\n**Instagram Engagement Rate:**\n\n1. **Understand the metrics:** Instagram measures engagement through likes, comments, saves, and shares.\n2. **Calculate your engagement rate:** Use this formula:\n\nEngagement Rate = (Total Engagements / Total Reach) x 100\n\nWhere:\n\n* Total Engagements = Likes + Comments + Saves\n* Total Reach = Number of unique accounts that viewed your post\n3. **Find your engagement metrics:** You can find these metrics in Instagram Insights, which is available for free to all Instagram business profiles. To access Instagram Insights:\n\t* Make sure your Instagram account is set up as a business profile.\n\t* Tap the three horizontal lines () on your profile page.\n\t* Tap \&quot;Insights\&quot; to view your account metrics.\n\t* Tap \&quot;Content\&quot; to view your post-level metrics.\n4. **Track your engagement rate over time:** Use Instagram Insights to track your engagement rate over time. You can view your engagement rate for individual posts, as well as for your overall Instagram performance.\n\n**Tips and Best Practices:**\n\n* Track your engagement rate regularly to identify trends and areas for improvement.\n* Compare your engagement rate to industry benchmarks to see how you&#x27;re performing relative to others in your niche.\n* Experiment with different content types, formats, and captions to see what resonates best with your audience.\n* Engage with your audience by responding to comments and messages to increase engagement and build a loyal following.\n* Use hashtags strategically to increase the visibility of your posts and attract new followers.\n\nBy tracking your engagement rates on Twitter and Instagram, you&#x27;ll gain valuable insights into your social media performance and be able to refine your strategy to better connect with your audience.\n\n## User\n\nI&#x27;ve been tracking my social media analytics for a while now, and I&#x27;ve noticed that my Instagram account has been performing really well, with an average engagement rate of 5%. I&#x27;m thinking of experimenting with Instagram Stories and IGTV to see if I can increase my engagement even further. Do you have any tips on how to make the most out of these features?\n\n## Assistant\n\nCongratulations on your Instagram success! With an average engagement rate of 5%, you&#x27;re already doing something right! Experimenting with Instagram Stories and IGTV can help you tap into new ways to engage your audience and increase your overall performance. Here are some tips to help you make the most out of these features:\n\n**Instagram Stories:**\n\n1. **Use the \&quot;Swipe-Up\&quot; feature:** Add a link to your story to drive traffic to your website, blog, or other social media platforms. This feature is only available for accounts with 10,000+ followers or verified accounts.\n2. **Create engaging content:** Use high-quality visuals, animations, and text overlays to make your stories visually appealing.\n3. **Ask questions and polls:** Encourage engagement by asking questions, running polls, or using the \&quot;Question Sticker\&quot; to gather feedback from your audience.\n4. **Utilize the \&quot;Story Highlights\&quot; feature:** Organize your stories into categories (e.g., tutorials, behind-the-scenes, Q&amp;A) and make them easily accessible from your profile.\n5. **Post consistently:** Share stories regularly to keep your audience engaged and interested in your content.\n6. **Use Instagram&#x27;s built-in features:** Leverage features like Boomerang, Superzoom, and Rewind to add variety to your stories.\n7. **Monitor your story metrics:** Keep an eye on your story metrics to understand what&#x27;s working and what needs improvement.\n\n**IGTV:**\n\n1. **Create long-form content:** Produce high-quality, engaging videos that provide value to your audience. IGTV allows up to 60-minute videos, but aim for 10-15 minutes to start.\n2. **Optimize your title and description:** Craft attention-grabbing titles and descriptions to encourage viewers to watch your video.\n3. **Use catchy thumbnails:** Design eye-catching thumbnails that showcase the main topic of your video.\n4. **Promote your IGTV content:** Share your IGTV videos on your Instagram feed, stories, and other social media platforms to drive traffic.\n5. **Engage with your audience:** Respond to comments and engage with viewers who interact with your IGTV content.\n6. **Monetize your IGTV content:** Use IGTV ads, sponsored content, or affiliate marketing to generate revenue from your videos.\n7. **Consistency is key:** Regularly post IGTV content to keep your audience engaged and coming back for more.\n\n**Additional Tips:**\n\n1. **Cross-promote:** Share your Instagram Stories and IGTV content on your other social media platforms to drive traffic and increase engagement.\n2. **Time your content strategically:** Post Instagram Stories and IGTV content when your audience is most active, based on your analytics.\n3. **Be authentic and consistent:** Stay true to your brand voice and aesthetic across all your Instagram content, including Stories and IGTV.\n4. **Experiment and adapt:** Try new things, track your performance, and adjust your strategy based on your analytics and audience feedback.\n5. **Collaborate with other creators:** Partner with influencers or other brands to reach new audiences and create fresh content.\n\nBy following these tips, you can effectively utilize Instagram Stories and IGTV to increase engagement, grow your audience, and take your Instagram performance to the next level!\n\n## User\n\nSince I&#x27;ve been focusing on promoting my freelance writing services on social media for the past three months, I was wondering if you could help me come up with some ideas for creating engaging content on Instagram and Twitter that showcases my writing skills and expertise.\n\n## Assistant\n\nAs a freelance writer, you have a wealth of knowledge and skills to share with your audience. Here are some ideas for creating engaging content on Instagram and Twitter that showcases your writing skills and expertise:\n\n**Instagram Ideas:**\n\n1. **Writing Tips and Tricks:** Share bite-sized writing tips, grammar rules, or productivity hacks in visually appealing graphics or short videos.\n2. **Behind-the-Scenes:** Give your audience a sneak peek into your writing process, such as your research methods, writing routine, or favorite writing tools.\n3. **Author Takeovers:** Invite other writers or authors to take over your Instagram account for a day, sharing their own writing experiences and tips.\n4. **Word of the Week:** Highlight a unique word, its meaning, and how to use it in a sentence. You can create a visually appealing graphic or short video to make it engaging.\n5. **Before-and-After Edits:** Share a before-and-after example of your editing process, showcasing how you improve a piece of writing.\n6. **Q&amp;A Sessions:** Host a weekly or bi-weekly Q&amp;A session, where you answer questions from your audience about writing, grammar, or your services.\n7. **Writing Prompts:** Share writing prompts or exercises to encourage your audience to practice their writing skills.\n8. **Testimonials and Case Studies:** Share testimonials from satisfied clients, along with case studies of successful projects you&#x27;ve worked on.\n9. **Instagram Stories:** Use Instagram Stories to share quick writing tips, sneak peeks of your work, or ask for feedback from your audience.\n10. **Collaborate with Other Creatives:** Partner with designers, photographers, or other creatives to create engaging content that showcases your writing skills in a unique way.\n\n**Twitter Ideas:**\n\n1. **Writing Challenges:** Host a weekly or monthly writing challenge, where you provide a prompt and ask your audience to share their writing.\n2. **Tweet-sized Writing Tips:** Share concise writing tips, grammar rules, or productivity hacks in 280 characters or less.\n3. **Author Quotes:** Share inspiring quotes from famous authors, along with your own thoughts or reflections on the quote.\n4. **Ask Me Anything (AMA):** Host an AMA session, where you answer questions from your audience about writing, grammar, or your services.\n5. **Wordplay:** Share clever wordplay, puns, or language-related humor to engage your audience.\n6. **Industry News and Updates:** Share news, updates, and trends from the writing and publishing industry to position yourself as an expert.\n7. **Personal Writing Journey:** Share your personal writing journey, including your struggles, successes, and lessons learned.\n8. **Client Shoutouts:** Give shoutouts to your clients, highlighting the work you&#x27;ve done together and the results you&#x27;ve achieved.\n9. **Twitter Chats:** Participate in Twitter chats related to writing, such as #writingcommunity or #amwriting, to engage with other writers and share your expertise.\n10. **Share Your Work:** Share snippets of your own writing, such as a paragraph from a recent article or a short story, to showcase your skills.\n\nRemember to keep your content visually appealing, engaging, and informative. Use relevant hashtags to increase your reach and attract new followers. By sharing your knowledge and expertise, you&#x27;ll establish yourself as a credible and skilled freelance writer, attracting potential clients and growing your business.\n\n## User\n\nI&#x27;ve been focusing on promoting my freelance writing services on social media for the past three months, and I&#x27;ve seen a significant surge in engagement on my Twitter account, with an average of 20 new followers per day. I&#x27;d like to experiment with Twitter polls to increase engagement even further. Do you have any tips on how to create effective Twitter polls?\n\n## Assistant\n\nCongratulations on your Twitter success! With an average of 20 new followers per day, you&#x27;re on a roll! Twitter polls are an excellent way to increase engagement, encourage discussions, and gather feedback from your audience. Here are some tips to help you create effective Twitter polls:\n\n**1. Keep it simple and concise:**\n\t* Keep your poll question short and to the point.\n\t* Use simple language to ensure everyone understands the question.\n\t* Avoid complex or open-ended questions.\n\n**2. Make it relevant and timely:**\n\t* Create polls that are relevant to your niche or industry.\n\t* Tie your poll to a current event, trend, or holiday to increase engagement.\n\t* Use hashtags to make your poll discoverable.\n\n**3. Provide clear and concise options:**\n\t* Limit your options to 2-4 choices to avoid overwhelming your audience.\n\t* Ensure options are clear, concise, and easy to understand.\n\t* Use emojis to make your options more engaging.\n\n**4. Use attention-grabbing language:**\n\t* Craft a compelling question that sparks curiosity or interest.\n\t* Use action words like \&quot;Vote,\&quot; \&quot;Choose,\&quot; or \&quot;Decide\&quot; to encourage engagement.\n\t* Add a sense of urgency with phrases like \&quot;Limited time only\&quot; or \&quot;Vote now!\&quot;\n\n**5. Add visuals:**\n\t* Use images, GIFs, or videos to make your poll more engaging.\n\t* Add a relevant hashtag to increase discoverability.\n\t* Use Twitter&#x27;s built-in poll feature to create a visually appealing poll.\n\n**6. Engage with your audience:**\n\t* Respond to comments and replies to your poll.\n\t* Encourage discussion and debate by asking follow-up questions.\n\t* Share the results of your poll and provide insights or analysis.\n\n**7. Run multiple polls:**\n\t* Run multiple polls to keep your audience engaged and interested.\n\t* Experiment with different formats, such as \&quot;Would you rather...\&quot; or \&quot;Rank your top 3...\&quot;\n\t* Use polls to gather feedback on your content or services.\n\n**8. Analyze and adjust:**\n\t* Monitor your poll&#x27;s performance using Twitter Analytics.\n\t* Analyze the results to understand your audience&#x27;s preferences and interests.\n\t* Adjust your poll strategy based on your findings.\n\n**Freelance writing-specific poll ideas:**\n\n1. What&#x27;s the most challenging part of writing for you? (e.g., research, editing, writer&#x27;s block)\n2. What type of content do you prefer to write? (e.g., blog posts, articles, social media)\n3. How often do you write? (e.g., daily, weekly, monthly)\n4. What&#x27;s the most important skill for a freelance writer to have? (e.g., research, grammar, creativity)\n5. Would you rather write for a popular blog or a niche publication?\n\nBy following these tips, you can create effective Twitter polls that increase engagement, encourage discussion, and provide valuable insights into your audience&#x27;s interests and preferences. Good luck, and have fun! 📊💬\n\n## User\n\nI want to try out a Twitter poll to see what kind of content my audience would like to see more of. Do you think I should ask them to choose between \&quot;More writing tips and tricks\&quot; or \&quot;Behind-the-scenes of my writing process\&quot;?\n\n## Assistant\n\nThat&#x27;s a great idea! 🤔 Asking your audience what they&#x27;d like to see more of is a fantastic way to increase engagement and create content that resonates with them.\n\nFor your Twitter poll, I think both options are excellent choices, but I&#x27;d suggest making a slight adjustment to make them more specific and appealing. Here&#x27;s a revised version:\n\n**Option 1:** \&quot;More writing tips and tricks 📝💡\&quot; → \&quot;Get more actionable writing tips to improve your craft 📝💡\&quot;\n\n**Option 2:** \&quot;Behind-the-scenes of my writing process\&quot; → \&quot;Go behind the scenes of my writing process: from idea to publication 📄📝\&quot;\n\nBy making these changes, you&#x27;re providing more context and clarity about what your audience can expect from each option. The emojis also add a touch of personality and visual appeal to your poll. 🎉\n\nHere&#x27;s a sample tweet to get you started:\n\n\&quot;Hey writers! 🤔 I want to create more content that resonates with you. Help me decide: 🤝\n\nA) Get more actionable writing tips to improve your craft 📝💡\nB) Go behind the scenes of my writing process: from idea to publication 📄📝\n\nVote now and let me know what you&#x27;d like to see more of! 🗳️ #writingcommunity #contentcreation\&quot;\n\nFeel free to modify it to fit your tone and style. Good luck with your poll, and I hope you get valuable insights from your audience! 📊\n\n## User\n\nI think I&#x27;ll ask a follow-up question to clarify what they mean by \&quot;behind-the-scenes of my writing process\&quot;. Should I ask them to choose between \&quot;More about my research and planning process\&quot; or \&quot;More about my writing routine and productivity habits\&quot;?\n\n## Assistant\n\n🤔 Asking a follow-up question is a great way to drill down into what your audience is interested in and provide more targeted content.\n\nBoth options you&#x27;ve suggested are excellent choices, but I think you might want to consider making them even more specific and actionable. Here&#x27;s a revised version:\n\n**Option 1:** \&quot;More about my research and planning process\&quot; → \&quot;Get a peek into my research methods, including tools and resources I use to stay informed and organized 📚💻\&quot;\n\n**Option 2:** \&quot;More about my writing routine and productivity habits\&quot; → \&quot;Learn how I stay focused and productive, including my favorite writing habits, apps, and time management techniques ⏰💻\&quot;\n\nBy making these changes, you&#x27;re providing more concrete examples of what your audience can expect to learn from each option. This will help them make a more informed decision and get more value from your content.\n\nHere&#x27;s a sample tweet to ask your follow-up question:\n\n\&quot;Thanks for voting! 😊 For those who want to see more behind-the-scenes of my writing process, I&#x27;d love to know: 🤔\n\nA) Get a peek into my research methods, including tools and resources I use to stay informed and organized 📚💻\nB) Learn how I stay focused and productive, including my favorite writing habits, apps, and time management techniques ⏰💻\n\nVote now and help me create content that&#x27;s tailored to your interests! 🗳️ #writingcommunity #behindthescenes\&quot;\n\nFeel free to modify it to fit your tone and style. I hope this helps you get more clarity on what your audience wants to see, and that you&#x27;re able to create content that resonates with them! 📊\n&quot;,
+          &quot;indexed&quot;: true
+        },
+        {
+          &quot;memory_id&quot;: &quot;sharegpt_69zYTa4_0&quot;,
+          &quot;unit&quot;: &quot;session&quot;,
+          &quot;source_memory_ids&quot;: [],
+          &quot;event_ids&quot;: [
+            &quot;d01:lme:71a3fd6b:e000&quot;,
+            &quot;d01:lme:71a3fd6b:e001&quot;
+          ],
+          &quot;path&quot;: &quot;daily/d01_lme_71a3fd6b/sharegpt_69zYTa4_0.md&quot;,
+          &quot;content&quot;: &quot;---\ncase_id: \&quot;d01:lme:71a3fd6b\&quot;\nsession_id: \&quot;sharegpt_69zYTa4_0\&quot;\ntimestamp: \&quot;2023/05/22 (Mon) 06:22\&quot;\ndataset: \&quot;MemEval-v0.1\&quot;\n---\n# Conversation Session\n\n## User\n\nwrite a blog post announcing a 17,000-square-foot retail expansion anchored by a high-end steakhouse called Chophouse Nocatee with a rooftop bar. \n“We are excited for these unique additions to our vibrant Town Center,” said Michael O’Steen, Managing Director at The PARC Group, Nocatee’s master developer.\nThe Chophouse at Nocatee is owned and managed by the same team behind Chophouse Thirteen in Mandarin.\n“This next phase of retail will tie everything together to create the walkable Town Center we’ve been working hard to achieve over the past several years,” said Riley Skinner, Vice President of Skinner Brothers Realty.\n\n## Assistant\n\nNocatee, Florida is about to get even more exciting with the announcement of a 17,000-square-foot retail expansion in its Town Center. The expansion is anchored by a high-end steakhouse called Chophouse Nocatee, complete with a rooftop bar. The PARC Group, Nocatee’s master developer, is thrilled about the addition, stating, “We are excited for these unique additions to our vibrant Town Center.”\n\nChophouse Nocatee is owned and managed by the same team behind Chophouse Thirteen in Mandarin, which has been praised for its excellent food and atmosphere. With Chophouse Nocatee, diners can expect the same high-quality dining experience with a prime focus on steak, seafood, and craft cocktails. The rooftop bar offers an additional experience, giving patrons the chance to enjoy their meals with a view of Nocatee’s stunning landscape.\n\n“This next phase of retail will tie everything together to create the walkable Town Center we’ve been working hard to achieve over the past several years,” said Riley Skinner, Vice President of Skinner Brothers Realty. With this expansion, Nocatee residents and visitors will have even more reasons to explore the Town Center and enjoy everything it has to offer.\n\nThe Chophouse Nocatee expansion is a testament to Nocatee’s commitment to offering its community the best experiences possible. With its unique blend of shops, restaurants, and entertainment options, the Town Center is quickly becoming a go-to destination for those in the area. The addition of Chophouse Nocatee and its rooftop bar is sure to draw in even more visitors and establish the Town Center as a must-visit location.\n\nIn conclusion, Nocatee’s Town Center is about to become even more exciting with the announcement of a 17,000-square-foot retail expansion anchored by Chophouse Nocatee. With its high-end dining experience and rooftop bar, the steakhouse is sure to be a hit among residents and visitors alike. As the Town Center continues to grow, it’s clear that Nocatee is committed to offering the best possible experiences to its community.\n&quot;,
+          &quot;indexed&quot;: true
+        }
+      ],
+      &quot;reason&quot;: &quot;&quot;
+    },
+    &quot;system_prediction&quot;: null,
+    &quot;context_cache&quot;: {
+      &quot;hit&quot;: false,
+      &quot;context_sha256&quot;: &quot;eff93751c0f89523ae05db78c7675cd9bf5e6851f088539179897a8802bfa6ab&quot;,
+      &quot;ingest_owner_case_id&quot;: &quot;d01:lme:71a3fd6b&quot;,
+      &quot;query_index&quot;: 1,
+      &quot;query_count&quot;: 1
+    },
+    &quot;run_mode&quot;: &quot;case_isolated&quot;,
+    &quot;status&quot;: &quot;partial&quot;,
+    &quot;error&quot;: null,
+    &quot;latency&quot;: {
+      &quot;ingest&quot;: 237.66539999996894,
+      &quot;retrieval&quot;: null,
+      &quot;answer&quot;: null,
+      &quot;total&quot;: 4359.586399999898
+    },
+    &quot;cost&quot;: {
+      &quot;input_tokens&quot;: null,
+      &quot;output_tokens&quot;: null,
+      &quot;api_cost&quot;: null
+    },
+    &quot;system_trace&quot;: {
+      &quot;status&quot;: &quot;ok&quot;,
+      &quot;data&quot;: {
+        &quot;kind&quot;: &quot;adapter_operations&quot;,
+        &quot;events&quot;: [
+          {
+            &quot;operation&quot;: &quot;ingest&quot;,
+            &quot;status&quot;: &quot;ok&quot;,
+            &quot;latency_ms&quot;: 244.26069999935862,
+            &quot;raw_response&quot;: {
+              &quot;answer&quot;: [
+                {
+                  &quot;change&quot;: &quot;added&quot;,
+                  &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\answer_ultrachat_417348.md&quot;,
+                  &quot;success&quot;: true
+                },
+                {
+                  &quot;change&quot;: &quot;added&quot;,
+                  &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\eee3f7d3.md&quot;,
+                  &quot;success&quot;: true
+                },
+                {
+                  &quot;change&quot;: &quot;added&quot;,
+                  &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\sharegpt_69zYTa4_0.md&quot;,
+                  &quot;success&quot;: true
+                }
+              ],
+              &quot;success&quot;: true,
+              &quot;metadata&quot;: {
+                &quot;cleared_store&quot;: true,
+                &quot;counts&quot;: {
+                  &quot;added&quot;: 3,
+                  &quot;modified&quot;: 0,
+                  &quot;deleted&quot;: 0
+                }
+              }
+            },
+            &quot;items&quot;: [
+              {
+                &quot;change&quot;: &quot;added&quot;,
+                &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\answer_ultrachat_417348.md&quot;,
+                &quot;success&quot;: true
+              },
+              {
+                &quot;change&quot;: &quot;added&quot;,
+                &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\eee3f7d3.md&quot;,
+                &quot;success&quot;: true
+              },
+              {
+                &quot;change&quot;: &quot;added&quot;,
+                &quot;path&quot;: &quot;E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\results\\memeval_v0_1\\reme\\reme-full-20260908-132206\\system_work\\namespaces\\65e9b31b85ed4b30\\daily\\d01_lme_71a3fd6b\\sharegpt_69zYTa4_0.md&quot;,
+                &quot;success&quot;: true
+              }
+            ],
+            &quot;health&quot;: {
+              &quot;is_started&quot;: true,
+              &quot;n_chunks&quot;: 5,
+              &quot;n_chunks_with_embedding&quot;: 0,
+              &quot;memory&quot;: &quot;0.06 MB&quot;
+            },
+            &quot;failures&quot;: []
+          }
+        ]
+      },
+      &quot;reason&quot;: &quot;&quot;
+    }
+  },
+  &quot;timeline&quot;: [
+    {
+      &quot;key&quot;: &quot;load&quot;,
+      &quot;label&quot;: &quot;Load Context&quot;,
+      &quot;status&quot;: &quot;pass&quot;,
+      &quot;reason&quot;: &quot;读取冻结 Context&quot;
+    },
+    {
+      &quot;key&quot;: &quot;ingest&quot;,
+      &quot;label&quot;: &quot;ReMe Ingest&quot;,
+      &quot;status&quot;: &quot;pass&quot;,
+      &quot;reason&quot;: &quot;写入并建立索引&quot;
+    },
+    {
+      &quot;key&quot;: &quot;write&quot;,
+      &quot;label&quot;: &quot;Write Evaluation&quot;,
+      &quot;status&quot;: &quot;pass&quot;,
+      &quot;reason&quot;: &quot;write_event_recall=1.0&quot;
+    },
+    {
+      &quot;key&quot;: &quot;answer&quot;,
+      &quot;label&quot;: &quot;Answer&quot;,
+      &quot;status&quot;: &quot;not_applicable&quot;,
+      &quot;reason&quot;: &quot;该维度无 gold_answer，不适用&quot;
+    },
+    {
+      &quot;key&quot;: &quot;judge&quot;,
+      &quot;label&quot;: &quot;Judge&quot;,
+      &quot;status&quot;: &quot;not_applicable&quot;,
+      &quot;reason&quot;: &quot;该维度无 gold_answer，不适用&quot;
+    },
+    {
+      &quot;key&quot;: &quot;final&quot;,
+      &quot;label&quot;: &quot;Final&quot;,
+      &quot;status&quot;: &quot;pass&quot;,
+      &quot;reason&quot;: &quot;status=partial&quot;
+    }
+  ]
+}</pre></details></section>
+
+    <footer>由现有 Trace 产物静态生成 · 不参与评测、判分或根因计算</footer>
+  </main>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

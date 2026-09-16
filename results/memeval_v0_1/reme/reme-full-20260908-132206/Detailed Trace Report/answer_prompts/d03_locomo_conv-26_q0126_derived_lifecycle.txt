@@ -1,0 +1,881 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d03:locomo:conv-26:q0126:lifecycle:D13" score="2.9858484268188477">
+# Conversation Session
+
+## Speaker
+
+Hi Melanie! Hope you're doing good. Guess what I did this week? I took the first step towards becoming a mom - I applied to adoption agencies! It's a big decision, but I think I'm ready to give all my love to a child. I got lots of help from this adoption advice/assistance group I attended. It was great!
+
+## Speaker
+
+Caroline, congrats! So proud of you for taking this step. How does it feel? Also, do you have any pets?
+
+## Speaker
+
+Thanks, Mel! Exciting but kinda nerve-wracking. Parenting's such a big responsibility. And yup, I do- Oscar, my guinea pig. He's been great. How are your pets?
+
+## Speaker
+
+Yeah, it's normal to be both excited and nervous with a big decision. And thanks for asking, they're good- we got another cat named Bailey too. Here's a pic of Oliver. Can you show me one of Oscar?
+
+## Speaker
+
+He's so cute! What’s the funniest thing Oliver's done? And sure, check out this pic of him eating parsley! Veggies are his fave!
+
+## Speaker
+
+Oliver's hilarious! He hid his bone in my slipper once! Cute, right? Almost as silly as when I got to feed a horse a carrot.
+
+## Speaker
+
+That's so funny! I used to go horseback riding with my dad when I was a kid, we'd go through the fields, feeling the wind. It was so special. I've always had a love for horses!
+
+## Speaker
+
+Wow, that sounds great - I agree, they're awesome. Here's a photo of my horse painting I did recently.
+
+## Speaker
+
+Wow, Melanie, that's amazing! Love all the details and how you got the horse's grace and strength. Do you like painting animals?
+
+## Speaker
+
+Thanks, Caroline! Glad you like it. Yeah, I love to. It's peaceful and special. Horses have such grace! Do you like to paint too?
+
+## Speaker
+
+Painting's great for expressing myself. I love creating art! Here's a recent self-portrait I made last week.
+
+## Speaker
+
+Caroline, that's great! The blue's really powerful, huh? How'd you feel while painting it?
+
+## Speaker
+
+Thanks, Mel! I felt liberated and empowered doing it. Painting helps me explore my identity and be true to myself. It's definitely therapeutic.
+
+## Speaker
+
+Wow, Caroline, that's great! Art's awesome for showing us who we really are and getting in touch with ourselves. What else helps you out?
+
+## Speaker
+
+Thanks, Melanie. Art gives me a sense of freedom, but so does having supportive people around, promoting LGBTQ rights and being true to myself. I want to live authentically and help others to do the same.
+
+## Speaker
+
+Wow, Caroline! That's amazing. You really care about being real and helping others. Wishing you the best on your adoption journey!
+
+## Speaker
+
+Thanks, Melanie! I really appreciate it. Excited for the future! Bye!
+
+## Speaker
+
+Bye Caroline. I'm here for you. Take care of yourself.
+</memory>
+<memory rank="2" session_id="d03:locomo:conv-26:q0126:lifecycle:D9" score="0.16094008088111877">
+# Conversation Session
+
+## Speaker
+
+Hey Caroline, hope all's good! I had a quiet weekend after we went camping with my fam two weekends ago. It was great to unplug and hang with the kids. What've you been up to? Anything fun over the weekend?
+
+## Speaker
+
+Hey Melanie! That sounds great! Last weekend I joined a mentorship program for LGBTQ youth - it's really rewarding to help the community.
+
+## Speaker
+
+Wow, Caroline! It's great that you're helping out. How's it going? Got any cool experiences you can share?
+
+## Speaker
+
+The mentoring is going great! I've met some amazing young folks and supported them along the way. It's inspiring to see how resilient and strong they are.
+
+## Speaker
+
+Wow, Caroline, that sounds super rewarding! Young people's resilience is amazing. Care to share some stories?
+
+## Speaker
+
+I mentor a transgender teen just like me. We've been working on building up confidence and finding positive strategies, and it's really been paying off! We had a great time at the LGBT pride event last month.
+
+## Speaker
+
+Caroline, awesome news that you two are getting along! What was it like for you both? Care to fill me in?
+
+## Speaker
+
+The pride event was awesome! It was so encouraging to be surrounded by so much love and acceptance.
+
+## Speaker
+
+Wow! What's the best part you remember from it?
+
+## Speaker
+
+Seeing my mentee's face light up when they saw the support was the best! Such a special moment.
+
+## Speaker
+
+Wow, Caroline! They must have felt so appreciated. It's awesome to see the difference we can make in each other's lives. Any other exciting LGBTQ advocacy stuff coming up?
+
+## Speaker
+
+Yay! Next month I'm having an LGBTQ art show with my paintings - can't wait!
+
+## Speaker
+
+Wow, Caroline, that sounds awesome! Can't wait to see your art - got any previews?
+
+## Speaker
+
+Check out my painting for the art show! Hope you like it.
+
+## Speaker
+
+Wow, Caroline, that painting is awesome! Those colors are so vivid and the whole thing looks really unified. What inspired you?
+
+## Speaker
+
+Thanks, Melanie! I painted this after I visited a LGBTQ center. I wanted to capture everyone's unity and strength.
+
+## Speaker
+
+Wow, Caroline! It really conveys unity and strength - such a gorgeous piece! My kids and I just finished another painting like our last one.
+</memory>
+<memory rank="3" session_id="d03:locomo:conv-26:q0126:lifecycle:D5" score="0.1577032059431076">
+# Conversation Session
+
+## Speaker
+
+Since we last spoke, some big things have happened. Last week I went to an LGBTQ+ pride parade. Everyone was so happy and it made me feel like I belonged. It showed me how much our community has grown, it was amazing!
+
+## Speaker
+
+Wow, Caroline, sounds like the parade was an awesome experience! It's great to see the love and support for the LGBTQ+ community. Congrats! Has this experience influenced your goals at all?
+
+## Speaker
+
+Thanks, Mel! It really motivated me for sure. Talking to the community made me want to use my story to help others too - I'm still thinking that counseling and mental health is the way to go. I'm super excited to give back.
+
+## Speaker
+
+Wow, Caroline! That's great! I just signed up for a pottery class yesterday. It's like therapy for me, letting me express myself and get creative. Have you found any activities that make you feel the same way?
+
+## Speaker
+
+Wow, Melanie! I'm getting creative too, just learning the piano. What made you try pottery?
+
+## Speaker
+
+I'm a big fan of pottery - the creativity and skill is awesome. Plus, making it is so calming. Look at this!
+
+## Speaker
+
+That bowl is gorgeous! The black and white design looks so fancy. Did you make it?
+
+## Speaker
+
+Thanks, Caroline! Yeah, I made this bowl in my class. It took some work, but I'm pretty proud of it.
+
+## Speaker
+
+Nice job! You really put in the work and it definitely shows. Your creativity looks great!
+
+## Speaker
+
+Thanks, Caroline! Your kind words mean a lot. Pottery is a huge part of my life, not just a hobby - it helps me express my emotions. Clay is incredible, it brings me so much joy!
+
+## Speaker
+
+Wow, Mel, I'm so stoked for you that art is helping you express yourself and bring you joy! Keep it up!
+
+## Speaker
+
+Thanks, Caroline! I'm excited to see where pottery takes me. Anything coming up you're looking forward to?
+
+## Speaker
+
+Thanks Mel! I'm going to a transgender conference this month. I'm so excited to meet other people in the community and learn more about advocacy. It's gonna be great!
+
+## Speaker
+
+Sounds awesome, Caroline! Have a great time and learn a lot. Have fun!
+
+## Speaker
+
+Cool, thanks Mel! Can't wait. I'll keep ya posted. Bye!
+
+## Speaker
+
+Bye, Caroline! Can't wait to hear about it. Have fun and stay safe!
+</memory>
+<memory rank="4" session_id="d03:locomo:conv-26:q0126:lifecycle:D12" score="0.1570592224597931">
+# Conversation Session
+
+## Speaker
+
+Hey Mel! How're ya doin'? Recently, I had a not-so-great experience on a hike. I ran into a group of religious conservatives who said something that really upset me. It made me think how much work we still have to do for LGBTQ rights. It's been so helpful to have people around me who accept and support me, so I know I'll be ok!
+
+## Speaker
+
+Hey Caroline, sorry about the hike. It sucks when people are so closed-minded. Strong support really helps. FYI, I finished another pottery project - want to see a pic?
+
+## Speaker
+
+Sure thing, Melanie! Can't wait to see your pottery project.  I'm happy you found something that makes you happy. Show me when you can!
+
+## Speaker
+
+Here it is. Pretty proud of it! It was a great experience. Thoughts?
+
+## Speaker
+
+That bowl is awesome, Mel! What gave you the idea for all the colors and patterns?
+
+## Speaker
+
+Thanks, Caroline! I'm obsessed with those, so I made something to catch the eye and make people smile. Plus, painting helps me express my feelings and be creative. Each stroke carries a part of me.
+
+## Speaker
+
+That's amazing! You put so much effort and passion into it. Your creativity really shines. Seeing how art can be a source of self-expression and growth is truly inspiring. You're killing it!
+
+## Speaker
+
+Thanks, Caroline! Your words really mean a lot. I've always felt a strong connection to art, and it's been a huge learning experience. It's both a sanctuary and a source of comfort. I'm so glad to have something that brings me so much happiness and fulfillment.
+
+## Speaker
+
+Glad you found something that makes you so happy! Surrounding ourselves with things that bring us joy is important. Life's too short to do anything else!
+
+## Speaker
+
+Agreed, Caroline. Life's tough but it's worth it when we have things that make us happy.
+
+## Speaker
+
+Definitely, Mel! Finding those happy moments and clinging to them is key. It's what keeps us going, even when life's hard. I'm lucky to have people like you to remind me.
+
+## Speaker
+
+Yeah, same here Caroline. You make life's struggles more bearable.
+
+## Speaker
+
+Thanks, Melanie! It means a lot having you in my corner. Appreciate our friendship!
+
+## Speaker
+
+I appreciate our friendship too, Caroline. You've always been there for me.
+
+## Speaker
+
+I'm always here for you, Mel! We had a blast last year at the Pride fest. Those supportive friends definitely make everything worth it!
+
+## Speaker
+
+That was a blast! So much fun with the whole gang! Wanna do a family outing this summer?
+
+## Speaker
+
+Right, it was so much fun! We could do a family outting, or wanna plan something special for this summer, just us two? It'd be a great chance to catch up and explore nature! What do you think?
+
+## Speaker
+
+Sounds great, Caroline! Let's plan something special!
+
+## Speaker
+
+Sounds great, Mel! We'll make some awesome memories!
+
+## Speaker
+
+Yeah, Caroline! I'll start thinking about what we can do.
+
+## Speaker
+
+Yeah, Mel! Life's all about creating memories. Can't wait for the trip!
+</memory>
+<memory rank="5" session_id="d03:locomo:conv-26:q0126:lifecycle:D4" score="0.1558845341205597">
+# Conversation Session
+
+## Speaker
+
+Hey Melanie! Long time no talk! A lot's been going on in my life! Take a look at this.
+
+## Speaker
+
+Hey, Caroline! Nice to hear from you! Love the necklace, any special meaning to it?
+
+## Speaker
+
+Thanks, Melanie! This necklace is super special to me - a gift from my grandma in my home country, Sweden. She gave it to me when I was young, and it stands for love, faith and strength. It's like a reminder of my roots and all the love and support I get from my family.
+
+## Speaker
+
+That's gorgeous, Caroline! It's awesome what items can mean so much to us, right? Got any other objects that you treasure, like that necklace?
+
+## Speaker
+
+Yep, Melanie! I've got some other stuff with sentimental value, like my hand-painted bowl. A friend made it for my 18th birthday ten years ago. The pattern and colors are awesome-- it reminds me of art and self-expression.
+
+## Speaker
+
+That sounds great, Caroline! It's awesome having stuff around that make us think of good connections and times. Actually, I just took my fam camping in the mountains last week - it was a really nice time together!
+
+## Speaker
+
+Sounds great, Mel. Glad you made some new family mems. How was it? Anything fun?
+
+## Speaker
+
+It was an awesome time, Caroline! We explored nature, roasted marshmallows around the campfire and even went on a hike. The view from the top was amazing! The 2 younger kids love nature. It was so special having these moments together as a family - I'll never forget it!
+
+## Speaker
+
+That's awesome, Melanie! Family moments like that are so special. Glad y'all had such a great time.
+
+## Speaker
+
+Thanks, Caroline! Family time matters to me. What's up with you lately?
+
+## Speaker
+
+Lately, I've been looking into counseling and mental health as a career. I want to help people who have gone through the same things as me.
+
+## Speaker
+
+Sounds great! What kind of counseling and mental health services do you want to persue?
+
+## Speaker
+
+I'm still figuring out the details, but I'm thinking of working with trans people, helping them accept themselves and supporting their mental health. Last Friday, I went to an LGBTQ+ counseling workshop and it was really enlightening. They talked about different therapeutic methods and how to best work with trans people. Seeing how passionate these pros were about making a safe space for people like me was amazing.
+
+## Speaker
+
+Woah, Caroline, it sounds like you're doing some impressive work. It's inspiring to see your dedication to helping others. What motivated you to pursue counseling?
+
+## Speaker
+
+Thanks, Melanie. It really mattered. My own journey and the support I got made a huge difference. Now I want to help people go through it too. I saw how counseling and support groups improved my life, so I started caring more about mental health and understanding myself. Now I'm passionate about creating a safe, inviting place for people to grow.
+
+## Speaker
+
+Wow, Caroline! You've gained so much from your own experience. Your passion and hard work to help others is awesome. Keep it up, you're making a big impact!
+
+## Speaker
+
+Thanks, Melanie! Your kind words mean a lot.
+
+## Speaker
+
+Congrats Caroline! Good on you for going after what you really care about.
+</memory>
+<memory rank="6" session_id="d03:locomo:conv-26:q0126:lifecycle:D7" score="0.15477071702480316">
+# Conversation Session
+
+## Speaker
+
+Hey Mel, great to chat with you again! So much has happened since we last spoke - I went to an LGBTQ conference two days ago and it was really special. I got the chance to meet and connect with people who've gone through similar journeys. It was such a welcoming environment and I felt totally accepted. I'm really thankful for this amazing community - it's shown me how important it is to fight for trans rights and spread awareness.
+
+## Speaker
+
+Wow, Caroline, that sounds awesome! So glad you felt accepted and supported. Events like these are great for reminding us of how strong community can be!
+
+## Speaker
+
+Yeah, it's true! Having people who back you makes such a huge difference. It's great to see how far LGBTQ rights have come, but there's still plenty of progress to be made. I wanna help make a difference.
+
+## Speaker
+
+Wow, Caroline. We've come so far, but there's more to do. Your drive to help is awesome! What's your plan to pitch in?
+
+## Speaker
+
+Thanks, Mell! I'm still looking into counseling and mental health jobs. It's important to me that people have someone to talk to, and I want to help make that happen.
+
+## Speaker
+
+Wow, Caroline! You're so inspiring for wanting to help others with their mental health. What's pushing you to keep going forward with it?
+
+## Speaker
+
+I struggled with mental health, and support I got was really helpful. It made me realize how important it is for others to have a support system. So, I started looking into counseling and mental health career options, so I could help other people on their own journeys like I was helped.
+
+## Speaker
+
+Caroline, so glad you got the support! Your experience really brought you to where you need to be. You're gonna make a huge difference! This book I read last year reminds me to always pursue my dreams, just like you are doing!🌟
+
+## Speaker
+
+Thanks so much, Mel! Seeing this pic just made me appreciate my love of reading even more. Books guide me, motivate me and help me discover who I am. They're a huge part of my journey, and this one's reminding me to keep going and never give up!
+
+## Speaker
+
+Wow, Caroline! Books have such an awesome power! Which one has been your favorite guide?
+
+## Speaker
+
+I loved "Becoming Nicole" by Amy Ellis Nutt. It's a real inspiring true story about a trans girl and her family. It made me feel connected and gave me a lot of hope for my own path. Highly recommend it for sure!
+
+## Speaker
+
+That sounds awesome! What did you take away from it to use in your life?
+
+## Speaker
+
+It taught me self-acceptance and how to find support. It also showed me that tough times don't last - hope and love exist. Pets bring so much joy too, though.
+
+## Speaker
+
+Caroline, those lessons are great - self-acceptance and finding support are key. Plus pets are awesome for joy and comfort, can't agree more!
+
+## Speaker
+
+That's so nice! What pet do you have?
+
+## Speaker
+
+We've got a pup and a kitty. That's the dog, and here's our cat! They brighten up our day and always make us smile.
+
+## Speaker
+
+Ah, they're adorable! What are their names? Pets sure do bring so much joy to us!
+
+## Speaker
+
+Luna and Oliver! They are so sweet and playful - they really liven up the house! Just got some new shoes, too!
+
+## Speaker
+
+Love that purple color! For walking or running?
+
+## Speaker
+
+Thanks, Caroline! These are for running. Been running longer since our last chat - a great way to destress and clear my mind.
+
+## Speaker
+
+Wow! What got you into running?
+
+## Speaker
+
+I've been running farther to de-stress, which has been great for my headspace.
+
+## Speaker
+
+Cool, Melanie! Running can really boost your mood. Keep it up!
+
+## Speaker
+
+Thanks, Caroline! This has been great for my mental health. I'm gonna keep it up.
+
+## Speaker
+
+Awesome, Melanie! Mental health's a priority, so make sure you take care of yourself.
+
+## Speaker
+
+Caroline, thanks! Mental health is important to me, and it's made such an improvement!
+
+## Speaker
+
+Glad it helped ya, Melanie!
+</memory>
+<memory rank="7" session_id="d03:locomo:conv-26:q0126:lifecycle:D19" score="0.15388700366020203">
+# Conversation Session
+
+## Speaker
+
+Woohoo Melanie! I passed the adoption agency interviews last Friday! I'm so excited and thankful. This is a big move towards my goal of having a family.
+
+## Speaker
+
+Congrats, Caroline! Adoption sounds awesome. I'm so happy for you. These figurines I bought yesterday remind me of family love. Tell me, what's your vision for the future?
+
+## Speaker
+
+Thanks so much, Melanie! It's beautiful! It really brings home how much love's in families - both blood and the ones we choose. I hope to build my own family and put a roof over kids who haven't had that before. For me, adoption is a way of giving back and showing love and acceptance.
+
+## Speaker
+
+Wow, Caroline, that's awesome. Giving a home to needy kids is such a loving way to build a family. Those kids will be so supported and happy in their new home.
+
+## Speaker
+
+Thanks, Melanie. My dream is to create a safe and loving home for these kids. Love and acceptance should be everyone's right, and I want them to experience it.
+
+## Speaker
+
+I totally agree, Caroline. Everyone deserves that. It's awesome to see how passionate you are about helping these kids.
+
+## Speaker
+
+Thanks, Mel. Finding self-acceptance was a long process, but now I'm ready to offer love and support to those who need it. It's empowering to make a positive difference in someone's life.
+
+## Speaker
+
+That must have been tough for you, Caroline. Respect for finding acceptance and helping others with what you've been through. You're so strong and inspiring.
+
+## Speaker
+
+Thanks, Melanie. Transitioning wasn't easy and acceptance wasn't either, but the help I got from friends, family and people I looked up to was invaluable. They boosted me through tough times and helped me find out who I really am. That's why I want to pass that same support to anyone who needs it. Bringing others comfort and helping them grow brings me such joy.
+
+## Speaker
+
+I'm so happy for you, Caroline. You found your true self and now you're helping others. You're so inspiring!
+
+## Speaker
+
+Thanks, Melanie. Your support really means a lot. This journey has been amazing and I'm grateful I get to share it and help others with theirs. It's a real gift.
+
+## Speaker
+
+Absolutely! I'm so glad we can always be there for each other.
+
+## Speaker
+
+Glad you agree, Caroline. Appreciate the support of those close to me. Their encouragement made me who I am.
+
+## Speaker
+
+Glad you had support. Being yourself is great!
+
+## Speaker
+
+Yeah, that's true! It's so freeing to just be yourself and live honestly. We can really accept who we are and be content.
+</memory>
+<memory rank="8" session_id="d03:locomo:conv-26:q0126:lifecycle:D1" score="0.15388499200344086">
+# Conversation Session
+
+## Speaker
+
+Hey Mel! Good to see you! How have you been?
+
+## Speaker
+
+Hey Caroline! Good to see you! I'm swamped with the kids & work. What's up with you? Anything new?
+
+## Speaker
+
+I went to a LGBTQ support group yesterday and it was so powerful.
+
+## Speaker
+
+Wow, that's cool, Caroline! What happened that was so awesome? Did you hear any inspiring stories?
+
+## Speaker
+
+The transgender stories were so inspiring! I was so happy and thankful for all the support.
+
+## Speaker
+
+Wow, love that painting! So cool you found such a helpful group. What's it done for you?
+
+## Speaker
+
+The support group has made me feel accepted and given me courage to embrace myself.
+
+## Speaker
+
+That's really cool. You've got guts. What now?
+
+## Speaker
+
+Gonna continue my edu and check out career options, which is pretty exciting!
+
+## Speaker
+
+Wow, Caroline! What kinda jobs are you thinkin' of? Anything that stands out?
+
+## Speaker
+
+I'm keen on counseling or working in mental health - I'd love to support those with similar issues.
+
+## Speaker
+
+You'd be a great counselor! Your empathy and understanding will really help the people you work with. By the way, take a look at this.
+
+## Speaker
+
+Thanks, Melanie! That's really sweet. Is this your own painting?
+
+## Speaker
+
+Yeah, I painted that lake sunrise last year! It's special to me.
+
+## Speaker
+
+Wow, Melanie! The colors really blend nicely. Painting looks like a great outlet for expressing yourself.
+
+## Speaker
+
+Thanks, Caroline! Painting's a fun way to express my feelings and get creative. It's a great way to relax after a long day.
+
+## Speaker
+
+Totally agree, Mel. Relaxing and expressing ourselves is key. Well, I'm off to go do some research.
+
+## Speaker
+
+Yep, Caroline. Taking care of ourselves is vital. I'm off to go swimming with the kids. Talk to you soon!
+</memory>
+<memory rank="9" session_id="d03:locomo:conv-26:q0126:lifecycle:D2" score="0.1510128378868103">
+# Conversation Session
+
+## Speaker
+
+Hey Caroline, since we last chatted, I've had a lot of things happening to me. I ran a charity race for mental health last Saturday – it was really rewarding. Really made me think about taking care of our minds.
+
+## Speaker
+
+That charity race sounds great, Mel! Making a difference & raising awareness for mental health is super rewarding - I'm really proud of you for taking part!
+
+## Speaker
+
+Thanks, Caroline! The event was really thought-provoking. I'm starting to realize that self-care is really important. It's a journey for me, but when I look after myself, I'm able to better look after my family.
+
+## Speaker
+
+I totally agree, Melanie. Taking care of ourselves is so important - even if it's not always easy. Great that you're prioritizing self-care.
+
+## Speaker
+
+Yeah, it's tough. So I'm carving out some me-time each day - running, reading, or playing my violin - which refreshes me and helps me stay present for my fam!
+
+## Speaker
+
+That's great, Mel! Taking time for yourself is so important. You're doing an awesome job looking after yourself and your family!
+
+## Speaker
+
+Thanks, Caroline. It's still a work in progress, but I'm doing my best. My kids are so excited about summer break! We're thinking about going camping next month. Any fun plans for the summer?
+
+## Speaker
+
+Researching adoption agencies — it's been a dream to have a family and give a loving home to kids who need it.
+
+## Speaker
+
+Wow, Caroline! That's awesome! Taking in kids in need - you're so kind. Your future family is gonna be so lucky to have you!
+
+## Speaker
+
+Thanks, Mel! My goal is to give kids a loving home. I'm truly grateful for all the support I've got from friends and mentors. Now the hard work starts to turn my dream into a reality. And here's one of the adoption agencies I'm looking into. It's a lot to take in, but I'm feeling hopeful and optimistic.
+
+## Speaker
+
+Wow, that agency looks great! What made you pick it?
+
+## Speaker
+
+I chose them 'cause they help LGBTQ+ folks with adoption. Their inclusivity and support really spoke to me.
+
+## Speaker
+
+That's great, Caroline! Loving the inclusivity and support. Anything you're excited for in the adoption process?
+
+## Speaker
+
+I'm thrilled to make a family for kids who need one. It'll be tough as a single parent, but I'm up for the challenge!
+
+## Speaker
+
+You're doing something amazing! Creating a family for those kids is so lovely. You'll be an awesome mom! Good luck!
+
+## Speaker
+
+Thanks, Melanie! Your kind words really mean a lot. I'll do my best to make sure these kids have a safe and loving home.
+
+## Speaker
+
+No doubts, Caroline. You have such a caring heart - they'll get all the love and stability they need! Excited for this new chapter!
+</memory>
+<memory rank="10" session_id="d03:locomo:conv-26:q0126:lifecycle:D8" score="0.14988981187343597">
+# Conversation Session
+
+## Speaker
+
+Hey Mel, what's up? Been a busy week since we talked.
+
+## Speaker
+
+Hey Caroline, it's been super busy here. So much since we talked! Last Fri I finally took my kids to a pottery workshop. We all made our own pots, it was fun and therapeutic!
+
+## Speaker
+
+Wow, Mel! Sounds like you and the kids had a blast. How'd they like it?
+
+## Speaker
+
+The kids loved it! They were so excited to get their hands dirty and make something with clay. It was special to watch their creativity and imagination come to life, they made this!
+
+## Speaker
+
+Aww, that's so sweet! That cup is so cute. It's awesome to see how kids show their personalities through art. What other creative projects do you do with them, besides pottery?
+
+## Speaker
+
+We love painting together lately, especially nature-inspired ones. Here's our latest work from last weekend.
+
+## Speaker
+
+Wow Mel, that painting's amazing! The colors are so bold and it really highlights the beauty of nature. Y'all work on it together?
+
+## Speaker
+
+Thanks, Caroline! We both helped with the painting - it was great bonding over it and chatting about nature. We found these lovely flowers. Appreciating the small things in life, too.
+
+## Speaker
+
+That photo is stunning! So glad you bonded over our love of nature. Last Friday I went to a council meeting for adoption. It was inspiring and emotional - so many people wanted to create loving homes for children in need. It made me even more determined to adopt.
+
+## Speaker
+
+Wow, Caroline, way to go! Your future fam will get a kick out of having you. What do you think of these?
+
+## Speaker
+
+Thanks Melanie - love the blue vase in the pic! Blue's my fave, it makes me feel relaxed. Sunflowers mean warmth and happiness, right? While roses stand for love and beauty? That's neat. What do flowers mean to you?
+
+## Speaker
+
+Flowers bring joy. They represent growth, beauty and reminding us to appreciate the small moments. They were an important part of my wedding decor and always remind me of that day.
+
+## Speaker
+
+It must have been special at your wedding. I wish I had known you back then!
+
+## Speaker
+
+It was amazing, Caroline. The day was full of love and joy. Everyone we love was there to celebrate us - it was really special.
+
+## Speaker
+
+Wow, what a great day! Glad everyone could make it. What was your favorite part?
+
+## Speaker
+
+Marrying my partner and promising to be together forever was the best part.
+
+## Speaker
+
+Wow, nice pic! You both looked amazing. One special memory for me was this pride parade I went to a few weeks ago.
+
+## Speaker
+
+Wow, looks awesome! Did you join in?
+
+## Speaker
+
+Yes, I did. It was amazing! I felt so accepted and happy, just being around people who accepted and celebrated me. It's definitely a top memory.
+
+## Speaker
+
+Wow, what an experience! How did it make you feel?
+
+## Speaker
+
+I felt so proud and grateful - the vibes were amazing and it was comforting to know I'm not alone and have a great community around me.
+
+## Speaker
+
+Wow, Caroline! That's huge! How did it feel to be around so much love and acceptance?
+
+## Speaker
+
+It was awesome, Melanie! Being around people who embrace and back me up is beyond words. It really inspired me.
+
+## Speaker
+
+Wow, that sounds awesome! Your friends and community really have your back. What's been the best part of it?
+
+## Speaker
+
+Realizing I can be me without fear and having the courage to transition was the best part. It's so freeing to express myself authentically and have people back me up.
+
+## Speaker
+
+That's awesome, Caro! You've found the courage to be yourself - that's important for our mental health and finding peace.
+
+## Speaker
+
+Thanks, Melanie! Been a long road, but I'm proud of how far I've come. How're you doing finding peace?
+
+## Speaker
+
+I'm getting there, Caroline. Creativity and family keep me at peace.
+
+## Speaker
+
+That's awesome, Melanie! How have your family been supportive during your move?
+
+## Speaker
+
+My fam's been awesome - they helped out and showed lots of love and support.
+
+## Speaker
+
+Wow, Mel, family love and support is the best!
+
+## Speaker
+
+Yeah, Caroline, my family's been great - their love and support really helped me through tough times. It's awesome! We even went on another camping trip in the forest.
+
+## Speaker
+
+Awesome, Mel! Family support's huge. What else do you guys like doing together?
+
+## Speaker
+
+We enjoy hiking in the mountains and exploring forests. It's a cool way to connect with nature and each other.
+
+## Speaker
+
+Wow, Mel, that sounds awesome! Exploring nature and family time is so special.
+
+## Speaker
+
+Yeah, Caroline, they're some of my fave memories. It brings us together and brings us happiness. Glad you're here to share in it.
+
+## Speaker
+
+Thanks, Melanie! Really glad to have you as a friend to share my journey. You're awesome!
+
+## Speaker
+
+Thanks, Caroline! Appreciate your friendship. It's great to have a supporter!
+
+## Speaker
+
+No worries, Mel! Your friendship means so much to me. Enjoy your day!
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: 2023-10-24T09:55:00
+Question: What activity did Caroline used to do with her dad?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:

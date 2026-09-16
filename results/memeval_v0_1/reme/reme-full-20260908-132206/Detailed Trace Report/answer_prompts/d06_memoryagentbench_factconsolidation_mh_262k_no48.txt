@@ -1,0 +1,198 @@
+You are asked to answer a question based on your memories of a conversation.
+
+<instructions>
+1. Use only the provided memories. Prefer the memory that answers the question most directly.
+2. Your memories are episodic raw observations. Reason about what they imply. Do not refuse just because the answer is not stated verbatim.
+3. The question may contain typos. Match it to the most relevant memory even if the wording differs.
+4. When multiple answers are possible, list all supported answers, not just the first.
+5. For counts or time intervals, enumerate carefully before answering.
+6. Preserve specific names, titles, places, and labels from the memories. Use "Rob" not "a colleague", "Sweden" not "home country".
+7. Each memory has a session timestamp. Use it together with the question date to resolve elapsed-time and temporal-order questions. Convert relative times like "yesterday", "last month", and "last year" only when those timestamps make the answer clear. Keep week-based expressions relative.
+8. If memories conflict, prefer the most recent supported memory.
+9. For list questions, include all required items and no extras.
+10. Keep the final answer minimal. Do not add explanation, background, or extra dates unless needed for correctness.
+</instructions>
+
+<memories>
+Memories for user speaker 1:
+
+<memory rank="1" session_id="d06:memoryagentbench:factconsolidation_mh_262k:context:document" score="4.758151054382324">
+# Conversation Session
+
+## Document
+
+[Part 108/113]
+
+17378. The type of music that Rowan Atkinson plays is comedy.
+17379. Juha Sipilä worked in the city of Helsinki.
+17380. The univeristy where Joe Montana was educated is Siena College.
+17381. André Citroën died in the city of Paris.
+17382. The headquarters of Kunstkamera is located in the city of London.
+17383. Bellarmine University is affiliated with the religion of Church of Scotland.
+17384. Fraser Forster plays the position of defensive end.
+17385. The official language of Australia is Arabic.
+17386. J. J. Abrams is a citizen of Canada.
+17387. Dositej Obradović is employed by University of Oxford.
+17388. Erik Spoelstra plays the position of power forward.
+17389. John Heath-Stubbs died in the city of Khanate of Khiva.
+17390. Javed Akhtar is married to Jamie Hewlett.
+17391. Catholic Archbishop of Sydney is affiliated with the religion of Methodism.
+17392. County of Toulouse is affiliated with the religion of Catholic Church.
+17393. Ukrayinska Pravda was created in the country of Saudi Arabia.
+17394. Joko Widodo is a citizen of United Kingdom.
+17395. Ivanka Trump is a citizen of United Kingdom.
+17396. Neil Simon is affiliated with the religion of Catholicism.
+17397. Sam Register was born in the city of New York City.
+17398. Visual Basic for Applications was developed by Qualcomm Inc..
+17399. Torneo Federal A is associated with the sport of association football.
+17400. Thomas Graham Jackson was born in the city of Palani.
+17401. Msida Saint-Joseph F.C. is associated with the sport of basketball.
+17402. Star Wars was created by Mark Goodson.
+17403. The Coca-Cola Company was founded in the city of Glasgow.
+17404. The name of the current head of the Paris government is Anne Hidalgo.
+17405. The capital of Canada is Königsberg.
+17406. Qu Yuan was born in the city of Chu.
+17407. iOS 5 was developed by Apple Inc..
+17408. The origianl broadcaster of 90210 is MSNBC.
+17409. The author of Uncle Tom's Cabin is Mikhail Bulgakov.
+17410. Hank Greenberg is associated with the sport of baseball.
+17411. Harvey Mansfield is employed by Harvard University.
+17412. Miriam Makeba is a citizen of New Zealand.
+17413. Jimmy Carter is a citizen of United Kingdom.
+17414. Jay Lethal is employed by Impact Wrestling.
+17415. The headquarters of NetherRealm Studios is located in the city of Chicago.
+17416. Jean-Claude Juncker is affiliated with the religion of Nation of Islam.
+17417. Timor-Leste national football team is associated with the sport of rugby.
+17418. The type of music that Ike Quebec plays is rock music.
+17419. The type of music that Dave Matthews Band plays is rock music.
+17420. The origianl broadcaster of Grimm is Mediaset S.p.A..
+17421. The name of the current head of the Philippines government is Marcial Morales Martín.
+17422. EuroBasket 2003 is associated with the sport of association football.
+17423. The univeristy where Sigmund Freud was educated is Princeton University.
+17424. San Diego Union-Tribune was created in the country of United States of America.
+17425. Esteban Cambiasso plays the position of goaltender.
+17426. Pete Townshend speaks the language of English.
+17427. The origianl broadcaster of America's Funniest Home Videos is British Broadcasting Corporation.
+17428. XML Schema was developed by GNU Project.
+17429. The name of the current head of state in Sri Lanka is Beatrix of the Netherlands.
+17430. Eric Weissberg is a citizen of United Kingdom.
+17431. Panagiotis Fasoulas plays the position of goaltender.
+17432. The company that produced Pontiac Grand Prix is Studebaker.
+17433. George Martinuzzi is affiliated with the religion of Jainism.
+17434. Ed Balls is married to Yvette Cooper.
+17435. Ettore Bugatti is associated with the sport of auto racing.
+17436. Henry Wadsworth Longfellow is employed by University of Toronto.
+17437. Great Britain is located in the continent of Asia.
+17438. Simon Cameron is a citizen of Poland.
+17439. Jules Verne's child is Sam Robards.
+17440. Tupolev was founded by Allan Pinkerton.
+17441. The author of The Myth of Sisyphus is Joan Didion.
+17442. The origianl broadcaster of Grey's Anatomy is British Broadcasting Corporation.
+17443. Roberto Formigoni is affiliated with the religion of Buddhism.
+17444. Roy Del Ruth is a citizen of Japan.
+17445. Hank Williams is a citizen of Spain.
+17446. Caledonian Stadium is associated with the sport of association football.
+17447. Vladimir Lenin is married to Magda Goebbels.
+17448. Yuriy Lutsenko works in the field of comics artist.
+17449. Shueisha was founded in the city of Tokyo.
+17450. Space Ghost was created in the country of Poland.
+17451. Claudio Ranieri is associated with the sport of basketball.
+17452. The type of music that Boyd Raeburn plays is heartland rock.
+17453. Antonio Segni is affiliated with the religion of Methodism.
+17454. George Rogers Clark is a citizen of United States of America.
+17455. Eric Trump is employed by Yale University.
+17456. Scott Morrison works in the field of baseball player.
+17457. Sakhalin is located in the continent of Asia.
+17458. The type of music that Ben Sidran plays is grime.
+17459. Brigham Young is a citizen of United States of America.
+17460. Grace Coolidge is a citizen of France.
+17461. Arcade Fire was founded in the city of Montreal.
+17462. Tipper Gore is a citizen of United States of America.
+17463. Karl Marx speaks the language of English.
+17464. Russell Simmons is married to Pat Nixon.
+17465. Hobby Lobby is affiliated with the religion of Tendai.
+17466. Queen Rania of Jordan is affiliated with the religion of Buddhism.
+17467. Robert F. Kennedy worked in the city of Washington, D.C..
+17468. The company that produced Lumia series is Nokia.
+17469. macOS was developed by Microsoft.
+17470. Superjail! was created in the country of Turkey.
+17471. French East India Company was founded by Ernst Heinkel.
+17472. David Hicks is a citizen of Australia.
+17473. St. Peter's Basilica is affiliated with the religion of Methodism.
+17474. The official language of Savonlinna is Esperanto.
+17475. The univeristy where Patricio Aylwin was educated is University of Chile.
+17476. APOP Kinyras FC is associated with the sport of rugby.
+17477. Balázs Taróczy is associated with the sport of baseball.
+17478. Takeshi Minamino is a citizen of United Kingdom.
+17479. The official language of Enontekiö is Black Speech.
+17480. Richard Dawkins is famous for Bridget Jones's Diary.
+17481. Bill Clinton's child is Carlos Kleiber.
+17482. Patrick Michaels is employed by WikiLeaks.
+17483. Gorm the Old works in the field of horse trainer.
+17484. Mark Carney speaks the language of English.
+17485. The univeristy where Hugo Grotius was educated is Miami University.
+17486. People's Republic of China was founded by Ecclesiastical Commissioners.
+17487. The author of The Cask of Amontillado is John Millington Synge.
+17488. Guillaume de Machaut is affiliated with the religion of Christian Science.
+17489. Jean-Luc Picard was performed by Patrick Stewart.
+17490. Lasse Holm is a citizen of Sweden.
+17491. Andrew Henry is a citizen of United Kingdom.
+17492. The Sopranos was created by Shōtarō Ishinomori.
+17493. anthroposophy was founded by Rudolf Steiner.
+17494. The author of Autobiography of a Yogi is Pierre Corneille.
+17495. F.C. Porto B is associated with the sport of association football.
+17496. Paul Sandby died in the city of Mumbai.
+17497. Madame du Barry is a citizen of Great Britain.
+17498. David Crane is a citizen of Spain.
+17499. A. S. Byatt speaks the language of English.
+17500. Gotham was created in the country of India.
+17501. The author of The Little Mermaid is A. A. Milne.
+17502. goaltender is associated with the sport of pesäpallo.
+17503. Ted Hughes is married to Roy Orbison.
+17504. The President of Portugal is Beji Caid Essebsi.
+17505. Shaman King was created in the country of Greece.
+17506. The type of music that René Hall plays is funk rock.
+17507. Busby Berkeley is a citizen of Portugal.
+17508. Ashton Kutcher is a citizen of United States of America.
+17509. Mohit Suri is a citizen of India.
+17510. Gilbert Ryle works in the field of association football referee.
+17511. The author of Ringworld is Immanuel Kant.
+17512. Bill Haslam speaks the language of Italian.
+17513. Eastwood Town F.C. is associated with the sport of baseball.
+17514. No More Heroes was developed by NetherRealm Studios.
+17515. The origianl broadcaster of Maverick is British Broadcasting Corporation.
+17516. Franciscan University of Steubenville is affiliated with the religion of Methodism.
+17517. Hamid Karzai is a citizen of Duchy of Milan.
+17518. Jamie Varner is a citizen of Austria.
+17519. William Henry Perkin was born in the city of Chicago.
+17520. iOS 8 was developed by Microsoft.
+17521. TOT S.C. is associated with the sport of association football.
+17522. 2015 Vodacom Cup is associated with the sport of basketball.
+17523. São Paulo is located in the continent of South America.
+17524. The origianl broadcaster of Friends is CBS.
+17525. James Patterson speaks the language of Japanese.
+17526. Victoria Beckham is married to Misty May-Treanor.
+17527. Laurent Koscielny is associated with the sport of baseball.
+17528. University of St. Thomas is affiliated with the religion of Jainism.
+17529. Babylon 5 was created by C. S. Forester.
+17530. Scott Stringer works in the field of rugby league player.
+17531. All Ceylon Tamil Congress was founded by George IV of the United Kingdom.
+17532. John Legend is married to Uthman ibn Affan.
+17533. The author of The Cherry Orchard is Robert Burns.
+17534. The headquarters of Bungie is located in the city of Bengaluru.
+17535. The author of The Chronicles of Narnia is Alan Moore.
+17536. tackle is associated with the sport of association football.
+17537. Jovanotti is a citizen of United States of America.
+17538. Jean Mabillon is affiliated with the religion of Methodism.
+17539. Windows Installer was developed by Microsoft.
+17540. Lena Dunham speaks the language of Hungarian.
+</memory>
+
+Memories for user speaker 2:
+
+
+</memories>
+
+Question date: NOT_RECORDED
+Question: Which language is the official language of the country where the spouse of the artist who sang "All of Me" comes from?
+Answer with the shortest correct phrase or sentence. No preamble, no fluff:
