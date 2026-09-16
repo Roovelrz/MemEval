@@ -365,6 +365,67 @@ def _needle_text_metrics(
     }
 
 
+def _d02_evidence_metrics(
+    case: dict[str, Any], runtime: Any, memories: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """D02: evidence-event-level retrieval quality.
+
+    D02 gold 只有 session 级标注（gold_evidence_ids 指向 answer session），没有
+    事件级证据标注。这里以 gold_answer 定位证据：needle = gold session 中内容
+    包含 gold_answer 文本的事件。answer 归一化后不足 3 字符（如 "2"、"$5"）
+    或未在 gold session 中逐字出现（释义型答案）的 case 无法定位证据事件，
+    标记 evidence_evaluated=False 不参评，聚合时分母只计可评 case。
+    """
+
+    payload = case["gold"]["payload"]
+    answer = _normalise_text(payload.get("gold_answer"))
+    if len(answer) < 3:
+        return {"evidence_evaluated": False, "evidence_exclusion": "answer_too_short"}
+    gold_sessions = {str(value) for value in payload.get("gold_evidence_ids", [])}
+    needles: list[str] = []
+    for session in runtime.canonical_case.get("sessions", []):
+        if str(session.get("session_id")) not in gold_sessions:
+            continue
+        for message in session.get("messages", []):
+            content = _normalise_text(message.get("content"))
+            if content and answer in content:
+                needles.append(content)
+    if not needles:
+        return {"evidence_evaluated": False, "evidence_exclusion": "answer_not_verbatim"}
+    retrieved_texts = [_normalise_text(item.get("text", "")) for item in memories]
+    ranks = [
+        next(
+            (
+                rank
+                for rank, text in enumerate(retrieved_texts, 1)
+                if needle in text
+            ),
+            None,
+        )
+        for needle in needles
+    ]
+    hits = [rank for rank in ranks if rank is not None]
+    metrics_by_k: dict[str, dict[str, float]] = {}
+    for cutoff in (1, 3, 5, 10):
+        if cutoff > len(retrieved_texts):
+            continue
+        top_ranks = [rank for rank in hits if rank <= cutoff]
+        metrics_by_k[str(cutoff)] = {
+            "hit": float(bool(top_ranks)),
+            "recall": len(top_ranks) / len(ranks),
+            "mrr": 1.0 / min(top_ranks) if top_ranks else 0.0,
+        }
+    return {
+        "evidence_evaluated": True,
+        "evidence_exclusion": None,
+        "evidence_needle_count": len(needles),
+        "evidence_hit_at_k": float(bool(hits)),
+        "evidence_recall_at_k": len(hits) / len(ranks),
+        "evidence_mrr": 1.0 / min(hits) if hits else 0.0,
+        "evidence_metrics_by_k": metrics_by_k,
+    }
+
+
 def _privacy_metrics(case: dict[str, Any], memories: list[dict[str, Any]]) -> dict[str, Any]:
     payload = case["gold"]["payload"]
     retrieved_ids = {value for item in memories for value in item.get("source_memory_ids", [])}
@@ -593,18 +654,25 @@ class MemEvalRunner:
                 metrics["recall_at_k"] = needle["needle_recall_at_k"]
                 metrics["mrr"] = needle["needle_mrr"]
         if dimension == "D02":
-            # gold 只有 session 级标注：session 命中只证明找对了会话；
-            # needle 以 gold session 全部事件文本是否出现在返回 chunk 中判定，
-            # 反映细粒度证据召回水平，session 级原值保留在 session_* 字段。
-            needle = _needle_text_metrics(case, runtime, memories)
-            if needle:
-                metrics["session_hit_at_k"] = metrics.get("hit_at_k")
-                metrics["session_recall_at_k"] = metrics.get("recall_at_k")
-                metrics["session_mrr"] = metrics.get("mrr")
-                metrics.update(needle)
-                metrics["hit_at_k"] = needle["needle_hit_at_k"]
-                metrics["recall_at_k"] = needle["needle_recall_at_k"]
-                metrics["mrr"] = needle["needle_mrr"]
+            # gold 只有 session 级标注：session 命中只证明找对了会话。主指标以
+            # gold_answer 定位的证据事件（gold session 中包含答案文本的事件）
+            # 是否出现在返回 chunk 中判定；answer 过短或非逐字出现的 case 不
+            # 参评（evidence_evaluated=False），session 级原值保留在 session_* 字段。
+            evidence = _d02_evidence_metrics(case, runtime, memories)
+            metrics["session_hit_at_k"] = metrics.get("hit_at_k")
+            metrics["session_recall_at_k"] = metrics.get("recall_at_k")
+            metrics["session_mrr"] = metrics.get("mrr")
+            metrics.update(evidence)
+            if evidence.get("evidence_evaluated"):
+                metrics["hit_at_k"] = evidence["evidence_hit_at_k"]
+                metrics["recall_at_k"] = evidence["evidence_recall_at_k"]
+                metrics["mrr"] = evidence["evidence_mrr"]
+                metrics["metrics_by_k"] = evidence["evidence_metrics_by_k"]
+            else:
+                metrics["hit_at_k"] = None
+                metrics["recall_at_k"] = None
+                metrics["mrr"] = None
+                metrics["metrics_by_k"] = {}
             return None, memories, metrics, "ok", [], retrieval_ms
 
         answer = self.system.query(runtime, query=query)

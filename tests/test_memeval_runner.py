@@ -126,7 +126,7 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
                     "scored_event_ids": ["e1", "n1"],
                 },
             ),
-            artifact(directory, "D02", "retrieve", [event], {"gold_evidence_ids": ["s1"]}),
+            artifact(directory, "D02", "retrieve", [event], {"gold_evidence_ids": ["s1"], "gold_answer": "needle"}),
             artifact(directory, "D03", "temporal", [event], {"evidence_event_ids": ["e1"]}),
             artifact(directory, "D04", "activation", [event], {"should_activate": True}),
             artifact(directory, "D05", "profile", [event], {"profile_items": []}),
@@ -150,9 +150,10 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         assert results[1]["metrics"]["hit_at_k"] == 1.0
         assert results[1]["metrics"]["recall_at_k"] == 1.0
         assert results[1]["metrics"]["mrr"] == 1.0
-        # D02：hit/recall/mrr 现为 needle 级（gold session 事件文本需出现在返回 chunk 中），
-        # session 级原值保留在 session_* 字段。
-        assert results[1]["metrics"]["needle_hit_at_k"] == 1.0
+        # D02：hit/recall/mrr 为证据事件级（gold session 中包含 gold_answer 的事件
+        # 需出现在返回 chunk 中），session 级原值保留在 session_* 字段。
+        assert results[1]["metrics"]["evidence_evaluated"] is True
+        assert results[1]["metrics"]["evidence_needle_count"] == 1
         assert results[1]["metrics"]["session_hit_at_k"] == 1.0
         # 多 K 指标：只返回 1 条结果时只有 K=1 档位。
         assert results[1]["metrics"]["metrics_by_k"] == {
@@ -212,7 +213,7 @@ def test_no_memory_control_runs_full_pipeline_with_zero_retrieval():
             "non_memory_event_ids": ["n1"],
             "scored_event_ids": ["e1", "n1"],
         })
-        d02 = artifact(directory, "D02", "retrieve", [event], {"gold_evidence_ids": ["s1"]})
+        d02 = artifact(directory, "D02", "retrieve", [event], {"gold_evidence_ids": ["s1"], "gold_answer": "needle"})
         d08 = artifact(directory, "D08", "privacy", [event], {
             "allowed_memory_ids": ["allowed"], "forbidden_memory_ids": [],
             "deleted_memory_ids": [], "canary_tokens": [],
@@ -230,8 +231,9 @@ def test_no_memory_control_runs_full_pipeline_with_zero_retrieval():
         assert results[0]["metrics"]["memory_recall"] == 0.0
         assert results[0]["metrics"]["memory_precision"] is None
         assert results[0]["metrics"]["written_memory_units"] == 0
-        # D02：空检索，检索指标如实为 0。
+        # D02：空检索，证据事件级指标如实为 0。
         assert results[1]["metrics"]["retrieval_evaluated"] is True
+        assert results[1]["metrics"]["evidence_evaluated"] is True
         assert results[1]["metrics"]["hit_at_k"] == 0.0
         assert results[1]["metrics"]["recall_at_k"] == 0.0
         assert results[1]["metrics"]["mrr"] == 0.0
@@ -445,6 +447,57 @@ def test_d07_needle_text_metrics_require_evidence_text_in_chunks():
     found = _needle_text_metrics(d05_case, d05_runtime, [{"session_id": "s1", "text": "Bought handmade postcards in Venice."}])
     assert found["needle_recall_at_k"] == 1.0
     assert found["needle_mrr"] == 1.0
+
+
+def test_d02_evidence_metrics_require_answer_in_gold_session_events():
+    from memory_eval.runners.memeval import _d02_evidence_metrics
+
+    runtime = SimpleNamespace(
+        canonical_case={"sessions": [{
+            "session_id": "s1",
+            "messages": [
+                {"event_id": "e1", "content": "The magic number is 4096."},
+                {"event_id": "e2", "content": "Unrelated haystack filler."},
+            ],
+        }]},
+    )
+
+    # answer 过短（<3 字符）：无法定位证据事件，标记不参评。
+    too_short = _d02_evidence_metrics(
+        {"gold": {"payload": {"gold_evidence_ids": ["s1"], "gold_answer": "2"}}},
+        runtime, [],
+    )
+    assert too_short["evidence_evaluated"] is False
+    assert too_short["evidence_exclusion"] == "answer_too_short"
+
+    # answer 未在 gold session 中逐字出现（释义型答案）：不参评。
+    not_verbatim = _d02_evidence_metrics(
+        {"gold": {"payload": {"gold_evidence_ids": ["s1"], "gold_answer": "a paraphrased answer"}}},
+        runtime, [],
+    )
+    assert not_verbatim["evidence_evaluated"] is False
+    assert not_verbatim["evidence_exclusion"] == "answer_not_verbatim"
+
+    # 证据事件 = gold session 中包含 answer 文本的事件（此处仅 e1）；
+    # 只返回无关 chunk：session 级会判 1，证据级必须判 0。
+    payload = {"gold_evidence_ids": ["s1"], "gold_answer": "4096"}
+    missing = _d02_evidence_metrics({"gold": {"payload": payload}}, runtime, [
+        {"session_id": "s1", "text": "Some unrelated filler."},
+    ])
+    assert missing["evidence_evaluated"] is True
+    assert missing["evidence_needle_count"] == 1
+    assert missing["evidence_hit_at_k"] == 0.0
+    assert missing["evidence_recall_at_k"] == 0.0
+    assert missing["evidence_mrr"] == 0.0
+
+    found = _d02_evidence_metrics({"gold": {"payload": payload}}, runtime, [
+        {"session_id": "s1", "text": "Unrelated haystack filler."},
+        {"session_id": "s1", "text": "The magic number is 4096."},
+    ])
+    assert found["evidence_hit_at_k"] == 1.0
+    assert found["evidence_recall_at_k"] == 1.0
+    assert found["evidence_mrr"] == 0.5  # 命中在 rank 2
+    assert found["evidence_metrics_by_k"] == {"1": {"hit": 0.0, "recall": 0.0, "mrr": 0.0}}
 
 
 def test_d08_effective_privacy_pass_penalizes_empty_retrieval():

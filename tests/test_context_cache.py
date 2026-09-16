@@ -11,8 +11,8 @@ from tests.test_memeval_runner import FakeSystem, artifact
 def test_context_batch_ingests_once_and_records_cache_hits_separately():
     with workspace_directory("context-batch") as directory:
         event = {"event_id": "e1", "session_id": "s1", "content": "needle", "metadata": {}}
-        first = artifact(directory, "D02", "q1", [event], {"gold_evidence_ids": ["s1"]})
-        second = artifact(directory, "D02", "q2", [event], {"gold_evidence_ids": ["s1"]})
+        first = artifact(directory, "D02", "q1", [event], {"gold_evidence_ids": ["s1"], "gold_answer": "needle"})
+        second = artifact(directory, "D02", "q2", [event], {"gold_evidence_ids": ["s1"], "gold_answer": "needle"})
         second = type(second)(second.dimension_id, second.case_path, first.context_path, second.case)
         for item in (first, second):
             item.case["envelope"]["identity"]["context_id"] = "shared-context"
