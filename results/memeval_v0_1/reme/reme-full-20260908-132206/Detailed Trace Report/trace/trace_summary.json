@@ -8,29 +8,29 @@
   "hit_at_k": 0.989247311827957,
   "recall_at_k": 0.9704301075268817,
   "mrr": 0.924752517494453,
-  "answer_accuracy": 0.3387096774193548,
-  "answer_scored_cases": 186,
+  "answer_accuracy": 0.3959731543624161,
+  "answer_scored_cases": 149,
   "pipeline_success_rate": 1.0,
-  "grounded_end_to_end_accuracy": 0.26881720430107525,
+  "grounded_end_to_end_accuracy": 0.33557046979865773,
   "add_failure_count": 0,
-  "retrieval_failure_count": 79,
+  "retrieval_failure_count": 46,
   "answer_failure_count": 53,
   "judge_suspect_count": 0,
-  "judge_wrong_count": 123,
+  "judge_wrong_count": 90,
   "quadrants": {
     "A_retrieval_pass_answer_pass": 50,
     "B_retrieval_pass_answer_fail": 53,
-    "C_retrieval_fail_answer_pass": 13,
-    "D_retrieval_fail_answer_fail": 70,
-    "not_scored": 112
+    "C_retrieval_fail_answer_pass": 9,
+    "D_retrieval_fail_answer_fail": 37,
+    "not_scored": 149
   },
   "root_cause_distribution": {
-    "PASS": 87,
+    "PASS": 124,
     "DATA_ERROR": 0,
     "ADD_FAILURE": 0,
     "INDEX_FAILURE": 0,
-    "RETRIEVAL_MISS": 58,
-    "RETRIEVAL_PARTIAL": 21,
+    "RETRIEVAL_MISS": 30,
+    "RETRIEVAL_PARTIAL": 16,
     "RETRIEVAL_LOW_RANK": 0,
     "RETRIEVAL_WRONG_CHUNK": 0,
     "CONTEXT_LOSS": 0,
@@ -42,7 +42,7 @@
     "PIPELINE_FAILURE": 0,
     "PRIVACY_FAILURE": 0,
     "UNSUPPORTED_CAPABILITY": 38,
-    "PARTIAL_CAPABILITY": 41
+    "PARTIAL_CAPABILITY": 37
   },
   "run_info": {
     "run_id": "reme-full-20260908-132206",
@@ -108,12 +108,12 @@
       "p99": 156225.46079500226
     },
     "token_usage": {
-      "input_tokens": 1111576,
-      "cache_hit_input_tokens": 167680,
-      "cache_miss_input_tokens": 943896,
-      "output_tokens": 221670,
-      "total_tokens": 1333246,
-      "cost_usd": 0.194682544,
+      "input_tokens": 1022177,
+      "cache_hit_input_tokens": 154112,
+      "cache_miss_input_tokens": 868065,
+      "output_tokens": 205168,
+      "total_tokens": 1227345,
+      "cost_usd": 0.17940765360000002,
       "pricing": {
         "cache_hit_input": 0.0028,
         "cache_miss_input": 0.14,
@@ -171,12 +171,12 @@
       "p99": 23568.444965000905
     },
     "token_usage": {
-      "input_tokens": 138527,
-      "cache_hit_input_tokens": 98560,
-      "cache_miss_input_tokens": 39967,
-      "output_tokens": 67860,
-      "total_tokens": 206387,
-      "cost_usd": 0.024872148000000004,
+      "input_tokens": 108806,
+      "cache_hit_input_tokens": 79616,
+      "cache_miss_input_tokens": 29190,
+      "output_tokens": 40133,
+      "total_tokens": 148939,
+      "cost_usd": 0.015546764800000001,
       "pricing": {
         "cache_hit_input": 0.0028,
         "cache_miss_input": 0.14,
@@ -232,16 +232,16 @@
       "p99": 29.419359999228618
     },
     "Answer": {
-      "avg": 14468.173274731085,
-      "p50": 2588.3663000004162,
-      "p95": 80366.41245000009,
-      "p99": 156225.46079500226
+      "avg": 15585.472822818678,
+      "p50": 2983.5969999985537,
+      "p95": 95217.97173999865,
+      "p99": 149848.3647280015
     },
     "Judge": {
-      "avg": 3423.940963978439,
-      "p50": 1882.4048499991477,
-      "p95": 7754.490750001423,
-      "p99": 23568.444965000905
+      "avg": 2675.894951006697,
+      "p50": 1831.311400001141,
+      "p95": 6325.317640000138,
+      "p99": 17680.712636000197
     },
     "End-to-End": {
       "avg": null,
@@ -337,28 +337,26 @@
       "hit_at_10": 1.0,
       "recall_at_10": 1.0,
       "mrr": 1.0,
-      "accuracy": 0.10810810810810811,
+      "accuracy": null,
       "avg_search_latency_ms": 19.52964864859815,
       "status_counts": {
-        "partial": 37
+        "ok": 37
       },
       "metrics": {
-        "hit_at_k": 0.13513513513513514,
+        "hit_at_k": 0.3783783783783784,
         "metrics_by_k": null,
-        "mrr": 0.03581081081081081,
-        "needle_hit_at_k": 0.13513513513513514,
-        "needle_mrr": 0.03581081081081081,
-        "needle_recall_at_k": 0.03581081081081081,
-        "personalized_answer_accuracy": 0.10810810810810811,
-        "recall_at_k": 0.03581081081081081,
+        "mrr": 0.0181027456027456,
+        "needle_hit_at_k": 0.3783783783783784,
+        "needle_metrics_by_k": null,
+        "needle_mrr": 0.0181027456027456,
+        "needle_recall_at_k": 0.08175675675675675,
+        "recall_at_k": 0.08175675675675675,
         "retrieval_evaluated": 1.0,
         "session_hit_at_k": 1.0,
         "session_mrr": 1.0,
         "session_recall_at_k": 1.0
       },
-      "unsupported_metric_counts": {
-        "profile_accuracy": 37
-      }
+      "unsupported_metric_counts": {}
     },
     "D06": {
       "case_count": 37,
@@ -436,7 +434,7 @@
     "single_evidence": {
       "case_count": 196,
       "recall_at_10": 0.9937106918238994,
-      "accuracy": 0.3081761006289308
+      "accuracy": 0.36885245901639346
     },
     "multiple_evidence": {
       "case_count": 83,
@@ -447,9 +445,9 @@
   "conditional_answer_accuracy": {
     "full_evidence_recall": {
       "case_count": 176,
-      "judged_case_count": 176,
-      "correct_count": 61,
-      "accuracy": 0.3465909090909091
+      "judged_case_count": 139,
+      "correct_count": 57,
+      "accuracy": 0.41007194244604317
     },
     "partial_evidence_recall": {
       "case_count": 8,
@@ -465,15 +463,15 @@
     },
     "evidence_found": {
       "case_count": 184,
-      "judged_case_count": 184,
-      "correct_count": 63,
-      "accuracy": 0.3423913043478261
+      "judged_case_count": 147,
+      "correct_count": 59,
+      "accuracy": 0.4013605442176871
     },
     "has_gold_evidence": {
       "case_count": 279,
-      "judged_case_count": 186,
-      "correct_count": 63,
-      "accuracy": 0.3387096774193548
+      "judged_case_count": 149,
+      "correct_count": 59,
+      "accuracy": 0.3959731543624161
     },
     "no_gold_evidence": {
       "case_count": 19,
@@ -483,14 +481,14 @@
     }
   },
   "scenario_findings": {
-    "single_evidence_accuracy": 0.3081761006289308,
+    "single_evidence_accuracy": 0.36885245901639346,
     "multiple_evidence_accuracy": 0.5185185185185185,
-    "multiple_minus_single_accuracy": 0.21034241788958769,
+    "multiple_minus_single_accuracy": 0.14966605950212503,
     "temporal_accuracy": null,
     "temporal_minus_overall_accuracy": null,
     "knowledge_update_accuracy": null,
     "knowledge_update_minus_overall_accuracy": null,
-    "evidence_found_answer_accuracy": 0.3423913043478261
+    "evidence_found_answer_accuracy": 0.4013605442176871
   },
   "dataset_integrity": {
     "status": "NOT_RECORDED"
@@ -514,9 +512,9 @@
   },
   "llm_cost": {
     "currency": "USD",
-    "answer_cost_usd": 0.194682544,
-    "judge_cost_usd": 0.024872148000000004,
-    "total_cost_usd": 0.21955469200000002,
+    "answer_cost_usd": 0.17940765360000002,
+    "judge_cost_usd": 0.015546764800000001,
+    "total_cost_usd": 0.19495441840000002,
     "answer_pricing": {
       "cache_hit_input": 0.0028,
       "cache_miss_input": 0.14,
@@ -866,14 +864,14 @@
     "memory_all_written": true,
     "all_evidence_written": true,
     "search_stable": false,
-    "recall_failure_count": 79,
+    "recall_failure_count": 46,
     "low_rank_failure_count": 0,
     "ranking_failure_count": 0,
     "wrong_chunk_failure_count": 0,
     "context_loss_count": 0,
     "judge_suspect_count": 0,
     "max_latency_stage": "Answer",
-    "largest_error_source": "RETRIEVAL_MISS",
+    "largest_error_source": "ANSWER_FAILURE",
     "reproducibility_status": "PARTIAL_DIRTY_WITHOUT_SOURCE_SNAPSHOT"
   },
   "observability_gaps": [
@@ -5474,1486 +5472,6 @@
       "metrics": {},
       "unsupported_metrics": [
         "activation_decision"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:39:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 4.21690559387207,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:54:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 12.495050430297852,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_PARTIAL",
-      "explanation": "Only 25% of gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 1.0,
-        "recall_at_k": 0.25,
-        "mrr": 0.25,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 1.0,
-            "recall": 0.25,
-            "mrr": 1.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 1.0,
-        "needle_recall_at_k": 0.25,
-        "needle_mrr": 0.25
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:55:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 3.882206916809082,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:78:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 5.266319751739502,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:120:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 11.959246635437012,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:139:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 7.109898090362549,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:209:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 5.808648586273193,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": true,
-      "judge_label": "CORRECT",
-      "quadrant": "C: Retrieval FAIL + Answer PASS",
-      "root_cause": "PARTIAL_CAPABILITY",
-      "explanation": "D05 completed with explicitly unsupported metrics.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 1.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:218:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.542048454284668,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:235:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 4.400425910949707,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:237:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 2.87380051612854,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": true,
-      "judge_label": "CORRECT",
-      "quadrant": "C: Retrieval FAIL + Answer PASS",
-      "root_cause": "PARTIAL_CAPABILITY",
-      "explanation": "D05 completed with explicitly unsupported metrics.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 1.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:377:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 8.132837295532227,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:382:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 10.28410530090332,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:425:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 5.997305870056152,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:429:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 8.62019157409668,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:462:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.827105522155762,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_PARTIAL",
-      "explanation": "Only 25% of gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 1.0,
-        "recall_at_k": 0.25,
-        "mrr": 0.25,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 1.0,
-            "recall": 0.25,
-            "mrr": 1.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 1.0,
-        "needle_recall_at_k": 0.25,
-        "needle_mrr": 0.25
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:493:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 9.128462791442871,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:599:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 5.189716339111328,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:601:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 3.6466214656829834,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:635:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 4.610188007354736,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:652:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 5.145334243774414,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_PARTIAL",
-      "explanation": "Only 20% of gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 1.0,
-        "recall_at_k": 0.2,
-        "mrr": 0.2,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 1.0,
-            "recall": 0.2,
-            "mrr": 1.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 1.0,
-        "needle_recall_at_k": 0.2,
-        "needle_mrr": 0.2
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:679:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.721767902374268,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": true,
-      "judge_label": "CORRECT",
-      "quadrant": "C: Retrieval FAIL + Answer PASS",
-      "root_cause": "PARTIAL_CAPABILITY",
-      "explanation": "D05 completed with explicitly unsupported metrics.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 1.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:714:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 8.539430618286133,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:721:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.837238311767578,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:764:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 5.404686450958252,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:787:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 4.841378211975098,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:800:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.061321258544922,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:810:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 2.8729443550109863,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:822:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 3.8202710151672363,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:837:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 4.78539514541626,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:845:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.2929887771606445,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:849:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.822742938995361,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:867:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 8.707737922668457,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": true,
-      "judge_label": "CORRECT",
-      "quadrant": "C: Retrieval FAIL + Answer PASS",
-      "root_cause": "PARTIAL_CAPABILITY",
-      "explanation": "D05 completed with explicitly unsupported metrics.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 1.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:879:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 9.75776481628418,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:938:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.593430519104004,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_PARTIAL",
-      "explanation": "Only 50% of gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 1.0,
-        "recall_at_k": 0.5,
-        "mrr": 0.5,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 1.0,
-            "recall": 0.5,
-            "mrr": 1.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 1.0,
-        "needle_recall_at_k": 0.5,
-        "needle_mrr": 0.5
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:978:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 6.472211837768555,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:986:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 3.066490650177002,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_PARTIAL",
-      "explanation": "Only 12% of gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 1.0,
-        "recall_at_k": 0.125,
-        "mrr": 0.125,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 1.0,
-            "recall": 0.125,
-            "mrr": 1.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 1.0,
-        "needle_recall_at_k": 0.125,
-        "needle_mrr": 0.125
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
-      ]
-    },
-    {
-      "case_id": "d05:personamem:989:profile",
-      "question_type": "D05",
-      "hit_at_k": 1.0,
-      "recall_at_k": 1.0,
-      "mrr": 1.0,
-      "best_evidence_score": 4.920590877532959,
-      "best_non_evidence_score": null,
-      "first_evidence_rank": 1,
-      "answer_correct": false,
-      "judge_label": "WRONG",
-      "quadrant": "D: Retrieval FAIL + Answer FAIL",
-      "root_cause": "RETRIEVAL_MISS",
-      "explanation": "No gold evidence was found in the recorded retrieval results.",
-      "dimension_id": "D05",
-      "status": "partial",
-      "metrics": {
-        "retrieval_evaluated": true,
-        "hit_at_k": 0.0,
-        "recall_at_k": 0.0,
-        "mrr": 0.0,
-        "personalized_answer_accuracy": 0.0,
-        "metrics_by_k": {
-          "1": {
-            "hit": 0.0,
-            "recall": 0.0,
-            "mrr": 0.0
-          }
-        },
-        "session_hit_at_k": 1.0,
-        "session_recall_at_k": 1.0,
-        "session_mrr": 1.0,
-        "needle_hit_at_k": 0.0,
-        "needle_recall_at_k": 0.0,
-        "needle_mrr": 0.0
-      },
-      "unsupported_metrics": [
-        "profile_accuracy"
       ]
     },
     {
@@ -12579,6 +11097,2724 @@
         }
       },
       "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:39:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 4.21690559387207,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:54:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 12.495050430297852,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:55:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 3.882206916809082,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.5,
+        "mrr": 0.06349206349206349,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.5,
+            "mrr": 0.14285714285714285
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.5,
+        "needle_mrr": 0.06349206349206349,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.5,
+            "mrr": 0.14285714285714285
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:78:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 5.266319751739502,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:120:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 11.959246635437012,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:139:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 7.109898090362549,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:209:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 5.808648586273193,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:218:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.542048454284668,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:235:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 4.400425910949707,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:237:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 2.87380051612854,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.3,
+        "mrr": 0.045,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.1,
+            "mrr": 0.25
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.3,
+            "mrr": 0.25
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.3,
+        "needle_mrr": 0.045,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.1,
+            "mrr": 0.25
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.3,
+            "mrr": 0.25
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:377:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 8.132837295532227,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.25,
+        "mrr": 0.05555555555555555,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.25
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.25,
+            "mrr": 0.25
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.25,
+        "needle_mrr": 0.05555555555555555,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.25
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.25,
+            "mrr": 0.25
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:382:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 10.28410530090332,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.125,
+        "mrr": 0.020833333333333332,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.16666666666666666
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.125,
+        "needle_mrr": 0.020833333333333332,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.16666666666666666
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:425:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 5.997305870056152,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:429:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 8.62019157409668,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.16666666666666666,
+        "mrr": 0.08333333333333333,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.5
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.5
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.5
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.16666666666666666,
+        "needle_mrr": 0.08333333333333333,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.5
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.5
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.5
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:462:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.827105522155762,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:493:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 9.128462791442871,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:599:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 5.189716339111328,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:601:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 3.6466214656829834,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:635:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 4.610188007354736,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:652:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 5.145334243774414,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.3,
+        "mrr": 0.04523809523809523,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.3,
+            "mrr": 0.16666666666666666
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.3,
+        "needle_mrr": 0.04523809523809523,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.3,
+            "mrr": 0.16666666666666666
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:679:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.721767902374268,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:714:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 8.539430618286133,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.16666666666666666,
+        "mrr": 0.05555555555555555,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.3333333333333333
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.3333333333333333
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.3333333333333333
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.16666666666666666,
+        "needle_mrr": 0.05555555555555555,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.3333333333333333
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.3333333333333333
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.3333333333333333
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:721:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.837238311767578,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:764:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 5.404686450958252,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:787:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 4.841378211975098,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:800:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.061321258544922,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.25,
+        "mrr": 0.125,
+        "metrics_by_k": {
+          "1": {
+            "hit": 1.0,
+            "recall": 0.08333333333333333,
+            "mrr": 1.0
+          },
+          "3": {
+            "hit": 1.0,
+            "recall": 0.08333333333333333,
+            "mrr": 1.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.25,
+            "mrr": 1.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.25,
+            "mrr": 1.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.25,
+        "needle_mrr": 0.125,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 1.0,
+            "recall": 0.08333333333333333,
+            "mrr": 1.0
+          },
+          "3": {
+            "hit": 1.0,
+            "recall": 0.08333333333333333,
+            "mrr": 1.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.25,
+            "mrr": 1.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.25,
+            "mrr": 1.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:810:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 2.8729443550109863,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:822:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 3.8202710151672363,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:837:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 4.78539514541626,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:845:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.2929887771606445,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.125,
+        "mrr": 0.013888888888888888,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.1111111111111111
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.125,
+        "needle_mrr": 0.013888888888888888,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.1111111111111111
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:849:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.822742938995361,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.1,
+        "mrr": 0.0125,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.1,
+            "mrr": 0.125
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.1,
+        "needle_mrr": 0.0125,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.1,
+            "mrr": 0.125
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:867:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 8.707737922668457,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.125,
+        "mrr": 0.025,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.2
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.2
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.125,
+        "needle_mrr": 0.025,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.2
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.2
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:879:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 9.75776481628418,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.25,
+        "mrr": 0.05416666666666667,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.3333333333333333
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.3333333333333333
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.25,
+            "mrr": 0.3333333333333333
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.25,
+        "needle_mrr": 0.05416666666666667,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.3333333333333333
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.125,
+            "mrr": 0.3333333333333333
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.25,
+            "mrr": 0.3333333333333333
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:938:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.593430519104004,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.16666666666666666,
+        "mrr": 0.041666666666666664,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.25
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.25
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.16666666666666666,
+        "needle_mrr": 0.041666666666666664,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.25
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.16666666666666666,
+            "mrr": 0.25
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:978:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 6.472211837768555,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 1.0,
+        "recall_at_k": 0.2,
+        "mrr": 0.02857142857142857,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.2,
+            "mrr": 0.14285714285714285
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 1.0,
+        "needle_recall_at_k": 0.2,
+        "needle_mrr": 0.02857142857142857,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 1.0,
+            "recall": 0.2,
+            "mrr": 0.14285714285714285
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:986:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 3.066490650177002,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
+    },
+    {
+      "case_id": "d05:personamem:989:profile",
+      "question_type": "D05",
+      "hit_at_k": 1.0,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "best_evidence_score": 4.920590877532959,
+      "best_non_evidence_score": null,
+      "first_evidence_rank": 1,
+      "answer_correct": null,
+      "judge_label": null,
+      "quadrant": "NOT_RECORDED",
+      "root_cause": "PASS",
+      "explanation": "D05 completed its applicable metrics without a runtime error.",
+      "dimension_id": "D05",
+      "status": "ok",
+      "metrics": {
+        "retrieval_evaluated": true,
+        "hit_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        },
+        "session_hit_at_k": 1.0,
+        "session_recall_at_k": 1.0,
+        "session_mrr": 1.0,
+        "needle_hit_at_k": 0.0,
+        "needle_recall_at_k": 0.0,
+        "needle_mrr": 0.0,
+        "needle_metrics_by_k": {
+          "1": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "3": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "5": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          },
+          "10": {
+            "hit": 0.0,
+            "recall": 0.0,
+            "mrr": 0.0
+          }
+        }
+      },
+      "unsupported_metrics": []
     }
   ],
   "schema_version": "memeval_trace_summary_v1",
@@ -12653,25 +13889,23 @@
     "D05": {
       "case_count": 37,
       "status_counts": {
-        "partial": 37
+        "ok": 37
       },
       "metrics": {
-        "hit_at_k": 0.13513513513513514,
+        "hit_at_k": 0.3783783783783784,
         "metrics_by_k": null,
-        "mrr": 0.03581081081081081,
-        "needle_hit_at_k": 0.13513513513513514,
-        "needle_mrr": 0.03581081081081081,
-        "needle_recall_at_k": 0.03581081081081081,
-        "personalized_answer_accuracy": 0.10810810810810811,
-        "recall_at_k": 0.03581081081081081,
+        "mrr": 0.0181027456027456,
+        "needle_hit_at_k": 0.3783783783783784,
+        "needle_metrics_by_k": null,
+        "needle_mrr": 0.0181027456027456,
+        "needle_recall_at_k": 0.08175675675675675,
+        "recall_at_k": 0.08175675675675675,
         "retrieval_evaluated": 1.0,
         "session_hit_at_k": 1.0,
         "session_mrr": 1.0,
         "session_recall_at_k": 1.0
       },
-      "unsupported_metric_counts": {
-        "profile_accuracy": 37
-      }
+      "unsupported_metric_counts": {}
     },
     "D06": {
       "case_count": 37,
@@ -12791,27 +14025,41 @@
       }
     },
     "D05": {
-      "title": "用户画像与偏好",
+      "title": "检索召回",
       "source": "PersonaMem-v2",
-      "tests": "用户偏好画像的 needle 级证据召回与排序质量（完整 K 档位悬停展示）",
+      "tests": "needle 级检索召回与排序质量（按检索召回指标构建，完整 K 档位悬停展示）",
       "case_count": 37,
       "availability": "MEASURED",
-      "answer_judge": "MEASURED",
+      "answer_judge": "NOT_APPLICABLE",
       "metrics": {
-        "hit_at_k": 0.13513513513513514,
-        "recall_at_k": 0.03581081081081081,
-        "mrr": 0.03581081081081081,
+        "hit_at_k": 0.3783783783783784,
+        "recall_at_k": 0.08175675675675675,
+        "mrr": 0.0181027456027456,
         "session_hit_at_k": 1.0,
         "session_recall_at_k": 1.0,
         "session_mrr": 1.0,
         "retrieval_metrics_by_k": {
           "1": {
-            "hit": 0.13513513513513514,
-            "recall": 0.03581081081081081,
-            "mrr": 0.13513513513513514
+            "hit": 0.02702702702702703,
+            "recall": 0.0022522522522522522,
+            "mrr": 0.02702702702702703
+          },
+          "3": {
+            "hit": 0.10810810810810811,
+            "recall": 0.01463963963963964,
+            "mrr": 0.05855855855855856
+          },
+          "5": {
+            "hit": 0.2222222222222222,
+            "recall": 0.03518518518518518,
+            "mrr": 0.08657407407407408
+          },
+          "10": {
+            "hit": 0.3888888888888889,
+            "recall": 0.08402777777777777,
+            "mrr": 0.11032848324514992
           }
-        },
-        "personalized_answer_accuracy": 0.10810810810810811
+        }
       }
     },
     "D06": {
@@ -12936,11 +14184,10 @@
         "hit_at_k",
         "recall_at_k",
         "mrr",
-        "metrics_by_k",
-        "personalized_answer_accuracy"
+        "metrics_by_k"
       ],
       "coverage": "ADAPTED",
-      "note": "D05 有显式 evidence_event_ids 标注，needle 级指标全量参评有区分度；主指标侧重检索，完整 K 档位悬停展示。"
+      "note": "D05 有显式 evidence_event_ids 标注，needle 级指标全量参评有区分度；主指标侧重检索，完整 K 档位悬停展示，不进入 Answer/Judge。"
     },
     "D06": {
       "document_metrics": [

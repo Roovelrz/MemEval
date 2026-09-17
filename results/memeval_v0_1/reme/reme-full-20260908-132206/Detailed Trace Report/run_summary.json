@@ -13,8 +13,8 @@
   "context_count": 246,
   "ingest_count": 298,
   "status_counts": {
-    "partial": 74,
-    "ok": 186,
+    "partial": 37,
+    "ok": 223,
     "unsupported": 38
   },
   "dimensions": {
@@ -80,25 +80,23 @@
     "D05": {
       "case_count": 37,
       "status_counts": {
-        "partial": 37
+        "ok": 37
       },
       "metrics": {
-        "hit_at_k": 0.13513513513513514,
+        "hit_at_k": 0.3783783783783784,
         "metrics_by_k": null,
-        "mrr": 0.03581081081081081,
-        "needle_hit_at_k": 0.13513513513513514,
-        "needle_mrr": 0.03581081081081081,
-        "needle_recall_at_k": 0.03581081081081081,
-        "personalized_answer_accuracy": 0.10810810810810811,
-        "recall_at_k": 0.03581081081081081,
+        "mrr": 0.0181027456027456,
+        "needle_hit_at_k": 0.3783783783783784,
+        "needle_metrics_by_k": null,
+        "needle_mrr": 0.0181027456027456,
+        "needle_recall_at_k": 0.08175675675675675,
+        "recall_at_k": 0.08175675675675675,
         "retrieval_evaluated": 1.0,
         "session_hit_at_k": 1.0,
         "session_mrr": 1.0,
         "session_recall_at_k": 1.0
       },
-      "unsupported_metric_counts": {
-        "profile_accuracy": 37
-      }
+      "unsupported_metric_counts": {}
     },
     "D06": {
       "case_count": 37,
@@ -500,9 +498,9 @@
   ],
   "source_root": "E:\\LRZ_Workplace\\fork\\memory_eval_pipeline\\dataset\\MemEval-v0.1",
   "answer_judge": {
-    "eligible_case_count": 186,
-    "answer_success_count": 186,
-    "judge_success_count": 186,
+    "eligible_case_count": 149,
+    "answer_success_count": 149,
+    "judge_success_count": 149,
     "answer_model": "deepseek-v4-flash",
     "judge_model": "deepseek-v4-flash",
     "answer_env": {
@@ -516,9 +514,9 @@
       "model_env": "DEEPSEEK_MODEL"
     },
     "cost": {
-      "input_tokens": 1250103,
-      "output_tokens": 289530,
-      "api_cost": 0.21955469200000002
+      "input_tokens": 1130983,
+      "output_tokens": 245301,
+      "api_cost": 0.19495441840000002
     }
   },
   "stage_exit_codes": {

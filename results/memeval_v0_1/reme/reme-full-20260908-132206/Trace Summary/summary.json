@@ -42,23 +42,23 @@
   "hit_at_k": 0.989247311827957,
   "recall_at_k": 0.9704301075268817,
   "mrr": 0.924752517494453,
-  "answer_accuracy": 0.3387096774193548,
+  "answer_accuracy": 0.3959731543624161,
   "pipeline_success_rate": 1.0,
-  "grounded_end_to_end_accuracy": 0.26881720430107525,
+  "grounded_end_to_end_accuracy": 0.33557046979865773,
   "quadrants": {
     "A_retrieval_pass_answer_pass": 50,
     "B_retrieval_pass_answer_fail": 53,
-    "C_retrieval_fail_answer_pass": 13,
-    "D_retrieval_fail_answer_fail": 70,
-    "not_scored": 112
+    "C_retrieval_fail_answer_pass": 9,
+    "D_retrieval_fail_answer_fail": 37,
+    "not_scored": 149
   },
   "root_cause_distribution": {
-    "PASS": 87,
+    "PASS": 124,
     "DATA_ERROR": 0,
     "ADD_FAILURE": 0,
     "INDEX_FAILURE": 0,
-    "RETRIEVAL_MISS": 58,
-    "RETRIEVAL_PARTIAL": 21,
+    "RETRIEVAL_MISS": 30,
+    "RETRIEVAL_PARTIAL": 16,
     "RETRIEVAL_LOW_RANK": 0,
     "RETRIEVAL_WRONG_CHUNK": 0,
     "CONTEXT_LOSS": 0,
@@ -70,7 +70,7 @@
     "PIPELINE_FAILURE": 0,
     "PRIVACY_FAILURE": 0,
     "UNSUPPORTED_CAPABILITY": 38,
-    "PARTIAL_CAPABILITY": 41
+    "PARTIAL_CAPABILITY": 37
   },
   "question_type_breakdown": {
     "D01": {
@@ -157,28 +157,26 @@
       "hit_at_10": 1.0,
       "recall_at_10": 1.0,
       "mrr": 1.0,
-      "accuracy": 0.10810810810810811,
+      "accuracy": null,
       "avg_search_latency_ms": 19.52964864859815,
       "status_counts": {
-        "partial": 37
+        "ok": 37
       },
       "metrics": {
-        "hit_at_k": 0.13513513513513514,
+        "hit_at_k": 0.3783783783783784,
         "metrics_by_k": null,
-        "mrr": 0.03581081081081081,
-        "needle_hit_at_k": 0.13513513513513514,
-        "needle_mrr": 0.03581081081081081,
-        "needle_recall_at_k": 0.03581081081081081,
-        "personalized_answer_accuracy": 0.10810810810810811,
-        "recall_at_k": 0.03581081081081081,
+        "mrr": 0.0181027456027456,
+        "needle_hit_at_k": 0.3783783783783784,
+        "needle_metrics_by_k": null,
+        "needle_mrr": 0.0181027456027456,
+        "needle_recall_at_k": 0.08175675675675675,
+        "recall_at_k": 0.08175675675675675,
         "retrieval_evaluated": 1.0,
         "session_hit_at_k": 1.0,
         "session_mrr": 1.0,
         "session_recall_at_k": 1.0
       },
-      "unsupported_metric_counts": {
-        "profile_accuracy": 37
-      }
+      "unsupported_metric_counts": {}
     },
     "D06": {
       "case_count": 37,
@@ -256,7 +254,7 @@
     "single_evidence": {
       "case_count": 196,
       "recall_at_10": 0.9937106918238994,
-      "accuracy": 0.3081761006289308
+      "accuracy": 0.36885245901639346
     },
     "multiple_evidence": {
       "case_count": 83,
@@ -284,16 +282,16 @@
       "p99": 29.419359999228618
     },
     "Answer": {
-      "avg": 14468.173274731085,
-      "p50": 2588.3663000004162,
-      "p95": 80366.41245000009,
-      "p99": 156225.46079500226
+      "avg": 15585.472822818678,
+      "p50": 2983.5969999985537,
+      "p95": 95217.97173999865,
+      "p99": 149848.3647280015
     },
     "Judge": {
-      "avg": 3423.940963978439,
-      "p50": 1882.4048499991477,
-      "p95": 7754.490750001423,
-      "p99": 23568.444965000905
+      "avg": 2675.894951006697,
+      "p50": 1831.311400001141,
+      "p95": 6325.317640000138,
+      "p99": 17680.712636000197
     },
     "End-to-End": {
       "avg": null,
@@ -306,9 +304,9 @@
   },
   "llm_cost": {
     "currency": "USD",
-    "answer_cost_usd": 0.194682544,
-    "judge_cost_usd": 0.024872148000000004,
-    "total_cost_usd": 0.21955469200000002,
+    "answer_cost_usd": 0.17940765360000002,
+    "judge_cost_usd": 0.015546764800000001,
+    "total_cost_usd": 0.19495441840000002,
     "answer_pricing": {
       "cache_hit_input": 0.0028,
       "cache_miss_input": 0.14,
@@ -345,14 +343,14 @@
     "memory_all_written": true,
     "all_evidence_written": true,
     "search_stable": false,
-    "recall_failure_count": 79,
+    "recall_failure_count": 46,
     "low_rank_failure_count": 0,
     "ranking_failure_count": 0,
     "wrong_chunk_failure_count": 0,
     "context_loss_count": 0,
     "judge_suspect_count": 0,
     "max_latency_stage": "Answer",
-    "largest_error_source": "RETRIEVAL_MISS",
+    "largest_error_source": "ANSWER_FAILURE",
     "reproducibility_status": "PARTIAL_DIRTY_WITHOUT_SOURCE_SNAPSHOT"
   },
   "comparison": null
