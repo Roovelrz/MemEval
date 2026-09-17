@@ -86,7 +86,7 @@ EXPECTED_STATUSES = {
     "D02": "partial",
     "D03": "partial",
     "D04": "unsupported",
-    "D05": "partial",
+    "D05": "ok",
     "D06": "partial",
     "D07": "partial",
     "D08": "ok",

@@ -139,7 +139,7 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         )
 
         assert [row["status"] for row in results] == [
-            "partial", "partial", "partial", "unsupported", "partial", "partial", "partial"
+            "partial", "partial", "partial", "unsupported", "ok", "partial", "partial"
         ]
         # D01：逐字写入保留了事实（recall=1），但也写入了 non-memory 噪声（precision<1）。
         assert results[0]["metrics"]["memory_recall"] == 1.0
@@ -158,9 +158,9 @@ def test_runner_emits_dimension_results_and_preserves_unsupported_status():
         assert results[3]["metrics"] == {}
         assert results[3]["error"] is None
         assert results[4]["metrics"]["retrieval_evaluated"] is False
-        assert results[4]["unsupported_metrics"] == [
-            "profile_accuracy", "personalized_answer_accuracy"
-        ]
+        # D05：已改为纯检索召回，不进入 Answer/Judge，无 unsupported 指标。
+        assert results[4]["unsupported_metrics"] == []
+        assert "ok" == results[4]["status"]
         assert all(set(("run_id", "case_id", "dimension_id", "system", "system_version",
                         "prediction", "retrieved_memories", "trace", "latency", "cost",
                         "metrics", "status", "error")) <= row.keys() for row in results)
