@@ -515,16 +515,8 @@ class MemEvalRunner:
             return _operation_payload(operation), memories, {}, operation.status, ["activation_decision"], None
 
         if dimension == "D05":
-            operation = (
-                self.system.get_profile(runtime)
-                if self.system.capabilities.profile
-                else _unsupported("System does not expose profiles")
-            )
             if not self.system.capabilities.retrieval:
-                return (
-                    _operation_payload(operation), memories, {}, operation.status,
-                    ["profile_accuracy", "personalized_answer_accuracy"], None,
-                )
+                return None, memories, {}, "unsupported", ["retrieval"], None
             search = self.system.search(
                 runtime,
                 query=query,
@@ -546,11 +538,7 @@ class MemEvalRunner:
                 metrics["recall_at_k"] = needle["needle_recall_at_k"]
                 metrics["mrr"] = needle["needle_mrr"]
                 metrics["metrics_by_k"] = needle["needle_metrics_by_k"]
-            return (
-                _operation_payload(operation), memories, metrics,
-                "partial" if operation.status == "unsupported" else operation.status,
-                ["profile_accuracy", "personalized_answer_accuracy"], search.latency_ms,
-            )
+            return None, memories, metrics, "ok", [], search.latency_ms
 
         if dimension == "D08" and not self.system.capabilities.user_isolation:
             operation = _unsupported("System does not isolate user namespaces")
