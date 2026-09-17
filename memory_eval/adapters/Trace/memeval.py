@@ -41,7 +41,7 @@ from memory_eval.trace_report import (
 )
 
 
-ANSWER_DIMENSIONS = frozenset({"D02", "D03", "D05", "D06", "D07"})
+ANSWER_DIMENSIONS = frozenset({"D02", "D03", "D06", "D07"})
 RETRIEVAL_DIMENSIONS = frozenset({"D02", "D03", "D05", "D06", "D07", "D08"})
 
 DIMENSION_METRIC_AUDIT = {
@@ -71,9 +71,9 @@ DIMENSION_METRIC_AUDIT = {
     },
     "D05": {
         "document_metrics": ["Needle Hit@K", "Needle Recall@K", "Needle MRR"],
-        "trace_fields": ["hit_at_k", "recall_at_k", "mrr", "metrics_by_k", "personalized_answer_accuracy"],
+        "trace_fields": ["hit_at_k", "recall_at_k", "mrr", "metrics_by_k"],
         "coverage": "ADAPTED",
-        "note": "D05 有显式 evidence_event_ids 标注，needle 级指标全量参评有区分度；主指标侧重检索，完整 K 档位悬停展示。",
+        "note": "D05 有显式 evidence_event_ids 标注，needle 级指标全量参评有区分度；主指标侧重检索，完整 K 档位悬停展示，不进入 Answer/Judge。",
     },
     "D06": {
         "document_metrics": ["Latest-value", "Conflict Resolution", "Stale Retrieval"],
@@ -530,15 +530,10 @@ class MemEvalTraceAdapter:
                     "status": "ok",
                     "generated_answer": answer["generated_answer"],
                 }
-                answer_metric = (
-                    "personalized_answer_accuracy"
-                    if result.get("dimension_id") == "D05"
-                    else "answer_accuracy"
-                )
-                result.setdefault("metrics", {})[answer_metric] = float(bool(score["is_correct"]))
+                result.setdefault("metrics", {})["answer_accuracy"] = float(bool(score["is_correct"]))
                 result["unsupported_metrics"] = [
                     name for name in result.get("unsupported_metrics", [])
-                    if name != answer_metric
+                    if name != "answer_accuracy"
                 ]
                 result["status"] = result["retrieval_status"]
                 if result.get("status") == "partial" and not result["unsupported_metrics"]:
@@ -783,16 +778,13 @@ class MemEvalTraceAdapter:
                 },
             },
             "D05": {
-                "title": "用户画像与偏好",
+                "title": "检索召回",
                 "source": "PersonaMem-v2",
-                "tests": "用户偏好画像的 needle 级证据召回与排序质量（完整 K 档位悬停展示）",
+                "tests": "needle 级检索召回与排序质量（按检索召回指标构建，完整 K 档位悬停展示）",
                 "case_count": len(d05),
                 "availability": "MEASURED" if d05 else NOT_RECORDED,
-                "answer_judge": "MEASURED" if answer_metric(d05, "personalized_answer_accuracy") is not None else NOT_RECORDED,
-                "metrics": {
-                    **d05_metrics,
-                    "personalized_answer_accuracy": answer_metric(d05, "personalized_answer_accuracy"),
-                },
+                "answer_judge": NOT_APPLICABLE,
+                "metrics": d05_metrics,
             },
             "D06": {
                 "title": "动态更新与冲突",
@@ -886,9 +878,6 @@ class MemEvalTraceAdapter:
             stages.append(stage("write", "Write Evaluation", "ok" if value == 1.0 else "error", f"memory_recall={value}"))
         elif dimension == "D04":
             stages.append(stage("activation", "Activation Trace", "unsupported", "ReMe 未暴露主动激活决策 Trace"))
-        elif dimension == "D05":
-            profile_status = result.get("system_prediction", result.get("prediction", {})).get("status")
-            stages.append(stage("profile", "Profile Evaluation", profile_status, "检查 Profile 能力"))
         elif dimension == "D08":
             if "delete" in operation_status:
                 stages.append(stage("delete", "Lifecycle Delete", operation_status["delete"], "删除后重建索引"))
